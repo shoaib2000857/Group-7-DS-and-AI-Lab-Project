@@ -1,6 +1,10 @@
-# Group 7 — DS & AI Lab Project
+# TerraWatch — Intelligent Satellite Image Change Detection and Analysis
 
-> **IIT Madras BS in Data Science and Applications — DS & AI Lab Project**
+> **Group 7 — IIT Madras BS in Data Science and Applications (DS & AI Lab Project)**
+
+[![Tags](https://img.shields.io/badge/Domain-Remote%20Sensing%20%7C%20Computer%20Vision-blue)]()
+[![AI](https://img.shields.io/badge/AI-Deep%20Learning%20%7C%20Multimodal%20%26%20GenAI-green)]()
+[![Status](https://img.shields.io/badge/Status-Problem%20Statement%20Approved%20(Milestone%201)-brightgreen)]()
 
 ---
 
@@ -22,27 +26,46 @@
 ---
 
 ## 🔍 Project Overview
-*Provide a high-level summary of the project, its motivation, and the real-world impact or domain it addresses. (To be updated upon Problem Statement approval).*
+**TerraWatch** is an intelligent system designed to detect, analyze, and interpret changes on the Earth's surface using multi-temporal satellite imagery. By combining deep learning-based computer vision for change detection and segmentation with multimodal/generative AI for contextual interpretation, TerraWatch aims to distinguish true structural and environmental changes from seasonal, atmospheric, or illumination variations—and provide actionable, human-readable insights.
+
+**Tags:** `Deep Learning (DL)` · `Computer Vision` · `Remote Sensing` · `Change Detection` · `Image Segmentation` · `Multimodal AI` · `Generative AI`
 
 ---
 
 ## 🎯 Problem Statement
-*Upload the approved Problem Statement in [`docs/Project_Proposal.pdf`](docs/) and summarize the core objective, inputs, expected outputs, and evaluation criteria here.*
+> **Status:** *Approved in principle — Developing comprehensive proposal for Milestone 1 (see [`docs/Problem_Statement.md`](docs/Problem_Statement.md)).*
+
+This project aims to develop an intelligent system for detecting, analyzing, and interpreting changes in the Earth's surface using satellite imagery captured across different time periods. The project will explore deep learning and computer vision techniques to identify and characterize meaningful changes, such as variations in land use, vegetation cover, urban development, and environmental conditions, while distinguishing actual changes from differences caused by seasonal variations, lighting, and image quality.
+
+Additionally, the project may investigate the use of multimodal AI and generative models to provide contextual interpretations and explanations of detected changes, including their possible causes and potential impacts. The specific applications, datasets, and methodologies will be determined through further research and feasibility analysis.
 
 ---
 
 ## ✨ Key Features
-- **Feature 1:** *Description of core capability (e.g., automated data ingestion & preprocessing pipeline)*
-- **Feature 2:** *Description of modeling/AI capability (e.g., deep learning / RAG / agentic workflow)*
-- **Feature 3:** *Description of interactive deployment interface*
+- **Multi-Temporal Satellite Image Alignment & Preprocessing:** Robust handling of lighting, seasonal shifts, and radiometric differences across time periods ($T_1 \rightarrow T_2$).
+- **Deep Learning Change Detection & Segmentation:** Pixel-level and semantic identification of land-use change, vegetation loss/gain, urban expansion, and environmental shifts.
+- **Multimodal & Generative Interpretation:** Automated natural-language explanations of detected changes, including potential causes and environmental/urban impacts.
+- **Interactive Visualization & Reporting Dashboard:** Side-by-side temporal comparison, change masks, and analytical reports.
 
 ---
 
 ## 🏗️ Architecture Diagram
-*Place the architecture diagram at `docs/Architecture_Diagram.png` once finalized.*
+*Place the finalized architecture diagram at `docs/Architecture_Diagram.png`.*
 
-```
-[Data Sources] ──► [Preprocessing Pipeline] ──► [Core AI / ML Models & Retrieval] ──► [Evaluation & Application UI]
+```text
+[Multi-Temporal Satellite Imagery (T1, T2)]
+                  │
+                  ▼
+   [Radiometric & Geometric Preprocessing]
+                  │
+                  ▼
+[DL Change Detection & Semantic Segmentation]
+                  │
+                  ▼
+[Multimodal / Generative AI Contextual Analysis]
+                  │
+                  ▼
+  [Interactive Dashboard & Change Reports]
 ```
 
 <!-- Uncomment once Architecture_Diagram.png is added:
@@ -64,6 +87,7 @@ Group-7-DS-and-AI-Lab-Project/
 ├── CONTRIBUTING.md
 │
 ├── docs/
+│   ├── Problem_Statement.md
 │   ├── Project_Proposal.pdf
 │   ├── Milestone1_Report.pdf
 │   ├── Milestone2_Report.pdf
@@ -123,19 +147,19 @@ Group-7-DS-and-AI-Lab-Project/
 ---
 
 ## 📊 Dataset Details
-*See [`data/README.md`](data/README.md) for detailed instructions on dataset sources, downloading scripts, and preprocessing steps. Large datasets are excluded from version control; sample data is available in `data/sample/`.*
+*See [`data/README.md`](data/README.md) for detailed instructions on dataset sources, downloading scripts, and preprocessing steps. Candidate multi-temporal remote sensing datasets (e.g., LEVIR-CD, OSCD, SECOND, Sentinel-2 / Landsat archives) are under evaluation for Milestone 1.*
 
-| Dataset Name | Source | Size / Records | Description |
+| Dataset Name | Source | Resolution / Modality | Description |
 | :--- | :--- | :--- | :--- |
-| *TBD* | *Link / Source* | *TBD* | *Brief description of dataset* |
+| *TBD (Milestone 1)* | *Link / Source* | *Multi-temporal RGB / Multispectral* | *Satellite change detection benchmark* |
 
 ---
 
 ## 🧠 Models Used
 *See [`models/README.md`](models/README.md) for model architecture details, checkpoints, and weights.*
 
-- **Baseline Model:** *TBD*
-- **Primary Model(s):** *TBD*
+- **Change Detection & Segmentation Models:** *TBD (e.g., Siamese CNNs / Bi-temporal Transformers / ChangeFormer / BIT / UNet++)*
+- **Multimodal / Generative Models:** *TBD (Vision-Language Models for change captioning & contextual explanation)*
 
 ---
 
@@ -180,16 +204,16 @@ pytest tests/
 ---
 
 ## 📈 Results & Evaluation
-*Summary of key quantitative metrics and qualitative findings. Full evaluation reports and figures are stored in [`outputs/`](outputs/).*
+*Summary of key quantitative metrics (e.g., IoU, F1-Score, Precision, Recall, Overall Accuracy, Change Captioning Metrics) and qualitative findings. Full evaluation reports and figures are stored in [`outputs/`](outputs/).*
 
-| Model / Experiment | Metric 1 | Metric 2 | Metric 3 | Notes |
-| :--- | :---: | :---: | :---: | :--- |
-| *Baseline* | - | - | - | *Initial benchmark* |
+| Model / Experiment | F1-Score | mIoU | Precision | Recall | Notes |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| *Baseline* | - | - | - | - | *Initial benchmark* |
 
 ---
 
 ## 🖥️ Demo Screenshots
-*Screenshots and demo gifs of the application interface will be added here (stored in `outputs/figures/`).*
+*Screenshots and demo visualizations of multi-temporal change detection masks and AI interpretations will be added here (stored in `outputs/figures/`).*
 
 ---
 
@@ -206,4 +230,4 @@ pytest tests/
 ---
 
 ## 📚 References
-1. *Reference papers, documentation, datasets, and libraries used in the project.*
+1. *Academic papers, remote sensing benchmarks, and documentation to be populated during Milestone 1 literature review.*

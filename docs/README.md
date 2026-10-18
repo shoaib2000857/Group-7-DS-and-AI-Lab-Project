@@ -2,8 +2,11 @@
 
 This directory stores all official project documentation, milestone reports, architecture diagrams, presentations, and user manuals to maintain a complete project history in one place.
 
+## Current Documents
+- [`Problem_Statement.md`](Problem_Statement.md) — Approved brief Problem Statement for **TerraWatch** along with the structured research & feasibility roadmap for the comprehensive proposal and Milestone 1.
+
 ## Expected Artefacts
-- `Project_Proposal.pdf` — Approved Problem Statement and initial proposal
+- `Project_Proposal.pdf` — Comprehensive approved Problem Statement and proposal
 - `Milestone1_Report.pdf` — Milestone 1 progress report
 - `Milestone2_Report.pdf` — Milestone 2 progress report
 - `Final_Report.pdf` — Comprehensive final project report

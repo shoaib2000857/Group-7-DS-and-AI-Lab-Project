@@ -1,11 +1,16 @@
 # Changelog
 
-All notable changes to the **Group 7 — DS & AI Lab Project** will be documented in this file.
+All notable changes to **TerraWatch (Group 7 — DS & AI Lab Project)** will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
-- Pending approval and upload of Problem Statement (`docs/Project_Proposal.pdf`).
+- Developing comprehensive Project Proposal & Milestone 1 deliverables based on instructor feedback.
+
+## [0.1.1] - 2026-10-18
+### Added
+- Added approved brief Problem Statement for **TerraWatch — Intelligent Satellite Image Change Detection and Analysis** in `README.md` and `docs/Problem_Statement.md`.
+- Added Milestone 1 research & feasibility framework in `docs/Problem_Statement.md` covering real-world problem scope, stakeholders, academic/commercial SOTA review, value proposition, and dataset feasibility.
 
 ## [0.1.0] - 2026-10-18
 ### Added
