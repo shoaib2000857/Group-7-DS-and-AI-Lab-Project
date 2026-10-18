@@ -1,0 +1,10 @@
+# Inference Configuration
+inference:
+  device: "auto" # "cuda", "cpu", or "auto"
+  batch_size: 16
+  confidence_threshold: 0.5
+
+paths:
+  checkpoint: "models/checkpoints/best_model.pt"
+  predictions_dir: "outputs/predictions"
+  reports_dir: "outputs/reports"

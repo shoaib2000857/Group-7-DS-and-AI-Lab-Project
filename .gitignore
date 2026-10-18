@@ -1,0 +1,82 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Large Datasets (keep directory structure and sample data)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Model Checkpoints & Weights (keep directory structure and README)
+models/checkpoints/*
+!models/checkpoints/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+*.ckpt
+*.safetensors
+
+# Generated Outputs & Logs (keep directory structure)
+outputs/predictions/*
+!outputs/predictions/.gitkeep
+outputs/reports/*
+!outputs/reports/.gitkeep
+outputs/figures/*
+!outputs/figures/.gitkeep
+outputs/logs/*
+!outputs/logs/.gitkeep
+*.log
+
+# Pytest & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
