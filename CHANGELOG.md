@@ -5,7 +5,12 @@ All notable changes to **TerraWatch (Group 7 — DS & AI Lab Project)** will be 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
-- Developing comprehensive Project Proposal & Milestone 1 deliverables based on instructor feedback.
+
+## [0.2.0] - 2026-10-21
+### Added
+- Milestone 1 report `docs/Milestone1_Report.md`: problem definition, scope, stakeholders, measurable objectives, literature review, benchmarks and baselines, gaps, proposed contribution, data feasibility and evaluation plan.
+- `WORKLOG.md` for weekly individual contributions.
+- GitHub milestones M1–M6 with one epic issue each.
 
 ## [0.1.1] - 2026-10-18
 ### Added
