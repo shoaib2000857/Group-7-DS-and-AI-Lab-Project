@@ -1,0 +1,59 @@
+/* Print styles for milestone reports (A4, rendered with WeasyPrint). */
+@page {
+  size: A4;
+  margin: 22mm 20mm 22mm 20mm;
+  @top-left { content: "TerraWatch · Group 7"; font: 8.5pt "Helvetica Neue", Arial, sans-serif; color: #6b7780; }
+  @top-right { content: string(milestone); font: 8.5pt "Helvetica Neue", Arial, sans-serif; color: #6b7780; }
+  @bottom-right { content: "Page " counter(page) " / " counter(pages); font: 8.5pt "Helvetica Neue", Arial, sans-serif; color: #6b7780; }
+}
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-right { content: none; }
+}
+
+html { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 10.5pt; line-height: 1.5; color: #1b2228; }
+body { margin: 0; }
+
+/* Cover page */
+.cover { page-break-after: always; text-align: center; padding-top: 12mm; string-set: milestone "Milestone 1: Problem Definition & Literature Review"; }
+.cover p { text-align: center; }
+.cover .course { font-size: 12pt; letter-spacing: 0.04em; color: #4a5862; margin: 0 0 14mm; }
+.cover .title { font-size: 24pt; line-height: 1.25; margin: 0 auto 10mm; max-width: 150mm; color: #12202b; }
+.cover .milestone { font-size: 12pt; letter-spacing: 0.18em; text-transform: uppercase; color: #1f5fae; margin: 0 0 16mm; }
+.cover .logo { margin: 0 0 6mm; }
+.cover .logo img { width: 38mm; height: 38mm; }
+.cover .institute { font-size: 13pt; margin: 0 0 12mm; }
+.cover .group { font-size: 12pt; letter-spacing: 0.3em; font-weight: bold; margin: 0 0 6mm; }
+.cover table.members { margin: 0 auto; width: 150mm; }
+.cover .date { margin-top: 18mm; color: #4a5862; }
+
+/* Headings */
+h1, h2, h3, h4 { color: #12202b; line-height: 1.25; page-break-after: avoid; }
+h2 { font-size: 15pt; margin: 9mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 0.6pt solid #c9d1d6; }
+h3 { font-size: 12pt; margin: 6mm 0 2mm; }
+h4 { font-size: 10.5pt; margin: 5mm 0 2mm; }
+p { margin: 0 0 3mm; text-align: justify; hyphens: auto; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.2mm; }
+a { color: #1f5fae; text-decoration: none; word-break: break-all; }
+
+/* Callouts: problem statement and "Limitation" boxes */
+blockquote { margin: 3mm 0 4mm; padding: 3mm 5mm; border-left: 2.5pt solid #1f5fae; background: #eef3f8; page-break-inside: avoid; }
+blockquote p { margin: 0 0 1.5mm; }
+blockquote p:last-child { margin-bottom: 0; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 1.5mm; font-size: 9.2pt; line-height: 1.35; }
+th, td { border: 0.5pt solid #b9c3c9; padding: 1.6mm 2.2mm; vertical-align: top; text-align: left; }
+th { background: #e6ebee; font-weight: bold; }
+tr { page-break-inside: avoid; }
+thead { display: table-header-group; }
+
+/* Figures and captions */
+p.figure { text-align: center; margin: 4mm 0 1mm; page-break-inside: avoid; }
+p.figure img { width: 100%; }
+p.caption { text-align: center; font-size: 9pt; color: #4a5862; margin: 0 0 5mm; }
+
+/* References */
+h2[id$="references"] + ol { font-size: 9pt; line-height: 1.4; }

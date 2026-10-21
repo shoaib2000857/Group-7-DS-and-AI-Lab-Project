@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 270" width="960" height="270" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/>
+    </marker>
+  </defs>
+  <rect width="960" height="270" fill="#ffffff"/>
+  <!-- inputs -->
+  <g font-size="14" fill="#14212b">
+    <rect x="10" y="40" width="120" height="56" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
+    <text x="70" y="64" text-anchor="middle">Image at</text><text x="70" y="82" text-anchor="middle">date T1</text>
+    <rect x="10" y="190" width="120" height="56" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
+    <text x="70" y="214" text-anchor="middle">Image at</text><text x="70" y="232" text-anchor="middle">date T2</text>
+    <rect x="170" y="110" width="130" height="66" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
+    <text x="235" y="138" text-anchor="middle">Alignment and</text><text x="235" y="156" text-anchor="middle">quality checks</text>
+    <rect x="340" y="40" width="140" height="66" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
+    <text x="410" y="66" text-anchor="middle">Change detector</text><text x="410" y="86" text-anchor="middle" font-size="12" fill="#4a5862">U-Net / ChangeFormer</text>
+    <rect x="520" y="40" width="130" height="66" rx="8" fill="#e3eefb" stroke="#1f6fd1" stroke-width="1.6"/>
+    <text x="585" y="66" text-anchor="middle">Change events</text><text x="585" y="86" text-anchor="middle" font-size="12" fill="#4a5862">class, count, location</text>
+    <rect x="520" y="190" width="130" height="66" rx="8" fill="#e3eefb" stroke="#1f6fd1" stroke-width="1.6"/>
+    <text x="585" y="216" text-anchor="middle">Captioner</text><text x="585" y="236" text-anchor="middle" font-size="12" fill="#4a5862">images + events</text>
+    <rect x="690" y="115" width="120" height="66" rx="8" fill="#e3eefb" stroke="#1f6fd1" stroke-width="1.6"/>
+    <text x="750" y="141" text-anchor="middle">Consistency</text><text x="750" y="161" text-anchor="middle">check</text>
+    <rect x="840" y="105" width="110" height="86" rx="8" fill="#14212b"/>
+    <text x="895" y="135" text-anchor="middle" fill="#ffffff">Report</text><text x="895" y="155" text-anchor="middle" font-size="12" fill="#c9d6de">mask + grounded</text><text x="895" y="171" text-anchor="middle" font-size="12" fill="#c9d6de">description</text>
+  </g>
+  <g stroke="#5b6770" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M130,68 L150,68 L150,135 L168,135"/>
+    <path d="M130,218 L150,218 L150,152 L168,152"/>
+    <path d="M300,130 L320,130 L320,73 L338,73"/>
+    <path d="M480,73 L518,73"/>
+    <path d="M300,156 L320,156 L320,223 L518,223"/>
+    <path d="M585,106 L585,188"/>
+    <path d="M650,73 L750,73 L750,113"/>
+    <path d="M650,223 L750,223 L750,183"/>
+    <path d="M810,148 L838,148"/>
+  </g>
+</svg>
