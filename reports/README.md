@@ -1,6 +1,6 @@
 # Reports
 
-Milestone reports submitted as PDFs.
+Milestone reports, submitted as PDFs. Review slides are in [`presentation/`](../presentation/).
 
 | Milestone | Report |
 |---|---|

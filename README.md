@@ -97,6 +97,9 @@ Group-7-DS-and-AI-Lab-Project/
 ├── reports/
 │   └── DSAI Lab_Group 7_Milestone 1.pdf
 │
+├── presentation/
+│   └── DSAI Lab_Group 7_Milestone 1_Slides.pdf
+│
 ├── data/
 │   ├── raw/
 │   ├── processed/
