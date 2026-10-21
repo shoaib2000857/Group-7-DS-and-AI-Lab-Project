@@ -16,7 +16,7 @@ HERE = Path(__file__).resolve().parent
 
 
 def build(src: Path, out: Path) -> None:
-    body = markdown.markdown(src.read_text(encoding="utf-8"), extensions=["tables", "md_in_html", "toc"])
+    body = markdown.markdown(src.read_text(encoding="utf-8"), extensions=["tables", "toc"])
     # Italic one-line paragraphs starting with "Table" or "Figure" are captions.
     body = re.sub(r"<p><em>((?:Table|Figure)[^<]*)</em></p>", r'<p class="caption"><em>\1</em></p>', body)
     # A paragraph holding only an image is a figure.

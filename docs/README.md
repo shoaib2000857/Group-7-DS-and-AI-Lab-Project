@@ -9,8 +9,7 @@ This directory stores all official project documentation, milestone reports, arc
 
 ## Expected Artefacts
 - `Project_Proposal.pdf` — Comprehensive approved Problem Statement and proposal
-- `reports/DSAI Lab_Group 7_Milestone 1.pdf` — Milestone 1 report (built from `reports/Milestone1_Report.md`)
-- `Milestone2_Report.pdf` — Milestone 2 progress report
+- `reports/` — Milestone 2–6 reports (PDF, built from Markdown)
 - `Final_Report.pdf` — Comprehensive final project report
 - `Architecture_Diagram.png` — System & AI pipeline architecture diagram
 - `Presentation.pdf` — Final project presentation slides
