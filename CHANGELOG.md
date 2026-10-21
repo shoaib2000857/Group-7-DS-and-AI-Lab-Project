@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [0.2.0] - 2026-10-21
 ### Added
-- Milestone 1 report `reports/DSAI Lab_Group 7_Milestone 1.pdf` (source `reports/Milestone1_Report.md`, built with `reports/build_report.py`): problem definition, scope, stakeholders, measurable objectives, literature review, benchmarks and baselines, gaps, proposed contribution, data feasibility and evaluation plan.
+- Milestone 1 report `reports/DSAI Lab_Group 7_Milestone 1.pdf`: problem definition, scope, stakeholders, measurable objectives, literature review, benchmarks and baselines, gaps, proposed contribution, data feasibility and evaluation plan.
 - `WORKLOG.md` for weekly individual contributions.
 - GitHub milestones M1–M6 with one epic issue each.
 

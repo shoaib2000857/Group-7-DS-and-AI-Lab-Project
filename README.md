@@ -95,11 +95,7 @@ Group-7-DS-and-AI-Lab-Project/
 │   └── Presentation.pdf
 │
 ├── reports/
-│   ├── Milestone1_Report.md
-│   ├── DSAI Lab_Group 7_Milestone 1.pdf
-│   ├── build_report.py
-│   ├── report.css
-│   └── figures/
+│   └── DSAI Lab_Group 7_Milestone 1.pdf
 │
 ├── data/
 │   ├── raw/
