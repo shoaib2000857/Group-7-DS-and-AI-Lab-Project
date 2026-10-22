@@ -276,7 +276,7 @@ All models are trained on the official training split of each dataset, tuned on 
 - **Hallucination rate** (unsupported or contradicted claims per description) and **omission rate** (labelled changes not mentioned).
 - **Count Absolute Error (CAE)**: The mean absolute difference between the count of structures stated in the generated text and the true number of connected change components in the ground-truth mask:
 
-  $$\text{CAE} = \frac{1}{N} \sum_{i=1}^{N} |C_{\text{predicted}} - C_{\text{ground\_truth}}|$$
+  $$\text{CAE} = \frac{1}{N} \sum_{i=1}^{N} |C_{\text{predicted}} - C_{\text{ground-truth}}|$$
 
 - **Claim Grounding Precision (CGP)**: The percentage of entities and actions mentioned in the generated caption that have a verified corresponding pixel region in the ground-truth change mask (target: ≥ 85%).
 - **Standard NLP Benchmarks**: BLEU-4, METEOR, ROUGE-L and CIDEr-D computed against the 5 reference captions in LEVIR-MCI, for comparability with published work.
