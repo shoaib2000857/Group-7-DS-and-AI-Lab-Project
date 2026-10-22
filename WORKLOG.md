@@ -17,3 +17,15 @@ Other members: add your section below using the same table.
 | 1 | 15–22 Oct 2026 | M1 | Wrote the Milestone 1 report (problem, scope, stakeholders, objectives, literature review, benchmarks, gaps, contribution, feasibility, evaluation plan) | [reports/DSAI Lab_Group 7_Milestone 1.pdf](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
 | 1 | 15–22 Oct 2026 | M1 | Built the Milestone 1 review slides | [presentation/DSAI Lab_Group 7_Milestone 1_Slides.pdf](presentation/DSAI%20Lab_Group%207_Milestone%201_Slides.pdf) | |
 | 1 | 15–22 Oct 2026 | Project setup | Created GitHub milestones M1–M6 with an epic issue for each, so tasks can be tracked as individual issues | [Milestones](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/milestones) | |
+
+---
+
+## Priyanshu Agarwal ([@23f2003488](https://github.com/23f2003488))
+
+| Week | Dates | Milestone | Work done | Links | Hours |
+|---|---|---|---|---|---|
+| 1 | 15–22 Oct 2026 | M1 | Formulated dual-head grounded architecture: conditioned change captioning directly on predicted change mask events | [Report §8.1](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 | Designed the 3-stage factual consistency check (claim extraction → mask evidence check → hallucination mitigation) to prevent phantom object descriptions | [Report §8.1](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 | Formulated the loss and sampling strategy for severe class imbalance (composite Focal + Dice loss and 70:30 change-centric patch sampling) | [Report §8.1, §10](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 | Defined evaluation framework adding automated factual metrics (Count Absolute Error, Claim Grounding Precision) alongside human factual audit | [Report §9.2](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 | Audited Milestone 1 deliverables against IIT Madras BSDA4001 rubric; fixed mathematical expressions and restored Markdown report source | [PR #10 Review](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/pull/10) | |
