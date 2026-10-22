@@ -1,0 +1,370 @@
+<div class="cover">
+
+<p class="course">DS &amp; AI Lab Project (BSDA4001)</p>
+
+<h1 class="title">TerraWatch: Intelligent Satellite Image Change Detection and Analysis</h1>
+
+<p class="milestone">MILESTONE 1: Problem Definition &amp; Literature Review</p>
+
+<p class="logo"><img src="figures/iitm_logo.png" alt="IIT Madras logo" width="150"></p>
+
+<p class="institute">Indian Institute of Technology Madras<br>BS in Data Science and Applications</p>
+
+<p class="group">GROUP 7</p>
+
+<table class="members">
+<thead><tr><th>Name</th><th>Email</th><th>GitHub Username</th></tr></thead>
+<tbody>
+<tr><td>Priyanshu Agarwal</td><td>23f2003488@ds.study.iitm.ac.in</td><td>23f2003488</td></tr>
+<tr><td>Sarthak Saini</td><td>23f2005347@ds.study.iitm.ac.in</td><td>Sarthak-Saini265</td></tr>
+<tr><td>Sujal Raj Pradhan</td><td>23f2004759@ds.study.iitm.ac.in</td><td>SujalPradhan</td></tr>
+<tr><td>Shoaib SSM</td><td>24f2000857@ds.study.iitm.ac.in</td><td>shoaib2000857</td></tr>
+</tbody>
+</table>
+
+<p class="date">October 2026</p>
+
+</div>
+
+## 1. Introduction and Problem Definition
+
+Satellites photograph the same places on Earth again and again. Comparing two images of one place, taken months or years apart, shows how it has changed: a new building, a cleared plot, a widened road. Indian cities and government bodies already use this to catch unauthorised construction and encroachment on public land [3][4].
+
+Most automated tools stop at a **change map**, a black-and-white mask that marks which pixels changed. A mask tells an officer *where* to look, but not *what* changed or whether it matters. Someone still has to open every flagged area and interpret it. Many flags are not real changes at all: shadows move, the sun angle shifts, vegetation changes with the season, and the two images may be slightly misaligned or captured by different sensors.
+
+Recent vision-language models can describe a change in a full sentence, which looks like the missing piece. However, they are known to state things the images do not support, such as the wrong number of buildings, objects that are not there, or causes that nobody could know from two pictures [7][17]. For a user who has to act on the description, a fluent but wrong sentence is worse than no sentence.
+
+Rather than building yet another detector, this project focuses on turning detected change into a description that can be trusted: one that is localised, says what changed, and only claims what the imagery supports.
+
+> **Problem Statement**
+>
+> How can two satellite images of the same place be turned into a localised, plain-language account of what changed, one that only says what the imagery supports, and that holds up when the images differ for reasons that are not real change, such as lighting, season or alignment?
+
+We focus on **urban and built-up change**: new or removed buildings, new roads and groundwork. This is where good labelled data exists, where there are real users today, and where every claim the system makes can be checked against a label.
+
+## 2. Scope and Assumptions
+
+| In Scope | Out of Scope |
+|---|---|
+| Pairs of co-registered, high-resolution RGB images (about 0.5 m per pixel) of the same place at two dates | Real-time or nationwide monitoring |
+| Building and road change: appearance, removal, groundwork | Deciding legality, ownership or intent |
+| A pixel-level change map for each image pair | Explaining *why* a change happened |
+| A short description of the change grounded in the change map (what, where, roughly how many) | Damage, cost or risk estimates |
+| Robustness to nuisance differences: brightness, colour, blur, compression, small misalignment | Area in square metres or map coordinates when images carry no georeference |
+| Evaluation on public benchmarks with fixed splits, plus a human factual audit of descriptions | Validated claims on 10 m Sentinel-2 imagery, forests or disasters |
+| A local demo: upload two images, see the mask and the description | A production service or live map |
+
+*Table 2.1: Scope of project aspects*
+
+The project is deliberately scoped to bi-temporal, high-resolution imagery of built-up areas, rather than general land-cover monitoring. This matches the labelled data that is publicly available and the users who already act on change alerts. Questions of cause, legality and damage are excluded because two images cannot establish them; at most the system can say what is visible.
+
+**Assumptions.** The two images in a pair are already roughly aligned, which holds for the benchmark datasets we use. Dataset labels are treated as ground truth, while recognising that each dataset labels only some kinds of change; for example, LEVIR-CD labels buildings only. A change that a dataset does not label is treated as *unlabelled*, not as "no change".
+
+## 3. Stakeholders
+
+| Stakeholder | Type | Need | How TerraWatch helps |
+|---|---|---|---|
+| Building and encroachment officers in urban local bodies (e.g. Mumbai's BMC) | Primary | Find new or unauthorised structures early, then verify on site | A change map plus a one-line description of each flagged area |
+| Defence Estates officers in cantonment boards | Primary | Catch encroachment on defence land across 62 cantonments | The same output, alongside their existing image comparison [4] |
+| Urban planners and development authorities | Secondary | Track where and how fast an area is being built up | Consistent, comparable change reports |
+| Remote-sensing researchers | Secondary | Reproducible baselines and honest evaluation of change captioning | Code, fixed splits and a factual-accuracy audit protocol |
+| Journalists, NGOs and students | Secondary | Understand imagery changes without GIS expertise | Plain-language descriptions with stated limits |
+
+*Table 3.1: Primary and secondary stakeholders*
+
+The primary stakeholders are the people who already run a "flag, then verify" workflow and pay its cost in staff time. Secondary stakeholders benefit from consistent reports or from the research outputs.
+
+## 4. Motivation and Practical Relevance
+
+**There is far more imagery than people to check it.** The Sentinel-2 mission alone publishes more than 4 TB of new products every day [1], and commercial and national satellites add much more. No team can review this by hand.
+
+**Users already pay for flag-and-verify systems.** In July 2026, Mumbai's municipal corporation approved a system that combines AI, drones and satellite imagery to flag illegal construction and extra floors early [3]. Since 2022, India's Directorate General Defence Estates has run change-detection software in all 62 cantonment boards, comparing Cartosat-3 images from different dates [4]. In both cases the software raises a flag and an officer then checks it on the ground.
+
+**The expensive step is the human check.** Every false flag costs an officer time. Every flag without context ("something changed here") must be interpreted before anyone can act. A tool that marks real change and says plainly what it is, without overstating, directly reduces that cost.
+
+Common scenarios where this problem arises include:
+
+- a ward officer reviewing new construction in their area every quarter
+- an estate officer checking for encroachment on government land
+- a planner comparing growth across neighbourhoods
+- a researcher deciding whether a change-captioning model can be trusted
+
+## 5. Objectives
+
+The project has four objectives. Each has a metric and a comparison fixed in advance. The targets are hypotheses we will test, not promised results.
+
+1. **O1: Detect where buildings and roads changed.** Train standard change detectors and reproduce published results on public benchmarks, measured by change-class F1 and IoU.
+2. **O2: Ignore changes that are not real.** Make the detector robust to nuisance differences (brightness, colour cast, blur, compression, small misalignment), measured by how much F1 drops on perturbed test images.
+3. **O3: Describe the change without overstating.** Generate descriptions that use the change map as evidence and are checked against it, measured by human-judged factual accuracy and count error as well as standard text metrics.
+4. **O4: Make it usable.** Deliver a working demo with measured end-to-end latency.
+
+The quantitative targets for each objective are given in Section 9.4.
+
+## 6. Existing Approaches
+
+Research on change detection in remote sensing has moved from simple image differencing, through supervised deep networks, to foundation models and vision-language systems that also describe the change. The approaches fall into six broad families, followed here by the operational tools currently in use.
+
+### 6.1. Classical Change Detection
+
+The oldest approach subtracts one image from the other, or compares spectral vectors pixel by pixel (change vector analysis), and applies a threshold such as Otsu's method. Morphological filtering then removes small noise. These methods are fast, need no training data, and are easy to explain.
+
+> **Limitation:** Any difference between the two images counts as change. Moving shadows, seasonal colour and small misalignment all appear as false positives. The output also says nothing about *what* changed.
+
+### 6.2. Siamese Convolutional Networks
+
+Deep learning replaced hand-set thresholds with learned features. Daudt et al. introduced fully convolutional early-fusion and Siamese networks (FC-EF, FC-Siam-conc and FC-Siam-diff), which encode both images and compare their features to predict a change mask [8]. U-Net-style encoder-decoders with a feature-difference step remain strong and widely used baselines.
+
+> **Limitation:** These models need pixel-level labels and learn only the kinds of change their training set labels. Their output is still only a mask.
+
+### 6.3. Transformer-Based Models
+
+Transformers model long-range relationships between the two dates. BIT represents each image with a small set of semantic tokens and lets a transformer compare them [9]. ChangeFormer uses a hierarchical transformer encoder in a Siamese setup and reports 90.40 F1 on LEVIR-CD [5].
+
+> **Limitation:** Gains over CNNs are small. A 2024 study that retrained recent methods under a fixed protocol found that a plain U-Net "without training tricks or complicated architectural changes is still a top performer" [6]. Detection accuracy on the main benchmarks is close to saturated.
+
+### 6.4. Foundation and Zero-Shot Models
+
+Newer work avoids task-specific training. AnyChange adapts the Segment Anything Model to find changes with no training and reports a new best result for unsupervised change detection on SECOND [10]. RemoteCLIP aligns remote-sensing images with text, which allows zero-shot labelling and retrieval [11].
+
+> **Limitation:** Zero-shot detection still trails supervised models on standard benchmarks, and these models also produce masks or labels, not explanations.
+
+### 6.5. Change Captioning
+
+Change captioning generates a sentence describing the difference between two images. The LEVIR-CC benchmark provides 10,077 image pairs with 50,385 human-written sentences [12]. RSICCformer [12] and Chg2Cap [13] are the standard trained baselines.
+
+> **Limitation:** Captioners are trained and scored with n-gram overlap metrics such as BLEU and CIDEr, which reward sounding like the reference rather than being correct. A caption can score well and still get the count or location wrong. The captioner also does not use the change map, even when one is available.
+
+### 6.6. Integrated Systems and Vision-Language Models
+
+Change-Agent is the closest precedent to this project. Its MCI model trains a change-detection branch and a captioning branch together on LEVIR-MCI and places a large language model on top for interactive analysis [7]. ChangeChat instruction-tunes a vision-language model to answer questions about image pairs [14]. CCExpert adds a difference-aware module to a multimodal LLM and pretrains it on 200,000 image pairs [15].
+
+> **Limitation:** These systems are still judged mainly on n-gram scores, and large models can produce fluent but unsupported statements. Their training data increasingly includes LLM-generated captions, which can carry errors of their own [15]. Ricci et al. (2026) evaluated general vision-language models for change captioning and proposed FMScore, an LLM-based check of captions against ground-truth facts [17]. The field has recognised the factuality problem, but it has not been solved.
+
+### 6.7. Operational and Commercial Tools
+
+| Tool | What it does | Gap for our stakeholders |
+|---|---|---|
+| Google Earth Engine [22] | Cloud platform for analysing satellite archives with code | A platform for experts; no ready-made explanation of a change |
+| Copernicus Browser [22] | Browse and compare Sentinel imagery over time | Visual comparison only; 10 m imagery is too coarse for single buildings |
+| DGDE change-detection software [4] | Flags changes between Cartosat-3 images for cantonment boards | Flags still need human interpretation and field checks |
+| BMC illegal-construction system [3] | AI, drones, satellite and GIS to flag new structures (approved 2026) | Planned; no public accuracy figures |
+| Commercial analytics (e.g. Planet, Picterra) | Paid detection and monitoring products | Not evaluated by us; outputs are generally maps and alerts |
+
+*Table 6.1: Operational and commercial tools*
+
+### 6.8. Baseline System
+
+The baseline considered in this project reflects the common state of practice. It consists of:
+
+- a trained change detector (Siamese U-Net or ChangeFormer) that produces a change mask, and
+- a trained change captioner (Chg2Cap or RSICCformer) that sees only the two images.
+
+The two components run independently, and nothing checks whether the sentence agrees with the mask. This baseline is the reference point for testing whether giving the captioner the change map, and checking its output against that map, produces more truthful descriptions at similar text scores.
+
+### 6.9. Evaluation Practices in Prior Research
+
+Prior work evaluates each task separately, on fixed benchmark splits.
+
+- **Change detection** is measured with precision, recall, F1 and intersection-over-union (IoU) of the change class, sometimes with overall accuracy. Overall accuracy is not very informative here: most pixels do not change, so a model that predicts "no change" everywhere still scores high.
+- **Multi-class change masks**, such as LEVIR-MCI's background, road and building classes, are measured with mean IoU (mIoU).
+- **Semantic change detection** on SECOND uses mIoU and the separated kappa coefficient (SeK).
+- **Change captioning** is measured with BLEU-1 to BLEU-4, METEOR, ROUGE-L and CIDEr-D against reference sentences.
+
+In all of these, success means a higher score on the benchmark's test split. Whether a generated description is *factually correct* is rarely measured; FMScore [17] is one of the first attempts. Our evaluation therefore keeps the standard metrics for comparability, and adds factual accuracy as the primary measure for descriptions.
+
+## 7. Gaps and Proposed Contribution
+
+The review shows a common pattern across all families of approaches. Detection keeps improving, but the step that matters to the user, a description that can be trusted, is still weak. Five specific gaps stand out:
+
+1. **Detection is close to saturated.** The top methods are within about 4 F1 points of each other on LEVIR-CD, and a well-trained U-Net is still near the top [5][6]. Another detector is unlikely to be a meaningful contribution.
+2. **Descriptions are not checked for truth.** Captioners are scored on n-gram overlap, so a sentence with the wrong number of buildings can still score well. Factual evaluation is only now being proposed [17].
+3. **Captioners ignore available evidence.** Most captioning models never see the change map. Change-Agent trains both tasks together, but its captions are evaluated with n-gram metrics and nothing checks the sentence against the predicted mask [7].
+4. **Robustness to nuisance change is rarely reported.** Methods perform much worse on S2Looking's side-looking images than on near-nadir LEVIR-CD+ [19], yet most papers report only clean, in-domain scores.
+5. **Large models are hard to run and hard to trust.** Vision-language systems need large GPUs and are increasingly trained on generated captions [15], which makes errors harder to trace.
+
+This highlights a clear opportunity: a system that keeps a strong, standard detector, uses its change map as explicit evidence for the description, checks the description against that evidence, and reports **how often the description is actually correct**, as judged by people, alongside the usual scores.
+
+**Nature of the contribution.** Our contribution lies in **reliability (factual correctness) and robustness**, not in raw detection accuracy. Compared with Change-Agent [7], we keep detection and captioning as separate, replaceable modules; pass the predicted mask to the captioner as structured evidence; add a claim-level consistency check; and evaluate descriptions with human-judged factual accuracy and count error. We do not claim that combining detection and captioning is new.
+
+## 8. Proposed Approach and Technical Grounding
+
+### 8.1. System Components
+
+The proposed system converts a pair of images into a change map and a description grounded in that map. At a high level it has five components.
+
+- **Input and quality checks.** The two images are loaded as a pair, checked for size and alignment, and normalised. On benchmark data the images are already co-registered; the checks catch broken or mismatched pairs.
+
+- **Change detector.** A standard supervised model, a Siamese U-Net and ChangeFormer [5], predicts a pixel-level change probability map, which is thresholded into a mask. The threshold is chosen on validation data only.
+
+  *Class Imbalance & Loss Strategy*: In satellite change detection benchmarks, unchanged background pixels comprise 95%–99% of image tiles. Standard Cross-Entropy leads to degenerate models that predict "no change" everywhere. To overcome this, our training pipeline implements:
+
+  1. *Composite Loss Function*: A weighted combination of Binary Cross-Entropy (BCE), Focal Loss (to suppress gradients from easily classified background pixels), and Soft Dice / Focal Tversky Loss (to directly maximize change-class region overlap):
+
+     $$L_{\text{total}} = L_{\text{BCE}} + \alpha \cdot L_{\text{Focal}} + \beta \cdot L_{\text{Dice}}$$
+
+  2. *Change-Centric Patch Sampling*: Batches are sampled with a 70:30 ratio between tiles containing verified change events and negative background tiles, preventing gradient starvation.
+
+  3. *Invariance Augmentations*: To meet Objective O2, the detector is trained with bitemporal jitter (independent brightness and contrast shifts, colour casts, Gaussian blur, JPEG compression, and small spatial affine misalignments of ±2 pixels between dates), forcing the network to disregard illumination and sensor artifacts.
+
+- **Change events.** The predicted mask is converted into a list of change events. Each event is a connected region with its class (building or road on LEVIR-MCI), size in pixels, approximate position in the image (for example "lower left") and the total count per class. This list is the evidence the rest of the pipeline relies on.
+
+- **Grounded captioner.** A captioning model generates the description from the two images *and* the change events. We start from established captioning architectures (Chg2Cap, RSICCformer) [12][13] and add the events as an extra input. A simple template-based description from the events alone serves as a lower baseline.
+
+- **Consistency check.** Each claim in the generated sentence (counts, object types, locations) is compared with the change events via a structured 3-stage factual verification filter:
+
+  1. *Entity & Claim Extraction*: The generated sentence is parsed into structured claim quadruplets: `[Action, Object Type, Count, Spatial Location]` (for example, *"Three new buildings appeared in the northwest"* → `[Action: Added, Object: Building, Count: 3, Location: Northwest]`).
+  2. *Mask Evidence Cross-Verification*: The claimed count and semantic categories are cross-referenced directly against the connected components extracted from the predicted change mask.
+  3. *Hallucination Mitigation & Calibration*: Unsupported claims (objects without corresponding mask components or count deviations where `|N_caption − N_mask| > 0`) are removed, corrected, or appended with an explicit calibration note: *"(Low confidence: mask indicates 1 structure, text suggested 3)"*. This is what keeps the final description from overstating.
+
+![Figure 8.1: Proposed TerraWatch pipeline](figures/m1_pipeline.svg)
+
+*Figure 8.1: Proposed pipeline. Blue components are this project's contribution; the detector is a standard model.*
+
+### 8.2. Dataset Sources
+
+All candidate datasets are publicly available for academic use. Table 8.1 summarises them.
+
+| Dataset | What is labelled | Size and resolution | Role in this project |
+|---|---|---|---|
+| LEVIR-MCI [7] | Change masks (background, road, building) and 5 captions per pair | 10,077 pairs, 256×256, 0.5 m | **Primary**: the only set with aligned masks and captions |
+| LEVIR-CC [12] | 5 human captions per pair | 10,077 pairs, 50,385 sentences | Caption baselines (same images as LEVIR-MCI) |
+| LEVIR-CD [16] | Binary building change, 31,333 change instances | 637 pairs, 1024×1024, 0.5 m | Detection benchmark |
+| LEVIR-CD+ [18] | Binary building change | 985 pairs (637 train, 348 test) | Additional detection data |
+| S2Looking [19] | Building change in side-looking rural images, 65,920 instances | 5,000 pairs, 1024×1024, 0.5–0.8 m | Robustness test |
+| SYSU-CD [20] | Buildings, groundwork, vegetation, roads, sea construction | 20,000 pairs, 256×256, 0.5 m | Generalisation test |
+| SECOND [21] | Before and after land-cover classes (6 classes, 30 change types) | 4,662 pairs, 512×512; 2,968 openly available | Optional: what changed beyond buildings |
+| ChangeChat-105k [14] | About 105,000 instruction and answer pairs | Annotations only; images from LEVIR-CC | Optional: question answering |
+
+*Table 8.1: Candidate datasets*
+
+**Is there enough data?** Yes, for the scoped problem. LEVIR-MCI alone provides 10,077 image pairs with aligned masks and 50,385 captions, which is enough to train and evaluate both the detector and the captioner [7][12]. LEVIR-CD+, S2Looking and SYSU-CD add about 26,000 more labelled pairs for robustness and generalisation tests [18][19][20].
+
+**Access.** We checked every download link. LEVIR-MCI, LEVIR-CC and ChangeChat-105k are hosted on Hugging Face; LEVIR-CD, LEVIR-CD+, S2Looking and SECOND on Google Drive; and SYSU-CD on OneDrive. The team keeps one private shared copy in Google Drive so that everyone works from identical files.
+
+### 8.3. Data Quality and Known Risks
+
+Several issues will be audited in Milestone 2:
+
+- **Overlap within the LEVIR family.** LEVIR-MCI uses the LEVIR-CC images, and ChangeChat-105k reuses them too. Training on one set and testing on another could leak test images. Each experiment will use one dataset's official split, and images will be hashed to detect duplicates across sets.
+- **Partial labels.** LEVIR-CD labels only buildings, and LEVIR-MCI adds roads. A real but unlabelled change looks like a false positive, so results are reported per dataset and unlabelled changes are counted separately.
+- **SECOND test labels.** Only 2,968 of the 4,662 pairs are openly available [21], so SECOND would need a scene-level re-split, or it will be deferred.
+- **Different sensors and viewing angles.** S2Looking is side-looking and rural, and SYSU-CD is aerial imagery of Hong Kong. Their scores are not comparable with LEVIR's, so they are used only as separate robustness and transfer tests.
+- **Licence terms.** LEVIR-CD images come from Google Earth and may be used for academic purposes only [16]. The shared copy stays private and all sources are cited.
+- **Resolution gap.** Models trained at 0.5 m do not transfer to 10–30 m Sentinel-2 or HLS imagery [2]. Any example on such imagery will be a clearly labelled demonstration, not a result.
+
+### 8.4. Hardware and Compute Assumptions
+
+Change detectors at 256×256 resolution train comfortably on a single consumer GPU or a free Colab or Kaggle T4 GPU, using mixed precision. The caption baselines have public code and similar requirements. Large vision-language models are optional and would be used only for inference. Latency is reported on stated hardware for the full pipeline.
+
+## 9. Testing and Evaluation Strategy
+
+### 9.1. Experimental Setup
+
+All models are trained on the official training split of each dataset, tuned on validation data, and evaluated once on the held-out test split. The experiments answer five questions:
+
+- **Can we detect change as well as published work?** Absolute differencing with an Otsu threshold, a Siamese U-Net and ChangeFormer are compared on LEVIR-CD (F1, IoU) and LEVIR-MCI (mIoU).
+- **Does robustness training help?** The plain and robustness-trained detectors are compared on clean and perturbed test images: five perturbation types (brightness and contrast, colour cast, blur, JPEG compression, small misalignment) at three severities each.
+- **Does it generalise?** Models trained on LEVIR are tested on S2Looking and SYSU-CD.
+- **Does the change map make descriptions more truthful?** Four caption settings are compared on the same test pairs: (i) images only, (ii) images plus the predicted change map, (iii) images plus the ground-truth map, reported as an upper bound only, and (iv) setting (ii) plus the consistency check.
+- **Is it practical?** End-to-end latency and GPU memory are measured for the full pipeline.
+
+### 9.2. Evaluation Metrics
+
+- **Change-class F1 and IoU** (primary for detection), with precision and recall; **mIoU** on LEVIR-MCI.
+- **F1 drop under perturbation**, averaged across perturbation types and severities (robustness).
+- **Supported-claim precision**: the share of claims in a description that a human judges supported by the images and mask (primary for descriptions).
+- **Hallucination rate** (unsupported or contradicted claims per description) and **omission rate** (labelled changes not mentioned).
+- **Count Absolute Error (CAE)**: The mean absolute difference between the count of structures stated in the generated text and the true number of connected change components in the ground-truth mask:
+
+  $$\text{CAE} = \frac{1}{N} \sum_{i=1}^{N} |C_{\text{predicted}} - C_{\text{ground\_truth}}|$$
+
+- **Claim Grounding Precision (CGP)**: The percentage of entities and actions mentioned in the generated caption that have a verified corresponding pixel region in the ground-truth change mask (target: ≥ 85%).
+- **Standard NLP Benchmarks**: BLEU-4, METEOR, ROUGE-L and CIDEr-D computed against the 5 reference captions in LEVIR-MCI, for comparability with published work.
+- **Latency per image pair** and peak GPU memory.
+
+#### 9.2.1. Baseline Values from Literature
+
+| Method (LEVIR-CD) | Precision | Recall | F1 | IoU |
+|---|---|---|---|---|
+| FC-Siam-Diff | 89.53 | 83.31 | 86.31 | 75.92 |
+| BIT | 89.24 | 89.37 | 89.31 | 80.68 |
+| ChangeFormer | 92.05 | 88.80 | 90.40 | 82.48 |
+
+*Table 9.1: Building change detection on LEVIR-CD, as reported in [5]*
+
+| Method (LEVIR-MCI) | Change mIoU | BLEU-4 | METEOR | ROUGE-L | CIDEr-D |
+|---|---|---|---|---|---|
+| FC-Siam-Diff | 84.20 | n/a | n/a | n/a | n/a |
+| BIT | 84.16 | n/a | n/a | n/a | n/a |
+| RSICCformer | n/a | 60.44 | 38.76 | 72.63 | 130.00 |
+| Chg2Cap | n/a | 64.39 | 40.03 | 75.12 | 136.61 |
+| MCINet (Change-Agent) | 86.43 | 65.95 | 40.80 | 75.96 | 140.29 |
+
+*Table 9.2: Detection and captioning on LEVIR-MCI, as reported in Table II of [7]*
+
+Scores for the same method differ between papers because of different evaluation scripts [13]. We therefore compare methods only within one table and rerun the baselines ourselves where possible. No published work reports supported-claim precision on these benchmarks, so that baseline will come from our own image-only captioner.
+
+### 9.3. Human Factual Audit
+
+Descriptions are audited by people, because n-gram metrics cannot judge correctness.
+
+- A random sample of at least 100 LEVIR-MCI test pairs, the same pairs for every system.
+- Two annotators per description, blind to which system wrote it. Each claim is marked *supported*, *unsupported* or *contradicted* by the images and mask.
+- Agreement between annotators is reported with Cohen's kappa, and a third team member resolves disagreements.
+
+### 9.4. Success Criteria
+
+The system will be considered successful if it meets the following targets relative to the baselines:
+
+| Objective | Metric | Target |
+|---|---|---|
+| O1 Detection | F1 on LEVIR-CD | Within about 2 F1 points of the published Siamese U-Net and ChangeFormer results |
+| O2 Robustness | Average F1 drop under perturbation | At least 25% smaller drop than the plain baseline, with no more than 1 F1 point lost on clean data |
+| O3 Grounded descriptions | Supported-claim precision; BLEU-4 and CIDEr-D | At least 10 percentage points higher than the image-only captioner, with BLEU-4 and CIDEr-D within about 2 and 5 points of Chg2Cap |
+| O4 Usability | Latency per 256×256 pair | Under 5 s on a Colab T4 GPU, with the demo running from the README |
+
+*Table 9.3: Target improvements*
+
+To keep the results honest, splits and primary metrics are fixed before final testing, thresholds and prompts are chosen on validation data only, the main models are run with three random seeds where compute allows, and confidence intervals are computed by bootstrapping over test pairs. The ground-truth-mask setting is reported as an upper bound, never as an achievable result. Negative results will be reported.
+
+### 9.5. Evaluation Objective
+
+The objective of this evaluation is to measure whether giving a captioning model the change map as evidence, and checking its output against that evidence, makes change descriptions more truthful without making them less fluent. By comparing the grounded system against an image-only baseline on identical test pairs and judging factual accuracy by people, the evaluation isolates the effect of evidence grounding on the quality that matters to the user.
+
+## 10. Risks and Mitigations
+
+| Risk | Mitigation |
+|---|---|
+| A dataset link stops working | One shared copy in the team Drive; download scripts and checksums in the repository |
+| Not enough GPU time | 256×256 crops, mixed precision and smaller backbones; free Colab and Kaggle GPUs |
+| Severe class imbalance & background false alarms | Composite Focal + Dice loss; change-centric patch sampling (70:30 ratio); bitemporal photometric augmentation |
+| Our contribution overlaps with Change-Agent | Stated openly; our claim is the evidence check and the factual audit, not the combined pipeline |
+| Labels miss real changes | Per-dataset results; unlabelled changes reported separately in the error analysis |
+| The factual gain turns out small or zero | The comparison is fixed in advance, and a documented negative result is still reported |
+
+*Table 10.1: Project risks and mitigations*
+
+## 11. References
+
+1. ESA. *Sentinel-2 images the globe every 5 days.* https://sentinels.copernicus.eu/web/success-stories/-/sentinel-2-images-the-globe-every-5-days
+2. NASA. *Harmonized Landsat Sentinel-2 (HLS).* https://hls.gsfc.nasa.gov/
+3. Free Press Journal (July 2026). *BMC approves AI, drone, satellite tech to detect illegal constructions and encroachments across Mumbai.* https://freepressjournal.in/mumbai/bmc-approves-ai-drone-satellite-tech-to-detect-illegal-constructions-and-encroachments-across-mumbai
+4. *Directorate General Defence Estates*: change-detection software in 62 cantonment boards (2022). https://en.wikipedia.org/wiki/Directorate_General_Defence_Estates
+5. Bandara, W. G. C., & Patel, V. M. (2022). *A Transformer-Based Siamese Network for Change Detection.* IGARSS. https://arxiv.org/abs/2201.01293
+6. Corley, I., Robinson, C., & Ortiz, A. (2024). *A Change Detection Reality Check.* ICLR 2024 ML4RS Workshop. https://arxiv.org/abs/2402.06994
+7. Liu, C., Chen, K., Zhang, H., Qi, Z., Zou, Z., & Shi, Z. (2024). *Change-Agent: Towards Interactive Comprehensive Remote Sensing Change Interpretation and Analysis.* IEEE TGRS. https://arxiv.org/abs/2403.19646
+8. Daudt, R. C., Le Saux, B., & Boulch, A. (2018). *Fully Convolutional Siamese Networks for Change Detection.* ICIP. https://arxiv.org/abs/1810.08462
+9. Chen, H., Qi, Z., & Shi, Z. (2021). *Remote Sensing Image Change Detection with Transformers.* IEEE TGRS. https://arxiv.org/abs/2103.00208
+10. Zheng, Z., Zhong, Y., Zhang, L., & Ermon, S. (2024). *Segment Any Change.* NeurIPS. https://arxiv.org/abs/2402.01188
+11. Liu, F., et al. (2023). *RemoteCLIP: A Vision Language Foundation Model for Remote Sensing.* https://arxiv.org/abs/2306.11029
+12. Liu, C., Zhao, R., Chen, H., Zou, Z., & Shi, Z. (2022). *Remote Sensing Image Change Captioning With Dual-Branch Transformers: A New Method and a Large Scale Dataset.* IEEE TGRS. https://ieeexplore.ieee.org/document/9934924
+13. Chang, S., & Ghamisi, P. (2023). *Changes to Captions: An Attentive Network for Remote Sensing Change Captioning.* https://arxiv.org/abs/2304.01091. See also Wang, Y., Yu, W., & Ghamisi, P. (2025). *SAT-Cap.* https://arxiv.org/abs/2501.08114
+14. Deng, P., Zhou, W., & Wu, H. (2024). *ChangeChat: An Interactive Model for Remote Sensing Change Analysis via Multimodal Instruction Tuning.* https://arxiv.org/abs/2409.08582
+15. Wang, Z., Wang, M., Xu, S., Li, Y., & Zhang, B. (2024). *CCExpert: Advancing MLLM Capability in Remote Sensing Change Captioning with Difference-Aware Integration and a Foundational Dataset.* https://arxiv.org/abs/2411.11360
+16. Chen, H., & Shi, Z. (2020). *A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection.* Remote Sensing, 12(10), 1662. https://www.mdpi.com/2072-4292/12/10/1662
+17. Ricci, R., Bazi, Y., & Melgani, F. (2026). *Remote sensing change captioning meets large language and vision models.* ISPRS Journal of Photogrammetry and Remote Sensing, 239, 793–807. https://doi.org/10.1016/j.isprsjprs.2026.06.003
+18. LEVIR-CD+ dataset, S2Looking authors' repository. https://github.com/S2Looking/Dataset
+19. Shen, L., et al. (2021). *S2Looking: A Satellite Side-Looking Dataset for Building Change Detection.* Remote Sensing, 13(24), 5094. https://arxiv.org/abs/2107.09244
+20. Shi, Q., Liu, M., et al. (2021). *A Deeply Supervised Attention Metric-Based Network and an Open Aerial Image Dataset for Remote Sensing Change Detection.* IEEE TGRS. https://ieeexplore.ieee.org/document/9467555
+21. Yang, K., Xia, G.-S., et al. (2021). *Asymmetric Siamese Networks for Semantic Change Detection in Aerial Images.* IEEE TGRS. https://captain-whu.github.io/SCD/
+22. Google Earth Engine, https://earthengine.google.com/; Copernicus Browser, https://browser.dataspace.copernicus.eu/
