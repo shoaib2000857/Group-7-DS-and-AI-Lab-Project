@@ -29,3 +29,14 @@ Other members: add your section below using the same table.
 | 1 | 15–22 Oct 2026 | M1 | Formulated the loss and sampling strategy for severe class imbalance (composite Focal + Dice loss and 70:30 change-centric patch sampling) | [Report §8.1, §10](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
 | 1 | 15–22 Oct 2026 | M1 | Defined evaluation framework adding automated factual metrics (Count Absolute Error, Claim Grounding Precision) alongside human factual audit | [Report §9.2](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
 | 1 | 15–22 Oct 2026 | M1 | Audited Milestone 1 deliverables against IIT Madras BSDA4001 rubric; fixed mathematical expressions and restored Markdown report source | [PR #10 Review](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/pull/10) | |
+
+---
+
+## Sarthak Saini ([@Sarthak-Saini265](https://github.com/Sarthak-Saini265))
+
+| Week | Dates | Milestone | Work done | Links | Hours |
+|---|---|---|---|---|---|
+| 1 | 15–22 Oct 2026 | M1 | Reviewed dataset requirements and evaluation methodology for satellite image change detection, identifying image-pair alignment, change-mask quality, and class imbalance as key factors affecting model performance | [Report §8, §9](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 | Analysed the proposed evaluation metrics for change detection, focusing on precision, recall, F1-score, and IoU to assess the quality of predicted change masks | [Report §9](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 / M2 prep | Helped Shortlist datasets; checked every download link, file sizes and licences and created a Drive Space to gather all available data | [Milestone 1 report §6, §8](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 1 | 15–22 Oct 2026 | M1 | Examined the role of ground-truth change masks in supervised model training and evaluation, focusing on how annotation quality can affect segmentation performance | [Report §8, §9](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
