@@ -85,15 +85,20 @@ Group-7-DS-and-AI-Lab-Project/
 ├── requirements.txt
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
+├── WORKLOG.md
 │
 ├── docs/
 │   ├── Problem_Statement.md
 │   ├── Project_Proposal.pdf
-│   ├── Milestone1_Report.pdf
-│   ├── Milestone2_Report.pdf
 │   ├── Final_Report.pdf
 │   ├── Architecture_Diagram.png
 │   └── Presentation.pdf
+│
+├── reports/
+│   └── DSAI Lab_Group 7_Milestone 1.pdf
+│
+├── presentation/
+│   └── DSAI Lab_Group 7_Milestone 1_Slides.pdf
 │
 ├── data/
 │   ├── raw/
