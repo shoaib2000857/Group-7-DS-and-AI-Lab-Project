@@ -1,0 +1,357 @@
+PAGE 1
+DS & AI Lab · Group 7 · Milestone 1 review
+TerraWatch
+Two satellite images of the same place. What changed, and can 
+we say it in one honest sentence?
+Priyanshu Agarwal
+Sarthak Saini
+Sujal Raj Pradhan
+Shoaib SSM
+
+
+PAGE 2
+The problem
+Today’s tools stop at a change map: a mask of 
+pixels that changed. An officer still has to open 
+every flag and work out what changed.
+Many flags are not real change at all: moving 
+shadows, a different sun angle, seasons, 
+slight misalignment.
+Vision-language models can write a sentence, but 
+they state things the image doesn’t support: wrong 
+counts, missing objects, made-up causes.
+Problem statement
+How can two satellite images of the 
+same place be turned into a localised, 
+plain-language account of what 
+changed, one that only says what the 
+imagery supports, and holds up when 
+the images differ for reasons that 
+aren’t real change?
+
+
+PAGE 3
+Scope: urban and built-up change
+In scope
+Aligned high-res RGB image pairs (~0.5 m/pixel)
+Building and road change: new, removed, 
+groundwork
+Pixel-level change map per pair
+Short description grounded in the change map
+Robustness to lighting, colour, blur, misalignment
+Public benchmarks + human factual audit
+Local demo
+Out of scope
+Real-time or nationwide monitoring
+Legality, ownership or intent
+Why a change happened
+Damage, cost or risk estimates
+Area in m² without georeference
+Validated claims on 10 m Sentinel-2, 
+forests, disasters
+A production service
+
+
+PAGE 4
+Stakeholders
+Who
+Role
+Need
+What we give them
+Building and encroachment officers 
+(e.g. BMC)
+Primary
+Find new structures early, verify 
+on site
+Change map + one-line 
+description per flag
+Defence Estates / cantonment 
+boards
+Primary
+Catch encroachment across 62 
+cantonments
+Same, on top of their existing 
+image comparison
+Planners and development 
+authorities
+Secondary
+Track where an area is being built 
+up
+Consistent change reports
+Remote-sensing researchers
+Secondary
+Honest evaluation of change 
+captioning
+Code, fixed splits, factual-audit 
+protocol
+Journalists, NGOs, students
+Secondary
+Understand imagery without GIS 
+skills
+Plain-language descriptions with 
+stated limits
+
+
+PAGE 5
+Why it matters: more imagery than people
+4+ TB
+of new Sentinel-2 products 
+published every day, from one 
+mission alone
+62
+cantonment boards running 
+satellite change-detection 
+software since 2022
+2026
+Mumbai’s BMC approves an AI + 
+satellite system to flag illegal 
+construction
+Both systems raise a flag, then an officer checks it. The slow, costly part is the human 
+check: every false flag and every flag without context costs time.
+Sources: ESA; Directorate General Defence Estates; Free Press Journal (July 2026)
+
+
+PAGE 6
+How it is done today
+Approach
+Examples
+Limitation
+Classical differencing
+Image difference, CVA, Otsu
+Shadows and seasons count as change
+Siamese CNNs
+FC-EF, FC-Siam-diff, U-Net
+Need pixel labels; output is only a mask
+Transformers
+BIT, ChangeFormer
+Small gains; a plain U-Net is still near the top
+Foundation / zero-shot
+AnyChange (SAM), RemoteCLIP
+Trail supervised models; still masks or labels
+Change captioning
+RSICCformer, Chg2Cap
+Scored on word overlap, not on truth
+Agents and VLMs
+Change-Agent, ChangeChat, CCExpert
+Fluent but unchecked claims; heavy to run
+Operational tools
+Earth Engine, Copernicus, DGDE, BMC
+Flags only; a person interprets each one
+
+
+PAGE 7
+Benchmarks and published baselines
+Detection · LEVIR-CD
+Method
+F1
+IoU
+FC-Siam-Diff
+86.31
+75.92
+BIT
+89.31
+80.68
+ChangeFormer
+90.40
+82.48
+Top methods sit within about 4 F1 points. Metrics: precision, recall, 
+F1, IoU of the change class.
+Captioning · LEVIR-MCI
+Method
+BLEU-4
+CIDEr-D
+RSICCformer
+60.44
+130.00
+Chg2Cap
+64.39
+136.61
+MCINet (Change-Agent)
+65.95
+140.29
+MCINet also reaches 86.43 mIoU on the change masks. Metrics: 
+BLEU, METEOR, ROUGE-L, CIDEr-D. None measure truth.
+Sources: Bandara & Patel 2022 (ChangeFormer); Liu et al. 2024 (Change-Agent), Table II
+
+
+PAGE 8
+Data: enough to train and evaluate
+Dataset
+What is labelled
+Size
+Our use
+LEVIR-MCI
+Masks (road, building) + 5 captions
+10,077 pairs, 0.5 m
+Primary: masks and captions
+LEVIR-CC
+Human captions
+50,385 sentences
+Caption baselines
+LEVIR-CD
+Building change
+637 pairs, 1024²
+Detection benchmark
+LEVIR-CD+
+Building change
+985 pairs
+Extra detection data
+S2Looking
+Building change, side-looking
+5,000 pairs
+Robustness test
+SYSU-CD
+Buildings, roads, vegetation, sea
+20,000 pairs
+Generalisation test
+SECOND
+6 land-cover classes, before/after
+4,662 pairs (2,968 open)
+Optional: what changed
+ChangeChat-105k
+Instruction Q&A
+~105k items
+Optional: Q&A
+All links checked. One private shared copy in the team Drive. Known risks: LEVIR datasets share images (leakage), labels cover only 
+some change types, Google Earth imagery is academic-use only.
+
+
+PAGE 9
+Where current solutions fall short
+Detection is near-saturated
+Top models are about 4 F1 apart; a plain U-Net is still a 
+top performer.
+Descriptions aren’t checked for truth
+A sentence with the wrong count can still score well on BLEU 
+or CIDEr.
+Captioners ignore the evidence
+Most never see the change map; none check the sentence 
+against it.
+Robustness is rarely reported
+Scores fall sharply on side-looking S2Looking images.
+Opportunity: keep a standard detector, use its map as evidence for the 
+sentence, check the sentence, and measure how often it is right.
+
+
+PAGE 10
+Our contribution: reliability, not raw accuracy
+Two images
+aligned and 
+checked for quality
+Detector
+U-Net or 
+ChangeFormer, 
+robust to nuisance
+Change events
+class, count, 
+location
+Captioner
+sees images and 
+events
+Check
+sentence vs events
+Closest precedent: Change-Agent
+Trains detection and captioning together, scored with n-gram 
+metrics. Nothing checks the sentence against the mask.
+What we add
+The map as explicit evidence, a claim-level check, and a human 
+audit of factual accuracy and count error. We don’t claim the 
+combined pipeline is new.
+
+
+PAGE 11
+Measurable objectives
+Objective
+Metric
+Success if
+O1 Detect change
+F1, IoU (LEVIR-CD); mIoU (LEVIR-MCI)
+Within ~2 F1 of published U-Net / ChangeFormer
+O2 Ignore false change
+F1 drop under 5 perturbations × 3 levels
+≥25% smaller drop than baseline, ≤1 F1 lost on clean 
+data
+O3 Describe truthfully
+Supported-claim precision, count error, 
+BLEU-4, CIDEr-D
++10 points supported claims vs images-only, text scores 
+near Chg2Cap
+O4 Make it usable
+Latency per pair; working demo
+Under 5 s per 256×256 pair on a Colab T4
+Targets are hypotheses fixed in advance. If the gain is small or zero, we report that.
+
+
+PAGE 12
+How we will show it works
+Caption ablation
+Images only
++ predicted change map
++ ground-truth map (upper 
+bound only)
++ consistency check
+Same test pairs for every system.
+Human factual audit
+≥100 LEVIR-MCI test pairs
+2 blind annotators per caption
+Each claim: supported, 
+unsupported or contradicted
+Agreement: Cohen’s kappa
+Honest results
+Splits and metrics fixed first
+Test set used once
+3 seeds, bootstrap intervals
+Robustness and transfer: 
+S2Looking, SYSU-CD
+
+
+PAGE 13
+Plan and risks
+M2 · Oct 29
+Dataset audit, splits, 
+leakage check
+M3 · Nov 5
+Architecture, end-to-
+end on a subset
+M4 · Nov 19
+Training and tuning
+M5 · Nov 26
+Evaluation and 
+human audit
+M6 · Dec 10
+Demo and 
+documentation
+Risk
+Mitigation
+A dataset link stops working
+Shared Drive copy; scripts and checksums in the repo
+Not enough GPU time
+256×256 crops, mixed precision, small backbones, Colab / Kaggle
+Overlap with Change-Agent
+Stated openly; our claim is the check and the audit
+Labels miss real changes
+Per-dataset results; unlabelled changes reported separately
+Factual gain is small
+Pre-registered comparison; negative result still reported
+
+
+PAGE 14
+Key references
+Liu et al. 2024, Change-Agent / LEVIR-MCI, IEEE TGRS
+Liu et al. 2022, LEVIR-CC and RSICCformer, IEEE TGRS
+Chang & Ghamisi 2023, Chg2Cap
+Bandara & Patel 2022, ChangeFormer
+Chen, Qi & Shi 2021, BIT, IEEE TGRS
+Daudt et al. 2018, FC-Siam, ICIP
+Corley et al. 2024, A Change Detection Reality Check
+Ricci, Bazi & Melgani 2026, change captioning meets LLMs and VLMs, 
+ISPRS J.
+Zheng et al. 2024, Segment Any Change, NeurIPS
+Liu et al. 2023, RemoteCLIP
+Deng, Zhou & Wu 2024, ChangeChat
+Wang et al. 2024, CCExpert
+Chen & Shi 2020, LEVIR-CD; Shen et al. 2021, S2Looking
+Shi et al. 2021, SYSU-CD; Yang et al. 2021, SECOND
+ESA, Sentinel-2; DGDE change detection; Free Press Journal, 
+BMC (2026)
+Full list with links: docs/Milestone1_Report.md, section 13

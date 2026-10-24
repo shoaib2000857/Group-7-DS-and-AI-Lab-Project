@@ -1,0 +1,1 @@
+dataset,dataset_version,pair_id,parent_scene_id,official_split,poc_role,selection_seed,selection_rule,t1_path,t2_path,label_path,caption_ids,t1_sha256,t2_sha256,label_sha256,label_ontology,gsd_m,crs,acquisition_t1,acquisition_t2,first_use_date,exclusion_reason

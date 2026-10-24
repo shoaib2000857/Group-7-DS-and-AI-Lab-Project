@@ -1,0 +1,464 @@
+PAGE 1
+RESEARCH MILESTONE 01
+TERRA
+WATCH
+From change pixels to
+evidence-grounded descriptions
+IIT Madras BS  /  Data Science & AI Lab  /  October 2026
+PRIYANSHU AGARWAL    SARTHAK SAINI    SUJAL RAJ PRADHAN    SHOAIB SSM
+ILLUSTRATIVE AERIAL VISUAL  /  NOT A MODEL RESULT
+
+
+PAGE 2
+T E R R AWATC H  /  T H E R E S E A R C H P R O B L E M
+02
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+01 / THE QUESTION
+A change map tells us where.
+The next question is whether we can explain what happened - without inventing facts.
+T1  •  BEFORE
+T2  •  AFTER
+ILLUSTRATIVE CHANGE OVERLAY
+Two aligned images
+A machine-readable mask
+A claim we can verify
+Concept illustration; not an example from LEVIR and not a trained prediction.
+
+
+PAGE 3
+T E R R AWATC H  /  W H Y T H I S M AT T E R S
+03
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+02 / OPERATIONAL GAP
+The bottleneck is interpretation.
+Current workflows generate alerts. People still spend time deciding which alerts mean something.
+01
+OBSERVE
+Satellite pairs at two dates
+Imaging conditions are not identical
+02 FLAG
+Change map highlights pixels
+Shadows and seasons trigger noise
+03 VERIFY
+Officer inspects each location
+What changed? Is it relevant?
+OUR OPPORTUNITY
+Turn each flag into a short, localised, evidence-checked description.
+
+
+PAGE 4
+T E R R AWATC H  /  M OT I VAT I O N
+04
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+03 / REAL WORLD
+More imagery than humans can inspect.
+Institutional change-detection workflows already exist. Interpreting every alert remains expensive.
+4+ TB
+new Sentinel-2 products 
+daily
+ESA / cited in project report
+62
+Indian cantonment boards
+DGDE monitoring context
+2026
+Mumbai BMC initiative
+reported approval of AI + satellite monitoring
+Detection alone does not complete the decision workflow.
+Source: Milestone 1 report, Motivation & Practical Relevance (see report references 1, 3, 4).
+
+
+PAGE 5
+T E R R AWATC H  /  S C O P E
+05
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+04 / DELIBERATE FOCUS
+Start narrow. Make claims auditable.
+Milestone 1 centers on high-resolution built-up change rather than generic Earth monitoring.
+IN SCOPE
+✓
+Co-registered RGB image pairs (~0.5 m/pixel)
+✓
+Buildings, roads and groundwork in built-up areas
+✓
+Pixel-level mask and grounded short caption
+✓
+Lighting / blur / alignment robustness tests
+✓
+Public benchmarks, human audit and local demo
+OUT OF SCOPE
+Legal status / ownership / intent
+Causal explanations of why
+Damage or monetary estimates
+Unvalidated Sentinel-2 use
+Nationwide real-time deployment
+
+
+PAGE 6
+T E R R AWATC H  /  S TA K E H O L D E R S
+06
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+05 / WHO BENEFITS
+Built for evidence-based review.
+The benefit is a better starting point for the human verifier, not an automated final decision.
+01
+PRIMARY
+URBAN LOCAL BODIES
+Spot newly built structures; 
+review flags on site.
+02
+PRIMARY
+DEFENCE ESTATES
+Inspect built-up change around 
+managed land.
+03
+SE CO N DA RY
+PLANNING & RESEARCH
+Compare growth and audit what 
+models claim.
+Outputs designed for inspection:  location  ·  change region  ·  limited, checkable description
+
+
+PAGE 7
+T E R R AWATC H  /  L I T E R AT U R E L A N D S C A P E
+07
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+06 / RESEARCH LANDSCAPE
+Progress has been real. So have the gaps.
+A quick view of six model families discussed in the literature review.
+01
+IMAGE DIFFERENCING
+CVA / Otsu
+Fast; noise mistaken for change
+02
+SIAMESE CONVOLUTION
+FC-Siam / U-Net
+Accurate spatial maps; no language
+03
+TRANSFORMERS
+BIT / ChangeFormer
+Strong benchmark scores; labels required
+04
+FOUNDATION MODELS
+AnyChange / RemoteCLIP
+Transfer and zero-shot options; mixed accuracy
+05
+CHANGE CAPTIONING
+RSICCformer / Chg2Cap
+Readable descriptions; overlap metrics
+06
+INTEGRATED VISION + LANGUAGE
+Change-Agent / ChangeChat Multiple tasks; claims need checking
+
+
+PAGE 8
+T E R R AWATC H  /  P U B L I S H E D B A S E L I N E S
+08
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+07 / BENCHMARK EVIDENCE
+Detection is a strong baseline problem.
+Reported scores reproduced from the cited ChangeFormer and Change-Agent tables (not our results).
+LEVIR-CD  /  CHANGE F1
+FC-Siam-Diff
+86.31
+BIT
+89.31
+ChangeFormer
+90.40
+LEVIR-MCI  /  CAPTION CIDEr-D
+RSICCformer
+130
+Chg2Cap
+136.61
+MCINet
+140.29
+Excellent lexical overlap does not establish factual correctness.
+
+
+PAGE 9
+T E R R AWATC H  /  R E S E A R C H O P P O R T U N I T Y
+09
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+08 / THE GAP
+What if the sentence could be checked?
+The novelty claim is evidence grounding and evaluation - not inventing a new detector or pairing two models.
+ILLUSTRATIVE CHANGE EVIDENCE
+UNVERIFIED GENERATION
+“Seven buildings were added after illegal clearing.”
+CHECK INDIVIDUAL CLAIMS
+Object class   •   Count   •   Relative location   •   Unsupported inference
+“Buildings appear in the central portion of the image.”
+Example wording is illustrative and does not describe an evaluated model output.
+
+
+PAGE 10
+T E R R AWATC H  /  O B J E C T I V E S
+10
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+09 / FOUR MEASURABLE OBJECTIVES
+Define success before training.
+Targets are hypotheses in the Milestone 1 report - not achieved outcomes.
+O1
+DETECT
+Change-class F1 / IoU
+Compare U-Net, ChangeFormer and classical differencing
+O2
+WITHSTAND
+F1 drop under nuisance shift
+Lighting, colour, blur, compression, misalignment
+O3
+DESCRIBE
+Supported-claim precision
+Grounded captions vs image-only generation
+O4
+DELIVER
+End-to-end latency
+Working local demo and reproducible pipeline
+
+
+PAGE 11
+T E R R AWATC H  /  DATA F E A S I B I L I T Y
+11
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+10 / DATASET STRATEGY
+One anchor dataset. Several stress tests.
+We avoid mixing unrelated benchmarks into one headline score or leaking repeated images across splits.
+PRIMARY PAIR
+LEVIR-MCI
+10,077
+paired images with aligned 
+change masks and 5 
+captions per pair
+Detection + language on the same images
+LEVIR-CD
+637 pairs
+building change benchmark
+S2Looking
+5,000 pairs
+side-looking robustness
+SYSU-CD
+20,000 pairs
+cross-domain generalisation
+SECOND
+4,662 pairs
+optional semantic change
+ChangeChat-105k
+~105k Q&A
+optional instruction tuning
+LEVIR-CC, LEVIR-MCI and ChangeChat share imagery: split and hash before evaluation.
+
+
+PAGE 12
+T E R R AWATC H  /  P R O P O S E D S Y S T E M
+12
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+11 / METHOD OVERVIEW
+Make the mask part of the evidence.
+Modular, replaceable components with explicit claim checking.
+01
+IMAGE PAIR
+T1 / T2
+quality + alignment
+02
+DETECTOR
+U-Net / ChangeFormer
+change probability mask
+03
+EVENTS
+structured evidence
+class / count / position
+04
+CAPTIONER
+images + events
+grounded sentence
+05
+VERIFIER
+claim-level check
+remove unsupported
+DIRECT IMAGE CONTEXT
+M1 proposal only: individual modules and gains are yet to be implemented or evaluated.
+
+
+PAGE 13
+T E R R AWATC H  /  E X P E R I M E N TA L D E S I G N
+13
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+12 / ISOLATE THE CONTRIBUTION
+Four settings. Same test examples.
+Ablations separate the effects of visual input, change evidence and post-generation checking.
+A
+Images only
+Captioner views T1 and T2
+BASELINE
+B
++ predicted mask
+Add evidence produced by 
+the detector
+PROPOSED INPUT
+C
++ ground-truth mask
+Oracle evidence; upper 
+bound only
+ORACLE CONTROL
+D
++ consistency check
+Validate B’s claims against 
+predicted evidence
+PROPOSED FULL
+Question: Do explicit change events improve factual accuracy without materially weakening text quality?
+
+
+PAGE 14
+T E R R AWATC H  /  E VA L U AT I O N P R OTO C O L
+14
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+13 / EVIDENCE STANDARD
+Measure robustness. Audit factual claims.
+Use the standard metrics for comparability - and independent human review for claim accuracy.
+ROBUSTNESS MATRIX
+Brightness / contrast
+Colour cast
+Blur
+JPEG compression
+Small misalignment
+5 perturbations  ×  3 severity levels
+BLINDED HUMAN FACTUAL AUDIT
+≥ 100
+LEVIR-MCI test pairs
+2
+blind annotators / caption
+3
+claim labels: supported / unsupported / contradicted
+κ
+inter-annotator agreement
+
+
+PAGE 15
+T E R R AWATC H  /  P R E - R E G I S T E R E D TA R G E T S
+15
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+14 / WHAT SUCCESS WOULD LOOK LIKE
+Targets, not promises.
+We will publish negative or null findings if the evidence does not support the hypothesis.
+O1
+≤ 2 F1 pts
+from published detection 
+baselines
+O2
+≥ 25%
+smaller F1 drop under shift
+O3
++10 pp
+supported-claim precision 
+vs image-only
+O4
+< 5 s
+per 256×256 pair on 
+Colab T4
+All numeric goals are proposed acceptance criteria in the team report; no experiment has yet established them.
+
+
+PAGE 16
+T E R R AWATC H  /  C O U R S E D E L I V E R Y
+16
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+15 / ON THE CALENDAR
+A six-milestone path to a defensible demo.
+Milestone 1 closes the problem definition and research review; implementation follows.
+1
+M1
+22 OCT
+PROBLEM + 
+LITERATURE
+Today
+2
+M2
+29 OCT
+DATASET AUDIT
+Splits and provenance
+3
+M3
+05 NOV
+MODEL PIPELINE
+Architectures and end-to-
+end pass
+4
+M4
+19 NOV
+MODEL TRAINING
+Training and tuning
+5
+M5
+26 NOV
+EVALUATION
+Ablations and human audit
+6
+M6
+10 DEC
+DEPLOYMENT
+Demo and documentation
+Weekly technical review  •  written milestone report  •  presentation  •  code  •  individual WORKLOG
+
+
+PAGE 17
+T E R R AWATC H  /  
+17
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+THE PROJECT THESIS
+FROM
+PIXELS
+TO PROOF.
+Not another change map.
+A clearer claim - with visible evidence.
+TERRAWATCH  /  GROUP 7
+Milestone 1  •  IIT Madras BS
+
+
+PAGE 18
+T E R R AWATC H  /  S E L E C T E D R E F E R E N C E S
+18
+I I T M A D R A S  •  B S DA 4 0 0 1  •  G R O U P 7
+M I L E S TO N E 0 1
+APPENDIX
+Research foundations & source trail.
+Full citations, dataset provenance and related work are in the Milestone 1 report.
+01
+Daudt et al., 2018
+Fully Convolutional Siamese Networks
+02
+Chen, Qi & Shi, 2021
+Remote Sensing Image Change Detection with Transformers (BIT)
+03
+Bandara & Patel, 2022
+ChangeFormer / transformer-based Siamese network
+04
+Liu et al., 2022
+LEVIR-CC & RSICCformer
+05
+Liu et al., 2024
+Change-Agent & LEVIR-MCI
+06
+Corley et al., 2024
+A Change Detection Reality Check
+07
+Deng et al., 2024
+ChangeChat
+08
+Ricci et al., 2026
+Change captioning meets LLMs and VLMs
+Official GitHub PR #10: github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/pull/10

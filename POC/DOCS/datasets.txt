@@ -1,0 +1,101 @@
+**🌍 TerraWatch — Dataset Research & Shortlist**
+
+I've compiled the datasets we can explore for our project. Since TerraWatch involves multiple tasks (detecting changes, identifying what changed, generating explanations, and analyzing potential impacts), we can potentially use different datasets to train and evaluate specialized models.
+
+**1. LEVIR-MCI ⭐ (Highest Priority)**
+
+🔗 https://huggingface.co/datasets/lcybuaa/LEVIR-MCI
+
+🔗 https://github.com/Chen-Yang-Liu/Change-Agent
+
+Contains satellite/aerial image pairs captured at different times, corresponding change-detection masks, and natural-language descriptions of changes.
+
+**Use:** Particularly useful for training both our change-detection model and an explanation/captioning model on aligned examples. This could serve as our primary dataset.
+
+**2. LEVIR-CC — Change Captioning**
+
+🔗 https://github.com/Chen-Yang-Liu/LEVIR-CC-Dataset
+
+🔗 https://huggingface.co/datasets/lcybuaa/LEVIR-CC
+
+Contains 10,077 before-and-after image pairs with 50,385 descriptions explaining the visual differences.
+
+**Use:** Training and evaluating models that describe observable changes in natural language. Useful for our LLM/VLM explanation component.
+
+**3. SECOND — Semantic Change Detection ⭐**
+
+🔗 https://captain-whu.github.io/SCD/
+
+Contains 4,662 aerial image pairs in the original collection, with semantic annotations for categories such as buildings, water, trees, vegetation, and ground.
+
+**Use:** Training a model to identify WHAT changed, rather than merely WHERE change occurred. For example, vegetation → buildings or ground → water. We need to verify the available labeled splits.
+
+**4. LEVIR-CD — Binary Change Detection**
+
+🔗 https://github.com/justchenhao/LEVIR
+
+Contains 637 high-resolution image pairs (1024×1024) with pixel-level annotations, primarily focused on building changes.
+
+**Use:** Training and benchmarking our basic change-detection models, including Siamese U-Net and ChangeFormer.
+
+**5. LEVIR-CD+ — Extended Change Detection**
+
+🔗 https://github.com/S2Looking/Dataset
+
+Contains an expanded collection of high-resolution before-and-after imagery for building and land-use change detection.
+
+**Use:** Additional training and evaluation for binary change segmentation.
+
+**6. S2Looking — Robust Change Detection ⭐**
+
+🔗 https://github.com/S2Looking/Dataset
+
+Contains 5,000 image pairs with differences in viewing angles, illumination, and other imaging conditions.
+
+**Use:** Testing how robust our models are to image-quality differences and challenging observation conditions, instead of treating every visual difference as an actual geographical change.
+
+**7. SYSU-CD — General Change Detection**
+
+🔗 https://github.com/liumency/SYSU-CD
+
+Contains 20,000 aerial image pairs from Hong Kong, covering changes involving buildings, roads, vegetation, and other land features.
+
+**Use:** Additional training, benchmarking, and cross-dataset generalization experiments.
+
+**8. ChangeChat-105k — Multimodal Explanation / Question Answering ⭐**
+
+🔗 https://huggingface.co/datasets/hlwu/changechat-105k
+
+Contains approximately 105,000 instruction examples involving before-and-after remote-sensing images, including change descriptions, classification, localization, counting, visual questions, and dialogues.
+
+**Use:** Potentially fine-tuning a vision-language model to answer questions like "What changed?", "Where did the change occur?", and "How many structures were added?"
+
+Note: This dataset provides annotations; the underlying images come from LEVIR-CC.
+
+**9. NASA HLS / Sentinel-2 — Real-World Satellite Data**
+
+🔗 https://hls.gsfc.nasa.gov/
+
+🔗 https://hls.gsfc.nasa.gov/data-products/
+
+Provides real-world multispectral satellite observations across different time periods, including surface reflectance and quality information.
+
+**Use:** Exploring actual environmental changes, vegetation variation, land-use patterns, and geographical case studies. HLS is primarily an imagery source, not a ready-made labeled change-detection dataset.
+
+---
+
+**💡 Proposed Dataset Combination**
+
+Instead of trying to find one dataset for everything, we could structure the project into multiple components:
+
+- **Model A — WHERE did change happen?** LEVIR-MCI / LEVIR-CD+ / S2Looking.
+- **Model B — WHAT changed?** SECOND for semantic land-cover transitions.
+- **Model C — DESCRIBE the change.** LEVIR-CC / LEVIR-MCI for natural-language descriptions.
+- **Model D — EXPLAIN / ANSWER QUESTIONS.** ChangeChat-105k with a suitable vision-language model.
+- **Environmental context:** NASA HLS / Sentinel-2 observations and other verified geographical information.
+
+These are initial candidates, not finalized datasets. Some LEVIR datasets share underlying images, so we'll need to check for duplication and prevent train/test leakage. Also, models trained on high-resolution building imagery may not directly generalize to lower-resolution environmental satellite observations.
+
+**Next step:** Research data availability, label formats, dataset quality, model compatibility, licensing, and compute requirements before finalizing our training pipeline.
+
+Our core goal should remain a well-trained and rigorously evaluated change-detection system, with semantic analysis and evidence-grounded explanations built on top of it.

@@ -1,0 +1,354 @@
+PAGE 1
+IITM BSDA4001  |  Team project proposal shortlist
+1
+IIT MADRAS / BSDA4001
+Data Science & AI Lab
+Research Project Proposals
+Four deep-learning research directions for team discussion
+This briefing compares four promising, non-LLM-reliability project ideas: CrisisGraph, TerraWatch,
+GeoShield, and EduTrace. Each proposal includes a trainable ML core, public research datasets, credible
+baselines, explicit hypotheses, and a practical evaluation plan.
+Selection philosophy: publication-oriented rigor, meaningful end-to-end training, realistic student-team
+execution, and measurable benefits over established methods.
+Executive recommendation
+Priority
+Project
+Best reason to choose
+1
+CrisisGraph
+Most ambitious cross-disciplinary project: flood segmentation plus infrastructure
+connectivity.
+2
+TerraWatch
+Excellent research/feasibility tradeoff for satellite change detection and robustness.
+3
+GeoShield
+Clean supervised learning benchmark, ideal for sensor fusion and ablation studies.
+4
+EduTrace
+Strong education alternative centered on trainable sequential and graph models.
+Prepared for team discussion | 11 October 2026
+
+
+PAGE 2
+IITM BSDA4001  |  Team project proposal shortlist
+2
+At a glance | Decision matrix
+Dimension
+CrisisGraph
+TerraWatch
+GeoShield
+EduTrace
+Task
+Flooded road/building
+mapping + graph
+analysis
+Bi-temporal change
+segmentation
+Multisensor landslide
+segmentation
+Predicting next learner
+response
+Core DL
+Multitask CNN /
+transformer +
+optional
+topology-aware loss
+Siamese CNN /
+transformer +
+consistency learning
+Dual encoders +
+reliability-aware
+fusion
+GRU / attention /
+concept graph
+Primary data
+SpaceNet 8
+S2Looking /
+LEVIR-CD+
+Landslide4Sense
+EdNet / ASSISTments
+Primary metric
+Class F1 / IoU + road
+connectivity
+Change IoU / F1
+Landslide F1 / IoU /
+PR-AUC
+AUC / log loss /
+calibration
+Execution risk
+Medium–high
+Medium
+Low–medium
+Low–medium
+Special caution
+Connectivity truth vs.
+actual passability
+Labels may represent
+building changes, not
+all environmental
+changes
+Geographic metadata
+may be restricted
+Accuracy does not
+prove improved
+learning
+What makes the work research-grade?
+• Pose a testable hypothesis, not merely a product feature.
+• Reproduce a credible benchmark baseline before proposing novel components.
+• Use leakage-resistant geographic/event/learner splits, multiple seeds, and confidence intervals when
+feasible.
+• Show relevant ablations: remove temporal inputs, attention, modalities, graph terms, or time features.
+• Evaluate out-of-distribution performance and failure patterns, not just best-case accuracy.
+Ranking caveat
+The ordering is an editorial recommendation, not a quantitative assessment of acceptance probability.
+Novelty must be validated with a focused current literature review before claiming a publishable
+contribution.
+
+
+PAGE 3
+IITM BSDA4001  |  Team project proposal shortlist
+3
+01 / CrisisGraph
+Topology-aware flood impact and infrastructure accessibility assessment
+DOMAIN | Geospatial AI | Computer vision | Disaster response
+Problem statement
+Flooding can interrupt transportation links and damage buildings. Conventional flood mapping often
+optimizes pixel segmentation, yet a small missed road segment can dramatically change a connectivity
+estimate. Develop a deep-learning system that maps flood-affected infrastructure from satellite imagery
+and evaluates whether its predictions preserve transport-network connectivity.
+Research hypothesis
+Adding topology-aware objectives or graph-based refinement to strong vision baselines will improve
+infrastructure-level connectivity estimates, potentially even where pixel-level IoU changes only modestly.
+Datasets and access
+• SpaceNet 8: pre/post-event satellite imagery and labels for buildings and flooded/non-flooded roads.
+Official challenge and download details: SpaceNet 8.
+• Baselines: official baseline and winning solution code: SpaceNetChallenge/SpaceNet8.
+Models and comparison baselines
+• Baseline A: U-Net/ResNet segmentation of roads, buildings, and flood classes.
+• Baseline B: Siamese U-Net with paired pre/post-event imagery.
+• Baseline C: a stronger encoder/segmentation architecture such as HRNet or SegFormer, budget
+permitting.
+Proposed deep-learning methodology
+Use shared or paired encoders for pre/post-event inputs and train task-specific heads for roads, buildings,
+and flood attribution. Extract predicted road centerlines into graphs; compare basic postprocessing
+against a topology-aware correction or differentiable connectivity surrogate. Keep graph-network
+modeling optional until basic extraction is reliable.
+Experimental design and ablations
+• Compare post-event-only versus paired-input models.
+• Add/remove the connectivity-sensitive component at matched training budgets.
+• Hold out distinct events/geographic areas where the benchmark split permits.
+• Audit graph errors at intersections, narrow roads, bridges and occluded segments.
+
+
+PAGE 4
+IITM BSDA4001  |  Team project proposal shortlist
+4
+Evaluation metrics
+Building/road IoU and F1, flooded-class precision/recall, Average Path Length Similarity (APLS) where
+suitable, road-edge precision/recall, and connectivity preservation.
+Practical risks and safeguards
+• Graph construction from segmentation masks is brittle; standardize and validate topology extraction.
+• Satellite flood labels do not prove roads are traversable. Describe output as estimated accessibility, not
+safe evacuation guidance.
+• Limited geographic diversity may constrain generalization claims.
+Expected deliverable
+Benchmarked segmentation model, connectivity analysis pipeline, ablations, geospatial results viewer,
+and research-style report.
+
+
+PAGE 5
+IITM BSDA4001  |  Team project proposal shortlist
+5
+02 / TerraWatch
+Generalizable deep learning for multi-temporal satellite change detection
+DOMAIN | Remote sensing | Computer vision | Representation learning
+Problem statement
+Multi-temporal satellite image pairs reveal changes to built and natural environments, but illumination,
+viewpoint differences, seasonal effects, and misregistration can produce false positives. Develop a
+change-detection model that better isolates annotated changes and remains robust under acquisition and
+geographic shifts.
+Research hypothesis
+Consistency regularization or self-supervised temporal feature learning can improve change-mask
+robustness under controlled perturbations and unseen-domain conditions compared with standard
+Siamese segmentation.
+Datasets and access
+• S2Looking: large-scale labeled bi-temporal change dataset; official repository and download
+instructions: S2Looking dataset.
+• LEVIR-CD+: second building-change benchmark in the same dataset repository.
+• Label caveat: these benchmarks emphasize annotated changes (often buildings); do not imply they
+directly label forest loss or every kind of ecological change.
+Models and comparison baselines
+• Baseline A: absolute image difference + thresholding (simple non-DL check).
+• Baseline B: Siamese U-Net / early-fusion U-Net.
+• Baseline C: a published attention or transformer-based change detection model.
+Proposed deep-learning methodology
+Train a dual-stream image encoder with a decoder producing pixel-wise change probabilities. Explore
+paired-view augmentations, alignment-tolerant feature matching, and cross-time consistency losses.
+Validate each addition against matched-parameter or matched-training baselines.
+Experimental design and ablations
+• Compare early fusion vs. Siamese feature fusion.
+• Ablate the consistency objective, augmentations, and pretraining strategy.
+• Measure robustness to photometric shifts and modest image misalignment.
+
+
+PAGE 6
+IITM BSDA4001  |  Team project proposal shortlist
+6
+• Test cross-dataset transfer, clearly documenting differing annotation definitions.
+Evaluation metrics
+Change IoU, F1/Dice, precision/recall, false positive rate, per-scene scores, and degradation under
+perturbation.
+Practical risks and safeguards
+• Cross-dataset labels are not perfectly equivalent; avoid attributing all transfer gaps to domain shift
+alone.
+• Geographic split integrity must be verified to avoid overlapping tiles.
+• Artificial perturbations are stress tests, not substitutes for real deployment conditions.
+Expected deliverable
+Reproducible satellite change-detection benchmark, robustness analysis, trained model, example
+visualizations, and manuscript-ready ablations.
+
+
+PAGE 7
+IITM BSDA4001  |  Team project proposal shortlist
+7
+03 / GeoShield
+Reliability-aware multimodal deep learning for landslide segmentation
+DOMAIN | Multimodal learning | Remote sensing | Natural hazards
+Problem statement
+Landslide mapping benefits from optical appearance and terrain conditions, but individual sensors may be
+noisy or unavailable. Investigate whether a trainable fusion mechanism can use multispectral and terrain
+cues more effectively than simply stacking input channels.
+Research hypothesis
+A dual-encoder architecture with learned modality weighting and modality-dropout training will maintain
+better landslide detection performance under sensor degradation than conventional all-channel fusion.
+Datasets and access
+• Landslide4Sense 2022: 3,799 train / 245 validation / 800 test image patches, each 128x128 with 14
+channels (12 Sentinel-2 multispectral bands, slope, elevation). Official dataset and baseline.
+• Important label note: the official repository states that competition mask files are accessible in the
+training portion; plan reproducible labeled train/validation splits rather than assuming public test labels.
+Models and comparison baselines
+• Baseline A: official 14-channel U-Net.
+• Baseline B: ResU-Net or DeepLabV3+ trained on all channels.
+• Baseline C: straightforward two-stream concatenation without attention.
+Proposed deep-learning methodology
+Separate an optical encoder from a terrain encoder, fuse features using learned gates or cross-attention,
+and decode a binary landslide mask. Apply synthetic modality dropout/noise during training and test
+whether fusion weights provide reliable performance gains.
+Experimental design and ablations
+• Optical-only, terrain-only, and all-channel baselines.
+• Ablate gating, dual encoders, and modality dropout.
+• Stress-test missing/noisy modalities using identical validation samples.
+• Use grouped geographic evaluation only where trustworthy location metadata exists.
+
+
+PAGE 8
+IITM BSDA4001  |  Team project proposal shortlist
+8
+Evaluation metrics
+Landslide pixel F1, IoU, precision, recall, PR-AUC, and performance loss under controlled sensor
+degradation.
+Practical risks and safeguards
+• Class imbalance requires appropriate loss/threshold tuning.
+• The official release does not disclose detailed geographic coordinates; do not promise rigorous
+geographic holdout without additional data.
+• Synthetic sensor corruptions may not replicate real cloud cover or acquisition artifacts.
+Expected deliverable
+Reproducible multisensor segmentation model, controlled robustness benchmark, channel-ablation
+analysis, inference visualization, and full experimental report.
+
+
+PAGE 9
+IITM BSDA4001  |  Team project proposal shortlist
+9
+04 / EduTrace
+Temporal and graph-based student knowledge tracing
+DOMAIN | Educational data mining | Sequential deep learning | Graph models
+Problem statement
+Adaptive learning software benefits from estimating how a learner’s mastery evolves over time. Existing
+knowledge-tracing models may struggle with sparse learner histories, forgetting, and concept
+relationships. Develop a model for predicting future student responses using temporal and concept-aware
+representations.
+Research hypothesis
+Joint modeling of time gaps and concept dependencies will improve prediction and calibration for
+short-history learners compared with recurrent and attention-only baselines.
+Datasets and access
+• EdNet: 131,441,538 interactions from 784,309 learners, with multiple levels of recorded behavior.
+Dataset overview: EdNet paper and dataset; source: riiid/ednet.
+• ASSISTments: smaller learner interaction datasets; access via the ASSISTments data portal.
+• Reusable baselines: pyKT includes implementations and preprocessing support.
+Models and comparison baselines
+• Baseline A: Deep Knowledge Tracing (DKT; GRU/LSTM).
+• Baseline B: Self-Attentive Knowledge Tracing (SAKT).
+• Baseline C: Attentive Knowledge Tracing (AKT) or simpleKT.
+Proposed deep-learning methodology
+Construct learner sequences of question ID, skill/concept ID, correctness, and time gap where available.
+Train a time-aware sequence model and incorporate a concept graph through embeddings or a small
+GNN. Focus evaluation on predictive generalization, not unverified educational effectiveness.
+Experimental design and ablations
+• Learner-disjoint evaluation and short-history learner cohorts.
+• Ablate elapsed-time information, concept graph, and attention.
+• Inspect calibration across easy/hard items and history lengths.
+• Compare dataset transfers only when concept mappings and label definitions are valid.
+
+
+PAGE 10
+IITM BSDA4001  |  Team project proposal shortlist
+10
+Evaluation metrics
+Next-response ROC-AUC, accuracy, log loss, Brier score, expected calibration error, and cold-start
+subgroup performance.
+Practical risks and safeguards
+• Concept-graph quality may dominate improvements; justify graph construction.
+• Sequential data must be chronologically ordered; avoid target/future-information leakage.
+• Better prediction does not prove better learning outcomes.
+• EdNet has a non-commercial research license; review before redistributing.
+Expected deliverable
+Trained sequential knowledge-tracing framework, cold-start/forgetting ablations, reproducible benchmark,
+and optional learner analytics demo.
+
+
+PAGE 11
+IITM BSDA4001  |  Team project proposal shortlist
+11
+Suggested execution plan
+Phase
+Focus
+Exit criterion
+1 | Scope
+Choose task and review 8-12 recent
+method papers
+Frozen hypothesis, dataset access and evaluation split
+2 | Baselines
+Set up preprocessing and run
+benchmark methods
+Reproducible baseline table
+3 | Proposed
+model
+Implement one justified research
+contribution
+Controlled comparison against baselines
+4 | Scientific
+validation
+Ablations, leakage checks, OOD tests,
+seeds
+Robust result tables and error analysis
+5 | Reporting
+Figures, methodology, limitations,
+demo
+Team presentation and paper-style report
+Practical team recommendation
+Primary: CrisisGraph if the team is prepared for more engineering and a novel downstream infrastructure
+task. Balanced alternative: TerraWatch. Best scoped supervised deep-learning research: GeoShield. Best
+non-geospatial direction: EduTrace.
+Official links and starter references
+• SpaceNet 8 challenge
+• SpaceNet 8 challenge methods / code
+• S2Looking and LEVIR-CD+ datasets
+• Landslide4Sense dataset, U-Net baseline and paper reference
+• EdNet overview
+• EdNet source repository
+• pyKT baselines
+• ASSISTments data portal
+Research integrity note: These are proposed hypotheses, not established performance claims. Verify dataset licenses,
+train/test availability, label definitions and the current research literature before final submission.

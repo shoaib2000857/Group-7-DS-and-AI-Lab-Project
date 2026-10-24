@@ -1,0 +1,125 @@
+guidelines – DSAI Lab Project Docs
+DSAI Lab Project Docs
+Guidelines
+Milestones
+Reference
+On this page
+Project Guidelines
+Group Formation
+Problem Statement
+Project Evaluation
+Milestones
+Milestone 1: Problem Definition & Literature Review — October 22
+Milestone 2: Dataset Preparation — October 29
+Milestone 3: Model Architecture — November 5
+Milestone 4: Model Training — November 19
+Milestone 5: Model Evaluation & Analysis — November 26
+Milestone 6: Deployment & Documentation — December 10
+Project Presentations
+Project Considerations
+Project Guidelines
+Group Formation
+Each group must consist of
+4 members
+.
+Students are encouraged to form their own groups.
+A Google Form will be provided to update group details.
+Students who do not register as part of a group will be
+randomly assigned
+to groups.
+Problem Statement
+Each group must propose their own project idea, which must be based on
+Deep Learning
+or
+Generative AI
+.
+The problem statement must be
+submitted for approval
+by the course team.
+Deadline: October 11
+Project Evaluation
+The project will be evaluated out of
+40 marks
+.
+Evaluation will be based on:
+Milestone Completion — 15 marks
+Awarded based on successful completion of the six milestones.
+Novelty/Complexity of the Project — 5 marks
+Based on originality and the technical expertise required.
+Final Project Presentation — 20 marks
+Based on clarity, technical understanding, and demonstration.
+Milestones
+The project will be divided into milestones, with progress tracked during
+mandatory weekly meetings
+with TAs. Detailed requirements for each milestone will be communicated in advance.
+Each milestone review meeting will require a technical presentation using slides.
+Each milestone submission must include:
+A detailed document outlining the work completed
+Presentation slides
+Code relevant to the submission
+The evaluation will be based on:
+Individual contribution
+Questions answered
+Meeting requirements
+Quality of the submission
+The evaluation will include components that are graded
+individually
+and
+as a team
+.
+Milestone 1: Problem Definition & Literature Review — October 22
+Define the objectives of the project.
+Review existing solutions, baselines, and benchmarks.
+Identify gaps and opportunities.
+Milestone 2: Dataset Preparation — October 29
+Collect or identify a suitable dataset.
+Prepare and preprocess data for training and validation.
+Milestone 3: Model Architecture — November 5
+Select or design appropriate model architecture(s).
+Justify the choice of architecture.
+Set up the complete end-to-end pipeline.
+Milestone 4: Model Training — November 19
+Train initial models.
+Experiment with:
+Hyperparameters
+Optimization methods
+Regularization techniques
+Milestone 5: Model Evaluation & Analysis — November 26
+Evaluate trained models using appropriate metrics.
+Provide error analysis.
+Discuss limitations and possible improvements.
+Milestone 6: Deployment & Documentation — December 10
+Deploy the model using one of the following:
+API
+Demo interface
+Hugging Face Spaces
+Prepare comprehensive documentation.
+Finalize the project report.
+Project Presentations
+Final project presentations will take place during
+Week 10 & Week 11
+, tentatively
+December 21st
+onwards.
+The final presentation is expected to include:
+Live demonstration
+Code walkthrough
+Presentation of the project report
+Further details will be shared in due time.
+Project Considerations
+Students should
+maintain a GitHub repository
+containing:
+Training scripts
+Inference notebooks
+Documentation
+A worklog file updated each week with individual contributions
+Code should be:
+Modular
+Readable
+Well-organised
+Results obtained should be
+reproducible
+.
+Cancel
+No results

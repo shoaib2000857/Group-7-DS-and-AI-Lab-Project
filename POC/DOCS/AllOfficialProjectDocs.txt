@@ -1,0 +1,457 @@
+Group 7 - 2026T3 - DSAI Lab
+M NAGARAJAN created this space on Friday, Oct 9
+.
+Space update:
+History is on
+Messages sent with history on are saved
+Space update:M NAGARAJAN added SUJAL RAJ PRADHAN
+Space update:M NAGARAJAN added SARTHAK SAINI
+Space update:M NAGARAJAN added Priyanshu Agarwal
+Space update:M NAGARAJAN added Shoaib SSM
+Space update:M NAGARAJAN added Aniruddha A
+Friday, Oct 9
+M NAGARAJAN
+,
+Oct 9, 3:15 PM
+,
+Welcome to the group. I will be your assigned TA for the duration of the Course/Project. We will use this space to communicate and engage through all milestone submissions. Over the next few days you will be asked to create a group Github repository to submit all milestone and project deliverables / artifacts for review.
+
+You may create and use any other collaboration space for the project not involving me.
+
+As a first step you will be required to submit a draft problem statement for evaluation. Let us complete this step as early as possible.
+
+You may address group specific questions here and general queries in the Data Science and AI Lab google space.
+
+,Oct 9, 3:15 PM,
+Priyanshu Agarwal
+,
+Oct 9, 3:21 PM
+,
+Hello sir,
+Nice to hear from you and very excited for working on this project under your guidance.
+
+,Oct 9, 3:21 PM,
+Saturday, Oct 10
+SUJAL RAJ PRADHAN
+,
+Oct 10, 11:59 AM
+,
+Hi team, let's set up an internal call today to discuss the problem statement? Post that we can communicate our idea with the TA and be ready for submission by tmr EOD
+,Oct 10, 11:59 AM,
+Monday, Oct 12
+SUJAL RAJ PRADHAN
+,
+Oct 12, 9:43 AM
+,
+Hi 
+M NAGARAJAN
+ , we submitted the problem statement yesterday. This is what we have thought of - 
+
+TerraWatch — Intelligent Satellite Image Change Detection and Analysis
+
+This project aims to develop an intelligent system for detecting, analyzing, and interpreting changes in the Earth's surface using satellite imagery captured across different time periods. The project will explore deep learning and computer vision techniques to identify and characterize meaningful changes, such as variations in land use, vegetation cover, urban development, and environmental conditions, while distinguishing actual changes from differences caused by seasonal variations, lighting, and image quality.
+
+Additionally, the project may investigate the use of multimodal AI and generative models to provide contextual interpretations and explanations of detected changes, including their possible causes and potential impacts. The specific applications, datasets, and methodologies will be determined through further research and feasibility analysis.
+
+Tags: Deep Learning (DL), Computer Vision, Remote Sensing, Change Detection, Image Segmentation, Multimodal AI, Generative AI
+
+,Oct 12, 9:43 AM,
+Thursday, Oct 15
+You
+,
+Oct 15, 5:55 PM
+,
+M NAGARAJAN
+ Sir by when can we expect confirmation of the problem statement, approval and feedback ?
+,Oct 15, 5:55 PM,
+M NAGARAJAN
+,
+Oct 15, 6:00 PM
+,
+https://chat.google.com/room/AAQAnZR2blU/XpzAmxR4exE/XpzAmxR4exE
+,Oct 15, 6:00 PM,
+M NAGARAJAN
+,
+Oct 15, 10:16 PM
+,
+Your problem statement is approved in principle. The team may proceed with the deliverables for Milestone 1. As you develop the problem statement into a well-defined proposal for implementation, please keep the following aspects in perspective:
+
+What specific real-world problem does your project seek to address? 
+Who are the key stakeholders affected by the problem or likely to benefit from the proposed solution?
+How is the problem currently being addressed? What are the limitations of existing approaches? Briefly review relevant research in academia and developments in the commercial domain to understand the current state of the art and identify potential opportunities.
+What distinguishes your proposed project from existing approaches? Consider its potential contribution in terms of novelty, effectiveness, efficiency, scalability, or other measurable value additions.
+Without getting into the specifics of the proposed solution or model at this stage, have a general awareness for what data is available, from what sources, and in what quantity and quality? Is there a reasonable basis to believe that sufficient data exists to train or fine-tune a model and evaluate its performance reliably?
+
+The objective at this stage is to establish a clear understanding of the problem, its relevance, the existing landscape, the proposed contribution, and the feasibility of pursuing the project.
+
+,Oct 15, 10:16 PM,
+Sunday, Oct 18
+M NAGARAJAN
+,
+Sun 10:18 AM
+,
+Please create a repository on GitHub titled "Group-7-DS-and-AI-Lab-Project" and give access to all the  members of this group. Create an appropriate file structure to keep the project artefacts and upload the Problem Statement once approved. Keep the repository visibility Public.
+
+,Sun 10:18 AM,
+M NAGARAJAN
+,
+Sun 10:22 AM
+,
+Please use the following general guidelines, structure and placeholders for creating your github repository. You may modify this to suit your specific needs. This will evolve over a period of your project duration. I will share with you specific requirements when you get to the deployment phase.
+
+project-name/
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+├── requirements.txt (or environment.yml / pyproject.toml)
+├── CHANGELOG.md
+│
+├── docs/
+│   ├── Project_Proposal.pdf
+│   ├── Milestone1_Report.pdf
+│   ├── Milestone2_Report.pdf
+│   ├── Final_Report.pdf
+│   ├── Architecture_Diagram.png
+│   └── Presentation.pdf
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   ├── sample/
+│   └── README.md
+│
+├── notebooks/
+│   ├── 01_EDA.ipynb
+│   ├── 02_Preprocessing.ipynb
+│   ├── 03_Model_Experiments.ipynb
+│   └── 04_Evaluation.ipynb
+│
+├── src/
+│   ├── data/
+│   ├── models/
+│   ├── inference/
+│   ├── retrieval/
+│   ├── agents/
+│   ├── evaluation/
+│   ├── utils/
+│   └── config.py
+│
+├── app/
+│   ├── app.py
+│   ├── pages/
+│   ├── static/
+│   └── templates/
+│
+├── configs/
+│   ├── model.yaml
+│   ├── train.yaml
+│   └── inference.yaml
+│
+├── models/
+│   ├── checkpoints/
+│   └── README.md
+│
+├── outputs/
+│   ├── predictions/
+│   ├── reports/
+│   ├── figures/
+│   └── logs/
+│
+├── tests/
+    ├── test_data.py
+    ├── test_model.py
+    └── test_pipeline.py
+
+README.md
+The README should contain:
+Project overview
+Problem statement
+Features
+Architecture diagram
+Dataset details
+Model(s) used
+Installation steps
+Running instructions
+Results
+Demo screenshots
+Team members
+References
+
+docs/
+This folder is is used to store to provide a complete project history in one place.
+Milestone reports
+Final report
+Architecture diagrams
+Presentations
+User manual
+
+data/
+Do not commit large datasets. Instead:
+Keep only sample data.
+Include scripts or instructions for downloading datasets.
+Add a README describing the dataset sources and preprocessing.
+
+notebooks/
+Use notebooks for:
+Exploratory Data Analysis
+Initial experiments
+Visualizations
+Once codes stabilize, move it into src/.
+
+src/
+This should contain the reusable project code.
+For example,:
+src/
+    models/
+        yolo_detector.py
+
+    retrieval/
+        rag_pipeline.py
+
+    inference/
+        generate_report.py
+
+    evaluation/
+        metrics.py
+
+    utils/
+
+app/
+Contains the deployment interface (Streamlit, Gradio, or Flask), separate from the core AI logic.
+
+outputs/
+Keep generated outputs here and not with source code.
+prediction files
+evaluation reports
+confusion matrices
+plots
+screenshots
+
+tests/
+The folder should contain the test code. The resulting output can be kept in the \output folder.
+
+CONTRIBUTING.md
+Defines:
+coding conventions,
+branch naming,
+pull request process,
+team responsibilities.
+
+,Sun 10:22 AM,
+Monday, Oct 19
+M NAGARAJAN
+,
+Mon 3:04 PM
+,
+The Milestone 1 submission is due Thursday October, 22 EOD. We have shared the milestone requirements with you in the general group. General requirements that you must be aware of, are published in the Project Guidlines. If you have any questions, please post them here.
+
+Please fix a one hour time slot between Friday and Saturday for weekly review meetings. 
+
+Each milestone review meeting will require a technical presentation to be done with the use of slides. 
+Each milestone submission must include a detailed document outlining the work done, presentation slides and code relevant to the submission
+The evaluation will be based on individual contribution, questions answered, meeting requirements and quality of the submission. The evaluation will include components that are graded individually and as a team.
+,Mon 3:04 PM,
+M NAGARAJAN
+,
+Mon 3:08 PM
+,
+Milestone 1: Problem Definition & Literature Review
+
+At this stage, your goal is not to build the solution, but to demonstrate clarity of thought and technical grounding. Your submission should clearly cover the following:
+
+State exactly what problem you are solving, who are the primary and secondary stakeholders, what is in scope, and what is explicitly out of scope.
+Why does this problem matter? In what setting does it arise?
+Summarize how the problem is currently addressed (tools, models, benchmarks, prior research).
+What metrics are commonly used? How is success defined in existing work?
+Where do current solutions fall short? What opportunity does that create for your work?
+Clarify whether your contribution lies in performance improvement, new deployment context, robustness, efficiency, usability, or some other dimension.
+Even at this stage, outline what evidence will demonstrate that your approach works.
+,Mon 3:08 PM,
+SUJAL RAJ PRADHAN
+,
+Mon 3:08 PM
+,
+Quoted
+Quoted
+
+Sent by
+M NAGARAJAN
+Milestone 1: Problem Definition & Literature Review
+
+At this stage, your goal is not to build the solution, but to demonstrate clarity of thought and technical grounding. Your submission should clearly cover the following:
+
+State exactly what problem you are solving, who are the primary and secondary stakeholders, what is in scope, and what is explicitly out of scope.
+Why does this problem matter? In what setting does it arise?
+Summarize how the problem is currently addressed (tools, models, benchmarks, prior research).
+What metrics are commonly used? How is success defined in existing work?
+Where do current solutions fall short? What opportunity does that create for your work?
+Clarify whether your contribution lies in performance improvement, new deployment context, robustness, efficiency, usability, or some other dimension.
+Even at this stage, outline what evidence will demonstrate that your approach works.
+End Quote press L to link back to original quote
+End Quote press L to link back to original quote
+One question, incase we find it difficult to find the data to support our problem statement can we reframe or change the problem statement?
+, 4 replies, Last Reply: Mon 3:16 PM
+,Mon 3:08 PM,
+4 replies
+, Last Reply
+Mon 3:16 PM
+Tuesday, Oct 20
+M NAGARAJAN
+,
+Tue 10:02 AM
+,
+While you are working on the Milestone 1 document, please complete the following at the earliest.
+
+1. Creation of a public GitHub repository. Please share the link here.
+2. Please provide a few feasible slots for one hour weekly review meeting anytime between Friday and Saturday.
+,Tue 10:02 AM,
+You
+,
+Tue 11:28 AM
+,
+https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project
+Only visible to you
+
+GitHub
+To interactively preview this link, install GitHub and add it to this conversation.
+,Tue 11:28 AM,
+You
+,
+Tue 11:29 AM
+,
+We will send the time slots asap
+,Tue 11:29 AM,
+You
+,
+Tue 2:32 PM
+,
+Quoted
+Quoted
+
+Sent by
+M NAGARAJAN
+While you are working on the Milestone 1 document, please complete the following at the earliest.
+
+1. Creation of a public GitHub repository. Please share the link here.
+2. Please provide a few feasible slots for one hour weekly review meeting anytime between Friday and Saturday.
+End Quote press L to link back to original quote
+End Quote press L to link back to original quote
+We would be okay with friday after 10 PM.
+,Tue 2:32 PM,
+Thursday, Oct 22
+M NAGARAJAN
+,
+Thu 9:00 PM
+,
+Please post here when the Milestone 1 report has been finally uploaded to the GitHub.
+, 1 reply, Last Reply: Thu 9:01 PM
+,Thu 9:00 PM,
+1 reply
+, Last Reply
+Thu 9:01 PM
+You
+,
+Thu 9:17 PM
+,
+Done, we have updated it
+,Thu 9:17 PM,
+Yesterday
+M NAGARAJAN
+,
+Yesterday 11:55 AM
+,
+Please take note of the requirements for review meeting.
+
+Each milestone submission must include a detailed report, presentation slides and code relevant to the submission.
+Each milestone review meeting will require a technical presentation to be done with the use of slides.
+All team members must participate in the slide presentation and the ensuing Q&A.
+All members must keep their cameras on during the meeting.
+The evaluation will be based on individual contribution, questions answered, meeting milestone requirements and quality of the submission. The evaluation will include components that are graded individually and as a team.
+Following the review meeting the TA will provide a detailed feedback with changes (if necessary) to the submitted report or work products. The changes must be incorporated and resubmitted within 48 hours.
+
+If you have any questions please post them here.
+,Yesterday 11:55 AM,
+Space update:
+M NAGARAJAN pinned a message to the board
+Today
+Message deleted by its author
+M NAGARAJAN
+,
+11:33 AM
+,
+My feedback centers around your novelty claim which says in Section 7;
+
+“Nature of the contribution. Our contribution lies in reliability (factual correctness) and robustness, not in raw detection accuracy. Compared with Change-Agent [7], we keep detection and captioning as separate, replaceable modules; pass the predicted mask to the captioner as structured evidence; add a claim-level consistency check; and evaluate descriptions with human-judged factual accuracy and count error. We do not claim that combining detection and captioning is new.”
+
+I think the claim is sound, but the novelty is not clearly established.
+
+The team identifies three elements of its contribution:
+
+Modular architecture: Keeping change detection and captioning as separate, replaceable components.
+Evidence grounding and consistency checking: Passing the predicted change mask to the captioner and checking the resulting claims against the evidence.
+Reliability-focused evaluation: Evaluating factual accuracy and count error, rather than concentrating exclusively on detection accuracy.
+
+My assessment of these elements is as follows.
+
+Modularity: A good design choice, but not inherently a research contribution. The team needs to explain what this architecture enables that existing approaches do not.
+Mask-based grounding: The team must establish how it differs from existing approaches that already condition descriptions on change masks or other visual evidence.
+Claim-level consistency checking: This appears to be a promising candidate for a substantive contribution. However, its value depends on the checking mechanism and whether it can detect unsupported or incorrect claims. Merely comparing a caption with a predicted mask may not establish factual correctness.
+Reliability-focused evaluation: Evaluating factual accuracy and count error is not, by itself, a novel contribution. The team needs to demonstrate that its evaluation exposes shortcomings or improvements that existing evaluation methods do not adequately capture.
+
+You must establish what is novel about its particular approach to improving reliability and robustness.
+
+Are you just integrating existing components into a pipeline or introducing a genuinely different mechanism for checking factual claims or experimentally demonstrating that the mechanism improves reliability.
+
+The answers should determine whether the proposed contribution is genuinely novel, a useful adaptation of existing methods, or primarily an empirical evaluation of an existing approach.
+,11:33 AM,
+M NAGARAJAN
+,
+3:24 PM
+,
+Any Literature review needs a study-comparison matrix. A comparative table would make the synthesis more analytical. I recommend that the team prepare a table along the following lines:
+
+Study
+Research objective
+Datasets
+Experimental design
+Main findings
+Limitations relevant to this project
+
+Then answer these questions;
+
+Which of these limitations have already been addressed, fully or partially, by prior work?
+Which remain unresolved after the most relevant approaches are considered?
+What evidence demonstrates that the proposed solution is likely to address the unresolved limitations?
+Why is the proposed solution a meaningful advance rather than an integration of existing techniques?
+
+For example, the report identifies Change-Agent as the closest precedent and discusses its joint detection and captioning architecture. It should go further and compare the specific mechanisms used by Change-Agent, ChangeChat, CCExpert and the proposed system. Simply observing that a paper reports conventional captioning metrics does not, by itself, establish that its system lacks grounding or factual verification.
+,3:24 PM,
+Reply
+History is on
+
+
+
+Aniruddha A, Oct 5, 8:59 PMPinned
+
+@all Welcome to the DSAI Lab course. I am Aniruddha and I will be there to specifically take up any queries on the project. To start off, the team formation has to done and problem statement finalized. 
+
+
+You are free (and are encouraged) to form your own teams consisting of 4 members. Use the following form to submit the details: https://forms.gle/hk63A4V9qw7ThWDg9
+
+
+Those who are not a part of any group will be assigned one by us. The deadline to submit the form is 7th October and by 8th October we will share the final list of teams. 
+
+
+As you finalize your team details, start thinking about the problem statement that you would like to work on, as a group. The deadline to submit the problem statement is October 11. We will provide feedback on the problem statement if any changes are required. 
+
+
+All the information pertaining to the project is present in this site linked here: https://bsc-iitm.github.io/dsai-lab-project/guidelines.html
+
+
+Kindly go through the above link. We will also have an orientation session on 7th October where I will explain the expectations from the project and take up any queries you might have. The meeting invite will be sent by tomorrow. 
+
+
+All the best for the project and the course.
+
+

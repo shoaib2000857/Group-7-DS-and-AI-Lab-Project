@@ -1,0 +1,595 @@
+PAGE 1
+DS&AI Lab Project [Term Jan 2026] 
+Action-Oriented Indoor Navigation 
+Assistance for the Visually Impaired 
+ 
+MILESTONE-1: Problem Definition & Literature Review 
+ 
+ 
+ 
+ 
+Indian Institute of Technology Madras 
+ 
+GROUP: 4 
+Name 
+Email 
+GitHub Usernames 
+Saransh Saini 
+22f1001123@ds.study.iitm.ac.in Saransh482003 
+Divyang Panchasara 
+22f1000411@ds.study.iitm.ac.in 22f1000411 
+Samyuktha Shriram 
+22f2001444@ds.study.iitm.ac.in SamyukthaSh24 
+Prasoon Shukla 
+23f3003434@ds.study.iitm.ac.in 23f3003434 
+Rohit Prajapat 
+22f1001536@ds.study.iitm.ac.in rohitblpprajapat 
+
+
+PAGE 2
+ 
+P a g e 1 / 12  
+ 
+1.  Introduction and Problem Definition 
+Indoor navigation remains a significant challenge for visually impaired individuals. Unlike 
+outdoor environments, indoor spaces lack reliable global positioning systems and often 
+contain dense, dynamic obstacles such as furniture, people, and temporary obstructions. 
+As a result, visually impaired users must rely heavily on assistive technologies to safely 
+move within homes, offices, or public buildings. 
+ 
+Most existing assistive systems focus on object awareness, where detected objects are 
+announced through audio feedback. While such systems inform the user about the 
+presence of obstacles, they do not provide guidance on how the user should move in 
+response. For example, an alert such as “chair detected” does not indicate whether the 
+chair lies directly in the walking path, how imminent the risk of collision is, or whether the 
+user should stop or change direction. 
+ 
+This ambiguity often leads to hesitation, frequent stops, increased cognitive load, and in 
+some cases, collisions. 
+ 
+ 
+ 
+ 
+ 
+ 
+Rather than focusing on identifying what objects are present, this project focuses on 
+determining what action the user should take at each moment. 
+ 
+ 
+2.  Scope and Assumptions 
+In-Scope 
+Out-of-Scope 
+Indoor environments such as homes and 
+offices 
+Full indoor localization or position 
+tracking 
+Near-field navigation within a range of 0–3 
+meters 
+Predefined indoor floor maps 
+Real-time operation using a monocular 
+RGB camera 
+Simultaneous Localization and Mapping 
+(SLAM)-based mapping and localization 
+Obstacle collision avoidance and 
+blocked-path handling 
+Infrastructure-based solutions 
+Problem Statement 
+How can real-time visual perception be converted into clear, actionable movement 
+guidance that enables safe and continuous indoor walking for visually impaired users, 
+without relying on indoor maps or localization systems? 
+
+
+PAGE 3
+ 
+P a g e 2 / 12  
+ 
+Directional movement guidance (e.g., 
+“move left”, “move right”, “stop”) 
+Long-range route planning or room-to-
+room navigation 
+Rule-based, interpretable decision-
+making 
+Autonomous navigation without human 
+control 
+Offline execution without cloud 
+dependency 
+ 
+Table 2.1: Scopes of Project Aspects 
+This project is deliberately scoped to address real-time, local indoor navigation assistance 
+rather than full indoor localization or global route planning. The system operates in indoor 
+environments using a monocular RGB camera to provide immediate, action-oriented 
+movement guidance aimed at preventing collisions and enabling continuous walking. To 
+ensure robustness, and interpretability, the design avoids reliance on indoor maps, 
+localization frameworks, or external infrastructure. By focusing on near-field decision-
+making and rule-based reasoning, the project prioritizes safety-critical assistance over 
+long-range navigation, aligning the system’s capabilities with practical constraints and 
+measurable user benefits. 
+ 
+3. Motivation and Practical Relevance 
+Indoor mobility is a frequent and high-risk activity for visually impaired individuals. Most 
+collisions and navigation difficulties occur at close range, where immediate and correct 
+movement decisions are required. Delayed or unclear feedback can result in abrupt stops, 
+loss of confidence, or physical injury. 
+ 
+Common scenarios where this problem arises include: 
+• Walking through corridors 
+• Navigating around furniture in homes 
+• Moving within office spaces 
+• Entering or exiting rooms 
+ 
+Improving action-oriented guidance in these settings can significantly enhance user safety, 
+confidence, and independence. 
+ 
+ 
+4. Existing Approaches 
+Research on assistive navigation for visually impaired users has explored a range of vision-
+based and sensor-based solutions. These approaches can be broadly categorized into 
+object detection–based systems, proximity warning systems, and localization-driven 
+indoor navigation frameworks. 
+
+
+PAGE 4
+ 
+P a g e 3 / 12  
+ 
+4.1. Object Detection–Based Assistive Systems 
+A large body of assistive navigation research employs real-time object detection 
+models such as YOLO, SSD, or Faster R-CNN to identify common indoor obstacles 
+including chairs, tables, doors, and people. These systems typically use a 
+monocular camera mounted on a wearable device or handheld platform and provide 
+audio feedback by announcing detected object categories. Eg: OrCam MyEye 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4.2. Distance and Proximity Warning Systems 
+To improve upon object-only feedback, several systems incorporate depth 
+estimation using stereo cameras, RGB-D sensors, or monocular depth models. 
+These systems estimate the distance to detected obstacles and convey proximity 
+information through graded audio signals, sound intensity modulation, or vibration 
+feedback. Eg: Sonic Eye Canes 
+ 
+ 
+ 
+ 
+ 
+ 
+4.3. Indoor Navigation with Localization 
+More advanced indoor navigation systems aim to provide full route guidance by 
+estimating the user’s location within a building. These approaches often rely on 
+SLAM, beacon-based localization (BLE, UWB), fiducial markers, or pre-mapped 
+indoor environments. Eg: BLE/UWB positioning, SLAM 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Limitation: 
+While these systems successfully identify objects, they do not reason about 
+the spatial relevance of detections with respect to the user’s walking path. An 
+object announcement alone does not indicate whether the obstacle lies 
+directly ahead, whether it poses an immediate collision risk, or what 
+corrective action the user should take. 
+Limitation: 
+Although proximity information is provided, the interpretation of these cues 
+remains the responsibility of the user. Distance or intensity-based feedback 
+does not explicitly indicate how the user should move to avoid an obstacle. 
+Limitation: 
+Localization-based solutions typically require prior mapping, external 
+infrastructure, or significant computational resources. These requirements 
+limit scalability and deployment flexibility, particularly in everyday indoor 
+environments such as homes or offices. 
+
+
+PAGE 5
+ 
+P a g e 4 / 12  
+ 
+4.4. Baseline System 
+The baseline considered in this project reflects the common state-of-practice in 
+many assistive navigation systems. It consists of: 
+• Real-time object detection 
+• Distance estimation using depth cues 
+• Audio feedback limited to object category announcements 
+ 
+The baseline system does not perform any reasoning about walking path 
+obstruction, collision risk, or movement direction. It therefore serves as a suitable 
+reference point for evaluating whether translating perception into explicit, action-
+oriented navigation guidance provides measurable benefits in safety and usability. 
+ 
+4.5. Evaluation Practices in Prior Research 
+Prior research on vision-based assistive navigation systems typically evaluates 
+system performance using both perception-level metrics and navigation-level 
+metrics. 
+i. 
+Perception-level metrics commonly include object detection accuracy and 
+depth estimation error. However, many assistive navigation studies also 
+evaluate user-centric metrics that directly reflect navigation safety and 
+usability. 
+ii. 
+These navigation-related metrics often include navigation completion time, 
+number of collisions with obstacles, and the number of corrective stops or 
+hesitations made by the user while navigating an environment. Some studies 
+additionally examine the delay between system feedback and user response, 
+particularly when auditory or haptic guidance (touch-based) is provided. 
+ 
+While perception accuracy is important for reliable obstacle detection, navigation-
+level metrics provide a more direct measure of whether the system effectively 
+supports safe, continuous mobility for the visually impaired users. The evaluation 
+methodology adopted in this project therefore focuses primarily on navigation 
+safety, user responsiveness, and continuity of movement rather than perception 
+accuracy alone. 
+ 
+ 
+5. Proposed Direction and Contribution 
+The review of existing assistive navigation systems reveals a common limitation across 
+object detection–based, proximity warning, and localization-driven approaches. While 
+current systems are effective at detecting obstacles or estimating distance, they largely 
+provide descriptive or warning-based feedback rather than explicit movement guidance. 
+ 
+
+
+PAGE 6
+ 
+P a g e 5 / 12  
+ 
+Object detection systems announce what objects are present, and proximity-based 
+systems indicate how close obstacles are, but neither directly communicates what action 
+the user should take. Localization-based indoor navigation systems attempt to address 
+navigation more comprehensively, but rely on prior maps, infrastructure, or 
+computationally heavy pipelines that reduce robustness and practicality in everyday 
+indoor environments. 
+ 
+This highlights a clear gap: the lack of real-time, action-oriented reasoning that 
+translates visual perception into immediate, interpretable movement instructions for 
+safe indoor walking. This gap motivates the proposed work, which focuses on near-field 
+decision-making rather than full indoor localization or mapping. 
+ 
+ 
+6. Proposed Approach and Technical Grounding 
+6.1. Proposed system’s components 
+The proposed system is designed as a real-time, action-oriented indoor navigation 
+assistant that operates without indoor maps, localization, or external infrastructure. 
+The system focuses on converting visual perception into explicit movement 
+commands that support safe and continuous walking. 
+At a high level, the system integrates the following components: 
+• Monocular RGB Camera Input: 
+A single RGB camera provides real-time visual input, ensuring low hardware 
+complexity for the sake of a proof of concept. 
+• Obstacle Detection Module 
+A real-time object detection model based on modern architectures (e.g., YOLO 
+variants) is used to identify common indoor obstacles such as furniture and 
+people. The model will be trained or fine-tuned using publicly available indoor 
+datasets, and if required, supplemented with custom data collected in 
+controlled indoor environments to better reflect the evaluation setting. 
+• Monocular Depth Estimation 
+A monocular depth estimation model is employed to infer relative distance to 
+detected obstacles within a near-field range (0-3 meters). The depth model will 
+leverage publicly available indoor depth datasets and pretrained weights, with 
+additional fine-tuning or validation on self-collected indoor data if necessary. 
+ 
+While monocular depth estimation enables distance inference from a single RGB 
+camera, it has several known limitations. Depth predictions derived from 
+monocular imagery may exhibit scale ambiguity (meaning that the absolute 
+scale of the scene cannot always be determined precisely.) Performance may 
+
+
+PAGE 7
+ 
+P a g e 6 / 12  
+ 
+also be influenced by lighting conditions, reflective surfaces, and regions with 
+limited visual texture. 
+ 
+Because depth estimates may contain uncertainty, the proposed system will rely 
+on conservative distance thresholds and combine depth information with spatial 
+reasoning/ positioning (left/ centre/ right) to reduce the risk of incorrect 
+navigation guidance. 
+ 
+• Rule-Based Spatial Reasoning 
+The rule-based spatial reasoning module translates perception outputs into 
+navigation instructions by analysing the spatial relationship between detected 
+obstacles and the user’s forward walking path. 
+To determine movement guidance, the camera frame is divided into three 
+primary regions representing potential movement directions: 
+Region 
+Interpretation 
+Left zone 
+Potential safe deviation direction 
+Central walking zone 
+User’s forward walking path 
+Right zone 
+Alternative deviation direction 
+ 
+The central walking zone represents the region most closely aligned with the 
+user’s forward movement. Obstacles detected within this region are therefore 
+considered potential obstructions in the user’s path. Obstacle relevance is 
+determined by examining whether detected object bounding boxes spatially 
+overlap with this central region. 
+ 
+Depth estimation is used to estimate the approximate distance of detected 
+obstacles from the user. The system defines a near-field safety threshold of 
+approximately 1.5 meters for obstacles located within the central walking zone. 
+ 
+This threshold is selected based on typical human walking dynamics and 
+expected response time to auditory instructions. The average human walking 
+speed is approximately 1.2 to 1.4 meters per second. In addition to human 
+reaction time to audio feedback (in this case: interpreting spoken navigation 
+instruction, specifically, is approximately 1 second), the system must also 
+account for processing latency associated with perception, reasoning, and text-
+to-speech generation. When these delays are considered together, a user may 
+travel roughly 1.5 meters between the moment an obstacle is detected and the 
+initiation of a corrective movement. 
+
+
+PAGE 8
+ 
+P a g e 7 / 12  
+ 
+ 
+Setting the obstruction threshold near this distance allows the system to issue 
+navigation instructions early enough to reduce the risk of collision while 
+maintaining continuous walking. 
+ 
+Navigation decisions are then generated using interpretable rule-based logic. For 
+example: 
+o If the central walking zone is clear -> continue forward movement 
+o If an obstacle occupies the central zone and the left region is clear -> 
+instruct “move left” 
+o If an obstacle occupies the central zone and the right region is clear -> 
+instruct “move right” 
+o If obstacles occupy all regions or uncertainty exists -> instruct “stop” 
+ 
+This rule-based approach prioritizes interpretability and safety while enabling the 
+system to convert perception outputs into actionable movement guidance. 
+ 
+• Action-Oriented Audio Feedback 
+Based on the reasoning output, the system generates concise textual navigation 
+commands such as “move left”, “move right”, or “stop”. Safety-critical 
+instructions are prioritized to ensure timely user response and prevent collisions. 
+These prioritized instructions are then used to generate audio output that is 
+conveyed to the user via audio output devices. 
+ 
+ 
+Fig 6.1: Basic ideation of the Project 
+ 
+ 
+ 
+ 
+
+
+PAGE 9
+ 
+P a g e 8 / 12  
+ 
+• System Reliability and Failure Handling 
+Since the system is intended to support safety- critical navigation, conservative 
+behaviour is adopted in situations where perception results are uncertain. If 
+object detection confidence is low, depth estimates appear inconsistent, or the 
+spatial reasoning module receives conflicting signals, the system will prioritise 
+safety by issuing a conservative instruction such as “stop.” 
+ 
+This fallback behaviour ensures that uncertain perception outputs do not result 
+in unsafe movement guidance. 
+ 
+ 
+The pipeline operates continuously on incoming camera frames, generating 
+navigation instructions in real time as new visual information becomes available. 
+(A lightweight language model such as Phi-2 may optionally be used to convert 
+rule outputs into concise natural language navigation instructions before text-to-
+speech generation.) 
+ 
+6.2. Dataset Sources 
+The perception components of the system will rely on publicly available datasets 
+commonly used in computer vision research for indoor environments. 
+• Object Detection 
+The obstacle detection module will use models trained on datasets such as the 
+Microsoft COCO Dataset, which contains a large collection of annotated images 
+across multiple object categories including common indoor obstacles such as 
+chairs, tables, sofas, and people. These categories are relevant to indoor 
+navigation scenarios where obstacles may obstruct the walking path. 
+• Depth Estimation 
+Monocular depth estimation models used in the system will rely on pretrained 
+models trained on indoor datasets such as NYU Depth v2, which provides RGB 
+images paired with depth maps captured in indoor environments. This widely 
+used dataset shall be leveraged for evaluating depth estimation algorithms in 
+indoor scenes. 
+
+
+PAGE 10
+ 
+P a g e 9 / 12  
+ 
+• Custom Evaluation Data 
+In addition to publicly available datasets used for training or pretraining 
+perception models, a small custom dataset of indoor recordings may be 
+collected in controlled environments such as corridors and rooms containing 
+furniture. These recordings will be used during evaluation experiments to 
+simulate realistic obstacle navigation scenarios. 
+ 
+6.3. Hardware & Deployment Assumptions 
+The prototype system will use a monocular RGB camera positioned at approximately 
+chest level and facing forward so that the captured image corresponds closely to the 
+user’s walking path. 
+Image processing and model inference will be executed on a computing device 
+capable of running deep learning models in near real time, such as a laptop 
+equipped with a GPU (or an edge AI device.) 
+The system is designed to operate using standard video resolutions commonly 
+supported by consumer cameras. The primary objective is to generate navigation 
+instructions quickly enough to allow users to respond safely while walking. 
+ 
+ 
+7. Testing and Evaluation Strategy 
+The effectiveness of the proposed action-oriented navigation system will be evaluated 
+through controlled indoor navigation experiments designed to directly reflect the 
+problem setting and risks outlined in the project statement. 
+ 
+7.1. Experimental Setup 
+Evaluation will be conducted in a fixed indoor obstacle course representative of 
+common indoor environments such as homes or offices. The course will include 
+static obstacles such as furniture and narrow passages that may obstruct the user’s 
+walking path within a near-field range of 0–3 meters. 
+ 
+Participants will be blindfolded sighted individuals, and each participant will 
+navigate the same obstacle course under two system configurations: 
+o Baseline system: 
+Object detection and depth estimation with audio feedback limited to object 
+category announcements. 
+o Proposed system: 
+Object detection and depth estimation combined with rule-based reasoning 
+that generates explicit movement instructions such as “move left”, “move 
+right”, or “stop”. 
+ 
+Each participant will perform multiple repeated trials under both system modes. 
+
+
+PAGE 11
+ 
+P a g e 10 / 12  
+ 
+7.2. Evaluation Metrics 
+Performance will be assessed using metrics that directly measure navigation 
+safety, continuity, and responsiveness, rather than perception accuracy alone. 
+The following metrics will be recorded: 
+o Collision Count: 
+The number of physical contacts between the participant and obstacles. A 
+collision is defined as any physical contact occurring during navigation. 
+o Navigation Completion Time: 
+The total time taken by the participant to complete the obstacle course. 
+o Corrective Stops: 
+The number of instances where the participant performs a full halt (≥ 3 
+seconds), steps back, or requires manual intervention to continue. 
+o Reaction Time: 
+The time elapsed between the delivery of an audio instruction and the 
+participant initiating a corresponding movement response. 
+ 
+7.2.1. Success Criteria 
+To ensure that the evaluation produces clear and objective conclusions, 
+quantitative success criteria are defined relative to baseline performance reported 
+in prior research on assistive navigation systems.  
+ 
+Existing studies evaluating navigation assistance systems for visually impaired 
+users commonly measure performance using metrics such as navigation 
+completion time, collision frequency, and perception accuracy. 
+Neugebauer et al. (2020) evaluated a visual-to-auditory sensory substitution 
+navigation system in indoor obstacle-course experiments with blind participants. 
+Their results show that when using the sensory substitution device alone, 
+participants required an average of 68.4 ± 54.7 seconds to complete the navigation 
+task and experienced 2.96 ± 4.33 obstacle collisions per trial. In comparison, 
+navigation using a white cane resulted in 27.0 ± 12.2 seconds completion time with 
+0.78 ± 1.28 collisions. 
+ 
+Recent computer-vision-based obstacle detection systems for visually impaired 
+navigation also report perception performance metrics. Wang et al. (2024) 
+evaluated several real-time object detection models for obstacle detection tasks 
+and reported detection accuracies ranging from 21.22 mAP to 28.51 mAP, with 
+small-object detection performance ranging from 8.52 mAPs to 18.93 mAPs 
+depending on the detector architecture. 
+These values provide a reference point for evaluating the proposed system. 
+ 
+
+
+PAGE 12
+ 
+P a g e 11 / 12  
+ 
+7.2.2. Baseline Values from Literature 
+Metric 
+Literature Baseline 
+Navigation completion time 
+~68 seconds (Neugebauer et al., 2020) 
+Collision count 
+~2.96 collisions per trial (Neugebauer 
+et al., 2020) 
+Object detection accuracy 
+~8 - 19 mAPs (Wang et al., 2024) 
+Small-obstacle detection 
+~8-19 mAPs (Wang et al., 2024) 
+ 
+7.2.3. Target Improvement 
+The proposed system aims to improve navigation safety and usability by converting 
+perception outputs into explicit movement guidance. 
+The system will be considered successful if it demonstrates the following 
+improvements relative to baseline systems: 
+Metric 
+Literature Baseline 
+Navigation completion time 
+Comparable or improved relative to 
+baseline (~68s) 
+Collision count 
+>= 30-50% reduction compared to 
+perception-only baseline 
+Corrective stops 
+>= 30% reduction 
+Reaction time 
+<= 1 second user response delay 
+ 
+ 
+These criteria focus on improving navigation safety while maintaining continuous 
+walking behaviour. The key expected improvement is a reduction in obstacle 
+collisions and hesitation events through action-oriented navigation guidance. 
+ 
+(Since existing works primarily report perception accuracy rather than navigation 
+performance, the evaluation focuses on user-centric metrics such as collision 
+frequency and navigation continuity.) 
+ 
+7.3. Latency and Usability Evaluation 
+Since system response time cannot be predetermined prior to implementation, 
+latency will be treated as a usability-driven requirement and measured during 
+evaluation. 
+ 
+System latency will be defined as the time interval between: 
+
+
+PAGE 13
+ 
+P a g e 12 / 12  
+ 
+o An obstacle entering the predefined walking zone in the camera frame, 
+and 
+o The delivery of the corresponding audio instruction to the user. 
+ 
+Latency measurements will be analysed in sync with navigation performance to 
+determine whether system response time supports safe and uninterrupted walking. 
+ 
+The system will be considered acceptable if it satisfies the following criteria: 
+o Navigation guidance allows the participant to react without stopping 
+abruptly. 
+o The participant is able to walk continuously without frequent stops 
+caused by delayed feedback. 
+ 
+ 
+7.4. Evaluation Objective 
+The objective of this evaluation is to quantify improvements in safe indoor mobility 
+when visual perception is converted into actionable movement guidance rather than 
+simple object identification. By directly comparing the proposed system against a 
+perception-only baseline under identical conditions, the evaluation isolates the 
+impact of decision-level reasoning on real-world navigation performance. 
+ 
+8. References 
+8.1. Neugebauer, A., Rifai, K., Getzlaff, M., & Wahl, S. (2020). 
+Navigation aid for blind persons by visual-to-auditory sensory substitution. 
+PLOS ONE, 15(8), e0237344. 
+https://doi.org/10.1371/journal.pone.0237344 
+8.2. Wang, W., Jing, B., Yu, X., & Sun, Y. (2024). 
+YOLO-OD: Obstacle Detection for Visually Impaired Navigation Assistance. 
+Sensors, 24(23), 7621. 
+https://doi.org/10.3390/s24237621 
+8.3. Redmon, J., & Farhadi, A. (2018). 
+YOLOv3: An incremental improvement. 
+8.4. Liu, W., et al. (2016). 
+SSD: Single Shot MultiBox Detector. 
+8.5. Ren, S., He, K., Girshick, R., & Sun, J. (2015). 
+Faster R-CNN: Towards real-time object detection with region proposal networks. 
+ 
+ 
+ 
