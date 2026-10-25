@@ -18,6 +18,6 @@ python -m pip install -r requirements-report.txt
 python build_report.py
 ```
 
-The builder uses Calibri when available on Windows, otherwise ReportLab's standard Helvetica family. Generated PDF previews and layout checks stay in ignored `qa/`. The PDFs are committed deliverables. Do not submit the internal guide as part of the M1 report.
+The report reuses the original searchable cover from `assets/original_cover.pdf`, preserving its IITM logo, title, team details and placement. The body uses the original Arial family, dark headings, blue accents, light-grey grid tables, understated running headers and numbered footer. Windows Arial is used when available, otherwise Helvetica. Generated PDF previews and layout checks stay in ignored `qa/`. The PDFs are committed deliverables. Do not submit the internal guide as part of the M1 report.
 
 This revision clarifies the original system and defines a testable reliability mechanism. It does not claim completed model training, full dataset access, validated novelty, a validated custom metric or universal robustness. Candidate model versions and data terms must be pinned before experiments.
