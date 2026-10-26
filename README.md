@@ -26,6 +26,9 @@
 ---
 
 ## 🔍 Project Overview
+
+Milestone 1 report: [PDF](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) · [Markdown and team section sign-off](reports/Milestone1_Report.md). The review branch proposes the submission replacement; all four members must complete their section reviews before finalisation. Internal research, model benchmark plans and the defence handbook are under [POC/](POC/README.md).
+
 **TerraWatch** is an intelligent system designed to detect, analyze, and interpret changes on the Earth's surface using multi-temporal satellite imagery. By combining deep learning-based computer vision for change detection and segmentation with multimodal/generative AI for contextual interpretation, TerraWatch aims to distinguish true structural and environmental changes from seasonal, atmospheric, or illumination variations—and provide actionable, human-readable insights.
 
 **Tags:** `Deep Learning (DL)` · `Computer Vision` · `Remote Sensing` · `Change Detection` · `Image Segmentation` · `Multimodal AI` · `Generative AI`
