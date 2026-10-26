@@ -1,6 +1,6 @@
 # Revised Milestone 1 report
 
-Prepared 25 October 2026; wording and layout polished 26 October 2026. The original submission outside `POC/` is preserved.
+Prepared 25 October 2026; wording and layout polished 26 October 2026. The report is staged for team review in `reports/` on a pull-request branch. The defence handbook remains internal and further work on it is on hold.
 
 - [Milestone1_Report.md](Milestone1_Report.md): submission text; editable source of truth.
 - [output/pdf/TerraWatch_Milestone1_Revised.pdf](output/pdf/TerraWatch_Milestone1_Revised.pdf): formatted submission copy.
@@ -32,6 +32,14 @@ python build_report.py --guide-only
 ```
 
 The handbook PDF has a bookmark for each chapter. Its current expansion is saved for team reference; further handbook revisions are on hold while the submission report is reviewed.
+
+To build the report and stage its PDF, Markdown and matching figures in the main `reports/` folder:
+
+```powershell
+python build_report.py --publish-report
+```
+
+Use this command on the report review branch. It leaves the handbook PDF unchanged. The Markdown's final team sign-off table is an internal approval record and is excluded from the submission PDF. Each member signs their own entries; Shoaib uses **SSSM**. Committing and pushing a branch does not merge or finalise the report.
 
 The report reuses the original searchable cover from `assets/original_cover.pdf`, preserving its IITM logo, title, team details and placement. The body uses Arial, dark headings, blue accents, light-grey grid tables, left-aligned text, understated running headers and numbered footers. Windows Arial is used when available, otherwise Helvetica. The pipeline is rendered as native vectors in the PDF and an image in Markdown. Generated PDF previews and layout checks stay in ignored `qa/`. The PDFs are committed deliverables. Do not submit the internal guide as part of the M1 report.
 

@@ -2,7 +2,7 @@
 
 **DS & AI Lab Project (BSDA4001) | Indian Institute of Technology Madras**
 
-**Milestone 1: Problem Definition & Literature Review | Group 7 | Revised submission | 26 October 2026**
+**Milestone 1: Problem Definition & Literature Review | Group 7 | October 2026**
 
 <p align="center"><img src="assets/iitm_logo.png" alt="IIT Madras emblem" width="130"></p>
 
@@ -230,3 +230,23 @@ Individual contributions will be recorded at each milestone. This report present
 25. Shu, Y. et al. (2026). *TerraScope: Pixel-Grounded Visual Reasoning for Earth Observation*. CVPR, 16712–16722. https://openaccess.thecvf.com/content/CVPR2026/supplemental/Shu_TerraScope_Pixel-Grounded_Visual_CVPR_2026_supplemental.pdf
 
 Online sources accessed 24–25 October 2026. Model variants, access conditions and dataset terms will be pinned before experimentation.
+
+## Team Section Sign-off
+
+Internal review record; excluded from the submission PDF. Each member replaces their own `Pending` entry with their initials and the review date (YYYY-MM-DD) after reviewing that section. A signature records agreement with the wording, technical claims and cited evidence. Record any unresolved issue in the pull request before signing. All four signatures are required for every row before finalisation.
+
+| Section | Priyanshu Agarwal | Sarthak Saini | Sujal Raj Pradhan | Shoaib (SSSM) |
+|---|---|---|---|---|
+| 1. Introduction and problem definition | Pending | Pending | Pending | Pending |
+| 2. Scope, stakeholders and relevance | Pending | Pending | Pending | Pending |
+| 3. Objectives | Pending | Pending | Pending | Pending |
+| 4. Literature review | Pending | Pending | Pending | Pending |
+| 5. Research gap and contribution | Pending | Pending | Pending | Pending |
+| 6. Proposed approach and pipeline | Pending | Pending | Pending | Pending |
+| 7. Data and robustness strategy | Pending | Pending | Pending | Pending |
+| 8. Feasibility and risks | Pending | Pending | Pending | Pending |
+| 9. Evaluation and success criteria | Pending | Pending | Pending | Pending |
+| 10. Milestone plan | Pending | Pending | Pending | Pending |
+| References, cover and final layout | Pending | Pending | Pending | Pending |
+
+Shoaib's review initials are **SSSM**. Other members should use their own chosen initials. A pending cell is not approval; no signatures have been entered on anyone's behalf.

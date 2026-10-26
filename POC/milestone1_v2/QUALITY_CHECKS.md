@@ -12,6 +12,8 @@
 - Removed the submission's POC-limit paragraph, model-rationale paragraph and standalone published-score paragraph. The internal experiment data cap remains in the POC benchmark documents.
 - Added the editable vector pipeline and a high-resolution PNG for ordinary Markdown readers. Figure captions, document margins and page footers were checked for alignment.
 - No project training, model downloads or paid inference performed. Literature values are labeled as published results.
-- All newly authored report files are under `POC/milestone1_v2/`; root submission artifacts are preserved. Local preview PNGs are ignored by Git.
+- Editable build sources remain under `POC/milestone1_v2/`. The report PDF, Markdown and diagram assets are staged in `reports/` through a review branch. Local preview PNGs are ignored by Git.
+- Submission text has no revision-status label, and PDF metadata uses the ordinary milestone title. Team sign-off rows appear only in Markdown and the pull request; all are pending. The published Markdown uses local `figures/` paths and shares its report text with the POC source.
+- Publication check: all eight rendered pages match the polished POC report pixel for pixel; only PDF title metadata changes. Report source/publication parity, figure links and all 44 pending signature cells were checked. The handbook PDF hash stayed unchanged during publication.
 
 The checks establish document consistency and layout, not model performance or experimental validity. The latter remain proposed M2–M5 work.

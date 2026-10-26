@@ -1,37 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 270" width="960" height="270" font-family="Helvetica, Arial, sans-serif">
-  <defs>
-    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/>
-    </marker>
-  </defs>
-  <rect width="960" height="270" fill="#ffffff"/>
-  <g font-size="14" fill="#14212b">
-    <rect x="10" y="40" width="120" height="56" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
-    <text x="70" y="64" text-anchor="middle">Image at</text><text x="70" y="82" text-anchor="middle">date T1</text>
-    <rect x="10" y="190" width="120" height="56" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
-    <text x="70" y="214" text-anchor="middle">Image at</text><text x="70" y="232" text-anchor="middle">date T2</text>
-    <rect x="170" y="110" width="130" height="66" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
-    <text x="235" y="138" text-anchor="middle">Alignment and</text><text x="235" y="156" text-anchor="middle">quality checks</text>
-    <rect x="340" y="40" width="140" height="66" rx="8" fill="#f2f4f5" stroke="#9aa7b0"/>
-    <text x="410" y="66" text-anchor="middle">Change detector</text><text x="410" y="86" text-anchor="middle" font-size="12" fill="#4a5862">U-Net / ChangeFormer</text>
-    <rect x="520" y="40" width="130" height="66" rx="8" fill="#e3eefb" stroke="#1f6fd1" stroke-width="1.6"/>
-    <text x="585" y="66" text-anchor="middle">Change events</text><text x="585" y="86" text-anchor="middle" font-size="12" fill="#4a5862">class, count, location</text>
-    <rect x="520" y="190" width="130" height="66" rx="8" fill="#e3eefb" stroke="#1f6fd1" stroke-width="1.6"/>
-    <text x="585" y="216" text-anchor="middle">Captioner</text><text x="585" y="236" text-anchor="middle" font-size="12" fill="#4a5862">images + events</text>
-    <rect x="690" y="115" width="120" height="66" rx="8" fill="#e3eefb" stroke="#1f6fd1" stroke-width="1.6"/>
-    <text x="750" y="141" text-anchor="middle">Consistency</text><text x="750" y="161" text-anchor="middle">check</text>
-    <rect x="840" y="105" width="110" height="86" rx="8" fill="#14212b"/>
-    <text x="895" y="135" text-anchor="middle" fill="#ffffff">Report</text><text x="895" y="155" text-anchor="middle" font-size="12" fill="#c9d6de">mask + grounded</text><text x="895" y="171" text-anchor="middle" font-size="12" fill="#c9d6de">description</text>
-  </g>
-  <g stroke="#5b6770" stroke-width="1.6" fill="none" marker-end="url(#a)">
-    <path d="M130,68 L150,68 L150,135 L168,135"/>
-    <path d="M130,218 L150,218 L150,152 L168,152"/>
-    <path d="M300,130 L320,130 L320,73 L338,73"/>
-    <path d="M480,73 L518,73"/>
-    <path d="M300,156 L320,156 L320,223 L518,223"/>
-    <path d="M585,106 L585,188"/>
-    <path d="M650,73 L750,73 L750,113"/>
-    <path d="M650,223 L750,223 L750,183"/>
-    <path d="M810,148 L838,148"/>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="495" height="190" preserveAspectRatio="xMinYMin meet" viewBox="0 0 495 190" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="495" height="190"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-190)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0.0" y="20" width="91.0" height="123" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="0.4" y="116" width="90.2" height="26.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,92%,93%); fill-rule: evenodd;"/>
+			<text x="27.5282" y="126" style="font-family: Helvetica-Bold; font-size: 7.7px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,252) scale(1,-1)">01  INPUT</text>
+			<text x="15.8093" y="98" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,196) scale(1,-1)">Earlier image: T1</text>
+			<text x="18.1883" y="85" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,170) scale(1,-1)">Later image: T2</text>
+			<text x="45.5" y="72" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,144) scale(1,-1)"></text>
+			<text x="25.7738" y="59" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,118) scale(1,-1)">Quality and</text>
+			<text x="15.372499999999999" y="46" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,92) scale(1,-1)">alignment checks</text>
+			<path d="M 91,81.5 L 99,81.5 Z" style="stroke: rgb(31%,38%,45%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="99 81.5, 95 83.8, 95 79.2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(31%,38%,45%); fill-rule: evenodd;"/>
+			<rect x="101.0" y="20" width="91.0" height="123" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="101.4" y="116" width="90.20000000000002" height="26.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,92%,93%); fill-rule: evenodd;"/>
+			<text x="117.8329" y="126" style="font-family: Helvetica-Bold; font-size: 7.7px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,252) scale(1,-1)">02  DETECTION</text>
+			<text x="120.487" y="98" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,196) scale(1,-1)">Predict change</text>
+			<text x="115.7212" y="85" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,170) scale(1,-1)">mask and regions</text>
+			<text x="146.5" y="72" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,144) scale(1,-1)"></text>
+			<text x="120.7054" y="59" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,118) scale(1,-1)">Retain location</text>
+			<text x="119.8357" y="46" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,92) scale(1,-1)">and uncertainty</text>
+			<path d="M 192,81.5 L 200,81.5 Z" style="stroke: rgb(31%,38%,45%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="200 81.5, 196 83.8, 196 79.2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(31%,38%,45%); fill-rule: evenodd;"/>
+			<rect x="202.0" y="20" width="91.0" height="123" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="202.4" y="116" width="90.20000000000002" height="26.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,92%,93%); fill-rule: evenodd;"/>
+			<text x="214.7673" y="126" style="font-family: Helvetica-Bold; font-size: 7.7px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,252) scale(1,-1)">03  DESCRIPTION</text>
+			<text x="214.3305" y="98" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,196) scale(1,-1)">Generate a caption</text>
+			<text x="225.6093" y="85" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,170) scale(1,-1)">from the pair</text>
+			<text x="247.5" y="72" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,144) scale(1,-1)"></text>
+			<text x="219.5409" y="59" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,118) scale(1,-1)">Separate claims</text>
+			<text x="220.1883" y="46" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,92) scale(1,-1)">and link regions</text>
+			<path d="M 293,81.5 L 301,81.5 Z" style="stroke: rgb(31%,38%,45%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="301 81.5, 297 83.8, 297 79.2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(31%,38%,45%); fill-rule: evenodd;"/>
+			<rect x="303.0" y="20" width="91.0" height="123" rx="4" ry="4" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(92%,94%,96%); fill-rule: evenodd;"/>
+			<rect x="303.4" y="116" width="90.19999999999999" height="26.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,92%,93%); fill-rule: evenodd;"/>
+			<text x="314.9126" y="126" style="font-family: Helvetica-Bold; font-size: 7.7px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,252) scale(1,-1)">04  VERIFICATION</text>
+			<text x="327.87125" y="98" style="font-family: Helvetica; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,196) scale(1,-1)">Check mask</text>
+			<text x="328.91" y="85" style="font-family: Helvetica; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,170) scale(1,-1)">consistency</text>
+			<text x="319.94375" y="72" style="font-family: Helvetica; font-size: 7.5px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,144) scale(1,-1)">Inspect uncertain</text>
+			<text x="320.99375" y="59" style="font-family: Helvetica; font-size: 7.5px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,118) scale(1,-1)">claims in T1 / T2</text>
+			<text x="313.06625" y="46" style="font-family: Helvetica; font-size: 7.5px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,92) scale(1,-1)">Accept / reject / defer</text>
+			<path d="M 394,81.5 L 402,81.5 Z" style="stroke: rgb(31%,38%,45%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="402 81.5, 398 83.8, 398 79.2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(31%,38%,45%); fill-rule: evenodd;"/>
+			<rect x="404.0" y="20" width="91.0" height="123" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="404.4" y="116" width="90.19999999999999" height="26.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,92%,93%); fill-rule: evenodd;"/>
+			<text x="427.03525" y="126" style="font-family: Helvetica-Bold; font-size: 7.7px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,252) scale(1,-1)">05  REPORT</text>
+			<text x="422.1883" y="98" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,196) scale(1,-1)">Change overlay</text>
+			<text x="419.3725" y="85" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,170) scale(1,-1)">Supported claims</text>
+			<text x="449.5" y="72" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,144) scale(1,-1)"></text>
+			<text x="421.7593" y="59" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,118) scale(1,-1)">Review flags for</text>
+			<text x="417.6331" y="46" style="font-family: Helvetica; font-size: 7.8px;fill: rgb(31%,38%,45%); stroke:none;" transform="translate(0,92) scale(1,-1)">uncertain changes</text>
+			<path d="M 45.5,143 L 45.5,165 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 45.5,165 L 348.5,165 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 348.5,165 L 348.5,146 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="348.5 144, 346 149, 351 149" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<text x="121.864" y="175" style="font-family: Helvetica; font-size: 8px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,350) scale(1,-1)">Original image pair retained for verification</text>
+		</g>
+	</g>
 </svg>

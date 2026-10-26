@@ -8,6 +8,7 @@ import html
 import re
 import argparse
 import io
+import shutil
 
 import markdown
 from bs4 import BeautifulSoup, NavigableString
@@ -180,6 +181,8 @@ def build(source, destination, label):
         STYLES[name].fontSize = 8.0 if is_report else 7.8
         STYLES[name].leading = 10.0 if is_report else 9.5
     if is_report:
+        # Team approvals live in Markdown and the PR, outside the submission PDF.
+        text = text.split('## Team Section Sign-off', 1)[0].rstrip()
         # The original searchable cover carries the same team and title metadata.
         cover_text = PdfReader(ROOT/'assets'/'original_cover.pdf').pages[0].extract_text()
         for member in ('Priyanshu Agarwal', 'Sarthak Saini', 'Sujal Raj Pradhan', 'Shoaib SSM'):
@@ -273,17 +276,38 @@ def build(source, destination, label):
     return destination
 
 
+def publish_report(destination):
+    """Stage the submission artifacts in reports/ for branch review."""
+    reports = ROOT.parents[1] / 'reports'
+    figures = reports / 'figures'
+    figures.mkdir(parents=True, exist_ok=True)
+    source = (ROOT / 'Milestone1_Report.md').read_text(encoding='utf-8')
+    source = source.replace('assets/iitm_logo.png', 'figures/iitm_logo.png')
+    source = source.replace('assets/pipeline.png', 'figures/m1_pipeline.png')
+    (reports / 'Milestone1_Report.md').write_text(source, encoding='utf-8', newline='\n')
+    shutil.copy2(destination, reports / 'DSAI Lab_Group 7_Milestone 1.pdf')
+    shutil.copy2(ROOT / 'assets' / 'pipeline.png', figures / 'm1_pipeline.png')
+    (figures / 'm1_pipeline.svg').write_text(
+        (ROOT / 'assets' / 'pipeline.svg').read_text(encoding='utf-8'),
+        encoding='utf-8', newline='\n')
+    shutil.copy2(ROOT / 'assets' / 'iitm_logo.png', figures / 'iitm_logo.png')
+    return reports
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--report-only', action='store_true', help='Leave the internal guide PDF unchanged')
     group.add_argument('--guide-only', action='store_true', help='Leave the submission PDF unchanged')
+    group.add_argument('--publish-report', action='store_true', help='Build only the report and copy the PDF, Markdown and figure assets into reports/ for branch review')
     args = parser.parse_args()
     export_assets(ROOT/'assets')
     outputs = []
     if not args.guide_only:
-        outputs.append(build(ROOT/'Milestone1_Report.md', OUT/'TerraWatch_Milestone1_Revised.pdf', 'Milestone 1 - Revised Report'))
-    if not args.report_only:
+        outputs.append(build(ROOT/'Milestone1_Report.md', OUT/'TerraWatch_Milestone1_Revised.pdf', 'Milestone 1: Problem Definition & Literature Review'))
+    if not args.report_only and not args.publish_report:
         outputs.append(build(ROOT/'Team_Defence_Guide.md', OUT/'TerraWatch_M1_Team_Defence_Guide.pdf', 'Team Defence Guide - Internal'))
+    if args.publish_report:
+        print(publish_report(outputs[0]))
     for path in outputs:
         print(path)
