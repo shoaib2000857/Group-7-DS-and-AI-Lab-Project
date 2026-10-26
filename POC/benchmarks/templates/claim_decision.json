@@ -1,0 +1,36 @@
+{
+  "record_type": "unpopulated_template",
+  "pair_id": null,
+  "claim_id": null,
+  "source_span": null,
+  "claim": {
+    "object": null,
+    "action": null,
+    "location": null,
+    "quantity": null,
+    "quantity_unit": null
+  },
+  "candidate_region_ids": [],
+  "coordinate_frame": "original_T1_pixels",
+  "bbox_convention": "x0_y0_x1_y1_half_open",
+  "evidence": {
+    "mask_run_id": null,
+    "mask_ontology": null,
+    "witness_run_id": null,
+    "observations": null,
+    "visibility_flags": [],
+    "quality_flags": [],
+    "crop_paths": [],
+    "transform_record": null
+  },
+  "decision": {
+    "outcome": null,
+    "allowed_outcomes": ["accept", "reject", "defer"],
+    "reason_codes": [],
+    "probabilities": null,
+    "probability_semantics": null,
+    "raw_response_path": null,
+    "parse_status": null
+  },
+  "human_reference": "stored_separately_and_never_passed_to_inference"
+}

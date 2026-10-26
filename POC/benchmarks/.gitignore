@@ -1,0 +1,7 @@
+data/
+weights/
+runs/
+external/
+cache/
+__pycache__/
+.venv*/

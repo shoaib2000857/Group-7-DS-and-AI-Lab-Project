@@ -2,6 +2,8 @@
 
 This is a local exploration area for the IITM DS & AI Lab project. Start with [the research guide](research/README.md).
 
+For the four-person model-screening assignments and Colab/WSL experiment protocol, use [the benchmark work packages](benchmarks/README.md).
+
 ## Working boundaries
 
 - Research, feasibility checks, and future small experiments belong here. The submitted project outside `POC/` remains separate.
