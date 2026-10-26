@@ -4,7 +4,7 @@ Prepared 25 October 2026; wording and layout polished 26 October 2026. The origi
 
 - [Milestone1_Report.md](Milestone1_Report.md): submission text; editable source of truth.
 - [output/pdf/TerraWatch_Milestone1_Revised.pdf](output/pdf/TerraWatch_Milestone1_Revised.pdf): formatted submission copy.
-- [Team_Defence_Guide.md](Team_Defence_Guide.md): internal explanation of novelty, metrics, tradeoffs and likely questions.
+- [Team_Defence_Guide.md](Team_Defence_Guide.md): 17-chapter internal handbook covering the pipeline, experiments, datasets, model assignments, worked metric examples, implementation controls and defence questions.
 - [output/pdf/TerraWatch_M1_Team_Defence_Guide.pdf](output/pdf/TerraWatch_M1_Team_Defence_Guide.pdf): formatted internal guide.
 - [build_report.py](build_report.py): builds both PDFs directly from Markdown; no LaTeX required.
 - [pipeline_figure.py](pipeline_figure.py): editable vector diagram, exported as [SVG](assets/pipeline.svg) and [PNG](assets/pipeline.png) for the Markdown copy.
@@ -24,6 +24,14 @@ To rebuild only the submission report while preserving the existing internal gui
 ```powershell
 python build_report.py --report-only
 ```
+
+To rebuild only the internal handbook, preserving the submission PDF:
+
+```powershell
+python build_report.py --guide-only
+```
+
+The handbook PDF has a bookmark for each chapter. Its current expansion is saved for team reference; further handbook revisions are on hold while the submission report is reviewed.
 
 The report reuses the original searchable cover from `assets/original_cover.pdf`, preserving its IITM logo, title, team details and placement. The body uses Arial, dark headings, blue accents, light-grey grid tables, left-aligned text, understated running headers and numbered footers. Windows Arial is used when available, otherwise Helvetica. The pipeline is rendered as native vectors in the PDF and an image in Markdown. Generated PDF previews and layout checks stay in ignored `qa/`. The PDFs are committed deliverables. Do not submit the internal guide as part of the M1 report.
 

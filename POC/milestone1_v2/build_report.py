@@ -7,6 +7,7 @@ from pathlib import Path
 import html
 import re
 import argparse
+import io
 
 import markdown
 from bs4 import BeautifulSoup, NavigableString
@@ -18,7 +19,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    PageBreak, HRFlowable,
+    PageBreak, HRFlowable, Preformatted,
 )
 from reportlab.pdfgen import canvas as canvas_module
 from pypdf import PdfReader, PdfWriter
@@ -68,6 +69,8 @@ STYLES.add(ParagraphStyle(name='BodyBullet', parent=STYLES['Text'],
     leftIndent=11, firstLineIndent=0, bulletIndent=0, spaceAfter=5))
 STYLES.add(ParagraphStyle(name='MatrixCell', parent=STYLES['Cell'], splitLongWords=False))
 STYLES.add(ParagraphStyle(name='MatrixHead', parent=STYLES['CellHead'], splitLongWords=False))
+STYLES.add(ParagraphStyle(name='CodeBlock', fontName='Courier', fontSize=8,
+    leading=10.5, leftIndent=8, rightIndent=8, spaceBefore=4, spaceAfter=9))
 
 
 def clean(s):
@@ -171,6 +174,8 @@ def build(source, destination, label):
     # Keep the separate internal guide compact without changing report typography.
     STYLES['Text'].fontSize = 10.3 if is_report else 9.8
     STYLES['Text'].leading = 13.8 if is_report else 12.5
+    STYLES['BodyBullet'].fontSize = STYLES['Text'].fontSize
+    STYLES['BodyBullet'].leading = STYLES['Text'].leading
     for name in ('Cell', 'CellHead'):
         STYLES[name].fontSize = 8.0 if is_report else 7.8
         STYLES[name].leading = 10.0 if is_report else 9.5
@@ -237,6 +242,8 @@ def build(source, destination, label):
                     story.append(Paragraph(inline(li), STYLES['BodyBullet'], bulletText=bullet))
         elif el.name == 'hr':
             story.append(HRFlowable(width='100%', color=TEAL))
+        elif el.name == 'pre':
+            story.append(Preformatted(clean(el.get_text()), STYLES['CodeBlock']))
     doc.build(story, onFirstPage=draw_page, onLaterPages=draw_page,
         canvasmaker=lambda *a, **kw: NumberedCanvas(*a, cover_offset=int(is_report), **kw))
     if is_report:
@@ -247,15 +254,35 @@ def build(source, destination, label):
         with destination.open('wb') as stream:
             writer.write(stream)
         body_path.unlink()
+    else:
+        # Bookmarks make the longer internal handbook easy to navigate.
+        reader = PdfReader(io.BytesIO(destination.read_bytes()))
+        writer = PdfWriter()
+        writer.append(reader)
+        pages_text = [' '.join((p.extract_text() or '').split()) for p in reader.pages]
+        for heading in soup.find_all('h2'):
+            title = clean(heading.get_text(' ', strip=True))
+            needle = ' '.join(title.split())
+            page_index = next((i for i, content in enumerate(pages_text) if needle in content), None)
+            if page_index is not None:
+                writer.add_outline_item(title, page_index)
+        writer.add_metadata({'/Title': label, '/Author': 'TerraWatch - Group 7'})
+        buffer = io.BytesIO()
+        writer.write(buffer)
+        destination.write_bytes(buffer.getvalue())
     return destination
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--report-only', action='store_true', help='Leave the internal guide PDF unchanged')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--report-only', action='store_true', help='Leave the internal guide PDF unchanged')
+    group.add_argument('--guide-only', action='store_true', help='Leave the submission PDF unchanged')
     args = parser.parse_args()
     export_assets(ROOT/'assets')
-    outputs = [build(ROOT/'Milestone1_Report.md', OUT/'TerraWatch_Milestone1_Revised.pdf', 'Milestone 1 - Revised Report')]
+    outputs = []
+    if not args.guide_only:
+        outputs.append(build(ROOT/'Milestone1_Report.md', OUT/'TerraWatch_Milestone1_Revised.pdf', 'Milestone 1 - Revised Report'))
     if not args.report_only:
         outputs.append(build(ROOT/'Team_Defence_Guide.md', OUT/'TerraWatch_M1_Team_Defence_Guide.pdf', 'Team Defence Guide - Internal'))
     for path in outputs:

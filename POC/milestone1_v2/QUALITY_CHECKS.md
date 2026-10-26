@@ -1,8 +1,9 @@
 # Delivery checks
 
 - Polished report, 26 October 2026: 8 A4 pages, including the original dedicated cover and references; approximately 2,740 words versus approximately 5,180 in the original Markdown report.
-- Separate internal defence guide: 4 A4 pages.
-- The revised report was rendered and inspected on every page, including full-size views of the problem statement, study matrix, pipeline and evaluation page. The internal guide retains its previously checked PDF.
+- Separate internal defence handbook: 17 A4 pages, 17 navigation bookmarks and approximately 5,730 Markdown words. All pages were rendered and visually inspected after the expansion.
+- The revised report was rendered and inspected on every page, including full-size views of the problem statement, study matrix, pipeline and evaluation page. The handbook-only build left that report's SHA-256 unchanged: `ffafae082e34facef3428aa76ede46ec0b5bd0c200ccf0e2fbd35b5309fab56f`.
+- The handbook includes worked segmentation and claim-evaluation arithmetic, evidence contracts, dataset/split controls, all four role assignments, candidate model pools, compute limits, annotation guidance, experiment comparisons, troubleshooting and defence questions. Hypotheses and unrun experiments remain explicitly distinguished from measured results.
 - PDF text bounds checked; no text outside page margins found. Searchable text and clickable external reference links retained.
 - Bibliography has 25 consecutive entries, all cited in the report. Markdown and PDF use the same submission text and diagram definition; no raw LaTeX or duplicated diagram text remains.
 - Build ran with Python, ReportLab 5.1.0, Markdown 3.10.2 and pypdf 6.21.0. The requirements file records build dependencies.
