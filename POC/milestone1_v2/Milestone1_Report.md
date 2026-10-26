@@ -2,7 +2,9 @@
 
 **DS & AI Lab Project (BSDA4001) | Indian Institute of Technology Madras**
 
-**Milestone 1: Problem Definition & Literature Review | Group 7 | Revised submission | 25 October 2026**
+**Milestone 1: Problem Definition & Literature Review | Group 7 | Revised submission | 26 October 2026**
+
+<p align="center"><img src="assets/iitm_logo.png" alt="IIT Madras emblem" width="130"></p>
 
 | Team member | Student email | GitHub |
 |---|---|---|
@@ -13,52 +15,61 @@
 
 ## 1. Introduction and Problem Definition
 
-Satellite image comparison reveals building and road changes. Masks localise differences, while captioning and interactive systems describe them [4–6]. However, descriptions can misstate objects, quantities or locations; lighting, viewpoint and alignment differences complicate interpretation.
+Satellite images captured at different dates can reveal building construction, removal and road expansion. Change-detection models locate these differences, while captioning and interactive systems describe them [4–6]. However, a description may identify the wrong object, count or location. Differences in lighting, viewpoint and alignment can also be mistaken for physical change.
 
 **Problem statement.** How can two images of the same place be converted into a localised, plain-language description of visible urban change, while identifying claims that the available visual evidence does not support?
 
-TerraWatch retains its focus on detection, grounded descriptions and reliability. A caption and checker may agree with the same incorrect mask. We will test whether inspecting both original images, followed by an accept/reject/defer decision, improves factual reliability without suppressing useful information.
+TerraWatch combines change detection with evidence-based descriptions. Its central question is whether checking a description against both original images improves reliability beyond checking agreement with a predicted mask alone. This matters because a caption and a checker can agree with the same incorrect detection.
 
 ## 2. Scope, Stakeholders and Practical Relevance
 
-**In scope:** roughly co-registered, high-resolution RGB image pairs; labelled building/road change; masks, descriptions and traceable evidence; nuisance tests; and a local demo. Appearance/removal claims require time-specific evidence. Groundwork requires observable, appropriately labelled examples.
+**In scope**
 
-**Out of scope:** deciding legality, ownership, intent or cause; unverified damage/impact estimates; nationwide or real-time operation; exact geographic measurements without suitable metadata; and validated long-term trajectories from only two observations. Lower-resolution multispectral monitoring is a separate extension.
+- Two approximately aligned, high-resolution RGB images of the same location.
+- Visible building and road changes, with a change mask and a short, evidence-linked description.
+- Tests under lighting, blur and alignment variations, followed by a local demonstration.
 
-| Stakeholder | Need and proposed value |
+**Out of scope**
+
+- Determining legality, ownership, intent or the cause of a change.
+- Real-time monitoring, damage estimates or complete development histories from two images.
+- Geographic measurements without suitable spatial metadata.
+
+| Stakeholder | Intended benefit |
 |---|---|
-| Municipal building/estate officers; primary | Review visible construction or encroachment candidates using a mask, concise description and uncertainty flag; determine legality through external records and field checks |
-| Urban planners; secondary | Compare visible built-up changes across image pairs |
-| Remote-sensing researchers and non-specialist users; secondary | Inspect reproducible outputs and understand what the images do and do not establish |
+| Municipal building and estate officers; primary | Prioritise visible changes for further review |
+| Urban planners; secondary | Compare building and infrastructure changes |
+| Researchers and non-specialist users; secondary | Inspect reproducible results and understandable descriptions |
 
-The intended value is better review support. Reduced officer workload is a potential benefit, not an established outcome; demonstrating it would require a separate user study.
+The system is intended to help reviewers understand and prioritise change alerts. Any reduction in review workload would require a separate user study.
 
 ## 3. Objectives
 
-**O1:** train and evaluate a credible change-detection baseline. **O2:** assess sensitivity to nuisance variation and domain shift. **O3:** test whether image-backed claim checking improves factual correctness while retaining informative content. **O4:** deliver a reproducible local pipeline with measured runtime and memory. Section 9 defines how these objectives will be assessed.
+- **O1 - Detection:** train and evaluate a standard change-detection model.
+- **O2 - Robustness:** measure performance under image-quality variations and on a separate compatible dataset.
+- **O3 - Reliable descriptions:** test whether image-based checking reduces incorrect statements without omitting relevant changes.
+- **O4 - Practicality:** deliver a reproducible local demonstration and measure runtime and memory use.
 
 <!-- PAGEBREAK -->
 
 ## 4. Literature Review: Study-Comparison Matrix
 
-The matrix separates mechanisms from evaluation. A paper's use of conventional caption scores does not establish an absence of grounding or verification.
+The following studies establish the detection, captioning and verification methods relevant to TerraWatch. Their reported evaluation measures are considered separately from their model mechanisms.
 
 | Study | Objective | Datasets / setting | Experimental design | Main finding | Limitation relevant to TerraWatch |
 |---|---|---|---|---|---|
 | FC-Siam [1]; Reality Check [3] | Establish effective detection baselines | Urban change benchmarks | Early fusion/Siamese networks; controlled U-Net comparisons | Simple CNN baselines remain important | Detection scores alone do not validate a description |
 | ChangeFormer [2] | Model multiscale change context | LEVIR-CD and DSIFN-CD | Siamese hierarchical transformer; detector comparisons | Strong published detection baseline | Label/domain dependence; no standalone claim verifier |
 | Chg2Cap [7]; RSCaMa [8] | Describe image-pair changes | LEVIR-CC | Attentive captioning; spatial/temporal state-space features | Specialist change representations support captioning | Caption similarity does not fully establish factual correctness |
-| Change-Agent [4] | Interactive comprehensive change analysis | LEVIR-MCI | Joint mask/caption perception, feature interaction and LLM tool use; ablations | Integrates pixel, text and object-statistic outputs | Shared perception errors can propagate; evaluate checking under faulty evidence |
+| Change-Agent [4] | Interactive change analysis | LEVIR-MCI | Joint mask/caption perception and LLM tools; component comparisons | Reports 86.43 mIoU and 140.29 CIDEr-D in Table II | Shared perception errors may affect downstream descriptions |
 | ChangeChat [5] | Interactive change questions | LEVIR-derived instructions (87k) | Rule/GPT-assisted instruction tuning; caption, count and localisation tasks | Supports task-specific interactive analysis | Generated supervision and shared imagery require provenance and error audits |
-| CCExpert [6] | Improve MLLM change understanding | LEVIR-CC; CC-Foundation | Difference-aware integration, multiscale features and staged training | Explicit difference features improve reported caption metrics | Grounding is already prior art; gains do not establish calibration under domain shift |
-| KCFI [9]; TEOChat [10] | Detection-guided captioning; temporal EO dialogue | LEVIR-CC; multi-task EO instruction data | Pixel-task-constrained features; temporal instruction tuning | Visual guidance and temporal multi-task modeling are established | Broad capabilities do not substitute for a controlled claim-checking experiment |
+| CCExpert [6] | Improve MLLM captions | LEVIR-CC; CC-Foundation | Difference-aware integration, multiscale features and staged training | Explicit difference features improve reported caption metrics | Grounding is already prior art; gains do not establish calibration under domain shift |
+| KCFI [9]; TEOChat [10] | Guide captions; temporal EO dialogue | LEVIR-CC; multi-task EO instruction data | Pixel-task-constrained features; temporal instruction tuning | Visual guidance and temporal multi-task modeling are established | Broad capabilities do not substitute for a controlled claim-checking experiment |
 | Ricci et al. [11] | Zero-shot descriptions and fact matching | SECOND; LEVIR-CC | Pretrained LLM/VLM approaches; FMScore | Fact-oriented evaluation already exists in this task | Reference-fact matching and inference-time visual verification answer different questions |
-| Spot-the-shift [12] | Evaluate grounded difference descriptions | Street-view structural-change pairs | Human-verified change units, spatial annotations and no-change evaluation | Atomic factual/coverage evaluation is established | Different domain; its principles inform, rather than establish novelty for, our protocol |
-| TerraScope [26] | Grounded EO reasoning | EO reasoning; building change estimation | Visual reasoning coupled with segmentation; task comparisons | Pixel grounding is an established reasoning approach | Grounded reasoning alone is not novel; test the additional claim-decision policy |
+| Spot-the-shift [12] | Evaluate grounded difference descriptions | Street-view change pairs | Human-verified change units, spatial annotations and no-change evaluation | Atomic factual/coverage evaluation is established | Different domain; its principles inform, rather than establish novelty for, our protocol |
+| TerraScope [25] | Grounded EO reasoning | EO reasoning; building change estimation | Visual reasoning coupled with segmentation; task comparisons | Pixel grounding is an established reasoning approach | Grounded reasoning alone is not novel; test the additional claim-decision policy |
 
-**Published reference points.** Change-Agent reports 86.43 mIoU, 65.95 BLEU-4 and 140.29 CIDEr-D for its MCI model on LEVIR-MCI [4, Table II]. Within that table, Chg2Cap reaches 64.39 BLEU-4 and 136.61 CIDEr-D. These are literature results, not TerraWatch measurements or targets. Cross-paper scores are not treated as directly comparable without matching splits and evaluation scripts.
-
-**Current practice.** Image differencing offers a transparent diagnostic but confounds appearance differences with change. Learned detectors improve spatial prediction; captioners and agents add semantic interpretation. The remaining question is how reliably an output can be checked when its own evidence source is wrong. Generic models' capability claims are not evidence of satellite-domain accuracy.
+**Current practice and opportunity.** Detectors locate changes; captioners and agents explain them. Existing systems already use visual evidence, so the contribution cannot simply be combining these components. TerraWatch will examine whether an additional check against the original images helps when predicted masks are wrong. Published scores in the matrix provide context, not TerraWatch results or directly comparable targets.
 
 <!-- PAGEBREAK -->
 
@@ -66,38 +77,40 @@ The matrix separates mechanisms from evaluation. A paper's use of conventional c
 
 ### 5.1 What prior work already addresses
 
-Integration and tool use are established in Change-Agent; interactive counting/localisation in ChangeChat; difference-aware visual conditioning in CCExpert and KCFI; and factual evaluation in FMScore and grounded change-unit evaluation [4–6,9,11,12]. Modularity, mask conditioning and human evaluation are therefore design choices or established practices, not independent novelty claims.
+Change-Agent combines detection, captioning and tools; ChangeChat supports interactive change questions; CCExpert and KCFI use change-sensitive visual features [4–6,9]. FMScore and grounded change-unit evaluation already address factual evaluation [11,12]. TerraWatch does not claim that integration, mask conditioning or human evaluation is new.
 
 ### 5.2 Specific mechanism to investigate
 
-We propose **disagreement-triggered visual reinspection**. Each description is decomposed into claims linked to candidate regions. Consistency, visibility and uncertainty checks identify conflicts or insufficient evidence. Triggered claims are queried on corresponding crops from both original images, with full-image context retained; a validation-designed audit of untriggered claims measures missed errors. A separate decision layer uses these observations, quality flags and mask evidence to accept, reject or defer each claim. Deferred claims are qualified or withheld, with the reason preserved.
+We propose **disagreement-triggered visual reinspection**. The system separates a description into individual claims and links them to candidate image regions. A consistency check flags conflicting or uncertain claims. It then examines the corresponding areas in both original images, retaining the surrounding scene as context. A decision layer accepts, rejects or defers each claim; claims with insufficient evidence are qualified or withheld.
 
-A binary mask cannot establish object identity or addition/removal direction. Region counts are not building counts. The decision layer therefore cannot approve a claim solely because the caption matches the mask. Its thresholds are selected on validation data, and its visual observations remain fallible predictions.
+A mask alone cannot establish object identity, addition/removal direction or an exact building count. Agreement with the mask is therefore insufficient to approve a claim. A sample of unflagged claims will also be reviewed to identify errors missed by the trigger.
 
 ### 5.3 Mechanism-level comparison
 
-| System | How visual evidence informs output | Specific distinction examined here |
+| System | Use of visual evidence | Comparison with TerraWatch |
 |---|---|---|
-| Change-Agent [4] | Joint detection/caption features and agent tools | Hold perception fixed and test acceptance of claims when that perception is faulty |
-| ChangeChat [5] | Instruction-tuned paired-image analysis | Compare free-form answers with explicit claim decisions and deferral |
-| CCExpert [6] | Difference-aware features integrated before language decoding | Compare generation-time grounding with additional targeted reinspection after generation |
-| TerraWatch; proposed | Claim-to-region links, disagreement triggers, original-image reinspection and bounded decisions | Test whether reinspection adds information beyond mask consistency at useful coverage |
+| Change-Agent [4] | Joint detection/caption features and agent tools | Test claim checking while keeping the detector output fixed |
+| ChangeChat [5] | Instruction-tuned analysis of image pairs | Compare generated answers with explicit accept/reject/defer decisions |
+| CCExpert [6] | Difference-aware features guide caption generation | Compare generation-time evidence with an additional check after generation |
+| TerraWatch; proposed | Region-linked claims and targeted inspection of original images | Test whether this check catches errors that mask agreement misses |
 
-This comparison does not assert that prior systems lack all checking. The experimental distinction is the explicitly isolated reinspection-and-decision policy and its response to perception errors.
+This comparison concerns the checking mechanism; it does not assume that earlier systems lack grounding or verification.
 
 ### 5.4 Contribution and supporting evidence
 
-**Primary hypothesis:** image-backed checking yields better human-judged factual precision and reference-fact coverage than mask-only checking on identical candidate descriptions, particularly for naturally incorrect masks. Targeted crops offer evidence unavailable to a mask-only checker; constrained decisions allow uncertainty to be represented rather than converted into confident prose. Prior work supports these ingredients, but their benefit in this proposed configuration must be demonstrated.
+**Research hypothesis:** checking the original images reduces incorrect claims compared with mask-only checking, without leaving out more relevant changes. This will be tested on the same images and candidate descriptions, including cases with incorrect detections. The mechanism must also be compared with a direct image-based judge to establish whether targeted reinspection adds value.
 
-The intended contribution is a reliability mechanism evaluated through a detector-error-aware protocol. It is currently a proposed adaptation and empirical investigation, not an established first-of-kind architecture. A meaningful advance requires improvement over mask-only checking and a simple image-backed judge, while controlling retained content, compute and domain shift. If these comparisons show no gain, the contribution will be reported as an empirical analysis of failure modes.
+The contribution is a proposed reliability method and its controlled evaluation. Its novelty and benefit remain to be established; unsuccessful comparisons will be reported alongside improvements.
 
 <!-- PAGEBREAK -->
 
 ## 6. Proposed Approach and Technical Grounding
 
-The existing detector-to-description pipeline is retained. Four learned roles are considered; preprocessing, schema validation and deterministic checks remain explicit software components.
+The pipeline retains four model roles: change detection, description, visual inspection and claim decisions. Input checks and rule-based comparisons support these stages.
 
-**Image pair → quality/scale checks → change detector → evidence-linked caption → visual reinspection → accept/reject/defer → report.**
+![TerraWatch pipeline: paired images, change detection, description, verification and reporting.](assets/pipeline.png)
+
+*Figure 1. Proposed pipeline. Verification uses both the predicted change evidence and the original image pair.*
 
 | Role | Candidate and training strategy | Output |
 |---|---|---|
@@ -106,21 +119,21 @@ The existing detector-to-description pipeline is retained. Four learned roles ar
 | Visual evidence inspection | Frozen VLM initially; inspect matched T1/T2 crops and context | Object, action, location observations and visibility/ambiguity flags |
 | Decision policy | Rules baseline; Clef/Clef-flash or another bounded classifier; Jev as an optional comparator [21–23] | Claim acceptance, contradiction or deferral and logged decision scores |
 
-**Input adaptation.** Inspect dimensions, channels, metadata, blur, saturation and alignment. Apply model-required normalisation, paired tiling and coordinate-preserving resizing. Use declared ground-sampling distance when available; do not infer physical resolution from image dimensions. Radiometric adjustment is optional and compared against unchanged inputs because histogram matching can remove genuine change. Retain raw images and transformation metadata; reject incompatible modalities rather than attempting universal automatic correction.
+**Input preparation**
 
-**Learning plan.** Train a compact detector and compare BCE-plus-Dice with a focal-loss alternative on audited class distributions. Use synchronised spatial augmentations and controlled one-date appearance perturbations. Fine-tune only selected caption/visual adapters if a frozen baseline proves inadequate and compute permits. The visual inspector may initially reuse frozen VLM weights; a different backbone is an ablation, not an assumption of independent errors. A decision model is retained only if it improves held-out decisions over rules and a general VLM judge.
+- Check image dimensions, channels, quality and approximate alignment.
+- Apply the selected model's normalisation and paired resizing or tiling; preserve region coordinates.
+- Use brightness or alignment adjustments only when they improve validation results, and retain the original images.
 
-**Decision-model rationale.** Clef is an open decision-model family; current Ollama listings include multimodal variants [21,22]. Jev's October release introduces experimental image support [23]. These make bounded claim decisions feasible candidates, but structured responses and confidence scores do not prove factual correctness. Recent Jev evaluation identifies wording/order sensitivity [24]; we will test calibration and decision stability on this task. No remote-sensing reliability gain is assumed from unrelated vendor benchmarks.
+**Training approach.** Train a standard detector, then compare pretrained caption and inspection models. Fine-tune selected components where baseline results justify it. Compare the decision layer with simple rules and a direct visual judge.
 
-**Reporting safeguards.** Preserve original/revised captions, evidence links and deferral reasons. Exact counts require validated instance evidence; geographic area requires suitable spatial metadata. A crop's upper-right is image-relative, not geographic northeast unless orientation is known. Predicted evidence and human reference annotations remain separate.
+Reports will retain links to supporting regions and explain deferred claims. Exact counts and geographic measurements will be included only when the evidence and metadata support them.
 
 <!-- PAGEBREAK -->
 
 ## 7. Data Availability, Alignment and Robustness Strategy
 
-LEVIR-MCI is the preferred primary dataset because it extends LEVIR-CC with aligned change masks; the shared family has 10,077 image pairs and five captions per pair [4,13]. Dataset access, label dictionaries and asset-specific usage terms will be audited before training. Source links have been identified; complete payload/rights validation is not claimed.
-
-The broader plan considers a portfolio of nine releases. It is not nine independent populations and will not be concatenated indiscriminately.
+LEVIR-MCI is the primary candidate because it provides paired images, change masks and descriptions. It extends LEVIR-CC, which contains 10,077 image pairs with five captions per pair [4,13]. Additional datasets support detection, semantic analysis and testing under different imaging conditions.
 
 | Data group | Candidate releases and supervision | Use / boundary |
 |---|---|---|
@@ -131,42 +144,60 @@ The broader plan considers a portfolio of nine releases. It is not nine independ
 | Change instructions | ChangeChat-105k [18] | Optional adapter data; trace LEVIR-derived images and instruction provenance |
 | Lower-resolution urban change | OSCD [19] | Separate multispectral extension; not pooled with high-resolution RGB as equivalent building evidence |
 
-**Combination strategy.** Harmonise image ordering, modality, units, label ontology and parent-scene IDs first. A shared backbone may use task/domain-specific adapters or heads. Apply losses only where the corresponding annotation exists; an absent caption or semantic label is not a negative label. Sample domains explicitly to prevent large datasets dominating. Compare single-domain training, compatible mixed training and mixed training plus domain-aware adaptation. More data does not guarantee robustness to unseen imagery.
+**Combining datasets.** Combine sources only when their image formats and labels are compatible; otherwise use separate task-specific components. Compare single-dataset and combined-data training, then test on a compatible dataset excluded from training. Verify access, usage terms and label definitions before use.
 
-**Leakage control.** Preserve official train/validation/test membership and group related crops by parent scene where possible. Check hashes, near duplicates and shared provenance across releases; keep all captions/instructions of a pair together. Reserve an entire compatible dataset/domain for transfer testing rather than training on every source. Track pretrained checkpoint exposure to LEVIR-derived images.
-
-**POC limit.** Use 20% of unique pairs by default and no more than 30% of any selected dataset, cumulatively across development, training, annotation and evaluation. Shared-image releases do not multiply independent samples. Prefer pretrained inference and short learning pilots; full training belongs to the subsequent project phase.
+Preserve official splits and check shared scenes across releases so the same imagery does not enter both training and evaluation; record known overlap with pretrained models' training data.
 
 ## 8. Feasibility and Key Risks
 
-Start with one dataset, compact detection and one description baseline; demonstrate 5–10 pairs end to end before expanding. Select image size, batch size, quantisation and adapters after measuring device memory and runtime. Large multimodal models are optional, not prerequisites. Open/local baselines keep the core reproducible without a paid service.
+Begin with one dataset and a compact detector-to-description baseline before expanding the model set. Choose model sizes and training settings after measuring memory and runtime.
 
-Main risks are shared detector/verifier errors, ambiguous/touching buildings, incompatible labels, duplicate scenes, destructive normalisation and excessive model cost. Mitigations are original-image inspection, uncertainty/deferral, label-aware heads, provenance audits, preprocessing ablations and staged model selection. Real seasonal/viewpoint robustness requires suitable held-out examples; synthetic corruptions alone cannot establish it.
+The main risks are shared detection/checking errors, ambiguous structures, inconsistent labels and preprocessing that removes real changes. Address these through original-image review, deferred decisions, data checks and comparisons with unmodified inputs. Tests using artificial image variations will be reported separately from tests on real imaging differences.
 
 <!-- PAGEBREAK -->
 
 ## 9. Evaluation and Definition of Success
 
-Use official splits, validation-only tuning, frozen test protocols and identical input pairs across comparisons. Report uncertainty by paired resampling at scene level where possible, otherwise at pair level with the dependence limitation stated. Published scores provide context, not fair full-data targets for a small POC.
+Compare models on the same held-out images, with settings selected on validation data. Report measured improvements and uncertainty rather than promising a fixed gain.
 
-| Objective | Measures | Evidence of success |
+| Objective | Main measures | What would count as improvement |
 |---|---|---|
-| O1: detection | Change-class precision/recall, F1 and IoU; class mIoU where applicable | Reproducible learned baseline and fair comparison on the same split; inspect small-object and no-change failures |
-| O2: robustness | Clean-to-corrupted F1/claim-quality drop; separate held-out-domain scores | Smaller degradation than the matched baseline without material clean-quality loss; margins fixed from validation before test |
-| O3: reliable descriptions; primary | Human supported-claim precision, reference-fact recall and their harmonic mean; precision at matched report coverage | Improvement over mask-only checking with retained information controlled; paired confidence intervals distinguish demonstrated improvement from inconclusive effects |
-| O4: practicality | End-to-end median/p95 latency, cold load, peak memory and setup reproducibility | Runnable documented demo on stated hardware; added checking cost reported against its factual benefit |
+| O1: detection | Change-class F1 and IoU | Better detection than the selected baseline on the same labelled images |
+| O2: robustness | Performance loss under image variations | Smaller losses while maintaining performance on clean images |
+| O3: reliable descriptions | Claim correctness and coverage of visible changes | Fewer incorrect statements without leaving out more relevant changes |
+| O4: practicality | Runtime, memory and reproducibility | A working demonstration with documented resource use and repeatable outputs |
 
-**Factual audit.** Plan at least 100 held-out pairs with two independent annotators, subject to a pilot workload/power assessment. Establish reference facts from original images and available labels without predicted masks, then judge anonymised outputs. Label atomic claims supported, unsupported, contradicted or unverifiable; adjudicate disagreements and report agreement. Supported-claim precision uses all emitted factual claims as its denominator. Reference-fact recall measures observable, in-scope facts conveyed. Empty descriptions have zero recall and no defined precision, not perfect reliability. Report omission, abstention and false-change rates separately.
+### 9.1 Checking description quality
 
-**Ablations.** Compare: (A) images-only caption; (B) predicted-mask conditioning; (C) B plus mask consistency; (D) C plus direct image-backed judgment; (E) C plus disagreement-triggered reinspection and decision policy. Hold detector and candidate captions fixed for C–E; compare targeted and full inspection at matched evidence budgets. Add an oracle-mask diagnostic, natural detector-error strata and separately labelled injected mask/claim errors. Compare rules with the decision model using identical evidence. Stress decision wording and option order. Nuisance tests cover brightness/colour, blur/compression and small misalignment with valid overlap defined.
+Two reviewers will independently assess at least 100 test pairs without seeing the system identity. They will compare claims with the original images and labels, mark them supported, unsupported, contradicted or unverifiable, and resolve disagreements.
 
-**Standard and proposed overall measures.** BLEU-4, METEOR, ROUGE-L and CIDEr-D remain supplementary caption measures. Region-count MAE is distinct from building-count MAE, which requires instance annotations. We also plan an exploratory end-to-end grounded-change score combining localisation, correct object/action claims, retained coverage and robustness. Its formula, matching rules and weighting will be fixed on development data before final evaluation and validated against blinded human rankings. Until validated, it is not a primary success criterion and cannot replace the component metrics.
+**Supported-claim precision** measures the proportion of emitted claims supported by the images. **Reference-fact recall** measures the relevant visible changes correctly described. Both are needed: an empty description is not evidence of reliability.
 
-**Decision rule.** The research hypothesis is supported only if the proposed checker improves factual quality over the controlled baselines at comparable useful coverage; otherwise the result is inconclusive or negative. Arbitrary promises of a 10-point gain, 25% robustness improvement or five-second runtime are replaced by measured effects and explicit uncertainty.
+### 9.2 Comparing the components
+
+The evaluation will compare five settings:
+
+1. Caption generated from the two images alone.
+2. Caption generated with predicted change evidence.
+3. The same caption checked for consistency with the predicted mask.
+4. The same caption checked directly against the original images.
+5. The proposed targeted reinspection and accept/reject/defer policy.
+
+For settings 3–5, keep detections and candidate captions fixed. Include incorrect masks and unchanged scenes; compare methods at similar computational budgets. Test lighting, blur and alignment variations separately.
+
+BLEU-4, METEOR, ROUGE-L and CIDEr-D provide supplementary caption comparisons. Any custom pipeline score must be defined and validated before final testing, alongside the component measures.
+
+**The checker succeeds if it reduces incorrect claims without increasing missed changes.** Otherwise, report the comparison as inconclusive or negative.
 
 ## 10. Milestone Plan
 
-**M2, Oct 29:** provenance, label/split audits and bounded subset. **M3, Nov 5:** justified architecture, contracts and end-to-end subset. **M4, Nov 19:** detector training, bounded adapter experiments and logs. **M5, Nov 26:** frozen ablations, factual audit and failures. **M6, Dec 10:** reproducible demo and documentation [25]. Individual contributions will be tracked per milestone. At M1, models, mixed-data training and reliability improvements remain proposed rather than measured results.
+- **M2 - October 29:** verify data sources, labels and training/evaluation splits.
+- **M3 - November 5:** justify the architecture and demonstrate the complete pipeline on sample pairs.
+- **M4 - November 19:** train the selected detector and compare training or fine-tuning settings.
+- **M5 - November 26:** evaluate the models, compare checking methods and analyse errors.
+- **M6 - December 10:** deliver the reproducible demonstration and final documentation [24].
+
+Individual contributions will be recorded at each milestone. This report presents the proposed work; it does not claim completed training or measured improvements.
 
 <!-- PAGEBREAK -->
 
@@ -195,8 +226,7 @@ Use official splits, validation-only tuning, frozen test protocols and identical
 21. Cloudflare (2026). *Introducing Clef: our open-source decision models, and new RL fine-tuning platform*. https://blog.cloudflare.com/clef-decision-models/
 22. Ollama (2026). *Clef / Clef-flash model documentation*. https://ollama.com/library/clef ; https://ollama.com/library/clef-flash
 23. TypeSafe AI (2026). *Jev: For the builders AND dreamers*; Jev 1.14.0 and experimental image support. https://typesafe.ai/blog/jev-1-14
-24. Imperatrice, I. et al. (2026). *Are AI Decision Models Biased? A Case Study of Jev*. Preprint. https://arxiv.org/abs/2610.19619
-25. IITM DS & AI Lab. *Project Guidelines and Milestones*. https://bsc-iitm.github.io/dsai-lab-project/guidelines.html ; https://bsc-iitm.github.io/dsai-lab-project/milestones.html
-26. Shu, Y. et al. (2026). *TerraScope: Pixel-Grounded Visual Reasoning for Earth Observation*. CVPR, 16712–16722. https://openaccess.thecvf.com/content/CVPR2026/supplemental/Shu_TerraScope_Pixel-Grounded_Visual_CVPR_2026_supplemental.pdf
+24. IITM DS & AI Lab. *Project Guidelines and Milestones*. https://bsc-iitm.github.io/dsai-lab-project/guidelines.html ; https://bsc-iitm.github.io/dsai-lab-project/milestones.html
+25. Shu, Y. et al. (2026). *TerraScope: Pixel-Grounded Visual Reasoning for Earth Observation*. CVPR, 16712–16722. https://openaccess.thecvf.com/content/CVPR2026/supplemental/Shu_TerraScope_Pixel-Grounded_Visual_CVPR_2026_supplemental.pdf
 
 Online sources accessed 24–25 October 2026. Model variants, access conditions and dataset terms will be pinned before experimentation.

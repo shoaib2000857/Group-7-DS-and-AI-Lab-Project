@@ -5,3 +5,5 @@
 `iitm_logo.png` is the original embedded image extracted from that same page, retained for future editable cover work. No generated replacement or image editing was used.
 
 The cover is an intentional template asset. If team details change, update the cover and Markdown metadata together; the builder checks the four team names before building.
+
+`pipeline.svg` and `pipeline.png` are generated from `../pipeline_figure.py`. The PDF renders the same diagram definition as native vector elements; Markdown references the PNG. The diagram is a proposed architecture, not a measured result or a generated satellite image.

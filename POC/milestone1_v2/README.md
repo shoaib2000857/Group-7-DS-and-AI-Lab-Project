@@ -1,12 +1,13 @@
 # Revised Milestone 1 report
 
-Prepared 25 October 2026. The original submission outside `POC/` is preserved.
+Prepared 25 October 2026; wording and layout polished 26 October 2026. The original submission outside `POC/` is preserved.
 
 - [Milestone1_Report.md](Milestone1_Report.md): submission text; editable source of truth.
 - [output/pdf/TerraWatch_Milestone1_Revised.pdf](output/pdf/TerraWatch_Milestone1_Revised.pdf): formatted submission copy.
 - [Team_Defence_Guide.md](Team_Defence_Guide.md): internal explanation of novelty, metrics, tradeoffs and likely questions.
 - [output/pdf/TerraWatch_M1_Team_Defence_Guide.pdf](output/pdf/TerraWatch_M1_Team_Defence_Guide.pdf): formatted internal guide.
 - [build_report.py](build_report.py): builds both PDFs directly from Markdown; no LaTeX required.
+- [pipeline_figure.py](pipeline_figure.py): editable vector diagram, exported as [SVG](assets/pipeline.svg) and [PNG](assets/pipeline.png) for the Markdown copy.
 - [SOURCE_CHECKS.md](SOURCE_CHECKS.md): verification limits and new-source register.
 
 ## Rebuild
@@ -18,6 +19,12 @@ python -m pip install -r requirements-report.txt
 python build_report.py
 ```
 
-The report reuses the original searchable cover from `assets/original_cover.pdf`, preserving its IITM logo, title, team details and placement. The body uses the original Arial family, dark headings, blue accents, light-grey grid tables, understated running headers and numbered footer. Windows Arial is used when available, otherwise Helvetica. Generated PDF previews and layout checks stay in ignored `qa/`. The PDFs are committed deliverables. Do not submit the internal guide as part of the M1 report.
+To rebuild only the submission report while preserving the existing internal guide PDF:
+
+```powershell
+python build_report.py --report-only
+```
+
+The report reuses the original searchable cover from `assets/original_cover.pdf`, preserving its IITM logo, title, team details and placement. The body uses Arial, dark headings, blue accents, light-grey grid tables, left-aligned text, understated running headers and numbered footers. Windows Arial is used when available, otherwise Helvetica. The pipeline is rendered as native vectors in the PDF and an image in Markdown. Generated PDF previews and layout checks stay in ignored `qa/`. The PDFs are committed deliverables. Do not submit the internal guide as part of the M1 report.
 
 This revision clarifies the original system and defines a testable reliability mechanism. It does not claim completed model training, full dataset access, validated novelty, a validated custom metric or universal robustness. Candidate model versions and data terms must be pinned before experiments.

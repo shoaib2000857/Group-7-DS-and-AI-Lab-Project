@@ -6,11 +6,12 @@ No network requests or project-model dependencies are involved.
 from pathlib import Path
 import html
 import re
+import argparse
 
 import markdown
 from bs4 import BeautifulSoup, NavigableString
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT, TA_JUSTIFY
+from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.pdfbase import pdfmetrics
@@ -21,6 +22,7 @@ from reportlab.platypus import (
 )
 from reportlab.pdfgen import canvas as canvas_module
 from pypdf import PdfReader, PdfWriter
+from pipeline_figure import pipeline, export_assets
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'output' / 'pdf'
@@ -46,7 +48,7 @@ def fonts():
 REG, BOLD = fonts()
 STYLES = getSampleStyleSheet()
 for name, size, leading, color, before, after, bold in [
-    ('Text', 10.3, 13.2, '#1B2228', 0, 6, False),
+    ('Text', 10.3, 13.8, '#1B2228', 0, 7, False),
     ('Title2', 21, 25, '#12202B', 0, 12, True),
     ('Section', 15, 18, '#12202B', 8, 6, True),
     ('Subsection', 11.5, 14, '#1F5FAE', 6, 4, True),
@@ -59,10 +61,11 @@ for name, size, leading, color, before, after, bold in [
         spaceBefore=before, spaceAfter=after, alignment=TA_LEFT,
         splitLongWords=True, allowWidows=0, allowOrphans=0,
         keepWithNext=name in ('Title2', 'Section', 'Subsection')))
-STYLES['Text'].alignment = TA_JUSTIFY
-STYLES.add(ParagraphStyle(name='Callout', parent=STYLES['Text'],
-    backColor=colors.HexColor('#EBF1F7'), borderPadding=10,
-    spaceBefore=5, spaceAfter=12))
+STYLES.add(ParagraphStyle(name='Callout', parent=STYLES['Text'], spaceAfter=0))
+STYLES.add(ParagraphStyle(name='Caption', parent=STYLES['Reference'],
+    textColor=GRAY, fontSize=8.5, leading=11, spaceAfter=9))
+STYLES.add(ParagraphStyle(name='BodyBullet', parent=STYLES['Text'],
+    leftIndent=11, firstLineIndent=0, bulletIndent=0, spaceAfter=5))
 STYLES.add(ParagraphStyle(name='MatrixCell', parent=STYLES['Cell'], splitLongWords=False))
 STYLES.add(ParagraphStyle(name='MatrixHead', parent=STYLES['CellHead'], splitLongWords=False))
 
@@ -102,6 +105,8 @@ def table(node, width):
         ratios = [0.17, 0.26, 0.30, 0.27]
     elif n == 3 and headings[0] == 'Team member':
         ratios = [0.27, 0.46, 0.27]
+    elif n == 3 and headings[0] == 'Objective':
+        ratios = [0.18, 0.32, 0.50]
     elif n == 3:
         ratios = [0.20, 0.44, 0.36]
     else:
@@ -154,7 +159,7 @@ class NumberedCanvas(canvas_module.Canvas):
             self.__dict__.update(state)
             self.setFont(REG, 8.5)
             self.setFillColor(GRAY)
-            self.drawRightString(A4[0]-56.7, 28,
+            self.drawRightString(A4[0]-50, 28,
                 f'Page {self._pageNumber+self.cover_offset} / {total}')
             super().showPage()
         super().save()
@@ -165,7 +170,7 @@ def build(source, destination, label):
     is_report = source.name == 'Milestone1_Report.md'
     # Keep the separate internal guide compact without changing report typography.
     STYLES['Text'].fontSize = 10.3 if is_report else 9.8
-    STYLES['Text'].leading = 13.2 if is_report else 12.5
+    STYLES['Text'].leading = 13.8 if is_report else 12.5
     for name in ('Cell', 'CellHead'):
         STYLES[name].fontSize = 8.0 if is_report else 7.8
         STYLES[name].leading = 10.0 if is_report else 9.5
@@ -200,14 +205,36 @@ def build(source, destination, label):
                 rule.keepWithNext = True
                 story.append(rule)
         elif el.name == 'p':
-            style = 'Callout' if el.get_text().startswith('Problem statement.') else ('Reference' if in_refs else 'Text')
-            story.append(para(el, style))
+            if el.find('img'):
+                image_node = el.find('img')
+                if image_node.get('src') == 'assets/pipeline.png':
+                    story.append(pipeline(doc.width, REG, BOLD))
+                else:
+                    raise ValueError('Unsupported report image: ' + str(image_node.get('src')))
+            elif el.get_text().startswith('Problem statement.'):
+                # Table padding reserves actual layout space; paragraph backColor padding did not.
+                box = Table([[para(el, 'Callout')]], colWidths=[doc.width], hAlign='LEFT')
+                box.setStyle(TableStyle([
+                    ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#EBF1F7')),
+                    ('LINEBEFORE', (0, 0), (0, 0), 2, TEAL),
+                    ('LEFTPADDING', (0, 0), (-1, -1), 11),
+                    ('RIGHTPADDING', (0, 0), (-1, -1), 11),
+                    ('TOPPADDING', (0, 0), (-1, -1), 10),
+                    ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+                ]))
+                story.extend([Spacer(1, 3), box, Spacer(1, 10)])
+            else:
+                style = 'Caption' if el.get_text().startswith('Figure 1.') else ('Reference' if in_refs else 'Text')
+                story.append(para(el, style))
         elif el.name == 'table':
             story.extend(table(el, doc.width))
         elif el.name in ('ol', 'ul'):
             for i, li in enumerate(el.find_all('li', recursive=False), 1):
-                prefix = f'{i}. ' if el.name == 'ol' else '- '
-                story.append(para(li, 'Reference' if in_refs else 'Text', prefix))
+                if in_refs:
+                    story.append(para(li, 'Reference', f'{i}. '))
+                else:
+                    bullet = f'{i}.' if el.name == 'ol' else '-'
+                    story.append(Paragraph(inline(li), STYLES['BodyBullet'], bulletText=bullet))
         elif el.name == 'hr':
             story.append(HRFlowable(width='100%', color=TEAL))
     doc.build(story, onFirstPage=draw_page, onLaterPages=draw_page,
@@ -224,9 +251,12 @@ def build(source, destination, label):
 
 
 if __name__ == '__main__':
-    outputs = [
-        build(ROOT/'Milestone1_Report.md', OUT/'TerraWatch_Milestone1_Revised.pdf', 'Milestone 1 - Revised Report'),
-        build(ROOT/'Team_Defence_Guide.md', OUT/'TerraWatch_M1_Team_Defence_Guide.pdf', 'Team Defence Guide - Internal'),
-    ]
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--report-only', action='store_true', help='Leave the internal guide PDF unchanged')
+    args = parser.parse_args()
+    export_assets(ROOT/'assets')
+    outputs = [build(ROOT/'Milestone1_Report.md', OUT/'TerraWatch_Milestone1_Revised.pdf', 'Milestone 1 - Revised Report')]
+    if not args.report_only:
+        outputs.append(build(ROOT/'Team_Defence_Guide.md', OUT/'TerraWatch_M1_Team_Defence_Guide.pdf', 'Team Defence Guide - Internal'))
     for path in outputs:
         print(path)
