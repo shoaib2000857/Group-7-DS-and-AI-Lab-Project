@@ -2,6 +2,8 @@
 
 **Runnable work package D:** [Shoaib's Colab notebook](colab/TerraWatch_Shoaib_Decision_Benchmarks.ipynb) · [Run instructions and data contract](colab/README.md). Includes incremental outputs and a combined downloadable ZIP. This is the first implementation; GPU benchmark findings are not yet established.
 
+**Received run review:** [two smoke runs and one screen run](results/2026-10-27/shoaib/README.md). The original ZIPs are retained locally with verified hashes. They expose a setup failure before learned inference; runtime `.2` repairs the bootstrap and needs a fresh Colab smoke check.
+
 **26 October 2026 | Planning and source verification, not completed model runs**
 
 We have Colab Pro+ and WSL/CLI access, as confirmed by the team. Actual assigned GPU, VRAM, installed libraries and model compatibility remain to be measured. Start with inference; do not train every candidate.

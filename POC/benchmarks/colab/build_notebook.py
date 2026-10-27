@@ -22,6 +22,8 @@ md('''
 # TerraWatch: Shoaib's decision-model benchmark
 **Owner: Shoaib | Review initials: SSSM | Work package D | 27 October 2026**
 
+**Runtime 2026-10-27.2:** uses a private seeded virtualenv bootstrap and checks it before loading images. This repairs the setup path that failed in the first L4 runs. Start a fresh `smoke` run; keep old `.1` results as diagnostics rather than resuming them here.
+
 Run this notebook in **Google Colab with a GPU**. It tests your assigned claim checkers, displays the important results here, and produces **one downloadable results ZIP**. The notebook contains its own runtime; you do not need to clone the project or upload another Python file.
 
 **Start:** `Runtime > Change runtime type > GPU`, then `Runtime > Run all`. An L4/A100-class session can attempt the BF16-only d3 model. On a T4, compatible models continue and d3 is recorded as skipped. Actual fit and speed are measured, not guaranteed by Pro+.
@@ -135,6 +137,9 @@ RUN, CONFIG = tw.start_run(CONFIG, LOCAL_ROOT/"runs")
 display(pd.DataFrame([tw.environment()["gpu"]]))
 if not tw.environment()["gpu"]["name"]:
     display(Markdown("**No GPU detected. Only data/rule validation can run; learned candidates will be recorded as blocked.**"))
+SETUP = tw.preflight_worker_setup(CONFIG, RUN)
+if SETUP:
+    display(pd.DataFrame(SETUP))
 ''')
 md('''
 ## 4. Load the selected data

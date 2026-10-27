@@ -30,7 +30,8 @@ import numpy as np
 import requests
 from PIL import Image, ImageFilter
 
-VERSION = '2026-10-27.1'
+VERSION = '2026-10-27.2'
+VIRTUALENV_VERSION = '20.35.3'
 KEV_CODE_REVISION = '2074cc44256200bb37540103fa4572901faa10f3'
 OUTCOMES = ['accept', 'reject', 'defer']
 REGISTRY = {
@@ -860,6 +861,62 @@ def supervise(command, log_path, timeout_seconds, env=None):
     return time.monotonic()-started
 
 
+def create_worker_environment(folder, run, profile):
+    """Seed private pip without relying on the base interpreter's ensurepip.
+
+    Bootstrap dependencies stay outside the Colab kernel's site-packages, and
+    all setup stdout/stderr is retained in the exported run logs.
+    """
+    folder,run=Path(folder),Path(run)
+    python=folder/('Scripts/python.exe' if os.name=='nt' else 'bin/python')
+    marker=folder/'environment_bootstrap.json'
+    log=run/'logs'/f'bootstrap_{profile}.log'
+    if not (python.exists() and marker.exists()):
+        helper=folder.parent/f'_virtualenv_{VIRTUALENV_VERSION}'
+        helper_marker=helper/'bootstrap_ready.json'
+        if not helper_marker.exists():
+            supervise([sys.executable,'-m','pip','--disable-pip-version-check','install','--upgrade',
+                       '--target',str(helper),f'virtualenv=={VIRTUALENV_VERSION}'],
+                      run/'logs/virtualenv_bootstrap_install.log',180)
+            write_json(helper_marker,{'virtualenv':VIRTUALENV_VERSION,'installed':stamp()})
+        bootstrap_env=os.environ.copy()
+        bootstrap_env['PYTHONPATH']=os.pathsep.join(filter(None,[str(helper),bootstrap_env.get('PYTHONPATH')]))
+        supervise([sys.executable,'-m','virtualenv','--system-site-packages','--seeder','app-data',
+                   '--no-download','--no-periodic-update','--app-data',str(folder.parent/'_virtualenv_appdata'),str(folder)],
+                  log,90,bootstrap_env)
+        write_json(marker,{'virtualenv':VIRTUALENV_VERSION,'base_python':sys.executable,'base_version':sys.version,
+                           'system_site_packages':True,'created':stamp()})
+    supervise([str(python),'-m','pip','--version'],log,30)
+    return python
+
+
+def preflight_worker_setup(config,run):
+    """Stop on shared bootstrap failure before downloading benchmark images."""
+    gpu=environment()['gpu']
+    if not gpu['name']:
+        return []
+    profiles=set()
+    for model_id in [config['WITNESS_MODEL']]+config['MODEL_IDS']:
+        kind=REGISTRY[model_id]['kind']
+        if kind not in ['d3','qwen_text','qwen_vl','internvl']:
+            continue
+        if gpu['total_gb']<REGISTRY[model_id]['min_gb'] or (model_id=='J01' and gpu.get('bf16_supported') is False):
+            continue
+        profiles.add('internvl' if model_id=='J07' else 'hf')
+    root=Path(os.environ.get('TW_ENV_ROOT',str(Path(run).parent/'runtime_environments')))
+    statuses=[]
+    try:
+        for profile in sorted(profiles):
+            python=create_worker_environment(root/(profile+'_'+VERSION),run,profile)
+            statuses.append({'profile':profile,'status':'bootstrap_ready','python':str(python),'virtualenv':VIRTUALENV_VERSION})
+        write_json(Path(run)/'metadata/bootstrap_preflight.json',statuses)
+        return statuses
+    except Exception as error:
+        write_json(Path(run)/'metadata/bootstrap_preflight.json',{'status':'failed_before_data_or_models','error':str(error)})
+        archive=archive_results(run)
+        raise RuntimeError(f'Worker setup failed before benchmark data/model inference. Logs: {archive}. Send that ZIP; do not repeat a larger run.') from error
+
+
 def ensure_profile(model_id, run, config):
     profile = 'internvl' if model_id == 'J07' else 'kev' if model_id == 'J02' else 'hf'
     cache_root = Path(os.environ.get('TW_ENV_ROOT', str(run.parent/'runtime_environments')))
@@ -875,7 +932,7 @@ def ensure_profile(model_id, run, config):
         return python
     if shutil.disk_usage(run).free < 12*1024**3:
         raise RuntimeError('Less than 12 GB free; stop before installing/downloading model weights.')
-    subprocess.run([sys.executable, '-m', 'venv', '--system-site-packages', str(folder)], check=True, timeout=90)
+    python=create_worker_environment(folder,run,profile)
     requirements = ['transformers==4.52.1', 'accelerate>=1.1,<2', 'einops', 'timm', 'sentencepiece'] if profile == 'internvl' else [
         'transformers==5.17.0', 'accelerate>=1.1,<2', 'einops', 'sentencepiece', 'opencv-python-headless', 'safetensors']
     if profile == 'kev':
@@ -1184,6 +1241,13 @@ def evaluate(cases, refs, config, run):
     frame['outcome']=frame.apply(lambda row:policy_outcome(row,config['ACCEPT_THRESHOLD']),axis=1)
     frame.drop(columns=['raw'], errors='ignore').to_json(run/'tables/all_decisions.jsonl', orient='records', lines=True)
     base = frame[~frame['track'].str.endswith('_reversed')]
+    learned=base[base['model_id'].str.startswith('J')]
+    learned_ok=learned[learned['status']=='ok']
+    write_json(run/'metadata/run_health.json',{
+        'status':'controls_only_no_learned_outputs' if learned_ok.empty else 'learned_outputs_available',
+        'completed_learned_rows':len(learned_ok),'planned_learned_rows':len(learned),
+        'completed_models':sorted(learned_ok['model_id'].unique().tolist()),
+        'warning':'No learned-model quality comparison is possible.' if learned_ok.empty else None})
     rows = []
     for key, group in base.groupby(['model_id','track','phase','benchmark_group'], sort=True):
         rows.append(dict(zip(['model_id','track','phase','benchmark_group'],key), **metric_row(group)))
@@ -1396,12 +1460,15 @@ def make_summary_report(summary, register, config, run):
             'pixel-detection score or verified end-to-end improvement is established by this notebook. '
             'A judge sharing the witness checkpoint is not an independent perception check. Model failures and missing outputs remain visible.')
     display_summary=summary[summary['phase'].eq('val')].drop(columns=['median_latency_s','p95_latency_s','peak_pytorch_gpu_gb'],errors='ignore')
+    health_path=run/'metadata/run_health.json'
+    health=json.loads(health_path.read_text()) if health_path.exists() else {}
+    warning='<p style="background:#fff0ed;border:1px solid #b2182b;padding:16px"><strong>No learned judge outputs were produced. This report contains controls and setup diagnostics only.</strong></p>' if health.get('status')=='controls_only_no_learned_outputs' else ''
     images=''.join(f'<figure><img src="figures/{p.name}" alt="{html.escape(p.stem)}"></figure>' for p in sorted((run/'figures').glob('*.png')))
     document=('<!doctype html><meta charset="utf-8"><title>'+title+'</title><style>'
               'body{font:15px Arial;color:#12202b;max-width:1400px;margin:36px auto;padding:0 24px} '
               'table{border-collapse:collapse;font-size:12px;display:block;overflow:auto}td,th{border:1px solid #ccd2d8;padding:7px} '
               'th{background:#e6ebee}img{max-width:100%;height:auto}p{line-height:1.6}figure{margin:24px 0}</style>'
-              '<h1>'+title+'</h1><p>'+html.escape(caveat)+'</p><h2>Candidate register</h2>'+register.to_html(index=False,escape=True)+
+              '<h1>'+title+'</h1>'+warning+'<p>'+html.escape(caveat)+'</p><h2>Candidate register</h2>'+register.to_html(index=False,escape=True)+
               '<h2>Validation metrics by information track and label source</h2>'+display_summary.to_html(index=False,escape=True,float_format=lambda v:f'{v:.3f}')+
               '<h2>Charts and inspected pairs</h2>'+images)
     (run/'RESULTS.html').write_text(document,encoding='utf-8')

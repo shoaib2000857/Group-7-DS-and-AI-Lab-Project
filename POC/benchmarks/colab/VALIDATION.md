@@ -1,5 +1,15 @@
 # Validation record - 27 October 2026
 
+## Received GPU runs and runtime .2 repair
+
+Three actual Colab L4 archives were received and preserved under `POC/benchmarks/results/2026-10-27/shoaib/archives/`; see the [checked findings](../results/2026-10-27/shoaib/README.md). All file-manifest checksums and ZIP CRC checks pass. The two smoke metric tables are identical; their IDs are contained in the screen set. The union is 40 real image pairs. None contains learned-model predictions: environment creation stopped every selected judge and the witness before inference.
+
+Runtime `2026-10-27.2` replaces the failing stdlib-venv bootstrap with private `virtualenv==20.35.3`, keeps its seeding helpers outside the notebook kernel, captures bootstrap stdout/stderr and checks both required environments before data loading. A shared bootstrap failure saves a diagnostic ZIP and stops the run rather than continuing to a controls-only result. Reports also export explicit run-health status and visibly flag absent learned outputs.
+
+The exact production bootstrap functions were exercised on Linux in WSL Ubuntu 24.04, using Python 3.12 and an ext4 `/tmp` destination: private pip 25.2 ran successfully, `sys.prefix != sys.base_prefix`, and system-site-packages was enabled. A first probe on the Windows-mounted project drive exceeded the 90-second creation limit; the native Linux filesystem probe passed. Keep WSL worker caches on its Linux filesystem; Colab's default working/cache paths remain local under `/content`. This verifies the replacement bootstrap, not CUDA model inference or the user's exact Python 3.13 Colab stack.
+
+Fourteen tests now pass, adding checks that the bootstrap avoids the old stdlib-venv command, captures setup logs and stops early with an exported diagnostic on a shared bootstrap failure. The original checks below remain applicable. A fresh `.2` smoke run is still needed to validate GPU inference; `.1` failure archives should not be resumed into the revised runtime.
+
 ## Completed locally
 
 - Notebook scaffold built with `nbformat`; all 30 cells validated and Python cells compiled. The runtime embedded in the single-file notebook has a checked SHA-256 and is regenerated from the readable source.

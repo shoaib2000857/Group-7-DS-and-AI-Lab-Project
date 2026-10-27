@@ -1,0 +1,307 @@
+{
+  "received_date": "2026-10-27",
+  "owner": "Shoaib",
+  "initials": "SSSM",
+  "archives": [
+    {
+      "archive": "archives/SSSM_20261027_141130_results.zip",
+      "bytes": 4216027,
+      "sha256": "68f5813055d5af35e5a5e868868c72a4be9e868f651d40a10e48d554574be361",
+      "zip_members": 70,
+      "zip_crc": "passed",
+      "profile": "smoke",
+      "models": [
+        "J05",
+        "J01",
+        "J06",
+        "J07"
+      ],
+      "runtime_version": "2026-10-27.1",
+      "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+      "gpu": {
+        "name": "NVIDIA L4",
+        "total_gb": 22.494140625,
+        "driver": "580.82.07",
+        "bf16_supported": true
+      },
+      "selected_counts": {
+        "train": 4,
+        "val": 6
+      },
+      "model_events": [
+        {
+          "model_id": "J06",
+          "mode": "witness",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J02",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J03",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J04",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J08",
+          "mode": null,
+          "status": "deferred_access_and_cost",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J05",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J01",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J06",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J07",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/internvl_2026-10-27.1']' returned non-zero exit status 1."
+        }
+      ]
+    },
+    {
+      "archive": "archives/SSSM_20261027_141651_results.zip",
+      "bytes": 4216026,
+      "sha256": "7810dc084a6b9cc2fdd4efa8f30791d0674b1e5f98d2a97f94556e734f4af903",
+      "zip_members": 70,
+      "zip_crc": "passed",
+      "profile": "smoke",
+      "models": [
+        "J05",
+        "J01",
+        "J06",
+        "J07"
+      ],
+      "runtime_version": "2026-10-27.1",
+      "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+      "gpu": {
+        "name": "NVIDIA L4",
+        "total_gb": 22.494140625,
+        "driver": "580.82.07",
+        "bf16_supported": true
+      },
+      "selected_counts": {
+        "train": 4,
+        "val": 6
+      },
+      "model_events": [
+        {
+          "model_id": "J06",
+          "mode": "witness",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J02",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J03",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J04",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J08",
+          "mode": null,
+          "status": "deferred_access_and_cost",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J05",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J01",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J06",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J07",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/internvl_2026-10-27.1']' returned non-zero exit status 1."
+        }
+      ]
+    },
+    {
+      "archive": "archives/SSSM_20261027_141846_results.zip",
+      "bytes": 11792920,
+      "sha256": "9f4f5fb01af9d9d8b33f7c7dcd108b40cdab1f66a76d6fbcc072e74426f399f3",
+      "zip_members": 160,
+      "zip_crc": "passed",
+      "profile": "screen",
+      "models": [
+        "J05",
+        "J01",
+        "J06",
+        "J07"
+      ],
+      "runtime_version": "2026-10-27.1",
+      "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+      "gpu": {
+        "name": "NVIDIA L4",
+        "total_gb": 22.494140625,
+        "driver": "580.82.07",
+        "bf16_supported": true
+      },
+      "selected_counts": {
+        "train": 10,
+        "val": 30
+      },
+      "model_events": [
+        {
+          "model_id": "J06",
+          "mode": "witness",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J02",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J03",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J04",
+          "mode": null,
+          "status": "not_selected_in_configuration",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J08",
+          "mode": null,
+          "status": "deferred_access_and_cost",
+          "successful": null,
+          "requested": null,
+          "error": null
+        },
+        {
+          "model_id": "J05",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J01",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J06",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/hf_2026-10-27.1']' returned non-zero exit status 1."
+        },
+        {
+          "model_id": "J07",
+          "mode": "judge",
+          "status": "failed_or_timed_out",
+          "successful": null,
+          "requested": null,
+          "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/internvl_2026-10-27.1']' returned non-zero exit status 1."
+        }
+      ]
+    }
+  ]
+}

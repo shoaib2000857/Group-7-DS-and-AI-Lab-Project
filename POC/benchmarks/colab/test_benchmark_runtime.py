@@ -4,6 +4,7 @@ import io
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 
 import numpy as np
@@ -12,6 +13,30 @@ import benchmark_runtime as tw
 
 
 class BenchmarkTests(unittest.TestCase):
+    def test_bootstrap_avoids_stdlib_ensurepip_route_and_logs_commands(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            with patch.object(tw,'supervise') as runner:
+                tw.create_worker_environment(root/'environments/hf',root/'run','hf')
+            commands=[call.args[0] for call in runner.call_args_list]
+            self.assertTrue(any('virtualenv==20.35.3' in cmd for cmd in commands))
+            create=next(cmd for cmd in commands if 'virtualenv' in cmd)
+            self.assertIn('--system-site-packages',create)
+            self.assertIn('--no-download',create)
+            self.assertFalse(any(cmd[1:3]==['-m','venv'] for cmd in commands))
+            self.assertTrue(all(call.args[1].parent.name=='logs' for call in runner.call_args_list))
+
+    def test_shared_bootstrap_failure_stops_before_benchmark(self):
+        with tempfile.TemporaryDirectory() as folder:
+            run=Path(folder)
+            with patch.object(tw,'environment',return_value={'gpu':{'name':'test GPU','total_gb':24,'bf16_supported':True}}), \
+                 patch.object(tw,'create_worker_environment',side_effect=RuntimeError('test bootstrap failure')), \
+                 patch.object(tw,'archive_results',return_value=run/'partial.zip') as exporter:
+                with self.assertRaisesRegex(RuntimeError,'before benchmark data/model inference'):
+                    tw.preflight_worker_setup(tw.default_config(),run)
+            self.assertTrue(exporter.called)
+            self.assertEqual(json.loads((run/'metadata/bootstrap_preflight.json').read_text())['status'],'failed_before_data_or_models')
+
     def test_reference_fields_are_not_in_inference_payload(self):
         case={'claim_text':'One building appeared.','claim':{'object':'building'},'target':'SECRET',
               'witness':{'summary':'An uncertain building change.','target':'SECRET','source':'witness'},

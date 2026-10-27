@@ -8,6 +8,8 @@ This is work package D: claim decisions, evidence checking, calibration diagnost
 
 ## Run in Colab
 
+**Runtime 2026-10-27.2:** repairs the environment-creation failure observed in Shoaib's three L4 runs. Open the current notebook, start a fresh smoke run, and confirm the printed runtime ends in `.2`. Private environment creation now uses a pinned virtualenv bootstrap with bundled pip; setup is checked before image loading, and setup stdout/stderr is included in the ZIP. Do not resume the old `.1` archives into the revised runtime. Their checked findings are [recorded here](../results/2026-10-27/shoaib/README.md).
+
 1. Open the notebook in Colab or upload the `.ipynb` using **File > Upload notebook**.
 2. Select a GPU runtime. L4/A100-class hardware can attempt d3's BF16 route; a T4 skips the current d3 release and attempts compatible models. No particular device or fit is guaranteed.
 3. Keep `PROFILE = "smoke"` and run all cells. This selects four development and six validation pairs. Judge models run sequentially; installation, downloads and GPU speed affect duration. The judge loop is capped at 120 minutes, plus up to 30 minutes for the witness.
@@ -32,6 +34,8 @@ Enable Drive backup if you want checkpoint ZIPs copied to `MyDrive/TerraWatch/SS
 The gates are scheduling safeguards, not measured VRAM minima. No automatic quantisation, alternate checkpoint or cloud fallback occurs. Optional local installation is explicitly controlled by `ALLOW_OPTIONAL_RUNTIMES`; add J02/J03/J04 to `MODEL_IDS` to schedule them. The current optional server routes need their own Colab fit test. Failed access, installation, native API, parsing, timeout and memory checks remain in the exported register.
 
 The lightweight notebook kernel keeps its installed dependencies. Native HF workers use Transformers 5.17.0; InternVL uses its separate 4.52.1 environment. Colab's CUDA PyTorch/torchvision are reused where compatible. Kev dependencies are isolated and its Linux runtime retains its own load behaviour. No `pip install kev` package-name collision is used: the author repository is installed from a pinned checkout.
+
+Environment bootstrap helpers are installed into the private runtime cache with `--target`, rather than into the notebook kernel. [Virtualenv's seeded environments](https://virtualenv.pypa.io/en/20.35.1/cli_interface.html) supply their own pip; [stdlib venv normally calls ensurepip](https://docs.python.org/3/library/venv.html). The old ZIPs captured the failed command but not its detailed stderr, so an absent/disabled ensurepip remains a hypothesis rather than an established root cause.
 
 ## Data and interpretation
 
