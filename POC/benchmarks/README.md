@@ -1,5 +1,7 @@
 # TerraWatch POC: four-person benchmark plan
 
+**Runnable work package D:** [Shoaib's Colab notebook](colab/TerraWatch_Shoaib_Decision_Benchmarks.ipynb) · [Run instructions and data contract](colab/README.md). Includes incremental outputs and a combined downloadable ZIP. This is the first implementation; GPU benchmark findings are not yet established.
+
 **26 October 2026 | Planning and source verification, not completed model runs**
 
 We have Colab Pro+ and WSL/CLI access, as confirmed by the team. Actual assigned GPU, VRAM, installed libraries and model compatibility remain to be measured. Start with inference; do not train every candidate.
@@ -37,7 +39,7 @@ There are **31 model-role entries**, including reused VLMs across roles; these a
 - [templates/run_record.json](templates/run_record.json): empty result/provenance record; null fields are not measured zeroes.
 - [templates/claim_decision.json](templates/claim_decision.json): common claim/evidence/decision contract.
 
-The model adapters, unified evaluator, data downloader and training scripts are **not implemented by this plan**. Upstream examples are starting points, not proof that the complete TerraWatch benchmark already runs. These are the first deliverables in each work package.
+This plan originally contained no adapters, unified evaluator or downloader. The [work package D implementation](colab/README.md) now supplies its decision adapters, controls, evaluator, bounded primary-data loader and handoff export. The other stage adapters and training scripts remain separate deliverables. Upstream examples and CPU validation do not establish complete GPU pipeline benchmark results.
 
 ## Scope and compute boundaries
 
