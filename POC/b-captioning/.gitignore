@@ -1,0 +1,9 @@
+# Images, weights, model caches and per-pair run outputs stay local (LEVIR is academic-use imagery)
+data/
+weights/
+cache/
+runs/
+.venv*/
+data_ood/
+__pycache__/
+.pytest_cache/
