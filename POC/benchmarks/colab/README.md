@@ -2,7 +2,7 @@
 
 [Notebook](TerraWatch_Shoaib_Decision_Benchmarks.ipynb) · [Readable runtime](benchmark_runtime.py) · [Validation](VALIDATION.md)
 
-[Open the notebook in Google Colab](https://colab.research.google.com/github/shoaib2000857/Group-7-DS-and-AI-Lab-Project/blob/256a1dd1e75968ac7b59fc0a3650ec7d23c03312/POC/benchmarks/colab/TerraWatch_Shoaib_Decision_Benchmarks.ipynb) · [Implementation PR #13](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/pull/13)
+[Open the notebook in Google Colab](https://colab.research.google.com/github/shoaib2000857/Group-7-DS-and-AI-Lab-Project/blob/7a375e8a65ddc3e3b208fa55ff9f0c48019f7038/POC/benchmarks/colab/TerraWatch_Shoaib_Decision_Benchmarks.ipynb) · [Source branch](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/feat/shoaib-colab-benchmarks)
 
 This is work package D: claim decisions, evidence checking, calibration diagnostics and initial integration. It does not run all four teammates' model pools. The notebook is self-contained and needs no repository checkout or companion upload.
 
