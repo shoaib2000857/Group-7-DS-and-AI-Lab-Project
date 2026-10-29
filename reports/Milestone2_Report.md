@@ -36,7 +36,7 @@ LEVIR-MCI contains 10,077 image pairs and 50,385 captions. Images are 256 x 256 
 | Test | 1,929 | 964 | 9,645 |
 | **Total** | **10,077** | **5,038** | **50,385** |
 
-The primary mask encoding is **0: background; 128: road change; 255: building change**. Caption references can describe vegetation and other content outside these mask classes. A missing class label therefore cannot establish that a visible change is false.
+The primary mask encoding is **0: background; 128: road change; 255: building change**. Background denotes pixels not annotated as building/road change, rather than proof of no other visible change. Captions can describe vegetation and content outside these classes; an absent mask label cannot establish that such a claim is false.
 
 ### 1.2 Supplementary label alignment
 
@@ -124,7 +124,9 @@ Figure 2. Label composition reported by the 150-pair preparation audit. Pixel pr
 
 The label imbalance supports class-aware sampling and loss comparisons during detector training; no fixed loss recipe is claimed as validated at this milestone. Masks also have narrower semantic coverage than captions: vegetation, object identity, change direction and exact instance counts require additional evidence.
 
-The captioning screen provides an ingestion check, not an independent factuality benchmark. For example, a constant no-change caption obtains CIDEr-D 0.94 on the 100-pair screen while missing every changed pair in the conflict-free subset. The automatic checker uses reference masks and captions; it is a diagnostic proxy. Conflict handling and denominators differ by metric, so the conflict list and exact scored population must accompany every result.
+The captioning screen provides an ingestion check, not an independent factuality benchmark. A constant no-change caption obtains CIDEr-D 0.94 on the 100-pair screen while missing every changed pair in the conflict-free subset. The automatic evaluator uses reference masks and captions, whereas the deployed checker must use predicted evidence and original images. Its 50-pixel class-presence threshold can suppress genuine small changes; its support score does not jointly certify object count, location and direction. Audit-level nonzero-mask conflicts and thresholded evaluation conflicts must be reported separately, with each metric's exact denominator.
+
+**Privacy and bias.** Public availability does not eliminate privacy or usage concerns. No personal identifiers are required as model features; do not add owner identities, precise sensitive-site details or inferred legal status to training records or outputs. Texas-focused imagery, repeated no-change captions and limited mask classes constrain representativeness. Supplementary probes broaden coverage but do not establish generalisation across sensors, seasons or regions.
 
 <!-- PAGEBREAK -->
 
@@ -151,7 +153,7 @@ No synthetic satellite imagery is used in the prepared captioning cohort. The de
 
 The versioned preparation package records source/archive revisions, split-specific seeds, selected identifiers, file hashes, label mappings and processing settings [8]. It separates raw inputs, evaluation references and model outputs. Model, tokenizer and processor revisions, environment versions and configuration-specific image limits are retained with run records; weights and raw imagery are not committed to the repository.
 
-Preparation has supported specialist/general caption generation, a subset-training pilot and decision-model smoke/screen exports. These runs establish that parts of the ingestion path execute; they do not establish the full pipeline's reliability or a final model ranking.
+Preparation has supported specialist/general caption generation, a subset-training pilot and decision-model smoke/screen exports. Training readiness is demonstrated for that captioning configuration, not yet for the complete detection/inspection/decision pipeline. A final cleaned shared-dataset size and post-exclusion class distribution cannot be certified until the pending duplicate checks, conflict policy and manifest consolidation are complete.
 
 Before Milestone 3, the team will consolidate the cross-role manifest, confirm duplicate candidates and release permissions, finalise detector/crop adapters, and pilot the two-rater claim audit. Sarthak leads detection ingestion, Sujal caption/reference preparation, Priyanshu visual-region handling and Shoaib decision contracts and integration. The resulting handover must retain the original images, explicit uncertainty and independently stored references throughout the proposed pipeline.
 
@@ -170,6 +172,20 @@ Before Milestone 3, the team will consolidate the cross-role manifest, confirm d
 
 Source pages and supplied preparation records reviewed 29 October 2026.
 
+## Appendix A. Prepared Record Schema
+
+Each sample contains two RGB inputs, not a fixed-length table of engineered features. For LEVIR-MCI, the pair has shape 2 x 256 x 256 x 3 before model-specific tensor conversion; the pixel target has shape 256 x 256. The same categorical target encoding is preserved during resizing.
+
+| Field group | Representation and meaning |
+|---|---|
+| Identity and split | Dataset/revision, official partition, pair ID and experimental role |
+| Inputs | T1/T2 file paths, dimensions and SHA-256 hashes |
+| Detection target | Mask path/hash and explicit class-value mapping |
+| Text references | Five caption strings/IDs stored outside inference requests |
+| Provenance and quality | Selection seed/rule, transforms, conflict/exclusion flags; unavailable dates, CRS and per-tile resolution remain null |
+
+Illustrative schema example: a training-partition record links two 256 x 256 RGB PNGs, one categorical mask and five caption references through a single pair key. This is a format example, not an additional dataset record. A training handover must include the frozen manifest, processed files, exclusion ledger and exact loader/processor configuration; scripts or aggregate metrics alone are insufficient.
+
 ## Team Review
 
-Reviewed and verified: **PA · SS · SRP · SSSM**.
+Previous report version reviewed and verified: **PA · SS · SRP · SSSM**. Confirmation of the technical revision dated 30 October 2026 is pending.
