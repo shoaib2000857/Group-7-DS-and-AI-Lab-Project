@@ -48,7 +48,7 @@ WHU-CDC is treated as building-only supervision. For SECOND-CC, the prepared bui
 
 Preparation preserves the original temporal order: T1 is the earlier image and T2 the later image. Archive records are joined by dataset, official split and filename; images and labels are checked before they enter a model. A shared record carries source identifiers, paths, dimensions, label ontology, split membership and SHA-256 hashes.
 
-![Data preparation and evidence separation](figures/m2_data_flow.png)
+![Data preparation and evidence separation](https://raw.githubusercontent.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/2661fd8ef1ad773cd5add174873322bf79d4744a/POC/milestone2/assets/data_flow.png)
 
 Figure 1. A shared pair record links model inputs to evaluation references. Reference masks and captions are kept outside prediction requests.
 
@@ -109,7 +109,7 @@ Screening outputs informed parser revisions in the captioning work. Consequently
 
 The preparation audit covers the release index and a 150-pair image/label cohort: 50 development pairs and 100 screening pairs. Archive-index checks assess record completeness; pixel statistics and mask/caption comparisons apply only to that inspected cohort.
 
-![Label composition in the preparation audit](figures/m2_data_profile.png)
+![Label composition in the preparation audit](https://raw.githubusercontent.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/2661fd8ef1ad773cd5add174873322bf79d4744a/POC/milestone2/assets/data_profile.png)
 
 Figure 2. Label composition reported by the 150-pair preparation audit. Pixel proportions describe this subset, not the full release.
 
