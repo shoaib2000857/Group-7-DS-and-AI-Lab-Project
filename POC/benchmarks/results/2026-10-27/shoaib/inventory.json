@@ -302,6 +302,58 @@
           "error": "Command '['/usr/bin/python3', '-m', 'venv', '--system-site-packages', '/content/terrawatch_decisions/runs/runtime_environments/internvl_2026-10-27.1']' returned non-zero exit status 1."
         }
       ]
+    },
+    {
+      "archive": "archives/SSSM_20261027_164811_results (1).zip",
+      "received_date": "2026-10-29",
+      "bytes": 12318901,
+      "sha256": "ee909e9201da6d3875ab98c64a3298bc4db91c8daa7903cb353a5a8061d5c24d",
+      "zip_members": 186,
+      "zip_crc": "passed",
+      "profile": "screen",
+      "judge_statuses": {
+        "J05": "completed",
+        "J01": "failed_or_timed_out",
+        "J06": "completed",
+        "J07": "partial_or_failed"
+      },
+      "successful_learned_rows": 828,
+      "review_scope": "receipt, integrity, duplicates and status only; no diagnosis or repairs"
+    },
+    {
+      "archive": "archives/SSSM_20261027_164811_results.zip",
+      "received_date": "2026-10-29",
+      "bytes": 12318901,
+      "sha256": "54c0887cca1987947364818d5bf99df4879fc700e39cb5a3b6b727394859ef15",
+      "zip_members": 186,
+      "zip_crc": "passed",
+      "profile": "screen",
+      "judge_statuses": {
+        "J05": "completed",
+        "J01": "failed_or_timed_out",
+        "J06": "completed",
+        "J07": "partial_or_failed"
+      },
+      "successful_learned_rows": 828,
+      "review_scope": "receipt, integrity, duplicates and status only; no diagnosis or repairs"
+    },
+    {
+      "archive": "archives/SSSM_20261027_164103_results.zip",
+      "received_date": "2026-10-29",
+      "bytes": 4499292,
+      "sha256": "a67b0a960c24c3a3e9af95f8ae1b5c7fca5c82961214305551130e457126a375",
+      "zip_members": 99,
+      "zip_crc": "passed",
+      "profile": "smoke",
+      "judge_statuses": {
+        "J05": "completed",
+        "J01": "failed_or_timed_out",
+        "J06": "completed",
+        "J07": "partial_or_failed"
+      },
+      "successful_learned_rows": 288,
+      "review_scope": "receipt, integrity, duplicates and status only; no diagnosis or repairs"
     }
-  ]
+  ],
+  "last_receipt_date": "2026-10-29"
 }

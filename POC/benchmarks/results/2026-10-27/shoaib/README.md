@@ -41,3 +41,7 @@ See [inventory.json](inventory.json) for exact hashes and source/run metadata. T
 R00's 40% follows from the designed two-supported/two-false/one-unverifiable claim mixture and its accept-all rule; it is not an estimate of real caption factuality. R01 only handles the two presence/absence propositions and defers on the remaining three, so its 60% deferral is also structural. Do not pool the synthetic fixtures with these satellite annotation proxies.
 
 Next run: use the repaired notebook, a fresh run folder and `PROFILE="smoke"`; leave optional runtimes disabled. Do not resume a `.1` run into `.2` or repeat screen until the new smoke ZIP contains successful learned predictions. The old archives remain the diagnostic baseline.
+
+## Additional receipt - 29 October 2026
+
+Three further ZIPs were moved from Downloads into rchives/, with before/after SHA-256 verification and passing ZIP CRC checks. Both files named for the 164811 run are preserved separately; their archive SHA-256 hashes differ. The 164103 run is smoke; the two 164811 files are screen exports. Quick status: J05/J06 completed, J01 failed or timed out, and J07 was partial or failed. Receipt checks covered run status only; no detailed analysis, model runs or fixes were performed. See the additional inventory records.
