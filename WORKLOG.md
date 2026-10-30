@@ -17,6 +17,11 @@ Other members: add your section below using the same table.
 | 1 | 15–22 Oct 2026 | M1 | Wrote the Milestone 1 report (problem, scope, stakeholders, objectives, literature review, benchmarks, gaps, contribution, feasibility, evaluation plan) | [reports/DSAI Lab_Group 7_Milestone 1.pdf](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
 | 1 | 15–22 Oct 2026 | M1 | Built the Milestone 1 review slides | [presentation/DSAI Lab_Group 7_Milestone 1_Slides.pdf](presentation/DSAI%20Lab_Group%207_Milestone%201_Slides.pdf) | |
 | 1 | 15–22 Oct 2026 | Project setup | Created GitHub milestones M1–M6 with an epic issue for each, so tasks can be tracked as individual issues | [Milestones](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/milestones) | |
+| 2 | 26–29 Oct 2026 | M2 | Froze the LEVIR-MCI subset: seeded per-split selection, SHA-256 manifest, 20% cap accounting; downloaded only selected pairs by HTTP range requests; sealed 100 test IDs without downloading | [M2 report §2](reports/Milestone2_Report.md) · branch `execution` | |
+| 2 | 26–29 Oct 2026 | M2 | Data quality and leakage audit: archive-wide duplicate check from zip checksums (16 duplicate LEVIR pairs, 5 test↔train; SECOND-CC reversed-pair leakage), mask/caption conflicts, templated no-change captions, class balance | [M2 report §1.3, §2.3](reports/Milestone2_Report.md) | |
+| 2 | 26–29 Oct 2026 | M2 / POC B | Built the B0 captioning screen (RSCaMa, Qwen3-VL-4B, SmolVLM2-2.2B, two controls) with a claim parser and automatic reference check; retrained RSCaMa on 20% of train (Kaggle T4) as an uncontaminated baseline | [POC/execution](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/execution/POC/execution) | |
+| 2 | 26–29 Oct 2026 | M2 / POC B | Added WHU-CDC and SECOND-CC as transfer test sets (100 val pairs each, building-only scoring); found every captioner drops sharply off LEVIR | [M2 report §1.4–1.5](reports/Milestone2_Report.md) | |
+| 2 | 26–29 Oct 2026 | M2 | Wrote the Milestone 2 report | [reports/Milestone2_Report.md](reports/Milestone2_Report.md) | |
 
 ---
 

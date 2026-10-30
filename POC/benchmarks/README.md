@@ -28,6 +28,7 @@ There are **31 model-role entries**, including reused VLMs across roles; these a
 
 ## Files to use
 
+- [B_execution_plan.md](B_execution_plan.md): captioning-first experiment, provisional dataset selection, factual evaluation, manager-demo story and A/C/D handoff; folder access remains unverified.
 - [SHARED_PROTOCOL.md](SHARED_PROTOCOL.md): data tracks, fair comparisons, metrics, artifact contracts, compute limits and seven-day sequence.
 - [SOURCE_AUDIT.md](SOURCE_AUDIT.md): primary sources, checkpoint status, known blockers and reading limits.
 - [source_metadata.json](source_metadata.json): live metadata snapshot, revisions and model-file listings; not downloaded weights.

@@ -1,0 +1,847 @@
+[
+ {
+  "pairs": 100,
+  "claims_total": 122,
+  "claims_per_pair": 1.22,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "supported": 96,
+   "reference_conflict": 5,
+   "unverifiable": 14,
+   "contradicted": 7
+  },
+  "supported_claim_precision_strict": 0.7869,
+  "supported_claim_precision_strict_ci95": [
+   0.7241,
+   0.8537
+  ],
+  "supported_claim_precision_in_scope": 0.8889,
+  "supported_claim_precision_in_scope_ci95": [
+   0.8286,
+   0.9459
+  ],
+  "supported_claim_precision_located": 0.7787,
+  "supported_claim_precision_located_ci95": [
+   0.7143,
+   0.8425
+  ],
+  "reference_fact_recall": 0.768,
+  "reference_fact_recall_ci95": [
+   0.7016,
+   0.8346
+  ],
+  "unchanged_pairs_clean": 40,
+  "no_change_false_alarm_rate": 0.0,
+  "changed_pairs_clean": 54,
+  "missed_change_rate": 0.1481,
+  "missed_change_explicit_rate": 0.1296,
+  "pair_change_accuracy": 0.9149,
+  "location_checked": 8,
+  "location_supported": 7,
+  "quantity_checked": 1,
+  "quantity_within_tolerance": 1,
+  "reference_conflict_pairs": 6,
+  "text_metrics": {
+   "BLEU-1": 0.8412,
+   "BLEU-2": 0.7548,
+   "BLEU-3": 0.6813,
+   "BLEU-4": 0.6223,
+   "METEOR": 0.4002,
+   "ROUGE-L": 0.7464,
+   "CIDEr-D": 1.3184
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 18.32,
+  "warm_latency_median_s": 0.139,
+  "warm_latency_p95_s": 0.154,
+  "peak_gpu_memory_mb": 3661,
+  "run_id": "B0_C02_rscama_development_smoke+development+screening",
+  "role_model_id": "C02",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "screening"
+  ],
+  "split": "screening",
+  "model_name": "RSCaMa (specialist)"
+ },
+ {
+  "pairs": 100,
+  "claims_total": 120,
+  "claims_per_pair": 1.2,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "supported": 95,
+   "unverifiable": 12,
+   "reference_conflict": 4,
+   "contradicted": 9
+  },
+  "supported_claim_precision_strict": 0.7917,
+  "supported_claim_precision_strict_ci95": [
+   0.7231,
+   0.8618
+  ],
+  "supported_claim_precision_in_scope": 0.8796,
+  "supported_claim_precision_in_scope_ci95": [
+   0.8148,
+   0.9429
+  ],
+  "supported_claim_precision_located": 0.775,
+  "supported_claim_precision_located_ci95": [
+   0.7034,
+   0.8482
+  ],
+  "reference_fact_recall": 0.744,
+  "reference_fact_recall_ci95": [
+   0.685,
+   0.8053
+  ],
+  "unchanged_pairs_clean": 40,
+  "no_change_false_alarm_rate": 0.075,
+  "changed_pairs_clean": 54,
+  "missed_change_rate": 0.0926,
+  "missed_change_explicit_rate": 0.0926,
+  "pair_change_accuracy": 0.9149,
+  "location_checked": 10,
+  "location_supported": 8,
+  "quantity_checked": 4,
+  "quantity_within_tolerance": 4,
+  "reference_conflict_pairs": 6,
+  "text_metrics": {
+   "BLEU-1": 0.7952,
+   "BLEU-2": 0.7125,
+   "BLEU-3": 0.6378,
+   "BLEU-4": 0.5786,
+   "METEOR": 0.365,
+   "ROUGE-L": 0.6909,
+   "CIDEr-D": 1.2111
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": null,
+  "warm_latency_median_s": 0.16,
+  "warm_latency_p95_s": 0.172,
+  "peak_gpu_memory_mb": null,
+  "run_id": "B0_C02r20_rscama_retrained20_development_smoke+development+screening",
+  "role_model_id": "C02-r20",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "screening"
+  ],
+  "split": "screening",
+  "model_name": "RSCaMa retrained on 20% (ours)"
+ },
+ {
+  "pairs": 100,
+  "claims_total": 240,
+  "claims_per_pair": 2.4,
+  "pairs_with_zero_claims": 2,
+  "label_counts": {
+   "supported": 140,
+   "unverifiable": 48,
+   "direction_conflict": 5,
+   "reference_conflict": 6,
+   "contradicted": 41
+  },
+  "supported_claim_precision_strict": 0.5833,
+  "supported_claim_precision_strict_ci95": [
+   0.5066,
+   0.66
+  ],
+  "supported_claim_precision_in_scope": 0.7292,
+  "supported_claim_precision_in_scope_ci95": [
+   0.6462,
+   0.8031
+  ],
+  "supported_claim_precision_located": 0.5458,
+  "supported_claim_precision_located_ci95": [
+   0.4709,
+   0.6224
+  ],
+  "reference_fact_recall": 0.72,
+  "reference_fact_recall_ci95": [
+   0.629,
+   0.8077
+  ],
+  "unchanged_pairs_clean": 40,
+  "no_change_false_alarm_rate": 0.25,
+  "changed_pairs_clean": 54,
+  "missed_change_rate": 0.1667,
+  "missed_change_explicit_rate": 0.0926,
+  "pair_change_accuracy": 0.7979,
+  "location_checked": 30,
+  "location_supported": 21,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 6,
+  "text_metrics": {
+   "BLEU-1": 0.1761,
+   "BLEU-2": 0.0891,
+   "BLEU-3": 0.0455,
+   "BLEU-4": 0.0267,
+   "METEOR": 0.1439,
+   "ROUGE-L": 0.1753,
+   "CIDEr-D": 0.0002
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 16.49,
+  "warm_latency_median_s": 7.605,
+  "warm_latency_p95_s": 9.569,
+  "peak_gpu_memory_mb": 9174,
+  "run_id": "B0_C04_qwen3vl_development_smoke+development+screening",
+  "role_model_id": "C04",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "screening"
+  ],
+  "split": "screening",
+  "model_name": "Qwen3-VL-4B"
+ },
+ {
+  "pairs": 100,
+  "claims_total": 197,
+  "claims_per_pair": 1.97,
+  "pairs_with_zero_claims": 2,
+  "label_counts": {
+   "supported": 76,
+   "unverifiable": 40,
+   "contradicted": 74,
+   "reference_conflict": 7
+  },
+  "supported_claim_precision_strict": 0.3858,
+  "supported_claim_precision_strict_ci95": [
+   0.3041,
+   0.475
+  ],
+  "supported_claim_precision_in_scope": 0.4841,
+  "supported_claim_precision_in_scope_ci95": [
+   0.3855,
+   0.5864
+  ],
+  "supported_claim_precision_located": 0.3706,
+  "supported_claim_precision_located_ci95": [
+   0.287,
+   0.4612
+  ],
+  "reference_fact_recall": 0.552,
+  "reference_fact_recall_ci95": [
+   0.4524,
+   0.6493
+  ],
+  "unchanged_pairs_clean": 40,
+  "no_change_false_alarm_rate": 0.8,
+  "changed_pairs_clean": 54,
+  "missed_change_rate": 0.0926,
+  "missed_change_explicit_rate": 0.0,
+  "pair_change_accuracy": 0.6064,
+  "location_checked": 12,
+  "location_supported": 9,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 6,
+  "text_metrics": {
+   "BLEU-1": 0.1502,
+   "BLEU-2": 0.0756,
+   "BLEU-3": 0.0242,
+   "BLEU-4": 0.0102,
+   "METEOR": 0.1149,
+   "ROUGE-L": 0.1602,
+   "CIDEr-D": 0.0022
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 13.79,
+  "warm_latency_median_s": 3.302,
+  "warm_latency_p95_s": 4.295,
+  "peak_gpu_memory_mb": 8664,
+  "run_id": "B0_C07_smolvlm2_development_smoke+development+screening",
+  "role_model_id": "C07",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "screening"
+  ],
+  "split": "screening",
+  "model_name": "SmolVLM2-2.2B"
+ },
+ {
+  "pairs": 100,
+  "claims_total": 100,
+  "claims_per_pair": 1.0,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "supported": 69,
+   "reference_conflict": 6,
+   "contradicted": 25
+  },
+  "supported_claim_precision_strict": 0.69,
+  "supported_claim_precision_strict_ci95": [
+   0.6,
+   0.78
+  ],
+  "supported_claim_precision_in_scope": 0.69,
+  "supported_claim_precision_in_scope_ci95": [
+   0.6,
+   0.78
+  ],
+  "supported_claim_precision_located": 0.69,
+  "supported_claim_precision_located_ci95": [
+   0.6,
+   0.78
+  ],
+  "reference_fact_recall": 0.76,
+  "reference_fact_recall_ci95": [
+   0.6696,
+   0.8455
+  ],
+  "unchanged_pairs_clean": 40,
+  "no_change_false_alarm_rate": 0.225,
+  "changed_pairs_clean": 54,
+  "missed_change_rate": 0.2963,
+  "missed_change_explicit_rate": 0.2963,
+  "pair_change_accuracy": 0.734,
+  "location_checked": 38,
+  "location_supported": 38,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 6,
+  "text_metrics": {
+   "BLEU-1": 0.2458,
+   "BLEU-2": 0.113,
+   "BLEU-3": 0.0246,
+   "BLEU-4": 0.0,
+   "METEOR": 0.0912,
+   "ROUGE-L": 0.1785,
+   "CIDEr-D": 0.0426
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 0.0,
+  "warm_latency_median_s": 0.008,
+  "warm_latency_p95_s": 0.009,
+  "peak_gpu_memory_mb": null,
+  "run_id": "B0_CTRL_evidence_template_screening",
+  "role_model_id": "CTRL_evidence_template",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": "all",
+  "split": "screening",
+  "model_name": "Evidence template (pixel difference)"
+ },
+ {
+  "pairs": 100,
+  "claims_total": 100,
+  "claims_per_pair": 1.0,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "contradicted": 54,
+   "supported": 40,
+   "reference_conflict": 6
+  },
+  "supported_claim_precision_strict": 0.4,
+  "supported_claim_precision_strict_ci95": [
+   0.31,
+   0.49
+  ],
+  "supported_claim_precision_in_scope": 0.4,
+  "supported_claim_precision_in_scope_ci95": [
+   0.31,
+   0.49
+  ],
+  "supported_claim_precision_located": 0.4,
+  "supported_claim_precision_located_ci95": [
+   0.31,
+   0.49
+  ],
+  "reference_fact_recall": 0.32,
+  "reference_fact_recall_ci95": [
+   0.237,
+   0.4146
+  ],
+  "unchanged_pairs_clean": 40,
+  "no_change_false_alarm_rate": 0.0,
+  "changed_pairs_clean": 54,
+  "missed_change_rate": 1.0,
+  "missed_change_explicit_rate": 1.0,
+  "pair_change_accuracy": 0.4255,
+  "location_checked": 0,
+  "location_supported": 0,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 6,
+  "text_metrics": {
+   "BLEU-1": 0.3133,
+   "BLEU-2": 0.2905,
+   "BLEU-3": 0.2833,
+   "BLEU-4": 0.2798,
+   "METEOR": 0.1577,
+   "ROUGE-L": 0.465,
+   "CIDEr-D": 0.937
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 0.0,
+  "warm_latency_median_s": 0.0,
+  "warm_latency_p95_s": 0.0,
+  "peak_gpu_memory_mb": null,
+  "run_id": "B0_CTRL_constant_nochange_screening",
+  "role_model_id": "CTRL_constant_nochange",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": "all",
+  "split": "screening",
+  "model_name": "Constant \"there is no difference\""
+ },
+ {
+  "pairs": 50,
+  "claims_total": 59,
+  "claims_per_pair": 1.18,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "supported": 50,
+   "unverifiable": 7,
+   "reference_conflict": 2
+  },
+  "supported_claim_precision_strict": 0.8475,
+  "supported_claim_precision_strict_ci95": [
+   0.7619,
+   0.9273
+  ],
+  "supported_claim_precision_in_scope": 0.9615,
+  "supported_claim_precision_in_scope_ci95": [
+   0.9038,
+   1.0
+  ],
+  "supported_claim_precision_located": 0.8475,
+  "supported_claim_precision_located_ci95": [
+   0.7619,
+   0.9273
+  ],
+  "reference_fact_recall": 0.7937,
+  "reference_fact_recall_ci95": [
+   0.7143,
+   0.8793
+  ],
+  "unchanged_pairs_clean": 21,
+  "no_change_false_alarm_rate": 0.0,
+  "changed_pairs_clean": 27,
+  "missed_change_rate": 0.0741,
+  "missed_change_explicit_rate": 0.0,
+  "pair_change_accuracy": 0.9583,
+  "location_checked": 4,
+  "location_supported": 4,
+  "quantity_checked": 4,
+  "quantity_within_tolerance": 4,
+  "reference_conflict_pairs": 2,
+  "text_metrics": {
+   "BLEU-1": 0.9054,
+   "BLEU-2": 0.8354,
+   "BLEU-3": 0.7556,
+   "BLEU-4": 0.68,
+   "METEOR": 0.4339,
+   "ROUGE-L": 0.8002,
+   "CIDEr-D": 1.5482
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 18.32,
+  "warm_latency_median_s": 0.139,
+  "warm_latency_p95_s": 0.154,
+  "peak_gpu_memory_mb": 3661,
+  "run_id": "B0_C02_rscama_development_smoke+development+screening",
+  "role_model_id": "C02",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "development",
+   "development_smoke"
+  ],
+  "split": "development",
+  "model_name": "RSCaMa (specialist)"
+ },
+ {
+  "pairs": 50,
+  "claims_total": 59,
+  "claims_per_pair": 1.18,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "supported": 50,
+   "reference_conflict": 2,
+   "unverifiable": 5,
+   "contradicted": 2
+  },
+  "supported_claim_precision_strict": 0.8475,
+  "supported_claim_precision_strict_ci95": [
+   0.7541,
+   0.9322
+  ],
+  "supported_claim_precision_in_scope": 0.9259,
+  "supported_claim_precision_in_scope_ci95": [
+   0.8462,
+   0.9821
+  ],
+  "supported_claim_precision_located": 0.8475,
+  "supported_claim_precision_located_ci95": [
+   0.7541,
+   0.9322
+  ],
+  "reference_fact_recall": 0.7778,
+  "reference_fact_recall_ci95": [
+   0.6923,
+   0.8644
+  ],
+  "unchanged_pairs_clean": 21,
+  "no_change_false_alarm_rate": 0.0,
+  "changed_pairs_clean": 27,
+  "missed_change_rate": 0.0741,
+  "missed_change_explicit_rate": 0.0741,
+  "pair_change_accuracy": 0.9583,
+  "location_checked": 4,
+  "location_supported": 4,
+  "quantity_checked": 3,
+  "quantity_within_tolerance": 3,
+  "reference_conflict_pairs": 2,
+  "text_metrics": {
+   "BLEU-1": 0.8473,
+   "BLEU-2": 0.7653,
+   "BLEU-3": 0.6879,
+   "BLEU-4": 0.6183,
+   "METEOR": 0.3818,
+   "ROUGE-L": 0.7345,
+   "CIDEr-D": 1.3342
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": null,
+  "warm_latency_median_s": 0.16,
+  "warm_latency_p95_s": 0.172,
+  "peak_gpu_memory_mb": null,
+  "run_id": "B0_C02r20_rscama_retrained20_development_smoke+development+screening",
+  "role_model_id": "C02-r20",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "development",
+   "development_smoke"
+  ],
+  "split": "development",
+  "model_name": "RSCaMa retrained on 20% (ours)"
+ },
+ {
+  "pairs": 50,
+  "claims_total": 128,
+  "claims_per_pair": 2.56,
+  "pairs_with_zero_claims": 1,
+  "label_counts": {
+   "supported": 66,
+   "reference_conflict": 5,
+   "contradicted": 29,
+   "unverifiable": 25,
+   "direction_conflict": 3
+  },
+  "supported_claim_precision_strict": 0.5156,
+  "supported_claim_precision_strict_ci95": [
+   0.4286,
+   0.6119
+  ],
+  "supported_claim_precision_in_scope": 0.6408,
+  "supported_claim_precision_in_scope_ci95": [
+   0.5321,
+   0.75
+  ],
+  "supported_claim_precision_located": 0.5,
+  "supported_claim_precision_located_ci95": [
+   0.4122,
+   0.597
+  ],
+  "reference_fact_recall": 0.6349,
+  "reference_fact_recall_ci95": [
+   0.493,
+   0.7647
+  ],
+  "unchanged_pairs_clean": 21,
+  "no_change_false_alarm_rate": 0.381,
+  "changed_pairs_clean": 27,
+  "missed_change_rate": 0.2593,
+  "missed_change_explicit_rate": 0.1852,
+  "pair_change_accuracy": 0.6875,
+  "location_checked": 8,
+  "location_supported": 6,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 2,
+  "text_metrics": {
+   "BLEU-1": 0.1855,
+   "BLEU-2": 0.0881,
+   "BLEU-3": 0.0357,
+   "BLEU-4": 0.0123,
+   "METEOR": 0.1446,
+   "ROUGE-L": 0.1695,
+   "CIDEr-D": 0.0004
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 16.49,
+  "warm_latency_median_s": 7.605,
+  "warm_latency_p95_s": 9.569,
+  "peak_gpu_memory_mb": 9174,
+  "run_id": "B0_C04_qwen3vl_development_smoke+development+screening",
+  "role_model_id": "C04",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "development",
+   "development_smoke"
+  ],
+  "split": "development",
+  "model_name": "Qwen3-VL-4B"
+ },
+ {
+  "pairs": 50,
+  "claims_total": 101,
+  "claims_per_pair": 2.02,
+  "pairs_with_zero_claims": 2,
+  "label_counts": {
+   "supported": 33,
+   "reference_conflict": 4,
+   "unverifiable": 27,
+   "contradicted": 37
+  },
+  "supported_claim_precision_strict": 0.3267,
+  "supported_claim_precision_strict_ci95": [
+   0.2234,
+   0.44
+  ],
+  "supported_claim_precision_in_scope": 0.4459,
+  "supported_claim_precision_in_scope_ci95": [
+   0.3134,
+   0.5789
+  ],
+  "supported_claim_precision_located": 0.3267,
+  "supported_claim_precision_located_ci95": [
+   0.2234,
+   0.44
+  ],
+  "reference_fact_recall": 0.4762,
+  "reference_fact_recall_ci95": [
+   0.339,
+   0.6087
+  ],
+  "unchanged_pairs_clean": 21,
+  "no_change_false_alarm_rate": 0.8095,
+  "changed_pairs_clean": 27,
+  "missed_change_rate": 0.1481,
+  "missed_change_explicit_rate": 0.0,
+  "pair_change_accuracy": 0.5625,
+  "location_checked": 14,
+  "location_supported": 14,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 2,
+  "text_metrics": {
+   "BLEU-1": 0.1531,
+   "BLEU-2": 0.0703,
+   "BLEU-3": 0.019,
+   "BLEU-4": 0.0,
+   "METEOR": 0.1161,
+   "ROUGE-L": 0.158,
+   "CIDEr-D": 0.0003
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 13.79,
+  "warm_latency_median_s": 3.302,
+  "warm_latency_p95_s": 4.295,
+  "peak_gpu_memory_mb": 8664,
+  "run_id": "B0_C07_smolvlm2_development_smoke+development+screening",
+  "role_model_id": "C07",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": [
+   "development",
+   "development_smoke"
+  ],
+  "split": "development",
+  "model_name": "SmolVLM2-2.2B"
+ },
+ {
+  "pairs": 50,
+  "claims_total": 50,
+  "claims_per_pair": 1.0,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "supported": 41,
+   "contradicted": 7,
+   "reference_conflict": 2
+  },
+  "supported_claim_precision_strict": 0.82,
+  "supported_claim_precision_strict_ci95": [
+   0.7,
+   0.92
+  ],
+  "supported_claim_precision_in_scope": 0.82,
+  "supported_claim_precision_in_scope_ci95": [
+   0.7,
+   0.92
+  ],
+  "supported_claim_precision_located": 0.82,
+  "supported_claim_precision_located_ci95": [
+   0.7,
+   0.92
+  ],
+  "reference_fact_recall": 0.8889,
+  "reference_fact_recall_ci95": [
+   0.8,
+   0.9552
+  ],
+  "unchanged_pairs_clean": 21,
+  "no_change_false_alarm_rate": 0.1905,
+  "changed_pairs_clean": 27,
+  "missed_change_rate": 0.1111,
+  "missed_change_explicit_rate": 0.1111,
+  "pair_change_accuracy": 0.8542,
+  "location_checked": 24,
+  "location_supported": 24,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 2,
+  "text_metrics": {
+   "BLEU-1": 0.2442,
+   "BLEU-2": 0.1044,
+   "BLEU-3": 0.0286,
+   "BLEU-4": 0.0,
+   "METEOR": 0.084,
+   "ROUGE-L": 0.1929,
+   "CIDEr-D": 0.0454
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 0.0,
+  "warm_latency_median_s": 0.007,
+  "warm_latency_p95_s": 0.008,
+  "peak_gpu_memory_mb": null,
+  "run_id": "B0_CTRL_evidence_template_development_smoke+development",
+  "role_model_id": "CTRL_evidence_template",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": "all",
+  "split": "development",
+  "model_name": "Evidence template (pixel difference)"
+ },
+ {
+  "pairs": 50,
+  "claims_total": 50,
+  "claims_per_pair": 1.0,
+  "pairs_with_zero_claims": 0,
+  "label_counts": {
+   "contradicted": 27,
+   "supported": 21,
+   "reference_conflict": 2
+  },
+  "supported_claim_precision_strict": 0.42,
+  "supported_claim_precision_strict_ci95": [
+   0.28,
+   0.56
+  ],
+  "supported_claim_precision_in_scope": 0.42,
+  "supported_claim_precision_in_scope_ci95": [
+   0.28,
+   0.56
+  ],
+  "supported_claim_precision_located": 0.42,
+  "supported_claim_precision_located_ci95": [
+   0.28,
+   0.56
+  ],
+  "reference_fact_recall": 0.3333,
+  "reference_fact_recall_ci95": [
+   0.2121,
+   0.4754
+  ],
+  "unchanged_pairs_clean": 21,
+  "no_change_false_alarm_rate": 0.0,
+  "changed_pairs_clean": 27,
+  "missed_change_rate": 1.0,
+  "missed_change_explicit_rate": 1.0,
+  "pair_change_accuracy": 0.4375,
+  "location_checked": 0,
+  "location_supported": 0,
+  "quantity_checked": 0,
+  "quantity_within_tolerance": 0,
+  "reference_conflict_pairs": 2,
+  "text_metrics": {
+   "BLEU-1": 0.3147,
+   "BLEU-2": 0.2841,
+   "BLEU-3": 0.2745,
+   "BLEU-4": 0.2699,
+   "METEOR": 0.1711,
+   "ROUGE-L": 0.4895,
+   "CIDEr-D": 0.9518
+  },
+  "completion_rate": 1.0,
+  "cold_load_s": 0.0,
+  "warm_latency_median_s": 0.0,
+  "warm_latency_p95_s": 0.0,
+  "peak_gpu_memory_mb": null,
+  "run_id": "B0_CTRL_constant_nochange_development_smoke+development",
+  "role_model_id": "CTRL_constant_nochange",
+  "evaluator": {
+   "reference_check": "oracle mask + 5 reference captions, automatic",
+   "MIN_CLASS_PX": 50,
+   "CELL_MIN_FRAC": 0.02,
+   "parser": "rules-v3",
+   "bootstrap": "pair-level, 2000 resamples, seed 0"
+  },
+  "roles": "all",
+  "split": "development",
+  "model_name": "Constant \"there is no difference\""
+ }
+]
