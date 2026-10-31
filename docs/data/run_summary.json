@@ -1,0 +1,880 @@
+{
+  "executed_date": "2026-10-31",
+  "scope_note": "Complete discovered original MCI and SECOND-CC pairs; three convenience image probes; all published ChangeChat JSON variants (overlapping, not additive).",
+  "audit": {
+    "levir_mci": {
+      "records_audited": 10077,
+      "valid_records": 10077,
+      "invalid_records": 0,
+      "split_counts": {
+        "test": 1929,
+        "train": 6815,
+        "val": 1333
+      },
+      "mask_classes": {
+        "unchanged": 4978,
+        "both": 2709,
+        "building_only": 1708,
+        "road_only": 682
+      },
+      "label_pixels": {
+        "0": 604623160,
+        "1": 23751214,
+        "2": 32031898
+      },
+      "label_pixel_percent": {
+        "0": 91.55321286833569,
+        "1": 3.5964549409972895,
+        "2": 4.85033219066702
+      },
+      "mask_caption_conflicts": 511,
+      "identical_dates": 2,
+      "small_changes_below_one_percent": 408,
+      "caption_references": 50385,
+      "empty_caption_references": 0,
+      "shapes": {
+        "256x256": 10077
+      },
+      "numeric_summary": {
+        "changed_fraction": {
+          "0.0": 0.0,
+          "0.25": 0.0,
+          "0.5": 0.0010223388671875,
+          "0.75": 0.128082275390625,
+          "1.0": 0.86065673828125
+        },
+        "brightness_delta": {
+          "0.0": -131.863047769165,
+          "0.25": -42.23064584655761,
+          "0.5": -26.668731719970708,
+          "0.75": -11.789638812255859,
+          "1.0": 103.02474920654295
+        },
+        "pixel_mae": {
+          "0.0": 0.0,
+          "0.25": 35.51293436686198,
+          "0.5": 46.48011779785156,
+          "0.75": 57.3572031656901,
+          "1.0": 136.52396138509116
+        },
+        "caption_tokens_mean": {
+          "0.0": 4.8,
+          "0.25": 4.8,
+          "0.5": 4.8,
+          "0.75": 10.8,
+          "1.0": 22.4
+        },
+        "components_8": {
+          "0.0": 0.0,
+          "0.25": 0.0,
+          "0.5": 1.0,
+          "0.75": 5.0,
+          "1.0": 45.0
+        }
+      },
+      "outliers_iqr": {
+        "changed_fraction": {
+          "lower": -0.1921234130859375,
+          "upper": 0.3202056884765625,
+          "flagged": 892
+        },
+        "brightness_delta": {
+          "lower": -87.89215639801023,
+          "upper": 33.87187173919676,
+          "flagged": 195
+        },
+        "pixel_mae": {
+          "lower": 2.7465311686197893,
+          "upper": 90.12360636393228,
+          "flagged": 71
+        },
+        "caption_tokens_mean": {
+          "lower": -4.200000000000002,
+          "upper": 19.800000000000004,
+          "flagged": 2
+        },
+        "components_8": {
+          "lower": -7.5,
+          "upper": 12.5,
+          "flagged": 1305
+        }
+      },
+      "correlations": {
+        "changed_fraction": {
+          "changed_fraction": 1.0,
+          "brightness_delta": 0.18896577472296044,
+          "pixel_mae": 0.2513072644651516,
+          "caption_tokens_mean": 0.6511842850342981,
+          "components_8": 0.797691459091745
+        },
+        "brightness_delta": {
+          "changed_fraction": 0.18896577472296044,
+          "brightness_delta": 1.0,
+          "pixel_mae": -0.5710410886005018,
+          "caption_tokens_mean": 0.14000272959352592,
+          "components_8": 0.020010060844002354
+        },
+        "pixel_mae": {
+          "changed_fraction": 0.2513072644651516,
+          "brightness_delta": -0.5710410886005018,
+          "pixel_mae": 1.0,
+          "caption_tokens_mean": 0.2814626767969317,
+          "components_8": 0.21924461515553334
+        },
+        "caption_tokens_mean": {
+          "changed_fraction": 0.6511842850342981,
+          "brightness_delta": 0.14000272959352592,
+          "pixel_mae": 0.2814626767969317,
+          "caption_tokens_mean": 1.0,
+          "components_8": 0.5771442490921738
+        },
+        "components_8": {
+          "changed_fraction": 0.797691459091745,
+          "brightness_delta": 0.020010060844002354,
+          "pixel_mae": 0.21924461515553334,
+          "caption_tokens_mean": 0.5771442490921738,
+          "components_8": 1.0
+        }
+      },
+      "transition_pixels": {},
+      "status": "executed",
+      "source_path": "<local source; resolved by catalogue>",
+      "kind": "mci",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "expected_release": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "source_snapshot_sha256": "b377a1f5718789f26e4d47892c14983c51110b78c9c39765360996089ab020aa",
+      "records_discovered": 10077,
+      "missing_joins": 0,
+      "scope": "all discovered local records",
+      "licence_disposition": "Research-only handling; retain attribution/source terms; no raw imagery in Git",
+      "lexically_mixed_reference_pairs": 0,
+      "colour_copies_checked": 10077,
+      "distinct_caption_sets": 5039,
+      "largest_repeated_caption_set": 5039
+    },
+    "levir_cc": {
+      "status": "shared_image_alias",
+      "alias_of": "levir_mci",
+      "scope": "not counted as independent imagery"
+    },
+    "levir_cd": {
+      "status": "not_available_locally",
+      "scope": "not executed",
+      "source": "https://justchenhao.github.io/LEVIR/"
+    },
+    "levir_cd_plus": {
+      "records_audited": 8,
+      "valid_records": 8,
+      "invalid_records": 0,
+      "split_counts": {
+        "train": 8
+      },
+      "mask_classes": {
+        "changed": 7,
+        "unchanged": 1
+      },
+      "label_pixels": {
+        "0": 8100509,
+        "1": 288099
+      },
+      "label_pixel_percent": {
+        "0": 96.56559228897095,
+        "1": 3.4344077110290527
+      },
+      "mask_caption_conflicts": 0,
+      "identical_dates": 0,
+      "small_changes_below_one_percent": 2,
+      "caption_references": 0,
+      "empty_caption_references": 0,
+      "shapes": {
+        "1024x1024": 8
+      },
+      "numeric_summary": {
+        "changed_fraction": {
+          "0.0": 0.0,
+          "0.25": 0.0039031505584716797,
+          "0.5": 0.011646270751953125,
+          "0.75": 0.05008435249328613,
+          "1.0": 0.11333751678466797
+        },
+        "brightness_delta": {
+          "0.0": -43.99185489711762,
+          "0.25": -20.545192939233782,
+          "0.5": -17.975442332839965,
+          "0.75": -9.64641212739944,
+          "1.0": -1.2957778358459535
+        },
+        "pixel_mae": {
+          "0.0": 29.616929690043133,
+          "0.25": 34.79351941744486,
+          "0.5": 40.18456013997396,
+          "0.75": 45.784611781438194,
+          "1.0": 58.10856278737386
+        },
+        "components_8": {
+          "0.0": 0.0,
+          "0.25": 3.75,
+          "0.5": 13.0,
+          "0.75": 52.5,
+          "1.0": 196.0
+        }
+      },
+      "outliers_iqr": {
+        "changed_fraction": {
+          "lower": -0.06536865234375,
+          "upper": 0.11935615539550781,
+          "flagged": 0
+        },
+        "brightness_delta": {
+          "lower": -36.8933641569853,
+          "upper": 6.701759090352073,
+          "flagged": 1
+        },
+        "pixel_mae": {
+          "lower": 18.306880871454865,
+          "upper": 62.27125032742819,
+          "flagged": 0
+        },
+        "components_8": {
+          "lower": -69.375,
+          "upper": 125.625,
+          "flagged": 1
+        }
+      },
+      "correlations": {
+        "changed_fraction": {
+          "changed_fraction": 1.0,
+          "brightness_delta": -0.7355859195397,
+          "pixel_mae": 0.5653024001598856,
+          "components_8": 0.963676003876762
+        },
+        "brightness_delta": {
+          "changed_fraction": -0.7355859195397,
+          "brightness_delta": 1.0,
+          "pixel_mae": -0.4363055658401953,
+          "components_8": -0.8292743687426964
+        },
+        "pixel_mae": {
+          "changed_fraction": 0.5653024001598856,
+          "brightness_delta": -0.4363055658401953,
+          "pixel_mae": 1.0,
+          "components_8": 0.5634812957982478
+        },
+        "components_8": {
+          "changed_fraction": 0.963676003876762,
+          "brightness_delta": -0.8292743687426964,
+          "pixel_mae": 0.5634812957982478,
+          "components_8": 1.0
+        }
+      },
+      "transition_pixels": {},
+      "status": "executed",
+      "source_path": "<local source; resolved by catalogue>",
+      "kind": "binary",
+      "source_revision": "local_member_snapshot",
+      "expected_release": null,
+      "source_snapshot_sha256": "79834c430cfcc3e33624e949a1298abaeb6d9068cc2e3ba0bbf6bc66f4ad1675",
+      "records_discovered": 8,
+      "missing_joins": 0,
+      "scope": "convenience Drive probe; not a full-release estimate",
+      "licence_disposition": "Research-only handling; retain attribution/source terms; no raw imagery in Git",
+      "distinct_caption_sets": 0,
+      "largest_repeated_caption_set": 0
+    },
+    "s2looking": {
+      "records_audited": 5,
+      "valid_records": 5,
+      "invalid_records": 0,
+      "split_counts": {
+        "train": 5
+      },
+      "mask_classes": {
+        "changed": 5
+      },
+      "label_pixels": {
+        "0": 5211360,
+        "1": 31520
+      },
+      "label_pixel_percent": {
+        "0": 99.3988037109375,
+        "1": 0.6011962890625
+      },
+      "mask_caption_conflicts": 0,
+      "identical_dates": 0,
+      "small_changes_below_one_percent": 4,
+      "caption_references": 0,
+      "empty_caption_references": 0,
+      "shapes": {
+        "1024x1024": 5
+      },
+      "numeric_summary": {
+        "changed_fraction": {
+          "0.0": 0.0008535385131835938,
+          "0.25": 0.0044708251953125,
+          "0.5": 0.005301475524902344,
+          "0.75": 0.0054950714111328125,
+          "1.0": 0.01393890380859375
+        },
+        "brightness_delta": {
+          "0.0": -13.40435087642669,
+          "0.25": 9.660210405158992,
+          "0.5": 12.132965294075014,
+          "0.75": 23.194778479385384,
+          "1.0": 32.36051804199218
+        },
+        "pixel_mae": {
+          "0.0": 14.212597846984863,
+          "0.25": 15.61011823018392,
+          "0.5": 21.507884979248047,
+          "0.75": 22.953086853027344,
+          "1.0": 31.808180809020996
+        },
+        "components_8": {
+          "0.0": 3.0,
+          "0.25": 3.0,
+          "0.5": 4.0,
+          "0.75": 5.0,
+          "1.0": 8.0
+        }
+      },
+      "outliers_iqr": {
+        "changed_fraction": {
+          "lower": 0.0029344558715820312,
+          "upper": 0.007031440734863281,
+          "flagged": 2
+        },
+        "brightness_delta": {
+          "lower": -10.641641706180597,
+          "upper": 43.496630590724976,
+          "flagged": 1
+        },
+        "pixel_mae": {
+          "lower": 4.595665295918783,
+          "upper": 33.96753978729248,
+          "flagged": 0
+        },
+        "components_8": {
+          "lower": 0.0,
+          "upper": 8.0,
+          "flagged": 0
+        }
+      },
+      "correlations": {
+        "changed_fraction": {
+          "changed_fraction": 1.0,
+          "brightness_delta": -0.2209753589768572,
+          "pixel_mae": -0.1121348520293844,
+          "components_8": -0.1792051917319047
+        },
+        "brightness_delta": {
+          "changed_fraction": -0.2209753589768572,
+          "brightness_delta": 1.0,
+          "pixel_mae": 0.8169828836806452,
+          "components_8": -0.018841149683396414
+        },
+        "pixel_mae": {
+          "changed_fraction": -0.1121348520293844,
+          "brightness_delta": 0.8169828836806452,
+          "pixel_mae": 1.0,
+          "components_8": -0.3353124447746095
+        },
+        "components_8": {
+          "changed_fraction": -0.1792051917319047,
+          "brightness_delta": -0.018841149683396414,
+          "pixel_mae": -0.3353124447746095,
+          "components_8": 1.0
+        }
+      },
+      "transition_pixels": {},
+      "status": "executed",
+      "source_path": "<local source; resolved by catalogue>",
+      "kind": "directional_binary",
+      "source_revision": "local_member_snapshot",
+      "expected_release": null,
+      "source_snapshot_sha256": "d55ff665567f195f5c6aa7c39707486823ad78256922e22995263ce3f0f7ceef",
+      "records_discovered": 5,
+      "missing_joins": 0,
+      "scope": "convenience Drive probe; not a full-release estimate",
+      "licence_disposition": "Research-only handling; retain attribution/source terms; no raw imagery in Git",
+      "distinct_caption_sets": 0,
+      "largest_repeated_caption_set": 0
+    },
+    "sysu_cd": {
+      "records_audited": 8,
+      "valid_records": 8,
+      "invalid_records": 0,
+      "split_counts": {
+        "train": 8
+      },
+      "mask_classes": {
+        "changed": 8
+      },
+      "label_pixels": {
+        "0": 187368,
+        "1": 336920
+      },
+      "label_pixel_percent": {
+        "0": 35.73760986328125,
+        "1": 64.26239013671875
+      },
+      "mask_caption_conflicts": 0,
+      "identical_dates": 0,
+      "small_changes_below_one_percent": 0,
+      "caption_references": 0,
+      "empty_caption_references": 0,
+      "shapes": {
+        "256x256": 8
+      },
+      "numeric_summary": {
+        "changed_fraction": {
+          "0.0": 0.1141204833984375,
+          "0.25": 0.3314361572265625,
+          "0.5": 0.772247314453125,
+          "0.75": 0.9544639587402344,
+          "1.0": 1.0
+        },
+        "brightness_delta": {
+          "0.0": -18.55609011535644,
+          "0.25": -8.000063534545891,
+          "0.5": 38.465727404785156,
+          "0.75": 71.97183080673216,
+          "1.0": 80.77316510620116
+        },
+        "pixel_mae": {
+          "0.0": 51.56218973795573,
+          "0.25": 53.906341552734375,
+          "0.5": 65.87373352050781,
+          "0.75": 79.30389658610025,
+          "1.0": 86.20897928873698
+        },
+        "components_8": {
+          "0.0": 1.0,
+          "0.25": 1.0,
+          "0.5": 1.0,
+          "0.75": 1.0,
+          "1.0": 1.0
+        }
+      },
+      "outliers_iqr": {
+        "changed_fraction": {
+          "lower": -0.6031055450439453,
+          "upper": 1.8890056610107422,
+          "flagged": 0
+        },
+        "brightness_delta": {
+          "lower": -127.95790504646295,
+          "upper": 191.92967231864924,
+          "flagged": 0
+        },
+        "pixel_mae": {
+          "lower": 15.810009002685561,
+          "upper": 117.40022913614906,
+          "flagged": 0
+        },
+        "components_8": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "flagged": 0
+        }
+      },
+      "correlations": {
+        "changed_fraction": {
+          "changed_fraction": 1.0,
+          "brightness_delta": 0.9480718321535447,
+          "pixel_mae": 0.8649013023996223,
+          "components_8": null
+        },
+        "brightness_delta": {
+          "changed_fraction": 0.9480718321535447,
+          "brightness_delta": 1.0,
+          "pixel_mae": 0.970572341799516,
+          "components_8": null
+        },
+        "pixel_mae": {
+          "changed_fraction": 0.8649013023996223,
+          "brightness_delta": 0.970572341799516,
+          "pixel_mae": 1.0,
+          "components_8": null
+        },
+        "components_8": {
+          "changed_fraction": null,
+          "brightness_delta": null,
+          "pixel_mae": null,
+          "components_8": null
+        }
+      },
+      "transition_pixels": {},
+      "status": "executed",
+      "source_path": "<local source; resolved by catalogue>",
+      "kind": "binary",
+      "source_revision": "local_member_snapshot",
+      "expected_release": null,
+      "source_snapshot_sha256": "749792ae2e8dae6680071df340c10a59a49ade12191ddb900da3b206380ac589",
+      "records_discovered": 8,
+      "missing_joins": 0,
+      "scope": "convenience Drive probe; not a full-release estimate",
+      "licence_disposition": "Research-only handling; retain attribution/source terms; no raw imagery in Git",
+      "distinct_caption_sets": 0,
+      "largest_repeated_caption_set": 0
+    },
+    "second": {
+      "status": "not_available_locally",
+      "scope": "not executed",
+      "source": "https://captain-whu.github.io/SCD/"
+    },
+    "second_cc": {
+      "records_audited": 6041,
+      "valid_records": 6041,
+      "invalid_records": 0,
+      "split_counts": {
+        "test": 1227,
+        "train": 4219,
+        "val": 595
+      },
+      "mask_classes": {
+        "changed": 4435,
+        "unchanged": 1606
+      },
+      "label_pixels": {
+        "0": 330039483,
+        "1": 65863493
+      },
+      "label_pixel_percent": {
+        "0": 83.3637287434788,
+        "1": 16.636271256521194
+      },
+      "mask_caption_conflicts": 286,
+      "identical_dates": 0,
+      "small_changes_below_one_percent": 165,
+      "caption_references": 30159,
+      "empty_caption_references": 0,
+      "shapes": {
+        "256x256": 6041
+      },
+      "numeric_summary": {
+        "changed_fraction": {
+          "0.0": 0.0,
+          "0.25": 0.0,
+          "0.5": 0.08941650390625,
+          "0.75": 0.243988037109375,
+          "1.0": 1.0
+        },
+        "brightness_delta": {
+          "0.0": -102.841434576416,
+          "0.25": -14.394484423828132,
+          "0.5": -0.6120061614990391,
+          "0.75": 13.136027642822256,
+          "1.0": 112.7489961791992
+        },
+        "pixel_mae": {
+          "0.0": 9.058461507161459,
+          "0.25": 29.684850056966145,
+          "0.5": 35.910786946614586,
+          "0.75": 43.64849853515625,
+          "1.0": 110.70197041829427
+        },
+        "caption_tokens_mean": {
+          "0.0": 4.0,
+          "0.25": 4.8,
+          "0.5": 11.0,
+          "0.75": 13.6,
+          "1.0": 20.0
+        },
+        "components_8": {
+          "0.0": 0.0,
+          "0.25": 0.0,
+          "0.5": 3.0,
+          "0.75": 6.0,
+          "1.0": 99.0
+        }
+      },
+      "outliers_iqr": {
+        "changed_fraction": {
+          "lower": -0.3659820556640625,
+          "upper": 0.6099700927734375,
+          "flagged": 306
+        },
+        "brightness_delta": {
+          "lower": -55.690252523803714,
+          "upper": 54.43179574279784,
+          "flagged": 141
+        },
+        "pixel_mae": {
+          "lower": 8.739377339680988,
+          "upper": 64.5939712524414,
+          "flagged": 145
+        },
+        "caption_tokens_mean": {
+          "lower": -8.400000000000002,
+          "upper": 26.8,
+          "flagged": 0
+        },
+        "components_8": {
+          "lower": -9.0,
+          "upper": 15.0,
+          "flagged": 196
+        }
+      },
+      "correlations": {
+        "changed_fraction": {
+          "changed_fraction": 1.0,
+          "brightness_delta": 0.07446804146215412,
+          "pixel_mae": 0.39557232680830656,
+          "caption_tokens_mean": 0.37559283292517825,
+          "components_8": 0.3024362015597857
+        },
+        "brightness_delta": {
+          "changed_fraction": 0.07446804146215412,
+          "brightness_delta": 1.0,
+          "pixel_mae": 0.013944332818109955,
+          "caption_tokens_mean": 0.08923243403757385,
+          "components_8": 0.036652632683516796
+        },
+        "pixel_mae": {
+          "changed_fraction": 0.39557232680830656,
+          "brightness_delta": 0.013944332818109955,
+          "pixel_mae": 1.0,
+          "caption_tokens_mean": 0.2022999563445547,
+          "components_8": 0.07111738795045915
+        },
+        "caption_tokens_mean": {
+          "changed_fraction": 0.37559283292517825,
+          "brightness_delta": 0.08923243403757385,
+          "pixel_mae": 0.2022999563445547,
+          "caption_tokens_mean": 1.0,
+          "components_8": 0.3830770006850892
+        },
+        "components_8": {
+          "changed_fraction": 0.3024362015597857,
+          "brightness_delta": 0.036652632683516796,
+          "pixel_mae": 0.07111738795045915,
+          "caption_tokens_mean": 0.3830770006850892,
+          "components_8": 1.0
+        }
+      },
+      "transition_pixels": {
+        "3->2": 8739695,
+        "5->2": 8667951,
+        "0->0": 330039483,
+        "2->3": 6258212,
+        "3->4": 1986434,
+        "3->5": 7186350,
+        "4->5": 1470814,
+        "4->2": 3195650,
+        "4->3": 1447356,
+        "5->5": 3348213,
+        "5->4": 1307718,
+        "5->3": 5112599,
+        "2->4": 3445230,
+        "2->5": 11067211,
+        "1->2": 294648,
+        "1->4": 90851,
+        "1->5": 76614,
+        "4->1": 82098,
+        "2->1": 191171,
+        "6->5": 59156,
+        "6->2": 176629,
+        "1->3": 367508,
+        "2->6": 412504,
+        "5->6": 54920,
+        "3->6": 139880,
+        "3->1": 517042,
+        "5->1": 86151,
+        "6->3": 55751,
+        "4->6": 9395,
+        "6->4": 12951,
+        "1->6": 1292,
+        "6->1": 1499
+      },
+      "status": "executed",
+      "source_path": "<local source; resolved by catalogue>",
+      "kind": "semantic",
+      "source_revision": "zenodo:16937571",
+      "expected_release": "zenodo:16937571",
+      "source_snapshot_sha256": "1818c38c6feaa21c516bc0cb94c059c617c59e767a62fca4777ba7581de58231",
+      "records_discovered": 6041,
+      "missing_joins": 0,
+      "scope": "all discovered local records",
+      "licence_disposition": "Author Zenodo record CC BY 4.0; preserve source attribution",
+      "lexically_mixed_reference_pairs": 18,
+      "distinct_caption_sets": 4323,
+      "largest_repeated_caption_set": 1703
+    },
+    "whu_cdc": {
+      "status": "not_available_locally",
+      "scope": "not executed",
+      "source": "https://huggingface.co/datasets/hygge10111/RS-CDC"
+    },
+    "changechat": {
+      "records_audited": 193042,
+      "invalid_records": 0,
+      "malformed": {},
+      "unique_parent_pairs": 8744,
+      "split_counts": {
+        "test": 17172,
+        "train": 175870
+      },
+      "roles": {
+        "evaluation_references": 1929,
+        "instruction": 191113
+      },
+      "missing_parent_rows": 0,
+      "duplicate_instruction_rows": 81120,
+      "conversation_turns": {
+        "0": 1929,
+        "2": 175554,
+        "6": 15559
+      },
+      "annotation_file_rows": {
+        "changechat_105k_test.json": 1929,
+        "changechat_105k_test_binary.json": 1929,
+        "changechat_105k_test_count.json": 1929,
+        "changechat_105k_test_dialog.json": 1929,
+        "changechat_105k_test_loc.json": 1929,
+        "changechat_105k_test_open.json": 7527,
+        "changechat_105k_train.json": 87935,
+        "changechat_105k_train_loc.json": 87935
+      },
+      "status": "executed",
+      "source_path": "<local source; resolved by catalogue>",
+      "kind": "instructions",
+      "scope": "all local annotation files"
+    },
+    "hls": {
+      "status": "requires_geographic_query",
+      "scope": "not executed",
+      "source": "https://hls.gsfc.nasa.gov/data-products/"
+    }
+  },
+  "preparation": {
+    "source_records": 16139,
+    "prepared_records": 14470,
+    "excluded_records": 1669,
+    "by_dataset_split": {
+      "levir_mci/test": 1858,
+      "levir_mci/train": 6444,
+      "levir_mci/val": 1242,
+      "s2looking/train": 5,
+      "sysu_cd/train": 8,
+      "second_cc/test": 1142,
+      "second_cc/train": 3241,
+      "second_cc/val": 530
+    },
+    "exclusion_reasons_nonexclusive": {
+      "mask_caption_changeflag_conflict": 797,
+      "exact_frame_or_tile_cross_split": 404,
+      "exact_repeated_pair": 868,
+      "inconsistent_duplicate_targets": 12,
+      "perceptual_cross_split_candidate": 2
+    },
+    "duplicate_groups": 865,
+    "whole_changed_masks_lost_after_resize": 0,
+    "image_size": 256,
+    "tasks": {
+      "building_detection": {
+        "test": 1858,
+        "train": 6449,
+        "val": 1242
+      },
+      "road_detection": {
+        "test": 1858,
+        "train": 6444,
+        "val": 1242
+      },
+      "general_change_pretraining": {
+        "train": 8
+      },
+      "semantic_change": {
+        "test": 1142,
+        "train": 3241,
+        "val": 530
+      },
+      "captioning": {
+        "test": 3000,
+        "train": 9685,
+        "val": 1772
+      },
+      "instruction_tuning": {
+        "test": 14686,
+        "train": 83188
+      }
+    },
+    "manifest_sha256": {
+      "test.jsonl": "c64067e3034b34c667d46ee3a6f731317b1d5580cf80a489098e31e7976d61c9",
+      "test_inference.jsonl": "44518fd75f063371a538fbe98b7b6a49835b6be51941a24354422a5eefc017c2",
+      "train.jsonl": "9a8fafd3997fb4f467504b39224fbcd3ba4026861dd513e950618df5ace029c7",
+      "train_inference.jsonl": "84532e56526ef7be03238a315b6b8ad652b3bb4fb79ce66d3018588219dbfe3c",
+      "val.jsonl": "da6b9be66f99f1e5de39372830a6ecdcd995458628b36baa22edad73f9b3b715",
+      "val_inference.jsonl": "0665e8589c34b6d46d11c9ed9cc377bd365961f15b1d356d3ff8213bc4cc3f7f"
+    }
+  },
+  "loader_validation": {
+    "splits": {
+      "train": {
+        "records": 9698,
+        "records_verified": 9698,
+        "scope": "all retained records"
+      },
+      "val": {
+        "records": 1772,
+        "records_verified": 1772,
+        "scope": "all retained records"
+      },
+      "test": {
+        "records": 3000,
+        "records_verified": 3000,
+        "scope": "all retained records"
+      }
+    },
+    "reference_separation": "passed"
+  },
+  "notebooks": {
+    "01_EDA.ipynb": {
+      "code_cells": 11,
+      "executed_cells": 11,
+      "figure_outputs": 8,
+      "execution_errors": 0
+    },
+    "02_Preprocessing.ipynb": {
+      "code_cells": 9,
+      "executed_cells": 9,
+      "figure_outputs": 1,
+      "execution_errors": 0
+    },
+    "03_Data_Quality_Experiments.ipynb": {
+      "code_cells": 5,
+      "executed_cells": 5,
+      "figure_outputs": 2,
+      "execution_errors": 0
+    }
+  },
+  "environment": {
+    "python": "3.14.6",
+    "packages": {
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "scipy": "1.18.0",
+      "Pillow": "12.3.0",
+      "matplotlib": "3.11.0",
+      "nbclient": "0.11.0",
+      "nbformat": "5.10.4"
+    }
+  },
+  "implementation_sha256": {
+    "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/acquire.py": "361610c0a160af196043a919bab6b1cf3f850666417fb8df887b9be8433c2ed8",
+    "src/data/adapters.py": "0995a6e79187f7e7862ff0b46a67a6152efb706d50245a8931adb33c930dc327",
+    "src/data/audit.py": "d2b36b9cef38ce7de36fb85a0810e8f8299e8e147e0ccfc976ad7216d81dfcad",
+    "src/data/catalog.py": "8f79f962d5404385da09229a996ef596ce87fcbb999ae4354d9b9d54c1dde62e",
+    "src/data/cli.py": "41c8b3c0c26d103eba7de778452543d918c2f16b2cc8c2fb259fcc82dfc0982b",
+    "src/data/dataset.py": "c29efc21673ee5b50c383b7814031442d3e48242c11e05d4adb0f4e066d8bf62",
+    "src/data/plots.py": "f0ca5e6863a724945c4c9a60352dfa67fe081d2d5f7728153f76482aa674dae3",
+    "src/data/preprocess.py": "9c47e60efcfe612182013756bbbc1baa5015fdd4c9c427c28310c89732501c0f",
+    "src/data/storage.py": "a78fa03dfb7939ecd7b774fe45515941b1a66e54ea4d6e0e15a8a28053f00083",
+    "scripts/build_data_notebooks.py": "b36df0b88e215bef20d98ed1006b5a2e07f1cd88c2e8bbfebaf687b830985eeb",
+    "scripts/run_data_notebooks.py": "9ddc33f1197b8e37adbc6343e645b37aff0ed6474847e3bcc86ac3f278ee8d27",
+    "scripts/summarize_data_run.py": "2e9d358717023e951af17d2f5726a6de5a7df5f7def7243da1d268a90a5ab6ff",
+    "configs/datasets.yaml": "997dbc56a8b036c29f55c5f74b755753f028c3b8a03fc31e22053fca496bcc04",
+    "requirements-data.txt": "70f77e455319d98c9032cc1eee2f387c84940ecdb3b86e3603df00371b07af78"
+  }
+}

@@ -5,3 +5,5 @@
 - Continue authorised implementation, verification, commits and pushes without adding an unsolicited PR workflow.
 - Do not infer permission to merge an existing branch merely from the absence of a PR requirement. Respect the requested destination and any explicitly requested review process.
 - Keep proof-of-concept implementation and experiment artifacts under `POC/` unless instructed otherwise.
+
+- Use plain descriptive branch names such as `data-preparation`; do not introduce `feat/` or similar prefixes unless Shoaib explicitly requests them.

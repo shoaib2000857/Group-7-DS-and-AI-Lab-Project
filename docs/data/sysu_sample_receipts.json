@@ -1,0 +1,173 @@
+{
+  "sampling": "Convenience intersection of Drive listings; eight training pairs; not representative of the full release.",
+  "files": [
+    {
+      "id": "1pBf0ZNujYlBEovEaDn5-Lv52Mh398QKD",
+      "relative_path": "sysu_cd/train/time1/11587.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1pBf0ZNujYlBEovEaDn5-Lv52Mh398QKD/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1IGMKdi4X-beB9-FvaVhVJ3zwLs9ow7mj",
+      "relative_path": "sysu_cd/train/time1/11590.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1IGMKdi4X-beB9-FvaVhVJ3zwLs9ow7mj/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "162P8YFOSFjC0_GDbISrYJf1atf4TCNGX",
+      "relative_path": "sysu_cd/train/time1/11589.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/162P8YFOSFjC0_GDbISrYJf1atf4TCNGX/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "19caQfKNXpl280WKUdWqNdeXlcHzehZF5",
+      "relative_path": "sysu_cd/train/time1/11591.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/19caQfKNXpl280WKUdWqNdeXlcHzehZF5/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1RJoEEQ0IMFng2o65XqnSx1UyEzxu5qRi",
+      "relative_path": "sysu_cd/train/time1/11588.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1RJoEEQ0IMFng2o65XqnSx1UyEzxu5qRi/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1qzLX0RnFZPIY9pBfLjEkfIqJV8Qt6XV7",
+      "relative_path": "sysu_cd/train/time1/11592.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1qzLX0RnFZPIY9pBfLjEkfIqJV8Qt6XV7/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1v5jpPVzpqzJiXu3TpjkHDHTSmEbeBRy4",
+      "relative_path": "sysu_cd/train/time1/11593.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1v5jpPVzpqzJiXu3TpjkHDHTSmEbeBRy4/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1IKEvmgZeAYEhelBlIE64IW4gh5geCb_g",
+      "relative_path": "sysu_cd/train/time2/11587.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1IKEvmgZeAYEhelBlIE64IW4gh5geCb_g/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1mESWrjSEXzMeghvg6gydZVwDrstMBXiQ",
+      "relative_path": "sysu_cd/train/time1/11594.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1mESWrjSEXzMeghvg6gydZVwDrstMBXiQ/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1j9pC_76KLGu1KN7PcB7rRArYrsCY7RM2",
+      "relative_path": "sysu_cd/train/time2/11588.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1j9pC_76KLGu1KN7PcB7rRArYrsCY7RM2/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1k1nq_UTvxckFudEBOQ8GL1HqJt6RPhX_",
+      "relative_path": "sysu_cd/train/time2/11589.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1k1nq_UTvxckFudEBOQ8GL1HqJt6RPhX_/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1lf8qphsMw1aL9Z22tyjRjNExN_jv9bX0",
+      "relative_path": "sysu_cd/train/time2/11590.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1lf8qphsMw1aL9Z22tyjRjNExN_jv9bX0/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1x4U9hvj45qpNgkJXgaDZscqsKrWNaU7D",
+      "relative_path": "sysu_cd/train/time2/11591.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1x4U9hvj45qpNgkJXgaDZscqsKrWNaU7D/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1NTzvEl0nuw69jHA4ZDrZCmaoHcsI-Bfq",
+      "relative_path": "sysu_cd/train/time2/11592.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1NTzvEl0nuw69jHA4ZDrZCmaoHcsI-Bfq/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1KoNZGAPfGu1eSOuaOCTuZTbIMeYokdXx",
+      "relative_path": "sysu_cd/train/time2/11593.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1KoNZGAPfGu1eSOuaOCTuZTbIMeYokdXx/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1aSN1rSdRjmUIBTjLmsWE4vvXfGlFkrfC",
+      "relative_path": "sysu_cd/train/time2/11594.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1aSN1rSdRjmUIBTjLmsWE4vvXfGlFkrfC/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1xOAh2ir3Jtje-aHmXAubBEtqX6m0UreZ",
+      "relative_path": "sysu_cd/train/label/11588.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1xOAh2ir3Jtje-aHmXAubBEtqX6m0UreZ/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1ndvToxSE7ZpuSgGSQlZhBTYar78fkUpk",
+      "relative_path": "sysu_cd/train/label/11587.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1ndvToxSE7ZpuSgGSQlZhBTYar78fkUpk/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1TYPmfC-QaHrIbt-K1A6i6f5lwgNUCs9e",
+      "relative_path": "sysu_cd/train/label/11589.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1TYPmfC-QaHrIbt-K1A6i6f5lwgNUCs9e/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1AOkiU3VRc1E3weo1Q9p6qnEAj2AKBPoJ",
+      "relative_path": "sysu_cd/train/label/11590.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1AOkiU3VRc1E3weo1Q9p6qnEAj2AKBPoJ/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1w1DfWAbHi1uiFLNzGWr4u-CWrsNvkOHP",
+      "relative_path": "sysu_cd/train/label/11593.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1w1DfWAbHi1uiFLNzGWr4u-CWrsNvkOHP/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1VE8OwrsP8AdTqaetHjyFkU737PDBNbiN",
+      "relative_path": "sysu_cd/train/label/11592.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1VE8OwrsP8AdTqaetHjyFkU737PDBNbiN/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1q3F3eU4NtcKtJA9eBJoVGMi3MSLC6hPr",
+      "relative_path": "sysu_cd/train/label/11591.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1q3F3eU4NtcKtJA9eBJoVGMi3MSLC6hPr/view?usp=drivesdk",
+      "status": "downloaded"
+    },
+    {
+      "id": "1_i4PD3CeEO_Da8V0DKnUQRPhR45i10lV",
+      "relative_path": "sysu_cd/train/label/11594.png",
+      "dataset": "sysu_cd",
+      "source_url": "https://drive.google.com/file/d/1_i4PD3CeEO_Da8V0DKnUQRPhR45i10lV/view?usp=drivesdk",
+      "status": "downloaded"
+    }
+  ]
+}

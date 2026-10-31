@@ -8,6 +8,11 @@
 
 ---
 
+## Data preparation notebooks
+
+The executable [EDA, preprocessing and data-quality notebooks](notebooks/README.md) use the shared [data pipeline](docs/data/Pipeline.md). See the [component training-data plan](docs/data/Training_Data_Plan.md) and [recorded execution summary](docs/data/run_summary.json) for dataset scope and verified counts.
+
+
 ## 📋 Table of Contents
 1. [Project Overview](#-project-overview)
 2. [Problem Statement](#-problem-statement)

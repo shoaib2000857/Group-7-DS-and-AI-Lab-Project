@@ -1,0 +1,13 @@
+# Main data pipeline and executable notebooks (CPU-only; no model weights required)
+numpy>=1.26,<3
+pandas>=2.0,<4
+scipy>=1.10,<2
+Pillow>=10,<13
+matplotlib>=3.7,<4
+PyYAML>=6,<7
+requests>=2.31,<3
+nbformat>=5.9,<6
+nbclient>=0.10,<1
+nbconvert>=7.16,<8
+ipykernel>=6.25,<8
+pytest>=7.4,<10
