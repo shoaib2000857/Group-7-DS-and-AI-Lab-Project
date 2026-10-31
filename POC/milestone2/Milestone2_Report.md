@@ -48,7 +48,7 @@ For example, retained record **train_000010** links the matching A/B images, a m
 
 | Area | Recorded decision | Application |
 |---|---|---|
-| Source and rights | Retain author attribution and source-specific terms. The LEVIR-MCI card does not provide a separate blanket data licence; a code licence is not treated as an imagery licence. SECOND-CC is CC BY 4.0 [2,4]. | Research workflow; raw imagery remains local. The submission distributes code, identifiers, hashes and aggregate findings, without asserting commercial or redistribution rights. |
+| Source and rights | Retain author attribution and source-specific terms. The LEVIR-MCI card does not provide a separate blanket data licence; a code licence is not treated as an imagery licence. SECOND-CC is CC BY 4.0 [2,4]. | Research workflow; raw imagery remains local. The submission includes code, identifiers, hashes, aggregate findings and two attributed illustrative source pairs, without asserting blanket commercial or redistribution rights. |
 | Privacy and ethics | No owner identities or personal identifiers are required by the input schema. | Descriptions concern visible physical change; ownership, legality and causes are not inferred from imagery. No claim of complete privacy anonymity is made. |
 | Quality and provenance | Preserve original files; record conflicts and exclusion reasons. Pin the source revision and hash the acquired archive. | Labels are not silently corrected. The strict joint-task package excludes incompatible supervision while retaining the original release for traceability. |
 | Bias and reproducibility | Record geography, restricted mask classes, caption repetition and exact processing settings. | Findings apply to the inspected release and prepared cohort. Nominal source resolution does not establish per-tile measurement accuracy. |
@@ -71,11 +71,25 @@ Figure 1. Complete-release statistics, calculated from all 10,077 pairs. Pair cl
 
 <!-- PAGEBREAK -->
 
-### 5.1 Image variation, location and reference consistency
+### 5.1 Comparative EDA and sample annotations
+
+A full-release comparison of **10,077 LEVIR-MCI pairs** and **6,041 original SECOND-CC pairs** shows distinct change-area and illumination distributions. Annotated change occupies **8.45%** of MCI pixels and **16.64%** of SECOND-CC pixels; the latter includes a broader semantic label vocabulary. Median temporal luminance differences are **-26.67** and **-0.61**, respectively. These findings support source-specific reporting and preservation of each dataset's label meaning. The examples below show ordered inputs, source masks and one of the five source captions for each pair [2-5].
+
+![Full-release change-area and temporal brightness comparison](assets/eda_source_comparison.png)
+
+Figure 2. Distributions are normalised within each complete source release. SECOND-CC excludes the supplied augmented copies. Brightness difference is an image diagnostic, not a physical-change label.
+
+![Two LEVIR-MCI image pairs with source masks and reference captions](assets/eda_image_mask_captions.png)
+
+Figure 3. Building-change and road-change examples from the retained training partition. Display colours: white = background, red = building change, yellow = road change. Captions are supplied source references, not model predictions. Identifiers retain the original filenames; imagery and annotations are attributed to LEVIR-MCI/LEVIR-CC [2,3].
+
+<!-- PAGEBREAK -->
+
+### 5.2 Image variation, location and reference consistency
 
 ![Change-area distribution and image-relative location](assets/eda_geometry.png)
 
-Figure 2. Change-area distribution among changed source pairs and changed-pixel density across image regions. Top/left refer to image coordinates, not geographic north/west.
+Figure 4. Change-area distribution among changed source pairs and changed-pixel density across image regions. Top/left refer to image coordinates, not geographic north/west.
 
 Among changed masks, the median changed area is **12.60%**. Changes occur across the image, rather than only at its centre. Brightness differences also vary substantially: the median T2-minus-T1 luminance difference is **-26.67** on a 0-255 scale. Such differences are not themselves proof of physical change or poor registration.
 
@@ -134,7 +148,7 @@ The final strict primary package contains **9,544 pairs, 19,088 RGB inputs, 9,54
 
 ![Executed preparation and reference separation](assets/data_flow.png)
 
-Figure 3. The preparation links source files, quality decisions and fixed partitions to a verified loader. Evaluation references remain separate from image-only prediction records.
+Figure 5. The preparation links source files, quality decisions and fixed partitions to a verified loader. Evaluation references remain separate from image-only prediction records.
 
 All retained records passed hash, decoding and reference checks. Detector batches have image shape **B x 2 x 3 x 256 x 256** and target shape **B x 256 x 256**. Verified image-only inference records exclude targets and captions. Training uses the supplied loader without repeating cleaning, joins or splits.
 
@@ -174,7 +188,8 @@ The full-release audit produces reproducible primary data ready for detection an
 |---|---|---|
 | 29-30 October 2026 | Initial M2 preparation and technical review | Documented dataset roles, input contracts, mask limitations, reference separation and readiness evidence. |
 | 31 October 2026 | Expand EDA; resolve duplicates, conflicts and record-ID alignment | Completed full-release EDA, verified hashes, explicit exclusions, canonical records and loader checks. |
-| 31 October 2026 | Clarify labels, rights and report completion | Explained the actual mask encodings, five-caption structure and dataset dispositions; replaced preparation plans with measured findings and removed future-scope material. |
+| 31 October 2026 | Include concise comparative EDA and visual examples | Added full-release distribution comparisons and two retained image-mask-caption examples with source attribution and reproducible figure data. |
+| 31 October 2026 | Clarify labels, rights and report completion | Explained the actual mask encodings, five-caption structure and dataset dispositions; replaced preparation plans with measured findings. |
 
 ## Individual Contributions
 

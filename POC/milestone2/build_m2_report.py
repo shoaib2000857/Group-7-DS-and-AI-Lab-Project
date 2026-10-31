@@ -79,6 +79,9 @@ def prepare_assets():
     # EDA figures come from executed calculations, never hard-coded aggregates.
     import subprocess
     subprocess.run([sys.executable,str(ROOT/'scripts/eda_figures.py')],check=True)
+    # Added figures are versioned assets; regenerate them from the full audit when available.
+    if not all((ASSETS/name).exists() for name in ['eda_source_comparison.png','eda_image_mask_captions.png']):
+        subprocess.run([sys.executable,str(ROOT/'scripts/report_eda_examples.py')],check=True)
 
 
 def table(node,width):

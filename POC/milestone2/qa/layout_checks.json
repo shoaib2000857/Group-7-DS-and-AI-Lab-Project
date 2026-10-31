@@ -1,13 +1,13 @@
 {
-  "pages": 7,
-  "words_markdown": 2565,
+  "pages": 8,
+  "words_markdown": 2772,
   "text_bounds_issues": [],
   "sections_1_to_13_present": true,
   "unfilled_approval_fields_preserved": true,
   "no_todo_or_future_scope_prose": true,
-  "pdf_sha256": "671687456f44422bc72079bf162d30822c1a6e64561e165cb7ef343ba3a31950",
-  "md_sha256": "7077ddfc2b9e393b91b9de73187fe29d19142dfd633b55d61505ca78566af5b5",
-  "md_normalised_text_sha256": "7077ddfc2b9e393b91b9de73187fe29d19142dfd633b55d61505ca78566af5b5",
-  "md_windows_working_copy_sha256": "1ba4f57398be8251f205e1c5cecf891759c61ecc95aec077868fc411aaa660a2",
-  "markdown_hash_policy": "md_sha256 uses UTF-8 with LF, matching Git-normalised content; Windows working-copy hash is recorded separately."
+  "pdf_sha256": "c5908dccb6c6bd50ba00c2badd328389bfc851dcecbf6bbb71b021d10f8e916c",
+  "md_sha256": "8ea0cafe9be8fde11a779bd5fce2f43db9a84fd84e7e91ef7f8bb3ed7ffa6a68",
+  "added_eda_figures": 2,
+  "source_examples": 2,
+  "new_eda_page": 4
 }

@@ -2,6 +2,10 @@
 
 This log applies to `Milestone2_Report.md` and its generated PDF. The source versions before the 31 October revision are preserved in `sources/pre_31oct_revision/`. No entry represents a new approval or a new human annotation exercise.
 
+## 31 October 2026 - EDA illustrations
+
+Added one concise report page with normalised change-area and brightness distributions for 10,077 MCI and 6,041 original SECOND-CC pairs, plus two retained building/road image-mask-caption examples. Recorded source attribution, sample IDs and hashes; supplied a figure-generation script; renumbered figures and rebuilt matching PDF/Markdown in the approved theme. The report is eight pages. Existing primary handover counts and the separate transfer-evaluation cohort are unchanged.
+
 ## 31 October 2026 - M2 review incorporation
 
 | Review recommendation | Incorporated change | Evidence / report location |
@@ -11,7 +15,7 @@ This log applies to `Milestone2_Report.md` and its generated PDF. The source ver
 | Explain images, masks, colour labels and five captions clearly | Verified RGB storage of identical grayscale channels; recorded black/yellow/red mapping and class indices; added a real record and input/target shapes | Report sections 3, 5, 6; `DATA_DICTIONARY.md` |
 | Confirm duplicates and prevent train/test leakage | Used file and decoded-pixel SHA-256, unordered pair groups, a cross-split dHash screen and a deterministic exclusion policy. Checked that retained splits share no exact frames | `exact_duplicate_groups.json`, candidate/ledger files, `independent_checks.json` |
 | Resolve mask/caption conflicts and inconsistent pair identifiers | Quarantined conflicting joint supervision without changing source labels; wrote canonical dataset/split/filename records with shared references | Report sections 6-10; prepared manifests and exclusion ledger |
-| Explain the threshold and evaluation meaning | Identified 50 pixels as the earlier evaluator's setting, measured its sensitivity and retained small source-mask regions. Removed the caption-model metric discussion from the M2 narrative | Report section 5.1; detailed EDA threshold table |
+| Explain the threshold and evaluation meaning | Identified 50 pixels as the earlier evaluator's setting, measured its sensitivity and retained small source-mask regions. Removed the caption-model metric discussion from the M2 narrative | Report section 5.2; detailed EDA threshold table |
 | Clarify what the captioner sees during training and inference | Distinguished reference masks from predicted masks and isolated references from image-only inference records | Report section 7; loader reference-separation verification |
 | Establish usage dispositions and do not conflate licences | Captured author release statements; kept raw imagery local; separated SECOND-CC evaluation and excluded the unlicensed WHU caption mirror from governed training | Report sections 2, 4; `SOURCE_REGISTER.md` |
 | Produce a training-ready handover with final counts | Built a 9,544-pair strict package, checked every retained record through the loader, and recorded final split/class distributions | `handover_validation.json`, report sections 9-13 |
