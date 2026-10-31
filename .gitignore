@@ -80,3 +80,10 @@ outputs/logs/*
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Reproducible data-run working artifacts (not source datasets or tracked notebooks)
+outputs/data/
+outputs/notebook_previews/
+outputs/main_audit_console.txt
+outputs/main_prepare_console.txt
+outputs/main_verify_console.txt
