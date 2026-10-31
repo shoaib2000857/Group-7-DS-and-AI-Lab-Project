@@ -65,3 +65,5 @@ The SECOND-CC probe is complete: 100 seeded original validation pairs, 400 acqui
 ## Report EDA illustrations
 
 Section 5.1 adds a complete-release MCI/SECOND-CC distribution comparison and two retained MCI image-mask-caption examples. Source counts, sample identifiers, captions and image hashes are in `evidence/report_eda_examples.json`. Regenerate these assets with `python POC/milestone2/scripts/report_eda_examples.py` after executing the main data audit; `--audit-dir` accepts an alternative audit directory. The PDF builder reuses committed assets when the full local audit is absent.
+
+The PDF and Markdown report contain the technical narrative and references. Administrative revision, contribution and approval records are maintained separately in `DOCUMENT_CONTROL.md`.

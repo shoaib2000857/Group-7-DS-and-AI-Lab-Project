@@ -1,13 +1,14 @@
 {
   "pages": 8,
-  "words_markdown": 2772,
+  "words_markdown": 2513,
   "text_bounds_issues": [],
   "sections_1_to_13_present": true,
-  "unfilled_approval_fields_preserved": true,
   "no_todo_or_future_scope_prose": true,
-  "pdf_sha256": "c5908dccb6c6bd50ba00c2badd328389bfc851dcecbf6bbb71b021d10f8e916c",
-  "md_sha256": "8ea0cafe9be8fde11a779bd5fce2f43db9a84fd84e7e91ef7f8bb3ed7ffa6a68",
+  "pdf_sha256": "3b91efba6d0ee3c1afa867b8994006c61dde3d5cf1098a637a3be543af6d98cb",
+  "md_sha256": "9689366d3124a2dd522d92ba2e4afbc1ccce9c2319bbba20adea2a5955b6b013",
   "added_eda_figures": 2,
   "source_examples": 2,
-  "new_eda_page": 4
+  "new_eda_page": 4,
+  "administrative_sections_in_report": false,
+  "administrative_records_preserved_separately": true
 }

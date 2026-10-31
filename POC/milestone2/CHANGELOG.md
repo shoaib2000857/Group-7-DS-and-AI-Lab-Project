@@ -2,6 +2,10 @@
 
 This log applies to `Milestone2_Report.md` and its generated PDF. The source versions before the 31 October revision are preserved in `sources/pre_31oct_revision/`. No entry represents a new approval or a new human annotation exercise.
 
+## 1 November 2026 - report-only presentation
+
+Removed the document change log, individual contributions and team approval tables from both report formats at Shoaib's request. Preserved these administrative records separately in `DOCUMENT_CONTROL.md`; retained the team names on the cover.
+
 ## 31 October 2026 - EDA illustrations
 
 Added one concise report page with normalised change-area and brightness distributions for 10,077 MCI and 6,041 original SECOND-CC pairs, plus two retained building/road image-mask-caption examples. Recorded source attribution, sample IDs and hashes; supplied a figure-generation script; renumbered figures and rebuilt matching PDF/Markdown in the approved theme. The report is eight pages. Existing primary handover counts and the separate transfer-evaluation cohort are unchanged.

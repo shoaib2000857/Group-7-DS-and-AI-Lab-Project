@@ -163,7 +163,7 @@ Duplicate imagery, inconsistent supervision and label-vocabulary differences req
 | Prepared records | Separate train/validation/test manifests; image-only inference records; local source archive and reference store |
 | Quality evidence | Full per-pair profile, exact duplicate groups, candidate checks, exclusion ledger, summary statistics and loader validation |
 | Reproducible code | Source retrieval, full audit/preparation, dataset loader, figure generation and report builder |
-| Documentation | Detailed EDA, data dictionary, source/usage register, document change log and contribution record |
+| Documentation | Detailed EDA, data dictionary, source/usage register and preprocessing guidance |
 
 Raw data, prepared records, evidence and report outputs are separated. Versioned scripts and metadata reproduce the handover from the pinned release.
 
@@ -181,32 +181,3 @@ The full-release audit produces reproducible primary data ready for detection an
 4. Karaca, A. C. et al. (2025). *Robust Change Captioning in Remote Sensing: SECOND-CC Dataset and MModalCC Framework*. IEEE JSTARS. https://doi.org/10.1109/JSTARS.2025.3600613 ; author-linked dataset: https://doi.org/10.5281/zenodo.16937571
 5. Yang, K. et al. (2022). *Asymmetric Siamese Networks for Semantic Change Detection*. IEEE TGRS. SECOND label conventions: https://captain-whu.github.io/SCD/
 6. Ji, S., Wei, S. & Lu, M. (2019). *Fully Convolutional Networks for Multisource Building Extraction From an Open Aerial and Satellite Imagery Data Set*. IEEE TGRS. WHU imagery: https://gpcv.whu.edu.cn/data/building_dataset.html ; captioned mirror inspected: https://huggingface.co/datasets/hygge10111/RS-CDC
-
-## Document Change Log
-
-| Revision | Review point | Incorporated change |
-|---|---|---|
-| 29-30 October 2026 | Initial M2 preparation and technical review | Documented dataset roles, input contracts, mask limitations, reference separation and readiness evidence. |
-| 31 October 2026 | Expand EDA; resolve duplicates, conflicts and record-ID alignment | Completed full-release EDA, verified hashes, explicit exclusions, canonical records and loader checks. |
-| 31 October 2026 | Include concise comparative EDA and visual examples | Added full-release distribution comparisons and two retained image-mask-caption examples with source attribution and reproducible figure data. |
-| 31 October 2026 | Clarify labels, rights and report completion | Explained the actual mask encodings, five-caption structure and dataset dispositions; replaced preparation plans with measured findings. |
-
-## Individual Contributions
-
-| Team member | Milestone 2 contribution |
-|---|---|
-| Priyanshu Agarwal | Visual-evidence and claim-grounding input requirements from the approved design. |
-| Sarthak Saini | Detection input/target requirements; report review and evaluation discussion. |
-| Sujal Raj Pradhan | Captioning preparation, source audit, captioner experiments, transfer screens and initial draft. |
-| Shoaib SSM | Decision benchmarks; consolidated preparation/EDA, verified handover and report revision. |
-
-## Team Review and Approval
-
-Approval confirms review of this report and its findings.
-
-| Team member | Initials | Approval date | Signature / confirmation |
-|---|---|---|---|
-| Priyanshu Agarwal | PA |  |  |
-| Sarthak Saini | SS |  |  |
-| Sujal Raj Pradhan | SRP |  |  |
-| Shoaib SSM | SSSM |  |  |
