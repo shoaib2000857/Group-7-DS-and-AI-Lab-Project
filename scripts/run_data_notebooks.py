@@ -15,7 +15,7 @@ def main():
         with warnings.catch_warnings():
             warnings.simplefilter('ignore',DeprecationWarning)
             asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    names=sys.argv[1:] or ['01_EDA.ipynb','02_Preprocessing.ipynb','03_Data_Quality_Experiments.ipynb']
+    names=sys.argv[1:] or ['01_EDA.ipynb','02_Preprocessing.ipynb']
     result={}
     for name in names:
         path=ROOT/'notebooks'/name;nb=nbformat.read(path,as_version=4)

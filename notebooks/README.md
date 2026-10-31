@@ -4,7 +4,7 @@ Run these in order:
 
 1. `01_EDA.ipynb` - coverage, native dimensions, label/pixel distributions, small changes, missing joins, image variation, spatial density, duplicate/leakage evidence, outliers, correlations, semantic transitions and caption/instruction variants.
 2. `02_Preprocessing.ipynb` - deterministic exclusions, target conversion, fixed source partitions, task-specific manifests, complete loader checks and a real input batch.
-3. `03_Data_Quality_Experiments.ipynb` - resize sensitivity, explicitly synthetic brightness stress tests on a real image, paired transforms and caption safeguards.
+Exploratory resize/brightness/augmentation checks are kept separately under [`POC/data_quality/`](../POC/data_quality/README.md).
 
 These notebooks call the same modules under `src/data/` as the command-line pipeline. They are not separate copies of processing logic. Their saved tables and plots reflect an executed run; check the coverage table before interpreting a convenience probe as a complete release.
 
@@ -12,7 +12,7 @@ The existing model-experiment and evaluation placeholders are left available for
 
 ## Google Colab
 
-Open a notebook from the `data-preparation` branch. The setup cell can clone that branch into `/content/TerraWatch` and install `requirements-data.txt` when the repository is absent. Drive mounting is enabled automatically in Colab and requires your normal Google authorisation.
+Open a notebook from the `data-pipeline` branch. The setup cell can clone that branch into `/content/TerraWatch` and install `requirements-data.txt` when the repository is absent. Drive mounting is enabled automatically in Colab and requires your normal Google authorisation.
 
 The default data folder is `/content/drive/MyDrive/TerraWatch_Extracted`, based on the supplied collection. Set `DATA_ROOT` if your shortcut/mount has a different name. Dataset roots can be nested as in the inspected Drive collection; the catalogue lists the supported layouts. `TERRAWATCH_<DATASET_ID>` is an explicit path override, for example `TERRAWATCH_SECOND_CC`.
 

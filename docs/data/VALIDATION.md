@@ -19,8 +19,8 @@ Sources absent locally, the LEVIR-CC shared-image alias and query-dependent HLS 
 
 ## Verification
 
-- `python -m pytest tests/ -q --basetemp=outputs/data/tests-temp-03`: 16 passed.
-- All three notebooks executed top to bottom: 25 code cells, 11 figures, zero execution errors.
+- `python -m pytest tests/ -q --basetemp=outputs/data/tests-temp-03`: 16 passed. The isolated `data-pipeline` PR worktree also passed all 16 tests and notebook-generation/path checks.
+- The two main notebooks executed top to bottom: 20 code cells, nine figures, zero execution errors. The optional five-cell/two-figure experiment notebook and its execution receipt are retained under `POC/data_quality/`.
 - HTML exports opened in headless Edge: tables and embedded figures rendered; no document-wide horizontal overflow. Figure and page screenshots were inspected locally under ignored `outputs/notebook_previews/`.
 - SECOND-CC Drive upload: 26 archive parts, source attribution and parts manifest. Remote file sizes sum to the original archive size; the remote manifest matches the local manifest. Each remote part was not independently downloaded again. The reader verifies the reconstructed publisher checksum during audit.
 
