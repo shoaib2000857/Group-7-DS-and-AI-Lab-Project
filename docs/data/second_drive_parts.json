@@ -1,0 +1,139 @@
+{
+  "format": "terrawatch-split-zip-v1",
+  "original_name": "SECOND-CC-AUG.zip",
+  "original_size": 2539187782,
+  "source": "https://doi.org/10.5281/zenodo.16937571",
+  "publisher_checksum": "md5:ca930ddb819d68a797938b940d1711f1",
+  "parts": [
+    {
+      "name": "SECOND-CC-AUG.zip.part001",
+      "size": 100663296,
+      "sha256": "185cb8d3775f84c5ea5571af0f0048390db0559a963cc9d85a0da678f82b5805"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part002",
+      "size": 100663296,
+      "sha256": "84436a5351bf72dd8bc8e26d124d2e106ba6908907b9877b0e01468cc6aee415"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part003",
+      "size": 100663296,
+      "sha256": "2d12f79e05d5fcaba3016bd7a74fabcc3c6f03d191c7356a49d8c8e896f76e7e"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part004",
+      "size": 100663296,
+      "sha256": "beac06bd11c15870af5620c30810eb8e9117fc848c86dbe307eff9503f8bee25"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part005",
+      "size": 100663296,
+      "sha256": "8a705a358847878050c7d3d4872f638c7d6dbf05d0d7e3c8f9276700a11a900b"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part006",
+      "size": 100663296,
+      "sha256": "fb2b5af3aaf0b328da405acc8dabeb0b715aa8b6a78842b0576b29214d354c7f"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part007",
+      "size": 100663296,
+      "sha256": "3f1815e3b5ca044ef8dc0415ee8016406151a132b9803c6f7e592334f2cd5f77"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part008",
+      "size": 100663296,
+      "sha256": "a189070a53870bd11777b573e07a56a6faad0fe80c690d49bc39e154a726fe9b"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part009",
+      "size": 100663296,
+      "sha256": "6cce4718f5e20ccfd9afcf54a3bf117f28ab80e5760dffa49a9704ab6f73e473"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part010",
+      "size": 100663296,
+      "sha256": "d44acfbb4bf5a7cdd0e21230441df2364eb8aeb792f7669a65eb2da8a1749604"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part011",
+      "size": 100663296,
+      "sha256": "2d1a3639eb492e0912fc29cf578858fd93c402e0c4e8e0656b38c10c74ebb304"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part012",
+      "size": 100663296,
+      "sha256": "218ed7188e186c0aafa9844b133e36c71c964c182ee23c5eec5c603367760610"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part013",
+      "size": 100663296,
+      "sha256": "76089811b78e60d0b79d457d7080a3c30f6d7f898fa398c9f29d12a9cf1e0861"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part014",
+      "size": 100663296,
+      "sha256": "27b94b90f774b806071093414f2921b74988148f31d60b41de393ee7f6696196"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part015",
+      "size": 100663296,
+      "sha256": "d49a020e6e54fe401443c5d87d634473c900d8e0aeb48c91399f612b4da778ef"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part016",
+      "size": 100663296,
+      "sha256": "38538fd7118310b8933095e79f5ae6107b6921243320bb6ded613bd41043570f"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part017",
+      "size": 100663296,
+      "sha256": "79fffcc484f0eaa5f8767d19fc32411373f21691ca8d4c3f4e5fcfec42d9df8c"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part018",
+      "size": 100663296,
+      "sha256": "57f3d2ca742eee69e55f947a96803eacc52935aeda4f2608bbe2bb6b6440d324"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part019",
+      "size": 100663296,
+      "sha256": "7f6592bdfc051181bb2373698f9bed790ccaae96275e1af856dff288f75d4c9b"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part020",
+      "size": 100663296,
+      "sha256": "de28de5f94717499a3699e448f3147ff91005d13819aaf7166eeb717b42e8898"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part021",
+      "size": 100663296,
+      "sha256": "1003f32782bd989df042d35136603986aacabc0fee3e02c6ca2554682db4d64b"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part022",
+      "size": 100663296,
+      "sha256": "c829abc88b055f2e802a23c59f3e38c249d445c7984efdd56a75932318a8f78d"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part023",
+      "size": 100663296,
+      "sha256": "2f17bb3dd1b986d25e63578f8048c5120366128be9cc7c6151320cc30cb96589"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part024",
+      "size": 100663296,
+      "sha256": "ab1a4d50ba18697b6a24f06009271853cec01eb733adac3f7846720e09671aa0"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part025",
+      "size": 100663296,
+      "sha256": "c42f677b5e4f4fa340d1a14542feffbc4a4471157b6e3891fa8b714c9fabddde"
+    },
+    {
+      "name": "SECOND-CC-AUG.zip.part026",
+      "size": 22605382,
+      "sha256": "52d1a31f1be5e8321012b63e4b02445ad75024de354611447b1e98cff17ad759"
+    }
+  ]
+}

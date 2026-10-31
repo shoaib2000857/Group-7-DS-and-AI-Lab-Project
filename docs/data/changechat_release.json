@@ -1,0 +1,16 @@
+{
+  "revision": "2e467fccf34d24dfebff544858145ecb4c809acd",
+  "source": "https://huggingface.co/datasets/hlwu/changechat-105k",
+  "files": [
+    ".gitattributes",
+    "README.md",
+    "changechat_105k_test.json",
+    "changechat_105k_test_binary.json",
+    "changechat_105k_test_count.json",
+    "changechat_105k_test_dialog.json",
+    "changechat_105k_test_loc.json",
+    "changechat_105k_test_open.json",
+    "changechat_105k_train.json",
+    "changechat_105k_train_loc.json"
+  ]
+}

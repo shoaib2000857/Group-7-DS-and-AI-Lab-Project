@@ -1,0 +1,195 @@
+version: main-data-v1
+drive_root: /content/drive/MyDrive/TerraWatch_Extracted
+datasets:
+- id: levir_mci
+  kind: mci
+  paths:
+  - levir_mci.zip
+  - LEVIR-MCI-dataset
+  - levir_mci
+  source: https://huggingface.co/datasets/lcybuaa/LEVIR-MCI
+  supervised_classes:
+  - road_change
+  - building_change
+  training_eligible: true
+  image_family: levir_cc_mci
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+  revision: dff09c709999b5b1f1f1806024811c65a6b14dfe
+  archive_checksum: sha256:8f7d52298fa3ca32aec983e84addef80f61ad7d981c0ff97a92c5880c4b83e9d
+- id: levir_cc
+  kind: captions
+  paths:
+  - Levir-CC-dataset
+  - levir_cc
+  source: https://github.com/Chen-Yang-Liu/LEVIR-CC-Dataset
+  supervised_classes: []
+  training_eligible: true
+  image_family: levir_cc_mci
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+  alias_of: levir_mci
+- id: levir_cd
+  kind: binary
+  paths:
+  - LEVIR-CD
+  - levir_cd
+  - LEVIR-CD.zip
+  source: https://justchenhao.github.io/LEVIR/
+  supervised_classes:
+  - building_change
+  training_eligible: true
+  image_family: levir_building
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+- id: levir_cd_plus
+  kind: binary
+  paths:
+  - LEVIR-CD+/LEVIR-CD+
+  - LEVIR-CD+
+  - levir_cd_plus
+  - drive_samples/levir_cd_plus
+  source: https://github.com/S2Looking/Dataset
+  supervised_classes:
+  - building_change
+  training_eligible: true
+  image_family: levir_building
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+- id: s2looking
+  kind: directional_binary
+  paths:
+  - S2Looking/S2Looking
+  - S2Looking
+  - s2looking
+  - drive_samples/s2looking
+  source: https://github.com/S2Looking/Dataset
+  supervised_classes:
+  - building_change
+  - source_label1_mask
+  - source_label2_mask
+  training_eligible: true
+  image_family: s2looking
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+- id: sysu_cd
+  kind: binary
+  paths:
+  - SYSU-CD
+  - sysu_cd
+  - drive_samples/sysu_cd
+  source: https://github.com/liumency/SYSU-CD
+  supervised_classes:
+  - general_visible_change
+  training_eligible: true
+  image_family: sysu_cd
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+- id: second
+  kind: semantic
+  paths:
+  - second_dataset
+  - SECOND
+  - second
+  source: https://captain-whu.github.io/SCD/
+  supervised_classes:
+  - water
+  - ground
+  - low_vegetation
+  - trees
+  - buildings
+  - sports_fields
+  training_eligible: true
+  image_family: second
+  licence_disposition: Research-only handling; retain attribution/source terms; no
+    raw imagery in Git
+- id: second_cc
+  kind: semantic
+  paths:
+  - SECOND-CC-AUG.zip
+  - SECOND-CC/SECOND-CC-AUG.zip
+  - SECOND-CC/SECOND-CC-AUG.zip.parts.json
+  - SECOND-CC-AUG.zip.parts.json
+  - SECOND-CC
+  - SECOND-CC-AUG
+  - second_cc
+  - second_cc_probe
+  source: https://doi.org/10.5281/zenodo.16937571
+  supervised_classes:
+  - water
+  - ground
+  - low_vegetation
+  - trees
+  - buildings
+  - sports_fields
+  training_eligible: true
+  image_family: second
+  licence_disposition: Author Zenodo record CC BY 4.0; preserve source attribution
+  revision: zenodo:16937571
+  archive_checksum: md5:ca930ddb819d68a797938b940d1711f1
+- id: whu_cdc
+  kind: binary
+  paths:
+  - WHU-CDC
+  - whu_cdc
+  source: https://huggingface.co/datasets/hygge10111/RS-CDC
+  supervised_classes:
+  - building_change
+  training_eligible: false
+  image_family: whu_cdc
+  licence_disposition: Caption mirror has no established derivative licence; excluded
+    from training
+- id: changechat
+  kind: instructions
+  paths:
+  - ChangeChat-105k
+  - changechat
+  source: https://huggingface.co/datasets/hlwu/changechat-105k
+  supervised_classes: []
+  training_eligible: true
+  image_family: levir_cc_mci
+  licence_disposition: CC BY 4.0 annotations; underlying image terms remain separate
+  revision: 2e467fccf34d24dfebff544858145ecb4c809acd
+- id: hls
+  kind: context
+  paths:
+  - HLS
+  - hls
+  source: https://hls.gsfc.nasa.gov/data-products/
+  supervised_classes: []
+  training_eligible: false
+  image_family: hls
+  licence_disposition: Requires area, dates, product and cloud/quality selection;
+    30 m context is not building ground truth
+training_tasks:
+  building_detection:
+    datasets:
+    - levir_mci
+    - levir_cd
+    - levir_cd_plus
+    - s2looking
+    views:
+      levir_mci: mci_building
+  road_detection:
+    datasets:
+    - levir_mci
+    views:
+      levir_mci: mci_road
+  general_change_pretraining:
+    datasets:
+    - sysu_cd
+  semantic_change:
+    datasets:
+    - second
+    - second_cc
+    views:
+      second: semantic_pair
+      second_cc: semantic_pair
+  captioning:
+    datasets:
+    - levir_mci
+    - second_cc
+  instruction_tuning:
+    datasets:
+    - changechat
+    variant: changechat_105k_train.json
