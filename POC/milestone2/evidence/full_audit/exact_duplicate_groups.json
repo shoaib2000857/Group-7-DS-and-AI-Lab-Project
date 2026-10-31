@@ -1,0 +1,183 @@
+[
+  {
+    "kept_by_priority": "LEVIR-MCI/test/test_000141",
+    "members": [
+      "LEVIR-MCI/test/test_000141",
+      "LEVIR-MCI/train/train_000017"
+    ],
+    "same_mask": false,
+    "splits": [
+      "test",
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/test/test_000142",
+    "members": [
+      "LEVIR-MCI/test/test_000142",
+      "LEVIR-MCI/train/train_000018"
+    ],
+    "same_mask": true,
+    "splits": [
+      "test",
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/test/test_000143",
+    "members": [
+      "LEVIR-MCI/test/test_000143",
+      "LEVIR-MCI/train/train_000019"
+    ],
+    "same_mask": true,
+    "splits": [
+      "test",
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/test/test_000144",
+    "members": [
+      "LEVIR-MCI/test/test_000144",
+      "LEVIR-MCI/train/train_000020"
+    ],
+    "same_mask": true,
+    "splits": [
+      "test",
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/test/test_000292",
+    "members": [
+      "LEVIR-MCI/test/test_000292",
+      "LEVIR-MCI/train/train_001389"
+    ],
+    "same_mask": true,
+    "splits": [
+      "test",
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_000994",
+    "members": [
+      "LEVIR-MCI/train/train_000994",
+      "LEVIR-MCI/train/train_001391"
+    ],
+    "same_mask": false,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_000995",
+    "members": [
+      "LEVIR-MCI/train/train_000995",
+      "LEVIR-MCI/train/train_001392"
+    ],
+    "same_mask": false,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_000996",
+    "members": [
+      "LEVIR-MCI/train/train_000996",
+      "LEVIR-MCI/train/train_001405"
+    ],
+    "same_mask": false,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_001009",
+    "members": [
+      "LEVIR-MCI/train/train_001009",
+      "LEVIR-MCI/train/train_001406"
+    ],
+    "same_mask": false,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_001010",
+    "members": [
+      "LEVIR-MCI/train/train_001010",
+      "LEVIR-MCI/train/train_001407"
+    ],
+    "same_mask": false,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_005683",
+    "members": [
+      "LEVIR-MCI/train/train_005683",
+      "LEVIR-MCI/train/train_005697"
+    ],
+    "same_mask": true,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_005684",
+    "members": [
+      "LEVIR-MCI/train/train_005684",
+      "LEVIR-MCI/train/train_005698"
+    ],
+    "same_mask": true,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_005687",
+    "members": [
+      "LEVIR-MCI/train/train_005687",
+      "LEVIR-MCI/train/train_005701"
+    ],
+    "same_mask": true,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_005691",
+    "members": [
+      "LEVIR-MCI/train/train_005691",
+      "LEVIR-MCI/train/train_005705"
+    ],
+    "same_mask": true,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_005695",
+    "members": [
+      "LEVIR-MCI/train/train_005695",
+      "LEVIR-MCI/train/train_005709"
+    ],
+    "same_mask": true,
+    "splits": [
+      "train"
+    ]
+  },
+  {
+    "kept_by_priority": "LEVIR-MCI/train/train_005696",
+    "members": [
+      "LEVIR-MCI/train/train_005696",
+      "LEVIR-MCI/train/train_005710"
+    ],
+    "same_mask": true,
+    "splits": [
+      "train"
+    ]
+  }
+]

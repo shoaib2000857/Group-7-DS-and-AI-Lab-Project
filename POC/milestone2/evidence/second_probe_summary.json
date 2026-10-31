@@ -1,0 +1,22 @@
+{
+  "source": "https://zenodo.org/records/16937571/files/SECOND-CC-AUG.zip?download=1",
+  "licence": "CC-BY-4.0, Zenodo record 16937571",
+  "original_split_sizes": {
+    "train": 4219,
+    "test": 1227,
+    "val": 595
+  },
+  "augmented_and_original_records": 10855,
+  "selected_original_val_pairs": 100,
+  "selection_rule": "random.Random('42-ood-second_cc-val').sample(sorted original val,100)",
+  "selected_shapes": {
+    "[256, 256, 3]": 100
+  },
+  "building_positive_at_one_pixel": 65,
+  "building_positive_at_50_pixels": 63,
+  "source_changeflag_without_building": 9,
+  "cross_split_crc_candidate_groups_originals": 389,
+  "source_index_sha256": "e4a75ddd720039890dd4f41a14fce21e4d57b2a155da083d79d2ce52f6d5ad9c",
+  "manifest_sha256": "ce2bfb0ca937ac10b4bb9a0eb5f378454c80c46f8a728e1e84f0d17cddb5e02d",
+  "interpretation": "Evaluation only; original validation pairs. Building masks have narrower scope than source change captions. No new captioner or human annotation run."
+}

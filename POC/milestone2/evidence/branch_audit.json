@@ -1,0 +1,161 @@
+{
+  "branch": "origin/execution",
+  "commit": "230f3dc100a652f96f572d8fbe45aa42b4c961b3",
+  "files": [
+    {
+      "file": "POC/execution/.gitignore",
+      "same_content_as_existing": true,
+      "sha256": "adab6b354e8d3fdab51051bb9a3315f431eb1917f7bb76487f759fcd1ccfcad6"
+    },
+    {
+      "file": "POC/execution/README.md",
+      "same_content_as_existing": true,
+      "sha256": "9de2cd330db94ae04c23aefc6d187c64d054beef9a1835b30287799f6063c16c"
+    },
+    {
+      "file": "POC/execution/colab/rscama_colab.py",
+      "same_content_as_existing": true,
+      "sha256": "4795fe6738833bb3999424b26455b34aa2a4756008d7a8fcb89854f5c3153751"
+    },
+    {
+      "file": "POC/execution/colab/rscama_finetune.ipynb",
+      "same_content_as_existing": false,
+      "sha256": "f6bb7ce27a9d81a7aa7b4bdd51450955577a9d04b5d6345488c59cde70977d17"
+    },
+    {
+      "file": "POC/execution/outputs/b0_results.json",
+      "same_content_as_existing": true,
+      "sha256": "4ace2112268fa30fcbfffaf3010b2219677e29c7c486b9341579a596cd437783"
+    },
+    {
+      "file": "POC/execution/outputs/b0_results.md",
+      "same_content_as_existing": true,
+      "sha256": "16e7260766a95673ab3764b04bc8274e2e3c115d7ec2847fd020d10fc0ee36c2"
+    },
+    {
+      "file": "POC/execution/outputs/b0_results_ood_second_cc.json",
+      "same_content_as_existing": true,
+      "sha256": "e6fc64eecedb1351d09d79a09d7a7cfdebf24085001b605af50071ce3c0cfc76"
+    },
+    {
+      "file": "POC/execution/outputs/b0_results_ood_second_cc.md",
+      "same_content_as_existing": true,
+      "sha256": "2dbf7fb9ba0edb8f355098dfe1e8dcb1c50247df9c2645b947e085320e4ff95c"
+    },
+    {
+      "file": "POC/execution/outputs/b0_results_ood_whu_cdc.json",
+      "same_content_as_existing": true,
+      "sha256": "184b9b4bbed2b6939098cec77c1e653efddfa07557804b15ca52b9f1181a4a8a"
+    },
+    {
+      "file": "POC/execution/outputs/b0_results_ood_whu_cdc.md",
+      "same_content_as_existing": true,
+      "sha256": "95aff1ab96b8f6dfa80fde7384f33360c2c203fa5566b88fd0d4f8418b2063ab"
+    },
+    {
+      "file": "POC/execution/scripts/build_manifest.py",
+      "same_content_as_existing": true,
+      "sha256": "072c4f7cc3d7218f108446d73e311a4b9818f718f93d661f2e3518a4e8234601"
+    },
+    {
+      "file": "POC/execution/scripts/build_ood.py",
+      "same_content_as_existing": true,
+      "sha256": "248836dec84233e99352f4f6ae42ce8f17175659e60522c23246bc65817adb11"
+    },
+    {
+      "file": "POC/execution/scripts/caption_rscama.py",
+      "same_content_as_existing": true,
+      "sha256": "1c8d619fbd7c45abffe6bb9ab2a4dc40bc6a1603ad0e13e324c6355fc23e616a"
+    },
+    {
+      "file": "POC/execution/scripts/caption_vlm.py",
+      "same_content_as_existing": true,
+      "sha256": "b4b12e0e8690fd4c4e6a6f15f5d3ebf364c0931b1af13c3d2fbac351a7c10774"
+    },
+    {
+      "file": "POC/execution/scripts/claims.py",
+      "same_content_as_existing": true,
+      "sha256": "81347afeb2b0feffe04e7da5e73be1a2ef94b38d9d22a3c3f25added58ab72e2"
+    },
+    {
+      "file": "POC/execution/scripts/common.py",
+      "same_content_as_existing": true,
+      "sha256": "cd2bf6d20318c707aebfdfb057d0367b547eac7783b52f656177f971f31cc22a"
+    },
+    {
+      "file": "POC/execution/scripts/controls.py",
+      "same_content_as_existing": true,
+      "sha256": "1f61f59f25b241bb39679a099cf18bf975337a450b5d583eecbaae5080912682"
+    },
+    {
+      "file": "POC/execution/scripts/evaluate.py",
+      "same_content_as_existing": true,
+      "sha256": "962446f1ceffc363fb3bf4775727f4b033a77470306fae5a1965b9cec92cc3d3"
+    },
+    {
+      "file": "POC/execution/scripts/export_handoff.py",
+      "same_content_as_existing": false,
+      "sha256": "174f2d9d1320c831759b13fe6372d76f03e9f6af4fff64211978e1b1b4852e35"
+    },
+    {
+      "file": "POC/execution/scripts/export_story.py",
+      "same_content_as_existing": true,
+      "sha256": "35f8b805d5475084a8c7da5e6aa151c37cd2924d1db38bf6ed471f2aa6d802e9"
+    },
+    {
+      "file": "POC/execution/scripts/fetch_weights.sh",
+      "same_content_as_existing": true,
+      "sha256": "9d9d125a25d4b1d1e3057faba2e2e3569feaf25a57c9214090c831a6f58e8594"
+    },
+    {
+      "file": "POC/execution/scripts/finalise_records.py",
+      "same_content_as_existing": false,
+      "sha256": "687c70269a5c79410a4c950bfcd7345f31250a3c1ff5780766170cc08c288bab"
+    },
+    {
+      "file": "POC/execution/scripts/import_colab.py",
+      "same_content_as_existing": true,
+      "sha256": "3f802d80291c0f6d34fa31968406dadf0532eb959f5a215d3a7d0c526bf979df"
+    },
+    {
+      "file": "POC/execution/scripts/make_audit_packet.py",
+      "same_content_as_existing": true,
+      "sha256": "54efbd9a911972946fa1dcdd89a7848cbdf8774101a46e8d09318099415c1079"
+    },
+    {
+      "file": "POC/execution/scripts/make_colab_notebook.py",
+      "same_content_as_existing": false,
+      "sha256": "ebca6285329a3bb0e861cce75e816ac260153956851fa39cbd2a18ecae0c7dc2"
+    },
+    {
+      "file": "POC/execution/scripts/remote_zip.py",
+      "same_content_as_existing": true,
+      "sha256": "ef60341e8593b21c88e7a94cf94956f97c64ef15ee869045a1f467ca721322da"
+    },
+    {
+      "file": "POC/execution/scripts/summarise.py",
+      "same_content_as_existing": true,
+      "sha256": "d98f61322087bd1be0b51949f3fc80a87b54f021151bada8d24d3169f3ec67d4"
+    },
+    {
+      "file": "POC/execution/story/index.html",
+      "same_content_as_existing": true,
+      "sha256": "4f71f40a0c0eb88d8feb697a238f0ae6fc81c2647eee7a66e51baea3a4323e0c"
+    },
+    {
+      "file": "POC/execution/tests/test_claims.py",
+      "same_content_as_existing": true,
+      "sha256": "901387043b1559413c615893fefb96b84f40390da4019ce5284f87c271665ef9"
+    },
+    {
+      "file": "POC/execution/tests/test_evaluate.py",
+      "same_content_as_existing": true,
+      "sha256": "6a98f5ecff56af3cc897070118fefaa5f04258ccc418e63686ff444231b095e5"
+    },
+    {
+      "file": "POC/execution/tests/test_rscama_shim.py",
+      "same_content_as_existing": true,
+      "sha256": "28c05326918dfb8f7431b516903aef938e8b0ebfa109deb2ef1f8e3b6f1dd7b6"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "train": {
+    "records_verified": 6444,
+    "batch_images_shape": [
+      4,
+      2,
+      3,
+      256,
+      256
+    ],
+    "batch_target_shape": [
+      4,
+      256,
+      256
+    ],
+    "hash_and_decode_check": "passed",
+    "inference_reference_separation": "passed"
+  },
+  "val": {
+    "records_verified": 1242,
+    "batch_images_shape": [
+      4,
+      2,
+      3,
+      256,
+      256
+    ],
+    "batch_target_shape": [
+      4,
+      256,
+      256
+    ],
+    "hash_and_decode_check": "passed",
+    "inference_reference_separation": "passed"
+  },
+  "test": {
+    "records_verified": 1858,
+    "batch_images_shape": [
+      4,
+      2,
+      3,
+      256,
+      256
+    ],
+    "batch_target_shape": [
+      4,
+      256,
+      256
+    ],
+    "hash_and_decode_check": "passed",
+    "inference_reference_separation": "passed"
+  }
+}

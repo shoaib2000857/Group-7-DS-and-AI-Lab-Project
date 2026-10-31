@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-29",
+  "reviewed": "2026-10-31",
   "provided_inputs": [
     {
       "source_filename": "Milestone2_Report.md",
@@ -15,5 +15,9 @@
     }
   ],
   "captioning_snapshot": "dc8f3cee62e44ab89dfa0f8f04a6299fc05d258d",
-  "figures": "Provided 150-pair preparation-audit aggregates; no new data collection"
+  "figures": "Executed 31 October full LEVIR-MCI audit, all 10,077 source pairs; strict cohort 9,544",
+  "figures_29oct_original": "Provided 150-pair preparation-audit aggregates; no new data collection",
+  "current_audit": "full_audit/summary.json",
+  "current_loader_validation": "full_audit/handover_validation.json",
+  "branch_review": "branch_audit.json"
 }

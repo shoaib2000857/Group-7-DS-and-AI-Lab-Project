@@ -1,3 +1,7 @@
-qa/
+data/
+tmp/
 __pycache__/
 *.log
+
+qa/*
+!qa/layout_checks.json

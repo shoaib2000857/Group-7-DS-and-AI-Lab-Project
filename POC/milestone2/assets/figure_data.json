@@ -1,14 +1,32 @@
 {
-  "source": "Provided M2 preparation audit, 150 pairs; not a full-release estimate",
-  "mask_pairs": {
-    "no_labelled_change": 65,
-    "building_only": 28,
-    "road_only": 11,
-    "both": 46
+  "source": "Executed full-release audit",
+  "source_pairs": 10077,
+  "mask_classes": {
+    "unchanged": 4978,
+    "both": 2709,
+    "building_only": 1708,
+    "road_only": 682
   },
   "pixel_percent": {
-    "background": 90.3,
-    "building_change": 5.5,
-    "road_change": 4.2
-  }
+    "background": 91.55321286833569,
+    "building": 4.85033219066702,
+    "road": 3.5964549409972895
+  },
+  "grid_density_percent": [
+    [
+      8.494221321138214,
+      8.59743993140642,
+      8.398972236623417
+    ],
+    [
+      8.419295908508587,
+      8.550838131165115,
+      8.32554039776077
+    ],
+    [
+      8.392409907460841,
+      8.499539016699442,
+      8.34145797085624
+    ]
+  ]
 }

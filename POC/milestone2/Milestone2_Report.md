@@ -13,159 +13,185 @@
 | Sujal Raj Pradhan | 23f2004759@ds.study.iitm.ac.in | SujalPradhan |
 | Shoaib SSM | 24f2000857@ds.study.iitm.ac.in | shoaib2000857 |
 
-## 1. Dataset Selection and Sources
+## 1. Introduction
 
-TerraWatch aims to describe visible building and road changes between two satellite images and identify statements that lack supporting evidence. Milestone 2 prepares the images, labels, reference captions and split records needed for that pipeline. The work covers source identification, quality assessment, preprocessing, leakage checks and reproducible model inputs, as required by the course [1].
+TerraWatch analyses two images of the same location to detect visible building and road changes, describe them in natural language and check whether the descriptions are supported by the images. Milestone 2 establishes the data foundation: identified sources, verified image-label joins, exploratory analysis, consistent target formats and reproducible training, validation and test records [1].
 
-**Primary dataset.** LEVIR-MCI supplies paired RGB images, building/road change masks and five reference captions for each pair [2,3]. It supports detection and description on the same imagery, avoiding the need to join unrelated image collections. LEVIR-CC provides its caption annotations and is not an independent transfer dataset.
+The prepared primary package contains **9,544 image pairs**, each with a categorical change mask and five reference captions. The preparation is supported by an audit of all **10,077 source pairs** and a loader check of every retained record. Dataset readiness is distinguished from trained-model accuracy.
 
-| Dataset and source | Ownership and format | Role and usage constraints |
+## 2. Dataset Identification
+
+| Dataset | Purpose and selection | Source and disposition |
 |---|---|---|
-| LEVIR-MCI / LEVIR-CC [2,3] | Liu et al.; Google Earth imagery, paired PNGs, change masks and caption JSON | Primary development and training source. Dataset-specific permission is not explicit on the inspected release pages; the code's academic-use statement is not treated as a data licence. No raw imagery is redistributed. |
-| WHU-CDC [4] | Captioned derivative of WHU building-change imagery; RGB pairs, binary masks and caption JSON | Provisional transfer probe. The acquired copy is a third-party upload; caption provenance, release identity and usage terms require confirmation before final reporting. |
-| SECOND-CC [5,6] | Karaca et al.; paired RGB images, semantic change labels and captions derived from SECOND | Supplementary transfer probe. The author-linked Zenodo record specifies CC BY 4.0; attribution and underlying source terms are retained. |
+| LEVIR-MCI / LEVIR-CC [2,3] | Primary paired imagery, building/road masks and five captions on the same records. Supports detection and description without joining unrelated collections. | Author-linked Hugging Face release. LEVIR-CC supplies the captions; it is not an independent dataset added to the training total. |
+| SECOND-CC [4,5] | Transfer evaluation with different imagery and semantic change annotations. Tests whether behaviour observed on LEVIR transfers to another source. | Author-linked Zenodo release, CC BY 4.0. Kept separate from primary training and from its augmented copies. |
+| WHU-CDC [6] | Building-change transfer candidate examined in the earlier experiments. | The inspected captioned mirror has no stated derivative licence. Excluded from the governed training package; historical screening is kept separate. |
 
-### 1.1 Primary dataset characteristics
+LEVIR-CD and S2Looking were considered for detection-only work. LEVIR-MCI was selected for the shared package because it provides both masks and captions. Supplementary datasets are not pooled into a claim of universal robustness.
 
-LEVIR-MCI contains 10,077 image pairs and 50,385 captions. Images are 256 x 256 pixels; the source describes nominal 0.5 m imagery from Texas, USA [2,3]. Exact dates, coordinate reference systems and tile-level spatial metadata are not supplied consistently, so they remain unknown in the manifest.
+## 3. Dataset Description and Schema
 
-| Official split | Image pairs | Changed pairs | Reference captions |
-|---|---:|---:|---:|
-| Training | 6,815 | 3,407 | 34,075 |
-| Validation | 1,333 | 667 | 6,665 |
-| Test | 1,929 | 964 | 9,645 |
-| **Total** | **10,077** | **5,038** | **50,385** |
+The primary release contains 10,077 pairs and 50,385 captions. Each pair consists of an earlier RGB image, a later RGB image, a mask and five separate descriptions. All input images are **256 x 256 pixels**. The source describes nominal 0.5 m imagery from Texas, USA [2,3]. Per-tile dates and geographic coordinates are absent from the acquired record schema; they are stored as null, not estimated.
 
-The primary mask encoding is **0: background; 128: road change; 255: building change**. Caption references can describe vegetation and other content outside these mask classes. A missing class label therefore cannot establish that a visible change is false.
+| Record group | Representation | Meaning |
+|---|---|---|
+| Identity and inputs | Dataset/split/filename key; two RGB PNGs | One ordered temporal pair; input shape 2 x 256 x 256 x 3 |
+| Detection target | Categorical PNG; 256 x 256 after lossless channel reduction | 0 = background, 128 = road change, 255 = building change |
+| Description target | Five caption strings and source IDs in JSON | Alternative reference descriptions, not five additional image pairs |
+| Provenance | Revision, archive paths, SHA-256 hashes and exclusion ledger | Reproducible joins, source verification and split membership |
 
-### 1.2 Supplementary label alignment
-
-WHU-CDC is treated as building-only supervision. For SECOND-CC, the prepared building mask uses building-category pixels in its semantic **change** annotations; the underlying SECOND convention marks unchanged areas separately [6]. This mapping must not be applied to arbitrary full-scene land-cover maps, where building presence does not imply change. Road and vegetation claims remain outside this automatic building-only check. Results from the three datasets are reported separately, without pooling their training labels.
+For example, retained record **train_000010** links the matching A/B images, a mask containing both change classes and five captions. One reference reads: "some buildings appear at the bottom of the scene." The complete record example is included in the data dictionary.
 
 <!-- PAGEBREAK -->
 
-## 2. Preparation and Model-Input Alignment
+## 4. Data Governance
 
-Preparation preserves the original temporal order: T1 is the earlier image and T2 the later image. Archive records are joined by dataset, official split and filename; images and labels are checked before they enter a model. A shared record carries source identifiers, paths, dimensions, label ontology, split membership and SHA-256 hashes.
-
-![Data preparation and evidence separation](assets/data_flow.png)
-
-Figure 1. A shared pair record links model inputs to evaluation references. Reference masks and captions are kept outside prediction requests.
-
-### 2.1 Image and label processing
-
-- **Pair validation:** check that both images and the corresponding label exist, decode correctly and have compatible dimensions. Store hashes of acquired files so later runs can detect substitutions or corruption.
-- **Geometry:** preserve release alignment and original coordinates. Any future crop, resize or registration step must record its transform and valid overlap; visual regions use the original T1 frame.
-- **Model preprocessing:** use each checkpoint's documented image normalisation and input size. Keep unmodified source images for inspection. Resize categorical masks with nearest-neighbour interpolation.
-- **Unknown metadata:** do not infer dates, geographic area or object heights from pixels. Nominal source resolution is distinguished from verified per-image ground sampling distance.
-
-### 2.2 Connections between subtasks
-
-| Subtask | Prepared input | Supervision or evaluation reference |
+| Area | Recorded decision | Application |
 |---|---|---|
-| Change detection | Ordered T1/T2 image tensors | Building/road change mask; explicit valid pixels |
-| Change description | Both images; predicted regions when available | Five reference captions for text comparison |
-| Visual inspection | Matched image regions and surrounding context | Original images and independently reviewed claims |
-| Claim decisions | Parsed claim, predicted evidence and uncertainty; images where supported | Separate accept/reject/defer targets, with annotation provenance |
+| Source and rights | Retain author attribution and source-specific terms. The LEVIR-MCI card does not provide a separate blanket data licence; a code licence is not treated as an imagery licence. SECOND-CC is CC BY 4.0 [2,4]. | Research workflow; raw imagery remains local. The submission distributes code, identifiers, hashes and aggregate findings, without asserting commercial or redistribution rights. |
+| Privacy and ethics | No owner identities or personal identifiers are required by the input schema. | Descriptions concern visible physical change; ownership, legality and causes are not inferred from imagery. No claim of complete privacy anonymity is made. |
+| Quality and provenance | Preserve original files; record conflicts and exclusion reasons. Pin the source revision and hash the acquired archive. | Labels are not silently corrected. The strict joint-task package excludes incompatible supervision while retaining the original release for traceability. |
+| Bias and reproducibility | Record geography, restricted mask classes, caption repetition and exact processing settings. | Findings apply to the inspected release and prepared cohort. Nominal source resolution does not establish per-tile measurement accuracy. |
 
-The captioning package and decision notebook currently use different pilot manifests and pair-ID formats. Before integrated comparisons, both must map to the same canonical dataset/split/filename key. A common source dataset alone does not guarantee aligned experimental samples.
+## 5. Exploratory Data Analysis
+
+The audit decoded **40,308 image/label files**: A, B, categorical label and colour label for every source pair. There were **no missing joins, invalid image dimensions, empty captions or duplicate caption keys**. All masks use the expected class values. The stored grayscale label has three identical channels; the colour copy maps background to black, road change to yellow and building change to red. These representations agree pixel by pixel.
+
+![Full-release image-pair and pixel-class distributions](assets/eda_classes.png)
+
+Figure 1. Complete-release statistics, calculated from all 10,077 pairs. Pair classes and pixel shares use different denominators.
+
+| Finding | Audit result | Interpretation |
+|---|---|---|
+| Mask-level balance | 4,978 unchanged; 1,708 building only; 682 road only; 2,709 both | Report class-specific and unchanged-case behaviour. |
+| Pixel imbalance | 91.55% background; 4.85% building; 3.60% road | Overall pixel accuracy alone can hide missed changes. |
+| Small changes | 408 of 5,099 changed masks contain under 1% changed pixels | Preserve spatial detail and retain genuine small regions. |
+| Mask/caption flag conflicts | 511 of 10,077 pairs (5.07%) | Exclude from the strict joint-task cohort without declaring either annotation automatically correct. |
+| Caption repetition | All 5,039 caption-flagged unchanged pairs reuse one five-sentence set | Text similarity alone can reward generic no-change descriptions. |
 
 <!-- PAGEBREAK -->
 
-## 3. Dataset Splits and Leakage Controls
+### 5.1 Image variation, location and reference consistency
 
-The captioning preparation preserves official split membership and uses seeded sampling within each split. The initial smoke set is contained in the development set. Training and checkpoint selection use disjoint subsets of the official training partition; final evaluation IDs are reserved separately.
+![Change-area distribution and image-relative location](assets/eda_geometry.png)
 
-| Prepared cohort | Official partition | Pairs | Purpose |
-|---|---|---:|---|
-| Development | Training | 50 | Input checks, prompt/parser development and checkpoint selection; first 10 form the captioning smoke set |
-| Subset-training pilot | Training, excluding development | 1,313 | Bounded specialist-captioner training |
-| Screening | Validation | 100 | Exploratory system comparison and error inspection |
-| Reserved evaluation | Test | 100 | Final assessment after systems and rules are frozen; images remain unopened in the captioning preparation |
-| Transfer probes | WHU-CDC and SECOND-CC validation | 100 each | Dataset-specific checks of transfer and annotation compatibility |
+Figure 2. Change-area distribution among changed source pairs and changed-pixel density across image regions. Top/left refer to image coordinates, not geographic north/west.
 
-Selections use a fixed seed of 42 with split-specific seed strings and sorted source records. Source revision, selection rule and manifest hash are recorded. The primary training and development cohorts together contain 1,363 pairs, or 20% of the official training partition. Separate decision-role pilots must also be included in the team's consolidated usage ledger; they are not assumed to be the same subset.
+Among changed masks, the median changed area is **12.60%**. Changes occur across the image, rather than only at its centre. Brightness differences also vary substantially: the median T2-minus-T1 luminance difference is **-26.67** on a 0-255 scale. Such differences are not themselves proof of physical change or poor registration.
 
-### 3.1 Duplicate and overlap assessment
+The analysis flags 195 brightness-difference outliers using the 1.5-IQR rule. These are retained unless a separate integrity rule excludes them: extreme values can represent valid imagery. Pixel-difference, change-area, caption-length distributions and descriptive correlations are documented in the accompanying EDA record. Correlations are not treated as evidence of causation.
 
-The preparation audit compares each image's ZIP-index CRC-32 and uncompressed size, pairing both dates. These are efficient **duplicate-candidate checks**, not cryptographic proof of identical image content. Suspected overlaps require file-hash confirmation before final exclusion lists are frozen.
+A lexical check found no pair mixing standard no-change phrases with change descriptions among its five references. This checks coarse change/no-change agreement, not complete agreement on object counts, direction or location. Background in a mask means **no annotated building/road change**, not absence of every possible visual change; vegetation descriptions can therefore fall outside mask coverage.
 
-| Finding | Consequence and handling |
+The earlier caption evaluator used a **50-pixel class-presence threshold**. This is an evaluator setting, not a dataset requirement: source building-positive pairs fall from 4,417 at one pixel to 4,356 at 50 pixels. The prepared masks retain the original small regions. Connected components are not treated as building-instance counts.
+
+## 6. Data Preprocessing
+
+- **Validate and join:** decode the paired inputs and both label forms; verify shapes, non-empty captions, class values and unique record keys. Store SHA-256 hashes of file bytes and decoded pixels. Hashing verifies identity; it is not encryption. No required input is imputed.
+- **Resolve supervision conflicts:** quarantine records whose mask and caption change flags disagree, or whose repeated imagery has inconsistent targets. Preserve the source annotations and each reason in an exclusion ledger.
+- **Standardise targets:** verify identical channels before reducing the grayscale label. Map values 0/128/255 to class indices 0/1/2 for background/road/building. No interpolation is applied to the native masks.
+- **Prepare images:** retain RGB uint8 images for vision-language processors. The detector loader emits contiguous float32 tensors in [0,1], with temporal order preserved. No histogram matching, learned correction or automatic registration is applied.
+- **Prepare text:** retain all five trimmed reference strings separately. Pair-level grouping is preserved when using multiple text targets. Checkpoint-specific tokenisation and image normalisation belong to the model processor; no fabricated merged caption is introduced.
+
+<!-- PAGEBREAK -->
+
+## 7. Dataset Integration
+
+A canonical **dataset / official split / filename** key now identifies every prepared primary pair. The same record supplies detection inputs, captioning inputs and the separate evaluation references. This resolves the ambiguity of joining component-specific pilot identifiers by filename alone.
+
+| Component | Model input | Training or evaluation target |
+|---|---|---|
+| Change detection | Earlier and later RGB images | Supplied categorical mask during training; predicted mask evaluated against it |
+| Change description | Both images; predicted regions in the mask-guided configuration | Five source captions, stored separately from inference requests |
+| Visual inspection / claim checking | Original images, predicted regions and the generated claim | Source references for automatic diagnostics; no new human factuality labels are claimed |
+
+At inference, the detector produces the mask from the two images. The captioner uses the images and predicted evidence; reference masks and captions are not supplied as answers. This input contract does not imply that a complete trained pipeline has already been evaluated.
+
+SECOND-CC supplies a separate **100-pair original-validation probe** at 256 x 256 pixels, with 500 reference captions. Building-change targets use building pixels in its semantic **change** maps, not arbitrary land-cover maps. Neither it nor WHU-CDC contributes to primary training. SECOND-CC checksum matches span its source splits; no new within-source training/test claim is made.
+
+## 8. Data Augmentation
+
+**Zero additional augmented samples** are materialised in this package. Native pairs and annotations are preserved. Unconditional flips, rotations and temporal reversals are excluded from the prepared captioning records because they can invalidate left/right, top/bottom or appearance/disappearance descriptions. Constructed claim fixtures from the decision experiments are software checks and are excluded from the real-imagery dataset counts.
+
+## 9. Dataset Splitting and Leakage Prevention
+
+Official split membership is preserved; records are excluded rather than moved across partitions. SHA-256 checks confirm **16 repeated image-pair groups**, including **five spanning training and test**. One copy is retained with priority test, then validation, then training. Groups with conflicting mask targets are quarantined. A cross-split perceptual-hash screen finds the same five exact pair matches and no additional candidates at the documented threshold; visual similarity is not asserted to prove scene identity.
+
+| Partition | Source pairs | Prepared pairs |
+|---|---:|---:|
+| Training | 6,815 | 6,444 |
+| Validation | 1,333 | 1,242 |
+| Test | 1,929 | 1,858 |
+| **Total** | **10,077** | **9,544** |
+
+The resulting ratio is **67.52% / 13.01% / 19.47%**. All 533 exclusions have recorded reasons; reason counts can overlap. Parent-scene coordinates are unavailable, so these checks establish detected content separation, not geographic independence. Test imagery was inspected for data quality during this audit, without model fitting or checkpoint selection; it is not described as unopened.
+
+<!-- PAGEBREAK -->
+
+## 10. Final Prepared Dataset
+
+The final strict primary package contains **9,544 pairs, 19,088 RGB inputs, 9,544 categorical targets and 47,720 reference captions**. Its mask classes are **4,743 unchanged, 1,611 building only, 497 road only and 2,693 both**. Background, building and road occupy **91.24%, 5.11% and 3.65%** of retained pixels respectively. These figures describe the cleaned cohort, not the original release or a balanced sampling assumption.
+
+![Executed preparation and reference separation](assets/data_flow.png)
+
+Figure 3. The preparation links source files, quality decisions and fixed partitions to a verified loader. Evaluation references remain separate from image-only prediction records.
+
+All retained records passed hash, decoding and reference checks. Detector batches have image shape **B x 2 x 3 x 256 x 256** and target shape **B x 256 x 256**. Verified image-only inference records exclude targets and captions. Training uses the supplied loader without repeating cleaning, joins or splits.
+
+## 11. Challenges and Limitations
+
+Duplicate imagery, inconsistent supervision and label-vocabulary differences required explicit preparation rules. The strict cohort resolves identified conflicts without declaring source annotations infallible. Background imbalance, repeated captions and limited geographic/class coverage remain dataset limitations; preparation checks do not establish generalisation. The curated cohort is distinct from the original benchmark.
+
+## 12. Deliverables Produced
+
+| Deliverable | Contents |
 |---|---|
-| 16 redundant LEVIR pair records flagged by archive checks; five test/training candidate matches | Keep the candidate list. Confirm content identity, remove redundant training examples and prevent confirmed test counterparts from entering training. The five reported test candidates are outside the reserved 100-pair set. |
-| Two LEVIR pairs have matching before/after checksum signatures | Flag for inspection rather than interpreting the signature alone as physical no-change truth. |
-| SECOND-CC has reversed pairs and cross-split content matches | Treat temporal reversals and all copies as one pair group. Do not use its current partitions for a new training-versus-test claim without regrouping. |
-| Parent scenes cannot be recovered reliably from LEVIR tile names | Spatial independence between partitions remains unproven. Report this limitation and group repeated records by pair at minimum. |
+| Prepared records | Separate train/validation/test manifests; image-only inference records; local source archive and reference store |
+| Quality evidence | Full per-pair profile, exact duplicate groups, candidate checks, exclusion ledger, summary statistics and loader validation |
+| Reproducible code | Source retrieval, full audit/preparation, dataset loader, figure generation and report builder |
+| Documentation | Detailed EDA, data dictionary, source/usage register, document change log and contribution record |
 
-### 3.2 Evaluation exposure
+Raw data, prepared records, evidence and report outputs are separated. Versioned scripts and metadata reproduce the handover from the pinned release.
 
-The released RSCaMa checkpoint was trained on LEVIR-CC and selected using its validation partition [7]. A separately subset-trained comparator avoids inheriting that checkpoint's task-specific training, but general pretraining exposure remains possible. Public-data exposure of general vision-language models is not established.
+## 13. Summary
 
-Screening outputs informed parser revisions in the captioning work. Consequently, the current screen is exploratory and must not be described as an untouched validation experiment. Freeze parser rules, prompts, label mappings and decision thresholds before the reserved evaluation is opened. Evaluation-only use of supplementary datasets prevents new project training on them; it does not prove that pretrained models have never seen their imagery.
-
-<!-- PAGEBREAK -->
-
-## 4. Data Quality and Suitability
-
-The preparation audit covers the release index and a 150-pair image/label cohort: 50 development pairs and 100 screening pairs. Archive-index checks assess record completeness; pixel statistics and mask/caption comparisons apply only to that inspected cohort.
-
-![Label composition in the preparation audit](assets/data_profile.png)
-
-Figure 2. Label composition reported by the 150-pair preparation audit. Pixel proportions describe this subset, not the full release.
-
-| Quality dimension | Finding | Implication |
-|---|---|---|
-| Completeness | No missing A/B/label joins or duplicate caption records reported for LEVIR; every pair has five non-empty captions | Inputs can be joined consistently; decoding and hash checks remain part of ingestion |
-| Label balance | 65 masks show no labelled change; 28 building only, 11 road only and 46 both | Report unchanged behaviour and class-specific results; background dominates pixel counts |
-| Small changes | 7 of 85 masks with change have under 1% changed pixels | Preserve spatial detail and inspect small-region failures |
-| Annotation inconsistency | Mask content and caption change flags disagree in 8 of 150 pairs | Preserve these records with conflict flags; adjudicate rather than silently changing labels |
-| Caption repetition | The 5,039 unchanged pairs reuse a fixed five-sentence template | Word-overlap scores can reward generic no-change responses |
-| Imaging variation | Registration and illumination differences are visible in reviewed examples | Separate real change from imaging effects; systematic robustness measurement remains pending |
-
-The label imbalance supports class-aware sampling and loss comparisons during detector training; no fixed loss recipe is claimed as validated at this milestone. Masks also have narrower semantic coverage than captions: vegetation, object identity, change direction and exact instance counts require additional evidence.
-
-The captioning screen provides an ingestion check, not an independent factuality benchmark. For example, a constant no-change caption obtains CIDEr-D 0.94 on the 100-pair screen while missing every changed pair in the conflict-free subset. The automatic checker uses reference masks and captions; it is a diagnostic proxy. Conflict handling and denominators differ by metric, so the conflict list and exact scored population must accompany every result.
-
-<!-- PAGEBREAK -->
-
-## 5. Model-Specific Readiness and Reproducibility
-
-### 5.1 Input formats and annotation
-
-| Component | Prepared representation and limits |
-|---|---|
-| Specialist captioner | RSCaMa uses CLIP image processing at 224 pixels and a 42-token caption limit under its own tokenizer; vocabulary construction is recorded [7] |
-| General vision-language captioners | Ordered image pair plus a fixed instruction; generation capped at 96 new tokens. The SmolVLM2 screen uses one 384-pixel view per image, with image splitting disabled and this configuration recorded |
-| Claim parser and checker | Structured object, action, location and quantity fields, retaining source text and uncertainty; unavailable fields remain null |
-| Human reference audit | Two independent raters assess supported, contradicted, unsupported and unverifiable claims from original images; disagreements and adjudication are retained |
-
-The captioning instruction asks for at most two sentences about visible building or road changes, using image-relative locations. It permits uncertainty and excludes inferred legality, ownership and cause. Exact counts are requested only when individual objects are distinguishable. Future instruction tuning will pair this input with reference responses and check length after the selected tokenizer; word counts are not interchangeable with subword-token limits.
-
-The annotation sheet, viewer and separate answer key are prepared. Human factuality labels remain pending. A model-assisted spot check is a development aid, not a replacement for independent raters. Connected mask components are not accepted as ground-truth building-instance counts.
-
-### 5.2 Synthetic data and augmentation
-
-No synthetic satellite imagery is used in the prepared captioning cohort. The decision notebook includes separately labelled constructed claim/evidence fixtures for software and reasoning checks; these are excluded from satellite-performance claims. Detector augmentation is planned: paired flips and right-angle rotations, with matching label transforms. One-sided brightness, blur and translation perturbations will form a separate robustness set, with transformed labels and valid overlap where required. Reversed time pairs must remain grouped with their originals and have direction-sensitive captions checked.
-
-### 5.3 Reproducibility and handover
-
-The versioned preparation package records source/archive revisions, split-specific seeds, selected identifiers, file hashes, label mappings and processing settings [8]. It separates raw inputs, evaluation references and model outputs. Model, tokenizer and processor revisions, environment versions and configuration-specific image limits are retained with run records; weights and raw imagery are not committed to the repository.
-
-Preparation has supported specialist/general caption generation, a subset-training pilot and decision-model smoke/screen exports. These runs establish that parts of the ingestion path execute; they do not establish the full pipeline's reliability or a final model ranking.
-
-Before Milestone 3, the team will consolidate the cross-role manifest, confirm duplicate candidates and release permissions, finalise detector/crop adapters, and pilot the two-rater claim audit. Sarthak leads detection ingestion, Sujal caption/reference preparation, Priyanshu visual-region handling and Shoaib decision contracts and integration. The resulting handover must retain the original images, explicit uncertainty and independently stored references throughout the proposed pipeline.
+The full-release audit produces reproducible primary data ready for detection and captioning training, with verified inputs, explicit labels and recorded exclusions. The loader and fixed partitions complete the data handover. Dataset readiness does not imply model accuracy or independently human-audited factuality.
 
 <!-- PAGEBREAK -->
 
 ## References
 
-1. IITM DS & AI Lab. *Project Milestones: Milestone 2 - Dataset Preparation*. https://bsc-iitm.github.io/dsai-lab-project/milestones.html#milestone-2
+1. IIT Madras DS & AI Lab. *Milestone 2: Dataset Preparation*. https://bsc-iitm.github.io/dsai-lab-project/milestones.html#milestone-2
 2. Liu, C. et al. (2024). *Change-Agent: Toward Interactive Comprehensive Remote Sensing Change Interpretation and Analysis*. IEEE TGRS. Author code and LEVIR-MCI release: https://github.com/Chen-Yang-Liu/Change-Agent ; https://huggingface.co/datasets/lcybuaa/LEVIR-MCI
-3. Liu, C. et al. (2022). *Remote Sensing Image Change Captioning With Dual-Branch Transformers*. LEVIR-CC author dataset: https://github.com/Chen-Yang-Liu/LEVIR-CC-Dataset
-4. Ji, S., Wei, S. & Lu, M. (2019). *Fully Convolutional Networks for Multisource Building Extraction From an Open Aerial and Satellite Imagery Data Set*. IEEE TGRS. WHU source imagery: https://gpcv.whu.edu.cn/data/building_dataset.html ; provisional captioned copy inspected: https://huggingface.co/datasets/hygge10111/RS-CDC
-5. Karaca, A. C. et al. (2025). *Robust Change Captioning in Remote Sensing: SECOND-CC Dataset and MModalCC Framework*. IEEE JSTARS. https://doi.org/10.1109/JSTARS.2025.3600613 ; author-linked release: https://doi.org/10.5281/zenodo.16937571
-6. Yang, K. et al. (2022). *Asymmetric Siamese Networks for Semantic Change Detection*. IEEE TGRS. SECOND project and label conventions: https://captain-whu.github.io/SCD/
-7. Liu, C. et al. (2024). *RSCaMa: Remote Sensing Image Change Captioning with State Space Model*. IEEE GRSL. https://github.com/Chen-Yang-Liu/RSCaMa
-8. TerraWatch, Group 7 (2026). *Versioned dataset preparation, captioning scripts and aggregate screening outputs*. Source snapshot: https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/dc8f3cee62e44ab89dfa0f8f04a6299fc05d258d/POC/b-captioning
+3. Liu, C. et al. (2022). *Remote Sensing Image Change Captioning With Dual-Branch Transformers*. IEEE TGRS. Author dataset: https://github.com/Chen-Yang-Liu/LEVIR-CC-Dataset
+4. Karaca, A. C. et al. (2025). *Robust Change Captioning in Remote Sensing: SECOND-CC Dataset and MModalCC Framework*. IEEE JSTARS. https://doi.org/10.1109/JSTARS.2025.3600613 ; author-linked dataset: https://doi.org/10.5281/zenodo.16937571
+5. Yang, K. et al. (2022). *Asymmetric Siamese Networks for Semantic Change Detection*. IEEE TGRS. SECOND label conventions: https://captain-whu.github.io/SCD/
+6. Ji, S., Wei, S. & Lu, M. (2019). *Fully Convolutional Networks for Multisource Building Extraction From an Open Aerial and Satellite Imagery Data Set*. IEEE TGRS. WHU imagery: https://gpcv.whu.edu.cn/data/building_dataset.html ; captioned mirror inspected: https://huggingface.co/datasets/hygge10111/RS-CDC
 
-Source pages and supplied preparation records reviewed 29 October 2026.
+## Document Change Log
+
+| Revision | Review point | Incorporated change |
+|---|---|---|
+| 29-30 October 2026 | Initial M2 preparation and technical review | Documented dataset roles, input contracts, mask limitations, reference separation and readiness evidence. |
+| 31 October 2026 | Expand EDA; resolve duplicates, conflicts and record-ID alignment | Completed full-release EDA, verified hashes, explicit exclusions, canonical records and loader checks. |
+| 31 October 2026 | Clarify labels, rights and report completion | Explained the actual mask encodings, five-caption structure and dataset dispositions; replaced preparation plans with measured findings and removed future-scope material. |
+
+## Individual Contributions
+
+| Team member | Milestone 2 contribution |
+|---|---|
+| Priyanshu Agarwal | Visual-evidence and claim-grounding input requirements from the approved design. |
+| Sarthak Saini | Detection input/target requirements; report review and evaluation discussion. |
+| Sujal Raj Pradhan | Captioning preparation, source audit, captioner experiments, transfer screens and initial draft. |
+| Shoaib SSM | Decision benchmarks; consolidated preparation/EDA, verified handover and report revision. |
+
+## Team Review and Approval
+
+Approval confirms review of this report and its findings.
+
+| Team member | Initials | Approval date | Signature / confirmation |
+|---|---|---|---|
+| Priyanshu Agarwal | PA |  |  |
+| Sarthak Saini | SS |  |  |
+| Sujal Raj Pradhan | SRP |  |  |
+| Shoaib SSM | SSSM |  |  |

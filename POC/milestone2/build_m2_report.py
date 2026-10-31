@@ -32,10 +32,10 @@ NAVY=colors.HexColor('#12202B')
 
 def flow():
     d=Drawing(495,153)
-    labels=[('PINNED SOURCES','Paired RGB + labels','Captions + metadata'),
-            ('VALIDATE','Decode, join and hash','Check label classes'),
-            ('FREEZE RECORDS','Pair IDs + split ledger','Flags + transforms'),
-            ('PREPARE INPUTS','Model-specific tensors','Claims and regions')]
+    labels=[('LOAD RELEASE','Ordered image pairs','Masks + five captions'),
+            ('CHECK QUALITY','Decode + verify hashes','Audit labels + repeats'),
+            ('FIX SPLITS','Canonical pair records','Retain + exclude ledger'),
+            ('READY INPUTS','RGB pairs + targets','Verified batch loader')]
     for i,(heading,line1,line2) in enumerate(labels):
         x=i*128
         d.add(Rect(x,65,111,77,rx=4,ry=4,fillColor=colors.white,strokeColor=colors.HexColor('#B9C3C9'),strokeWidth=.7))
@@ -50,7 +50,7 @@ def flow():
     d.add(Polygon([252,30,248,33,248,27],fillColor=GRAY,strokeColor=None))
     d.add(Rect(256,9,239,42,rx=4,ry=4,fillColor=colors.HexColor('#EBF1F7'),strokeColor=colors.HexColor('#B9C3C9'),strokeWidth=.7))
     d.add(String(375.5,35,'SEPARATE REFERENCE STORE',fontName=BOLD,fontSize=8,textAnchor='middle',fillColor=BLUE))
-    d.add(String(375.5,19,'Masks, captions and human audit labels',fontName=REG,fontSize=8,textAnchor='middle',fillColor=NAVY))
+    d.add(String(375.5,19,'Source masks and five reference captions',fontName=REG,fontSize=8,textAnchor='middle',fillColor=NAVY))
     d.add(String(55.5,12,'Evaluation references',fontName=REG,fontSize=7.6,textAnchor='middle',fillColor=GRAY))
     return d
 
@@ -76,30 +76,18 @@ def prepare_assets():
     renderSVG.drawToFile(d,str(ASSETS/'data_flow.svg'))
     tmp=pymupdf.open(stream=renderPDF.drawToString(d),filetype='pdf')
     tmp[0].get_pixmap(matrix=pymupdf.Matrix(3,3),alpha=False).save(ASSETS/'data_flow.png')
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    plt.rcParams.update({'font.family':'Arial','font.size':10,'axes.spines.top':False,'axes.spines.right':False})
-    fig,axes=plt.subplots(1,2,figsize=(9.4,3.0),layout='constrained')
-    values=[65,28,11,46]
-    bars=axes[0].barh(['No labelled change','Building only','Road only','Both'],values,color=['#9DA7AF','#1F5FAE','#526A86','#12202B'])
-    axes[0].invert_yaxis();axes[0].set_xlim(0,76);axes[0].set_xlabel('Image pairs (n = 150)');axes[0].set_title('Mask-level composition',fontsize=11,weight='bold')
-    for bar,value in zip(bars,values):axes[0].text(value+1,bar.get_y()+bar.get_height()/2,str(value),va='center')
-    percentages=[90.3,5.5,4.2]
-    bars=axes[1].barh(['Background','Building change','Road change'],percentages,color=['#9DA7AF','#1F5FAE','#526A86'])
-    axes[1].invert_yaxis();axes[1].set_xlim(0,105);axes[1].set_xlabel('Share of labelled pixels (%)');axes[1].set_title('Pixel-class imbalance',fontsize=11,weight='bold')
-    for bar,value in zip(bars,percentages):axes[1].text(value+1,bar.get_y()+bar.get_height()/2,f'{value:.1f}%',va='center')
-    fig.savefig(ASSETS/'data_profile.png',dpi=220,bbox_inches='tight');plt.close(fig)
-    (ASSETS/'figure_data.json').write_text(json.dumps({'source':'Provided M2 preparation audit, 150 pairs; not a full-release estimate',
-        'mask_pairs':dict(zip(['no_labelled_change','building_only','road_only','both'],values)),
-        'pixel_percent':dict(zip(['background','building_change','road_change'],percentages))},indent=2),encoding='utf-8')
+    # EDA figures come from executed calculations, never hard-coded aggregates.
+    import subprocess
+    subprocess.run([sys.executable,str(ROOT/'scripts/eda_figures.py')],check=True)
 
 
 def table(node,width):
     rows=node.find_all('tr');n=len(rows[0].find_all(['th','td'],recursive=False))
     headings=[x.get_text(' ',strip=True) for x in rows[0].find_all(['th','td'],recursive=False)]
-    ratios=([.22,.34,.44] if n==3 else [.24,.26,.13,.37] if n==4 and headings[0]=='Prepared cohort' else
-            [.28,.20,.23,.29] if n==4 else [.30,.70] if n==2 else [1/n]*n)
+    ratios=([.22,.34,.44] if n==3 else [.28,.20,.23,.29] if n==4 else [.30,.70] if n==2 else [1/n]*n)
+    if n==3 and headings[0] in ('Partition','Split'):ratios=[.36,.32,.32]
+    if n==4 and headings[0]=='Team member':ratios=[.32,.14,.27,.27]
+    if n==3 and headings[0]=='Revision':ratios=[.20,.40,.40]
     cells=[[para(c,'CellHead' if i==0 else 'Cell') for c in row.find_all(['th','td'],recursive=False)] for i,row in enumerate(rows)]
     t=Table(cells,colWidths=[r*width for r in ratios],hAlign='LEFT',repeatRows=1)
     t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#E6EBEE')),('GRID',(0,0),(-1,-1),.45,colors.HexColor('#B9C3C9')),
@@ -117,7 +105,8 @@ def draw_page(c,doc):
 def build():
     prepare_assets()
     source=(ROOT/'Milestone2_Report.md').read_text(encoding='utf-8')
-    source='## 1. Dataset Selection and Sources'+source.split('## 1. Dataset Selection and Sources',1)[1]
+    # Document control and dated sign-off fields belong in both submitted formats.
+    source='## 1. Introduction'+source.split('## 1. Introduction',1)[1]
     source=source.replace('<!-- PAGEBREAK -->','<div class="pagebreak"></div>')
     soup=BeautifulSoup(markdown.markdown(source,extensions=['tables']),'html.parser')
     doc=SimpleDocTemplate(str(OUT/'_body.pdf'),pagesize=A4,leftMargin=50,rightMargin=50,topMargin=60,bottomMargin=45,
