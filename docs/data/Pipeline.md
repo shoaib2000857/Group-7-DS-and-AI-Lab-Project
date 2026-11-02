@@ -14,7 +14,7 @@
 | `src/data/acquire.py` | Verified public-release acquisition into local or mounted raw storage |
 | `src/data/cli.py` | `audit`, `prepare`, `verify` commands |
 | `scripts/build_data_notebooks.py` | Rebuild notebook sources without hand-editing notebook JSON |
-| `scripts/run_data_notebooks.py` | Execute all three notebooks, save outputs and record execution checks |
+| `scripts/run_data_notebooks.py` | Execute the two main notebooks, save outputs and record execution checks; pass `POC/data_quality/03_Data_Quality_Experiments.ipynb` to run the optional one |
 
 ## Record and target contract
 

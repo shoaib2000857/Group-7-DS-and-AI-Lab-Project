@@ -22,6 +22,7 @@ Other members: add your section below using the same table.
 | 2 | 26–29 Oct 2026 | M2 / POC B | Built the B0 captioning screen (RSCaMa, Qwen3-VL-4B, SmolVLM2-2.2B, two controls) with a claim parser and automatic reference check; retrained RSCaMa on 20% of train (Kaggle T4) as a subset-trained comparator | [POC/execution](POC/execution) | |
 | 2 | 26–29 Oct 2026 | M2 / POC B | Added WHU-CDC and SECOND-CC as transfer test sets (100 val pairs each, building-only scoring); found every captioner drops sharply off LEVIR | [M2 report §1.4–1.5](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/feat/shoaib-colab-benchmarks/POC/milestone2) | |
 | 2 | 26–29 Oct 2026 | M2 | Wrote the Milestone 2 report | [https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/feat/shoaib-colab-benchmarks/POC/milestone2](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/feat/shoaib-colab-benchmarks/POC/milestone2) | |
+| 3 | 2 Nov 2026 | M2 / data pipeline | Reviewed the data pipeline PR and fixed ten issues in duplicate handling, training eligibility, audit merging and notebook runs, with tests | [PR #15](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/pull/15) | |
 
 ---
 

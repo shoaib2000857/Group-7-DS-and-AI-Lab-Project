@@ -26,7 +26,7 @@ def resolve_source(dataset: dict, data_root: str | Path | None = None) -> Path |
     for root in roots:
         for relative in dataset.get('paths', []):
             p = root / relative
-            if p.exists():
+            if p.exists() and not (p.is_dir() and not any(p.iterdir())):  # an empty folder must not hide a later copy
                 return p.resolve()
     return None
 

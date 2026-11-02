@@ -12,7 +12,7 @@ The existing model-experiment and evaluation placeholders are left available for
 
 ## Google Colab
 
-Open a notebook from the `data-pipeline` branch. The setup cell can clone that branch into `/content/TerraWatch` and install `requirements-data.txt` when the repository is absent. Drive mounting is enabled automatically in Colab and requires your normal Google authorisation.
+Open a notebook from the `main` branch. The setup cell can clone `main` into `/content/TerraWatch` and install `requirements-data.txt` when the repository is absent. Drive mounting is enabled automatically in Colab and requires your normal Google authorisation.
 
 The default data folder is `/content/drive/MyDrive/TerraWatch_Extracted`, based on the supplied collection. Set `DATA_ROOT` if your shortcut/mount has a different name. Dataset roots can be nested as in the inspected Drive collection; the catalogue lists the supported layouts. `TERRAWATCH_<DATASET_ID>` is an explicit path override, for example `TERRAWATCH_SECOND_CC`.
 

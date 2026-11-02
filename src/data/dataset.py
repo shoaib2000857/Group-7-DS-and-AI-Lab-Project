@@ -1,6 +1,7 @@
 """Framework-neutral model inputs with explicit target/reference opt-in."""
 from __future__ import annotations
 import json
+import os
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -10,13 +11,18 @@ from .preprocess import read_jsonl
 
 class PairDataset:
     def __init__(self,manifest: str|Path,processed_root: str|Path='data/processed',include_targets: bool=True,include_references: bool=False,verify: bool=True):
-        self.rows=read_jsonl(Path(manifest));self.root=Path(processed_root);self.targets=include_targets;self.verify=verify;self.stores={}
+        self.rows=read_jsonl(Path(manifest));self.root=Path(processed_root);self.targets=include_targets;self.verify=verify;self.stores={};self.pid=os.getpid()
         self.refs=json.loads((self.root/'references.json').read_text(encoding='utf-8')) if include_references else None
 
     def __len__(self):return len(self.rows)
 
+    def __getstate__(self):
+        return self.__dict__|{'stores':{},'pid':None}
+
     def __getitem__(self,index):
         r=self.rows[index];path=r['source_path']
+        # Loader workers must not share a parent's archive handle and file offset.
+        if self.pid!=os.getpid():self.stores={};self.pid=os.getpid()
         if path not in self.stores:self.stores[path]=Store(path)
         store=self.stores[path];out={'pair_id':r['pair_id']}
         for key in ['t1','t2']:
