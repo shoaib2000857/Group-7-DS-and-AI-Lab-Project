@@ -188,4 +188,4 @@ The audited primary data, fixed partitions and verified loader provide a reprodu
 
 ## Team Section Sign-off
 
-Signed off: SRP
+Signed off: SRP, SSSM

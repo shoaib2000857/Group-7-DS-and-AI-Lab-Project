@@ -11,3 +11,5 @@ This file records revisions to the PDF and Markdown submission. Contributor acti
 | 3 November 2026 | Updated Shoaib and Sujal contribution records from commits since their recorded worklog cutoff; preserved Sujal's existing SRP sign-off | WORKLOG.md; commits 1d0d52a and 72d5812 |
 
 The source trace uses supplied annotations; it is not a claimed new detector/captioner/referee inference result. No human ratings, reliability scores, dates of approval or team signatures are manufactured by these revisions.
+
+- 3 November 2026: Added Shoaib's **SSSM** sign-off following his explicit confirmation; preserved Sujal's **SRP** sign-off.
