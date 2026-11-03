@@ -111,21 +111,25 @@ The earlier caption evaluator used a **50-pixel class-presence threshold**. This
 
 ## 7. Dataset Integration
 
-A canonical **dataset / official split / filename** key now identifies every prepared primary pair. The same record supplies detection inputs, captioning inputs and the separate evaluation references. This resolves the ambiguity of joining component-specific pilot identifiers by filename alone.
+A canonical **dataset / official split / filename** key links each primary pair to its detection target, five caption references and evaluation provenance.
 
-| Component | Model input | Training or evaluation target |
-|---|---|---|
-| Change detection | Earlier and later RGB images | Supplied categorical mask during training; predicted mask evaluated against it |
-| Change description | Both images; predicted regions in the mask-guided configuration | Five source captions, stored separately from inference requests |
-| Visual inspection / claim checking | Original images, predicted regions and the generated claim | Source references for automatic diagnostics; no new human factuality labels are claimed |
+**Verified preparation trace.** Record `train_000010` demonstrates the shared data contract using source annotations [2,3].
 
-At inference, the detector produces the mask from the two images. The captioner uses the images and predicted evidence; reference masks and captions are not supplied as answers. This input contract does not imply that a complete trained pipeline has already been evaluated.
+| Stage | Trace for train_000010 |
+|---|---|
+| Paired inputs | Matched earlier/later RGB images, with temporal order preserved |
+| Detection target | Supplied road/building mask, converted to class indices 0/1/2 |
+| Caption claim | Source reference: "some buildings appear at the bottom of the scene"; object = building, action = appeared, exact quantity = unspecified, location = bottom |
+| Visual evidence | Original T1/T2 images support inspection of the bottom region with full-frame context |
+| Verification record | Claim fields and image provenance support the four-state human audit below |
 
-SECOND-CC supplies a separate **100-pair original-validation probe** at 256 x 256 pixels, with 500 reference captions. Building-change targets use building pixels in its semantic **change** maps, not arbitrary land-cover maps. Neither it nor WHU-CDC contributes to primary training. SECOND-CC checksum matches span its source splits; no new within-source training/test claim is made.
+This is a source-annotation and loader trace. In model inference, masks and captions are generated from the image pair; source targets remain separate evaluation references.
+
+SECOND-CC supplies a separate **100-pair original-validation probe** with 500 captions. Building targets derive from semantic change maps. It and WHU-CDC are excluded from primary training; source-split overlap is recorded separately.
 
 ## 8. Data Augmentation
 
-**Zero additional augmented samples** are materialised in this package. Native pairs and annotations are preserved. Unconditional flips, rotations and temporal reversals are excluded from the prepared captioning records because they can invalidate left/right, top/bottom or appearance/disappearance descriptions. Constructed claim fixtures from the decision experiments are software checks and are excluded from the real-imagery dataset counts.
+**Zero offline augmented samples** are materialised. Native pairs and annotations are preserved. The detector training contract permits online photometric jitter and paired image-mask scaling; categorical masks use nearest-neighbour interpolation. Captioning preserves reference geometry: flips, rotations, crops and time reversal require corresponding caption validation. Constructed claim fixtures are software checks, excluded from dataset counts. Online transforms do not increase the reported dataset size.
 
 ## 9. Dataset Splitting and Leakage Prevention
 
@@ -152,6 +156,8 @@ Figure 5. The preparation links source files, quality decisions and fixed partit
 
 All retained records passed hash, decoding and reference checks. Detector batches have image shape **B x 2 x 3 x 256 x 256** and target shape **B x 256 x 256**. Verified image-only inference records exclude targets and captions. Training uses the supplied loader without repeating cleaning, joins or splits.
 
+**Human factual verification protocol.** Two independent raters label each atomic claim **SUPPORTED** (visually established), **CONTRADICTED** (opposed by evidence), **UNSUPPORTED** (adequate imagery without supporting evidence), or **UNVERIFIABLE** (insufficient visual information). Raw agreement and unweighted Cohen's kappa precede adjudication. A third rater resolves disagreements using zoomed T1/T2 regions and full-frame context, recording the decision and reason. Unresolved ambiguity remains UNVERIFIABLE. Source captions retain their role as references.
+
 ## 11. Challenges and Limitations
 
 Duplicate imagery, inconsistent supervision and label-vocabulary differences required explicit preparation rules. The strict cohort resolves identified conflicts without declaring source annotations infallible. Background imbalance, repeated captions and limited geographic/class coverage remain dataset limitations; preparation checks do not establish generalisation. The curated cohort is distinct from the original benchmark.
@@ -169,9 +175,7 @@ Raw data, prepared records, evidence and report outputs are separated. Versioned
 
 ## 13. Summary
 
-The full-release audit produces reproducible primary data ready for detection and captioning training, with verified inputs, explicit labels and recorded exclusions. The loader and fixed partitions complete the data handover. Dataset readiness does not imply model accuracy or independently human-audited factuality.
-
-<!-- PAGEBREAK -->
+The audited primary data, fixed partitions and verified loader provide a reproducible handover for detection and captioning training. Data readiness, model accuracy and human factual verification remain distinct evaluation objectives.
 
 ## References
 
@@ -181,3 +185,7 @@ The full-release audit produces reproducible primary data ready for detection an
 4. Karaca, A. C. et al. (2025). *Robust Change Captioning in Remote Sensing: SECOND-CC Dataset and MModalCC Framework*. IEEE JSTARS. https://doi.org/10.1109/JSTARS.2025.3600613 ; author-linked dataset: https://doi.org/10.5281/zenodo.16937571
 5. Yang, K. et al. (2022). *Asymmetric Siamese Networks for Semantic Change Detection*. IEEE TGRS. SECOND label conventions: https://captain-whu.github.io/SCD/
 6. Ji, S., Wei, S. & Lu, M. (2019). *Fully Convolutional Networks for Multisource Building Extraction From an Open Aerial and Satellite Imagery Data Set*. IEEE TGRS. WHU imagery: https://gpcv.whu.edu.cn/data/building_dataset.html ; captioned mirror inspected: https://huggingface.co/datasets/hygge10111/RS-CDC
+
+## Team Section Sign-off
+
+Signed off: SRP

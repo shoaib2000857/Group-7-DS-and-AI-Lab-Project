@@ -44,3 +44,7 @@ The 31 October revision is a new POC delivery. Historical GitHub approvals and W
 ## POC publication
 
 Published the 31 October report, reproducible EDA/preparation scripts, metadata evidence, source records and team guidance on the existing POC working branch. Raw archives, image data and render scratch files remain local. Main and PR/review state are unchanged.
+
+## 3 November 2026 - focused review alignment
+
+Defined the four-state human audit protocol, pre-adjudication agreement and third-rater resolution; added a source-annotation workflow trace and clarified the online detector augmentation contract. Kept revisions separate from report prose and preserved the existing SRP Markdown sign-off. Updated PDF/Markdown and verified the eight-page layout. The submission PR includes a separate report changelog and commit-backed worklog updates for Shoaib and Sujal.

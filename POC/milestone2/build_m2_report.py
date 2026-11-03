@@ -107,9 +107,13 @@ def draw_page(c,doc):
 
 def build():
     prepare_assets()
+    STYLES["Text"].fontSize=10
+    STYLES["Text"].leading=13.2
+    STYLES["Text"].spaceAfter=5
     source=(ROOT/'Milestone2_Report.md').read_text(encoding='utf-8')
     # The report body excludes administrative records maintained separately.
     source='## 1. Introduction'+source.split('## 1. Introduction',1)[1]
+    source=source.split('## Team Section Sign-off',1)[0]
     source=source.replace('<!-- PAGEBREAK -->','<div class="pagebreak"></div>')
     soup=BeautifulSoup(markdown.markdown(source,extensions=['tables']),'html.parser')
     doc=SimpleDocTemplate(str(OUT/'_body.pdf'),pagesize=A4,leftMargin=50,rightMargin=50,topMargin=60,bottomMargin=45,
