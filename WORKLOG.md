@@ -49,6 +49,10 @@ Other members: add your section below using the same table.
 | 1 | 15–22 Oct 2026 | M1 | Analysed the proposed evaluation metrics for change detection, focusing on precision, recall, F1-score, and IoU to assess the quality of predicted change masks | [Report §9](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
 | 1 | 15–22 Oct 2026 | M1 / M2 prep | Helped Shortlist datasets; checked every download link, file sizes and licences and created a Drive Space to gather all available data | [Milestone 1 report §6, §8](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
 | 1 | 15–22 Oct 2026 | M1 | Examined the role of ground-truth change masks in supervised model training and evaluation, focusing on how annotation quality can affect segmentation performance | [Report §8, §9](reports/DSAI%20Lab_Group%207_Milestone%201.pdf) | |
+| 2 | 23–29 Oct 2026 | M2 | Reviewed the team-verified dataset preparation report, checking the documented data preparation, split, leakage-prevention, augmentation, and loader-validation details for the milestone submission | [Milestone 2 report](reports/Milestone2_Report.md) | |
+| 2 | 29 Oct 2026 | M2 | Integrated the team-verified Milestone 2 report PDF and Markdown submission package into the project repository | [PR #14](https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/pull/14) | |
+| 2 | 23–29 Oct 2026 | M2 | Verified the final prepared dataset statistics, partition counts, class distribution, and exclusion records documented in the Milestone 2 report | [Milestone 2 report §9–10](reports/Milestone2_Report.md) | |
+| 2 | 29 Oct 2026 | M2 | Reviewed the report’s reproducibility and data-quality documentation, including loader validation, source provenance, leakage checks, and augmentation policy | [Milestone 2 report §8–12](reports/Milestone2_Report.md) | |
 
 ---
 
