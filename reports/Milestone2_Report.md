@@ -181,3 +181,7 @@ The full-release audit produces reproducible primary data ready for detection an
 4. Karaca, A. C. et al. (2025). *Robust Change Captioning in Remote Sensing: SECOND-CC Dataset and MModalCC Framework*. IEEE JSTARS. https://doi.org/10.1109/JSTARS.2025.3600613 ; author-linked dataset: https://doi.org/10.5281/zenodo.16937571
 5. Yang, K. et al. (2022). *Asymmetric Siamese Networks for Semantic Change Detection*. IEEE TGRS. SECOND label conventions: https://captain-whu.github.io/SCD/
 6. Ji, S., Wei, S. & Lu, M. (2019). *Fully Convolutional Networks for Multisource Building Extraction From an Open Aerial and Satellite Imagery Data Set*. IEEE TGRS. WHU imagery: https://gpcv.whu.edu.cn/data/building_dataset.html ; captioned mirror inspected: https://huggingface.co/datasets/hygge10111/RS-CDC
+
+## Team Section Sign-off
+
+Signed off: SRP
