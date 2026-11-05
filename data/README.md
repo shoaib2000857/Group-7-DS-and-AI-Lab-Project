@@ -1,6 +1,6 @@
 # Main-project datasets and preparation
 
-Large source archives, prepared targets and references stay out of Git. The main analysis notebooks are [01_EDA](../notebooks/01_EDA.ipynb), [02_Preprocessing](../notebooks/02_Preprocessing.ipynb) and [data-quality experiments](../notebooks/03_Data_Quality_Experiments.ipynb). Their saved outputs show the execution scope.
+Large source archives, prepared targets and references stay out of Git. The main analysis notebooks are [01_EDA](../notebooks/01_EDA.ipynb), [02_Preprocessing](../notebooks/02_Preprocessing.ipynb); optional [data-quality experiments](../POC/data_quality/README.md) stay in POC. Their saved outputs show the execution scope.
 
 ## Storage
 

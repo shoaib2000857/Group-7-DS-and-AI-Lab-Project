@@ -148,6 +148,10 @@ def complete_reference_checks(records: list[dict],profiles: list[dict]) -> dict:
     return result
 
 
+def read_jsonl(path: Path) -> list[dict]:
+    return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+
+
 def audit_instructions(path: Path, dataset: dict, image_index: dict) -> tuple[list[dict],dict]:
     """Join every instruction to its underlying LEVIR pair before any splitting."""
     files = sorted(path.glob('*.json')) if path.is_dir() else [path]
@@ -161,9 +165,10 @@ def audit_instructions(path: Path, dataset: dict, image_index: dict) -> tuple[li
             if len(images)!=2 or not all(isinstance(s,str) for s in images):
                 malformed['invalid_image_pair']+=1;continue
             # Source paths define split and pair; synthetic row IDs never define it.
-            parts = Path(images[0].replace('\\','/')).parts
+            first = Path(images[0].replace('\\','/'))
+            parts = first.parts
             split = next((p for p in parts if p in {'train','val','test'}),'unspecified')
-            stem = Path(images[0]).stem
+            stem = first.stem
             parent = f'levir_mci/{split}/{stem}'
             if not conversations and 'captions' in r:
                 role='evaluation_references'
@@ -194,7 +199,14 @@ def run_audit(config_path: str|Path|None=None, data_root: str|Path|None=None,
     output = Path(output);output.mkdir(parents=True,exist_ok=True)
     summary, all_records, all_profiles, instructions = {}, [], [], []
     definitions = {d['id']:d for d in catalog['datasets']}
-    selected = datasets or list(definitions)
+    # Instructions join to image records, so they always run after the image datasets.
+    selected = sorted(datasets or definitions,key=lambda did:definitions[did]['kind']=='instructions')
+    if datasets and (output/'audit_summary.json').exists():
+        # A subset run refreshes only those datasets and keeps the rest of the audit.
+        summary = {k:v for k,v in json.loads((output/'audit_summary.json').read_text(encoding='utf-8')).items() if k not in selected}
+        all_records = [r for r in read_jsonl(output/'source_records.jsonl') if r['dataset'] not in selected]
+        all_profiles = [p for p in read_jsonl(output/'profiles.jsonl') if p['dataset'] not in selected]
+        instructions = [r for r in read_jsonl(output/'instruction_records.jsonl') if r['dataset'] not in selected]
     for did in selected:
         d=definitions[did]
         if d.get('alias_of'):

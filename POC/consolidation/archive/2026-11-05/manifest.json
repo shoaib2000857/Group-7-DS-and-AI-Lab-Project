@@ -1,0 +1,221 @@
+{
+  "reason": "Preserve both pre-consolidation versions of conflicted files; latest data-pipeline implementation is canonical.",
+  "files": [
+    {
+      "original_path": "CHANGELOG.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/CHANGELOG.md",
+      "source": "data-preparation",
+      "sha256": "99ec205828204be10e06a67cfa2c0c28a8a14840a43297e6c5578c8e4e944a4e"
+    },
+    {
+      "original_path": "CHANGELOG.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/CHANGELOG.md",
+      "source": "data-pipeline",
+      "sha256": "4906dfc4146f2d2e9a18454dce8995da525039475edf27f880b412b0c19d6388"
+    },
+    {
+      "original_path": "README.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/README.md",
+      "source": "data-preparation",
+      "sha256": "721493543ae64234d5a718443039d818bea71acffd485f754410ba904dc6332b"
+    },
+    {
+      "original_path": "README.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/README.md",
+      "source": "data-pipeline",
+      "sha256": "e476f3b5bb1e706c5024c8ef05b1dc7ab46881520af5a13ce896a6c7baa9fd99"
+    },
+    {
+      "original_path": "WORKLOG.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/WORKLOG.md",
+      "source": "data-preparation",
+      "sha256": "f485deff94c13810813fb6088ba390b40723e2ba3d35aaa6afe0bd928523f215"
+    },
+    {
+      "original_path": "WORKLOG.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/WORKLOG.md",
+      "source": "data-pipeline",
+      "sha256": "c9f893ecebd8e8bf0338ca3b219e7ffa3561027dfc8cf6470ee705b31d5fa47a"
+    },
+    {
+      "original_path": "data/README.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/data/README.md",
+      "source": "data-preparation",
+      "sha256": "670af6846eb123b1002822b25c896e7a07aedcb06659fdfbb0a702bbc4b76c62"
+    },
+    {
+      "original_path": "data/README.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/data/README.md",
+      "source": "data-pipeline",
+      "sha256": "e6bbcc36962c11a80af70495e399f8978bf700d8241e27f2e7144c24c673a1c7"
+    },
+    {
+      "original_path": "docs/data/Pipeline.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/docs/data/Pipeline.md",
+      "source": "data-preparation",
+      "sha256": "0b0e2d8d5480fc605a648d2bdf16b53f18b65b4663ec3a9ed6d542e86b47cbb1"
+    },
+    {
+      "original_path": "docs/data/Pipeline.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/docs/data/Pipeline.md",
+      "source": "data-pipeline",
+      "sha256": "b930386a6c0fea6347cc259475fbbff1a01965865e6f7e390b701c6008833431"
+    },
+    {
+      "original_path": "docs/data/VALIDATION.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/docs/data/VALIDATION.md",
+      "source": "data-preparation",
+      "sha256": "1089d9185975e531ad38f57930cd2eda7f5966c36eec4579d91128a25f10e257"
+    },
+    {
+      "original_path": "docs/data/VALIDATION.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/docs/data/VALIDATION.md",
+      "source": "data-pipeline",
+      "sha256": "4dfa0504f2432168bb4f68c7c33294eb3365b5254fbe86c384b0fc2740a5d2f2"
+    },
+    {
+      "original_path": "docs/data/notebook_validation.json",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/docs/data/notebook_validation.json",
+      "source": "data-preparation",
+      "sha256": "8b180b3e5a0c74436f64264248ebb3ec9c3dc46ced10d3e1293adc0e8ee68f29"
+    },
+    {
+      "original_path": "docs/data/notebook_validation.json",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/docs/data/notebook_validation.json",
+      "source": "data-pipeline",
+      "sha256": "5a489938cbba194079f22ca96fbafed03cb9c1e58ada31744dfd92fa19fa4a17"
+    },
+    {
+      "original_path": "docs/data/run_summary.json",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/docs/data/run_summary.json",
+      "source": "data-preparation",
+      "sha256": "52b0f9a1211a1a541161223403e7b02a0a4b654d1cda4c0fc550a53b43a297ce"
+    },
+    {
+      "original_path": "docs/data/run_summary.json",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/docs/data/run_summary.json",
+      "source": "data-pipeline",
+      "sha256": "d24e2a3f238b74169afe7fd4fb9fded2ed5d1250bf87c9c2ba202f2b531d1af1"
+    },
+    {
+      "original_path": "notebooks/01_EDA.ipynb",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/notebooks/01_EDA.ipynb",
+      "source": "data-preparation",
+      "sha256": "2f3e763d0bf78f6982364cbdf9b5664be28a20f04ab320e88f24e185aef2020b"
+    },
+    {
+      "original_path": "notebooks/01_EDA.ipynb",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/notebooks/01_EDA.ipynb",
+      "source": "data-pipeline",
+      "sha256": "114a69d8692c111fdb073d7c58bcf35ba14ed4e96df64d191253afa6f758a65d"
+    },
+    {
+      "original_path": "notebooks/02_Preprocessing.ipynb",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/notebooks/02_Preprocessing.ipynb",
+      "source": "data-preparation",
+      "sha256": "aa0e868ea8ac6cee330bd741e37935b9e6fe7fa9a08d4f71a356bfeb103f8a97"
+    },
+    {
+      "original_path": "notebooks/02_Preprocessing.ipynb",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/notebooks/02_Preprocessing.ipynb",
+      "source": "data-pipeline",
+      "sha256": "4946c9109849da9cfe2fbab1c286a364cd5d41f29924a3b12325b290e58ecdb3"
+    },
+    {
+      "original_path": "notebooks/README.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/notebooks/README.md",
+      "source": "data-preparation",
+      "sha256": "e30b17360f171f7de10b22d0a9c29f6ccd86b662a4296b63391c3dd9c86e4ef2"
+    },
+    {
+      "original_path": "notebooks/README.md",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/notebooks/README.md",
+      "source": "data-pipeline",
+      "sha256": "a34bf720fb6739cb029db5621bb428010bed86eabb10f04b275cf38f01fe9b3f"
+    },
+    {
+      "original_path": "scripts/build_data_notebooks.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/scripts/build_data_notebooks.py",
+      "source": "data-preparation",
+      "sha256": "dedc1e931ee46344985abe5dd763cf8192ac7ba14420391974dc57446748c06b"
+    },
+    {
+      "original_path": "scripts/build_data_notebooks.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/scripts/build_data_notebooks.py",
+      "source": "data-pipeline",
+      "sha256": "12b47c704a6dbd19f2b3959fbd2c3a84c2de9fb5b340af2247694d0627ee3fa5"
+    },
+    {
+      "original_path": "scripts/run_data_notebooks.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/scripts/run_data_notebooks.py",
+      "source": "data-preparation",
+      "sha256": "9ddc33f1197b8e37adbc6343e645b37aff0ed6474847e3bcc86ac3f278ee8d27"
+    },
+    {
+      "original_path": "scripts/run_data_notebooks.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/scripts/run_data_notebooks.py",
+      "source": "data-pipeline",
+      "sha256": "c419783ce51c896c747b835d13186db20baeb86e822c6db1b53b69f95aee6350"
+    },
+    {
+      "original_path": "src/data/audit.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/src/data/audit.py",
+      "source": "data-preparation",
+      "sha256": "d2b36b9cef38ce7de36fb85a0810e8f8299e8e147e0ccfc976ad7216d81dfcad"
+    },
+    {
+      "original_path": "src/data/audit.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/src/data/audit.py",
+      "source": "data-pipeline",
+      "sha256": "5900182b15c8376767a54b7f2624b4d3fcfc8b2e27d4f75fa25edd0b982c4734"
+    },
+    {
+      "original_path": "src/data/catalog.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/src/data/catalog.py",
+      "source": "data-preparation",
+      "sha256": "8f79f962d5404385da09229a996ef596ce87fcbb999ae4354d9b9d54c1dde62e"
+    },
+    {
+      "original_path": "src/data/catalog.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/src/data/catalog.py",
+      "source": "data-pipeline",
+      "sha256": "c32095459922eb9818cafcb98febdc4c73f1b9977c104a2f56884e6667ee9dc1"
+    },
+    {
+      "original_path": "src/data/dataset.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/src/data/dataset.py",
+      "source": "data-preparation",
+      "sha256": "c29efc21673ee5b50c383b7814031442d3e48242c11e05d4adb0f4e066d8bf62"
+    },
+    {
+      "original_path": "src/data/dataset.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/src/data/dataset.py",
+      "source": "data-pipeline",
+      "sha256": "935f093e1d0c25ddef78946b4dcebec6d87161b03d0e6aa6ad5cdaf4f96f7a49"
+    },
+    {
+      "original_path": "src/data/preprocess.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/src/data/preprocess.py",
+      "source": "data-preparation",
+      "sha256": "9c47e60efcfe612182013756bbbc1baa5015fdd4c9c427c28310c89732501c0f"
+    },
+    {
+      "original_path": "src/data/preprocess.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/src/data/preprocess.py",
+      "source": "data-pipeline",
+      "sha256": "b2453073796f73b2551c3f289c2efb668bd3aeb6ea453072fbd3d99c5cd82d02"
+    },
+    {
+      "original_path": "tests/test_data_preparation.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-preparation/tests/test_data_preparation.py",
+      "source": "data-preparation",
+      "sha256": "c85ce50b4e291ef55c975da3e93473fdb0b0f8430aa1961f70400b4003af4848"
+    },
+    {
+      "original_path": "tests/test_data_preparation.py",
+      "snapshot": "POC/consolidation/archive/2026-11-05/data-pipeline/tests/test_data_preparation.py",
+      "source": "data-pipeline",
+      "sha256": "b332ef99ad9fc19ddd433f63251532ce3eec1838a34e56f272492eb4cce65371"
+    }
+  ]
+}

@@ -840,12 +840,6 @@
       "executed_cells": 9,
       "figure_outputs": 1,
       "execution_errors": 0
-    },
-    "03_Data_Quality_Experiments.ipynb": {
-      "code_cells": 5,
-      "executed_cells": 5,
-      "figure_outputs": 2,
-      "execution_errors": 0
     }
   },
   "environment": {
@@ -862,19 +856,20 @@
   },
   "implementation_sha256": {
     "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "src/data/acquire.py": "361610c0a160af196043a919bab6b1cf3f850666417fb8df887b9be8433c2ed8",
-    "src/data/adapters.py": "0995a6e79187f7e7862ff0b46a67a6152efb706d50245a8931adb33c930dc327",
-    "src/data/audit.py": "d2b36b9cef38ce7de36fb85a0810e8f8299e8e147e0ccfc976ad7216d81dfcad",
-    "src/data/catalog.py": "8f79f962d5404385da09229a996ef596ce87fcbb999ae4354d9b9d54c1dde62e",
-    "src/data/cli.py": "41c8b3c0c26d103eba7de778452543d918c2f16b2cc8c2fb259fcc82dfc0982b",
-    "src/data/dataset.py": "c29efc21673ee5b50c383b7814031442d3e48242c11e05d4adb0f4e066d8bf62",
-    "src/data/plots.py": "f0ca5e6863a724945c4c9a60352dfa67fe081d2d5f7728153f76482aa674dae3",
-    "src/data/preprocess.py": "9c47e60efcfe612182013756bbbc1baa5015fdd4c9c427c28310c89732501c0f",
-    "src/data/storage.py": "a78fa03dfb7939ecd7b774fe45515941b1a66e54ea4d6e0e15a8a28053f00083",
-    "scripts/build_data_notebooks.py": "b36df0b88e215bef20d98ed1006b5a2e07f1cd88c2e8bbfebaf687b830985eeb",
-    "scripts/run_data_notebooks.py": "9ddc33f1197b8e37adbc6343e645b37aff0ed6474847e3bcc86ac3f278ee8d27",
+    "src/data/acquire.py": "6efbbc699c70a551dfcb05dfc7f97abcb694729fb71ee4279ca3779a6f71b03f",
+    "src/data/adapters.py": "3377133acab37af8da810abecdcb12a49d41fa265079125544469539f8aea4f9",
+    "src/data/audit.py": "b40d943297f3b44383d991fd64996b8038150558191f45db408002c914601aeb",
+    "src/data/catalog.py": "2fc6902f2e8d367102e3ef106abda1958e4f42e1053d2246a7b519738b7b98ac",
+    "src/data/cli.py": "0af464d7350adbf2c683c6a37064f447fa7ef67c2617e114647ea26a64e51f83",
+    "src/data/dataset.py": "7a741a2f8ffb17ecfc7cb44a1e03b02f2b6ab3a3a88ffd1158cf6975f0975d78",
+    "src/data/plots.py": "4f01659308b5aa35e374e880bbb91d80d530a5a7a698793e30e9f2e342dbc9df",
+    "src/data/preprocess.py": "c5674532dd2767d45f0095d090c7e15fa065faa613e8637453790827862af8da",
+    "src/data/storage.py": "0d7faa6dd7f40e88416f50138c4a615cf80f72c7fc24e26964c8105d84bb93ad",
+    "scripts/build_data_notebooks.py": "fec963daca272a0c596a57587302e028ebb725e8a1fac40cf9f7bd23a922ad45",
+    "scripts/run_data_notebooks.py": "8fe38c9c3e6b7c581602a1f5403ed05ef5cb979290a1f6291f29444b0b5e0ef3",
     "scripts/summarize_data_run.py": "2e9d358717023e951af17d2f5726a6de5a7df5f7def7243da1d268a90a5ab6ff",
     "configs/datasets.yaml": "997dbc56a8b036c29f55c5f74b755753f028c3b8a03fc31e22053fca496bcc04",
     "requirements-data.txt": "70f77e455319d98c9032cc1eee2f387c84940ecdb3b86e3603df00371b07af78"
-  }
+  },
+  "poc_experiment_evidence": "POC/data_quality/notebook_validation.json"
 }

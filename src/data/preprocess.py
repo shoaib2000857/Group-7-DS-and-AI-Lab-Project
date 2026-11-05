@@ -57,16 +57,23 @@ def exclusion_policy(records: list[dict], profiles: list[dict], instructions: li
     for members in exact.values():
         if len(members)<2:continue
         order=sorted(members,key=lambda x:(RANK[rmap[x]['official_split']],x))
-        for pid in order[1:]:reasons[pid].add('exact_repeated_pair')
+        # Keep the best usable copy, so a flagged copy cannot cost the clean one.
+        keep=next((x for x in order if x not in reasons),order[0])
+        for pid in order:
+            if pid!=keep:reasons[pid].add('exact_repeated_pair')
         targets={pmap[x].get('target_pixel_sha256') for x in members}
         if len(targets)>1:
             for pid in members:reasons[pid].add('inconsistent_duplicate_targets')
         groups.append({'members':order,'different_targets':len(targets)>1})
     # Any exact frame/tile reused across partitions conservatively excludes the
     # lower-priority record. The match may come from another related dataset.
+    # Records already excluded protect nothing, so they cannot displace others.
+    usable=set(rmap)-set(reasons)
     for members in fingerprints.values():
-        best=min(RANK[rmap[x]['official_split']] for x in members)
-        for pid in members:
+        live=[x for x in members if x in usable]
+        if not live:continue
+        best=min(RANK[rmap[x]['official_split']] for x in live)
+        for pid in live:
             if RANK[rmap[pid]['official_split']]>best:
                 reasons[pid].add('exact_frame_or_tile_cross_split')
     for inst in instructions:
@@ -74,6 +81,15 @@ def exclusion_policy(records: list[dict], profiles: list[dict], instructions: li
             pid=inst['parent_pair_id']
             if rmap[pid]['official_split']=='train':reasons[pid].add('instruction_benchmark_parent_holdout')
     return {k:sorted(v) for k,v in reasons.items() if v},groups
+
+
+def unique_pairs(rows: list[dict], priority: list[str]) -> list[dict]:
+    """Keep one copy of a pair repeated across a task's related datasets."""
+    kept={}
+    for r in sorted(rows,key=lambda r:(priority.index(r['dataset']),r['pair_id'])):
+        kept.setdefault(r['pixel_pair_signature'],r['pair_id'])
+    ids=set(kept.values())
+    return [r for r in rows if r['pair_id'] in ids]
 
 
 def prepare(audit_dir: str|Path='outputs/data', output: str|Path='data/processed',
@@ -84,6 +100,7 @@ def prepare(audit_dir: str|Path='outputs/data', output: str|Path='data/processed
     inst=read_jsonl(audit_dir/'instruction_records.jsonl')
     reasons,groups=exclusion_policy(records,profiles,inst)
     pmap={p['pair_id']:p for p in profiles}
+    catalog=load_catalog(config_path);definitions={d['id']:d for d in catalog['datasets']}
     near=perceptual_candidates(profiles)
     for candidate in near:
         if candidate['exact_pair']:continue
@@ -99,6 +116,9 @@ def prepare(audit_dir: str|Path='outputs/data', output: str|Path='data/processed
             if pid in reasons:continue
             if row['official_split'] not in {'train','val','test'}:
                 reasons[pid]=['missing_official_split'];continue
+            # Ineligible sources stay available for evaluation, never for fitting.
+            if row['official_split']=='train' and not definitions.get(row['dataset'],{}).get('training_eligible',False):
+                reasons[pid]=['not_training_eligible'];continue
             source=row['source_path']
             if source not in stores:stores[source]=Store(source)
             store=stores[source]
@@ -114,6 +134,7 @@ def prepare(audit_dir: str|Path='outputs/data', output: str|Path='data/processed
                 target_paths[kind]=dst.relative_to(output).as_posix();target_hashes[kind]=sha256(dst.read_bytes())
             prepared.append({k:v for k,v in row.items() if k not in {'captions','source_changeflag'}} | {
                 't1_sha256':pmap[pid]['t1_sha256'],'t2_sha256':pmap[pid]['t2_sha256'],
+                'pixel_pair_signature':'|'.join(sorted([pmap[pid]['t1_pixel_sha256'],pmap[pid]['t2_pixel_sha256']])),
                 'target_paths':target_paths,'target_hashes':target_hashes,'original_size':[pmap[pid]['width'],pmap[pid]['height']],
                 'prepared_size':list(size),'scale_xy':[size[0]/pmap[pid]['width'],size[1]/pmap[pid]['height']],
                 'resize':'RGB bilinear, categorical nearest; full frame; no crop',
@@ -129,7 +150,7 @@ def prepare(audit_dir: str|Path='outputs/data', output: str|Path='data/processed
     write_json(output/'references.json',refs)
     write_json(output/'exclusions.json',reasons)
     write_json(output/'duplicate_groups.json',groups)
-    tasks=build_task_manifests(prepared,refs,inst,output,load_catalog(config_path))
+    tasks=build_task_manifests(prepared,refs,inst,output,catalog)
     result={'source_records':len(records),'prepared_records':len(prepared),'excluded_records':len(reasons),
             'by_dataset_split':dict(Counter(r['dataset']+'/'+r['official_split'] for r in prepared)),
             'exclusion_reasons_nonexclusive':dict(Counter(x for xs in reasons.values() for x in xs)),
@@ -152,6 +173,7 @@ def build_task_manifests(records, refs, instructions, output, catalog):
             view=spec.get('views',{}).get(r['dataset'],'target')
             if task!='captioning' and view not in r['target_paths'] and view not in {'mci_building','mci_road','mci_any','semantic_pair'}:continue
             rows.append(dict(r,task=task,target_view=view))
+        rows=unique_pairs(rows,list(spec['datasets']))
         for split in ['train','val','test']:
             sub=[r for r in rows if r['official_split']==split]
             write_jsonl(output/'tasks'/task/(split+'.jsonl'),sub)
