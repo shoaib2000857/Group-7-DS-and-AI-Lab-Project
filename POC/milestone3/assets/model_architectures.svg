@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="495" height="145" preserveAspectRatio="xMinYMin meet" viewBox="0 0 495 145" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="495" height="145"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-145)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="84" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="27.0479736328125" y="125" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,250) scale(1,-1)">BIT: RESNET18</text>
+			<text x="17.9798583984375" y="110" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,220) scale(1,-1)">Shared T1/T2 features</text>
+			<path d="M 111,111 L 125,111 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="125 111, 121.4897 112.9177, 121.4897 109.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="128" y="84" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="149.703466796875" y="125" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,250) scale(1,-1)">TOKEN ENCODER</text>
+			<text x="154.521728515625" y="110" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,220) scale(1,-1)">4 tokens per date</text>
+			<path d="M 239,111 L 253,111 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="253 111, 249.4897 112.9177, 249.4897 109.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="256" y="84" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="269.5767333984375" y="125" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,250) scale(1,-1)">TEMPORAL DECODER</text>
+			<text x="275.7523193359375" y="110" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,220) scale(1,-1)">8 layers + differences</text>
+			<path d="M 367,111 L 381,111 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="381 111, 377.4897 112.9177, 377.4897 109.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="384" y="84" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="416.6124267578125" y="125" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,250) scale(1,-1)">CLASSIFIER</text>
+			<text x="392.8026123046875" y="110" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,220) scale(1,-1)">Background / road / building</text>
+			<rect x="0" y="9" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="28.760546875" y="50" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,100) scale(1,-1)">RSCaMa: CLIP</text>
+			<text x="22.56298828125" y="35" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,70) scale(1,-1)">7 x 7 patch features</text>
+			<path d="M 111,36 L 125,36 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="125 36, 121.4897 37.9177, 121.4897 34.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="128" y="9" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="159.5427734375" y="50" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,100) scale(1,-1)">SSM FUSION</text>
+			<text x="142.8560791015625" y="35" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,70) scale(1,-1)">3 spatial/temporal layers</text>
+			<path d="M 239,36 L 253,36 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="253 36, 249.4897 37.9177, 249.4897 34.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="256" y="9" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="281.33916015625" y="50" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,100) scale(1,-1)">TEXT DECODER</text>
+			<text x="278.78271484375" y="35" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,70) scale(1,-1)">1 Transformer layer</text>
+			<path d="M 367,36 L 381,36 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="381 36, 377.4897 37.9177, 377.4897 34.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="384" y="9" width="111" height="55" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="422.175" y="50" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,100) scale(1,-1)">CAPTION</text>
+			<text x="400.7310791015625" y="35" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,70) scale(1,-1)">Greedy, max 42 tokens</text>
+		</g>
+	</g>
+</svg>

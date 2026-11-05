@@ -28,6 +28,9 @@ def main():
     refs=[r for r in git('for-each-ref','--format=%(refname:short)','refs/remotes/origin').decode().splitlines()
           if r not in {'origin','origin/HEAD','origin/poc-consolidation'}]
     known={oid for _,oid in tree('HEAD')};snapshots={};branches=[]
+    previous=OUT/'branch_inventory.json'
+    if previous.exists():
+        snapshots={r['git_blob']:r for r in json.loads(previous.read_text())['additional_unique_poc_snapshots']}
     for ref in refs:
         commit=git('rev-parse',ref).decode().strip();files=tree(ref,'POC')
         row={'ref':ref,'commit':commit,'poc_files':len(files),'new_snapshots':0,

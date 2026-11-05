@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="495" height="235" preserveAspectRatio="xMinYMin meet" viewBox="0 0 495 235" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="495" height="235"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-235)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="105" width="96" height="58" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="13.560546875" y="149" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,298) scale(1,-1)">ORDERED INPUTS</text>
+			<text x="15.9071044921875" y="134" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,268) scale(1,-1)">Earlier T1 / later T2</text>
+			<text x="16.0023193359375" y="122" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,244) scale(1,-1)">RGB + provenance</text>
+			<rect x="119" y="171" width="109" height="58" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="162.1661865234375" y="215" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,430) scale(1,-1)">A: BIT</text>
+			<text x="136.1849365234375" y="200" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,400) scale(1,-1)">Shared visual encoder</text>
+			<text x="138.4810791015625" y="188" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,376) scale(1,-1)">Road / building mask</text>
+			<rect x="119" y="84" width="109" height="58" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="152.749853515625" y="128" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,256) scale(1,-1)">B: RSCaMa</text>
+			<text x="137.439208984375" y="113" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,226) scale(1,-1)">Paired visual features</text>
+			<text x="147.2298583984375" y="101" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,202) scale(1,-1)">Change caption</text>
+			<rect x="251" y="84" width="109" height="58" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="276.19638671875" y="128" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,256) scale(1,-1)">CLAIM PARSER</text>
+			<text x="269.439208984375" y="113" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,226) scale(1,-1)">Object / action / place</text>
+			<text x="267.036865234375" y="101" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,202) scale(1,-1)">Source span + quantity</text>
+			<rect x="379" y="135" width="116" height="65" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="396.9979736328125" y="186" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,372) scale(1,-1)">C: VISUAL EVIDENCE</text>
+			<text x="399.90283203125" y="171" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,342) scale(1,-1)">Original-frame regions</text>
+			<text x="402.92041015625" y="159" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,318) scale(1,-1)">Crops + quality flags</text>
+			<rect x="379" y="51" width="116" height="65" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="413.6838134765625" y="102" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,204) scale(1,-1)">D: REFEREE</text>
+			<text x="391.769287109375" y="87" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,174) scale(1,-1)">Claim + images + evidence</text>
+			<text x="401.5672607421875" y="75" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,150) scale(1,-1)">Accept / reject / defer</text>
+			<rect x="251" y="0" width="109" height="58" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="277.05361328125" y="44" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,88) scale(1,-1)">FINAL REPORT</text>
+			<text x="270.68798828125" y="29" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,58) scale(1,-1)">Accepted description</text>
+			<text x="268.501708984375" y="17" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,34) scale(1,-1)">Review flag + reasons</text>
+			<rect x="0" y="0" width="228" height="58" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="53.8888671875" y="44" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,88) scale(1,-1)">SEPARATE REFERENCE STORE</text>
+			<text x="51.0501708984375" y="29" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,58) scale(1,-1)">Source masks and caption references</text>
+			<text x="59.595703125" y="17" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,34) scale(1,-1)">Training / evaluation access only</text>
+			<path d="M 96,145 L 119,196 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="119 196, 115.8087 193.5884, 119.305 192.0116" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<path d="M 96,124 L 119,113 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="119 113, 116.6606 116.2446, 115.0058 112.7845" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<path d="M 228,200 L 379,183 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="379 183, 375.7263 185.2984, 375.2972 181.4871" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<path d="M 228,113 L 251,113 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="251 113, 247.4897 114.9177, 247.4897 111.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<path d="M 360,114 L 379,158 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="379 158, 375.8478 155.5375, 379.3689 154.0171" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<path d="M 437,135 L 437,116 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="437 116, 438.9177 119.5103, 435.0823 119.5103" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<path d="M 379,70 L 360,29 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="360 29, 363.2159 31.37864, 359.736 32.99128" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

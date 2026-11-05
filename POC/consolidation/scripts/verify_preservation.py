@@ -19,9 +19,14 @@ def main():
     for row in branch['additional_unique_poc_snapshots']:
         p=ROOT/row['snapshot']
         if not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest()!=row['sha256']:problems.append({'path':row['snapshot'],'problem':'snapshot missing/changed'})
+    conflict_manifest=ROOT/'POC/consolidation/archive/2026-11-05/manifest.json'
+    conflicts=json.loads(conflict_manifest.read_text())['files']
+    for row in conflicts:
+        p=ROOT/row['snapshot']
+        if not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest()!=row['sha256']:problems.append({'path':row['snapshot'],'problem':'conflicting version missing/changed'})
     result={'date':'2026-11-05','inventoried_local_files':len(baseline['files']),
             'inventoried_local_bytes':sum(r['bytes'] for r in baseline['files']),
-            'additional_branch_snapshots':len(branch['additional_unique_poc_snapshots']),
+            'additional_branch_snapshots':len(branch['additional_unique_poc_snapshots']),'conflicting_versions_checked':len(conflicts),
             'problems':problems,'status':'passed' if not problems else 'failed',
             'local_git_bundle':'.git/preservation/2026-11-05/all-branches.bundle'}
     (evidence/'preservation_check.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
