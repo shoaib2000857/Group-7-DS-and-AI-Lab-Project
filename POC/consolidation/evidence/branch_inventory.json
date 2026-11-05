@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-05",
+  "main_commit": "1213cdad923f93164a2cda39c8f1315263510435",
+  "branches": [
+    {
+      "ref": "origin/data-pipeline",
+      "commit": "1d0d52a6e9b0e5068e821fd098fa55e16a6290cb",
+      "poc_files": 115,
+      "new_snapshots": 2,
+      "commits_outside_main": 3
+    },
+    {
+      "ref": "origin/data-preparation",
+      "commit": "28f88766d3cdff5776d61de2f9720ae0cc696b0c",
+      "poc_files": 199,
+      "new_snapshots": 0,
+      "commits_outside_main": 15
+    },
+    {
+      "ref": "origin/docs/m1-redesigned-slides",
+      "commit": "fc766334287910d2c8ee072777b94d9776501cbf",
+      "poc_files": 0,
+      "new_snapshots": 0,
+      "commits_outside_main": 1
+    },
+    {
+      "ref": "origin/docs/milestone-1-team-review",
+      "commit": "194fa949c545acd9a87804b8e494dc11afa4aa4d",
+      "poc_files": 82,
+      "new_snapshots": 1,
+      "commits_outside_main": 0
+    },
+    {
+      "ref": "origin/docs/milestone-2-submission",
+      "commit": "77f06fff8018ead5895f7c871be4066e1d1bf604",
+      "poc_files": 82,
+      "new_snapshots": 0,
+      "commits_outside_main": 0
+    },
+    {
+      "ref": "origin/execution",
+      "commit": "8328ba7d183c01421153a239a34e9b2be4e679fb",
+      "poc_files": 111,
+      "new_snapshots": 0,
+      "commits_outside_main": 0
+    },
+    {
+      "ref": "origin/feat/poc-b-captioning",
+      "commit": "dc8f3cee62e44ab89dfa0f8f04a6299fc05d258d",
+      "poc_files": 114,
+      "new_snapshots": 0,
+      "commits_outside_main": 1
+    },
+    {
+      "ref": "origin/feat/poc-c-visual-evidence",
+      "commit": "54b713ace5612566e50deb34ffe9a58a9717b2af",
+      "poc_files": 114,
+      "new_snapshots": 0,
+      "commits_outside_main": 1
+    },
+    {
+      "ref": "origin/feat/shoaib-colab-benchmarks",
+      "commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "poc_files": 194,
+      "new_snapshots": 6,
+      "commits_outside_main": 11
+    },
+    {
+      "ref": "origin/main",
+      "commit": "1213cdad923f93164a2cda39c8f1315263510435",
+      "poc_files": 111,
+      "new_snapshots": 0,
+      "commits_outside_main": 0
+    },
+    {
+      "ref": "origin/milestone-2-report",
+      "commit": "d982e7e84759c7ba7a8278305fd239b01bbb329d",
+      "poc_files": 111,
+      "new_snapshots": 0,
+      "commits_outside_main": 0
+    }
+  ],
+  "additional_unique_poc_snapshots": [
+    {
+      "source_ref": "origin/data-pipeline",
+      "source_commit": "1d0d52a6e9b0e5068e821fd098fa55e16a6290cb",
+      "original_path": "POC/benchmarks/D_decisions.md",
+      "snapshot": "POC/consolidation/archive/branch-heads/data-pipeline/POC/benchmarks/D_decisions.md",
+      "git_blob": "3f443738dccfa337337ba02224ed0f003d67dbb1",
+      "sha256": "e58110020e07bef9c060d3953797f45bf467c8dca157b6f4a0a361ad37f22674",
+      "bytes": 6384
+    },
+    {
+      "source_ref": "origin/data-pipeline",
+      "source_commit": "1d0d52a6e9b0e5068e821fd098fa55e16a6290cb",
+      "original_path": "POC/benchmarks/README.md",
+      "snapshot": "POC/consolidation/archive/branch-heads/data-pipeline/POC/benchmarks/README.md",
+      "git_blob": "7d802eaa384c65f336710a786db8b50d6b17084d",
+      "sha256": "9063ab0714af3149b1a847a551976a0ab50aea9a749bcb634a9542947387c18d",
+      "bytes": 5266
+    },
+    {
+      "source_ref": "origin/docs/milestone-1-team-review",
+      "source_commit": "194fa949c545acd9a87804b8e494dc11afa4aa4d",
+      "original_path": "POC/benchmarks/README.md",
+      "snapshot": "POC/consolidation/archive/branch-heads/docs__milestone-1-team-review/POC/benchmarks/README.md",
+      "git_blob": "adb9f5eb26080bda32f18d5208bf5ba3e22b8061",
+      "sha256": "0c37eed82d89f398841d226e742f0b027c4aea4441e0e296b70a6b42de2a41c7",
+      "bytes": 5068
+    },
+    {
+      "source_ref": "origin/feat/shoaib-colab-benchmarks",
+      "source_commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "original_path": "POC/milestone2/CHANGELOG.md",
+      "snapshot": "POC/consolidation/archive/branch-heads/feat__shoaib-colab-benchmarks/POC/milestone2/CHANGELOG.md",
+      "git_blob": "298a8ea205ef06ff4580b9a9ca9855c5b850ae8d",
+      "sha256": "73c0b2727871af436763009d6770cffd6863fbd251369a066d938c756452d990",
+      "bytes": 5044
+    },
+    {
+      "source_ref": "origin/feat/shoaib-colab-benchmarks",
+      "source_commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "original_path": "POC/milestone2/Milestone2_Report.md",
+      "snapshot": "POC/consolidation/archive/branch-heads/feat__shoaib-colab-benchmarks/POC/milestone2/Milestone2_Report.md",
+      "git_blob": "03e2e389454e2b6846548cb5fca7f9effa7bd38d",
+      "sha256": "7077ddfc2b9e393b91b9de73187fe29d19142dfd633b55d61505ca78566af5b5",
+      "bytes": 18345
+    },
+    {
+      "source_ref": "origin/feat/shoaib-colab-benchmarks",
+      "source_commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "original_path": "POC/milestone2/README.md",
+      "snapshot": "POC/consolidation/archive/branch-heads/feat__shoaib-colab-benchmarks/POC/milestone2/README.md",
+      "git_blob": "1d3557e4d48efbdf52f09104226eba71cfd092b5",
+      "sha256": "403db641a7cf1dae2bd28555fcc1d06c7e7b2f5f4ede35f617136e010577ce85",
+      "bytes": 4660
+    },
+    {
+      "source_ref": "origin/feat/shoaib-colab-benchmarks",
+      "source_commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "original_path": "POC/milestone2/build_m2_report.py",
+      "snapshot": "POC/consolidation/archive/branch-heads/feat__shoaib-colab-benchmarks/POC/milestone2/build_m2_report.py",
+      "git_blob": "c5b550b563300fbf0539a18c00eae432d69ddf79",
+      "sha256": "79f85b6507fe4e25c5f1c67fc4f79e5bc82e4d5286119d788226061e4e11e2fe",
+      "bytes": 8037
+    },
+    {
+      "source_ref": "origin/feat/shoaib-colab-benchmarks",
+      "source_commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "original_path": "POC/milestone2/output/pdf/TerraWatch_Milestone2_Report.pdf",
+      "snapshot": "POC/consolidation/archive/branch-heads/feat__shoaib-colab-benchmarks/POC/milestone2/output/pdf/TerraWatch_Milestone2_Report.pdf",
+      "git_blob": "ad4604e9573443a0a740092a72dcfd62d8d7f54a",
+      "sha256": "671687456f44422bc72079bf162d30822c1a6e64561e165cb7ef343ba3a31950",
+      "bytes": 484955
+    },
+    {
+      "source_ref": "origin/feat/shoaib-colab-benchmarks",
+      "source_commit": "11f8f02619ee5c72b421481fddf9cf067c4984f4",
+      "original_path": "POC/milestone2/qa/layout_checks.json",
+      "snapshot": "POC/consolidation/archive/branch-heads/feat__shoaib-colab-benchmarks/POC/milestone2/qa/layout_checks.json",
+      "git_blob": "7c551cdd7e62d56976e8068875219d5fbe6945dd",
+      "sha256": "937d5246921a11f48d7df940a171612359bcb88a576b6897f11eb2bebf76daa4",
+      "bytes": 705
+    }
+  ],
+  "policy": "Preserve every unique POC blob at inspected remote heads; current implementations remain canonical. Historical commits remain in Git and the local all-branch bundle."
+}

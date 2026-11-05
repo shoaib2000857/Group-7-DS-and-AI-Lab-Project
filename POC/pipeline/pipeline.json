@@ -1,0 +1,8 @@
+{
+  "detector": {"python": "python", "source_dir": "POC/pipeline/cache/BIT_CD", "checkpoint": "models/checkpoints/bit_mci.pt", "image_size": 256, "classes": 3},
+  "captioner": {"python": "python", "source_dir": "POC/execution/cache/rscama_src", "checkpoint": "POC/execution/weights/rscama_r20/out/best.pth", "vocab": null},
+  "referee": {"python": "python", "model_id": "J06", "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17", "accept_threshold": 0.8},
+  "worker_timeout_seconds": 600,
+  "device": "cuda",
+  "seed": 42
+}
