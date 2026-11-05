@@ -1,0 +1,5 @@
+# CPU visual-evidence module; use a separate environment from GPU model workers.
+numpy>=1.26,<3
+Pillow>=10,<13
+opencv-python-headless>=4.10,<6
+pydantic>=2,<3

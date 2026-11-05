@@ -1,0 +1,8 @@
+
+For more information, please visit https://github.com/Chen-Yang-Liu/Change-Agent
+
+The dataset contains bi-temporal images as well as diverse change detection masks and descriptive sentences. It provides a crucial data foundation for exploring multi-task learning for change detection and change captioning.
+
+Some examples of our dataset are as follows:
+
+![dataset_example](dataset.png)

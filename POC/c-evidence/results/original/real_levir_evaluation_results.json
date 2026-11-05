@@ -1,0 +1,209 @@
+[
+  {
+    "record_type": "stage_c_evidence_record",
+    "pair_id": "LEVIR-MCI/train/train_000010",
+    "claim_id": "real_eval_train_000010",
+    "source_span": "several houses are built at the bottom of the scene",
+    "claim": {
+      "object": "building",
+      "action": "constructed",
+      "location": "bottom",
+      "quantity": 3,
+      "quantity_unit": "count"
+    },
+    "candidate_region_ids": [
+      [
+        60,
+        175,
+        230,
+        250
+      ]
+    ],
+    "coordinate_frame": "original_T1_pixels",
+    "bbox_convention": "x0_y0_x1_y1_half_open",
+    "evidence": {
+      "mask_run_id": "detector_open_cd_bit",
+      "mask_ontology": "building_road_binary",
+      "witness_run_id": "W01_structural_witness_v1",
+      "visible_change": true,
+      "confidence": 0.9512551914599929,
+      "state_transition": "appearance_of_structure",
+      "observations": "Visible change confirmed. Rectilinear structural boundaries present in T2 (localized max_block=86.6, peak/mean ratio=2.38, edge density=0.74) that were absent in T1 (edge density=0.78). Visual evidence supports building appearance.",
+      "visibility_flags": [
+        "t1_clear",
+        "t2_clear"
+      ],
+      "quality_flags": [
+        "illumination_corrected_-47.2"
+      ],
+      "crop_paths": [
+        "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T1.png",
+        "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T2.png"
+      ],
+      "structural_edge_change": -0.037203557312253,
+      "mean_luminance_diff": -47.167686462402344,
+      "crop_mean_diff": 37.48274044795784,
+      "transform_record": {
+        "original_bbox": [
+          60,
+          175,
+          230,
+          250
+        ],
+        "padded_bbox": [
+          35,
+          164,
+          255,
+          256
+        ],
+        "padding_applied": {
+          "pad_x0": 25,
+          "pad_y0": 11,
+          "pad_x1": 25,
+          "pad_y1": 6
+        },
+        "coordinate_frame": "original_T1_pixels"
+      }
+    },
+    "decision": null,
+    "human_reference": "stored_separately_and_never_passed_to_inference"
+  },
+  {
+    "record_type": "stage_c_evidence_record",
+    "pair_id": "LEVIR-MCI/val/val_000005",
+    "claim_id": "real_eval_val_000005",
+    "source_span": "two new houses were built in the center field",
+    "claim": {
+      "object": "building",
+      "action": "constructed",
+      "location": "center",
+      "quantity": 2,
+      "quantity_unit": "count"
+    },
+    "candidate_region_ids": [
+      [
+        80,
+        80,
+        180,
+        180
+      ]
+    ],
+    "coordinate_frame": "original_T1_pixels",
+    "bbox_convention": "x0_y0_x1_y1_half_open",
+    "evidence": {
+      "mask_run_id": "detector_open_cd_bit",
+      "mask_ontology": "building_road_binary",
+      "witness_run_id": "W01_structural_witness_v1",
+      "visible_change": false,
+      "confidence": 0.7587977140223217,
+      "state_transition": "no_physical_change",
+      "observations": "No verifiable physical structural change visible in this crop. T1 and T2 display consistent ground texture (delta edge=-0.119, lum shift=-45.1, max_block=79.4, peak_ratio=1.89). Any claimed new structure is unsupported.",
+      "visibility_flags": [
+        "t1_clear",
+        "t2_clear"
+      ],
+      "quality_flags": [
+        "illumination_corrected_-45.1"
+      ],
+      "crop_paths": [
+        "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_val_val_000005_real_eval_val_000005_crop_T1.png",
+        "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_val_val_000005_real_eval_val_000005_crop_T2.png"
+      ],
+      "structural_edge_change": -0.11934911242603552,
+      "mean_luminance_diff": -45.06212615966797,
+      "crop_mean_diff": 41.847692307692306,
+      "transform_record": {
+        "original_bbox": [
+          80,
+          80,
+          180,
+          180
+        ],
+        "padded_bbox": [
+          65,
+          65,
+          195,
+          195
+        ],
+        "padding_applied": {
+          "pad_x0": 15,
+          "pad_y0": 15,
+          "pad_x1": 15,
+          "pad_y1": 15
+        },
+        "coordinate_frame": "original_T1_pixels"
+      }
+    },
+    "decision": null,
+    "human_reference": "stored_separately_and_never_passed_to_inference"
+  },
+  {
+    "record_type": "stage_c_evidence_record",
+    "pair_id": "LEVIR-MCI/train/train_000010",
+    "claim_id": "real_eval_train_000010",
+    "source_span": "a new road appears on the left",
+    "claim": {
+      "object": "road",
+      "action": "constructed",
+      "location": "left",
+      "quantity": 1,
+      "quantity_unit": "count"
+    },
+    "candidate_region_ids": [
+      [
+        10,
+        40,
+        70,
+        220
+      ]
+    ],
+    "coordinate_frame": "original_T1_pixels",
+    "bbox_convention": "x0_y0_x1_y1_half_open",
+    "evidence": {
+      "mask_run_id": "detector_open_cd_bit",
+      "mask_ontology": "building_road_binary",
+      "witness_run_id": "W01_structural_witness_v1",
+      "visible_change": true,
+      "confidence": 0.8,
+      "state_transition": "surface_alteration",
+      "observations": "Visible surface change observed (mean normalized diff=40.6, aspect ratio=3.0). Supports road change.",
+      "visibility_flags": [
+        "t1_clear",
+        "t2_clear"
+      ],
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "crop_paths": [
+        "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T1.png",
+        "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T2.png"
+      ],
+      "structural_edge_change": -0.016326977865439463,
+      "mean_luminance_diff": -17.052871704101562,
+      "crop_mean_diff": 40.600463876104904,
+      "transform_record": {
+        "original_bbox": [
+          10,
+          40,
+          70,
+          220
+        ],
+        "padded_bbox": [
+          1,
+          13,
+          79,
+          247
+        ],
+        "padding_applied": {
+          "pad_x0": 9,
+          "pad_y0": 27,
+          "pad_x1": 9,
+          "pad_y1": 27
+        },
+        "coordinate_frame": "original_T1_pixels"
+      }
+    },
+    "decision": null,
+    "human_reference": "stored_separately_and_never_passed_to_inference"
+  }
+]

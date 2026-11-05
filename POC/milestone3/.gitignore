@@ -1,0 +1,4 @@
+qa/builds/
+qa/pages/
+output/pdf/_body.pdf
+__pycache__/

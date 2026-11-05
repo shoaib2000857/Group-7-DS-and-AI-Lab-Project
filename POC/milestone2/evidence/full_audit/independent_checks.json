@@ -1,0 +1,13 @@
+{
+  "all_source_records_valid": 10077,
+  "retained_unique_pairs": 9544,
+  "retained_flag_conflicts": 0,
+  "shared_exact_frames_across_retained_splits": 0,
+  "original_150_reproduction": {
+    "building_only": 28,
+    "unchanged": 65,
+    "road_only": 11,
+    "both": 46
+  },
+  "original_150_conflicts": 8
+}

@@ -1,0 +1,4789 @@
+{
+  "date": "2026-11-06",
+  "captioning": {
+    "b0_results.json": {
+      "source": "POC/execution/outputs/b0_results.json",
+      "sha256": "e0ac627f25bb5d4713922554adf4a0c7cf16bf38f84ef629ed5226aaa82d075b",
+      "records": [
+        {
+          "pairs": 100,
+          "claims_total": 122,
+          "claims_per_pair": 1.22,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 96,
+            "reference_conflict": 5,
+            "unverifiable": 14,
+            "contradicted": 7
+          },
+          "supported_claim_precision_strict": 0.7869,
+          "supported_claim_precision_strict_ci95": [
+            0.7241,
+            0.8537
+          ],
+          "supported_claim_precision_in_scope": 0.8889,
+          "supported_claim_precision_in_scope_ci95": [
+            0.8286,
+            0.9459
+          ],
+          "supported_claim_precision_located": 0.7787,
+          "supported_claim_precision_located_ci95": [
+            0.7143,
+            0.8425
+          ],
+          "reference_fact_recall": 0.768,
+          "reference_fact_recall_ci95": [
+            0.7016,
+            0.8346
+          ],
+          "unchanged_pairs_clean": 40,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 54,
+          "missed_change_rate": 0.1481,
+          "missed_change_explicit_rate": 0.1296,
+          "pair_change_accuracy": 0.9149,
+          "location_checked": 8,
+          "location_supported": 7,
+          "quantity_checked": 1,
+          "quantity_within_tolerance": 1,
+          "reference_conflict_pairs": 6,
+          "text_metrics": {
+            "BLEU-1": 0.8412,
+            "BLEU-2": 0.7548,
+            "BLEU-3": 0.6813,
+            "BLEU-4": 0.6223,
+            "METEOR": 0.4002,
+            "ROUGE-L": 0.7464,
+            "CIDEr-D": 1.3184
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 18.32,
+          "warm_latency_median_s": 0.139,
+          "warm_latency_p95_s": 0.154,
+          "peak_gpu_memory_mb": 3661,
+          "run_id": "B0_C02_rscama_development_smoke+development+screening",
+          "role_model_id": "C02",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "RSCaMa (specialist)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 120,
+          "claims_per_pair": 1.2,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 95,
+            "unverifiable": 12,
+            "reference_conflict": 4,
+            "contradicted": 9
+          },
+          "supported_claim_precision_strict": 0.7917,
+          "supported_claim_precision_strict_ci95": [
+            0.7231,
+            0.8618
+          ],
+          "supported_claim_precision_in_scope": 0.8796,
+          "supported_claim_precision_in_scope_ci95": [
+            0.8148,
+            0.9429
+          ],
+          "supported_claim_precision_located": 0.775,
+          "supported_claim_precision_located_ci95": [
+            0.7034,
+            0.8482
+          ],
+          "reference_fact_recall": 0.744,
+          "reference_fact_recall_ci95": [
+            0.685,
+            0.8053
+          ],
+          "unchanged_pairs_clean": 40,
+          "no_change_false_alarm_rate": 0.075,
+          "changed_pairs_clean": 54,
+          "missed_change_rate": 0.0926,
+          "missed_change_explicit_rate": 0.0926,
+          "pair_change_accuracy": 0.9149,
+          "location_checked": 10,
+          "location_supported": 8,
+          "quantity_checked": 4,
+          "quantity_within_tolerance": 4,
+          "reference_conflict_pairs": 6,
+          "text_metrics": {
+            "BLEU-1": 0.7952,
+            "BLEU-2": 0.7125,
+            "BLEU-3": 0.6378,
+            "BLEU-4": 0.5786,
+            "METEOR": 0.365,
+            "ROUGE-L": 0.6909,
+            "CIDEr-D": 1.2111
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": null,
+          "warm_latency_median_s": 0.16,
+          "warm_latency_p95_s": 0.172,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_C02r20_rscama_retrained20_development_smoke+development+screening",
+          "role_model_id": "C02-r20",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "RSCaMa retrained on 20% (ours)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 240,
+          "claims_per_pair": 2.4,
+          "pairs_with_zero_claims": 2,
+          "label_counts": {
+            "supported": 140,
+            "unverifiable": 48,
+            "direction_conflict": 5,
+            "reference_conflict": 6,
+            "contradicted": 41
+          },
+          "supported_claim_precision_strict": 0.5833,
+          "supported_claim_precision_strict_ci95": [
+            0.5066,
+            0.66
+          ],
+          "supported_claim_precision_in_scope": 0.7292,
+          "supported_claim_precision_in_scope_ci95": [
+            0.6462,
+            0.8031
+          ],
+          "supported_claim_precision_located": 0.5458,
+          "supported_claim_precision_located_ci95": [
+            0.4709,
+            0.6224
+          ],
+          "reference_fact_recall": 0.72,
+          "reference_fact_recall_ci95": [
+            0.629,
+            0.8077
+          ],
+          "unchanged_pairs_clean": 40,
+          "no_change_false_alarm_rate": 0.25,
+          "changed_pairs_clean": 54,
+          "missed_change_rate": 0.1667,
+          "missed_change_explicit_rate": 0.0926,
+          "pair_change_accuracy": 0.7979,
+          "location_checked": 30,
+          "location_supported": 21,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 6,
+          "text_metrics": {
+            "BLEU-1": 0.1761,
+            "BLEU-2": 0.0891,
+            "BLEU-3": 0.0455,
+            "BLEU-4": 0.0267,
+            "METEOR": 0.1439,
+            "ROUGE-L": 0.1753,
+            "CIDEr-D": 0.0002
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 16.49,
+          "warm_latency_median_s": 7.605,
+          "warm_latency_p95_s": 9.569,
+          "peak_gpu_memory_mb": 9174,
+          "run_id": "B0_C04_qwen3vl_development_smoke+development+screening",
+          "role_model_id": "C04",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Qwen3-VL-4B"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 197,
+          "claims_per_pair": 1.97,
+          "pairs_with_zero_claims": 2,
+          "label_counts": {
+            "supported": 76,
+            "unverifiable": 40,
+            "contradicted": 74,
+            "reference_conflict": 7
+          },
+          "supported_claim_precision_strict": 0.3858,
+          "supported_claim_precision_strict_ci95": [
+            0.3041,
+            0.475
+          ],
+          "supported_claim_precision_in_scope": 0.4841,
+          "supported_claim_precision_in_scope_ci95": [
+            0.3855,
+            0.5864
+          ],
+          "supported_claim_precision_located": 0.3706,
+          "supported_claim_precision_located_ci95": [
+            0.287,
+            0.4612
+          ],
+          "reference_fact_recall": 0.552,
+          "reference_fact_recall_ci95": [
+            0.4524,
+            0.6493
+          ],
+          "unchanged_pairs_clean": 40,
+          "no_change_false_alarm_rate": 0.8,
+          "changed_pairs_clean": 54,
+          "missed_change_rate": 0.0926,
+          "missed_change_explicit_rate": 0.0,
+          "pair_change_accuracy": 0.6064,
+          "location_checked": 12,
+          "location_supported": 9,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 6,
+          "text_metrics": {
+            "BLEU-1": 0.1502,
+            "BLEU-2": 0.0756,
+            "BLEU-3": 0.0242,
+            "BLEU-4": 0.0102,
+            "METEOR": 0.1149,
+            "ROUGE-L": 0.1602,
+            "CIDEr-D": 0.0022
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 13.79,
+          "warm_latency_median_s": 3.302,
+          "warm_latency_p95_s": 4.295,
+          "peak_gpu_memory_mb": 8664,
+          "run_id": "B0_C07_smolvlm2_development_smoke+development+screening",
+          "role_model_id": "C07",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "SmolVLM2-2.2B"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 100,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 69,
+            "reference_conflict": 6,
+            "contradicted": 25
+          },
+          "supported_claim_precision_strict": 0.69,
+          "supported_claim_precision_strict_ci95": [
+            0.6,
+            0.78
+          ],
+          "supported_claim_precision_in_scope": 0.69,
+          "supported_claim_precision_in_scope_ci95": [
+            0.6,
+            0.78
+          ],
+          "supported_claim_precision_located": 0.69,
+          "supported_claim_precision_located_ci95": [
+            0.6,
+            0.78
+          ],
+          "reference_fact_recall": 0.76,
+          "reference_fact_recall_ci95": [
+            0.6696,
+            0.8455
+          ],
+          "unchanged_pairs_clean": 40,
+          "no_change_false_alarm_rate": 0.225,
+          "changed_pairs_clean": 54,
+          "missed_change_rate": 0.2963,
+          "missed_change_explicit_rate": 0.2963,
+          "pair_change_accuracy": 0.734,
+          "location_checked": 38,
+          "location_supported": 38,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 6,
+          "text_metrics": {
+            "BLEU-1": 0.2458,
+            "BLEU-2": 0.113,
+            "BLEU-3": 0.0246,
+            "BLEU-4": 0.0,
+            "METEOR": 0.0912,
+            "ROUGE-L": 0.1785,
+            "CIDEr-D": 0.0426
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.008,
+          "warm_latency_p95_s": 0.009,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_evidence_template_screening",
+          "role_model_id": "CTRL_evidence_template",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": "all",
+          "split": "screening",
+          "model_name": "Evidence template (pixel difference)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 100,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "contradicted": 54,
+            "supported": 40,
+            "reference_conflict": 6
+          },
+          "supported_claim_precision_strict": 0.4,
+          "supported_claim_precision_strict_ci95": [
+            0.31,
+            0.49
+          ],
+          "supported_claim_precision_in_scope": 0.4,
+          "supported_claim_precision_in_scope_ci95": [
+            0.31,
+            0.49
+          ],
+          "supported_claim_precision_located": 0.4,
+          "supported_claim_precision_located_ci95": [
+            0.31,
+            0.49
+          ],
+          "reference_fact_recall": 0.32,
+          "reference_fact_recall_ci95": [
+            0.237,
+            0.4146
+          ],
+          "unchanged_pairs_clean": 40,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 54,
+          "missed_change_rate": 1.0,
+          "missed_change_explicit_rate": 1.0,
+          "pair_change_accuracy": 0.4255,
+          "location_checked": 0,
+          "location_supported": 0,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 6,
+          "text_metrics": {
+            "BLEU-1": 0.3133,
+            "BLEU-2": 0.2905,
+            "BLEU-3": 0.2833,
+            "BLEU-4": 0.2798,
+            "METEOR": 0.1577,
+            "ROUGE-L": 0.465,
+            "CIDEr-D": 0.937
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.0,
+          "warm_latency_p95_s": 0.0,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_constant_nochange_screening",
+          "role_model_id": "CTRL_constant_nochange",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": "all",
+          "split": "screening",
+          "model_name": "Constant \"there is no difference\""
+        },
+        {
+          "pairs": 50,
+          "claims_total": 59,
+          "claims_per_pair": 1.18,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 50,
+            "unverifiable": 7,
+            "reference_conflict": 2
+          },
+          "supported_claim_precision_strict": 0.8475,
+          "supported_claim_precision_strict_ci95": [
+            0.7619,
+            0.9273
+          ],
+          "supported_claim_precision_in_scope": 0.9615,
+          "supported_claim_precision_in_scope_ci95": [
+            0.9038,
+            1.0
+          ],
+          "supported_claim_precision_located": 0.8475,
+          "supported_claim_precision_located_ci95": [
+            0.7619,
+            0.9273
+          ],
+          "reference_fact_recall": 0.7937,
+          "reference_fact_recall_ci95": [
+            0.7143,
+            0.8793
+          ],
+          "unchanged_pairs_clean": 21,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 27,
+          "missed_change_rate": 0.0741,
+          "missed_change_explicit_rate": 0.0,
+          "pair_change_accuracy": 0.9583,
+          "location_checked": 4,
+          "location_supported": 4,
+          "quantity_checked": 4,
+          "quantity_within_tolerance": 4,
+          "reference_conflict_pairs": 2,
+          "text_metrics": {
+            "BLEU-1": 0.9054,
+            "BLEU-2": 0.8354,
+            "BLEU-3": 0.7556,
+            "BLEU-4": 0.68,
+            "METEOR": 0.4339,
+            "ROUGE-L": 0.8002,
+            "CIDEr-D": 1.5482
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 18.32,
+          "warm_latency_median_s": 0.139,
+          "warm_latency_p95_s": 0.154,
+          "peak_gpu_memory_mb": 3661,
+          "run_id": "B0_C02_rscama_development_smoke+development+screening",
+          "role_model_id": "C02",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "development",
+            "development_smoke"
+          ],
+          "split": "development",
+          "model_name": "RSCaMa (specialist)"
+        },
+        {
+          "pairs": 50,
+          "claims_total": 59,
+          "claims_per_pair": 1.18,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 50,
+            "reference_conflict": 2,
+            "unverifiable": 5,
+            "contradicted": 2
+          },
+          "supported_claim_precision_strict": 0.8475,
+          "supported_claim_precision_strict_ci95": [
+            0.7541,
+            0.9322
+          ],
+          "supported_claim_precision_in_scope": 0.9259,
+          "supported_claim_precision_in_scope_ci95": [
+            0.8462,
+            0.9821
+          ],
+          "supported_claim_precision_located": 0.8475,
+          "supported_claim_precision_located_ci95": [
+            0.7541,
+            0.9322
+          ],
+          "reference_fact_recall": 0.7778,
+          "reference_fact_recall_ci95": [
+            0.6923,
+            0.8644
+          ],
+          "unchanged_pairs_clean": 21,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 27,
+          "missed_change_rate": 0.0741,
+          "missed_change_explicit_rate": 0.0741,
+          "pair_change_accuracy": 0.9583,
+          "location_checked": 4,
+          "location_supported": 4,
+          "quantity_checked": 3,
+          "quantity_within_tolerance": 3,
+          "reference_conflict_pairs": 2,
+          "text_metrics": {
+            "BLEU-1": 0.8473,
+            "BLEU-2": 0.7653,
+            "BLEU-3": 0.6879,
+            "BLEU-4": 0.6183,
+            "METEOR": 0.3818,
+            "ROUGE-L": 0.7345,
+            "CIDEr-D": 1.3342
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": null,
+          "warm_latency_median_s": 0.16,
+          "warm_latency_p95_s": 0.172,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_C02r20_rscama_retrained20_development_smoke+development+screening",
+          "role_model_id": "C02-r20",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "development",
+            "development_smoke"
+          ],
+          "split": "development",
+          "model_name": "RSCaMa retrained on 20% (ours)"
+        },
+        {
+          "pairs": 50,
+          "claims_total": 128,
+          "claims_per_pair": 2.56,
+          "pairs_with_zero_claims": 1,
+          "label_counts": {
+            "supported": 66,
+            "reference_conflict": 5,
+            "contradicted": 29,
+            "unverifiable": 25,
+            "direction_conflict": 3
+          },
+          "supported_claim_precision_strict": 0.5156,
+          "supported_claim_precision_strict_ci95": [
+            0.4286,
+            0.6119
+          ],
+          "supported_claim_precision_in_scope": 0.6408,
+          "supported_claim_precision_in_scope_ci95": [
+            0.5321,
+            0.75
+          ],
+          "supported_claim_precision_located": 0.5,
+          "supported_claim_precision_located_ci95": [
+            0.4122,
+            0.597
+          ],
+          "reference_fact_recall": 0.6349,
+          "reference_fact_recall_ci95": [
+            0.493,
+            0.7647
+          ],
+          "unchanged_pairs_clean": 21,
+          "no_change_false_alarm_rate": 0.381,
+          "changed_pairs_clean": 27,
+          "missed_change_rate": 0.2593,
+          "missed_change_explicit_rate": 0.1852,
+          "pair_change_accuracy": 0.6875,
+          "location_checked": 8,
+          "location_supported": 6,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 2,
+          "text_metrics": {
+            "BLEU-1": 0.1855,
+            "BLEU-2": 0.0881,
+            "BLEU-3": 0.0357,
+            "BLEU-4": 0.0123,
+            "METEOR": 0.1446,
+            "ROUGE-L": 0.1695,
+            "CIDEr-D": 0.0004
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 16.49,
+          "warm_latency_median_s": 7.605,
+          "warm_latency_p95_s": 9.569,
+          "peak_gpu_memory_mb": 9174,
+          "run_id": "B0_C04_qwen3vl_development_smoke+development+screening",
+          "role_model_id": "C04",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "development",
+            "development_smoke"
+          ],
+          "split": "development",
+          "model_name": "Qwen3-VL-4B"
+        },
+        {
+          "pairs": 50,
+          "claims_total": 101,
+          "claims_per_pair": 2.02,
+          "pairs_with_zero_claims": 2,
+          "label_counts": {
+            "supported": 33,
+            "reference_conflict": 4,
+            "unverifiable": 27,
+            "contradicted": 37
+          },
+          "supported_claim_precision_strict": 0.3267,
+          "supported_claim_precision_strict_ci95": [
+            0.2234,
+            0.44
+          ],
+          "supported_claim_precision_in_scope": 0.4459,
+          "supported_claim_precision_in_scope_ci95": [
+            0.3134,
+            0.5789
+          ],
+          "supported_claim_precision_located": 0.3267,
+          "supported_claim_precision_located_ci95": [
+            0.2234,
+            0.44
+          ],
+          "reference_fact_recall": 0.4762,
+          "reference_fact_recall_ci95": [
+            0.339,
+            0.6087
+          ],
+          "unchanged_pairs_clean": 21,
+          "no_change_false_alarm_rate": 0.8095,
+          "changed_pairs_clean": 27,
+          "missed_change_rate": 0.1481,
+          "missed_change_explicit_rate": 0.0,
+          "pair_change_accuracy": 0.5625,
+          "location_checked": 14,
+          "location_supported": 14,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 2,
+          "text_metrics": {
+            "BLEU-1": 0.1531,
+            "BLEU-2": 0.0703,
+            "BLEU-3": 0.019,
+            "BLEU-4": 0.0,
+            "METEOR": 0.1161,
+            "ROUGE-L": 0.158,
+            "CIDEr-D": 0.0003
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 13.79,
+          "warm_latency_median_s": 3.302,
+          "warm_latency_p95_s": 4.295,
+          "peak_gpu_memory_mb": 8664,
+          "run_id": "B0_C07_smolvlm2_development_smoke+development+screening",
+          "role_model_id": "C07",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "development",
+            "development_smoke"
+          ],
+          "split": "development",
+          "model_name": "SmolVLM2-2.2B"
+        },
+        {
+          "pairs": 50,
+          "claims_total": 50,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 41,
+            "contradicted": 7,
+            "reference_conflict": 2
+          },
+          "supported_claim_precision_strict": 0.82,
+          "supported_claim_precision_strict_ci95": [
+            0.7,
+            0.92
+          ],
+          "supported_claim_precision_in_scope": 0.82,
+          "supported_claim_precision_in_scope_ci95": [
+            0.7,
+            0.92
+          ],
+          "supported_claim_precision_located": 0.82,
+          "supported_claim_precision_located_ci95": [
+            0.7,
+            0.92
+          ],
+          "reference_fact_recall": 0.8889,
+          "reference_fact_recall_ci95": [
+            0.8,
+            0.9552
+          ],
+          "unchanged_pairs_clean": 21,
+          "no_change_false_alarm_rate": 0.1905,
+          "changed_pairs_clean": 27,
+          "missed_change_rate": 0.1111,
+          "missed_change_explicit_rate": 0.1111,
+          "pair_change_accuracy": 0.8542,
+          "location_checked": 24,
+          "location_supported": 24,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 2,
+          "text_metrics": {
+            "BLEU-1": 0.2442,
+            "BLEU-2": 0.1044,
+            "BLEU-3": 0.0286,
+            "BLEU-4": 0.0,
+            "METEOR": 0.084,
+            "ROUGE-L": 0.1929,
+            "CIDEr-D": 0.0454
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.007,
+          "warm_latency_p95_s": 0.008,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_evidence_template_development_smoke+development",
+          "role_model_id": "CTRL_evidence_template",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": "all",
+          "split": "development",
+          "model_name": "Evidence template (pixel difference)"
+        },
+        {
+          "pairs": 50,
+          "claims_total": 50,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "contradicted": 27,
+            "supported": 21,
+            "reference_conflict": 2
+          },
+          "supported_claim_precision_strict": 0.42,
+          "supported_claim_precision_strict_ci95": [
+            0.28,
+            0.56
+          ],
+          "supported_claim_precision_in_scope": 0.42,
+          "supported_claim_precision_in_scope_ci95": [
+            0.28,
+            0.56
+          ],
+          "supported_claim_precision_located": 0.42,
+          "supported_claim_precision_located_ci95": [
+            0.28,
+            0.56
+          ],
+          "reference_fact_recall": 0.3333,
+          "reference_fact_recall_ci95": [
+            0.2121,
+            0.4754
+          ],
+          "unchanged_pairs_clean": 21,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 27,
+          "missed_change_rate": 1.0,
+          "missed_change_explicit_rate": 1.0,
+          "pair_change_accuracy": 0.4375,
+          "location_checked": 0,
+          "location_supported": 0,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 2,
+          "text_metrics": {
+            "BLEU-1": 0.3147,
+            "BLEU-2": 0.2841,
+            "BLEU-3": 0.2745,
+            "BLEU-4": 0.2699,
+            "METEOR": 0.1711,
+            "ROUGE-L": 0.4895,
+            "CIDEr-D": 0.9518
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.0,
+          "warm_latency_p95_s": 0.0,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_constant_nochange_development_smoke+development",
+          "role_model_id": "CTRL_constant_nochange",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": "all",
+          "split": "development",
+          "model_name": "Constant \"there is no difference\""
+        }
+      ]
+    },
+    "b0_results_ood_second_cc.json": {
+      "source": "POC/execution/outputs/b0_results_ood_second_cc.json",
+      "sha256": "ddab9633c3c69185390bae8b48f1e3dcbe1db2d14237b6b3731b058a93d21d0d",
+      "records": [
+        {
+          "pairs": 100,
+          "claims_total": 102,
+          "claims_per_pair": 1.02,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "contradicted": 37,
+            "supported": 49,
+            "unverifiable": 4,
+            "reference_conflict": 9,
+            "direction_conflict": 3
+          },
+          "supported_claim_precision_strict": 0.4804,
+          "supported_claim_precision_strict_ci95": [
+            0.3922,
+            0.5825
+          ],
+          "supported_claim_precision_in_scope": 0.5,
+          "supported_claim_precision_in_scope_ci95": [
+            0.4082,
+            0.6061
+          ],
+          "supported_claim_precision_located": 0.4608,
+          "supported_claim_precision_located_ci95": [
+            0.3714,
+            0.5577
+          ],
+          "reference_fact_recall": 0.5444,
+          "reference_fact_recall_ci95": [
+            0.4471,
+            0.6494
+          ],
+          "unchanged_pairs_clean": 27,
+          "no_change_false_alarm_rate": 0.1481,
+          "changed_pairs_clean": 63,
+          "missed_change_rate": 0.5397,
+          "missed_change_explicit_rate": 0.5079,
+          "pair_change_accuracy": 0.5778,
+          "location_checked": 9,
+          "location_supported": 7,
+          "quantity_checked": 2,
+          "quantity_within_tolerance": 1,
+          "reference_conflict_pairs": 10,
+          "text_metrics": {
+            "BLEU-1": 0.4411,
+            "BLEU-2": 0.332,
+            "BLEU-3": 0.276,
+            "BLEU-4": 0.2426,
+            "METEOR": 0.1758,
+            "ROUGE-L": 0.4431,
+            "CIDEr-D": 0.538
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 20.35,
+          "warm_latency_median_s": 0.087,
+          "warm_latency_p95_s": 0.094,
+          "peak_gpu_memory_mb": 3661,
+          "run_id": "B0_C02_rscama_screening",
+          "role_model_id": "C02",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "RSCaMa (specialist)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 102,
+          "claims_per_pair": 1.02,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "contradicted": 34,
+            "supported": 46,
+            "direction_conflict": 8,
+            "unverifiable": 7,
+            "reference_conflict": 7
+          },
+          "supported_claim_precision_strict": 0.451,
+          "supported_claim_precision_strict_ci95": [
+            0.3564,
+            0.549
+          ],
+          "supported_claim_precision_in_scope": 0.4842,
+          "supported_claim_precision_in_scope_ci95": [
+            0.3814,
+            0.5895
+          ],
+          "supported_claim_precision_located": 0.451,
+          "supported_claim_precision_located_ci95": [
+            0.3564,
+            0.549
+          ],
+          "reference_fact_recall": 0.5111,
+          "reference_fact_recall_ci95": [
+            0.4091,
+            0.618
+          ],
+          "unchanged_pairs_clean": 27,
+          "no_change_false_alarm_rate": 0.5556,
+          "changed_pairs_clean": 63,
+          "missed_change_rate": 0.3333,
+          "missed_change_explicit_rate": 0.254,
+          "pair_change_accuracy": 0.6,
+          "location_checked": 5,
+          "location_supported": 5,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 10,
+          "text_metrics": {
+            "BLEU-1": 0.3713,
+            "BLEU-2": 0.2378,
+            "BLEU-3": 0.1782,
+            "BLEU-4": 0.1486,
+            "METEOR": 0.1305,
+            "ROUGE-L": 0.3437,
+            "CIDEr-D": 0.3189
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 16.42,
+          "warm_latency_median_s": 0.09,
+          "warm_latency_p95_s": 0.095,
+          "peak_gpu_memory_mb": 3669,
+          "run_id": "B0_C02r20_rscama_retrained20_screening",
+          "role_model_id": "C02-r20",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "RSCaMa retrained on 20% (ours)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 266,
+          "claims_per_pair": 2.66,
+          "pairs_with_zero_claims": 2,
+          "label_counts": {
+            "supported": 89,
+            "unverifiable": 121,
+            "contradicted": 45,
+            "direction_conflict": 10,
+            "abstention": 1
+          },
+          "supported_claim_precision_strict": 0.3358,
+          "supported_claim_precision_strict_ci95": [
+            0.2835,
+            0.3926
+          ],
+          "supported_claim_precision_in_scope": 0.6181,
+          "supported_claim_precision_in_scope_ci95": [
+            0.5342,
+            0.7034
+          ],
+          "supported_claim_precision_located": 0.2906,
+          "supported_claim_precision_located_ci95": [
+            0.2426,
+            0.3416
+          ],
+          "reference_fact_recall": 0.6556,
+          "reference_fact_recall_ci95": [
+            0.5543,
+            0.7527
+          ],
+          "unchanged_pairs_clean": 27,
+          "no_change_false_alarm_rate": 0.5926,
+          "changed_pairs_clean": 63,
+          "missed_change_rate": 0.2222,
+          "missed_change_explicit_rate": 0.1111,
+          "pair_change_accuracy": 0.6667,
+          "location_checked": 26,
+          "location_supported": 14,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 10,
+          "text_metrics": {
+            "BLEU-1": 0.1703,
+            "BLEU-2": 0.0798,
+            "BLEU-3": 0.0317,
+            "BLEU-4": 0.0145,
+            "METEOR": 0.1382,
+            "ROUGE-L": 0.1649,
+            "CIDEr-D": 0.0002
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 43.08,
+          "warm_latency_median_s": 7.995,
+          "warm_latency_p95_s": 10.316,
+          "peak_gpu_memory_mb": 9078,
+          "run_id": "B0_C04_qwen3vl_screening",
+          "role_model_id": "C04",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Qwen3-VL-4B"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 252,
+          "claims_per_pair": 2.52,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "direction_conflict": 14,
+            "unverifiable": 157,
+            "supported": 43,
+            "contradicted": 31,
+            "reference_conflict": 7
+          },
+          "supported_claim_precision_strict": 0.1706,
+          "supported_claim_precision_strict_ci95": [
+            0.1299,
+            0.2129
+          ],
+          "supported_claim_precision_in_scope": 0.4526,
+          "supported_claim_precision_in_scope_ci95": [
+            0.3474,
+            0.5644
+          ],
+          "supported_claim_precision_located": 0.1706,
+          "supported_claim_precision_located_ci95": [
+            0.1299,
+            0.2129
+          ],
+          "reference_fact_recall": 0.4333,
+          "reference_fact_recall_ci95": [
+            0.3333,
+            0.5393
+          ],
+          "unchanged_pairs_clean": 27,
+          "no_change_false_alarm_rate": 0.8889,
+          "changed_pairs_clean": 63,
+          "missed_change_rate": 0.1587,
+          "missed_change_explicit_rate": 0.0,
+          "pair_change_accuracy": 0.6222,
+          "location_checked": 0,
+          "location_supported": 0,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 10,
+          "text_metrics": {
+            "BLEU-1": 0.1472,
+            "BLEU-2": 0.0584,
+            "BLEU-3": 0.016,
+            "BLEU-4": 0.0,
+            "METEOR": 0.0991,
+            "ROUGE-L": 0.1451,
+            "CIDEr-D": 0.0002
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 15.29,
+          "warm_latency_median_s": 5.121,
+          "warm_latency_p95_s": 7.098,
+          "peak_gpu_memory_mb": 8466,
+          "run_id": "B0_C07_smolvlm2_screening",
+          "role_model_id": "C07",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "SmolVLM2-2.2B"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 100,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 64,
+            "contradicted": 26,
+            "reference_conflict": 10
+          },
+          "supported_claim_precision_strict": 0.64,
+          "supported_claim_precision_strict_ci95": [
+            0.55,
+            0.73
+          ],
+          "supported_claim_precision_in_scope": 0.64,
+          "supported_claim_precision_in_scope_ci95": [
+            0.55,
+            0.73
+          ],
+          "supported_claim_precision_located": 0.57,
+          "supported_claim_precision_located_ci95": [
+            0.47,
+            0.67
+          ],
+          "reference_fact_recall": 0.7111,
+          "reference_fact_recall_ci95": [
+            0.6111,
+            0.8023
+          ],
+          "unchanged_pairs_clean": 27,
+          "no_change_false_alarm_rate": 0.2222,
+          "changed_pairs_clean": 63,
+          "missed_change_rate": 0.3175,
+          "missed_change_explicit_rate": 0.3175,
+          "pair_change_accuracy": 0.7111,
+          "location_checked": 43,
+          "location_supported": 36,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 10,
+          "text_metrics": {
+            "BLEU-1": 0.2596,
+            "BLEU-2": 0.1238,
+            "BLEU-3": 0.0489,
+            "BLEU-4": 0.0,
+            "METEOR": 0.0942,
+            "ROUGE-L": 0.1785,
+            "CIDEr-D": 0.054
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.007,
+          "warm_latency_p95_s": 0.008,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_evidence_template_screening",
+          "role_model_id": "CTRL_evidence_template",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Evidence template (pixel difference)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 100,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "contradicted": 63,
+            "supported": 27,
+            "reference_conflict": 10
+          },
+          "supported_claim_precision_strict": 0.27,
+          "supported_claim_precision_strict_ci95": [
+            0.19,
+            0.36
+          ],
+          "supported_claim_precision_in_scope": 0.27,
+          "supported_claim_precision_in_scope_ci95": [
+            0.19,
+            0.36
+          ],
+          "supported_claim_precision_located": 0.27,
+          "supported_claim_precision_located_ci95": [
+            0.19,
+            0.36
+          ],
+          "reference_fact_recall": 0.3,
+          "reference_fact_recall_ci95": [
+            0.2088,
+            0.3956
+          ],
+          "unchanged_pairs_clean": 27,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 63,
+          "missed_change_rate": 1.0,
+          "missed_change_explicit_rate": 1.0,
+          "pair_change_accuracy": 0.3,
+          "location_checked": 0,
+          "location_supported": 0,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 10,
+          "text_metrics": {
+            "BLEU-1": 0.1301,
+            "BLEU-2": 0.1056,
+            "BLEU-3": 0.0985,
+            "BLEU-4": 0.0951,
+            "METEOR": 0.0767,
+            "ROUGE-L": 0.3325,
+            "CIDEr-D": 0.5904
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.0,
+          "warm_latency_p95_s": 0.0,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_constant_nochange_screening",
+          "role_model_id": "CTRL_constant_nochange",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Constant \"there is no difference\""
+        }
+      ]
+    },
+    "b0_results_ood_whu_cdc.json": {
+      "source": "POC/execution/outputs/b0_results_ood_whu_cdc.json",
+      "sha256": "dd9190c34f1278aaca6d6ea3b649215c06666f09d01460d010b3be3ac59acbeb",
+      "records": [
+        {
+          "pairs": 100,
+          "claims_total": 108,
+          "claims_per_pair": 1.08,
+          "pairs_with_zero_claims": 1,
+          "label_counts": {
+            "supported": 60,
+            "unverifiable": 18,
+            "contradicted": 24,
+            "reference_conflict": 6
+          },
+          "supported_claim_precision_strict": 0.5556,
+          "supported_claim_precision_strict_ci95": [
+            0.4587,
+            0.6476
+          ],
+          "supported_claim_precision_in_scope": 0.6667,
+          "supported_claim_precision_in_scope_ci95": [
+            0.5604,
+            0.7609
+          ],
+          "supported_claim_precision_located": 0.5556,
+          "supported_claim_precision_located_ci95": [
+            0.4587,
+            0.6476
+          ],
+          "reference_fact_recall": 0.7195,
+          "reference_fact_recall_ci95": [
+            0.6173,
+            0.8125
+          ],
+          "unchanged_pairs_clean": 60,
+          "no_change_false_alarm_rate": 0.3167,
+          "changed_pairs_clean": 22,
+          "missed_change_rate": 0.0909,
+          "missed_change_explicit_rate": 0.0455,
+          "pair_change_accuracy": 0.7439,
+          "location_checked": 7,
+          "location_supported": 7,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 18,
+          "text_metrics": {
+            "BLEU-1": 0.6466,
+            "BLEU-2": 0.5634,
+            "BLEU-3": 0.5102,
+            "BLEU-4": 0.4717,
+            "METEOR": 0.3411,
+            "ROUGE-L": 0.6122,
+            "CIDEr-D": 1.0138
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 22.58,
+          "warm_latency_median_s": 0.089,
+          "warm_latency_p95_s": 0.11,
+          "peak_gpu_memory_mb": 3665,
+          "run_id": "B0_C02_rscama_screening",
+          "role_model_id": "C02",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "RSCaMa (specialist)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 112,
+          "claims_per_pair": 1.12,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 40,
+            "unverifiable": 33,
+            "contradicted": 35,
+            "reference_conflict": 4
+          },
+          "supported_claim_precision_strict": 0.3571,
+          "supported_claim_precision_strict_ci95": [
+            0.2743,
+            0.4414
+          ],
+          "supported_claim_precision_in_scope": 0.5063,
+          "supported_claim_precision_in_scope_ci95": [
+            0.3929,
+            0.6164
+          ],
+          "supported_claim_precision_located": 0.3571,
+          "supported_claim_precision_located_ci95": [
+            0.2743,
+            0.4414
+          ],
+          "reference_fact_recall": 0.4634,
+          "reference_fact_recall_ci95": [
+            0.3544,
+            0.575
+          ],
+          "unchanged_pairs_clean": 60,
+          "no_change_false_alarm_rate": 0.55,
+          "changed_pairs_clean": 22,
+          "missed_change_rate": 0.2727,
+          "missed_change_explicit_rate": 0.0,
+          "pair_change_accuracy": 0.5244,
+          "location_checked": 1,
+          "location_supported": 1,
+          "quantity_checked": 3,
+          "quantity_within_tolerance": 1,
+          "reference_conflict_pairs": 18,
+          "text_metrics": {
+            "BLEU-1": 0.5601,
+            "BLEU-2": 0.4522,
+            "BLEU-3": 0.3949,
+            "BLEU-4": 0.3529,
+            "METEOR": 0.2392,
+            "ROUGE-L": 0.5056,
+            "CIDEr-D": 0.7214
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 15.17,
+          "warm_latency_median_s": 0.091,
+          "warm_latency_p95_s": 0.096,
+          "peak_gpu_memory_mb": 3669,
+          "run_id": "B0_C02r20_rscama_retrained20_screening",
+          "role_model_id": "C02-r20",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "RSCaMa retrained on 20% (ours)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 210,
+          "claims_per_pair": 2.1,
+          "pairs_with_zero_claims": 7,
+          "label_counts": {
+            "unverifiable": 128,
+            "contradicted": 35,
+            "supported": 42,
+            "direction_conflict": 2,
+            "reference_conflict": 3
+          },
+          "supported_claim_precision_strict": 0.2,
+          "supported_claim_precision_strict_ci95": [
+            0.1495,
+            0.2511
+          ],
+          "supported_claim_precision_in_scope": 0.5122,
+          "supported_claim_precision_in_scope_ci95": [
+            0.4,
+            0.6269
+          ],
+          "supported_claim_precision_located": 0.2,
+          "supported_claim_precision_located_ci95": [
+            0.1495,
+            0.2511
+          ],
+          "reference_fact_recall": 0.4146,
+          "reference_fact_recall_ci95": [
+            0.3012,
+            0.5195
+          ],
+          "unchanged_pairs_clean": 60,
+          "no_change_false_alarm_rate": 0.35,
+          "changed_pairs_clean": 22,
+          "missed_change_rate": 0.4091,
+          "missed_change_explicit_rate": 0.1818,
+          "pair_change_accuracy": 0.6341,
+          "location_checked": 3,
+          "location_supported": 3,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 18,
+          "text_metrics": {
+            "BLEU-1": 0.1216,
+            "BLEU-2": 0.0523,
+            "BLEU-3": 0.0191,
+            "BLEU-4": 0.0093,
+            "METEOR": 0.1169,
+            "ROUGE-L": 0.1489,
+            "CIDEr-D": 0.0
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 26.94,
+          "warm_latency_median_s": 7.88,
+          "warm_latency_p95_s": 11.225,
+          "peak_gpu_memory_mb": 9006,
+          "run_id": "B0_C04_qwen3vl_screening",
+          "role_model_id": "C04",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Qwen3-VL-4B"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 139,
+          "claims_per_pair": 1.39,
+          "pairs_with_zero_claims": 12,
+          "label_counts": {
+            "unverifiable": 100,
+            "supported": 18,
+            "contradicted": 21
+          },
+          "supported_claim_precision_strict": 0.1295,
+          "supported_claim_precision_strict_ci95": [
+            0.069,
+            0.1971
+          ],
+          "supported_claim_precision_in_scope": 0.4615,
+          "supported_claim_precision_in_scope_ci95": [
+            0.2727,
+            0.641
+          ],
+          "supported_claim_precision_located": 0.1223,
+          "supported_claim_precision_located_ci95": [
+            0.0635,
+            0.1885
+          ],
+          "reference_fact_recall": 0.1707,
+          "reference_fact_recall_ci95": [
+            0.0909,
+            0.2561
+          ],
+          "unchanged_pairs_clean": 60,
+          "no_change_false_alarm_rate": 0.2833,
+          "changed_pairs_clean": 22,
+          "missed_change_rate": 0.3636,
+          "missed_change_explicit_rate": 0.0,
+          "pair_change_accuracy": 0.6951,
+          "location_checked": 5,
+          "location_supported": 4,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 18,
+          "text_metrics": {
+            "BLEU-1": 0.1106,
+            "BLEU-2": 0.055,
+            "BLEU-3": 0.0155,
+            "BLEU-4": 0.0053,
+            "METEOR": 0.0958,
+            "ROUGE-L": 0.1407,
+            "CIDEr-D": 0.0006
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 18.19,
+          "warm_latency_median_s": 4.067,
+          "warm_latency_p95_s": 6.108,
+          "peak_gpu_memory_mb": 8532,
+          "run_id": "B0_C07_smolvlm2_screening",
+          "role_model_id": "C07",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "SmolVLM2-2.2B"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 100,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 58,
+            "contradicted": 25,
+            "reference_conflict": 17
+          },
+          "supported_claim_precision_strict": 0.58,
+          "supported_claim_precision_strict_ci95": [
+            0.48,
+            0.68
+          ],
+          "supported_claim_precision_in_scope": 0.58,
+          "supported_claim_precision_in_scope_ci95": [
+            0.48,
+            0.68
+          ],
+          "supported_claim_precision_located": 0.55,
+          "supported_claim_precision_located_ci95": [
+            0.45,
+            0.65
+          ],
+          "reference_fact_recall": 0.6951,
+          "reference_fact_recall_ci95": [
+            0.5909,
+            0.7973
+          ],
+          "unchanged_pairs_clean": 60,
+          "no_change_false_alarm_rate": 0.2833,
+          "changed_pairs_clean": 22,
+          "missed_change_rate": 0.3636,
+          "missed_change_explicit_rate": 0.3636,
+          "pair_change_accuracy": 0.6951,
+          "location_checked": 15,
+          "location_supported": 12,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 18,
+          "text_metrics": {
+            "BLEU-1": 0.2269,
+            "BLEU-2": 0.0861,
+            "BLEU-3": 0.0209,
+            "BLEU-4": 0.0,
+            "METEOR": 0.1093,
+            "ROUGE-L": 0.1895,
+            "CIDEr-D": 0.033
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.007,
+          "warm_latency_p95_s": 0.009,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_evidence_template_screening",
+          "role_model_id": "CTRL_evidence_template",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Evidence template (pixel difference)"
+        },
+        {
+          "pairs": 100,
+          "claims_total": 100,
+          "claims_per_pair": 1.0,
+          "pairs_with_zero_claims": 0,
+          "label_counts": {
+            "supported": 60,
+            "reference_conflict": 18,
+            "contradicted": 22
+          },
+          "supported_claim_precision_strict": 0.6,
+          "supported_claim_precision_strict_ci95": [
+            0.5,
+            0.7
+          ],
+          "supported_claim_precision_in_scope": 0.6,
+          "supported_claim_precision_in_scope_ci95": [
+            0.5,
+            0.7
+          ],
+          "supported_claim_precision_located": 0.6,
+          "supported_claim_precision_located_ci95": [
+            0.5,
+            0.7
+          ],
+          "reference_fact_recall": 0.7317,
+          "reference_fact_recall_ci95": [
+            0.6329,
+            0.8267
+          ],
+          "unchanged_pairs_clean": 60,
+          "no_change_false_alarm_rate": 0.0,
+          "changed_pairs_clean": 22,
+          "missed_change_rate": 1.0,
+          "missed_change_explicit_rate": 1.0,
+          "pair_change_accuracy": 0.7317,
+          "location_checked": 0,
+          "location_supported": 0,
+          "quantity_checked": 0,
+          "quantity_within_tolerance": 0,
+          "reference_conflict_pairs": 18,
+          "text_metrics": {
+            "BLEU-1": 0.5553,
+            "BLEU-2": 0.5325,
+            "BLEU-3": 0.5251,
+            "BLEU-4": 0.5215,
+            "METEOR": 0.2995,
+            "ROUGE-L": 0.6632,
+            "CIDEr-D": 1.3683
+          },
+          "completion_rate": 1.0,
+          "cold_load_s": 0.0,
+          "warm_latency_median_s": 0.0,
+          "warm_latency_p95_s": 0.0,
+          "peak_gpu_memory_mb": null,
+          "run_id": "B0_CTRL_constant_nochange_screening",
+          "role_model_id": "CTRL_constant_nochange",
+          "evaluator": {
+            "reference_check": "oracle mask + 5 reference captions, automatic",
+            "MIN_CLASS_PX": 50,
+            "CELL_MIN_FRAC": 0.02,
+            "parser": "rules-v3",
+            "bootstrap": "pair-level, 2000 resamples, seed 0"
+          },
+          "roles": [
+            "screening"
+          ],
+          "split": "screening",
+          "model_name": "Constant \"there is no difference\""
+        }
+      ]
+    }
+  },
+  "visual_evidence": {
+    "batch_evaluation_summary.json": {
+      "source": "POC/c-evidence/results/original/batch_evaluation_summary.json",
+      "sha256": "8d04fdc3dd3a7ca704c87808d6152f9096e5a86a0f1fa9bc8b4a553df24e5254",
+      "records": {
+        "total_samples": 50,
+        "overall_accuracy": 100.0,
+        "avg_latency_ms": 9.162158966064453,
+        "scenario_breakdown": {
+          "genuine_construction": {
+            "count": 20,
+            "correct": 20,
+            "accuracy": 100.0
+          },
+          "caption_hallucination": {
+            "count": 12,
+            "correct": 12,
+            "accuracy": 100.0
+          },
+          "shadow_hazard": {
+            "count": 8,
+            "correct": 8,
+            "accuracy": 100.0
+          },
+          "subpixel_jitter": {
+            "count": 6,
+            "correct": 6,
+            "accuracy": 100.0
+          },
+          "genuine_demolition": {
+            "count": 4,
+            "correct": 4,
+            "accuracy": 100.0
+          }
+        },
+        "detailed_records": [
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0000",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12307315879618302,
+            "quality_flags": [
+              "illumination_corrected_+64.8"
+            ],
+            "latency_ms": 300.59
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0001",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.14420485175202155,
+            "quality_flags": [
+              "illumination_corrected_+64.3"
+            ],
+            "latency_ms": 4.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0002",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12426614481409001,
+            "quality_flags": [
+              "illumination_corrected_+65.3"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0003",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.13333333333333333,
+            "quality_flags": [
+              "illumination_corrected_+64.8"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0004",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12587587587587587,
+            "quality_flags": [
+              "illumination_corrected_+64.8"
+            ],
+            "latency_ms": 4.14
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0005",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.11674789543642003,
+            "quality_flags": [
+              "illumination_corrected_+64.4"
+            ],
+            "latency_ms": 2.01
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0006",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.13566936208445643,
+            "quality_flags": [
+              "illumination_corrected_+63.8"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0007",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12493599590373784,
+            "quality_flags": [
+              "illumination_corrected_+64.0"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0008",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.10699740836727138,
+            "quality_flags": [
+              "illumination_corrected_+65.4"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0009",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.13611778846153846,
+            "quality_flags": [
+              "illumination_corrected_+63.7"
+            ],
+            "latency_ms": 2.93
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0010",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.13168044077134985,
+            "quality_flags": [
+              "illumination_corrected_+65.4"
+            ],
+            "latency_ms": 2.6
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0011",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12357320099255584,
+            "quality_flags": [
+              "illumination_corrected_+64.6"
+            ],
+            "latency_ms": 4.02
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0012",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.11481007255655143,
+            "quality_flags": [
+              "illumination_corrected_+65.1"
+            ],
+            "latency_ms": 4.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0013",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.1326530612244898,
+            "quality_flags": [
+              "illumination_corrected_+64.8"
+            ],
+            "latency_ms": 3.98
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0014",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12137931034482759,
+            "quality_flags": [
+              "illumination_corrected_+66.4"
+            ],
+            "latency_ms": 5.18
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0015",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.12389162561576354,
+            "quality_flags": [
+              "illumination_corrected_+65.1"
+            ],
+            "latency_ms": 4.94
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0016",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.13362193362193361,
+            "quality_flags": [
+              "illumination_corrected_+64.5"
+            ],
+            "latency_ms": 5.48
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0017",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.1254320987654321,
+            "quality_flags": [
+              "illumination_corrected_+65.0"
+            ],
+            "latency_ms": 3.93
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0018",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.11896955503512881,
+            "quality_flags": [
+              "illumination_corrected_+63.3"
+            ],
+            "latency_ms": 2.78
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0019",
+            "scenario": "genuine_construction",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": 0.11392931392931394,
+            "quality_flags": [
+              "illumination_corrected_+65.6"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0020",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 5.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0021",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 5.44
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0022",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 5.24
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0023",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0024",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0025",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0026",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0027",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0028",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 3.66
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0029",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 4.74
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0030",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 4.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0031",
+            "scenario": "caption_hallucination",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0032",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.00023946360153256704,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 4.8
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0033",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 5.43
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0034",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0009578544061302681,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 3.8
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0035",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0002886002886002886,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 2.56
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0036",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 2.92
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0037",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0038",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0039",
+            "scenario": "shadow_hazard",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0003246753246753247,
+            "quality_flags": [
+              "illumination_corrected_-53.9",
+              "shadow_hazard"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0040",
+            "scenario": "subpixel_jitter",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "subpixel_jitter_1.3px"
+            ],
+            "latency_ms": 3.01
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0041",
+            "scenario": "subpixel_jitter",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "subpixel_jitter_1.2px"
+            ],
+            "latency_ms": 2.64
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0042",
+            "scenario": "subpixel_jitter",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "subpixel_jitter_1.2px"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0043",
+            "scenario": "subpixel_jitter",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "subpixel_jitter_1.1px"
+            ],
+            "latency_ms": 2.39
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0044",
+            "scenario": "subpixel_jitter",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "subpixel_jitter_1.3px"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0045",
+            "scenario": "subpixel_jitter",
+            "visible_change": false,
+            "expected": false,
+            "is_correct": true,
+            "structural_edge_change": 0.0,
+            "quality_flags": [
+              "subpixel_jitter_1.1px"
+            ],
+            "latency_ms": 3.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0046",
+            "scenario": "genuine_demolition",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": -0.12403340550572224,
+            "quality_flags": [
+              "illumination_corrected_-64.3"
+            ],
+            "latency_ms": 2.01
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0047",
+            "scenario": "genuine_demolition",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": -0.12065095398428732,
+            "quality_flags": [
+              "illumination_corrected_-66.1"
+            ],
+            "latency_ms": 2.0
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0048",
+            "scenario": "genuine_demolition",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": -0.1275974025974026,
+            "quality_flags": [
+              "illumination_corrected_-66.4"
+            ],
+            "latency_ms": 2.4
+          },
+          {
+            "pair_id": "LEVIR-MCI/eval/eval_0049",
+            "scenario": "genuine_demolition",
+            "visible_change": true,
+            "expected": true,
+            "is_correct": true,
+            "structural_edge_change": -0.10997067448680352,
+            "quality_flags": [
+              "illumination_corrected_-66.1"
+            ],
+            "latency_ms": 2.49
+          }
+        ]
+      }
+    },
+    "real_levir_evaluation_results.json": {
+      "source": "POC/c-evidence/results/original/real_levir_evaluation_results.json",
+      "sha256": "882b10677e45dda0302d302ba471eb5365399f0b4d014c01fd3ac2ae408b3d15",
+      "records": [
+        {
+          "record_type": "stage_c_evidence_record",
+          "pair_id": "LEVIR-MCI/train/train_000010",
+          "claim_id": "real_eval_train_000010",
+          "source_span": "several houses are built at the bottom of the scene",
+          "claim": {
+            "object": "building",
+            "action": "constructed",
+            "location": "bottom",
+            "quantity": 3,
+            "quantity_unit": "count"
+          },
+          "candidate_region_ids": [
+            [
+              60,
+              175,
+              230,
+              250
+            ]
+          ],
+          "coordinate_frame": "original_T1_pixels",
+          "bbox_convention": "x0_y0_x1_y1_half_open",
+          "evidence": {
+            "mask_run_id": "detector_open_cd_bit",
+            "mask_ontology": "building_road_binary",
+            "witness_run_id": "W01_structural_witness_v1",
+            "visible_change": true,
+            "confidence": 0.9512551914599929,
+            "state_transition": "appearance_of_structure",
+            "observations": "Visible change confirmed. Rectilinear structural boundaries present in T2 (localized max_block=86.6, peak/mean ratio=2.38, edge density=0.74) that were absent in T1 (edge density=0.78). Visual evidence supports building appearance.",
+            "visibility_flags": [
+              "t1_clear",
+              "t2_clear"
+            ],
+            "quality_flags": [
+              "illumination_corrected_-47.2"
+            ],
+            "crop_paths": [
+              "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T1.png",
+              "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T2.png"
+            ],
+            "structural_edge_change": -0.037203557312253,
+            "mean_luminance_diff": -47.167686462402344,
+            "crop_mean_diff": 37.48274044795784,
+            "transform_record": {
+              "original_bbox": [
+                60,
+                175,
+                230,
+                250
+              ],
+              "padded_bbox": [
+                35,
+                164,
+                255,
+                256
+              ],
+              "padding_applied": {
+                "pad_x0": 25,
+                "pad_y0": 11,
+                "pad_x1": 25,
+                "pad_y1": 6
+              },
+              "coordinate_frame": "original_T1_pixels"
+            }
+          },
+          "decision": null,
+          "human_reference": "stored_separately_and_never_passed_to_inference"
+        },
+        {
+          "record_type": "stage_c_evidence_record",
+          "pair_id": "LEVIR-MCI/val/val_000005",
+          "claim_id": "real_eval_val_000005",
+          "source_span": "two new houses were built in the center field",
+          "claim": {
+            "object": "building",
+            "action": "constructed",
+            "location": "center",
+            "quantity": 2,
+            "quantity_unit": "count"
+          },
+          "candidate_region_ids": [
+            [
+              80,
+              80,
+              180,
+              180
+            ]
+          ],
+          "coordinate_frame": "original_T1_pixels",
+          "bbox_convention": "x0_y0_x1_y1_half_open",
+          "evidence": {
+            "mask_run_id": "detector_open_cd_bit",
+            "mask_ontology": "building_road_binary",
+            "witness_run_id": "W01_structural_witness_v1",
+            "visible_change": false,
+            "confidence": 0.7587977140223217,
+            "state_transition": "no_physical_change",
+            "observations": "No verifiable physical structural change visible in this crop. T1 and T2 display consistent ground texture (delta edge=-0.119, lum shift=-45.1, max_block=79.4, peak_ratio=1.89). Any claimed new structure is unsupported.",
+            "visibility_flags": [
+              "t1_clear",
+              "t2_clear"
+            ],
+            "quality_flags": [
+              "illumination_corrected_-45.1"
+            ],
+            "crop_paths": [
+              "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_val_val_000005_real_eval_val_000005_crop_T1.png",
+              "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_val_val_000005_real_eval_val_000005_crop_T2.png"
+            ],
+            "structural_edge_change": -0.11934911242603552,
+            "mean_luminance_diff": -45.06212615966797,
+            "crop_mean_diff": 41.847692307692306,
+            "transform_record": {
+              "original_bbox": [
+                80,
+                80,
+                180,
+                180
+              ],
+              "padded_bbox": [
+                65,
+                65,
+                195,
+                195
+              ],
+              "padding_applied": {
+                "pad_x0": 15,
+                "pad_y0": 15,
+                "pad_x1": 15,
+                "pad_y1": 15
+              },
+              "coordinate_frame": "original_T1_pixels"
+            }
+          },
+          "decision": null,
+          "human_reference": "stored_separately_and_never_passed_to_inference"
+        },
+        {
+          "record_type": "stage_c_evidence_record",
+          "pair_id": "LEVIR-MCI/train/train_000010",
+          "claim_id": "real_eval_train_000010",
+          "source_span": "a new road appears on the left",
+          "claim": {
+            "object": "road",
+            "action": "constructed",
+            "location": "left",
+            "quantity": 1,
+            "quantity_unit": "count"
+          },
+          "candidate_region_ids": [
+            [
+              10,
+              40,
+              70,
+              220
+            ]
+          ],
+          "coordinate_frame": "original_T1_pixels",
+          "bbox_convention": "x0_y0_x1_y1_half_open",
+          "evidence": {
+            "mask_run_id": "detector_open_cd_bit",
+            "mask_ontology": "building_road_binary",
+            "witness_run_id": "W01_structural_witness_v1",
+            "visible_change": true,
+            "confidence": 0.8,
+            "state_transition": "surface_alteration",
+            "observations": "Visible surface change observed (mean normalized diff=40.6, aspect ratio=3.0). Supports road change.",
+            "visibility_flags": [
+              "t1_clear",
+              "t2_clear"
+            ],
+            "quality_flags": [
+              "registered_good_contrast"
+            ],
+            "crop_paths": [
+              "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T1.png",
+              "outputs\\real_data_evaluation\\real_crops\\LEVIR-MCI_train_train_000010_real_eval_train_000010_crop_T2.png"
+            ],
+            "structural_edge_change": -0.016326977865439463,
+            "mean_luminance_diff": -17.052871704101562,
+            "crop_mean_diff": 40.600463876104904,
+            "transform_record": {
+              "original_bbox": [
+                10,
+                40,
+                70,
+                220
+              ],
+              "padded_bbox": [
+                1,
+                13,
+                79,
+                247
+              ],
+              "padding_applied": {
+                "pad_x0": 9,
+                "pad_y0": 27,
+                "pad_x1": 9,
+                "pad_y1": 27
+              },
+              "coordinate_frame": "original_T1_pixels"
+            }
+          },
+          "decision": null,
+          "human_reference": "stored_separately_and_never_passed_to_inference"
+        }
+      ]
+    },
+    "stage_c_claim_decision_record.json": {
+      "source": "POC/c-evidence/results/original/stage_c_claim_decision_record.json",
+      "sha256": "e5b51ce6330b2e76c546517ebd864bbe9a5b213b9e08b3d3660711db99ea6515",
+      "records": {
+        "record_type": "stage_c_evidence_record",
+        "pair_id": "LEVIR-MCI/val/val_000042",
+        "claim_id": "claim_001",
+        "source_span": "a new building was constructed in the bottom right corner",
+        "claim": {
+          "object": "building",
+          "action": "constructed",
+          "location": "bottom-right",
+          "quantity": 1,
+          "quantity_unit": "count"
+        },
+        "candidate_region_ids": [
+          [
+            135,
+            135,
+            215,
+            215
+          ]
+        ],
+        "coordinate_frame": "original_T1_pixels",
+        "bbox_convention": "x0_y0_x1_y1_half_open",
+        "evidence": {
+          "mask_run_id": "detector_open_cd_bit",
+          "mask_ontology": "building_road_binary",
+          "witness_run_id": "W01_structural_witness_v1",
+          "visible_change": true,
+          "observations": "Visible change confirmed. Rectilinear structural boundaries present in T2 (edge density=0.07) that were absent in T1 (edge density=0.00). Visual evidence supports building appearance.",
+          "visibility_flags": [
+            "clear_t1",
+            "clear_t2"
+          ],
+          "quality_flags": [
+            "registered_good_contrast"
+          ],
+          "crop_paths": [
+            "outputs\\evidence_demo\\crops\\LEVIR-MCI_val_val_000042_claim_001_crop_T1.png",
+            "outputs\\evidence_demo\\crops\\LEVIR-MCI_val_val_000042_claim_001_crop_T2.png"
+          ],
+          "structural_edge_change": 0.06397928994082841,
+          "mean_luminance_diff": 44.025428771972656,
+          "transform_record": {
+            "original_bbox": [
+              135,
+              135,
+              215,
+              215
+            ],
+            "padded_bbox": [
+              123,
+              123,
+              227,
+              227
+            ],
+            "padding_applied": {
+              "pad_x0": 12,
+              "pad_y0": 12,
+              "pad_x1": 12,
+              "pad_y1": 12
+            },
+            "coordinate_frame": "original_T1_pixels"
+          }
+        },
+        "decision": null,
+        "human_reference": "stored_separately_and_never_passed_to_inference"
+      }
+    }
+  },
+  "decision_runs": [
+    {
+      "archive": "POC/benchmarks/results/2026-10-27/shoaib/archives/SSSM_20261027_141130_results.zip",
+      "run_id": "SSSM_20261027_141130",
+      "sha256": "68f5813055d5af35e5a5e868868c72a4be9e868f651d40a10e48d554574be361",
+      "zip_crc": "passed",
+      "export_hashes": "passed",
+      "profile": "smoke",
+      "runtime": "2026-10-27.1",
+      "pair_ids": [
+        "mci_train_003556",
+        "mci_train_003557",
+        "mci_train_005705",
+        "mci_train_007293",
+        "mci_val_000263",
+        "mci_val_000836",
+        "mci_val_000872",
+        "mci_val_001156",
+        "mci_val_001274",
+        "mci_val_001369"
+      ],
+      "health": {
+        "status": "legacy_setup_failure"
+      },
+      "predictions": {
+        "predictions/R01.jsonl": {
+          "sha256": "03652fe8846f63daad61f89f0759a9b44c02bcd1f78399bfc8fed215790dda8b",
+          "rows": 98
+        },
+        "predictions/R02.jsonl": {
+          "sha256": "da25d7f9d4414381178fe107888328db1101c9b70a416afa8850c4040d86453a",
+          "rows": 98
+        },
+        "predictions/R00.jsonl": {
+          "sha256": "87c2441d64c492ebe0d67ce121b8b1758889860ca42178b61a4e63b13e9bf019",
+          "rows": 98
+        }
+      },
+      "runtimes": {},
+      "validation_proxy_metrics": [
+        {
+          "model_id": "J01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J01",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J05",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J06",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J06",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R00",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.4",
+          "true_claim_acceptance": "1.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "0.0",
+          "decision_coverage": "1.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.5",
+          "true_claim_acceptance": "0.25",
+          "false_claim_rejection": "0.25",
+          "false_rejection": "0.25",
+          "deferral_rate": "0.6",
+          "decision_coverage": "0.4",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R02",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.2",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "0.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "1.0",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        }
+      ],
+      "metric_groups": [
+        "satellite_annotation_proxy",
+        "synthetic_logic_fixture"
+      ]
+    },
+    {
+      "archive": "POC/benchmarks/results/2026-10-27/shoaib/archives/SSSM_20261027_141651_results.zip",
+      "run_id": "SSSM_20261027_141651",
+      "sha256": "7810dc084a6b9cc2fdd4efa8f30791d0674b1e5f98d2a97f94556e734f4af903",
+      "zip_crc": "passed",
+      "export_hashes": "passed",
+      "profile": "smoke",
+      "runtime": "2026-10-27.1",
+      "pair_ids": [
+        "mci_train_003556",
+        "mci_train_003557",
+        "mci_train_005705",
+        "mci_train_007293",
+        "mci_val_000263",
+        "mci_val_000836",
+        "mci_val_000872",
+        "mci_val_001156",
+        "mci_val_001274",
+        "mci_val_001369"
+      ],
+      "health": {
+        "status": "legacy_setup_failure"
+      },
+      "predictions": {
+        "predictions/R01.jsonl": {
+          "sha256": "03652fe8846f63daad61f89f0759a9b44c02bcd1f78399bfc8fed215790dda8b",
+          "rows": 98
+        },
+        "predictions/R02.jsonl": {
+          "sha256": "da25d7f9d4414381178fe107888328db1101c9b70a416afa8850c4040d86453a",
+          "rows": 98
+        },
+        "predictions/R00.jsonl": {
+          "sha256": "87c2441d64c492ebe0d67ce121b8b1758889860ca42178b61a4e63b13e9bf019",
+          "rows": 98
+        }
+      },
+      "runtimes": {},
+      "validation_proxy_metrics": [
+        {
+          "model_id": "J01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J01",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J05",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J06",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J06",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R00",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.4",
+          "true_claim_acceptance": "1.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "0.0",
+          "decision_coverage": "1.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.5",
+          "true_claim_acceptance": "0.25",
+          "false_claim_rejection": "0.25",
+          "false_rejection": "0.25",
+          "deferral_rate": "0.6",
+          "decision_coverage": "0.4",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R02",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.2",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "0.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "1.0",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        }
+      ],
+      "metric_groups": [
+        "satellite_annotation_proxy",
+        "synthetic_logic_fixture"
+      ]
+    },
+    {
+      "archive": "POC/benchmarks/results/2026-10-27/shoaib/archives/SSSM_20261027_141846_results.zip",
+      "run_id": "SSSM_20261027_141846",
+      "sha256": "9f4f5fb01af9d9d8b33f7c7dcd108b40cdab1f66a76d6fbcc072e74426f399f3",
+      "zip_crc": "passed",
+      "export_hashes": "passed",
+      "profile": "screen",
+      "runtime": "2026-10-27.1",
+      "pair_ids": [
+        "mci_train_000332",
+        "mci_train_003074",
+        "mci_train_003556",
+        "mci_train_003557",
+        "mci_train_005338",
+        "mci_train_005705",
+        "mci_train_006193",
+        "mci_train_006934",
+        "mci_train_007293",
+        "mci_train_007340",
+        "mci_val_000012",
+        "mci_val_000030",
+        "mci_val_000181",
+        "mci_val_000263",
+        "mci_val_000293",
+        "mci_val_000398",
+        "mci_val_000540",
+        "mci_val_000606",
+        "mci_val_000632",
+        "mci_val_000666",
+        "mci_val_000789",
+        "mci_val_000797",
+        "mci_val_000836",
+        "mci_val_000872",
+        "mci_val_000910",
+        "mci_val_000960",
+        "mci_val_001036",
+        "mci_val_001041",
+        "mci_val_001156",
+        "mci_val_001213",
+        "mci_val_001242",
+        "mci_val_001257",
+        "mci_val_001269",
+        "mci_val_001274",
+        "mci_val_001296",
+        "mci_val_001360",
+        "mci_val_001369",
+        "mci_val_001377",
+        "mci_val_001410",
+        "mci_val_001426"
+      ],
+      "health": {
+        "status": "legacy_setup_failure"
+      },
+      "predictions": {
+        "predictions/R01.jsonl": {
+          "sha256": "6a8b6438eb8788ce194cf0c995f4227c2ef39adaf18cffcc7b33cb7e8a2b1ab1",
+          "rows": 248
+        },
+        "predictions/R02.jsonl": {
+          "sha256": "8a10ff631e755559d5899275f046785774e6b90113379cb8f9acf21640eed96e",
+          "rows": 248
+        },
+        "predictions/R00.jsonl": {
+          "sha256": "72b751d6019239b03e359a3e314c3d0a9c9f4ba257fdd904b4828a2209372595",
+          "rows": 248
+        }
+      },
+      "runtimes": {},
+      "validation_proxy_metrics": [
+        {
+          "model_id": "J01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J01",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J05",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J06",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J06",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R00",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.4",
+          "true_claim_acceptance": "1.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "0.0",
+          "decision_coverage": "1.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.38666666666666666",
+          "accepted_precision_proxy": "0.4666666666666667",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.23333333333333334",
+          "false_rejection": "0.26666666666666666",
+          "deferral_rate": "0.6",
+          "decision_coverage": "0.4",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R02",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.2",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "0.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "1.0",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        }
+      ],
+      "metric_groups": [
+        "satellite_annotation_proxy",
+        "synthetic_logic_fixture"
+      ]
+    },
+    {
+      "archive": "POC/benchmarks/results/2026-10-27/shoaib/archives/SSSM_20261027_164103_results.zip",
+      "run_id": "SSSM_20261027_164103",
+      "sha256": "a67b0a960c24c3a3e9af95f8ae1b5c7fca5c82961214305551130e457126a375",
+      "zip_crc": "passed",
+      "export_hashes": "passed",
+      "profile": "smoke",
+      "runtime": "2026-10-27.2",
+      "pair_ids": [
+        "mci_train_003556",
+        "mci_train_003557",
+        "mci_train_005705",
+        "mci_train_007293",
+        "mci_val_000263",
+        "mci_val_000836",
+        "mci_val_000872",
+        "mci_val_001156",
+        "mci_val_001274",
+        "mci_val_001369"
+      ],
+      "health": {
+        "status": "learned_outputs_available",
+        "completed_learned_rows": 276,
+        "planned_learned_rows": 612,
+        "completed_models": [
+          "J05",
+          "J06"
+        ],
+        "warning": null
+      },
+      "predictions": {
+        "predictions/J05_judge.jsonl": {
+          "sha256": "cafec1cf1b9a4d4ebca4f780de84b92f4f36304f2a367c079a0b5217c30e035f",
+          "rows": 114
+        },
+        "predictions/J07_judge.jsonl": {
+          "sha256": "798062ba79e5c05498e6da07ed6369dbd8a20e2dc3994a5c1f2cf23a83abf3a1",
+          "rows": 5
+        },
+        "predictions/J06_judge.jsonl": {
+          "sha256": "1b8cad982311f7593396df3acb50e4e5531a4258cda13e25ff6200dc2fdeccd6",
+          "rows": 174
+        },
+        "predictions/R01.jsonl": {
+          "sha256": "6576caf57963a8a446b50cb4c82c4fb4ea9edb3b53d8e82936f6a75375aa09bb",
+          "rows": 108
+        },
+        "predictions/R02.jsonl": {
+          "sha256": "a0078334044ea08ce8870cb9510693e16887b0e2dd21c2fb7cfc80293aa097a0",
+          "rows": 108
+        },
+        "predictions/J06_witness.jsonl": {
+          "sha256": "8474c3deaf90163fced98135ee6271b04bb6330ad0fcf5ee989500977711ad76",
+          "rows": 10
+        },
+        "predictions/R00.jsonl": {
+          "sha256": "7bb96c69978af09543acaaf9e8f3a3252a4720f2c04e2e56b21bb92024685b11",
+          "rows": 108
+        }
+      },
+      "runtimes": {
+        "metadata/J06_witness_runtime.json": {
+          "repo": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 50.54491909699999,
+          "started": "2026-10-27T16:43:15.847826+00:00"
+        },
+        "metadata/J07_judge_runtime.json": {
+          "repo": "OpenGVLab/InternVL3_5-4B",
+          "revision": "481f6e32467eab4e922ccd7fd6cf420441a62331",
+          "precision": "torch.bfloat16",
+          "transformers": "4.52.1",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 49.46691389,
+          "started": "2026-10-27T16:47:33.159792+00:00"
+        },
+        "metadata/J06_judge_runtime.json": {
+          "repo": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 27.820681266000065,
+          "started": "2026-10-27T16:46:02.446431+00:00"
+        },
+        "metadata/J05_judge_runtime.json": {
+          "repo": "Qwen/Qwen3-4B-Instruct-2507",
+          "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 38.86774259600003,
+          "started": "2026-10-27T16:44:38.068119+00:00"
+        }
+      },
+      "validation_proxy_metrics": [
+        {
+          "model_id": "J01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J01",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J05",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.36666666666666664",
+          "accepted_precision_proxy": "0.6666666666666666",
+          "true_claim_acceptance": "0.16666666666666666",
+          "false_claim_rejection": "0.25",
+          "false_rejection": "0.4166666666666667",
+          "deferral_rate": "0.6333333333333333",
+          "decision_coverage": "0.36666666666666664",
+          "brier_multiclass_0_to_2": "1.190146586098143",
+          "probability_rows": "30",
+          "median_latency_s": "0.0894155180000098",
+          "p95_latency_s": "0.09476977079999926",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "7.585676670074463"
+        },
+        {
+          "model_id": "J06",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.36666666666666664",
+          "accepted_precision_proxy": "0.5",
+          "true_claim_acceptance": "0.25",
+          "false_claim_rejection": "0.16666666666666666",
+          "false_rejection": "0.25",
+          "deferral_rate": "0.6333333333333333",
+          "decision_coverage": "0.36666666666666664",
+          "brier_multiclass_0_to_2": "1.0941782237105215",
+          "probability_rows": "30",
+          "median_latency_s": "0.0910576349999701",
+          "p95_latency_s": "0.09477829314998303",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "8.360791683197021"
+        },
+        {
+          "model_id": "J06",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.5",
+          "accepted_precision_proxy": "0.5714285714285714",
+          "true_claim_acceptance": "0.3333333333333333",
+          "false_claim_rejection": "0.4166666666666667",
+          "false_rejection": "0.3333333333333333",
+          "deferral_rate": "0.4666666666666667",
+          "decision_coverage": "0.5333333333333333",
+          "brier_multiclass_0_to_2": "0.8457885746432484",
+          "probability_rows": "30",
+          "median_latency_s": "0.1537377535000246",
+          "p95_latency_s": "0.15580160330003423",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "8.40830659866333"
+        },
+        {
+          "model_id": "J07",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "0",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R00",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.4",
+          "true_claim_acceptance": "1.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "0.0",
+          "decision_coverage": "1.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.5",
+          "true_claim_acceptance": "0.25",
+          "false_claim_rejection": "0.25",
+          "false_rejection": "0.25",
+          "deferral_rate": "0.6",
+          "decision_coverage": "0.4",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R02",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "30",
+          "completed_labelled_claims": "30",
+          "pair_groups": "6",
+          "all_planned_claims": "30",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.3333333333333333",
+          "accepted_precision_proxy": "0.6666666666666666",
+          "true_claim_acceptance": "0.16666666666666666",
+          "false_claim_rejection": "0.16666666666666666",
+          "false_rejection": "0.08333333333333333",
+          "deferral_rate": "0.8",
+          "decision_coverage": "0.2",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        }
+      ],
+      "metric_groups": [
+        "satellite_annotation_proxy",
+        "satellite_natural_unrated",
+        "synthetic_logic_fixture"
+      ]
+    },
+    {
+      "archive": "POC/benchmarks/results/2026-10-27/shoaib/archives/SSSM_20261027_164811_results (1).zip",
+      "run_id": "SSSM_20261027_164811",
+      "sha256": "ee909e9201da6d3875ab98c64a3298bc4db91c8daa7903cb353a5a8061d5c24d",
+      "zip_crc": "passed",
+      "export_hashes": "passed",
+      "profile": "screen",
+      "runtime": "2026-10-27.2",
+      "pair_ids": [
+        "mci_train_000332",
+        "mci_train_003074",
+        "mci_train_003556",
+        "mci_train_003557",
+        "mci_train_005338",
+        "mci_train_005705",
+        "mci_train_006193",
+        "mci_train_006934",
+        "mci_train_007293",
+        "mci_train_007340",
+        "mci_val_000012",
+        "mci_val_000030",
+        "mci_val_000181",
+        "mci_val_000263",
+        "mci_val_000293",
+        "mci_val_000398",
+        "mci_val_000540",
+        "mci_val_000606",
+        "mci_val_000632",
+        "mci_val_000666",
+        "mci_val_000789",
+        "mci_val_000797",
+        "mci_val_000836",
+        "mci_val_000872",
+        "mci_val_000910",
+        "mci_val_000960",
+        "mci_val_001036",
+        "mci_val_001041",
+        "mci_val_001156",
+        "mci_val_001213",
+        "mci_val_001242",
+        "mci_val_001257",
+        "mci_val_001269",
+        "mci_val_001274",
+        "mci_val_001296",
+        "mci_val_001360",
+        "mci_val_001369",
+        "mci_val_001377",
+        "mci_val_001410",
+        "mci_val_001426"
+      ],
+      "health": {
+        "status": "learned_outputs_available",
+        "completed_learned_rows": 816,
+        "planned_learned_rows": 1872,
+        "completed_models": [
+          "J05",
+          "J06"
+        ],
+        "warning": null
+      },
+      "predictions": {
+        "predictions/J05_judge.jsonl": {
+          "sha256": "d350894c6195f4f8a844c197168bfac273a3ef3359ea43473e5d7b9fc0a0c40e",
+          "rows": 294
+        },
+        "predictions/J07_judge.jsonl": {
+          "sha256": "593546b8251fcccc530d94e9d59b5a4adeeaea807efb16c53a4e1c260b60fcdd",
+          "rows": 5
+        },
+        "predictions/J06_judge.jsonl": {
+          "sha256": "78b640dca20808c08f8c2472c84c665f3b28c022e26ac15ec1bb474a5947d504",
+          "rows": 534
+        },
+        "predictions/R01.jsonl": {
+          "sha256": "e218c3cd022050f6b4be1ce409a3fe682f39295ce34560912dc07f15e3d895a2",
+          "rows": 288
+        },
+        "predictions/R02.jsonl": {
+          "sha256": "baba3441205c73c70069f0dd98c3fd4c360c346900b74cffe748113265ae28ab",
+          "rows": 288
+        },
+        "predictions/J06_witness.jsonl": {
+          "sha256": "f15a4a44e7d00c63678bc798cc3dcdba7b6171225a1c4d0a3e4fbad8135e64a7",
+          "rows": 40
+        },
+        "predictions/R00.jsonl": {
+          "sha256": "8ff096278ced5611167b2c26b894788bfe42a7813f5b0875b2778f15d4a7e48d",
+          "rows": 288
+        }
+      },
+      "runtimes": {
+        "metadata/J06_witness_runtime.json": {
+          "repo": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 12.542450841000004,
+          "started": "2026-10-27T16:51:48.890129+00:00"
+        },
+        "metadata/J07_judge_runtime.json": {
+          "repo": "OpenGVLab/InternVL3_5-4B",
+          "revision": "481f6e32467eab4e922ccd7fd6cf420441a62331",
+          "precision": "torch.bfloat16",
+          "transformers": "4.52.1",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 14.088294038999948,
+          "started": "2026-10-27T16:56:50.697769+00:00"
+        },
+        "metadata/J06_judge_runtime.json": {
+          "repo": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 12.525916379000137,
+          "started": "2026-10-27T16:55:23.328754+00:00"
+        },
+        "metadata/J05_judge_runtime.json": {
+          "repo": "Qwen/Qwen3-4B-Instruct-2507",
+          "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 31.451411572000097,
+          "started": "2026-10-27T16:54:24.945428+00:00"
+        }
+      },
+      "validation_proxy_metrics": [
+        {
+          "model_id": "J01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J01",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J05",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.41333333333333333",
+          "accepted_precision_proxy": "0.5185185185185185",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.3",
+          "false_rejection": "0.5333333333333333",
+          "deferral_rate": "0.4866666666666667",
+          "decision_coverage": "0.5133333333333333",
+          "brier_multiclass_0_to_2": "1.089789205357866",
+          "probability_rows": "150",
+          "median_latency_s": "0.0945971759999793",
+          "p95_latency_s": "0.10052384905009148",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "7.59042501449585"
+        },
+        {
+          "model_id": "J06",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4533333333333333",
+          "accepted_precision_proxy": "0.42",
+          "true_claim_acceptance": "0.35",
+          "false_claim_rejection": "0.2833333333333333",
+          "false_rejection": "0.43333333333333335",
+          "deferral_rate": "0.38",
+          "decision_coverage": "0.62",
+          "brier_multiclass_0_to_2": "0.9618198634921153",
+          "probability_rows": "150",
+          "median_latency_s": "0.09430987799999002",
+          "p95_latency_s": "0.09876781555007028",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "8.365540027618408"
+        },
+        {
+          "model_id": "J06",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.5666666666666667",
+          "accepted_precision_proxy": "0.5217391304347826",
+          "true_claim_acceptance": "0.4",
+          "false_claim_rejection": "0.5166666666666667",
+          "false_rejection": "0.48333333333333334",
+          "deferral_rate": "0.29333333333333333",
+          "decision_coverage": "0.7066666666666667",
+          "brier_multiclass_0_to_2": "0.771771158182198",
+          "probability_rows": "150",
+          "median_latency_s": "0.16043453399993268",
+          "p95_latency_s": "0.16577916829998002",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "8.413677215576172"
+        },
+        {
+          "model_id": "J07",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R00",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.4",
+          "true_claim_acceptance": "1.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "0.0",
+          "decision_coverage": "1.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.38666666666666666",
+          "accepted_precision_proxy": "0.4666666666666667",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.23333333333333334",
+          "false_rejection": "0.26666666666666666",
+          "deferral_rate": "0.6",
+          "decision_coverage": "0.4",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R02",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.38666666666666666",
+          "accepted_precision_proxy": "0.56",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.23333333333333334",
+          "false_rejection": "0.18333333333333332",
+          "deferral_rate": "0.6666666666666666",
+          "decision_coverage": "0.3333333333333333",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        }
+      ],
+      "metric_groups": [
+        "satellite_annotation_proxy",
+        "satellite_natural_unrated",
+        "synthetic_logic_fixture"
+      ]
+    },
+    {
+      "archive": "POC/benchmarks/results/2026-10-27/shoaib/archives/SSSM_20261027_164811_results.zip",
+      "run_id": "SSSM_20261027_164811",
+      "sha256": "54c0887cca1987947364818d5bf99df4879fc700e39cb5a3b6b727394859ef15",
+      "zip_crc": "passed",
+      "export_hashes": "passed",
+      "profile": "screen",
+      "runtime": "2026-10-27.2",
+      "pair_ids": [
+        "mci_train_000332",
+        "mci_train_003074",
+        "mci_train_003556",
+        "mci_train_003557",
+        "mci_train_005338",
+        "mci_train_005705",
+        "mci_train_006193",
+        "mci_train_006934",
+        "mci_train_007293",
+        "mci_train_007340",
+        "mci_val_000012",
+        "mci_val_000030",
+        "mci_val_000181",
+        "mci_val_000263",
+        "mci_val_000293",
+        "mci_val_000398",
+        "mci_val_000540",
+        "mci_val_000606",
+        "mci_val_000632",
+        "mci_val_000666",
+        "mci_val_000789",
+        "mci_val_000797",
+        "mci_val_000836",
+        "mci_val_000872",
+        "mci_val_000910",
+        "mci_val_000960",
+        "mci_val_001036",
+        "mci_val_001041",
+        "mci_val_001156",
+        "mci_val_001213",
+        "mci_val_001242",
+        "mci_val_001257",
+        "mci_val_001269",
+        "mci_val_001274",
+        "mci_val_001296",
+        "mci_val_001360",
+        "mci_val_001369",
+        "mci_val_001377",
+        "mci_val_001410",
+        "mci_val_001426"
+      ],
+      "health": {
+        "status": "learned_outputs_available",
+        "completed_learned_rows": 816,
+        "planned_learned_rows": 1872,
+        "completed_models": [
+          "J05",
+          "J06"
+        ],
+        "warning": null
+      },
+      "predictions": {
+        "predictions/J05_judge.jsonl": {
+          "sha256": "d350894c6195f4f8a844c197168bfac273a3ef3359ea43473e5d7b9fc0a0c40e",
+          "rows": 294
+        },
+        "predictions/J07_judge.jsonl": {
+          "sha256": "593546b8251fcccc530d94e9d59b5a4adeeaea807efb16c53a4e1c260b60fcdd",
+          "rows": 5
+        },
+        "predictions/J06_judge.jsonl": {
+          "sha256": "78b640dca20808c08f8c2472c84c665f3b28c022e26ac15ec1bb474a5947d504",
+          "rows": 534
+        },
+        "predictions/R01.jsonl": {
+          "sha256": "e218c3cd022050f6b4be1ce409a3fe682f39295ce34560912dc07f15e3d895a2",
+          "rows": 288
+        },
+        "predictions/R02.jsonl": {
+          "sha256": "baba3441205c73c70069f0dd98c3fd4c360c346900b74cffe748113265ae28ab",
+          "rows": 288
+        },
+        "predictions/J06_witness.jsonl": {
+          "sha256": "f15a4a44e7d00c63678bc798cc3dcdba7b6171225a1c4d0a3e4fbad8135e64a7",
+          "rows": 40
+        },
+        "predictions/R00.jsonl": {
+          "sha256": "8ff096278ced5611167b2c26b894788bfe42a7813f5b0875b2778f15d4a7e48d",
+          "rows": 288
+        }
+      },
+      "runtimes": {
+        "metadata/J06_witness_runtime.json": {
+          "repo": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 12.542450841000004,
+          "started": "2026-10-27T16:51:48.890129+00:00"
+        },
+        "metadata/J07_judge_runtime.json": {
+          "repo": "OpenGVLab/InternVL3_5-4B",
+          "revision": "481f6e32467eab4e922ccd7fd6cf420441a62331",
+          "precision": "torch.bfloat16",
+          "transformers": "4.52.1",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 14.088294038999948,
+          "started": "2026-10-27T16:56:50.697769+00:00"
+        },
+        "metadata/J06_judge_runtime.json": {
+          "repo": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 12.525916379000137,
+          "started": "2026-10-27T16:55:23.328754+00:00"
+        },
+        "metadata/J05_judge_runtime.json": {
+          "repo": "Qwen/Qwen3-4B-Instruct-2507",
+          "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+          "precision": "torch.bfloat16",
+          "transformers": "5.17.0",
+          "torch": "2.11.0+cu130",
+          "quantisation": null,
+          "device": "NVIDIA L4",
+          "image_max_side": 512,
+          "internvl_max_tiles_per_image": 4,
+          "load_s": 31.451411572000097,
+          "started": "2026-10-27T16:54:24.945428+00:00"
+        }
+      },
+      "validation_proxy_metrics": [
+        {
+          "model_id": "J01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J01",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J05",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.41333333333333333",
+          "accepted_precision_proxy": "0.5185185185185185",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.3",
+          "false_rejection": "0.5333333333333333",
+          "deferral_rate": "0.4866666666666667",
+          "decision_coverage": "0.5133333333333333",
+          "brier_multiclass_0_to_2": "1.089789205357866",
+          "probability_rows": "150",
+          "median_latency_s": "0.0945971759999793",
+          "p95_latency_s": "0.10052384905009148",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "7.59042501449585"
+        },
+        {
+          "model_id": "J06",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4533333333333333",
+          "accepted_precision_proxy": "0.42",
+          "true_claim_acceptance": "0.35",
+          "false_claim_rejection": "0.2833333333333333",
+          "false_rejection": "0.43333333333333335",
+          "deferral_rate": "0.38",
+          "decision_coverage": "0.62",
+          "brier_multiclass_0_to_2": "0.9618198634921153",
+          "probability_rows": "150",
+          "median_latency_s": "0.09430987799999002",
+          "p95_latency_s": "0.09876781555007028",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "8.365540027618408"
+        },
+        {
+          "model_id": "J06",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.5666666666666667",
+          "accepted_precision_proxy": "0.5217391304347826",
+          "true_claim_acceptance": "0.4",
+          "false_claim_rejection": "0.5166666666666667",
+          "false_rejection": "0.48333333333333334",
+          "deferral_rate": "0.29333333333333333",
+          "decision_coverage": "0.7066666666666667",
+          "brier_multiclass_0_to_2": "0.771771158182198",
+          "probability_rows": "150",
+          "median_latency_s": "0.16043453399993268",
+          "p95_latency_s": "0.16577916829998002",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": "8.413677215576172"
+        },
+        {
+          "model_id": "J07",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "J07",
+          "track": "image_backed",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "0",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "0.0",
+          "label_agreement": "",
+          "accepted_precision_proxy": "",
+          "true_claim_acceptance": "",
+          "false_claim_rejection": "",
+          "false_rejection": "",
+          "deferral_rate": "",
+          "decision_coverage": "0.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R00",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.4",
+          "accepted_precision_proxy": "0.4",
+          "true_claim_acceptance": "1.0",
+          "false_claim_rejection": "0.0",
+          "false_rejection": "0.0",
+          "deferral_rate": "0.0",
+          "decision_coverage": "1.0",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R01",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.38666666666666666",
+          "accepted_precision_proxy": "0.4666666666666667",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.23333333333333334",
+          "false_rejection": "0.26666666666666666",
+          "deferral_rate": "0.6",
+          "decision_coverage": "0.4",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        },
+        {
+          "model_id": "R02",
+          "track": "common_evidence",
+          "phase": "val",
+          "benchmark_group": "satellite_annotation_proxy",
+          "planned_labelled_claims": "150",
+          "completed_labelled_claims": "150",
+          "pair_groups": "30",
+          "all_planned_claims": "150",
+          "unrated_claims": "0",
+          "completion_rate": "1.0",
+          "label_agreement": "0.38666666666666666",
+          "accepted_precision_proxy": "0.56",
+          "true_claim_acceptance": "0.23333333333333334",
+          "false_claim_rejection": "0.23333333333333334",
+          "false_rejection": "0.18333333333333332",
+          "deferral_rate": "0.6666666666666666",
+          "decision_coverage": "0.3333333333333333",
+          "brier_multiclass_0_to_2": "",
+          "probability_rows": "0",
+          "median_latency_s": "",
+          "p95_latency_s": "",
+          "cached_outputs": "0",
+          "peak_pytorch_gpu_gb": ""
+        }
+      ],
+      "metric_groups": [
+        "satellite_annotation_proxy",
+        "satellite_natural_unrated",
+        "synthetic_logic_fixture"
+      ]
+    }
+  ],
+  "decision_unique_pair_ids": [
+    "mci_train_000332",
+    "mci_train_003074",
+    "mci_train_003556",
+    "mci_train_003557",
+    "mci_train_005338",
+    "mci_train_005705",
+    "mci_train_006193",
+    "mci_train_006934",
+    "mci_train_007293",
+    "mci_train_007340",
+    "mci_val_000012",
+    "mci_val_000030",
+    "mci_val_000181",
+    "mci_val_000263",
+    "mci_val_000293",
+    "mci_val_000398",
+    "mci_val_000540",
+    "mci_val_000606",
+    "mci_val_000632",
+    "mci_val_000666",
+    "mci_val_000789",
+    "mci_val_000797",
+    "mci_val_000836",
+    "mci_val_000872",
+    "mci_val_000910",
+    "mci_val_000960",
+    "mci_val_001036",
+    "mci_val_001041",
+    "mci_val_001156",
+    "mci_val_001213",
+    "mci_val_001242",
+    "mci_val_001257",
+    "mci_val_001269",
+    "mci_val_001274",
+    "mci_val_001296",
+    "mci_val_001360",
+    "mci_val_001369",
+    "mci_val_001377",
+    "mci_val_001410",
+    "mci_val_001426"
+  ],
+  "decision_archive_count": 6,
+  "decision_distinct_run_ids": 5,
+  "scope": "Source exports are retained verbatim. Synthetic visual-evidence fixtures, automatic caption-reference checks and decision annotation proxies are separate evidence types."
+}

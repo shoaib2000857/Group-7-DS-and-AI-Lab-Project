@@ -1,0 +1,395 @@
+<style>
+/* One reading column of short chapters; each chapter carries one example or one chart. */
+.st { max-width: 46rem; margin-inline: auto; font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+.st h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15; margin: 0 0 var(--cds-gap-sm); text-wrap: balance; }
+.st h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); text-wrap: balance; }
+.st p { line-height: 1.6; margin: 0 0 var(--cds-gap-sm); max-width: 65ch; }
+.st .lede { font-size: var(--cds-font-size-heading); line-height: 1.5; color: var(--color-fg); }
+.st .muted { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.st .kicker { text-transform: uppercase; letter-spacing: .08em; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-bottom: var(--cds-gap-xs); }
+.st section { display: grid; gap: var(--cds-gap-md); padding-block: var(--cds-gap-xl); border-top: 1px solid var(--color-border-line); }
+.st section:first-of-type { border-top: 0; padding-top: var(--cds-gap-md); }
+.st .card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+.st .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--cds-gap-sm); }
+.st figure { margin: 0; min-width: 0; }
+.st figure img { width: 100%; aspect-ratio: 1; border-radius: calc(var(--cds-radius) / 2); display: block; background: var(--color-border-line); }
+.st figcaption { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-xs); }
+.st .facts { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-sm); }
+.st .facts b { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+.st .caps { display: grid; gap: var(--cds-gap-sm); margin-top: var(--cds-gap-md); }
+.st .cap { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: var(--cds-gap-sm); padding-top: var(--cds-gap-sm); border-top: 1px solid var(--color-border-line); }
+.st .cap:first-child { border-top: 0; padding-top: 0; }
+.st .who { font-weight: var(--cds-font-weight-medium); font-size: var(--cds-font-size-body); }
+.st .who small { display: block; font-weight: 400; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.st .said { font-size: var(--cds-font-size-body); line-height: 1.5; margin: 0; }
+.st .chips { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); margin-top: var(--cds-gap-xs); }
+.st .chip { display: inline-flex; align-items: center; gap: .35em; font-size: var(--cds-font-size-caption); padding: 1px var(--cds-pad-sm); border-radius: 999px; border: 1px solid var(--color-border-line); color: var(--color-fg-muted); }
+.st .chip::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--cds-chart-muted); }
+.st .chip.ok { color: var(--color-ok); } .st .chip.ok::before { background: var(--color-ok); }
+.st .chip.bad { color: var(--color-bad); } .st .chip.bad::before { background: var(--color-bad); }
+.st .chart { position: relative; min-height: 14rem; }
+.st .chart svg { display: block; overflow: visible; }
+.st .chart text { font-family: var(--font-anthropic-sans); }
+.st .tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+.st .tip .k { color: var(--cds-text-secondary); }
+.st .three { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: var(--cds-gap-md); }
+.st .three h3 { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+.st .chart.sm { min-height: 10rem; }
+.st .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: var(--cds-gap-md); }
+.st .big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1; }
+.st .scroll { overflow-x: auto; }
+.st table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.st th, .st td { text-align: right; padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+.st th:first-child, .st td:first-child { text-align: left; }
+.st th { font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); }
+.st ul { margin: 0; padding-left: 1.2em; line-height: 1.6; }
+.st li { margin-bottom: var(--cds-gap-xs); max-width: 65ch; }
+.st [data-dash-source-state=empty] { color: transparent; }
+.st [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+.st .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: var(--cds-gap-sm); }
+.st .tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+.st a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 34rem) { .st .cap { grid-template-columns: minmax(0, 1fr); gap: var(--cds-gap-xs); } }
+</style>
+
+<article class="st" data-read>
+
+<section id="top">
+  <div class="kicker">TerraWatch · work package B · first results</div>
+  <h1>Two images, six descriptions</h1>
+  <p class="lede">We showed six systems the same pairs of satellite photos, taken years apart, and asked what changed. All six answer confidently. On <b data-source="facts" data-field="value" data-where="fact=screening_pairs">—</b> held-out pairs, the share of their claims that held up ranged from <b data-source="results" data-field="precision" data-where="system=SmolVLM2-2.2B" class="pct">—</b> to <b data-source="results" data-field="precision" data-where="system=RSCaMa retrained" class="pct">—</b>.</p>
+  <p class="muted">Checked automatically against the dataset's change masks and five human-written captions per pair. A human audit comes next.</p>
+</section>
+
+<section id="data">
+  <div class="kicker">The data</div>
+  <h2>Where the photos come from</h2>
+  <p><a href="https://github.com/Chen-Yang-Liu/LEVIR-MCI">LEVIR-MCI</a> is a public research dataset of <b data-source="facts" data-field="value" data-where="fact=pairs_in_dataset">—</b> pairs of Google Earth photos of Texas towns, each pair the same spot 5 to 14 years apart. Every pair has a mask marking changed buildings and roads, and five captions written by people. It is licensed for academic use.</p>
+  <div class="tiles">
+    <div class="tile"><div class="big" data-source="facts" data-field="value" data-where="fact=pairs_used">—</div><div class="muted">pairs used, out of <b data-source="facts" data-field="value" data-where="fact=pairs_in_dataset">—</b></div></div>
+    <div class="tile"><div class="big" data-source="facts" data-field="value" data-where="fact=screening_pairs">—</div><div class="muted">scored for every result here (validation split)</div></div>
+    <div class="tile"><div class="big" data-source="facts" data-field="value" data-where="fact=development_pairs">—</div><div class="muted">for setting up prompts and thresholds (training split)</div></div>
+    <div class="tile"><div class="big" data-source="facts" data-field="value" data-where="fact=sealed_pairs">—</div><div class="muted">sealed for the final test, never downloaded</div></div>
+  </div>
+  <p class="muted">Picked at random with a fixed seed. Only those pairs were downloaded: <b data-source="facts" data-field="value" data-where="fact=megabytes_downloaded_of_archive">—</b> MB of the <b data-source="facts" data-field="value" data-where="fact=archive_megabytes">—</b> MB archive.</p>
+  <p><b>The fair rematch.</b> The released RSCaMa was trained on this dataset and picked using the same pairs we score on. So we retrained it from scratch on <b data-source="facts" data-field="value" data-where="fact=retrain_pairs">—</b> training pairs (with the development pairs, 20% of the <b data-source="facts" data-field="value" data-where="fact=train_split_pairs">—</b>), on a free cloud GPU, without ever showing it the result pairs. On those <b data-source="facts" data-field="value" data-where="fact=screening_pairs">—</b> pairs, <b data-source="results" data-field="precision" data-where="system=RSCaMa retrained" class="pct">—</b> of its claims checked out, against <b data-source="results" data-field="precision" data-where="system=RSCaMa" class="pct">—</b> for the released model: a tie within noise. It did describe a change on <b data-source="results" data-field="false_alarms" data-where="system=RSCaMa retrained">—</b> unchanged pairs, where the released model had none.</p>
+  <p class="muted">Sources: <a href="https://huggingface.co/datasets/lcybuaa/LEVIR-MCI">the copy we used (Hugging Face)</a> · <a href="https://github.com/Chen-Yang-Liu/LEVIR-MCI">dataset page</a> · <a href="https://github.com/Chen-Yang-Liu/RSCaMa">RSCaMa model</a></p>
+</section>
+
+<section id="pair" data-read-step>
+  <div class="kicker">1 · The task</div>
+  <h2>Here is one pair. What changed?</h2>
+  <p>Look at the photos first, then at the answers. Each claim is marked: it checks out against the change mask, it's wrong, or the answer key can't confirm it.</p>
+  <div class="card" data-source="pairs examples" id="ex-changed"></div>
+  <p class="muted">Chosen by a fixed rule (the first changed pair in the sample), not for drama.</p>
+</section>
+
+<section id="nochange" data-read-step>
+  <div class="kicker">2 · The trap</div>
+  <h2>When nothing changed, some models still see something</h2>
+  <p><b data-source="results" data-field="unchanged_pairs" data-where="system=RSCaMa">—</b> of the <b data-source="facts" data-field="value" data-where="fact=screening_pairs">—</b> pairs show no building or road change. SmolVLM2 still described one on <b data-source="results" data-field="false_alarms" data-where="system=SmolVLM2-2.2B">—</b> of them, as confidently as when it's right. Qwen3-VL did on <b data-source="results" data-field="false_alarms" data-where="system=Qwen3-VL-4B">—</b>, though some of those are real small changes the answer key missed.</p>
+  <div class="card">
+    <h2>Described a change that isn't there</h2>
+    <p class="muted">Unchanged pairs where the system claimed a building or road change. Lower is better.</p>
+    <div class="chart" id="ch-false" data-source="results"></div>
+  </div>
+</section>
+
+<section id="tradeoff" data-read-step>
+  <div class="kicker">3 · Two questions, not one</div>
+  <h2>Is it true, and did it catch what happened?</h2>
+  <p>Of the claims a system made, how many check out? Of the real changes, how many did it mention? Top right is best. Saying less is safer, which is why the pixel template does well on the first and poorly on the second.</p>
+  <div class="card">
+    <div class="chart" id="ch-scatter" data-source="results"></div>
+    <p class="muted">Lines show 95% intervals. With <b data-source="facts" data-field="value" data-where="fact=screening_pairs">—</b> pairs, gaps of a few points are noise.</p>
+  </div>
+</section>
+
+<section id="metric" data-read-step>
+  <div class="kicker">4 · The score that rewards silence</div>
+  <h2>The usual leaderboard metric liked the caption that never looks</h2>
+  <p>Captioning leaderboards score word overlap with the reference sentences (CIDEr-D). A control that ignores the images and always says "there is no difference" scored <b data-source="results" data-field="cider" data-where="system=Always &quot;no difference&quot;" class="num2">—</b>, beaten only by the two RSCaMa models, while missing all <b data-source="results" data-field="changed_pairs" data-where="system=Always &quot;no difference&quot;">—</b> real changes. Sounding like the answer key is not the same as being right.</p>
+  <div class="two">
+    <div class="card">
+      <h2>Word overlap (CIDEr-D)</h2>
+      <p class="muted">Higher looks better on a leaderboard.</p>
+      <div class="chart" id="ch-cider" data-source="results"></div>
+    </div>
+    <div class="card">
+      <h2>Real changes it described</h2>
+      <p class="muted">Share of building and road changes mentioned correctly.</p>
+      <div class="chart" id="ch-recall" data-source="results"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cost" data-read-step>
+  <div class="kicker">5 · Cost</div>
+  <h2>The most accurate model here is also the lightest</h2>
+  <p>RSCaMa, a small model built for this task, took <b data-source="results" data-field="seconds_per_pair" data-where="system=RSCaMa" class="sec">—</b> a pair on a laptop; Qwen3-VL took <b data-source="results" data-field="seconds_per_pair" data-where="system=Qwen3-VL-4B" class="sec">—</b>. The catch: RSCaMa was trained on this dataset and its released version was picked using these same pairs. The retrained version, which never saw these pairs, scored about the same.</p>
+  <div class="card">
+    <h2>Seconds per image pair</h2>
+    <p class="muted">Median on an Apple M4 laptop, one pair at a time. Log scale.</p>
+    <div class="chart" id="ch-cost" data-source="results"></div>
+  </div>
+</section>
+
+<section id="ood" data-read-step>
+  <div class="kicker">6 · Outside LEVIR</div>
+  <h2>On new places, nothing beats the simple rule</h2>
+  <p>Everything above is one dataset of Texas towns. So we ran the same systems on 100 pairs from each of two others, scored the same way: <a href="https://huggingface.co/datasets/hygge10111/RS-CDC">WHU-CDC</a>, aerial photos of Christchurch, New Zealand, and <a href="https://doi.org/10.5281/zenodo.16937571">SECOND-CC</a>, satellite photos of several Chinese cities. Neither marks roads, so only building claims are checked there.</p>
+  <p>RSCaMa's lead disappears. On WHU-CDC it described new buildings on <b data-source="ood" data-field="false_alarms" data-where="key=WHU-CDC|RSCaMa">—</b> of <b data-source="ood" data-field="unchanged_pairs" data-where="key=WHU-CDC|RSCaMa">—</b> unchanged pairs; in one we checked by eye, the same warehouse stood in both photos and only its yard had changed. On SECOND-CC it missed <b data-source="ood" data-field="missed" data-where="key=SECOND-CC|RSCaMa">—</b> of <b data-source="ood" data-field="changed_pairs" data-where="key=SECOND-CC|RSCaMa">—</b> real building changes. Our retrained copy, a tie at home, did worse away. Qwen3-VL held up best of the learned models on SECOND-CC, and the pixel template, with no learning at all, was within noise of the best on both.</p>
+  <div class="card">
+    <h2>Building claims that check out, by dataset</h2>
+    <p class="muted">LEVIR also counts road claims, which its masks mark. Hover for 95% intervals; with 100 pairs, gaps under about 10 points are noise.</p>
+    <div class="three">
+      <div><h3>LEVIR (home)</h3><div class="chart sm" id="ch-ood-levir" data-source="ood"></div></div>
+      <div><h3>WHU-CDC</h3><div class="chart sm" id="ch-ood-whu" data-source="ood"></div></div>
+      <div><h3>SECOND-CC</h3><div class="chart sm" id="ch-ood-second" data-source="ood"></div></div>
+    </div>
+  </div>
+  <p class="muted">Checked automatically, like the rest. The WHU-CDC copy is a third-party upload of an academic-use dataset; SECOND-CC is CC-BY-4.0.</p>
+</section>
+
+<section id="next" data-read-step>
+  <div class="kicker">7 · So what</div>
+  <h2>What this means for TerraWatch</h2>
+  <ul>
+    <li><b>Check captions claim by claim.</b> One overlap score hid a model inventing changes on most unchanged scenes.</li>
+    <li><b>Don't trust a captioner off its home turf.</b> The best model on LEVIR fell to the level of a no-learning rule on new places. Evidence from the pixels, and a check of every claim against it, matter more than which captioner we pick. Building that check is the next stage.</li>
+    <li><b>Specialist as baseline, general model as challenger.</b> Qwen3-VL writes richer descriptions and held up best on SECOND-CC, but needs that check before anyone relies on it.</li>
+    <li><b>On LEVIR, the specialist's lead is real.</b> Retrained so it never saw the test pairs, RSCaMa matched its released score with a fifth of the training data.</li>
+    <li><b>Still to do:</b> a blinded human audit, the claim checker, and a final run on <b data-source="facts" data-field="value" data-where="fact=sealed_pairs">—</b> sealed pairs.</li>
+  </ul>
+</section>
+
+<section id="table">
+  <div class="kicker">All numbers</div>
+  <h2>Held-out results by system</h2>
+  <div class="card scroll">
+    <table id="tbl" data-source="results" data-row-key="system">
+      <thead><tr>
+        <th data-field="system">System</th>
+        <th data-field="precision">Claims that check out</th>
+        <th data-field="precision_in_scope">Building and road claims that check out</th>
+        <th data-field="recall">Changes mentioned</th>
+        <th data-field="false_alarm_rate">False alarms on unchanged pairs</th>
+        <th data-field="missed_rate">Changed pairs called unchanged</th>
+        <th data-field="claims_per_pair">Claims per pair</th>
+        <th data-field="bleu4">BLEU-4</th>
+        <th data-field="cider">CIDEr-D</th>
+        <th data-field="seconds_per_pair">Seconds per pair</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>How these numbers were made</h2>
+    <ul class="muted">
+      <li>Both general models got the same instruction; RSCaMa writes its own style of caption. A rule-based parser splits each caption into claims. A claim checks out when the mask shows that kind of change and the reference captions agree on its direction.</li>
+      <li>In <b data-source="facts" data-field="value" data-where="fact=inspected_reference_conflicts">—</b> of the <b data-source="facts" data-field="value" data-where="fact=pairs_inspected">—</b> pairs we opened, the mask and the captions disagree (for example, a road marked changed because the photos shifted slightly). Those pairs are left out of the rates.</li>
+      <li>Every number was re-derived independently from the raw outputs. An AI-assisted spot check of <b data-source="facts" data-field="value" data-where="fact=spot_check_claims">—</b> claims found the parser faithful on <b data-source="facts" data-field="value" data-where="fact=spot_check_extraction_faithful">—</b>, and the verdict right on <b data-source="facts" data-field="value" data-where="fact=spot_check_label_agrees">—</b> of the <b data-source="facts" data-field="value" data-where="fact=spot_check_judgeable">—</b> it could judge. It is not yet a human audit.</li>
+    </ul>
+  </div>
+</section>
+</article>
+
+<script>
+(() => {
+  const SYS = ["RSCaMa", "RSCaMa retrained", "Qwen3-VL-4B", "SmolVLM2-2.2B", "Pixel-difference template", "Always \"no difference\""];
+  const SHORT = {"Pixel-difference template": "Pixel template", "Always \"no difference\"": "Always \"no change\""};
+  const KIND = {"RSCaMa": "specialist, trained on this data", "RSCaMa retrained": "specialist, retrained by us; never saw these pairs", "Qwen3-VL-4B": "general vision-language model", "SmolVLM2-2.2B": "general vision-language model", "Pixel-difference template": "control: no learning", "Always \"no difference\"": "control: ignores images"};
+  const pct = d3.format(".0%"), pct1 = d3.format(".1%");
+  const learned = (r) => r.kind !== "control";
+  const colorOf = (r) => r.system === "RSCaMa retrained" ? dash.colors[1] : learned(r) ? dash.colors[0] : "var(--cds-chart-muted)";
+  const label = (s) => SHORT[s] || s;
+
+  function setNum(sel, fmt) {
+    document.querySelectorAll(sel).forEach((el) => {
+      const src = el.getAttribute("data-source"), d = dash.data(src);
+      if (d.status !== "ok") { el.textContent = "—"; return; }
+      const [k, v] = (el.getAttribute("data-where") || "").split("=");
+      const row = d.data.find((r) => String(r[k]) === decodeURIComponent(v).replace(/&quot;/g, '"'));
+      const val = row ? row[el.getAttribute("data-field")] : null;
+      el.textContent = val == null ? "—" : fmt(val);
+    });
+  }
+
+  function tipFor(box) {
+    let t = box.querySelector(".tip");
+    if (!t) { t = document.createElement("div"); t.className = "tip"; t.hidden = true; box.appendChild(t); }
+    return {
+      show(ev, lines) {
+        t.replaceChildren();
+        lines.forEach(([k, v], i) => { const div = document.createElement("div"); if (i === 0) div.className = "k"; div.textContent = v == null ? k : `${k}: ${v}`; t.appendChild(div); });
+        t.hidden = false;
+        const b = box.getBoundingClientRect(), x = ev.clientX - b.left, y = ev.clientY - b.top;
+        const w = t.offsetWidth;
+        t.style.left = Math.max(0, Math.min(b.width - w, x + 12)) + "px";
+        t.style.top = Math.max(0, y - t.offsetHeight - 8) + "px";
+      },
+      hide() { t.hidden = true; },
+    };
+  }
+
+  function hbar(id, rows, value, fmt, opts = {}) {
+    const box = document.getElementById(id);
+    box.querySelectorAll("svg").forEach((n) => n.remove());
+    if (!rows) return;
+    const W = Math.max(260, box.clientWidth), barH = 22, gap = 12;
+    const svg = d3.select(box).append("svg").attr("width", "100%");
+    const probe = svg.append("text").attr("font-size", 12);
+    const labW = d3.max(rows, (r) => { probe.text(label(r.system)); return probe.node().getComputedTextLength(); }) + 12;
+    const valW = d3.max(rows, (r) => { probe.text(fmt(r)); return probe.node().getComputedTextLength(); }) + 10;
+    probe.remove();
+    const H = rows.length * (barH + gap) + 18;
+    svg.attr("viewBox", `0 0 ${W} ${H}`);
+    const x = (opts.log ? d3.scaleLog() : d3.scaleLinear()).domain(opts.domain).range([labW, W - valW]);
+    if (opts.log) x.clamp(true);
+    const ticks = opts.ticks || x.ticks(4);
+    const g = svg.append("g");
+    g.selectAll("line.grid").data(ticks).join("line").attr("x1", x).attr("x2", x).attr("y1", 0).attr("y2", H - 18)
+      .attr("stroke", "var(--cds-chart-grid)").attr("stroke-width", 1);
+    g.selectAll("text.tick").data(ticks).join("text").attr("x", x).attr("y", H - 4).attr("text-anchor", "middle")
+      .attr("font-size", 11).attr("fill", "var(--color-fg-muted)").text(opts.tickFmt || ((t) => t));
+    const tip = tipFor(box);
+    const row = g.selectAll("g.r").data(rows).join("g").attr("transform", (r, i) => `translate(0,${i * (barH + gap)})`);
+    row.append("text").attr("x", 0).attr("y", barH / 2 + 4).attr("font-size", 12).attr("fill", "var(--color-fg)").text((r) => label(r.system));
+    const x0 = opts.log ? x.range()[0] : x(0);
+    row.append("rect").attr("x", x0).attr("y", 0).attr("height", barH).attr("rx", 4)
+      .attr("width", (r) => Math.max(2, x(value(r)) - x0)).attr("fill", colorOf);
+    row.append("text").attr("x", (r) => x(value(r)) + 6).attr("y", barH / 2 + 4).attr("font-size", 12)
+      .attr("fill", "var(--color-fg-muted)").text(fmt);
+    row.append("rect").attr("x", 0).attr("y", -gap / 2).attr("width", W).attr("height", barH + gap).attr("fill", "transparent")
+      .on("mousemove", (ev, r) => tip.show(ev, [[r.system, null], ...(opts.tip ? opts.tip(r) : [])]))
+      .on("mouseleave", () => tip.hide());
+  }
+
+  function scatter(rows) {
+    const box = document.getElementById("ch-scatter");
+    box.querySelectorAll("svg").forEach((n) => n.remove());
+    if (!rows) return;
+    const W = Math.max(280, box.clientWidth), H = Math.min(420, Math.max(300, W * 0.7));
+    const m = {l: 44, r: 16, t: 12, b: 40};
+    const svg = d3.select(box).append("svg").attr("width", "100%").attr("viewBox", `0 0 ${W} ${H}`);
+    const lo = Math.max(0, Math.floor((d3.min(rows, (r) => Math.min(r.precision_lo, r.recall_lo)) - 0.05) * 10) / 10);
+    const x = d3.scaleLinear().domain([lo, 1]).range([m.l, W - m.r]);
+    const y = d3.scaleLinear().domain([lo, 1]).range([H - m.b, m.t]);
+    const tx = x.ticks(4), ty = y.ticks(4);
+    svg.append("g").selectAll("line").data(tx).join("line").attr("x1", x).attr("x2", x).attr("y1", m.t).attr("y2", H - m.b).attr("stroke", "var(--cds-chart-grid)");
+    svg.append("g").selectAll("line").data(ty).join("line").attr("y1", y).attr("y2", y).attr("x1", m.l).attr("x2", W - m.r).attr("stroke", "var(--cds-chart-grid)");
+    svg.append("g").selectAll("text").data(tx).join("text").attr("x", x).attr("y", H - m.b + 16).attr("text-anchor", "middle").attr("font-size", 11).attr("fill", "var(--color-fg-muted)").text(pct);
+    svg.append("g").selectAll("text").data(ty).join("text").attr("x", m.l - 6).attr("y", (d) => y(d) + 4).attr("text-anchor", "end").attr("font-size", 11).attr("fill", "var(--color-fg-muted)").text(pct);
+    svg.append("text").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").attr("font-size", 12).attr("fill", "var(--color-fg-muted)").text("Real changes it mentioned →");
+    svg.append("text").attr("transform", `translate(12,${(m.t + H - m.b) / 2}) rotate(-90)`).attr("text-anchor", "middle").attr("font-size", 12).attr("fill", "var(--color-fg-muted)").text("Its claims that check out →");
+    const g = svg.append("g").selectAll("g").data(rows).join("g");
+    g.append("line").attr("x1", (r) => x(r.recall_lo)).attr("x2", (r) => x(r.recall_hi)).attr("y1", (r) => y(r.precision)).attr("y2", (r) => y(r.precision)).attr("stroke", colorOf).attr("stroke-width", 2).attr("stroke-linecap", "round").attr("opacity", .45);
+    g.append("line").attr("y1", (r) => y(r.precision_lo)).attr("y2", (r) => y(r.precision_hi)).attr("x1", (r) => x(r.recall)).attr("x2", (r) => x(r.recall)).attr("stroke", colorOf).attr("stroke-width", 2).attr("stroke-linecap", "round").attr("opacity", .45);
+    g.append("circle").attr("cx", (r) => x(r.recall)).attr("cy", (r) => y(r.precision)).attr("r", 6).attr("fill", colorOf).attr("stroke", "var(--color-panel)").attr("stroke-width", 2);
+    const labels = g.append("text").attr("font-size", 12).attr("fill", "var(--color-fg)").text((r) => label(r.system))
+      .attr("x", (r) => x(r.recall) + 10).attr("y", (r) => y(r.precision) - 8);
+    // keep labels inside the plot and apart
+    const placed = [];
+    labels.each(function (r) {
+      const w = this.getComputedTextLength();
+      let lx = x(r.recall) + 10, ly = y(r.precision) - 8;
+      if (lx + w > W - m.r) lx = x(r.recall) - 10 - w;
+      for (const p of placed) if (Math.abs(p.y - ly) < 14 && lx < p.x + p.w && p.x < lx + w) ly = p.y + 16;
+      placed.push({x: lx, y: ly, w});
+      d3.select(this).attr("x", lx).attr("y", ly);
+    });
+    const tip = tipFor(box);
+    g.append("circle").attr("cx", (r) => x(r.recall)).attr("cy", (r) => y(r.precision)).attr("r", 16).attr("fill", "transparent")
+      .on("mousemove", (ev, r) => tip.show(ev, [[r.system, null], ["Claims that check out", `${pct1(r.precision)} (${pct(r.precision_lo)}–${pct(r.precision_hi)})`], ["Changes mentioned", `${pct1(r.recall)} (${pct(r.recall_lo)}–${pct(r.recall_hi)})`], ["Claims made", r.claims]]))
+      .on("mouseleave", () => tip.hide());
+  }
+
+  function exampleCard(id, role) {
+    const el = document.getElementById(id);
+    const P = dash.data("pairs"), E = dash.data("examples");
+    el.replaceChildren();
+    if (P.status !== "ok" || E.status !== "ok") { el.classList.add("dash-skeleton"); return; }
+    el.classList.remove("dash-skeleton");
+    const p = P.data.find((r) => r.story_role === role);
+    if (!p) return;
+    const pair = document.createElement("div"); pair.className = "pair";
+    [["t1", "Before (T1)"], ["t2", "After (T2)"]].forEach(([k, cap]) => {
+      const f = document.createElement("figure"), img = document.createElement("img"), fc = document.createElement("figcaption");
+      if (typeof p[k] === "string" && p[k].startsWith("data:image/jpeg;base64,")) img.src = p[k];
+      img.alt = `${cap} satellite image, pair ${p.pair_id}`;
+      fc.textContent = cap; f.append(img, fc); pair.appendChild(f);
+    });
+    const facts = document.createElement("div"); facts.className = "facts";
+    const f1 = document.createElement("span"); f1.append("A person wrote: ");
+    const b1 = document.createElement("b"); b1.textContent = `"${p.reference_caption}"`; f1.appendChild(b1);
+    const f2 = document.createElement("span"); f2.append("Change mask marks: ");
+    const b2 = document.createElement("b"); b2.textContent = p.mask_marks; f2.appendChild(b2);
+    const f3 = document.createElement("span"); f3.textContent = `Pair ${p.pair_id}`;
+    facts.append(f1, f2, f3);
+    const caps = document.createElement("div"); caps.className = "caps";
+    SYS.forEach((s) => {
+      const r = E.data.find((e) => e.story_role === role && e.system === s);
+      if (!r) return;
+      const row = document.createElement("div"); row.className = "cap";
+      const who = document.createElement("div"); who.className = "who"; who.textContent = label(s);
+      const sm = document.createElement("small"); sm.textContent = KIND[s]; who.appendChild(sm);
+      const body = document.createElement("div");
+      const said = document.createElement("p"); said.className = "said"; said.textContent = r.caption;
+      const chips = document.createElement("div"); chips.className = "chips";
+      const add = (n, cls, word) => { if (!n) return; const c = document.createElement("span"); c.className = "chip " + cls; c.textContent = `${n} ${word}`; chips.appendChild(c); };
+      add(r.checks_out, "ok", r.checks_out === 1 ? "claim checks out" : "claims check out");
+      add(r.wrong, "bad", r.wrong === 1 ? "claim wrong" : "claims wrong");
+      add(r.cannot_check, "", "can't be checked");
+      if (!r.claims) { const c = document.createElement("span"); c.className = "chip"; c.textContent = "no claim the parser could find"; chips.appendChild(c); }
+      body.append(said, chips); row.append(who, body); caps.appendChild(row);
+    });
+    el.append(pair, facts, caps);
+  }
+
+  function table(rows) {
+    const tb = document.querySelector("#tbl tbody");
+    tb.replaceChildren();
+    if (!rows) return;
+    rows.forEach((r) => {
+      const tr = document.createElement("tr");
+      const cells = [r.system, pct1(r.precision), pct1(+r.precision_in_scope), pct1(r.recall), pct1(+r.false_alarm_rate), pct1(+r.missed_rate),
+        d3.format(".2f")(r.claims_per_pair), d3.format(".3f")(r.bleu4), d3.format(".3f")(r.cider),
+        r.seconds_per_pair == null ? "n/a (cloud GPU)" : r.seconds_per_pair < 0.1 ? d3.format(".3f")(r.seconds_per_pair) : d3.format(".2f")(r.seconds_per_pair)];
+      cells.forEach((c) => { const td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+  }
+
+  dash.onData(() => {
+    const R = dash.data("results");
+    const rows = R.status === "ok" ? SYS.map((s) => R.data.find((r) => r.system === s)).filter(Boolean)
+      .map((r) => ({...r, false_alarms: +r.false_alarms, unchanged_pairs: +r.unchanged_pairs, false_alarm_rate: +r.false_alarm_rate, missed_rate: +r.missed_rate, peak_memory_gb: r.peak_memory_gb == null ? null : +r.peak_memory_gb, claims: +r.claims, precision: +r.precision, recall: +r.recall, precision_lo: +r.precision_lo, precision_hi: +r.precision_hi, recall_lo: +r.recall_lo, recall_hi: +r.recall_hi, cider: +r.cider, bleu4: +r.bleu4, seconds_per_pair: r.seconds_per_pair == null ? null : +r.seconds_per_pair, claims_per_pair: +r.claims_per_pair})) : null;
+    setNum(".lede b.pct, b.pct", (v) => pct1(+v));
+    setNum("b.num2", (v) => d3.format(".2f")(+v));
+    setNum("b.sec", (v) => (+v < 1 ? d3.format(".2f")(+v) : d3.format(".1f")(+v)) + " s");
+    setNum("b[data-source]:not(.pct):not(.num2):not(.sec):not([data-source=ood]), .tile .big[data-source]", (v) => d3.format(",")(+v));
+    hbar("ch-false", rows, (r) => r.false_alarms, (r) => `${r.false_alarms} of ${r.unchanged_pairs}`, {domain: [0, rows ? d3.max(rows, (r) => r.unchanged_pairs) : 1], tip: (r) => [["Rate", pct1(r.false_alarm_rate)]]});
+    scatter(rows && rows.filter((r) => r.precision != null));
+    hbar("ch-cider", rows, (r) => r.cider, (r) => d3.format(".2f")(r.cider), {domain: [0, rows ? d3.max(rows, (r) => r.cider) * 1.05 : 1], tip: (r) => [["BLEU-4", d3.format(".3f")(r.bleu4)]]});
+    hbar("ch-recall", rows, (r) => r.recall, (r) => pct(r.recall), {domain: [0, 1], tickFmt: pct, tip: (r) => [["95% interval", `${pct(r.recall_lo)}–${pct(r.recall_hi)}`]]});
+    hbar("ch-cost", rows && rows.filter((r) => r.seconds_per_pair > 0), (r) => r.seconds_per_pair,
+      (r) => (r.seconds_per_pair < 1 ? d3.format(".2f")(r.seconds_per_pair) : d3.format(".1f")(r.seconds_per_pair)) + " s",
+      {log: true, domain: [0.005, 10], ticks: [0.01, 0.1, 1, 10], tickFmt: (t) => `${t} s`, tip: (r) => [["Peak memory", r.peak_memory_gb == null ? "n/a" : `${r.peak_memory_gb} GB`]]});
+    const O = dash.data("ood");
+    const orows = O.status === "ok" ? O.data.map((r) => ({...r, key: `${r.dataset}|${r.system}`, precision_in_scope: +r.precision_in_scope,
+      precision_in_scope_lo: +r.precision_in_scope_lo, precision_in_scope_hi: +r.precision_in_scope_hi, kind: SYS.indexOf(r.system) >= 4 ? "control" : "learned"})) : null;
+    if (orows) {
+      document.querySelectorAll('b[data-source="ood"]').forEach((el) => {
+        const k = el.getAttribute("data-where").slice(4), row = orows.find((r) => r.key === k);
+        el.textContent = row ? d3.format(",")(+row[el.getAttribute("data-field")]) : "—";
+      });
+    }
+    [["ch-ood-levir", "LEVIR-MCI"], ["ch-ood-whu", "WHU-CDC"], ["ch-ood-second", "SECOND-CC"]].forEach(([id, ds]) =>
+      hbar(id, orows && SYS.map((s) => orows.find((r) => r.dataset === ds && r.system === s)).filter(Boolean),
+        (r) => r.precision_in_scope, (r) => pct(r.precision_in_scope),
+        {domain: [0, 1], ticks: [0, 0.5, 1], tickFmt: pct, tip: (r) => [["95% interval", `${pct(r.precision_in_scope_lo)}–${pct(r.precision_in_scope_hi)}`], ["False alarms on unchanged", `${r.false_alarms} of ${r.unchanged_pairs}`], ["Changes missed", `${r.missed} of ${r.changed_pairs}`]]}));
+    exampleCard("ex-changed", "changed");
+    table(rows);
+  });
+})();
+</script>

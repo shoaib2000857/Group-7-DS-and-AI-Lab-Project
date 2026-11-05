@@ -1,0 +1,66 @@
+{
+  "record_type": "stage_c_evidence_record",
+  "pair_id": "LEVIR-MCI/val/val_000042",
+  "claim_id": "claim_001",
+  "source_span": "a new building was constructed in the bottom right corner",
+  "claim": {
+    "object": "building",
+    "action": "constructed",
+    "location": "bottom-right",
+    "quantity": 1,
+    "quantity_unit": "count"
+  },
+  "candidate_region_ids": [
+    [
+      135,
+      135,
+      215,
+      215
+    ]
+  ],
+  "coordinate_frame": "original_T1_pixels",
+  "bbox_convention": "x0_y0_x1_y1_half_open",
+  "evidence": {
+    "mask_run_id": "detector_open_cd_bit",
+    "mask_ontology": "building_road_binary",
+    "witness_run_id": "W01_structural_witness_v1",
+    "visible_change": true,
+    "observations": "Visible change confirmed. Rectilinear structural boundaries present in T2 (edge density=0.07) that were absent in T1 (edge density=0.00). Visual evidence supports building appearance.",
+    "visibility_flags": [
+      "clear_t1",
+      "clear_t2"
+    ],
+    "quality_flags": [
+      "registered_good_contrast"
+    ],
+    "crop_paths": [
+      "outputs\\evidence_demo\\crops\\LEVIR-MCI_val_val_000042_claim_001_crop_T1.png",
+      "outputs\\evidence_demo\\crops\\LEVIR-MCI_val_val_000042_claim_001_crop_T2.png"
+    ],
+    "structural_edge_change": 0.06397928994082841,
+    "mean_luminance_diff": 44.025428771972656,
+    "transform_record": {
+      "original_bbox": [
+        135,
+        135,
+        215,
+        215
+      ],
+      "padded_bbox": [
+        123,
+        123,
+        227,
+        227
+      ],
+      "padding_applied": {
+        "pad_x0": 12,
+        "pad_y0": 12,
+        "pad_x1": 12,
+        "pad_y1": 12
+      },
+      "coordinate_frame": "original_T1_pixels"
+    }
+  },
+  "decision": null,
+  "human_reference": "stored_separately_and_never_passed_to_inference"
+}

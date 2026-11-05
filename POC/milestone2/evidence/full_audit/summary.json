@@ -1,0 +1,707 @@
+{
+  "source_url": "https://huggingface.co/datasets/lcybuaa/LEVIR-MCI/resolve/dff09c709999b5b1f1f1806024811c65a6b14dfe/LEVIR-MCI-dataset.zip",
+  "revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+  "archive_bytes": 2771943190,
+  "archive_sha256": "8f7d52298fa3ca32aec983e84addef80f61ad7d981c0ff97a92c5880c4b83e9d",
+  "caption_json_sha256": "8c8c3f494867b796306b98713e16ff72cbae1cf4a0a0c36931da16af9602daed",
+  "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "numpy": "2.4.6",
+  "pillow": "12.3.0",
+  "audit_scope": "All source pairs and all four image/label representations; quality-only inspection includes test pixels.",
+  "source": {
+    "pairs": 10077,
+    "valid_pairs": 10077,
+    "mask_classes": {
+      "unchanged": 4978,
+      "both": 2709,
+      "building_only": 1708,
+      "road_only": 682
+    },
+    "caption_changeflags": {
+      "0": 5039,
+      "1": 5038
+    },
+    "pixels": {
+      "background": 604623160,
+      "building": 32031898,
+      "road": 23751214
+    },
+    "pixel_percent": {
+      "background": 91.55321286833569,
+      "building": 4.85033219066702,
+      "road": 3.5964549409972895
+    },
+    "mask_caption_conflicts": 511,
+    "mixed_reference_change_flags": 0,
+    "caption_text_flag_conflicts": 0,
+    "identical_dates": 2,
+    "identical_dates_with_changed_mask": 0,
+    "small_changed_pairs_under_1_percent": 408,
+    "changed_fraction_positive_quantiles": {
+      "min": 1.52587890625e-05,
+      "q1": 0.0439300537109375,
+      "median": 0.1259613037109375,
+      "q3": 0.2649078369140625,
+      "max": 0.86065673828125
+    },
+    "brightness_delta_quantiles": {
+      "min": -131.863047769165,
+      "q1": -42.23064584655761,
+      "median": -26.668731719970708,
+      "q3": -11.789638812255859,
+      "max": 103.02474920654295
+    },
+    "pair_mae_quantiles": {
+      "min": 0.0,
+      "q1": 35.51293436686198,
+      "median": 46.48011779785156,
+      "q3": 57.3572031656901,
+      "max": 136.52396138509116
+    },
+    "caption_words_mean": 8.888716880023816,
+    "caption_words_max": 40,
+    "threshold_sensitivity": {
+      "1": {
+        "building": 4417,
+        "road": 3391
+      },
+      "10": {
+        "building": 4399,
+        "road": 3391
+      },
+      "50": {
+        "building": 4356,
+        "road": 3391
+      },
+      "100": {
+        "building": 4310,
+        "road": 3386
+      }
+    },
+    "direction_reference_pairs": 3121,
+    "numeric_reference_pairs": 7420
+  },
+  "prepared": {
+    "pairs": 9544,
+    "valid_pairs": 9544,
+    "mask_classes": {
+      "unchanged": 4743,
+      "both": 2693,
+      "building_only": 1611,
+      "road_only": 497
+    },
+    "caption_changeflags": {
+      "0": 4743,
+      "1": 4801
+    },
+    "pixels": {
+      "background": 570700932,
+      "building": 31970572,
+      "road": 22804080
+    },
+    "pixel_percent": {
+      "background": 91.24271939606199,
+      "building": 5.11140207832637,
+      "road": 3.6458785256116406
+    },
+    "mask_caption_conflicts": 0,
+    "mixed_reference_change_flags": 0,
+    "caption_text_flag_conflicts": 0,
+    "identical_dates": 2,
+    "identical_dates_with_changed_mask": 0,
+    "small_changed_pairs_under_1_percent": 300,
+    "changed_fraction_positive_quantiles": {
+      "min": 3.0517578125e-05,
+      "q1": 0.05059814453125,
+      "median": 0.1349334716796875,
+      "q3": 0.273651123046875,
+      "max": 0.86065673828125
+    },
+    "brightness_delta_quantiles": {
+      "min": -131.863047769165,
+      "q1": -42.14554999923705,
+      "median": -26.51646273040771,
+      "q3": -11.594827017974865,
+      "max": 103.02474920654295
+    },
+    "pair_mae_quantiles": {
+      "min": 0.0,
+      "q1": 35.41088104248047,
+      "median": 46.400767008463546,
+      "q3": 57.40215937296549,
+      "max": 136.52396138509116
+    },
+    "caption_words_mean": 8.95735540653814,
+    "caption_words_max": 40,
+    "threshold_sensitivity": {
+      "1": {
+        "building": 4304,
+        "road": 3190
+      },
+      "10": {
+        "building": 4302,
+        "road": 3190
+      },
+      "50": {
+        "building": 4290,
+        "road": 3190
+      },
+      "100": {
+        "building": 4268,
+        "road": 3185
+      }
+    },
+    "direction_reference_pairs": 2954,
+    "numeric_reference_pairs": 7074
+  },
+  "source_by_split": {
+    "train": {
+      "pairs": 6815,
+      "valid_pairs": 6815,
+      "mask_classes": {
+        "unchanged": 3336,
+        "both": 1857,
+        "road_only": 507,
+        "building_only": 1115
+      },
+      "caption_changeflags": {
+        "0": 3408,
+        "1": 3407
+      },
+      "pixels": {
+        "background": 408813592,
+        "building": 21115488,
+        "road": 16698760
+      },
+      "pixel_percent": {
+        "background": 91.53338761864912,
+        "building": 4.727759021918562,
+        "road": 3.7388533594323183
+      },
+      "mask_caption_conflicts": 350,
+      "mixed_reference_change_flags": 0,
+      "caption_text_flag_conflicts": 0,
+      "identical_dates": 1,
+      "identical_dates_with_changed_mask": 0,
+      "small_changed_pairs_under_1_percent": 271,
+      "changed_fraction_positive_quantiles": {
+        "min": 1.52587890625e-05,
+        "q1": 0.04485321044921875,
+        "median": 0.126556396484375,
+        "q3": 0.26200103759765625,
+        "max": 0.722869873046875
+      },
+      "brightness_delta_quantiles": {
+        "min": -131.863047769165,
+        "q1": -42.495139428710935,
+        "median": -27.52626239929198,
+        "q3": -12.774017657470694,
+        "max": 103.02474920654295
+      },
+      "pair_mae_quantiles": {
+        "min": 0.0,
+        "q1": 36.07272847493489,
+        "median": 46.89690653483073,
+        "q3": 57.407460530598954,
+        "max": 136.52396138509116
+      },
+      "caption_words_mean": 8.901423330887747,
+      "caption_words_max": 40,
+      "threshold_sensitivity": {
+        "1": {
+          "building": 2972,
+          "road": 2364
+        },
+        "10": {
+          "building": 2961,
+          "road": 2364
+        },
+        "50": {
+          "building": 2925,
+          "road": 2364
+        },
+        "100": {
+          "building": 2898,
+          "road": 2359
+        }
+      },
+      "direction_reference_pairs": 2089,
+      "numeric_reference_pairs": 5063
+    },
+    "val": {
+      "pairs": 1333,
+      "valid_pairs": 1333,
+      "mask_classes": {
+        "building_only": 220,
+        "road_only": 77,
+        "both": 347,
+        "unchanged": 689
+      },
+      "caption_changeflags": {
+        "1": 667,
+        "0": 666
+      },
+      "pixels": {
+        "background": 80383581,
+        "building": 4147927,
+        "road": 2827980
+      },
+      "pixel_percent": {
+        "background": 92.01471167047133,
+        "building": 4.748112763664549,
+        "road": 3.2371755658641224
+      },
+      "mask_caption_conflicts": 91,
+      "mixed_reference_change_flags": 0,
+      "caption_text_flag_conflicts": 0,
+      "identical_dates": 1,
+      "identical_dates_with_changed_mask": 0,
+      "small_changed_pairs_under_1_percent": 56,
+      "changed_fraction_positive_quantiles": {
+        "min": 3.0517578125e-05,
+        "q1": 0.03871917724609375,
+        "median": 0.11559295654296875,
+        "q3": 0.2657356262207031,
+        "max": 0.86065673828125
+      },
+      "brightness_delta_quantiles": {
+        "min": -127.9609851196289,
+        "q1": -40.84986849670409,
+        "median": -22.16113004150391,
+        "q3": -5.95120288085937,
+        "max": 88.9895570861816
+      },
+      "pair_mae_quantiles": {
+        "min": 0.0,
+        "q1": 33.33766174316406,
+        "median": 45.962249755859375,
+        "q3": 57.39648946126302,
+        "max": 130.11288452148438
+      },
+      "caption_words_mean": 8.891222805701425,
+      "caption_words_max": 31,
+      "threshold_sensitivity": {
+        "1": {
+          "building": 567,
+          "road": 424
+        },
+        "10": {
+          "building": 563,
+          "road": 424
+        },
+        "50": {
+          "building": 563,
+          "road": 424
+        },
+        "100": {
+          "building": 554,
+          "road": 424
+        }
+      },
+      "direction_reference_pairs": 433,
+      "numeric_reference_pairs": 933
+    },
+    "test": {
+      "pairs": 1929,
+      "valid_pairs": 1929,
+      "mask_classes": {
+        "unchanged": 953,
+        "both": 505,
+        "building_only": 373,
+        "road_only": 98
+      },
+      "caption_changeflags": {
+        "0": 965,
+        "1": 964
+      },
+      "pixels": {
+        "background": 115425987,
+        "building": 6768483,
+        "road": 4224474
+      },
+      "pixel_percent": {
+        "background": 91.30434359584589,
+        "building": 5.354010076211363,
+        "road": 3.341646327942749
+      },
+      "mask_caption_conflicts": 70,
+      "mixed_reference_change_flags": 0,
+      "caption_text_flag_conflicts": 0,
+      "identical_dates": 0,
+      "identical_dates_with_changed_mask": 0,
+      "small_changed_pairs_under_1_percent": 81,
+      "changed_fraction_positive_quantiles": {
+        "min": 3.0517578125e-05,
+        "q1": 0.0455474853515625,
+        "median": 0.1322021484375,
+        "q3": 0.279632568359375,
+        "max": 0.80548095703125
+      },
+      "brightness_delta_quantiles": {
+        "min": -128.47633719787595,
+        "q1": -42.07646183776855,
+        "median": -26.424728622436504,
+        "q3": -12.121468359375001,
+        "max": 73.73970630493164
+      },
+      "pair_mae_quantiles": {
+        "min": 8.352666219075521,
+        "q1": 34.89715576171875,
+        "median": 45.31023661295573,
+        "q3": 56.843607584635414,
+        "max": 127.31468709309895
+      },
+      "caption_words_mean": 8.842094349403837,
+      "caption_words_max": 29,
+      "threshold_sensitivity": {
+        "1": {
+          "building": 878,
+          "road": 603
+        },
+        "10": {
+          "building": 875,
+          "road": 603
+        },
+        "50": {
+          "building": 868,
+          "road": 603
+        },
+        "100": {
+          "building": 858,
+          "road": 603
+        }
+      },
+      "direction_reference_pairs": 599,
+      "numeric_reference_pairs": 1424
+    }
+  },
+  "prepared_by_split": {
+    "train": {
+      "pairs": 6444,
+      "valid_pairs": 6444,
+      "mask_classes": {
+        "unchanged": 3187,
+        "both": 1842,
+        "road_only": 363,
+        "building_only": 1052
+      },
+      "caption_changeflags": {
+        "0": 3187,
+        "1": 3257
+      },
+      "pixels": {
+        "background": 385245904,
+        "building": 21062806,
+        "road": 16005274
+      },
+      "pixel_percent": {
+        "background": 91.2226254861596,
+        "building": 4.987475385139034,
+        "road": 3.78989912870136
+      },
+      "mask_caption_conflicts": 0,
+      "mixed_reference_change_flags": 0,
+      "caption_text_flag_conflicts": 0,
+      "identical_dates": 1,
+      "identical_dates_with_changed_mask": 0,
+      "small_changed_pairs_under_1_percent": 195,
+      "changed_fraction_positive_quantiles": {
+        "min": 0.000213623046875,
+        "q1": 0.052520751953125,
+        "median": 0.13519287109375,
+        "q3": 0.272308349609375,
+        "max": 0.722869873046875
+      },
+      "brightness_delta_quantiles": {
+        "min": -131.863047769165,
+        "q1": -42.30447096099853,
+        "median": -27.372820158386226,
+        "q3": -12.542289707946772,
+        "max": 103.02474920654295
+      },
+      "pair_mae_quantiles": {
+        "min": 0.0,
+        "q1": 35.79825337727865,
+        "median": 46.76806640625,
+        "q3": 57.440371195475265,
+        "max": 136.52396138509116
+      },
+      "caption_words_mean": 8.974891371818746,
+      "caption_words_max": 40,
+      "threshold_sensitivity": {
+        "1": {
+          "building": 2894,
+          "road": 2205
+        },
+        "10": {
+          "building": 2893,
+          "road": 2205
+        },
+        "50": {
+          "building": 2884,
+          "road": 2205
+        },
+        "100": {
+          "building": 2869,
+          "road": 2200
+        }
+      },
+      "direction_reference_pairs": 1982,
+      "numeric_reference_pairs": 4807
+    },
+    "val": {
+      "pairs": 1242,
+      "valid_pairs": 1242,
+      "mask_classes": {
+        "building_only": 204,
+        "road_only": 59,
+        "both": 347,
+        "unchanged": 632
+      },
+      "caption_changeflags": {
+        "1": 610,
+        "0": 632
+      },
+      "pixels": {
+        "background": 74571337,
+        "building": 4143861,
+        "road": 2680514
+      },
+      "pixel_percent": {
+        "background": 91.61580526502428,
+        "building": 5.0910065139549365,
+        "road": 3.293188221020783
+      },
+      "mask_caption_conflicts": 0,
+      "mixed_reference_change_flags": 0,
+      "caption_text_flag_conflicts": 0,
+      "identical_dates": 1,
+      "identical_dates_with_changed_mask": 0,
+      "small_changed_pairs_under_1_percent": 41,
+      "changed_fraction_positive_quantiles": {
+        "min": 3.0517578125e-05,
+        "q1": 0.04358673095703125,
+        "median": 0.12180328369140625,
+        "q3": 0.27304840087890625,
+        "max": 0.86065673828125
+      },
+      "brightness_delta_quantiles": {
+        "min": -127.9609851196289,
+        "q1": -40.84364703826904,
+        "median": -22.2687988861084,
+        "q3": -6.312544856262219,
+        "max": 88.9895570861816
+      },
+      "pair_mae_quantiles": {
+        "min": 0.0,
+        "q1": 33.276668548583984,
+        "median": 45.940470377604164,
+        "q3": 57.353936513264976,
+        "max": 130.11288452148438
+      },
+      "caption_words_mean": 8.957971014492752,
+      "caption_words_max": 31,
+      "threshold_sensitivity": {
+        "1": {
+          "building": 551,
+          "road": 406
+        },
+        "10": {
+          "building": 550,
+          "road": 406
+        },
+        "50": {
+          "building": 550,
+          "road": 406
+        },
+        "100": {
+          "building": 546,
+          "road": 406
+        }
+      },
+      "direction_reference_pairs": 398,
+      "numeric_reference_pairs": 892
+    },
+    "test": {
+      "pairs": 1858,
+      "valid_pairs": 1858,
+      "mask_classes": {
+        "unchanged": 924,
+        "both": 504,
+        "building_only": 355,
+        "road_only": 75
+      },
+      "caption_changeflags": {
+        "0": 924,
+        "1": 934
+      },
+      "pixels": {
+        "background": 110883691,
+        "building": 6763905,
+        "road": 4118292
+      },
+      "pixel_percent": {
+        "background": 91.06301676213292,
+        "building": 5.55484389848165,
+        "road": 3.3821393393854278
+      },
+      "mask_caption_conflicts": 0,
+      "mixed_reference_change_flags": 0,
+      "caption_text_flag_conflicts": 0,
+      "identical_dates": 0,
+      "identical_dates_with_changed_mask": 0,
+      "small_changed_pairs_under_1_percent": 64,
+      "changed_fraction_positive_quantiles": {
+        "min": 0.0004425048828125,
+        "q1": 0.050586700439453125,
+        "median": 0.139801025390625,
+        "q3": 0.28961181640625,
+        "max": 0.80548095703125
+      },
+      "brightness_delta_quantiles": {
+        "min": -128.47633719787595,
+        "q1": -42.07095663757324,
+        "median": -26.630040754699706,
+        "q3": -12.147770783996584,
+        "max": 73.73970630493164
+      },
+      "pair_mae_quantiles": {
+        "min": 8.352666219075521,
+        "q1": 34.9952023824056,
+        "median": 45.29831186930338,
+        "q3": 57.043348948160805,
+        "max": 127.31468709309895
+      },
+      "caption_words_mean": 8.896124865446716,
+      "caption_words_max": 29,
+      "threshold_sensitivity": {
+        "1": {
+          "building": 859,
+          "road": 579
+        },
+        "10": {
+          "building": 859,
+          "road": 579
+        },
+        "50": {
+          "building": 856,
+          "road": 579
+        },
+        "100": {
+          "building": 853,
+          "road": 579
+        }
+      },
+      "direction_reference_pairs": 574,
+      "numeric_reference_pairs": 1375
+    }
+  },
+  "missing_archive_members": [],
+  "duplicate_caption_keys": 0,
+  "exact_duplicate_groups": 16,
+  "redundant_pair_records": 16,
+  "cross_split_exact_groups": 5,
+  "cross_split_near_candidates": 5,
+  "cross_split_near_candidates_nonexact": 0,
+  "exclusions_unique_pairs": 533,
+  "exclusion_reason_counts_nonexclusive": {
+    "exact_repeated_pair": 16,
+    "inconsistent_duplicate_targets": 12,
+    "mask_caption_changeflag_conflict": 511
+  },
+  "rgb_palette": {
+    "0": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "128": [
+      [
+        255,
+        255,
+        0
+      ]
+    ],
+    "255": [
+      [
+        255,
+        0,
+        0
+      ]
+    ]
+  },
+  "unchanged_reference_template_sets": 1,
+  "most_common_unchanged_template_pairs": 5039,
+  "poc_training_pairs": 1363,
+  "correlation_features": [
+    "changed_fraction",
+    "brightness_delta",
+    "pair_mae",
+    "caption_words_mean"
+  ],
+  "pearson_correlation": [
+    [
+      0.9999999999999998,
+      0.18896577472296047,
+      0.25130726446515084,
+      0.6530206826407718
+    ],
+    [
+      0.1889657747229605,
+      1.0,
+      -0.571041088600501,
+      0.1401324231722777
+    ],
+    [
+      0.25130726446515084,
+      -0.5710410886005008,
+      1.0,
+      0.28277436995496885
+    ],
+    [
+      0.6530206826407718,
+      0.1401324231722777,
+      0.2827743699549689,
+      1.0
+    ]
+  ],
+  "iqr_outliers": {
+    "changed_fraction": {
+      "lower_fence": -0.1921234130859375,
+      "upper_fence": 0.3202056884765625,
+      "flagged_pairs": 892,
+      "disposition": "retained unless a separate integrity/consistency exclusion applies"
+    },
+    "brightness_delta": {
+      "lower_fence": -87.89215639801023,
+      "upper_fence": 33.87187173919676,
+      "flagged_pairs": 195,
+      "disposition": "retained unless a separate integrity/consistency exclusion applies"
+    },
+    "pair_mae": {
+      "lower_fence": 2.7465311686197893,
+      "upper_fence": 90.12360636393228,
+      "flagged_pairs": 71,
+      "disposition": "retained unless a separate integrity/consistency exclusion applies"
+    },
+    "caption_words_mean": {
+      "lower_fence": -3.200000000000002,
+      "upper_fence": 20.800000000000004,
+      "flagged_pairs": 2,
+      "disposition": "retained unless a separate integrity/consistency exclusion applies"
+    }
+  },
+  "manifest_sha256": {
+    "poc_train.jsonl": "25bcddd308355e6f9822f2d561828969158c5a2b6d2132952537185425257714",
+    "test.jsonl": "179828c1f9ae52165da5a012dabedeb6f307aa5192fe8db8fbde493edcc59422",
+    "test_inference.jsonl": "4e1e74126032d2e77d8c16741dd20a1274c12c7e3cbe8c4774952b702b4ad2c6",
+    "train.jsonl": "841ef114f2a109cbf0674b774fdf8893a9828e25e823d08f9fe58752a7f13a76",
+    "train_inference.jsonl": "ad4b944ef965b1136599daf00eb5a96f24ef3824748ba137dd606e6afd4073eb",
+    "val.jsonl": "30f585182214eefa6784e3bedf9e8e922213d652c1476087d16a89dccb1d80dc",
+    "val_inference.jsonl": "7dcdc18807ba7d996620270aae695e5ba555862a9cbe5e23ee9fa48977e46966"
+  },
+  "elapsed_seconds": 109.47
+}

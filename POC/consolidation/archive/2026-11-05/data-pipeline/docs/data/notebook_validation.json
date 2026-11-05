@@ -1,0 +1,14 @@
+{
+  "01_EDA.ipynb": {
+    "code_cells": 11,
+    "executed_cells": 11,
+    "figure_outputs": 8,
+    "execution_errors": 0
+  },
+  "02_Preprocessing.ipynb": {
+    "code_cells": 9,
+    "executed_cells": 9,
+    "figure_outputs": 1,
+    "execution_errors": 0
+  }
+}

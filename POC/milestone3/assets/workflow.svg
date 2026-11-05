@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="495" height="93" preserveAspectRatio="xMinYMin meet" viewBox="0 0 495 93" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="495" height="93"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-93)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="14.75" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">VALIDATE</text>
+			<text x="22.1219482421875" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">T1 / T2</text>
+			<path d="M 68,60 L 71,60 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="71 60, 67.48967 61.9177, 67.48967 58.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="71" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="89.6" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">DETECT</text>
+			<text x="85.6219482421875" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">Class mask</text>
+			<path d="M 139,60 L 142,60 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="142 60, 138.4897 61.9177, 138.4897 58.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="142" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="156.1052001953125" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">DESCRIBE</text>
+			<text x="163.0745849609375" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">Caption</text>
+			<path d="M 210,60 L 213,60 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="213 60, 209.4897 61.9177, 209.4897 58.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="213" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="233.735546875" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">PARSE</text>
+			<text x="235.541259765625" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">Claims</text>
+			<path d="M 281,60 L 284,60 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="284 60, 280.4897 61.9177, 280.4897 58.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="284" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="301.31416015625" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">INSPECT</text>
+			<text x="307.9969482421875" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">Crops</text>
+			<path d="M 352,60 L 355,60 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="355 60, 351.4897 61.9177, 351.4897 58.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="355" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="370.8158935546875" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">REFEREE</text>
+			<text x="372.743896484375" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">Decisions</text>
+			<path d="M 423,60 L 426,60 Z" style="stroke: rgb(12%,37%,68%); stroke-linecap: butt; stroke-width: 0.9;"/>
+			<polygon points="426 60, 422.4897 61.9177, 422.4897 58.0823" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(12%,37%,68%); fill-rule: evenodd;"/>
+			<rect x="426" y="34" width="68" height="53" rx="4" ry="4" style="stroke: rgb(72%,76%,78%); stroke-linecap: butt; stroke-width: 0.6; fill: rgb(95%,96%,98%); fill-rule: evenodd;"/>
+			<text x="440.3195068359375" y="73" style="font-family: Studio-Bold; font-size: 7.7px;fill: rgb(12%,37%,68%); stroke:none;" transform="translate(0,146) scale(1,-1)">COMPOSE</text>
+			<text x="437.701416015625" y="58" style="font-family: Studio; font-size: 7.5px;fill: rgb(7%,12%,16%); stroke:none;" transform="translate(0,116) scale(1,-1)">Report JSON</text>
+			<text x="108.330078125" y="14" style="font-family: Studio; font-size: 8px;fill: rgb(41%,46%,50%); stroke:none;" transform="translate(0,28) scale(1,-1)">Persist masks, source spans, transforms, raw responses and decision reasons</text>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,18 @@
+[
+  {
+    "path": "POC/consolidation/archive/2026-11-06/main-sync/consolidation/CHANGELOG.md",
+    "sha256": "689e5fd6283ba37e39f01ab34f5dd66fe48db0b981528bc34fc3fd77b58eb171"
+  },
+  {
+    "path": "POC/consolidation/archive/2026-11-06/main-sync/main/CHANGELOG.md",
+    "sha256": "58be9ab0734d7f49c15882260ed1b36c016f636975efd3029257f0272d4c2b90"
+  },
+  {
+    "path": "POC/consolidation/archive/2026-11-06/main-sync/consolidation/WORKLOG.md",
+    "sha256": "eb653a1b1a2c96216146795a7bfd584f0a105a7e87a6c16e44da738716b23cf7"
+  },
+  {
+    "path": "POC/consolidation/archive/2026-11-06/main-sync/main/WORKLOG.md",
+    "sha256": "3c41d632e6a43b488c3b24a44667624a2a0f8438b9d08011dba5292c7d84cbf2"
+  }
+]

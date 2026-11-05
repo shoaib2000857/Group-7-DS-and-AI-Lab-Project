@@ -1,0 +1,12 @@
+{
+  "pages": 8,
+  "words_markdown": 2109,
+  "bounds_issues": [],
+  "sections_1_to_8": true,
+  "pending_or_future_scope_prose": false,
+  "pdf_sha256": "527d4410a5762ab59b5cfd02fd3881cbafe55da32759674fb56f653695939631",
+  "md_sha256": "d04b5f9417cabd630ff19f60fde5d2717dd1378947023b829ab5a85398821751",
+  "visual_review": "cover, all body pages and diagrams inspected",
+  "cpu_tests": 81,
+  "torch_module_skips": 1
+}

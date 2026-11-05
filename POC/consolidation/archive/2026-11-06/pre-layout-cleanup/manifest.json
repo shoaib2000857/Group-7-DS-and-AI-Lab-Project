@@ -1,0 +1,72 @@
+[
+  {
+    "original_path": "src/evidence/crop_extractor.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/src/evidence/crop_extractor.py",
+    "sha256": "d65bd3459e102056890c2f407bbf96885f7b150953d93d2424501a60d921d26e"
+  },
+  {
+    "original_path": "src/evidence/pipeline.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/src/evidence/pipeline.py",
+    "sha256": "2dbc489060c5cc61bd63067148f0d1739348c1f6e3698587bbaa6d41f399a38d"
+  },
+  {
+    "original_path": "src/evidence/schemas.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/src/evidence/schemas.py",
+    "sha256": "85f7f23d72dc030263cedfd9dfed0f11efa7ddf6418d2b643360261bbd2f9f89"
+  },
+  {
+    "original_path": "src/evidence/visual_inspector.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/src/evidence/visual_inspector.py",
+    "sha256": "4f2070742c420efce258515fab10fc6546396aafee97aa69a2482a4390866b15"
+  },
+  {
+    "original_path": "src/evidence/__init__.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/src/evidence/__init__.py",
+    "sha256": "5aa928f2601157f2bbb3179872a28ca95058e1df428c3c01e4f1c46bdcc4cbd4"
+  },
+  {
+    "original_path": "tests/test_evidence_pipeline.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/tests/test_evidence_pipeline.py",
+    "sha256": "844c2cb283a494f518d575dcc2ef430a57ec75e89b22f84ced6b2e0f01db7df9"
+  },
+  {
+    "original_path": "tests/test_pipeline_orchestration.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/tests/test_pipeline_orchestration.py",
+    "sha256": "7867ebe560a087215e574672704467b108ff4a4e58a54b098b64877e06f27356"
+  },
+  {
+    "original_path": "requirements-evidence.txt",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/requirements-evidence.txt",
+    "sha256": "7fefd0340c2cb42320bdaa83f9a88493ced6c297196fe781d4431cab7796668e"
+  },
+  {
+    "original_path": "docs/STAGE_C_DEFENSE_AND_ARCHITECTURE.md",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/docs/STAGE_C_DEFENSE_AND_ARCHITECTURE.md",
+    "sha256": "8b9803da014b2779e5451708910d82e76ff0899c584b1dd7f555e476096848a9"
+  },
+  {
+    "original_path": "POC/c-evidence/batch_evaluate_witness.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/POC/c-evidence/batch_evaluate_witness.py",
+    "sha256": "a6653de768bf8edc738431552a7c6e4735c277b5d285d17e31698e84781c4b53"
+  },
+  {
+    "original_path": "POC/c-evidence/demo_stage_c.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/POC/c-evidence/demo_stage_c.py",
+    "sha256": "59523f79f9ec35a5f8911decc4558b60bf3b0d76d380604829f51aaf0d8d7ebc"
+  },
+  {
+    "original_path": "POC/c-evidence/evaluate_real_levir_pairs.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/POC/c-evidence/evaluate_real_levir_pairs.py",
+    "sha256": "c5d015f2dfa77a63188cb4e1d9b74da1b759a272658d26a40c8a99e19e3b32a9"
+  },
+  {
+    "original_path": "POC/pipeline/run_pipeline.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/POC/pipeline/run_pipeline.py",
+    "sha256": "31d6386bfbbb4378c027598a683dd312c27dc18b39203c8172ea53749d8e9a11"
+  },
+  {
+    "original_path": "POC/pipeline/train_detector.py",
+    "snapshot": "POC/consolidation/archive/2026-11-06/pre-layout-cleanup/POC/pipeline/train_detector.py",
+    "sha256": "94ab4e1ed05e0436d24e9b65ac5968201fb6f1fa40d2620682173c251a0e3193"
+  }
+]

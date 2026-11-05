@@ -1,0 +1,23 @@
+{
+  "reviewed": "2026-10-31",
+  "provided_inputs": [
+    {
+      "source_filename": "Milestone2_Report.md",
+      "preserved_as": "sources/Milestone2_Report_Provided.md",
+      "sha256": "061dbb68e03bd196295b5e3bdbd261f6ba4b70c72040a5b8adffaf78d51eeb19",
+      "bytes": 22338
+    },
+    {
+      "source_filename": "WORKLOG.md",
+      "preserved_as": "sources/WORKLOG_Provided.md",
+      "sha256": "a1778a124eb62de149c386dbac4d508d148b2812e64de0b96c9ba445ed19eaae",
+      "bytes": 11258
+    }
+  ],
+  "captioning_snapshot": "dc8f3cee62e44ab89dfa0f8f04a6299fc05d258d",
+  "figures": "Executed 31 October full LEVIR-MCI audit, all 10,077 source pairs; strict cohort 9,544",
+  "figures_29oct_original": "Provided 150-pair preparation-audit aggregates; no new data collection",
+  "current_audit": "full_audit/summary.json",
+  "current_loader_validation": "full_audit/handover_validation.json",
+  "branch_review": "branch_audit.json"
+}

@@ -1,0 +1,42 @@
+{
+  "input_record": {
+    "pair_id": "LEVIR-MCI/train/train_000010",
+    "dataset": "LEVIR-MCI",
+    "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+    "official_split": "train",
+    "archive": "../raw/LEVIR-MCI-dataset.zip",
+    "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000010.png",
+    "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000010.png",
+    "target_member": "LEVIR-MCI-dataset/images/train/label/train_000010.png",
+    "t1_sha256": "4e26b564be2c6f59fffa922134a1b41b97ee31f0984ba62d4d1486eefd59ac1b",
+    "t2_sha256": "3b10a3eaa2029d358194ecaff68cf747d89746f2fea6b9bdbe63eab1186a657a",
+    "target_sha256": "206da14817569a7d726cae48d6ab349a25280006a86af55c5cddd819a77356f8",
+    "shape": [
+      256,
+      256,
+      3
+    ],
+    "mask_encoding": {
+      "0": "background",
+      "128": "road_change",
+      "255": "building_change"
+    },
+    "mask_class": "both",
+    "acquisition_t1": null,
+    "acquisition_t2": null,
+    "crs": null,
+    "per_tile_gsd_m": null,
+    "nominal_source_gsd_m": 0.5
+  },
+  "evaluation_only_reference": {
+    "captions": [
+      "a lane appears on the left and several houses are built at the bottom .",
+      "some part of a building appears on the bareland in the bottom .",
+      "some buildings appear at the bottom of the scene .",
+      "a house appears at the bottom of the scene .",
+      "a building and a path to forest appear ."
+    ],
+    "source_changeflag": 1,
+    "mask_member": "LEVIR-MCI-dataset/images/train/label/train_000010.png"
+  }
+}

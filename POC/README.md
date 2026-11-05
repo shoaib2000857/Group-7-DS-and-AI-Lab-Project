@@ -1,5 +1,11 @@
 # TerraWatch proof of concept
 
+## Current consolidated workspace - 5 November 2026
+
+Start with [the consolidation index](consolidation/README.md) for canonical modules, preserved experiments and pipeline readiness. The [M3 package](milestone3/Milestone3_Report.md) contains the architecture report; [pipeline scripts](pipeline/README.md) implement its module contracts.
+
+## Original research-stage notes - 24 October 2026
+
 This is a local exploration area for the IITM DS & AI Lab project. Start with [the research guide](research/README.md).
 
 For the four-person model-screening assignments and Colab/WSL experiment protocol, use [the benchmark work packages](benchmarks/README.md).

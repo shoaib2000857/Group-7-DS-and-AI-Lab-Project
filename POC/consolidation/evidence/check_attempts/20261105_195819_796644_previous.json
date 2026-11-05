@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-05",
+  "python": "3.14.6",
+  "pytest_exit_code": 0,
+  "passed": 81,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [
+    {
+      "test": "POC.execution.tests.test_rscama_shim",
+      "reason": "collection skipped"
+    }
+  ],
+  "packages": {
+    "numpy": "2.4.6",
+    "Pillow": "12.3.0",
+    "pydantic": "2.13.4",
+    "opencv-python-headless": "5.0.0.93",
+    "pytest": "9.0.3"
+  },
+  "scope": "CPU logic, data contracts and software tests; no model inference or training.",
+  "junit_path": "outputs/data/consolidation_checks/20261105_181843_065746/junit.xml"
+}
