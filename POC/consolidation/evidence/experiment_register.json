@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "captioning": {
     "b0_results.json": {
       "source": "POC/execution/outputs/b0_results.json",
@@ -1719,7 +1719,7 @@
   },
   "visual_evidence": {
     "batch_evaluation_summary.json": {
-      "source": "outputs/evidence_batch_results/batch_evaluation_summary.json",
+      "source": "POC/c-evidence/results/original/batch_evaluation_summary.json",
       "sha256": "8d04fdc3dd3a7ca704c87808d6152f9096e5a86a0f1fa9bc8b4a553df24e5254",
       "records": {
         "total_samples": 50,
@@ -2365,7 +2365,7 @@
       }
     },
     "real_levir_evaluation_results.json": {
-      "source": "outputs/real_data_evaluation/real_levir_evaluation_results.json",
+      "source": "POC/c-evidence/results/original/real_levir_evaluation_results.json",
       "sha256": "882b10677e45dda0302d302ba471eb5365399f0b4d014c01fd3ac2ae408b3d15",
       "records": [
         {
@@ -2578,7 +2578,7 @@
       ]
     },
     "stage_c_claim_decision_record.json": {
-      "source": "outputs/evidence_demo/stage_c_claim_decision_record.json",
+      "source": "POC/c-evidence/results/original/stage_c_claim_decision_record.json",
       "sha256": "e5b51ce6330b2e76c546517ebd864bbe9a5b213b9e08b3d3660711db99ea6515",
       "records": {
         "record_type": "stage_c_evidence_record",

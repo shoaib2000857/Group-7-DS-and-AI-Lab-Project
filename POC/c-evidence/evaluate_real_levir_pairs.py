@@ -7,6 +7,7 @@ extracts real crops, and verifies real construction vs. caption hallucinations.
 import io
 import sys
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 # Add project root to sys.path
@@ -17,11 +18,11 @@ import numpy as np
 from PIL import Image
 
 from POC.execution.scripts.remote_zip import open_remote_zip, fetch_members, LEVIR_MCI_URL
-from src.evidence.pipeline import StageCEvidencePipeline
+from POC.evidence.pipeline import StageCEvidencePipeline
 
 
 def run_real_data_evaluation():
-    out_dir = Path("outputs/real_data_evaluation")
+    out_dir = Path(__file__).resolve().parent / 'results/runs' / 'evaluate_real_levir_pairs' / datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f')
     out_dir.mkdir(parents=True, exist_ok=True)
     
     print("=" * 80)

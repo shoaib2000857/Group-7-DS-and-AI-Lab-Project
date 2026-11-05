@@ -4,6 +4,7 @@ import csv
 import hashlib
 import io
 import json
+from datetime import datetime
 import re
 import zipfile
 
@@ -48,12 +49,12 @@ def main():
     for path in sorted((ROOT/'POC/execution/outputs').glob('*.json')):
         b[path.name]={'source':path.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'records':json.loads(path.read_text())}
     c={}
-    for path in [ROOT/'outputs/evidence_batch_results/batch_evaluation_summary.json',ROOT/'outputs/real_data_evaluation/real_levir_evaluation_results.json',ROOT/'outputs/evidence_demo/stage_c_claim_decision_record.json']:
+    for path in [ROOT/'POC/c-evidence/results/original/batch_evaluation_summary.json',ROOT/'POC/c-evidence/results/original/real_levir_evaluation_results.json',ROOT/'POC/c-evidence/results/original/stage_c_claim_decision_record.json']:
         data=path.read_bytes();c[path.name]={'source':path.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(data).hexdigest(),'records':json.loads(data)}
         target=ROOT/'POC/c-evidence/results/original'/path.name;target.parent.mkdir(parents=True,exist_ok=True)
         if target.exists():assert target.read_bytes()==data
         else:target.write_bytes(data)
-    result={'date':'2026-11-05','captioning':b,'visual_evidence':c,'decision_runs':runs,
+    result={'date':datetime.now().astimezone().date().isoformat(),'captioning':b,'visual_evidence':c,'decision_runs':runs,
             'decision_unique_pair_ids':sorted(all_pairs),'decision_archive_count':len(runs),
             'decision_distinct_run_ids':len({r['run_id'] for r in runs}),
             'scope':'Source exports are retained verbatim. Synthetic visual-evidence fixtures, automatic caption-reference checks and decision annotation proxies are separate evidence types.'}

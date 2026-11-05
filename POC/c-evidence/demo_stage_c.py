@@ -5,6 +5,7 @@ performs structural verification, and outputs the populated claim_decision contr
 """
 
 import json
+from datetime import datetime, timezone
 import sys
 from pathlib import Path
 
@@ -14,11 +15,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import numpy as np
 from PIL import Image
 
-from src.evidence.pipeline import StageCEvidencePipeline
+from POC.evidence.pipeline import StageCEvidencePipeline
 
 
 def run_demo():
-    output_dir = Path("outputs/evidence_demo")
+    output_dir = Path(__file__).resolve().parent / 'results/runs' / 'demo_stage_c' / datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f')
     output_dir.mkdir(parents=True, exist_ok=True)
     
     print("=" * 70)

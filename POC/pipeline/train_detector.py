@@ -16,7 +16,7 @@ def main():
     from POC.pipeline.workers import build_detector
     ap=argparse.ArgumentParser();ap.add_argument('--source-dir',required=True);ap.add_argument('--processed',default='data/processed');ap.add_argument('--epochs',type=int,default=50);ap.add_argument('--batch',type=int,default=8);ap.add_argument('--accum',type=int,default=4);ap.add_argument('--patience',type=int,default=8);ap.add_argument('--seed',type=int,default=42);ap.add_argument('--device',default='cuda');ap.add_argument('--output');a=ap.parse_args()
     torch.manual_seed(a.seed);np.random.seed(a.seed)
-    output=Path(a.output or ROOT/'outputs/detector_training'/datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f'));output.mkdir(parents=True,exist_ok=False)
+    output=Path(a.output or ROOT/'POC/pipeline/training_runs'/datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f'));output.mkdir(parents=True,exist_ok=False)
     root=Path(a.processed);train=PairDataset(root/'train.jsonl',root);val=PairDataset(root/'val.jsonl',root)
     # Main target is MCI's road/building ontology, not unrelated binary targets.
     train.rows=[r for r in train.rows if r['dataset']=='levir_mci'];val.rows=[r for r in val.rows if r['dataset']=='levir_mci']

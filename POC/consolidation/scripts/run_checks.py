@@ -15,13 +15,13 @@ ROOT=Path(__file__).resolve().parents[3]
 def main():
     os.chdir(ROOT);sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'POC/benchmarks/colab'))
     stamp=datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f')
-    out=ROOT/'outputs/data/consolidation_checks'/stamp;out.mkdir(exist_ok=False,parents=True)
+    out=ROOT/'POC/consolidation/runs'/stamp;out.mkdir(exist_ok=False,parents=True)
     junit=out/'junit.xml'
-    code=pytest.main(['tests','POC/execution/tests','POC/benchmarks/colab/test_benchmark_runtime.py',
+    code=pytest.main(['tests','POC/evidence/tests','POC/pipeline/tests','POC/execution/tests','POC/benchmarks/colab/test_benchmark_runtime.py',
                      '--import-mode=importlib','-q','-ra','--basetemp='+str(out/'tmp'),
                      '--junitxml='+str(junit)])
     suites=ET.parse(junit).getroot();cases=list(suites.iter('testcase'))
-    summary={'date':'2026-11-05','python':platform.python_version(),'pytest_exit_code':int(code),
+    summary={'date':datetime.now().astimezone().date().isoformat(),'python':platform.python_version(),'pytest_exit_code':int(code),
              'passed':sum(not any(c.tag in {'failure','error','skipped'} for c in case) for case in cases),
              'failures':sum(len(list(c.iter('failure'))) for c in cases),
              'errors':sum(len(list(c.iter('error'))) for c in cases),

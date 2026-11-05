@@ -4,7 +4,7 @@ The coordinator implements the M3 contracts: ordered images, BIT class mask, RSC
 
 ## Environments and assets
 
-Use the root `requirements-data.txt` and `requirements-evidence.txt` for the coordinator and CPU tests. Model workers have separate Python interpreters, configured in `pipeline.json`:
+Use the root `requirements-data.txt` and `POC/evidence/requirements.txt` for the coordinator and CPU tests. Model workers have separate Python interpreters, configured in `pipeline.json`:
 
 - Detector environment: PyTorch, torchvision, einops, NumPy and Pillow. `train_detector.py` uses the official BIT code and creates a three-class MCI checkpoint.
 - Captioner environment: reuse Sujal's RSCaMa environment in `POC/execution/README.md` (Transformers 4.39.3 and the patched CLIP/reference Mamba kernels). Use a matching released vocabulary or the vocabulary embedded in the subset-trained checkpoint.
@@ -38,6 +38,8 @@ From the repository root:
 python POC/pipeline/run_pipeline.py --t1 earlier.png --t2 later.png --config POC/pipeline/pipeline.json --pair-id example_pair
 ```
 
-The generated `outputs/pipeline_runs/<timestamp>/` contains worker requests/responses/logs, detector mask, paired crops and `report.json`. The final record retains original caption text, source spans, evidence, raw decisions, operating-gate reasons and an accepted-description field. Count/legality checks and missing evidence can require review even when a referee suggests acceptance.
+The generated `POC/pipeline/runs/<timestamp>/` contains worker requests/responses/logs, detector mask, paired crops and `report.json`. The final record retains original caption text, source spans, evidence, raw decisions, operating-gate reasons and an accepted-description field. Count/legality checks and missing evidence can require review even when a referee suggests acceptance.
 
-The root test suite exercises routing using explicitly labelled test doubles; those tests do not run GPU model inference. Actual learned-model benchmark evidence remains the original per-module exports. This is stated in the internal consolidation audit so run provenance remains unambiguous.
+The POC test suite exercises routing using explicitly labelled test doubles; those tests do not run GPU model inference. Actual learned-model benchmark evidence remains the original per-module exports. This is stated in the internal consolidation audit so run provenance remains unambiguous.
+
+Visual evidence is imported from `POC.evidence`. This candidate pipeline stays under POC until an explicit promotion PR is approved. Training run directories are `POC/pipeline/training_runs/`; previous root-output artifacts remain preserved.

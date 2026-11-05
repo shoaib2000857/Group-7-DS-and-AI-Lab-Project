@@ -7,3 +7,5 @@
 - Keep proof-of-concept implementation and experiment artifacts under `POC/` unless instructed otherwise.
 
 - Use plain descriptive branch names such as `data-preparation`; do not introduce `feat/` or similar prefixes unless Shoaib explicitly requests them.
+
+- Experimental modules, model workers and their tests stay under `POC/`. Merging POC history into the main branch does not authorise promotion into production code folders; those promotions require Shoaib's explicit instruction and a dedicated PR.

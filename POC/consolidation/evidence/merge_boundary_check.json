@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-06",
+  "base_main": "3dc981140d5cb710e6b04179ed9e35332adac0c8",
+  "production_tree_changes": [],
+  "experimental_modules": "POC/evidence and POC/pipeline",
+  "experimental_tests": "POC/evidence/tests and POC/pipeline/tests",
+  "experimental_results": "POC/c-evidence/results and versioned POC run directories",
+  "main_default_tests_passed": 24,
+  "combined_cpu_tests_passed": 81,
+  "torch_dependent_module_skips": 1,
+  "m3_submission_pr": 19,
+  "production_code_promotion": false
+}

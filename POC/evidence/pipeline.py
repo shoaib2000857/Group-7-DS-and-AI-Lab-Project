@@ -10,14 +10,14 @@ from typing import Dict, Any, List, Optional
 import numpy as np
 from PIL import Image
 
-from src.evidence.schemas import (
+from POC.evidence.schemas import (
     ClaimContent,
     EvidenceBlock,
     ClaimDecisionRecord,
     DecisionBlock
 )
-from src.evidence.crop_extractor import extract_bitemporal_crops
-from src.evidence.visual_inspector import VisualEvidenceInspector
+from POC.evidence.crop_extractor import extract_bitemporal_crops
+from POC.evidence.visual_inspector import VisualEvidenceInspector
 
 
 class StageCEvidencePipeline:
@@ -28,7 +28,7 @@ class StageCEvidencePipeline:
 
     def __init__(
         self,
-        output_dir: str = "outputs/evidence_crops",
+        output_dir: str = "POC/c-evidence/results/runs/crops",
         witness_run_id: str = "W01_structural_witness_v1"
     ):
         self.output_dir = Path(output_dir)

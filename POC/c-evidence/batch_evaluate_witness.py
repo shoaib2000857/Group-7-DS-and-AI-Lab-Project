@@ -6,6 +6,7 @@ seasonal shadow hazards, and sub-pixel registration jitter.
 
 import sys
 import json
+from datetime import datetime, timezone
 import time
 from pathlib import Path
 
@@ -15,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import numpy as np
 from PIL import Image
 
-from src.evidence.pipeline import StageCEvidencePipeline
+from POC.evidence.pipeline import StageCEvidencePipeline
 
 
 def generate_synthetic_cohort(output_dir: Path, n_samples: int = 50):
@@ -112,7 +113,7 @@ def generate_synthetic_cohort(output_dir: Path, n_samples: int = 50):
 
 
 def run_batch_evaluation():
-    output_dir = Path("outputs/evidence_batch_results")
+    output_dir = Path(__file__).resolve().parent / 'results/runs' / 'batch_evaluate_witness' / datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f')
     output_dir.mkdir(parents=True, exist_ok=True)
     
     cohort = generate_synthetic_cohort(output_dir, n_samples=50)

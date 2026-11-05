@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "python": "3.14.6",
   "pytest_exit_code": 0,
   "passed": 81,
@@ -19,5 +19,5 @@
     "pytest": "9.0.3"
   },
   "scope": "CPU logic, data contracts and software tests; no model inference or training.",
-  "junit_path": "outputs/data/consolidation_checks/20261105_181843_065746/junit.xml"
+  "junit_path": "POC/consolidation/runs/20261105_200150_448494/junit.xml"
 }

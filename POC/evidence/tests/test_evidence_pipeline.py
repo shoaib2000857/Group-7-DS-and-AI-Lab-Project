@@ -8,10 +8,10 @@ import json
 import pytest
 import numpy as np
 
-from src.evidence.schemas import ClaimDecisionRecord
-from src.evidence.crop_extractor import compute_padded_bbox, extract_bitemporal_crops
-from src.evidence.visual_inspector import VisualEvidenceInspector
-from src.evidence.pipeline import StageCEvidencePipeline
+from POC.evidence.schemas import ClaimDecisionRecord
+from POC.evidence.crop_extractor import compute_padded_bbox, extract_bitemporal_crops
+from POC.evidence.visual_inspector import VisualEvidenceInspector
+from POC.evidence.pipeline import StageCEvidencePipeline
 
 
 def test_crop_padding_and_clamping():

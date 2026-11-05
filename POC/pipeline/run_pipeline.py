@@ -16,7 +16,7 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
-from src.evidence.pipeline import StageCEvidencePipeline
+from POC.evidence.pipeline import StageCEvidencePipeline
 
 
 def parse_claims(caption,pair_id):
@@ -108,7 +108,7 @@ def run_pipeline(t1,t2,config,output,pair_id='input_pair',worker=None):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--t1',required=True);ap.add_argument('--t2',required=True);ap.add_argument('--config',default=str(ROOT/'POC/pipeline/pipeline.json'));ap.add_argument('--output');ap.add_argument('--pair-id',default='input_pair');a=ap.parse_args()
-    config=json.loads(Path(a.config).read_text());out=a.output or str(ROOT/'outputs/pipeline_runs'/datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f'))
+    config=json.loads(Path(a.config).read_text());out=a.output or str(ROOT/'POC/pipeline/runs'/datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f'))
     run_pipeline(a.t1,a.t2,config,out,a.pair_id);print(str(Path(out)/'report.json'))
 
 
