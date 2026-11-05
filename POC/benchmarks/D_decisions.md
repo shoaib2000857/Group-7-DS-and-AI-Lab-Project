@@ -1,4 +1,8 @@
-# D. Shoaib SSM: decisions, calibration and integration
+# D. Shoaib (SSSM): decisions, calibration and integration
+
+## Runnable first-wave notebook
+
+Use [the self-contained Colab notebook](colab/TerraWatch_Shoaib_Decision_Benchmarks.ipynb) and its [run instructions](colab/README.md). It implements the controls, default J05/J01/J06/J07 attempts, optional local J02/J03/J04 routes, an eight-candidate register, a selected LEVIR-MCI pilot, separate logic fixtures and one combined results ZIP. Actual GPU inference remains to be completed in Colab; the implementation is not a measured benchmark result. Broader team outputs can be supplied through the documented bundle contract.
 
 Own the claim/evidence contract, checking baselines, decision-model adapters, calibration, paired evaluation and integration. This is not an instruction to infer image truth from a text-only model.
 

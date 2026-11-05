@@ -35,6 +35,8 @@ Never push experimental or untested work directly to `main`. Create a descriptiv
 
 ## 3. Pull Request (PR) Process
 
+For agent-assisted work, create a PR only when Shoaib explicitly requests one. Using a task branch does not automatically require the agent to open a PR. The process below applies when a PR has been requested.
+
 1. **Sync with `main`:** Before creating a branch or opening a PR, pull the latest changes:
    ```bash
    git checkout main

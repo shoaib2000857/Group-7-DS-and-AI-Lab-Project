@@ -1,0 +1,3642 @@
+00:00:00.000 --> 00:00:01.000
+[Speaker 01] That's very important, right?
+
+00:00:01.000 --> 00:00:06.184
+[Speaker 01] Because one of your true description
+
+00:00:06.184 --> 00:00:08.243
+[Speaker 01] that it should generate should also point
+
+00:00:08.243 --> 00:00:09.083
+[Speaker 01] to the direction, right?
+
+00:00:09.083 --> 00:00:11.184
+[Speaker 01] So, you know, training itself,
+
+00:00:11.184 --> 00:00:13.904
+[Speaker 01] if the distribution of the directional areas
+
+00:00:13.904 --> 00:00:16.763
+[Speaker 01] are distributed properly,
+
+00:00:16.763 --> 00:00:20.663
+[Speaker 01] then the identification of areas for the model
+
+00:00:20.663 --> 00:00:23.680
+[Speaker 01] becomes a learned behavior.
+
+00:00:23.840 --> 00:00:29.280
+[Speaker 02] Okay, got your point. In that same note, I wanted to ask you one question. So if you
+
+00:00:29.280 --> 00:00:38.880
+[Speaker 02] see, I used these models for the captioning part. One thing was this RCMA was performing
+
+00:00:38.880 --> 00:00:43.700
+[Speaker 02] very well, even without training. The baseline itself was performing very well, but it was
+
+00:00:43.700 --> 00:00:48.319
+[Speaker 02] very, performing well on the data set that it was trained on. So, Liver.
+
+00:00:48.512 --> 00:00:50.712
+[Speaker 02] MCA was where it was performing very well on.
+
+00:00:50.712 --> 00:00:55.172
+[Speaker 02] I tried it on other data sets like WHU CDC and second CDC
+
+00:00:55.172 --> 00:00:59.332
+[Speaker 02] and it was not performing as well as it was in this one.
+
+00:00:59.332 --> 00:01:01.611
+[Speaker 02] It was performing like the others were performing
+
+00:01:01.611 --> 00:01:02.951
+[Speaker 02] consistently like for example,
+
+00:01:02.951 --> 00:01:05.372
+[Speaker 02] when was performing very consistently.
+
+00:01:05.372 --> 00:01:07.772
+[Speaker 02] So one question should I,
+
+00:01:08.000 --> 00:01:22.680
+[Speaker 02] I just wanted to ask you, should we go with RSCMA or should we just go with a model that averages out on everyone or one that is working well on the one it was trained on and very average on the other two?
+
+00:01:22.680 --> 00:01:28.648
+[Speaker 01] So in your POC what did you do?
+
+00:01:28.648 --> 00:01:31.672
+[Speaker 03] We tried all of them out in POC.
+
+00:01:31.672 --> 00:01:37.592
+[Speaker 02] We tried all of them. We tried and I even tried fine tuning in it but then fine tuning it just made it worse.
+
+00:01:37.592 --> 00:01:42.688
+[Speaker 02] And this was, I think the reason was because it was already trained on LeviR itself.
+
+00:01:44.928 --> 00:01:47.428
+[Speaker 01] Okay, so that is your primary dataset, right?
+
+00:01:47.428 --> 00:01:49.148
+[Speaker 02] Yes, that's the primary dataset.
+
+00:01:49.148 --> 00:01:52.068
+[Speaker 01] Okay, what is the purpose of the other datasets?
+
+00:01:52.068 --> 00:01:53.548
+[Speaker 01] You're not training with those, am I right?
+
+00:01:53.548 --> 00:01:55.087
+[Speaker 02] No, no, these are just inferencing.
+
+00:01:55.087 --> 00:01:56.768
+[Speaker 02] We are just inferencing with these two
+
+00:01:56.768 --> 00:01:58.708
+[Speaker 02] and we are just benchmarking.
+
+00:01:58.708 --> 00:02:02.807
+[Speaker 02] What are the benchmarks that other models are also...
+
+00:02:02.807 --> 00:02:05.328
+[Speaker 01] Okay, so what do you mean when you say
+
+00:02:05.328 --> 00:02:08.848
+[Speaker 01] fine tuning was actually worsening the results?
+
+00:02:08.848 --> 00:02:10.708
+[Speaker 02] Fine tuning was actually worsening means that
+
+00:02:10.708 --> 00:02:13.628
+[Speaker 02] if you look at this, these were the claims.
+
+00:02:13.792 --> 00:02:16.352
+[Speaker 02] that we were having and this was true.
+
+00:02:16.352 --> 00:02:18.852
+[Speaker 02] Like, I'm sorry for having this pop-up,
+
+00:02:18.852 --> 00:02:21.052
+[Speaker 02] but if you just look at the color coding
+
+00:02:21.052 --> 00:02:22.632
+[Speaker 02] and the charts, right,
+
+00:02:22.632 --> 00:02:27.312
+[Speaker 02] it shows that RS CMA performed very well on LeviR,
+
+00:02:27.312 --> 00:02:31.232
+[Speaker 02] but then it performed not that good in RS CMA,
+
+00:02:31.232 --> 00:02:34.712
+[Speaker 02] whereas QN, it performed okayishly on LeviR,
+
+00:02:34.712 --> 00:02:39.432
+[Speaker 02] but it performed, you know, just less okay
+
+00:02:39.432 --> 00:02:40.832
+[Speaker 02] on the second CC.
+
+00:02:41.216 --> 00:02:50.016
+[Speaker 02] rscma had a bigger dip in terms of performance over here and i think over here as well i am not
+
+00:02:50.016 --> 00:02:57.536
+[Speaker 02] sure if i mentioned in the report but yeah uh quen is uh lying a lot that there is a change even
+
+00:02:57.536 --> 00:03:03.936
+[Speaker 02] when there isn't whereas rscma is almost getting it right almost 100 percent of the time and
+
+00:03:03.936 --> 00:03:10.175
+[Speaker 02] the live wire so the conclusion here was that uh rscma was performing almost
+
+00:03:10.527 --> 00:03:12.787
+[Speaker 02] consist very well on the one it was trained on
+
+00:03:12.787 --> 00:03:15.807
+[Speaker 02] and averagely on the one that it wasn't trained on.
+
+00:03:18.272 --> 00:03:26.432
+[Speaker 01] Okay, so do you think it can be improved or do you know a particular reason why it was not doing well on the other two?
+
+00:03:26.432 --> 00:03:31.712
+[Speaker 02] Maybe because of it being only trained on LeviR, that could be the only reason.
+
+00:03:31.712 --> 00:03:32.912
+[Speaker 01] That's an obvious answer, right?
+
+00:03:32.912 --> 00:03:34.671
+[Speaker 01] That's an obvious answer, yeah.
+
+00:03:34.671 --> 00:03:37.072
+[Speaker 01] But then in terms of generalization, eh?
+
+00:03:37.072 --> 00:03:38.072
+[Speaker 02] Yeah.
+
+00:03:40.192 --> 00:03:42.832
+[Speaker 02] I think LeviR is from one part of the world.
+
+00:03:42.832 --> 00:03:47.772
+[Speaker 02] Let me see, I forgot, I think it's from North American LeviR dataset.
+
+00:03:48.160 --> 00:03:50.160
+[Speaker 01] Texas, right?
+
+00:03:50.160 --> 00:03:52.160
+[Speaker 02] Texas is in the US, yes.
+
+00:03:52.160 --> 00:03:55.160
+[Speaker 02] And I think this one is from a different region, so that could be...
+
+00:03:55.160 --> 00:03:56.160
+[Speaker 01] Yeah, obviously.
+
+00:03:56.160 --> 00:03:58.160
+[Speaker 01] This is Chinese data.
+
+00:03:58.160 --> 00:04:00.160
+[Speaker 02] Yeah, that's a Chinese one.
+
+00:04:00.160 --> 00:04:06.160
+[Speaker 02] So that could be one reason that it performed drastically.
+
+00:04:06.160 --> 00:04:13.160
+[Speaker 01] I mean, obviously, domain difference is going to account for the performance, right?
+
+00:04:13.160 --> 00:04:15.419
+[Speaker 01] So how can you...
+
+00:04:15.839 --> 00:04:20.199
+[Speaker 01] ensure that your model adapts across different domains,
+
+00:04:20.199 --> 00:04:22.019
+[Speaker 01] rather even different geographies.
+
+00:04:24.859 --> 00:04:27.500
+[Speaker 01] For example, even building structures would be different.
+
+00:04:27.500 --> 00:04:28.619
+[Speaker 02] Yes, yes.
+
+00:04:28.619 --> 00:04:31.480
+[Speaker 02] That's the reason I wanted to ask you this question.
+
+00:04:31.480 --> 00:04:34.220
+[Speaker 02] One, because obviously we won't be able to make
+
+00:04:34.220 --> 00:04:35.959
+[Speaker 02] a pre-trainer model from scratch
+
+00:04:35.959 --> 00:04:39.839
+[Speaker 02] and perform better than what Levi or Quen is already doing.
+
+00:04:41.339 --> 00:04:43.231
+[Speaker 02] And I think one,
+
+00:04:43.359 --> 00:04:46.199
+[Speaker 02] these to push it onto would be, let's say,
+
+00:04:46.199 --> 00:04:49.500
+[Speaker 02] if we are able to fine tune RS CMA
+
+00:04:49.500 --> 00:04:52.479
+[Speaker 02] on a different data set, like one that,
+
+00:04:52.479 --> 00:04:54.259
+[Speaker 02] where it can actually surpass the-
+
+00:04:54.259 --> 00:04:56.895
+[Speaker 01] That could be challenging, but then,
+
+00:04:58.496 --> 00:05:01.055
+[Speaker 01] Then it would perform well on these three,
+
+00:05:01.055 --> 00:05:04.136
+[Speaker 01] but what about any new dataset that might?
+
+00:05:04.136 --> 00:05:06.115
+[Speaker 01] Obviously, I mean, if a model is trained
+
+00:05:06.115 --> 00:05:08.656
+[Speaker 01] on a particular dataset, that's going to perform well,
+
+00:05:08.656 --> 00:05:10.996
+[Speaker 01] having learned those features and characteristics.
+
+00:05:10.996 --> 00:05:15.816
+[Speaker 01] But actually, I was trying to say,
+
+00:05:15.816 --> 00:05:21.235
+[Speaker 01] so for example, these are all...
+
+00:05:21.235 --> 00:05:29.455
+[Speaker 04] So how does it...
+
+00:05:29.455 --> 00:05:34.235
+[Speaker 01] So the description generation is based on...
+
+00:05:36.320 --> 00:05:38.160
+[Speaker 01] So you changed the masks, right?
+
+00:05:38.160 --> 00:05:38.980
+[Speaker 01] Yes.
+
+00:05:38.980 --> 00:05:39.660
+[Speaker 05] Changed masks.
+
+00:05:39.660 --> 00:05:41.460
+[Speaker 01] So is it purely on that,
+
+00:05:41.460 --> 00:05:44.020
+[Speaker 01] or are you also looking at the image again?
+
+00:05:44.020 --> 00:05:45.460
+[Speaker 01] So I do not know your pipeline.
+
+00:05:45.460 --> 00:05:47.760
+[Speaker 01] So I'm not really clear about
+
+00:05:47.760 --> 00:05:49.559
+[Speaker 01] what kind of pipeline you're using.
+
+00:05:49.559 --> 00:05:50.399
+[Speaker 01] So.
+
+00:05:51.679 --> 00:05:54.500
+[Speaker 02] Yeah, I think doing it on three parts,
+
+00:05:54.500 --> 00:05:59.500
+[Speaker 02] zero, 100 and I think 56 and sorry, 256 and yes.
+
+00:06:00.380 --> 00:06:03.020
+[Speaker 02] This is the primary masking voting that we are doing.
+
+00:06:03.020 --> 00:06:05.852
+[Speaker 02] This is how we are checking it.
+
+00:06:05.852 --> 00:06:07.328
+[Speaker 05] Okay.
+
+00:06:10.048 --> 00:06:12.828
+[Speaker 02] So these are the three things that we're taking into account.
+
+00:06:14.496 --> 00:06:16.876
+[Speaker 01] So background notes, pixels not generated?
+
+00:06:16.876 --> 00:06:20.496
+[Speaker 02] As of now, I'll be very straightforward on this Nagarajan.
+
+00:06:20.496 --> 00:06:24.835
+[Speaker 02] This week we were doing work very parallelly.
+
+00:06:24.835 --> 00:06:28.496
+[Speaker 02] Especially in terms of the POC, everyone was taking out their...
+
+00:06:28.496 --> 00:06:30.835
+[Speaker 01] So you're saying you have not compared notes and
+
+00:06:30.835 --> 00:06:33.496
+[Speaker 01] you have not collectively come to a conclusion as to...
+
+00:06:33.496 --> 00:06:37.496
+[Speaker 02] No, no, no. It's more like we have assembled the entire thing together and run it.
+
+00:06:37.496 --> 00:06:41.916
+[Speaker 03] We just had a very high level interaction. We did not compare all of the details.
+
+00:06:42.976 --> 00:06:44.136
+[Speaker 01] Yeah, that's what I'm saying.
+
+00:06:44.136 --> 00:06:47.976
+[Speaker 01] So you have not exactly compared, you know, low level notes.
+
+00:06:47.976 --> 00:06:52.976
+[Speaker 02] Low level, yes, we haven't compared high level, yes.
+
+00:06:52.976 --> 00:06:55.976
+[Speaker 01] Yeah, so probably that is not enough.
+
+00:06:55.976 --> 00:06:56.976
+[Speaker 01] Yes.
+
+00:06:56.976 --> 00:06:59.976
+[Speaker 01] So I don't even come into that category, right?
+
+00:06:59.976 --> 00:07:03.976
+[Speaker 01] So I don't know any of what you have done,
+
+00:07:03.976 --> 00:07:05.976
+[Speaker 01] except what I have read from your report.
+
+00:07:05.976 --> 00:07:06.976
+[Speaker 01] Okay.
+
+00:07:06.976 --> 00:07:08.511
+[Speaker 01] And,
+
+00:07:09.055 --> 00:07:12.996
+[Speaker 01] So basically the scope and the objective
+
+00:07:12.996 --> 00:07:14.735
+[Speaker 01] of this particular milestone,
+
+00:07:14.735 --> 00:07:16.816
+[Speaker 01] when I've shared with you, right,
+
+00:07:16.816 --> 00:07:21.675
+[Speaker 01] what needs to be covered and making sure that the data set
+
+00:07:21.675 --> 00:07:25.416
+[Speaker 01] at the end of this milestone is ready so that it's,
+
+00:07:26.276 --> 00:07:28.596
+[Speaker 01] I mean, it's ready for you to get it into the model,
+
+00:07:28.596 --> 00:07:32.855
+[Speaker 01] I mean, with all the pre-processing and, you know,
+
+00:07:34.135 --> 00:07:36.855
+[Speaker 01] baselining the annotations and things of that nature.
+
+00:07:37.023 --> 00:07:41.983
+[Speaker 01] then again you do not have the pipeline ready right you really do not know what works what does
+
+00:07:41.983 --> 00:07:50.383
+[Speaker 01] not work you've just done a poc for that matter so let's do one thing we will take up for discussion
+
+00:07:51.183 --> 00:07:57.583
+[Speaker 01] each one of the points let us let us begin with the disconnect discussion of your report itself so
+
+00:07:57.583 --> 00:08:03.583
+[Speaker 01] each one of you can maybe take up their portion and then start explaining what you've done and
+
+00:08:03.583 --> 00:08:05.023
+[Speaker 01] then we'll take it from there
+
+00:08:05.183 --> 00:08:06.023
+[Speaker 01] Right?
+
+00:08:06.023 --> 00:08:11.059
+[Speaker 01] So, because I do see that there are a lot of things
+
+00:08:11.059 --> 00:08:18.891
+[Speaker 01] that are still left to be done.
+
+00:08:19.791 --> 00:08:21.720
+[Speaker 01] Right?
+
+00:08:21.720 --> 00:08:22.940
+[Speaker 01] So for example, take this,
+
+00:08:22.940 --> 00:08:26.160
+[Speaker 01] let's start with data selection and sources, right?
+
+00:08:26.160 --> 00:08:27.800
+[Speaker 01] So you've identified three different,
+
+00:08:27.800 --> 00:08:38.047
+[Speaker 01] so who's responsible for this, this part of the report?
+
+00:08:39.168 --> 00:08:41.828
+[Speaker 02] Almost everyone of us were contributing.
+
+00:08:41.828 --> 00:08:47.268
+[Speaker 01] So who wants to take, so you said you're going to present on the report, right?
+
+00:08:47.268 --> 00:08:48.868
+[Speaker 01] So let's start doing that.
+
+00:08:50.668 --> 00:08:53.968
+[Speaker 05] Yes, so actually you can just, we can go from the start.
+
+00:08:53.968 --> 00:08:56.068
+[Speaker 03] We'll just discuss the entire report.
+
+00:08:56.968 --> 00:08:58.668
+[Speaker 01] Yeah, that's what it's saying.
+
+00:08:58.668 --> 00:09:00.168
+[Speaker 05] And then this is the start.
+
+00:09:00.668 --> 00:09:01.168
+[Speaker 05] Yes, sir.
+
+00:09:01.168 --> 00:09:06.559
+[Speaker 03] So what basically we have like, we tried all of the data sets, we like ran,
+
+00:09:06.719 --> 00:09:11.919
+[Speaker 03] EDA on all of them and then we also like checked which data sets were like more compatible with most models.
+
+00:09:13.719 --> 00:09:26.119
+[Speaker 03] And then on that we like came to terms that Lever MCI and Lever CC were the best candidates for our primary data set because they have RGB images, they have the mask and then they have the captioning as well.
+
+00:09:26.319 --> 00:09:33.919
+[Speaker 03] Lever CD we were thinking about it, but we do not want to include it in the as the main primary data set because
+
+00:09:34.143 --> 00:09:38.223
+[Speaker 03] It is also like very, it does not have its own captions and then we have to take captions
+
+00:09:38.223 --> 00:09:39.223
+[Speaker 03] from somewhere else.
+
+00:09:40.736 --> 00:09:46.176
+[Speaker 03] So what we decided was level level MCI will be our primary data set for most of the testing
+
+00:09:46.176 --> 00:09:47.676
+[Speaker 03] of pipeline and training.
+
+00:09:47.676 --> 00:09:49.736
+[Speaker 01] So can we can we look at this data?
+
+00:09:49.736 --> 00:09:51.736
+[Speaker 01] I mean, is it available in your GitHub?
+
+00:09:51.736 --> 00:09:53.736
+[Speaker 01] Has it been downloaded?
+
+00:09:53.736 --> 00:09:57.736
+[Speaker 01] Can we look at one particular JSON record?
+
+00:09:57.736 --> 00:09:59.736
+[Speaker 03] We have it as a Google drive.
+
+00:09:59.736 --> 00:10:03.736
+[Speaker 03] We like unzipped it and we put it into a drive because it's easier to connect it to a lab
+
+00:10:03.736 --> 00:10:04.736
+[Speaker 01] and all that.
+
+00:10:04.736 --> 00:10:06.911
+[Speaker 01] Yes, but can we look at the record itself?
+
+00:10:07.296 --> 00:10:09.696
+[Speaker 05] Oh yeah, Sujal can you open the trailer?
+
+00:10:09.696 --> 00:10:10.696
+[Speaker 05] Sure, I can.
+
+00:10:10.696 --> 00:10:13.696
+[Speaker 02] Uh, Terra watch.
+
+00:10:13.696 --> 00:10:17.096
+[Speaker 02] I'm not sure if it's on my personal account, just a second.
+
+00:10:17.096 --> 00:10:26.376
+[Speaker 02] Oh sorry for that, Terra watch.
+
+00:10:26.376 --> 00:10:27.776
+[Speaker 05] This is the link.
+
+00:10:27.776 --> 00:10:30.776
+[Speaker 05] And we are on, let's see, yeah, yeah, this is the one.
+
+00:10:30.776 --> 00:10:36.624
+[Speaker 03] But these are like three images and one caption for each.
+
+00:10:36.624 --> 00:10:39.232
+[Speaker 01] What is the images?
+
+00:10:39.232 --> 00:10:41.471
+[Speaker 05] This is the captioning.
+
+00:10:43.135 --> 00:10:46.135
+[Speaker 01] So you have images, you have the file part.
+
+00:10:46.135 --> 00:10:48.135
+[Speaker 01] We have the original image.
+
+00:10:48.135 --> 00:10:49.135
+[Speaker 01] So this is from the train.
+
+00:10:49.135 --> 00:10:51.135
+[Speaker 01] So you have the train 1 PNG.
+
+00:10:51.135 --> 00:10:55.135
+[Speaker 01] You have the train 1 PNG and there should be train 2 PNG, right?
+
+00:10:55.135 --> 00:10:59.135
+[Speaker 03] There is a folder named A, there is a folder named B and there is a folder named Ma.
+
+00:10:59.135 --> 00:11:02.135
+[Speaker 03] And the folder, what's the name of the third folder? I don't remember.
+
+00:11:02.135 --> 00:11:06.135
+[Speaker 03] There is one folder for the old image, one folder for the new image and one folder for the mask.
+
+00:11:06.135 --> 00:11:08.135
+[Speaker 05] This is good to train, no?
+
+00:11:08.135 --> 00:11:09.115
+[Speaker 05] Yeah, train.
+
+00:11:09.823 --> 00:11:12.823
+[Speaker 05] A, B, label and label RGB.
+
+00:11:12.823 --> 00:11:16.823
+[Speaker 03] The name is the same in all three folders.
+
+00:11:16.823 --> 00:11:18.823
+[Speaker 01] So this is T1.
+
+00:11:18.823 --> 00:11:20.823
+[Speaker 01] Okay, that is T1.
+
+00:11:20.823 --> 00:11:22.823
+[Speaker 05] The name is the same.
+
+00:11:22.823 --> 00:11:24.823
+[Speaker 01] Okay, the image names are the same.
+
+00:11:24.823 --> 00:11:26.823
+[Speaker 05] Yeah, image names are the same.
+
+00:11:26.823 --> 00:11:31.823
+[Speaker 01] Okay, and then what about the third label part?
+
+00:11:31.823 --> 00:11:33.243
+[Speaker 01] How does the label look?
+
+00:11:34.591 --> 00:11:38.751
+[Speaker 03] this is the black and white label and this is the rgb label this is a mask
+
+00:11:38.751 --> 00:11:47.007
+[Speaker 01] the label is basically the color mask like the change mask okay the label is a change mask the
+
+00:11:47.007 --> 00:11:53.599
+[Speaker 03] label is both a black and white and an rgb change there are two different types of change masks
+
+00:11:53.599 --> 00:11:56.640
+[Speaker 01] hold on so you have label
+
+00:12:02.367 --> 00:12:14.367
+[Speaker 01] 0 is the background which is black and 120 to 120 is probably the road changes and 255
+
+00:12:14.367 --> 00:12:15.367
+[Speaker 02] is the building.
+
+00:12:15.367 --> 00:12:19.776
+[Speaker 01] 120 to the road, 245 is the building.
+
+00:12:19.776 --> 00:12:24.776
+[Speaker 03] Yes, this is a black, white and black, grey and white mask.
+
+00:12:24.776 --> 00:12:27.263
+[Speaker 03] The other one is black, red and green.
+
+00:12:28.992 --> 00:12:30.992
+[Speaker 01] So what do they represent?
+
+00:12:30.992 --> 00:12:33.351
+[Speaker 03] But the same thing is just a different color format
+
+00:12:33.351 --> 00:12:37.111
+[Speaker 03] based on like some models are more sensitive to like extreme
+
+00:12:37.111 --> 00:12:37.611
+[Speaker 03] values.
+
+00:12:37.611 --> 00:12:39.312
+[Speaker 03] Some like would prefer a green.
+
+00:12:39.312 --> 00:12:41.111
+[Speaker 05] OK.
+
+00:12:41.111 --> 00:12:43.452
+[Speaker 01] So have you had a chance to compare them to see if
+
+00:12:44.575 --> 00:12:46.735
+[Speaker 01] Uh, there are any discrepancies?
+
+00:12:46.976 --> 00:12:51.716
+[Speaker 03] Some models were trained on the, on the black, white, like on a single channel.
+
+00:12:52.416 --> 00:12:52.875
+[Speaker 06] Okay.
+
+00:12:52.875 --> 00:12:54.335
+[Speaker 05] And then some are trained on that.
+
+00:12:54.335 --> 00:12:54.835
+[Speaker 05] That's it.
+
+00:12:54.835 --> 00:12:56.335
+[Speaker 01] So you would also be doing the same.
+
+00:12:57.375 --> 00:13:00.276
+[Speaker 03] We will pick whichever is giving us a better thing and we'll use that.
+
+00:13:00.276 --> 00:13:00.776
+[Speaker 03] Okay.  Okay.
+
+00:13:00.776 --> 00:13:04.815
+[Speaker 01] Fine, so let's go back, so these are the ones that's available on which one?
+
+00:13:04.935 --> 00:13:07.055
+[Speaker 01] Which data set?
+
+00:13:07.395 --> 00:13:09.895
+[Speaker 02] The second and the, right?
+
+00:13:11.435 --> 00:13:12.675
+[Speaker 01] No, this is a leverance here.
+
+00:13:13.015 --> 00:13:13.575
+[Speaker 01] Am I right?
+
+00:13:14.175 --> 00:13:14.475
+[Speaker 02] Yeah.
+
+00:13:15.315 --> 00:13:16.635
+[Speaker 02] So we're going with the CC.
+
+00:13:19.296 --> 00:13:22.636
+[Speaker 01] Next, well, you're going to the system.
+
+00:13:22.636 --> 00:13:24.316
+[Speaker 01] Not MCI.
+
+00:13:24.316 --> 00:13:26.395
+[Speaker 02] No, no, MCI is a primary data set.
+
+00:13:26.395 --> 00:13:27.455
+[Speaker 02] We just showed that.
+
+00:13:27.455 --> 00:13:28.316
+[Speaker 01] Okay, you showed that.
+
+00:13:28.316 --> 00:13:30.976
+[Speaker 03] CC and CD are like secondary because like,
+
+00:13:30.976 --> 00:13:32.276
+[Speaker 03] we will have multiple models.
+
+00:13:32.276 --> 00:13:35.436
+[Speaker 03] So the, for the entire pipeline, we'll use MCI.
+
+00:13:35.436 --> 00:13:39.056
+[Speaker 03] For specific parts, like specific sub models
+
+00:13:39.056 --> 00:13:40.996
+[Speaker 03] of the pipeline, we might have to train
+
+00:13:40.996 --> 00:13:43.736
+[Speaker 03] on the other data sets because just one will not be enough
+
+00:13:43.736 --> 00:13:45.136
+[Speaker 03] to train it.
+
+00:13:45.136 --> 00:13:47.096
+[Speaker 01] Okay, so, so when you say caption,
+
+00:13:47.096 --> 00:13:48.536
+[Speaker 01] you're talking about the,
+
+00:13:49.119 --> 00:13:55.816
+[Speaker 01] mask, the pixel mask identifying the change.
+
+00:13:57.016 --> 00:13:59.336
+[Speaker 01] That is what label is.
+
+00:13:59.336 --> 00:14:03.116
+[Speaker 01] So, okay, so this is the primary.
+
+00:14:03.116 --> 00:14:08.224
+[Speaker 01] What about those other two data sets?
+
+00:14:08.224 --> 00:14:09.144
+[Speaker 01] Do you have them?
+
+00:14:09.144 --> 00:14:10.264
+[Speaker 03] The other data sets, yeah,
+
+00:14:10.264 --> 00:14:12.764
+[Speaker 03] we have all of the data sets in the same drive.
+
+00:14:12.764 --> 00:14:15.359
+[Speaker 01] Yeah, can you show the other one?
+
+00:14:16.799 --> 00:14:20.039
+[Speaker 03] You can go to level or S2 or anything.
+
+00:14:20.039 --> 00:14:21.039
+[Speaker 01] Not the level.
+
+00:14:21.039 --> 00:14:22.440
+[Speaker 01] We are seeing both the level.
+
+00:14:22.440 --> 00:14:24.599
+[Speaker 02] So you want to see the second.
+
+00:14:24.599 --> 00:14:26.839
+[Speaker 05] Second is in the other.
+
+00:14:26.839 --> 00:14:28.380
+[Speaker 05] This one is it?
+
+00:14:28.380 --> 00:14:30.519
+[Speaker 05] I think S2 looking in here.
+
+00:14:30.519 --> 00:14:38.803
+[Speaker 03] Almost all of them have the same image one, image two, label one, label two, label three.
+
+00:14:38.803 --> 00:14:45.159
+[Speaker 03] Like this is like a universal bitemporal format.
+
+00:14:45.159 --> 00:14:47.859
+[Speaker 03] All bitemporal data sets have the same thing.
+
+00:14:47.859 --> 00:14:49.359
+[Speaker 01] OK, let's go back to the report.
+
+00:14:49.359 --> 00:14:54.335
+[Speaker 01] OK.
+
+00:14:54.335 --> 00:14:55.895
+[Speaker 01] So you're talking about.
+
+00:14:57.343 --> 00:15:00.583
+[Speaker 01] So 10,000 image pairs and why are there 50,000 captions?
+
+00:15:00.583 --> 00:15:07.432
+[Speaker 07] Five sentences each for each pair.
+
+00:15:07.432 --> 00:15:10.820
+[Speaker 01] What do you mean by sentences?
+
+00:15:10.820 --> 00:15:15.320
+[Speaker 07] Basically in Lever MCI, it's human labeled images.
+
+00:15:15.320 --> 00:15:18.859
+[Speaker 07] So five different people have labeled each image.
+
+00:15:18.859 --> 00:15:20.659
+[Speaker 01] But we didn't see that in the dataset, right?
+
+00:15:20.659 --> 00:15:22.899
+[Speaker 01] We didn't show that to them.
+
+00:15:22.899 --> 00:15:25.559
+[Speaker 07] Sujal, can you go back to the drive?
+
+00:15:25.559 --> 00:15:27.000
+[Speaker 05] It's in the JSON file.
+
+00:15:27.000 --> 00:15:28.575
+[Speaker 05] The JSON file that was there.
+
+00:15:29.119 --> 00:15:32.179
+[Speaker 01] Yeah, because you showed me caption as the...
+
+00:15:32.179 --> 00:15:33.520
+[Speaker 05] Yeah, this has like...
+
+00:15:33.520 --> 00:15:35.119
+[Speaker 05] Yeah, when G-SUN has it, right?
+
+00:15:35.119 --> 00:15:37.020
+[Speaker 03] That's the label and this is the caption.
+
+00:15:37.020 --> 00:15:40.020
+[Speaker 07] Yeah, you can see all of the labels, all the captions here.
+
+00:15:40.020 --> 00:15:42.020
+[Speaker 03] Each image has five entries in this.
+
+00:15:42.020 --> 00:15:42.520
+[Speaker 03] Yeah.
+
+00:15:42.520 --> 00:15:44.919
+[Speaker 01] Can we just see an example file?
+
+00:15:44.919 --> 00:15:46.619
+[Speaker 01] So this is the one, tokens.
+
+00:15:46.619 --> 00:15:47.520
+[Speaker 03] The two scenes...
+
+00:15:47.520 --> 00:15:50.020
+[Speaker 02] The tokens, the five, one, two, three...
+
+00:15:50.020 --> 00:15:52.820
+[Speaker 01] The two scenes seem identical, okay.
+
+00:15:52.820 --> 00:15:53.520
+[Speaker 01] Yeah.
+
+00:15:53.520 --> 00:15:56.520
+[Speaker 01] So each token is a part of a sentence, right?
+
+00:15:56.520 --> 00:15:58.779
+[Speaker 01] So all the five form a sentence, is it?
+
+00:15:59.231 --> 00:16:02.111
+[Speaker 05] No sir, there are like five different sentences.
+
+00:16:02.471 --> 00:16:05.412
+[Speaker 05] There are like five sentences each of five words.
+
+00:16:05.412 --> 00:16:06.712
+[Speaker 01] Oh, there are five different sentences.
+
+00:16:07.012 --> 00:16:07.332
+[Speaker 05] Yes.
+
+00:16:07.752 --> 00:16:08.852
+[Speaker 01] So what does two denote?
+
+00:16:09.232 --> 00:16:12.000
+[Speaker 04] No, no, no.
+
+00:16:12.180 --> 00:16:14.080
+[Speaker 03] The two sentences seem identical.
+
+00:16:14.080 --> 00:16:17.280
+[Speaker 05] It's one sentence.
+
+00:16:17.280 --> 00:16:19.280
+[Speaker 02] It's one sentence comprising a sentence.
+
+00:16:19.280 --> 00:16:20.660
+[Speaker 01] So that's what I originally thought.
+
+00:16:21.560 --> 00:16:24.180
+[Speaker 01] So basically these are the phrases from the sentence.
+
+00:16:24.480 --> 00:16:25.640
+[Speaker 01] What I mean by phrases?
+
+00:16:25.880 --> 00:16:26.120
+[Speaker 01] Yes.
+
+00:16:27.616 --> 00:16:30.156
+[Speaker 01] So if you join them all together, it forms a sentence.
+
+00:16:30.156 --> 00:16:30.716
+[Speaker 01] Am I right?
+
+00:16:30.716 --> 00:16:31.716
+[Speaker 01] Yes.
+
+00:16:31.716 --> 00:16:34.016
+[Speaker 03] And there are five sentences like this.
+
+00:16:34.016 --> 00:16:34.516
+[Speaker 03] Like this.
+
+00:16:34.516 --> 00:16:36.656
+[Speaker 03] It's just a coincidence that this is five words.
+
+00:16:36.656 --> 00:16:38.816
+[Speaker 07] Like we can see the scene the same as before.
+
+00:16:38.816 --> 00:16:39.116
+[Speaker 07] OK.
+
+00:16:39.116 --> 00:16:41.276
+[Speaker 01] So here it says, next one, the raw, it
+
+00:16:41.276 --> 00:16:45.856
+[Speaker 01] says the two scenes seem identical.
+
+00:16:45.856 --> 00:16:47.216
+[Speaker 01] What is the next one?
+
+00:16:47.216 --> 00:16:48.656
+[Speaker 03] The raw is like the whole sentence.
+
+00:16:48.656 --> 00:16:50.556
+[Speaker 03] And the tokens are just tokenization
+
+00:16:50.556 --> 00:16:52.416
+[Speaker 03] for ease of model loading.
+
+00:16:52.416 --> 00:16:53.016
+[Speaker 03] That's it.
+
+00:16:53.016 --> 00:16:53.416
+[Speaker 03] Yeah.
+
+00:16:53.416 --> 00:16:54.516
+[Speaker 01] That I understand.
+
+00:16:54.516 --> 00:16:57.247
+[Speaker 01] But then there is another one that says,
+
+00:16:57.823 --> 00:17:00.483
+[Speaker 01] Scene is the same as before.
+
+00:17:00.483 --> 00:17:01.983
+[Speaker 01] Is that part of the same record?
+
+00:17:01.983 --> 00:17:06.091
+[Speaker 03] Yes, there are five entries for each record.
+
+00:17:06.091 --> 00:17:07.631
+[Speaker 03] They might not be in the same place,
+
+00:17:07.631 --> 00:17:08.851
+[Speaker 03] there might be somewhere else,
+
+00:17:08.851 --> 00:17:11.744
+[Speaker 05] but there are five people who have labeled each record.
+
+00:17:12.832 --> 00:17:16.592
+[Speaker 01] So the first person says the two scenes seem identical.
+
+00:17:16.592 --> 00:17:18.592
+[Speaker 01] That is one person who says that.
+
+00:17:18.592 --> 00:17:20.112
+[Speaker 01] What does the second person say?
+
+00:17:20.112 --> 00:17:22.671
+[Speaker 03] Like there is almost nothing has changed.
+
+00:17:22.671 --> 00:17:24.112
+[Speaker 03] Someone is saying the scene is same.
+
+00:17:24.112 --> 00:17:25.472
+[Speaker 03] Same as before.
+
+00:17:25.472 --> 00:17:26.911
+[Speaker 07] Someone says no changes occurred.
+
+00:17:27.872 --> 00:17:29.072
+[Speaker 01] What about the third person?
+
+00:17:29.072 --> 00:17:30.271
+[Speaker 01] No changes occurred.
+
+00:17:30.271 --> 00:17:30.832
+[Speaker 01] Right?
+
+00:17:30.832 --> 00:17:31.552
+[Speaker 01] Yeah.
+
+00:17:31.552 --> 00:17:32.671
+[Speaker 01] What about the fourth person?
+
+00:17:33.712 --> 00:17:35.871
+[Speaker 07] Oh, it says almost nothing has changed.
+
+00:17:37.823 --> 00:17:42.263
+[Speaker 01] Okay, so do all the five of them convey the same meaning?
+
+00:17:42.263 --> 00:17:47.159
+[Speaker 05] Yes, I don't think there is any disputes.
+
+00:17:47.159 --> 00:17:47.999
+[Speaker 01] How do you know that?
+
+00:17:47.999 --> 00:17:49.799
+[Speaker 01] I mean, has it been...
+
+00:17:49.799 --> 00:17:50.799
+[Speaker 01] In what we found?
+
+00:17:50.799 --> 00:17:55.975
+[Speaker 01] Who explained in the dataset metadata?
+
+00:17:55.975 --> 00:17:59.915
+[Speaker 01] Or does it say that there could be differences
+
+00:17:59.915 --> 00:18:02.656
+[Speaker 01] between the captions and what they mean?
+
+00:18:02.656 --> 00:18:07.656
+[Speaker 01] Or would you need an LLM to basically do a initial check
+
+00:18:07.935 --> 00:18:09.887
+[Speaker 01] to see if all of them mean the same thing?
+
+00:18:13.407 --> 00:18:21.227
+[Speaker 07] I think they are human labels so we have pretty high credibility that all of them will convey
+
+00:18:21.227 --> 00:18:22.227
+[Speaker 07] the same.
+
+00:18:22.227 --> 00:18:23.227
+[Speaker 01] Not necessarily, right?
+
+00:18:23.227 --> 00:18:25.907
+[Speaker 07] Yeah, there can be some discriments.
+
+00:18:25.907 --> 00:18:28.167
+[Speaker 01] I mean, semantically are they same or similar?
+
+00:18:28.167 --> 00:18:29.167
+[Speaker 01] You would know.
+
+00:18:29.167 --> 00:18:31.588
+[Speaker 03] I think they are all similar.
+
+00:18:31.588 --> 00:18:35.627
+[Speaker 03] Like there is no one person saying there is no change and one person saying there are
+
+00:18:35.627 --> 00:18:36.627
+[Speaker 03] six buildings shown.
+
+00:18:36.627 --> 00:18:41.208
+[Speaker 01] So in terms of training, so in terms of training.
+
+00:18:41.887 --> 00:18:45.947
+[Speaker 01] or using this data set in your model,
+
+00:18:47.199 --> 00:18:51.599
+[Speaker 01] you require do you really require the five captions why would it require five captions
+
+00:18:51.599 --> 00:18:56.000
+[Speaker 03] because there are like different ways of telling the same thing because like like for example one
+
+00:18:56.000 --> 00:19:02.799
+[Speaker 03] person can say uh the bottom right of the forest is now a road the other person can say there are
+
+00:19:02.799 --> 00:19:07.839
+[Speaker 01] less trees in the bottom right so how so how are you going to combine all of them to form a coherent
+
+00:19:07.839 --> 00:19:14.079
+[Speaker 03] uh description uh we will try to like have a description that matches like you know
+
+00:19:14.463 --> 00:19:18.403
+[Speaker 03] It should be semantically similar to at least most if not all of them.
+
+00:19:18.403 --> 00:19:24.296
+[Speaker 01] So how do you plan to achieve that in your system?
+
+00:19:24.296 --> 00:19:26.527
+[Speaker 03] We will train it on all of them.
+
+00:19:28.255 --> 00:19:33.135
+[Speaker 01] training on all of them is different than saying you'll synthesize on all of them.
+
+00:19:33.855 --> 00:19:38.816
+[Speaker 01] Because if you train on all of them, do you think the model will be able to
+
+00:19:39.536 --> 00:19:41.855
+[Speaker 01] learn how to express the change?
+
+00:19:42.416 --> 00:19:47.075
+[Speaker 01] I mean, your hope is that all of them would mean the same thing.
+
+00:19:47.536 --> 00:19:53.115
+[Speaker 01] That is why the model would also learn to describe the changes
+
+00:19:54.047 --> 00:19:56.627
+[Speaker 01] in the way those five human beings have described.
+
+00:19:56.627 --> 00:19:59.427
+[Speaker 01] So I'm just thinking out loud as to why
+
+00:20:00.487 --> 00:20:03.987
+[Speaker 01] you would need all the five, why not just two of them?
+
+00:20:03.987 --> 00:20:09.167
+[Speaker 02] Either that or we can just classify it as an emotion
+
+00:20:09.167 --> 00:20:12.147
+[Speaker 02] if it's a seem or if there's a difference
+
+00:20:12.147 --> 00:20:14.400
+[Speaker 02] and then we can make that.
+
+00:20:15.328 --> 00:20:20.368
+[Speaker 02] can do that as well if that's a valid way to do it i think we haven't thought more on this okay
+
+00:20:20.368 --> 00:20:26.368
+[Speaker 01] let's just keep it aside let's let's go back to the report okay okay now that i know what the data
+
+00:20:26.368 --> 00:20:41.183
+[Speaker 01] set looks like right okay so now you have no no go up yeah a little more okay so so you have 10
+
+00:20:41.183 --> 00:20:45.183
+[Speaker 01] 077 image pairs so you have confirmed all of that right
+
+00:20:46.495 --> 00:20:48.296
+[Speaker 01] So image size analysis have you done?
+
+00:20:48.296 --> 00:20:51.735
+[Speaker 01] I mean, all of them are consistently 2.6 by 2.6.
+
+00:20:51.735 --> 00:20:53.495
+[Speaker 01] Because these are the preliminary data checks
+
+00:20:53.495 --> 00:20:54.556
+[Speaker 01] that you would have to do.
+
+00:20:56.556 --> 00:21:01.036
+[Speaker 01] And then, okay, it's a nominal 0.5 meter imagery
+
+00:21:01.036 --> 00:21:02.176
+[Speaker 01] from Texas.
+
+00:21:02.176 --> 00:21:04.036
+[Speaker 01] Dates, coordinate reference systems,
+
+00:21:04.036 --> 00:21:06.235
+[Speaker 01] and tag level spatial metadata
+
+00:21:06.235 --> 00:21:07.656
+[Speaker 01] are not supplied consistently.
+
+00:21:07.656 --> 00:21:09.335
+[Speaker 01] What do you mean by that?
+
+00:21:09.335 --> 00:21:10.656
+[Speaker 01] I mean, is it required?
+
+00:21:10.656 --> 00:21:11.391
+[Speaker 01] Not required.
+
+00:21:15.488 --> 00:21:17.728
+[Speaker 05] Yes sir, could you please repeat?
+
+00:21:17.728 --> 00:21:22.368
+[Speaker 01] Okay, no, no, I'm just reading out loud your first paragraph.
+
+00:21:22.368 --> 00:21:23.368
+[Speaker 01] Oh, okay.
+
+00:21:23.368 --> 00:21:24.968
+[Speaker 01] No, go up.
+
+00:21:24.968 --> 00:21:33.607
+[Speaker 01] See, there are certain things that you say here,
+
+00:21:33.607 --> 00:21:36.607
+[Speaker 01] like exact dates, coordinate different systems,
+
+00:21:36.607 --> 00:21:40.567
+[Speaker 01] and the tile-level spatial metadata are not supplied consistently.
+
+00:21:40.567 --> 00:21:43.419
+[Speaker 01] So they remain unknown in the manifest.
+
+00:21:43.419 --> 00:21:44.416
+[Speaker 01] What do you mean by that?
+
+00:21:49.760 --> 00:21:51.619
+[Speaker 01] I'm just reading out 1.1.
+
+00:21:51.619 --> 00:21:52.619
+[Speaker 01] Yeah.
+
+00:21:52.619 --> 00:21:54.699
+[Speaker 05] Yes, sir.
+
+00:21:54.699 --> 00:21:57.699
+[Speaker 03] So, actually, you can just go to the data set as well.
+
+00:21:57.699 --> 00:21:58.699
+[Speaker 03] Yeah.
+
+00:21:58.699 --> 00:21:59.900
+[Speaker 05] That's like actually.
+
+00:21:59.900 --> 00:22:00.900
+[Speaker 05] Yeah, so you go ahead.
+
+00:22:00.900 --> 00:22:05.060
+[Speaker 02] These parts are not mentioned or supplied by the data set.
+
+00:22:05.060 --> 00:22:06.820
+[Speaker 02] Like, if you go over the data set, you
+
+00:22:06.820 --> 00:22:08.900
+[Speaker 02] won't find the dates as to when they were done.
+
+00:22:08.900 --> 00:22:13.239
+[Speaker 02] And also the location, as well, the geometric data,
+
+00:22:13.239 --> 00:22:16.440
+[Speaker 02] and also the tiles as to where these were.
+
+00:22:16.800 --> 00:22:19.260
+[Speaker 01] So none of them have been given, isn't it?
+
+00:22:19.260 --> 00:22:24.760
+[Speaker 03] Yes, sir. They are not geotag. None of the bitemporal transition data.
+
+00:22:24.760 --> 00:22:29.340
+[Speaker 01] Okay, that's okay. So they are unknown because you seem to say not supplied consistently,
+
+00:22:29.340 --> 00:22:32.960
+[Speaker 01] but they have not been supplied at all. Is that what you mean to say?
+
+00:22:32.960 --> 00:22:36.991
+[Speaker 03] Some places there are extra data available for some images.
+
+00:22:38.400 --> 00:22:40.400
+[Speaker 01] So where are they within the JSON file?
+
+00:22:40.400 --> 00:22:42.400
+[Speaker 03] Oh no, they are secondary data sets.
+
+00:22:42.400 --> 00:22:44.400
+[Speaker 03] All of these level data sets have like two to three
+
+00:22:44.400 --> 00:22:46.400
+[Speaker 03] supplementary data sets which have like
+
+00:22:46.400 --> 00:22:48.400
+[Speaker 03] quarter of the data of the original data.
+
+00:22:48.400 --> 00:22:50.400
+[Speaker 01] Can you open one of them?
+
+00:22:50.400 --> 00:22:54.400
+[Speaker 03] We did not actually pull most of them.
+
+00:22:54.400 --> 00:22:56.400
+[Speaker 01] But I think one or two of them we might have.
+
+00:22:56.400 --> 00:22:58.400
+[Speaker 01] Okay, you did not pull most of them.
+
+00:22:58.400 --> 00:23:02.400
+[Speaker 01] Okay, so you're thinking they won't be necessary for you to
+
+00:23:02.400 --> 00:23:05.400
+[Speaker 01] for achieving the objectives of this project.
+
+00:23:05.400 --> 00:23:06.816
+[Speaker 01] You seem to think that
+
+00:23:07.232 --> 00:23:10.432
+[Speaker 01] those secondary information is not necessary.
+
+00:23:11.532 --> 00:23:13.671
+[Speaker 03] Yes, because we do not want to give that
+
+00:23:13.671 --> 00:23:15.552
+[Speaker 03] this is an image from this place.
+
+00:23:15.552 --> 00:23:16.992
+[Speaker 05] We just want to describe changes.
+
+00:23:16.992 --> 00:23:20.692
+[Speaker 03] So those location data is just irrelevant from us.
+
+00:23:20.692 --> 00:23:23.552
+[Speaker 01] Yeah, okay, no location data is irrelevant,
+
+00:23:23.552 --> 00:23:24.532
+[Speaker 01] but anything else?
+
+00:23:24.532 --> 00:23:25.972
+[Speaker 01] Nothing, okay.
+
+00:23:25.972 --> 00:23:30.112
+[Speaker 01] Now, so you're saying WHCDC is treated
+
+00:23:30.112 --> 00:23:31.512
+[Speaker 01] as a building only supervision.
+
+00:23:31.512 --> 00:23:35.708
+[Speaker 01] So does the data set have only building information,
+
+00:23:35.708 --> 00:23:36.479
+[Speaker 01] nothing else?
+
+00:23:39.423 --> 00:23:43.423
+[Speaker 03] Yes, sir, it's like only like a lot of only building changes.
+
+00:23:43.423 --> 00:23:45.423
+[Speaker 03] It just labeled where new buildings came up.
+
+00:23:45.423 --> 00:23:49.055
+[Speaker 03] It does not have much of road changes.
+
+00:23:49.055 --> 00:23:50.055
+[Speaker 01] It's in the road.
+
+00:23:50.055 --> 00:23:53.055
+[Speaker 01] So it does not have roads at all, vegetations at all.
+
+00:23:53.055 --> 00:23:56.055
+[Speaker 01] Or those changes have not been captured.
+
+00:23:56.055 --> 00:24:01.055
+[Speaker 03] Those I don't think like it is not labeling or explaining road changes.
+
+00:24:01.055 --> 00:24:05.055
+[Speaker 03] It's primarily change annotating for buildings.
+
+00:24:05.055 --> 00:24:08.027
+[Speaker 01] Okay.
+
+00:24:13.920 --> 00:24:16.100
+[Speaker 01] Okay, you're saying this mapping must not be applied
+
+00:24:16.100 --> 00:24:18.300
+[Speaker 01] to arbitrary full-scene land cover map
+
+00:24:18.300 --> 00:24:24.056
+[Speaker 01] where building presence does not imply change.
+
+00:24:24.056 --> 00:24:26.195
+[Speaker 01] Road and the staging change remain outside
+
+00:24:26.195 --> 00:24:27.875
+[Speaker 01] with automatic building only check.
+
+00:24:27.875 --> 00:24:32.988
+[Speaker 01] Okay, so that means the purpose of these three data sets
+
+00:24:32.988 --> 00:24:36.767
+[Speaker 01] are not similar, they're different, right?
+
+00:24:36.767 --> 00:24:39.328
+[Speaker 01] So, okay, so then go to the second one,
+
+00:24:39.328 --> 00:24:40.927
+[Speaker 01] preparation model input alignment.
+
+00:24:40.927 --> 00:24:42.907
+[Speaker 01] So let's go to that paragraph.
+
+00:24:42.907 --> 00:24:44.988
+[Speaker 01] Okay, so what are you doing here?
+
+00:24:46.007 --> 00:24:47.040
+[Speaker 01] What is the pipeline?
+
+00:24:49.151 --> 00:24:58.303
+[Speaker 03] This is basically, Sujjal you want to go ahead and explain the pipeline in more detail because I think you and Sarthak would have a more detailed understanding of it.
+
+00:25:01.119 --> 00:25:08.920
+[Speaker 02] So basically what we are doing is we are just pulling in this primary mask encoding in the first part
+
+00:25:08.920 --> 00:25:14.359
+[Speaker 02] and then we are decoding it and whatever we are getting in the validate part, right?
+
+00:25:14.359 --> 00:25:21.319
+[Speaker 02] Like we are just checking if whatever we got from our input is making, is relevant to this.
+
+00:25:21.319 --> 00:25:26.304
+[Speaker 02] And then whatever records we got, we are just freezing them and then this part,
+
+00:25:26.304 --> 00:25:28.144
+[Speaker 02] Sarthak, can you take this part up?
+
+00:25:28.144 --> 00:25:32.572
+[Speaker 01] So do you have a code behind this? Do you have a notebook behind this?
+
+00:25:35.264 --> 00:25:38.024
+[Speaker 02] Output in the sense, it's like I mentioned,
+
+00:25:38.024 --> 00:25:40.703
+[Speaker 02] like we all worked on separate parts of the pipeline
+
+00:25:40.703 --> 00:25:42.104
+[Speaker 02] and we had our own-
+
+00:25:42.104 --> 00:25:44.864
+[Speaker 03] We had scripts which we like checked each part
+
+00:25:44.864 --> 00:25:46.484
+[Speaker 03] in like bits and pieces.
+
+00:25:46.484 --> 00:25:49.664
+[Speaker 03] We just checked each section separately.
+
+00:25:49.664 --> 00:25:52.404
+[Speaker 03] Like the labeling and the metadata part, we checked it.
+
+00:25:52.404 --> 00:25:55.504
+[Speaker 03] And then the input parts also we like checked it,
+
+00:25:55.504 --> 00:25:57.064
+[Speaker 03] which can be like fed into the model.
+
+00:25:57.064 --> 00:26:00.223
+[Speaker 03] Then we like ran the few models on the data sets as well.
+
+00:26:00.223 --> 00:26:02.424
+[Speaker 03] Like we did not do it as one whole script.
+
+00:26:02.424 --> 00:26:04.444
+[Speaker 03] We like did each part separately.
+
+00:26:10.463 --> 00:26:16.943
+[Speaker 01] what I'm saying is, see here you're saying this looks like some sort of pre-processing
+
+00:26:17.583 --> 00:26:22.063
+[Speaker 01] pipeline here. This is the high level pre-processing. Yeah, this is the high level. So is it a planned
+
+00:26:22.063 --> 00:26:29.423
+[Speaker 01] pipeline or is it something that you have already coded is what I'm asking? We just smoke tested it.
+
+00:26:29.423 --> 00:26:38.943
+[Speaker 01] We did not like fully coded. Okay. We ran some which can't do this. This is your proposed pre-processing where can we
+
+00:26:40.000 --> 00:26:43.660
+[Speaker 03] We actually did run it for a few hundred entries as well.
+
+00:26:44.640 --> 00:26:49.439
+[Speaker 02] If one important thing in here, we did not do it as one single script.
+
+00:26:49.439 --> 00:26:50.880
+[Speaker 02] It was done separately.
+
+00:26:50.880 --> 00:26:53.660
+[Speaker 05] Like separate, the pipeline was done separately.
+
+00:26:53.660 --> 00:26:55.319
+[Speaker 03] Not as one notebook.
+
+00:26:56.239 --> 00:26:57.239
+[Speaker 03] But we did the whole.
+
+00:26:57.239 --> 00:27:01.252
+[Speaker 01] Okay.
+
+00:27:01.252 --> 00:27:08.832
+[Speaker 01] So in the validation process, what do you mean by decode join and hash check label classes?
+
+00:27:08.832 --> 00:27:10.092
+[Speaker 01] What are you doing there?
+
+00:27:10.092 --> 00:27:11.932
+[Speaker 01] So what are you decoding?
+
+00:27:12.991 --> 00:27:19.291
+[Speaker 02] We are basically decoding that those images, right, whatever we have, it's the same one
+
+00:27:19.291 --> 00:27:20.671
+[Speaker 02] and we are joining them.
+
+00:27:20.671 --> 00:27:26.211
+[Speaker 02] And how we are decoding is we have a 256 hash and that is basically making sure that those
+
+00:27:26.211 --> 00:27:31.403
+[Speaker 04] are the same.
+
+00:27:31.403 --> 00:27:32.403
+[Speaker 01] Okay.
+
+00:27:32.403 --> 00:27:39.903
+[Speaker 01] And what do you mean by freezing records?
+
+00:27:46.271 --> 00:27:49.631
+[Speaker 02] from that point onwards we won't have any changes on the dataset.
+
+00:27:49.631 --> 00:27:57.731
+[Speaker 03] Yes, once we have the validated cross-check differences, once we have the map cross-checked,
+
+00:27:57.731 --> 00:28:09.248
+[Speaker 05] we would not again run the difference models again.
+
+00:28:12.095 --> 00:28:15.295
+[Speaker 01] So basically you are explaining that down below.
+
+00:28:15.295 --> 00:28:18.935
+[Speaker 01] So you're saying, check that both images in the corresponding level exist.
+
+00:28:18.935 --> 00:28:22.255
+[Speaker 01] Decode correctly and have compatible dimensions.
+
+00:28:22.255 --> 00:28:28.255
+[Speaker 01] Store hashes or acquired files so later runs can detect substation for corruptions.
+
+00:28:28.255 --> 00:28:35.135
+[Speaker 01] Geometry, preserve, release alignment and original coordinates, any future crop pieces or research and stuff.
+
+00:28:36.576 --> 00:28:38.756
+[Speaker 01] must record its transform and valid overlap
+
+00:28:38.756 --> 00:28:41.356
+[Speaker 01] with visual regions and use the original to one channel.
+
+00:28:41.356 --> 00:28:44.676
+[Speaker 01] So you have not identified the model yet, right?
+
+00:28:44.676 --> 00:28:45.996
+[Speaker 01] Through which you're gonna process.
+
+00:28:45.996 --> 00:28:52.788
+[Speaker 01] So for example, initially you would have a detector, right?
+
+00:28:53.687 --> 00:28:56.848
+[Speaker 01] So is that an object detection model initially
+
+00:28:56.848 --> 00:28:59.588
+[Speaker 01] through which you're passing these images?
+
+00:28:59.588 --> 00:29:03.164
+[Speaker 03] It's a change detection model.
+
+00:29:03.164 --> 00:29:05.364
+[Speaker 01] Oh, it's a change detection model.
+
+00:29:05.364 --> 00:29:06.015
+[Speaker 05] Yes.
+
+00:29:07.072 --> 00:29:11.072
+[Speaker 01] So you have a pair of, so can somebody explain how the pipeline works?
+
+00:29:11.072 --> 00:29:16.072
+[Speaker 03] There will be like a pair of bitemporal images, the before and after.
+
+00:29:16.072 --> 00:29:20.072
+[Speaker 03] And then the initial thing will be like, it will take both the images.
+
+00:29:20.072 --> 00:29:23.072
+[Speaker 03] Then it will like run something like a unit.
+
+00:29:23.072 --> 00:29:27.072
+[Speaker 01] Take both images, meaning there are two different models or it will be the same model that...
+
+00:29:27.072 --> 00:29:29.072
+[Speaker 05] No, no, no, two images, sir.
+
+00:29:29.072 --> 00:29:31.072
+[Speaker 05] In the start of the first model.
+
+00:29:31.072 --> 00:29:32.287
+[Speaker 01] No, there are two images.
+
+00:29:32.703 --> 00:29:37.403
+[Speaker 03] The first change detection model will take the image at timestamp one,
+
+00:29:37.403 --> 00:29:41.264
+[Speaker 03] timestamp two, and then it will build the timestamp,
+
+00:29:41.264 --> 00:29:42.560
+[Speaker 03] like the change mask.
+
+00:29:43.615 --> 00:29:47.055
+[Speaker 03] And then it will explicitly put which are the valid pipeline.
+
+00:29:47.495 --> 00:29:47.935
+[Speaker 03] Pixels.
+
+00:29:48.375 --> 00:29:51.895
+[Speaker 03] Once it has all the pixels, it will label all of those pixels
+
+00:29:51.895 --> 00:29:54.776
+[Speaker 03] which all are valid changed pixels.
+
+00:29:55.315 --> 00:29:58.435
+[Speaker 03] Which are not just camera angle differences or something.
+
+00:29:58.895 --> 00:30:01.075
+[Speaker 03] The model itself will learn that.
+
+00:30:01.156 --> 00:30:03.255
+[Speaker 03] We will not explicitly be forcing that.
+
+00:30:04.156 --> 00:30:08.515
+[Speaker 01] But the change masks are already available to you as part of the dataset.
+
+00:30:08.515 --> 00:30:08.735
+[Speaker 01] Yes, sir.
+
+00:30:08.995 --> 00:30:11.935
+[Speaker 01] So how does that come in?
+
+00:30:12.223 --> 00:30:14.744
+[Speaker 01] come into the processing pipeline?
+
+00:30:14.744 --> 00:30:16.683
+[Speaker 03] This we are training it so that it can do
+
+00:30:16.683 --> 00:30:19.984
+[Speaker 03] one like an unknown thing as well, right?
+
+00:30:19.984 --> 00:30:22.663
+[Speaker 01] So it is not looking at the change mask
+
+00:30:22.663 --> 00:30:25.404
+[Speaker 01] that is available as part of the data set.
+
+00:30:25.404 --> 00:30:27.083
+[Speaker 03] Oh yes, I mean inference time,
+
+00:30:27.083 --> 00:30:28.723
+[Speaker 03] it will not want the change mask.
+
+00:30:28.723 --> 00:30:29.563
+[Speaker 03] It will generate.
+
+00:30:29.563 --> 00:30:31.343
+[Speaker 01] Not inference time, at training time,
+
+00:30:31.343 --> 00:30:32.463
+[Speaker 01] what are you doing?
+
+00:30:32.463 --> 00:30:35.443
+[Speaker 03] Training time also it will build its own new change mask
+
+00:30:35.443 --> 00:30:38.463
+[Speaker 03] and then it will validate against the correct one.
+
+00:30:38.463 --> 00:30:41.215
+[Speaker 01] Okay, then it will validate against what is provided.
+
+00:30:42.975 --> 00:30:44.435
+[Speaker 01] Is that what you're saying?
+
+00:30:44.435 --> 00:30:45.835
+[Speaker 05] Oh, yes, sir.
+
+00:30:45.835 --> 00:30:50.536
+[Speaker 01] So your model produces a changed mask from the two inputs.
+
+00:30:50.536 --> 00:30:52.995
+[Speaker 01] And then you have a changed mask that is already available
+
+00:30:52.995 --> 00:30:54.624
+[Speaker 01] as part of the data set.
+
+00:30:56.447 --> 00:30:59.287
+[Speaker 01] Okay, then what happens? Now you have two change masks.
+
+00:30:59.287 --> 00:31:02.147
+[Speaker 03] Now once we have, we will have one final change mask,
+
+00:31:02.147 --> 00:31:04.848
+[Speaker 03] which we will be using from now on forward.
+
+00:31:04.848 --> 00:31:07.187
+[Speaker 03] Like if you have inference time,
+
+00:31:07.187 --> 00:31:09.167
+[Speaker 03] inference time, we will have one change mask,
+
+00:31:09.167 --> 00:31:10.988
+[Speaker 03] which right now we're believing is correct
+
+00:31:10.988 --> 00:31:12.667
+[Speaker 03] and it has valid changes.
+
+00:31:12.667 --> 00:31:14.427
+[Speaker 01] Yeah, that is produced from your model.
+
+00:31:14.427 --> 00:31:16.427
+[Speaker 03] Yes, sir, the one that our model produced.
+
+00:31:16.427 --> 00:31:19.027
+[Speaker 03] Now we will take both the images
+
+00:31:19.027 --> 00:31:22.508
+[Speaker 03] and the predicted regions, the change mask.
+
+00:31:22.508 --> 00:31:23.407
+[Speaker 05] Right.
+
+00:31:23.407 --> 00:31:25.947
+[Speaker 03] Those three will go into a captioning model.
+
+00:31:26.751 --> 00:31:27.751
+[Speaker 05] Correct
+
+00:31:27.751 --> 00:31:31.751
+[Speaker 03] Now the captioning model will give the caption
+
+00:31:31.751 --> 00:31:32.751
+[Speaker 03] Now for this
+
+00:31:32.751 --> 00:31:39.751
+[Speaker 01] The captioning model looks set only they changed masks or do they look at the original images as well?
+
+00:31:39.751 --> 00:31:42.751
+[Speaker 03] The primary captioning model will see all three
+
+00:31:42.751 --> 00:31:48.312
+[Speaker 01] Okay, the primary captioning model will see all the three
+
+00:31:48.312 --> 00:31:49.312
+[Speaker 01] Yes sir
+
+00:31:49.312 --> 00:31:52.732
+[Speaker 03] Now once these three are done it will give its caption
+
+00:31:55.072 --> 00:32:01.472
+[Speaker 03] okay now this one will give only one caption the one which we are at inference time there will be
+
+00:32:01.472 --> 00:32:08.768
+[Speaker 01] only one caption that is okay but but in the training part what happens but at training time
+
+00:32:08.768 --> 00:32:14.288
+[Speaker 03] this one caption will be checked against five reference captions we did not decide fully yet
+
+00:32:14.288 --> 00:32:20.047
+[Speaker 03] will we check against all five or only one but either way it would the loss function for the
+
+00:32:20.047 --> 00:32:22.848
+[Speaker 03] training part would either be some function of all five
+
+00:32:23.296 --> 00:32:25.536
+[Speaker 03] Reference captions or just one reference caption.
+
+00:32:25.635 --> 00:32:26.936
+[Speaker 03] That is something we are not very sure.
+
+00:32:26.936 --> 00:32:27.196
+[Speaker 03] Yeah.
+
+00:32:27.476 --> 00:32:29.336
+[Speaker 02] We wanted to ask you the same on this.
+
+00:32:29.416 --> 00:32:34.436
+[Speaker 02] Would it be a good idea to check all five or just classify it in a binary way and then
+
+00:32:34.436 --> 00:32:35.615
+[Speaker 02] just check that?
+
+00:32:36.832 --> 00:32:39.452
+[Speaker 01] I don't have an answer to that.
+
+00:32:39.452 --> 00:32:43.452
+[Speaker 01] As long as you're able to ascertain that all the five of them
+
+00:32:43.452 --> 00:32:45.531
+[Speaker 01] are semantically similar.
+
+00:32:45.531 --> 00:32:49.332
+[Speaker 01] But semantically similar may not really mean,
+
+00:32:49.332 --> 00:32:51.952
+[Speaker 01] I mean, everything depends on the threshold that you use.
+
+00:32:51.952 --> 00:32:52.452
+[Speaker 01] Right?
+
+00:32:52.452 --> 00:32:54.291
+[Speaker 05] Oh, yes.
+
+00:32:54.291 --> 00:32:57.271
+[Speaker 03] So what is there in the data set itself
+
+00:32:57.271 --> 00:33:00.832
+[Speaker 03] is the five captions mean the same thing,
+
+00:33:00.832 --> 00:33:03.151
+[Speaker 03] but then they have different ways of putting it forward.
+
+00:33:03.151 --> 00:33:04.608
+[Speaker 03] Someone is telling their.
+
+00:33:04.767 --> 00:33:09.087
+[Speaker 03] trees which have got this cut, like someone from a more deforestation point of view that
+
+00:33:09.087 --> 00:33:13.267
+[Speaker 03] human would think that, you know, this area law has a lot of tree loss.
+
+00:33:13.267 --> 00:33:20.887
+[Speaker 01] Okay, so assuming that all the tribe of them are the ground truth, right?
+
+00:33:20.887 --> 00:33:21.887
+[Speaker 01] Yes.
+
+00:33:21.887 --> 00:33:25.667
+[Speaker 01] Then it does make sense to use all of them, right?
+
+00:33:25.667 --> 00:33:32.887
+[Speaker 01] So because your caption generator also is looking at the two original images.
+
+00:33:33.599 --> 00:33:36.239
+[Speaker 01] Even during the training it will do that, isn't it?
+
+00:33:36.239 --> 00:33:38.719
+[Speaker 05] Yes, sir.
+
+00:33:39.807 --> 00:33:44.047
+[Speaker 01] And then how does the comparison happen between the caption generated by the
+
+00:33:44.047 --> 00:33:49.187
+[Speaker 01] caption generator and the five reference labels?
+
+00:33:49.187 --> 00:33:50.447
+[Speaker 01] How are you going to compare?
+
+00:33:51.027 --> 00:33:54.527
+[Speaker 03] That comparison is something that not fully.
+
+00:33:54.527 --> 00:33:55.687
+[Speaker 01] Something that you have not.
+
+00:33:55.687 --> 00:33:56.187
+[Speaker 01] Oh, okay.
+
+00:33:56.187 --> 00:34:01.427
+[Speaker 03] So most of the current methods are using more of like conventional English
+
+00:34:01.427 --> 00:34:05.427
+[Speaker 03] scores, like blue or all of those kinds of scores, which are like more,
+
+00:34:05.728 --> 00:34:08.063
+[Speaker 03] how many words are mismatched.
+
+00:34:08.288 --> 00:34:11.008
+[Speaker 03] which we feel is not a very good method.
+
+00:34:11.008 --> 00:34:13.868
+[Speaker 03] We are thinking of something more of like a either like an
+
+00:34:14.408 --> 00:34:17.828
+[Speaker 03] do a vectorizer or an embedder and do a
+
+00:34:18.167 --> 00:34:21.008
+[Speaker 03] similarity check that would check like you know
+
+00:34:21.648 --> 00:34:24.447
+[Speaker 03] cosine similarity or like semantic similarity
+
+00:34:24.748 --> 00:34:27.947
+[Speaker 03] or the other thing that we were possibly thinking was
+
+00:34:28.248 --> 00:34:31.667
+[Speaker 03] a smaller model, something like small v2 or something which is like a
+
+00:34:32.148 --> 00:34:35.167
+[Speaker 03] very very small model language model which can
+
+00:34:35.708 --> 00:34:36.988
+[Speaker 03] give very good
+
+00:34:37.184 --> 00:34:41.583
+[Speaker 03] semantic checking because it knows enough English to semantically check two sentences.
+
+00:34:41.583 --> 00:34:45.284
+[Speaker 03] And it's not intelligent enough that it will do something stupid with those sentences.
+
+00:34:45.284 --> 00:34:54.432
+[Speaker 01] Okay. So coming back to your report,
+
+00:34:54.432 --> 00:35:02.587
+[Speaker 01] you're saying somewhere that there are duplicates and that you need to resolve them.
+
+00:35:02.587 --> 00:35:10.303
+[Speaker 01] This is in the context of your model looking at satellite image pairs during training
+
+00:35:10.303 --> 00:35:15.963
+[Speaker 01] and encounters the same pair during testing also, right?
+
+00:35:16.991 --> 00:35:19.751
+[Speaker 01] So those duplicates have to be either removed
+
+00:35:19.751 --> 00:35:24.631
+[Speaker 01] from the testing data set or the training data set.
+
+00:35:24.631 --> 00:35:28.800
+[Speaker 01] So is that something that is still to do or that will be completed?
+
+00:35:34.144 --> 00:35:41.904
+[Speaker 03] We actually did it on a subset of the data set because while we were doing the POC, we
+
+00:35:41.904 --> 00:35:44.424
+[Speaker 03] did not make a copy of the whole big data set.
+
+00:35:44.424 --> 00:35:48.004
+[Speaker 03] So we wrote the code and we ran it on a small subset.
+
+00:35:48.004 --> 00:35:56.264
+[Speaker 01] So there is a potential data leakage issue here that needs to be resolved, isn't it?
+
+00:35:56.264 --> 00:36:00.959
+[Speaker 03] We are doing it separately for all three.
+
+00:36:02.303 --> 00:36:06.904
+[Speaker 01] No, because somewhere I think you're identifying potentially duplicated
+
+00:36:06.904 --> 00:36:10.503
+[Speaker 01] Lever records and possible overlaps between testing and training.
+
+00:36:10.503 --> 00:36:15.243
+[Speaker 03] Yes, sir. That is there in Lever itself because similar,
+
+00:36:15.243 --> 00:36:17.243
+[Speaker 03] like because they have done a splitter.
+
+00:36:17.243 --> 00:36:20.503
+[Speaker 03] Now, coincidentally, that split would be images of the same place
+
+00:36:20.503 --> 00:36:22.803
+[Speaker 03] at different times or stuff like that.
+
+00:36:22.803 --> 00:36:25.696
+[Speaker 03] So that is like a fundamental leak in the,
+
+00:36:26.144 --> 00:36:28.083
+[Speaker 03] in how the data itself is formed.
+
+00:36:28.083 --> 00:36:30.464
+[Speaker 01] Yeah, so are you planning to handle them in some way
+
+00:36:30.464 --> 00:36:32.783
+[Speaker 01] or are you going to leave it as us?
+
+00:36:32.783 --> 00:36:34.924
+[Speaker 03] We might try to reduce it a bit,
+
+00:36:34.924 --> 00:36:37.764
+[Speaker 03] but I don't think we can do too much of it,
+
+00:36:37.764 --> 00:36:39.464
+[Speaker 03] but then we will end up losing a lot of data
+
+00:36:39.464 --> 00:36:41.864
+[Speaker 03] if we try to be too...
+
+00:36:41.864 --> 00:36:44.083
+[Speaker 01] I think somewhere, I do not know where you've identified
+
+00:36:44.083 --> 00:36:47.724
+[Speaker 01] eight such records out of 150 or so, right?
+
+00:36:47.724 --> 00:36:52.739
+[Speaker 03] Oh yeah, that was the very small thing we ran on 150 records.
+
+00:36:52.739 --> 00:36:55.711
+[Speaker 01] Yeah, so that is potentially what?
+
+00:36:57.184 --> 00:37:00.184
+[Speaker 03] Around 20, 25, no, not 20 percent, but.
+
+00:37:00.184 --> 00:37:02.644
+[Speaker 01] Yeah, 8 out of 150 is what?
+
+00:37:02.644 --> 00:37:06.164
+[Speaker 01] 8 out of 150 is maybe about 5 percent?
+
+00:37:06.164 --> 00:37:08.063
+[Speaker 03] Yeah, 5 to 6 percent, yeah.
+
+00:37:08.063 --> 00:37:10.364
+[Speaker 01] 5, 4 to 5 percent, right?
+
+00:37:10.364 --> 00:37:12.563
+[Speaker 01] So do you want to leave it there or?
+
+00:37:12.563 --> 00:37:14.164
+[Speaker 01] Yeah, here it says, right?
+
+00:37:14.164 --> 00:37:16.144
+[Speaker 03] We'll try to reduce it a bit.
+
+00:37:16.144 --> 00:37:21.224
+[Speaker 01] See, 16 redundant library pair records flagged by archive checks.
+
+00:37:21.224 --> 00:37:25.919
+[Speaker 01] No, it says five, no, no, here in the table, your findings.
+
+00:37:26.912 --> 00:37:31.496
+[Speaker 01] It says five test training candidate matches.
+
+00:37:31.496 --> 00:37:37.192
+[Speaker 01] Okay, so the five reported test candidates are outside.
+
+00:37:37.192 --> 00:37:38.303
+[Speaker 01] Okay, hold on.
+
+00:37:39.679 --> 00:37:40.959
+[Speaker 01] I just scroll a bit up.
+
+00:37:40.959 --> 00:37:47.659
+[Speaker 03] Like this is actually like a bit of both because the images might look very similar because
+
+00:37:47.659 --> 00:37:52.919
+[Speaker 03] they might be different satellite images of like you know two satellites passing very
+
+00:37:52.919 --> 00:37:55.000
+[Speaker 03] similar time over similar place.
+
+00:37:55.000 --> 00:37:58.760
+[Speaker 03] So they are not the same image, they are almost the same image.
+
+00:37:58.760 --> 00:38:00.719
+[Speaker 03] That is also something that's happening.
+
+00:38:00.719 --> 00:38:05.535
+[Speaker 01] Yeah, so that is also there right?
+
+00:38:08.031 --> 00:38:10.271
+[Speaker 01] So because you are mentioning here duplicate and overlap
+
+00:38:10.271 --> 00:38:11.911
+[Speaker 01] is the same.
+
+00:38:11.911 --> 00:38:14.152
+[Speaker 01] You're saying the preparation audit compares.
+
+00:38:14.152 --> 00:38:18.072
+[Speaker 01] These are efficient duplicate candidate checks.
+
+00:38:18.072 --> 00:38:20.471
+[Speaker 01] Suspected overlap require confirmation
+
+00:38:20.471 --> 00:38:23.411
+[Speaker 01] before final exclusion lists are frozen.
+
+00:38:23.411 --> 00:38:27.751
+[Speaker 01] So you're setting yourself a task here
+
+00:38:27.751 --> 00:38:31.552
+[Speaker 01] of excluding these duplicate candidates.
+
+00:38:31.552 --> 00:38:35.052
+[Speaker 01] Duplicate meaning not within the training data set
+
+00:38:35.052 --> 00:38:37.531
+[Speaker 01] or not within the testing, but across these two.
+
+00:38:39.775 --> 00:38:42.775
+[Speaker 01] So this is what your report is saying.
+
+00:38:42.775 --> 00:38:47.775
+[Speaker 01] I mean, you have to clarify whether this is something still yet to do.
+
+00:38:47.775 --> 00:38:48.775
+[Speaker 01] Still, so...
+
+00:38:48.775 --> 00:38:50.775
+[Speaker 03] We did it on 150.
+
+00:38:50.775 --> 00:38:52.775
+[Speaker 03] We were able to do it on 150.
+
+00:38:52.775 --> 00:38:54.775
+[Speaker 03] It was feasible for 150.
+
+00:38:54.775 --> 00:38:58.775
+[Speaker 03] Now, doing it on 10,000 is something...
+
+00:38:58.775 --> 00:39:00.775
+[Speaker 03] If we can do it, that will be great.
+
+00:39:00.775 --> 00:39:04.775
+[Speaker 03] And most probably we need to remove a large percentage of this.
+
+00:39:04.775 --> 00:39:09.407
+[Speaker 02] Also, while doing this on 150, right, the first thought that came on mind was,
+
+00:39:09.568 --> 00:39:12.668
+[Speaker 02] Is it actually a duplicate or is it just identical?
+
+00:39:14.112 --> 00:39:17.771
+[Speaker 02] So that is one thing that we were questioning as well in this.
+
+00:39:17.771 --> 00:39:20.672
+[Speaker 02] So again, I think it's not a priority right now
+
+00:39:20.672 --> 00:39:23.832
+[Speaker 02] for us to check whether we are supposed to do it.
+
+00:39:23.832 --> 00:39:25.511
+[Speaker 02] But yeah, on 150, we did it.
+
+00:39:25.511 --> 00:39:28.232
+[Speaker 02] If it's feasible on the entire data set,
+
+00:39:28.232 --> 00:39:30.632
+[Speaker 02] we can surely do that.
+
+00:39:30.632 --> 00:39:34.612
+[Speaker 01] See, this is only from the point of view of data leakage.
+
+00:39:34.612 --> 00:39:35.892
+[Speaker 01] Oh, yes.
+
+00:39:35.892 --> 00:39:36.991
+[Speaker 01] That's all.
+
+00:39:36.991 --> 00:39:40.892
+[Speaker 01] As long as you're able to curb that,
+
+00:39:40.892 --> 00:39:43.771
+[Speaker 01] I mean, it's good that your model will perform better.
+
+00:39:43.968 --> 00:39:51.539
+[Speaker 01] in the sense that it won't overland, right?
+
+00:39:51.539 --> 00:39:53.099
+[Speaker 01] Or similar images.
+
+00:39:53.099 --> 00:39:54.639
+[Speaker 01] It's like memorization.
+
+00:39:54.639 --> 00:39:59.639
+[Speaker 01] So anyway, so that is one thing that you have left to do.
+
+00:40:00.199 --> 00:40:02.119
+[Speaker 01] The second one you're saying,
+
+00:40:02.119 --> 00:40:04.719
+[Speaker 01] your report is acknowledging that the captioning package
+
+00:40:04.719 --> 00:40:08.299
+[Speaker 01] and the decision of the currently used different manifest
+
+00:40:08.299 --> 00:40:10.592
+[Speaker 01] and pair ID formats.
+
+00:40:12.095 --> 00:40:12.936
+[Speaker 01] So I do not know.
+
+00:40:12.936 --> 00:40:14.696
+[Speaker 01] So within your pipeline itself,
+
+00:40:15.795 --> 00:40:20.156
+[Speaker 01] so you have the detector part of the pipeline, which uses
+
+00:40:22.879 --> 00:40:27.879
+[Speaker 01] one set of pair ID formats, but then you're captioning,
+
+00:40:28.339 --> 00:40:32.199
+[Speaker 01] since it uses the same pair of images,
+
+00:40:32.199 --> 00:40:34.359
+[Speaker 01] even those pair ID should be similar.
+
+00:40:36.059 --> 00:40:38.119
+[Speaker 01] So I don't know how to express this.
+
+00:40:38.119 --> 00:40:38.959
+[Speaker 01] The pair ID is here.
+
+00:40:38.959 --> 00:40:41.000
+[Speaker 01] I don't know, you are saying that somewhere.
+
+00:40:41.000 --> 00:40:44.879
+[Speaker 02] Yeah, that's the, this part, this is the part, validate.
+
+00:40:44.879 --> 00:40:47.615
+[Speaker 02] We are using the SHA-256 for this.
+
+00:40:51.583 --> 00:40:54.184
+[Speaker 03] We are like creating the encrypted maps of,
+
+00:40:54.184 --> 00:40:57.743
+[Speaker 03] encrypted values of the hash maps,
+
+00:40:57.743 --> 00:41:11.592
+[Speaker 04] encoded values, sorry.
+
+00:41:11.592 --> 00:41:17.971
+[Speaker 04] So then we'll go to the next section.
+
+00:41:19.151 --> 00:41:30.311
+[Speaker 04] Yeah, so here are some quality dimension
+
+00:41:30.311 --> 00:41:33.651
+[Speaker 01] that you're discussing, completeness, label balance,
+
+00:41:33.651 --> 00:41:35.911
+[Speaker 01] small changes, annotation, consistency,
+
+00:41:35.911 --> 00:41:39.151
+[Speaker 01] caption, repetition, image variation.
+
+00:41:40.291 --> 00:41:42.144
+[Speaker 01] So what is your conclusion here?
+
+00:41:47.008 --> 00:41:51.508
+[Speaker 03] So this is the conclusion is basically this was just to identify what is the difference,
+
+00:41:51.508 --> 00:41:54.008
+[Speaker 03] like what is the distribution of what type of change?
+
+00:41:54.008 --> 00:42:01.008
+[Speaker 01] Now can someone else take up this explanation because Shurig you have been explaining everything
+
+00:42:01.008 --> 00:42:04.008
+[Speaker 01] and to some extent Sujal also.
+
+00:42:04.008 --> 00:42:07.008
+[Speaker 01] Someone else like Priyanchu or Sartak can take this up.
+
+00:42:07.008 --> 00:42:12.887
+[Speaker 03] Priyanchu is actually travelling right now. That is why he is not able to speak. He is in a train right now.
+
+00:42:14.815 --> 00:42:17.156
+[Speaker 01] Okay, what about Sartak?
+
+00:42:17.156 --> 00:42:20.696
+[Speaker 05] Yeah, me, Sartak and Sojal are available.
+
+00:42:20.696 --> 00:42:21.696
+[Speaker 01] Yeah, so.
+
+00:42:21.696 --> 00:42:22.295
+[Speaker 01] Yeah.
+
+00:42:22.295 --> 00:42:25.295
+[Speaker 01] Can Sartak throw some light here?
+
+00:42:25.295 --> 00:42:29.295
+[Speaker 07] We are discussing this quality dimensions and findings part, right?
+
+00:42:29.295 --> 00:42:30.528
+[Speaker 05] Yeah, yeah, yeah.
+
+00:42:31.552 --> 00:42:36.552
+[Speaker 07] So do I need to explain each and every part or?
+
+00:42:36.552 --> 00:42:42.052
+[Speaker 01] No, no, just what is your conclusion regarding the data quality and its suitability to the
+
+00:42:42.052 --> 00:42:45.552
+[Speaker 01] project because you have a dedicated section here.
+
+00:42:45.552 --> 00:42:49.552
+[Speaker 07] Okay, so related to level MCI, you're asking that, right?
+
+00:42:49.552 --> 00:42:53.664
+[Speaker 01] Obviously, that's what it's roughly interesting, but yeah.
+
+00:42:55.327 --> 00:42:59.327
+[Speaker 07] I'm not quite getting the question, like, what do you...
+
+00:42:59.327 --> 00:43:03.327
+[Speaker 01] No, you can just explain what is the conclusion drawn here.
+
+00:43:03.327 --> 00:43:07.327
+[Speaker 01] So, see, sometimes it becomes very difficult to...
+
+00:43:07.327 --> 00:43:11.327
+[Speaker 01] So, for example, so here you're seeing the captioning screen,
+
+00:43:11.327 --> 00:43:14.327
+[Speaker 01] that is the second paragraph towards the bottom,
+
+00:43:14.327 --> 00:43:18.327
+[Speaker 01] which is the captioning screen provides an ingestion check,
+
+00:43:18.327 --> 00:43:20.864
+[Speaker 01] not an independent, actually, benchmark,
+
+00:43:21.407 --> 00:43:25.407
+[Speaker 01] actuality benchmark, a constant no change caption obtains
+
+00:43:25.407 --> 00:43:31.407
+[Speaker 01] a SIDAR score of 0.94 on a 100 pair screen while missing every
+
+00:43:31.407 --> 00:43:35.407
+[Speaker 01] changed pair in the conflict-free subset.
+
+00:43:35.407 --> 00:43:39.407
+[Speaker 01] The automatic evaluator uses a reference mass and captions, whereas a deployed checker
+
+00:43:39.407 --> 00:43:42.407
+[Speaker 01] must use predicted evidence in original images.
+
+00:43:42.407 --> 00:43:48.959
+[Speaker 01] Its 50 pixel class presence threshold can suppose genuine small changes.
+
+00:43:49.439 --> 00:43:52.000
+[Speaker 01] So what is this finding that you're doing here?
+
+00:43:52.000 --> 00:43:54.000
+[Speaker 01] Why is the status score so high?
+
+00:43:56.199 --> 00:44:00.699
+[Speaker 01] We're in a 100-pair test.
+
+00:44:00.699 --> 00:44:35.599
+[Speaker 07] But the model can then just actually really fail
+
+00:44:35.599 --> 00:44:39.039
+[Speaker 07] to actually identify the changes in that context.
+
+00:44:39.039 --> 00:44:47.615
+[Speaker 07] So yeah, the CADR 0.94 test that you see.
+
+00:44:47.615 --> 00:44:49.315
+[Speaker 07] So it is just an evolution metric that
+
+00:44:49.315 --> 00:44:52.436
+[Speaker 07] measures the similarity between the generated caption
+
+00:44:52.436 --> 00:44:55.423
+[Speaker 07] and the reference caption.
+
+00:44:55.423 --> 00:44:57.983
+[Speaker 07] That's what that score means.
+
+00:44:57.983 --> 00:45:06.179
+[Speaker 04] OK, really?
+
+00:45:06.179 --> 00:45:06.719
+[Speaker 05] Yeah.
+
+00:45:07.840 --> 00:45:12.080
+[Speaker 01] So basically, the evaluation metric gave a very simple approach
+
+00:45:12.080 --> 00:45:13.680
+[Speaker 01] high score, right?
+
+00:45:13.680 --> 00:45:17.280
+[Speaker 01] Even though it failed to identify the actual change in those examples.
+
+00:45:17.280 --> 00:45:23.440
+[Speaker 01] So you're not discovering any change between the images.
+
+00:45:23.440 --> 00:45:29.440
+[Speaker 07] Yeah, so that's why we cannot rely on this CIDR metric alone.
+
+00:45:29.440 --> 00:45:33.600
+[Speaker 01] Is it a problem with the CIDR metric or is it a problem with the
+
+00:45:35.775 --> 00:45:37.015
+[Speaker 01] The data itself?
+
+00:45:37.015 --> 00:45:38.715
+[Speaker 07] No, not the data.
+
+00:45:38.715 --> 00:45:41.375
+[Speaker 07] It's like the metric.
+
+00:45:41.375 --> 00:45:45.675
+[Speaker 07] Basically what the metrics does is that, like just I said,
+
+00:45:45.675 --> 00:45:50.175
+[Speaker 07] it can correlate those two captions, the captions part,
+
+00:45:50.175 --> 00:45:53.975
+[Speaker 07] but the model can still fail to identify the actual changes,
+
+00:45:53.975 --> 00:45:56.535
+[Speaker 07] like the description of each and every image.
+
+00:45:56.535 --> 00:45:59.915
+[Speaker 07] So we can see it achieved a high score on that,
+
+00:45:59.915 --> 00:46:04.955
+[Speaker 07] but the metric can fail in that, but it's not really reliable.
+
+00:46:06.687 --> 00:46:09.927
+[Speaker 01] So what is the 50 pixel class presence threshold?
+
+00:46:09.927 --> 00:46:17.352
+[Speaker 04] What is that?
+
+00:46:17.352 --> 00:46:20.271
+[Speaker 07] 50 pixel class presence threshold.
+
+00:46:20.271 --> 00:46:24.552
+[Speaker 07] OK, so it just means that at least 50 pixels
+
+00:46:24.552 --> 00:46:28.352
+[Speaker 07] of a particular class, what means,
+
+00:46:28.352 --> 00:46:30.951
+[Speaker 07] like we just need the 50 pixels of a class
+
+00:46:30.951 --> 00:46:33.791
+[Speaker 07] to count the classes present.
+
+00:46:33.791 --> 00:46:35.072
+[Speaker 01] It has a change.
+
+00:46:35.072 --> 00:46:35.572
+[Speaker 01] Yeah.
+
+00:46:35.572 --> 00:46:36.632
+[Speaker 01] Or a class is present.
+
+00:46:36.632 --> 00:46:38.171
+[Speaker 01] So for example, if a building,
+
+00:46:39.488 --> 00:46:46.488
+[Speaker 01] Anything that is identified as a building visually should I have at least 50 pixels?
+
+00:46:46.488 --> 00:46:51.887
+[Speaker 07] Yeah, so let's say the actual building changed for 35 pixels and let's say the predicted
+
+00:46:51.887 --> 00:46:53.988
+[Speaker 07] building also changed for 35 pixels.
+
+00:46:53.988 --> 00:47:00.728
+[Speaker 07] So the threshold is 50, so even though the model is just detecting the region, the evaluator
+
+00:47:00.728 --> 00:47:03.327
+[Speaker 07] might suppress it because it doesn't meet the threshold.
+
+00:47:03.615 --> 00:47:08.335
+[Speaker 07] So genuine little changes like we have six buildings that are compact together.
+
+00:47:08.335 --> 00:47:10.736
+[Speaker 07] And so those changes can be missed by the evaluation.
+
+00:47:10.736 --> 00:47:14.736
+[Speaker 07] If like with this threshold.
+
+00:47:14.736 --> 00:47:16.800
+[Speaker 01] Anybody else?
+
+00:47:21.919 --> 00:47:48.031
+[Speaker 03] Yes sir, so the main thing about this 50 pixel class threshold is like what it is doing is that it should not like get confused in like very small changes like you know if there's a building that's like 500 pixels wide and then there's like just three or four pixels which changed. That's like very stupid because you will not have like a pixel, a whole building coming up in five pixels of space. So that threshold is there to like
+
+00:47:48.416 --> 00:47:54.815
+[Speaker 03] check if that object is increasing, decreasing or changing and that change is actually relevant
+
+00:47:54.815 --> 00:48:02.176
+[Speaker 03] not just angle changes or you know something very small so that 50px is like a very decent
+
+00:48:02.176 --> 00:48:07.036
+[Speaker 03] size because most of these images were on like bigger buildings they were like not small
+
+00:48:07.036 --> 00:48:11.416
+[Speaker 03] huts or something so that actually is a threshold that
+
+00:48:11.615 --> 00:48:17.456
+[Speaker 03] datasets and the models that trained on it found out we might have to change that pixel threshold
+
+00:48:17.456 --> 00:48:23.696
+[Speaker 03] maybe for indian conditions but for these datasets that was what was the most yeah because in india
+
+00:48:23.696 --> 00:48:30.815
+[Speaker 07] we have quite uh congestions in the buildings like we saw on the data set the mainly all the data sets
+
+00:48:30.815 --> 00:48:37.936
+[Speaker 07] we have it's of wide fields and the buildings are quite spaced out but for to adapt it to india we
+
+00:48:37.936 --> 00:48:46.751
+[Speaker 04] might need to change that
+
+00:48:47.904 --> 00:48:51.464
+[Speaker 01] And can you just go up to the datasets part?
+
+00:48:51.464 --> 00:48:53.264
+[Speaker 01] I think somewhere you're saying,
+
+00:48:53.264 --> 00:48:57.228
+[Speaker 01] when it comes to licenses, you're saying the...
+
+00:48:57.228 --> 00:49:02.031
+[Speaker 07] Not privacy part, what do you mean?
+
+00:49:02.031 --> 00:49:03.291
+[Speaker 01] Not privacy part.
+
+00:49:03.291 --> 00:49:05.271
+[Speaker 01] No, go up to the beginning.
+
+00:49:06.719 --> 00:49:10.560
+[Speaker 01] So here you're saying the primary development and training source,
+
+00:49:10.560 --> 00:49:15.760
+[Speaker 01] dataset specific permission is not explicit on the inspected release pages.
+
+00:49:15.760 --> 00:49:20.739
+[Speaker 01] So that is something that you would have to complete in this milestone.
+
+00:49:20.739 --> 00:49:23.231
+[Speaker 01] So the codes, yeah.
+
+00:49:24.288 --> 00:49:28.628
+[Speaker 03] Yes, sir, all of the Lever family are for academic use only.
+
+00:49:28.628 --> 00:49:30.628
+[Speaker 03] They cannot be used for commercial use.
+
+00:49:31.167 --> 00:49:35.288
+[Speaker 01] That's all right, but it doesn't prevent you from using them for research.
+
+00:49:35.288 --> 00:49:38.447
+[Speaker 01] They are all permitted for any academic use.
+
+00:49:38.447 --> 00:49:40.947
+[Speaker 05] Any research or academic use are permitted.
+
+00:49:40.947 --> 00:49:46.788
+[Speaker 01] Right, but it allows you to share it on the results on the GitHub and all of that, isn't it?
+
+00:49:46.788 --> 00:49:47.368
+[Speaker 01] Yes, sir.
+
+00:49:47.368 --> 00:49:50.427
+[Speaker 01] So there are a few angles that you would have to
+
+00:49:51.520 --> 00:49:53.919
+[Speaker 01] that these licenses permit you.
+
+00:49:53.919 --> 00:49:57.120
+[Speaker 05] Yes, sir, we checked the imagery.
+
+00:49:57.120 --> 00:50:00.719
+[Speaker 03] They are allowing for redistribution, but with same permanent conditions.
+
+00:50:00.719 --> 00:50:03.919
+[Speaker 03] We cannot allow public click, full public click.
+
+00:50:03.919 --> 00:50:10.520
+[Speaker 01] So you will have to share those as part of your GitHub submission.
+
+00:50:10.520 --> 00:50:12.520
+[Speaker 01] So whatever licenses you are using.
+
+00:50:12.520 --> 00:50:17.439
+[Speaker 01] Yes, we are not including the raw data into our, yes.
+
+00:50:18.144 --> 00:50:23.023
+[Speaker 01] no you're not including it but you're using it right oh yes from usage point of view you'll have
+
+00:50:23.023 --> 00:50:30.543
+[Speaker 05] to share whatever license that yes we can include that we already have mentioned it in the repo as
+
+00:50:31.424 --> 00:50:39.743
+[Speaker 01] okay and what about the human annotation part i think there is something
+
+00:50:42.847 --> 00:50:48.147
+[Speaker 03] The human annotation part which Lever did or the human annotation which we are thinking
+
+00:50:48.147 --> 00:50:49.147
+[Speaker 03] of?
+
+00:50:49.147 --> 00:50:50.147
+[Speaker 01] Which you are thinking of doing.
+
+00:50:50.147 --> 00:50:54.247
+[Speaker 03] What we are thinking of doing is that once we have the entire pipeline fully ready, we
+
+00:50:54.247 --> 00:51:01.067
+[Speaker 03] will create a 100, 150 or maybe 200 rows final small subset which will have a mix of all
+
+00:51:01.067 --> 00:51:02.747
+[Speaker 03] of these data sets.
+
+00:51:02.747 --> 00:51:06.527
+[Speaker 03] We will just re-bundle them, find the change masks.
+
+00:51:06.527 --> 00:51:08.387
+[Speaker 03] The change masks are already there.
+
+00:51:08.387 --> 00:51:12.447
+[Speaker 03] All of the data sets have change masks and the captions we will write it ourselves.
+
+00:51:12.800 --> 00:51:15.199
+[Speaker 03] on images from all the data sets.
+
+00:51:15.199 --> 00:51:17.080
+[Speaker 03] So that last small package,
+
+00:51:17.080 --> 00:51:19.840
+[Speaker 03] we can use it as a complete pipeline checking.
+
+00:51:20.679 --> 00:51:21.679
+[Speaker 05] Correct.
+
+00:51:21.679 --> 00:51:25.880
+[Speaker 01] So that evaluation data set also
+
+00:51:26.520 --> 00:51:29.360
+[Speaker 01] was supposed to be completed as part of this milestone,
+
+00:51:29.360 --> 00:51:30.399
+[Speaker 01] is what I'm saying.
+
+00:51:31.936 --> 00:51:33.736
+[Speaker 03] The labeling is not yet done, sir.
+
+00:51:33.736 --> 00:51:37.176
+[Speaker 01] The holding out scripts are ready.
+
+00:51:37.176 --> 00:51:38.335
+[Speaker 01] What is ready?
+
+00:51:38.335 --> 00:51:41.796
+[Speaker 03] The scripts which you are using for isolating these things,
+
+00:51:41.796 --> 00:51:44.815
+[Speaker 03] splitting the data sets, the scripts are ready,
+
+00:51:44.815 --> 00:51:47.236
+[Speaker 03] and we run the script on a subset of the data set.
+
+00:51:47.236 --> 00:51:49.135
+[Speaker 03] So the code is ready.
+
+00:51:49.135 --> 00:51:51.835
+[Speaker 03] We did not export the data set yet.
+
+00:51:53.439 --> 00:51:54.639
+[Speaker 03] And the labeling is not done.
+
+00:51:54.639 --> 00:51:57.819
+[Speaker 03] The human labeling, we annotations, we did not do it yet.
+
+00:51:57.819 --> 00:52:00.639
+[Speaker 01] So where is the devaluation dataset coming from?
+
+00:52:00.639 --> 00:52:06.048
+[Speaker 03] It is taking, it's like holding out small parts of the test data of all the datasets.
+
+00:52:08.832 --> 00:52:11.592
+[Speaker 01] Okay, so that is your evaluation data set.
+
+00:52:11.592 --> 00:52:13.592
+[Speaker 05] And I just had a question.
+
+00:52:13.592 --> 00:52:16.731
+[Speaker 03] And we'll include some other parts from other data sets
+
+00:52:16.731 --> 00:52:18.332
+[Speaker 03] which are not in this list.
+
+00:52:18.332 --> 00:52:20.572
+[Speaker 07] I had a question.
+
+00:52:20.572 --> 00:52:22.672
+[Speaker 07] That evaluation part that we also mentioned
+
+00:52:22.672 --> 00:52:24.072
+[Speaker 07] in the milestone one report
+
+00:52:24.072 --> 00:52:27.332
+[Speaker 07] that two reviewers will do a blind review.
+
+00:52:27.332 --> 00:52:29.172
+[Speaker 07] We do not know which data set it's coming from
+
+00:52:29.172 --> 00:52:32.531
+[Speaker 07] and which model predicted it.
+
+00:52:32.531 --> 00:52:37.983
+[Speaker 07] That should be after our pipeline has been completed, right?
+
+00:52:38.624 --> 00:52:42.224
+[Speaker 07] We should worry about that entirely after my plan is completed.
+
+00:52:42.224 --> 00:52:48.283
+[Speaker 07] So we can make the script any time about merging the test sets of the datasets.
+
+00:52:48.283 --> 00:52:52.444
+[Speaker 07] Do we really need to submit and prepare that till milestone 2?
+
+00:52:54.080 --> 00:53:00.479
+[Speaker 01] when it's part of this milestone but by when do you uh yeah we will human annotate it like after
+
+00:53:00.479 --> 00:53:05.280
+[Speaker 03] the entire pipeline like once we are testing the pipeline we will write the annotation yeah at the
+
+00:53:05.280 --> 00:53:10.160
+[Speaker 03] at the last stages of that was what we thought that might have been an oversight on our part
+
+00:53:10.160 --> 00:53:14.399
+[Speaker 03] we did not like realize the evaluation data set also had to be ready right now
+
+00:53:14.656 --> 00:53:19.135
+[Speaker 01] Because you're saying that the annotation tool and the sheets have been prepared.
+
+00:53:19.135 --> 00:53:20.135
+[Speaker 01] Yes sir, the scripts are ready.
+
+00:53:20.135 --> 00:53:22.736
+[Speaker 01] But the human factuality labels are still pending.
+
+00:53:22.736 --> 00:53:29.176
+[Speaker 03] Yes sir, we like wrote the script which you will do that and the formats, we did not sit and manually
+
+00:53:29.176 --> 00:53:32.575
+[Speaker 07] Yeah, we planned to do it after the pipeline development is ready.
+
+00:53:32.575 --> 00:53:39.055
+[Speaker 03] We had the confidence that yeah the script is ready, we just have to sit, run, enter 10 times and write labels.
+
+00:53:39.055 --> 00:53:41.776
+[Speaker 07] Because that is the tedious part about human evolution, right?
+
+00:53:41.776 --> 00:53:42.395
+[Speaker 07] Yeah.
+
+00:53:42.624 --> 00:53:45.003
+[Speaker 07] Yeah, we had to just label it manually.
+
+00:53:45.003 --> 00:53:48.404
+[Speaker 07] So we were planning to do it at the end of the development
+
+00:53:48.404 --> 00:53:49.664
+[Speaker 07] cycle.
+
+00:53:49.664 --> 00:53:53.444
+[Speaker 07] But if we require us to prepare it by the end of the smile
+
+00:53:53.444 --> 00:53:56.639
+[Speaker 07] show, then we will do that.
+
+00:53:58.112 --> 00:54:06.112
+[Speaker 01] Now the other thing I was concerned about was that the data set that you have selected in Level MCI.
+
+00:54:06.112 --> 00:54:15.112
+[Speaker 01] Now that data sets masks and the captions, do they agree? Have you done any test on that?
+
+00:54:15.112 --> 00:54:19.112
+[Speaker 03] We actually read reports of people who did it.
+
+00:54:19.112 --> 00:54:25.852
+[Speaker 03] Like Level MCI is a well studied data set. So we read those reports on the agreement of labels.
+
+00:54:26.016 --> 00:54:31.736
+[Speaker 03] They are semantically very similar, like as I told you, one of the entries from this
+
+00:54:32.800 --> 00:54:38.300
+[Speaker 03] data set was one person like this was like this is the entry that I'm telling you right
+
+00:54:38.300 --> 00:54:45.140
+[Speaker 03] now is one of the more disagreed entry every all the other normal entries are like no change
+
+00:54:45.140 --> 00:54:50.959
+[Speaker 03] almost no change nothing changed that is the average amount of disagreement and then the
+
+00:54:50.959 --> 00:54:55.679
+[Speaker 03] higher amount of disagreement between entries is like one person said a new road came up
+
+00:54:55.679 --> 00:55:00.040
+[Speaker 03] in the middle of the forest and then the other entries telling that a large amount of trees
+
+00:55:00.040 --> 00:55:02.360
+[Speaker 03] was cut in the middle of the forest that is the
+
+00:55:02.560 --> 00:55:05.020
+[Speaker 03] higher amount of disagreement between entries
+
+00:55:05.020 --> 00:55:08.724
+[Speaker 05] and the lower amount is almost nothing.
+
+00:55:08.724 --> 00:55:11.295
+[Speaker 03] That, like they are semantically very similar.
+
+00:55:12.320 --> 00:55:14.120
+[Speaker 05] in the level of the CIO.
+
+00:55:14.120 --> 00:55:16.260
+[Speaker 01] No, but are you referring to the reference labels
+
+00:55:16.260 --> 00:55:20.699
+[Speaker 01] or are you referring to cases where a mask indicates
+
+00:55:20.699 --> 00:55:24.380
+[Speaker 01] that the region has changed, but the reference caption says
+
+00:55:24.380 --> 00:55:26.479
+[Speaker 01] that nothing has changed?
+
+00:55:26.479 --> 00:55:27.680
+[Speaker 01] I think in your report itself, they're
+
+00:55:27.680 --> 00:55:31.280
+[Speaker 01] saying there are eight such disagreements among 115
+
+00:55:31.280 --> 00:55:32.180
+[Speaker 01] expected pairs.
+
+00:55:32.180 --> 00:55:34.760
+[Speaker 03] Yeah, but then those changes are, the change masks
+
+00:55:34.760 --> 00:55:36.560
+[Speaker 03] are very small in that case.
+
+00:55:36.560 --> 00:55:38.520
+[Speaker 03] Like all of these things are like,
+
+00:55:38.815 --> 00:55:45.815
+[Speaker 01] The change must be small, but did you visually examine to find out if you really agree with that?
+
+00:55:45.815 --> 00:55:49.815
+[Speaker 01] The mask might have changed for many reasons, for example.
+
+00:55:49.815 --> 00:55:53.815
+[Speaker 01] Even lighting change might have affected that, isn't it?
+
+00:55:53.815 --> 00:55:54.815
+[Speaker 01] Yes, sir.
+
+00:55:54.815 --> 00:55:57.815
+[Speaker 01] So, for example, did you visually inspect them?
+
+00:55:57.815 --> 00:56:00.815
+[Speaker 01] Because you're saying that there are eight such...
+
+00:56:00.815 --> 00:56:04.815
+[Speaker 01] Because the report, I think, somewhere it says there are eight such disagreements.
+
+00:56:04.815 --> 00:56:06.815
+[Speaker 05] Yeah, eight out of one hundred and fifty. Yes, sir.
+
+00:56:06.815 --> 00:56:08.156
+[Speaker 01] One fifty.
+
+00:56:08.416 --> 00:56:10.947
+[Speaker 05] Yeah, sorry, 150.
+
+00:56:10.947 --> 00:56:16.148
+[Speaker 01] Yeah, so are you planning to flag them or exclude them?
+
+00:56:16.148 --> 00:56:17.148
+[Speaker 01] No, you're not.
+
+00:56:17.148 --> 00:56:20.048
+[Speaker 03] We are thinking that I don't think it should be necessary.
+
+00:56:20.048 --> 00:56:24.868
+[Speaker 03] Those could be flagged for like end human review,
+
+00:56:24.868 --> 00:56:27.588
+[Speaker 03] like in the final link, because the main output
+
+00:56:27.588 --> 00:56:29.928
+[Speaker 03] could either be giving a guaranteed caption
+
+00:56:29.928 --> 00:56:31.628
+[Speaker 03] or flagging it for further human review.
+
+00:56:31.628 --> 00:56:34.048
+[Speaker 03] So the model should be able to flag it for human review
+
+00:56:34.048 --> 00:56:35.328
+[Speaker 03] is what we're thinking.
+
+00:56:35.328 --> 00:56:37.728
+[Speaker 03] Other than that, the model should also
+
+00:56:37.728 --> 00:56:39.548
+[Speaker 03] learn how to deal with.
+
+00:56:40.479 --> 00:56:44.439
+[Speaker 03] slightly messy entries as well because not all images would be clean.
+
+00:56:44.439 --> 00:56:49.719
+[Speaker 03] So we are treating the caption as the ground truth and then we are just letting the model
+
+00:56:49.719 --> 00:56:51.979
+[Speaker 05] figure out the back work from it.
+
+00:56:51.979 --> 00:56:54.260
+[Speaker 05] This is what we are thinking initially.
+
+00:56:54.260 --> 00:57:00.500
+[Speaker 03] But we might like once we do a bit more of comprehensive model training and fine tuning
+
+00:57:00.500 --> 00:57:04.439
+[Speaker 03] for milestone 3, we might have to make small changes in the dataset back.
+
+00:57:07.583 --> 00:57:10.144
+[Speaker 01] Okay, so basically...
+
+00:57:10.144 --> 00:57:10.704
+[Speaker 05] That's the worst case scenario.
+
+00:57:11.323 --> 00:57:12.523
+[Speaker 05] Hopefully we should not be after.
+
+00:57:13.164 --> 00:57:15.924
+[Speaker 03] Hopefully the current evaluation should be robust enough
+
+00:57:15.924 --> 00:57:16.884
+[Speaker 03] is what we are expecting.
+
+00:57:23.063 --> 00:57:27.419
+[Speaker 01] Okay, so there are three things basically.
+
+00:57:27.639 --> 00:57:33.147
+[Speaker 01] One is that any claims that your model makes
+
+00:57:33.147 --> 00:57:36.208
+[Speaker 01] should be verified against the masks
+
+00:57:36.208 --> 00:57:39.320
+[Speaker 01] or they might actually require inspection
+
+00:57:39.320 --> 00:57:40.660
+[Speaker 01] of the original images, right?
+
+00:57:42.459 --> 00:57:43.219
+[Speaker 03] Yes, sir.
+
+00:57:43.360 --> 00:57:44.660
+[Speaker 03] Either it will...
+
+00:57:44.660 --> 00:57:48.800
+[Speaker 03] Can you go to where we had the...
+
+00:57:50.303 --> 00:57:56.427
+[Speaker 03] I'm not getting its name, like where we had the overall pipeline.
+
+00:57:56.427 --> 00:58:01.171
+[Speaker 05] Somewhere there, Beachman.
+
+00:58:01.171 --> 00:58:04.508
+[Speaker 03] Go a little bit down towards the future.
+
+00:58:04.508 --> 00:58:08.887
+[Speaker 03] Yeah, so this is like basically once we have the change description and then the caption
+
+00:58:08.887 --> 00:58:16.447
+[Speaker 03] is ready, it will check the change mask, it will like the claim detection thing will run
+
+00:58:17.664 --> 00:58:24.063
+[Speaker 03] claim from the caption against the image from the change which was there in the change mask.
+
+00:58:24.063 --> 00:58:29.484
+[Speaker 03] Now, if that is not at all agreeing, like if they're complete opposites, the model will
+
+00:58:29.484 --> 00:58:32.803
+[Speaker 03] push it for human evaluation at inference time.
+
+00:58:32.803 --> 00:58:37.343
+[Speaker 03] Because this is designed for either it gives the change or it tells the government employee
+
+00:58:37.343 --> 00:58:38.543
+[Speaker 03] to change check again.
+
+00:58:38.543 --> 00:58:53.951
+[Speaker 05] So, do you anticipate any more changes to this report itself?
+
+00:58:56.352 --> 00:58:59.112
+[Speaker 05] I hope that you can do some changes.
+
+00:58:59.112 --> 00:59:03.312
+[Speaker 02] Just a bit, just one bit I wanted to ask.
+
+00:59:03.312 --> 00:59:05.852
+[Speaker 02] So we've mentioned and we have stayed on the team
+
+00:59:05.852 --> 00:59:08.352
+[Speaker 02] that we have run the POCs by ourselves
+
+00:59:08.352 --> 00:59:10.332
+[Speaker 02] and have a high level overview.
+
+00:59:10.332 --> 00:59:13.052
+[Speaker 02] So what we want to do is we wanted to take the time out
+
+00:59:13.052 --> 00:59:17.291
+[Speaker 02] in the weekends and make sure that we are actually aligned
+
+00:59:17.291 --> 00:59:22.092
+[Speaker 02] on the POC being ran as a whole pipeline.
+
+00:59:22.092 --> 00:59:25.791
+[Speaker 02] So we were hoping to make some, like,
+
+00:59:26.208 --> 00:59:28.968
+[Speaker 02] if we could, once that's done.
+
+00:59:28.968 --> 00:59:30.968
+[Speaker 01] Yeah, yeah, we can look at changes.
+
+00:59:30.968 --> 00:59:36.548
+[Speaker 01] So, maybe as of now, there are a lot of things that have not been documented.
+
+00:59:36.548 --> 00:59:41.968
+[Speaker 01] In the sense, it explains what you've done, but then you're also claiming that certain things
+
+00:59:41.968 --> 00:59:47.968
+[Speaker 01] have either been left out or remains to be done, because we don't want such ambiguities in the report
+
+00:59:47.968 --> 00:59:50.783
+[Speaker 01] that are expected to be complete.
+
+00:59:51.456 --> 00:59:53.696
+[Speaker 05] Yes, sir, we'll actually do that.
+
+00:59:53.696 --> 00:59:59.816
+[Speaker 02] Yes, that's the reason why we wanted to do this part again.
+
+00:59:59.816 --> 01:00:02.696
+[Speaker 02] So basically all of these four components...
+
+01:00:02.696 --> 01:00:07.576
+[Speaker 01] Because all of that is summarized well in the last paragraph that I read
+
+01:00:07.576 --> 01:00:09.576
+[Speaker 01] at the beginning of the meeting.
+
+01:00:09.576 --> 01:00:12.776
+[Speaker 01] So here you're saying before milestone 3,
+
+01:00:12.776 --> 01:00:15.335
+[Speaker 01] the team will consult it, cross-rail manifest,
+
+01:00:15.335 --> 01:00:19.996
+[Speaker 01] confirm duplicate candidates and release permissions,
+
+01:00:20.927 --> 01:00:26.528
+[Speaker 01] finalize all of this and pilot the two rater claim audit. I mean, I don't know what this means.
+
+01:00:27.407 --> 01:00:32.768
+[Speaker 01] So if you say before milestone three, then they form part of milestone two,
+
+01:00:32.768 --> 01:00:39.904
+[Speaker 01] I don't know, right? Because they happen to be part of the data set that you're trying to finalize.
+
+01:00:40.159 --> 01:00:41.799
+[Speaker 01] for taking it forward?
+
+01:00:41.799 --> 01:00:42.919
+[Speaker 02] Yeah.
+
+01:00:42.919 --> 01:00:44.059
+[Speaker 02] First, to answer your question,
+
+01:00:44.059 --> 01:00:46.659
+[Speaker 02] the two-rater claim audit is basically this one,
+
+01:00:46.659 --> 01:00:47.399
+[Speaker 02] the human.
+
+01:00:47.399 --> 01:00:48.119
+[Speaker 02] OK, this one.
+
+01:00:48.119 --> 01:00:48.919
+[Speaker 01] Yeah, OK.
+
+01:00:48.919 --> 01:00:49.419
+[Speaker 01] Yes.
+
+01:00:49.419 --> 01:00:50.039
+[Speaker 01] The human.
+
+01:00:50.039 --> 01:00:53.119
+[Speaker 02] Secondly, this is the part we were actually questioning
+
+01:00:53.119 --> 01:00:55.619
+[Speaker 02] ourselves as well, because this came as a milestone
+
+01:00:55.619 --> 01:00:56.299
+[Speaker 02] to a requirement.
+
+01:00:56.299 --> 01:00:58.760
+[Speaker 02] But over here, you can see that we will
+
+01:00:58.760 --> 01:01:01.280
+[Speaker 02] palliate these by milestone three.
+
+01:01:01.280 --> 01:01:05.219
+[Speaker 02] So we wanted to ask you if it's fine if we can do one more
+
+01:01:05.219 --> 01:01:06.539
+[Speaker 02] iteration on this report.
+
+01:01:06.539 --> 01:01:08.736
+[Speaker 02] And you can do that.
+
+01:01:09.087 --> 01:01:15.059
+[Speaker 01] So what do you mean by, so go back to the report, what do you mean by consolidate the
+
+01:01:15.059 --> 01:01:16.319
+[Speaker 01] crosshole manifest?
+
+01:01:16.319 --> 01:01:23.335
+[Speaker 02] Basically, whatever things we have done, we want to check it as a whole.
+
+01:01:23.335 --> 01:01:28.936
+[Speaker 02] Currently, we have done it parallelly and run it just on ourselves, on our machines,
+
+01:01:28.936 --> 01:01:34.131
+[Speaker 02] but what we want to do is we want to combine the entire script and run it as one.
+
+01:01:34.131 --> 01:01:38.072
+[Speaker 01] So by manifest, do you mean a dataset or do you mean a collection of datasets?
+
+01:01:42.944 --> 01:01:45.104
+[Speaker 01] And what is cross rule?
+
+01:01:45.104 --> 01:01:49.484
+[Speaker 02] Cross rule is basically, so I'm taking up the captioning part.
+
+01:01:49.484 --> 01:01:51.264
+[Speaker 02] I think Shroeb is taking the first one, no, no, no.
+
+01:01:51.264 --> 01:01:54.064
+[Speaker 02] Sartak is taking the first one and so on and so forth.
+
+01:01:54.064 --> 01:01:56.184
+[Speaker 02] So all of these is being done by four.
+
+01:01:56.184 --> 01:02:01.304
+[Speaker 05] We will swap these places and then I will run Sujal scripts
+
+01:02:01.304 --> 01:02:02.184
+[Speaker 05] and you know, like that.
+
+01:02:02.184 --> 01:02:06.343
+[Speaker 01] OK, so that is between you guys.
+
+01:02:06.343 --> 01:02:07.343
+[Speaker 01] Yes.
+
+01:02:07.343 --> 01:02:11.184
+[Speaker 05] Because we don't want to have one person as a source of truth
+
+01:02:11.184 --> 01:02:12.479
+[Speaker 05] for anything.
+
+01:02:13.216 --> 01:02:14.875
+[Speaker 01] Okay, then you do that.
+
+01:02:14.875 --> 01:02:17.875
+[Speaker 01] I mean, you can then remove those parts from the report.
+
+01:02:17.875 --> 01:02:19.595
+[Speaker 05] Yeah, was this supposed to?
+
+01:02:19.595 --> 01:02:20.595
+[Speaker 05] Yeah.
+
+01:02:20.595 --> 01:02:24.095
+[Speaker 07] Yeah, I don't think this was supposed to be in the report, right?
+
+01:02:24.095 --> 01:02:25.095
+[Speaker 05] Yeah.
+
+01:02:25.095 --> 01:02:28.095
+[Speaker 07] Yeah, that was for our team's reference.
+
+01:02:28.095 --> 01:02:32.095
+[Speaker 03] Yeah, that was in my markdown file, which I don't want to remove in the-
+
+01:02:32.095 --> 01:02:35.716
+[Speaker 01] So, do not have any content that is yet to do, right?
+
+01:02:35.716 --> 01:02:40.716
+[Speaker 01] So, all the body clean remains to be done should actually have been done and
+
+01:02:40.716 --> 01:02:42.716
+[Speaker 01] be part of the findings.
+
+01:02:43.167 --> 01:02:44.827
+[Speaker 01] that you want to report in this report.
+
+01:02:44.827 --> 01:02:46.748
+[Speaker 05] So yes, yes.
+
+01:02:46.748 --> 01:02:49.008
+[Speaker 01] Okay, including the licenses and everything.
+
+01:02:49.008 --> 01:02:51.167
+[Speaker 01] I mean, don't say that we have not yet,
+
+01:02:52.427 --> 01:02:53.947
+[Speaker 01] you know, looked at what we can do
+
+01:02:53.947 --> 01:02:55.748
+[Speaker 01] and we cannot do with the data set.
+
+01:02:55.748 --> 01:02:56.968
+[Speaker 01] And I know that belongs here.
+
+01:02:56.968 --> 01:02:59.627
+[Speaker 01] We have to care about what you can do with the data set.
+
+01:02:59.627 --> 01:03:01.488
+[Speaker 01] And since you're using three of them,
+
+01:03:01.488 --> 01:03:03.327
+[Speaker 01] we'll be clear about because their license,
+
+01:03:03.327 --> 01:03:05.047
+[Speaker 01] it could be potentially be different.
+
+01:03:05.968 --> 01:03:09.407
+[Speaker 01] So that part you clarify.
+
+01:03:09.407 --> 01:03:10.719
+[Speaker 01] So please resubmit.
+
+01:03:11.104 --> 01:03:15.543
+[Speaker 01] Maybe you can take another 48 hours and maybe resubmit your report.
+
+01:03:15.543 --> 01:03:19.104
+[Speaker 01] And maybe I'll just go through your report once again
+
+01:03:19.104 --> 01:03:23.843
+[Speaker 01] and maybe I have my talking points listed and share that with you.
+
+01:03:23.843 --> 01:03:24.543
+[Speaker 01] Yes.
+
+01:03:24.543 --> 01:03:30.003
+[Speaker 01] And along with your changes, incorporate my changes also.
+
+01:03:31.003 --> 01:03:33.703
+[Speaker 01] Or rather changes meaning clarifications.
+
+01:03:33.703 --> 01:03:34.803
+[Speaker 01] Nothing much.
+
+01:03:34.803 --> 01:03:38.815
+[Speaker 07] Sir, just to clarify, can we submit it by Monday, Yudi?
+
+01:03:40.352 --> 01:03:47.312
+[Speaker 01] that's okay somebody did by monday yeah thanks okay okay so i think i don't have anything else
+
+01:03:47.312 --> 01:03:53.472
+[Speaker 01] here uh i thought initially i might look at any code related to this milestone do you have any code
+
+01:03:54.352 --> 01:04:00.832
+[Speaker 01] related to this milestone maybe something to do the eda that you want to it's actually pushed in
+
+01:04:00.832 --> 01:04:06.352
+[Speaker 03] the poc folder like all of the experimental code which we have tried is in the pocs folder not the
+
+01:04:06.352 --> 01:04:07.392
+[Speaker 01] experimental one
+
+01:04:07.968 --> 01:04:12.968
+[Speaker 01] Let's talk about that 150 record EDA that we have done.
+
+01:04:12.968 --> 01:04:14.968
+[Speaker 03] We did it all as part of POC.
+
+01:04:14.968 --> 01:04:16.968
+[Speaker 03] We did not make it as a confirmed...
+
+01:04:16.968 --> 01:04:19.968
+[Speaker 01] So that would be one notebook, right?
+
+01:04:19.968 --> 01:04:21.968
+[Speaker 01] Or is that a group of...
+
+01:04:21.968 --> 01:04:23.968
+[Speaker 05] These are a bunch of files.
+
+01:04:23.968 --> 01:04:25.968
+[Speaker 05] It's a bunch of scripts.
+
+01:04:25.968 --> 01:04:28.968
+[Speaker 01] Can you just show me what is what?
+
+01:04:28.968 --> 01:04:31.711
+[Speaker 01] And then maybe I'll go into detail.
+
+01:04:32.895 --> 01:04:36.335
+[Speaker 01] Can you identify just particularly those Python files
+
+01:04:36.335 --> 01:04:40.216
+[Speaker 01] where you have done the EDF of the 750 records?
+
+01:04:40.216 --> 01:04:48.599
+[Speaker 01] I just want to see the drift of how you guys are doing it.
+
+01:04:48.599 --> 01:04:56.224
+[Speaker 04] Yes, sir.
+
+01:05:00.256 --> 01:05:01.456
+[Speaker 01] I mean, only the EDF part.
+
+01:05:01.456 --> 01:05:04.496
+[Speaker 01] I mean, remember that chart that you have in the report?
+
+01:05:04.496 --> 01:05:05.356
+[Speaker 05] Yes, sir.
+
+01:05:05.356 --> 01:05:09.696
+[Speaker 02] Yeah, I have the code for this.
+
+01:05:09.696 --> 01:05:12.316
+[Speaker 02] I did not push it because it was a lot of benchmarking.
+
+01:05:12.316 --> 01:05:13.756
+[Speaker 02] And I thought it would just.
+
+01:05:13.756 --> 01:05:15.316
+[Speaker 01] It's not been pushed, has it?
+
+01:05:15.316 --> 01:05:16.336
+[Speaker 02] No, no, no, I did not push it.
+
+01:05:16.336 --> 01:05:21.256
+[Speaker 02] I just pushed the index, this, my finding.
+
+01:05:21.256 --> 01:05:22.156
+[Speaker 02] The reports file.
+
+01:05:22.156 --> 01:05:23.416
+[Speaker 02] This reports file.
+
+01:05:23.416 --> 01:05:26.956
+[Speaker 02] Because all of these were, again, not necessary
+
+01:05:26.956 --> 01:05:29.407
+[Speaker 02] because we were just benchmarking and testing out stuff.
+
+01:05:29.760 --> 01:05:31.479
+[Speaker 02] as a part of POC.
+
+01:05:31.479 --> 01:05:34.800
+[Speaker 02] So I have these quotes and it's basically just
+
+01:05:34.800 --> 01:05:40.352
+[Speaker 02] testing different models for the Levi's.
+
+01:05:44.736 --> 01:05:48.256
+[Speaker 01] And then I would just ask you to expand a little more on the media part.
+
+01:05:48.256 --> 01:05:49.256
+[Speaker 01] Yes, sir.
+
+01:05:49.256 --> 01:05:51.256
+[Speaker 05] We will do that.
+
+01:05:51.256 --> 01:05:55.135
+[Speaker 02] I do not have the scripts with me on this one.
+
+01:05:55.135 --> 01:05:56.135
+[Speaker 01] Okay.
+
+01:05:56.135 --> 01:05:57.135
+[Speaker 01] Then do one thing.
+
+01:05:57.135 --> 01:06:07.336
+[Speaker 01] Just push it because any analysis that you show in your report, if it comes from a code
+
+01:06:07.336 --> 01:06:09.536
+[Speaker 01] fail, then that code has to be pushed.
+
+01:06:09.536 --> 01:06:10.536
+[Speaker 01] Okay.
+
+01:06:10.536 --> 01:06:11.536
+[Speaker 05] Yes.
+
+01:06:11.536 --> 01:06:14.719
+[Speaker 05] We have that code in the PLC folder.
+
+01:06:16.736 --> 01:06:19.576
+[Speaker 01] No, you just said it's not been pushed.
+
+01:06:19.576 --> 01:06:21.276
+[Speaker 03] No, we are telling you will have it.
+
+01:06:21.276 --> 01:06:24.816
+[Speaker 05] If any of the files are not yet pushed,
+
+01:06:24.816 --> 01:06:26.656
+[Speaker 03] we will push it into it.
+
+01:06:26.656 --> 01:06:30.536
+[Speaker 01] Push it and then just those PY files
+
+01:06:30.536 --> 01:06:34.635
+[Speaker 01] pertaining to the EDA just identified to them.
+
+01:06:34.635 --> 01:06:35.476
+[Speaker 01] Right?
+
+01:06:35.476 --> 01:06:36.676
+[Speaker 01] Or maybe you can name it suitably
+
+01:06:36.676 --> 01:06:38.216
+[Speaker 01] so that I can just go have a look.
+
+01:06:38.216 --> 01:06:39.056
+[Speaker 01] Yes, sir.
+
+01:06:39.056 --> 01:06:40.056
+[Speaker 05] Yes, we'll do that.
+
+01:06:40.056 --> 01:06:41.056
+[Speaker 05] OK.
+
+01:06:41.056 --> 01:06:44.116
+[Speaker 02] OK, then we'll try to do two things on this.
+
+01:06:44.116 --> 01:06:47.196
+[Speaker 02] So whatever code that we have written parallelly,
+
+01:06:47.327 --> 01:06:52.827
+[Speaker 02] we'll push that in one section, that POC and parallel research, and one will be the combined
+
+01:06:52.827 --> 01:06:55.367
+[Speaker 02] part where we are putting all the things together.
+
+01:06:55.367 --> 01:07:00.027
+[Speaker 02] So I think that would be a cleaner way and further on it will be easier for us to refer
+
+01:07:00.027 --> 01:07:02.243
+[Speaker 02] as well.
+
+01:07:02.243 --> 01:07:03.243
+[Speaker 01] Okay.
+
+01:07:03.243 --> 01:07:09.043
+[Speaker 01] And then be clear about the folder structure also, as far as the folder file section, because
+
+01:07:09.043 --> 01:07:10.043
+[Speaker 01] you might have a folder.
+
+01:07:10.043 --> 01:07:16.159
+[Speaker 03] Yes, sir, we will have that mentioned into the readme of the POC as well.
+
+01:07:17.791 --> 01:07:25.312
+[Speaker 01] Yeah, okay, because you might stage the pre-process file someplace, you might have the original data sets someplace.
+
+01:07:25.312 --> 01:07:26.312
+[Speaker 01] Yes.
+
+01:07:27.152 --> 01:07:28.671
+[Speaker 01] Right, okay.
+
+01:07:28.671 --> 01:07:35.951
+[Speaker 01] So, just categorize those folders, you know, in a logical manner.
+
+01:07:35.951 --> 01:07:42.671
+[Speaker 01] And then the output's in a separate folder. I think I've shared that structure with you in one of the threads.
+
+01:07:42.671 --> 01:07:44.031
+[Speaker 05] Oh, yes.
+
+01:07:44.031 --> 01:07:44.511
+[Speaker 05] Yes.
+
+01:07:44.511 --> 01:07:46.271
+[Speaker 01] Yeah, okay.
+
+01:07:46.815 --> 01:07:49.955
+[Speaker 01] Okay, so if I need anything else, I'll just send a message.
+
+01:07:50.436 --> 01:07:50.676
+[Speaker 06] Sure.
+
+01:07:50.855 --> 01:07:53.355
+[Speaker 01] In the meanwhile, you can carry out with your changes.
+
+01:07:53.515 --> 01:07:55.295
+[Speaker 01] I'll share my changes with you by tomorrow.
+
+01:07:55.815 --> 01:07:56.115
+[Speaker 01] Okay.
+
+01:07:56.835 --> 01:07:57.535
+[Speaker 01] Okay, bye.
+
+01:07:58.035 --> 01:07:58.555
+[Speaker 05] Okay, bye, sir.
+
+01:07:59.075 --> 01:07:59.475
+[Speaker 06] Good night.
+
+01:07:59.475 --> 01:07:59.995
+[Speaker 05] Good night, sir.
+
+01:08:00.055 --> 01:08:00.295
+[Speaker 02] Good night.
+
+01:08:01.728 --> 01:08:04.488
+[Speaker 02] Svayap, Sartha, can we connect after this?
+
+01:08:04.488 --> 01:08:05.907
+[Speaker 02] Can you stay back?
+
+01:08:05.907 --> 01:08:07.407
+[Speaker 02] Yeah, can you two stay back?
+
+01:08:07.407 --> 01:08:09.488
+[Speaker 01] You want to continue in the same meeting?
+
+01:08:09.488 --> 01:08:10.687
+[Speaker 01] You can do that, Ali.
+
+01:08:10.687 --> 01:08:13.407
+[Speaker 01] Yeah, yeah, I think the recording is stopped now, right?
+
+01:08:13.407 --> 01:08:13.907
+[Speaker 02] Yes, sir.
+
+01:08:13.907 --> 01:08:15.947
+[Speaker 01] No, I've stopped the recording, so you guys can continue
+
+01:08:15.947 --> 01:08:16.788
+[Speaker 01] the discussion.
+
+01:08:16.788 --> 01:08:17.627
+[Speaker 01] Sure, sure, sure.
+
+01:08:17.627 --> 01:08:19.948
+[Speaker 02] No, no, no, I'll just start recording for this.
+
+01:08:19.948 --> 01:08:21.487
+[Speaker 02] That's why.
+
+01:08:21.487 --> 01:08:22.868
+[Speaker 01] Oh, you want to start recording?
+
+01:08:22.868 --> 01:08:23.368
+[Speaker 01] Can you repeat?
+
+01:08:23.368 --> 01:08:24.047
+[Speaker 02] No, no, I'll start it.
+
+01:08:24.047 --> 01:08:24.547
+[Speaker 02] I'll start it.
+
+01:08:24.547 --> 01:08:25.047
+[Speaker 02] No worries.
+
+01:08:25.047 --> 01:08:25.547
+[Speaker 02] I'll start it.
+
+01:08:25.547 --> 01:08:26.047
+[Speaker 02] Yes.
+
+01:08:26.047 --> 01:08:27.547
+[Speaker 05] OK.
+
+01:08:27.547 --> 01:08:28.388
+[Speaker 05] Thank you.
+
+01:08:28.388 --> 01:08:29.388
+[Speaker 05] Thank you, sir.
+
+01:08:29.388 --> 01:08:30.428
+[Speaker 05] OK, thank you, sir.
+
+01:08:32.127 --> 01:08:36.127
+[Speaker 05] What was that?
+
+01:08:36.127 --> 01:08:40.127
+[Speaker 07] I'm saying that we will join again.
+
+01:08:40.127 --> 01:08:42.127
+[Speaker 05] We will go again.
+
+01:08:46.127 --> 01:08:48.127
+[Speaker 03] What's up?
+
+01:08:48.127 --> 01:08:50.127
+[Speaker 03] What's the need?
+
+01:08:50.127 --> 01:08:52.127
+[Speaker 05] What?
+
+01:08:52.127 --> 01:08:55.127
+[Speaker 05] Let's connect.
+
+01:08:55.127 --> 01:08:55.927
+[Speaker 05] Oh.
+
+01:08:56.096 --> 01:08:58.395
+[Speaker 05] No, bro, serious bro, serious
+
+01:08:58.395 --> 01:09:01.236
+[Speaker 07] Oh, yes, he's going to get determined
+
+01:09:01.236 --> 01:09:02.236
+[Speaker 07] Yeah, bro
+
+01:09:02.236 --> 01:09:05.236
+[Speaker 07] I was talking about 50px in the report
+
+01:09:08.236 --> 01:09:10.236
+[Speaker 07] I'm scrolling the GPD, where did I see it?
+
+01:09:10.236 --> 01:09:12.236
+[Speaker 07] Where did I explain it?
+
+01:09:12.236 --> 01:09:14.236
+[Speaker 05] I said, bro
+
+01:09:14.236 --> 01:09:16.556
+[Speaker 07] I was talking about 50px
+
+01:09:16.556 --> 01:09:20.956
+[Speaker 05] But first, but Shoeb has carried a lot
+
+01:09:20.956 --> 01:09:22.956
+[Speaker 05] Yes, bro, he's talking about it himself
+
+01:09:22.956 --> 01:09:25.00
+[Speaker 07] Shoeb is talking a lot, he's talking about it
+

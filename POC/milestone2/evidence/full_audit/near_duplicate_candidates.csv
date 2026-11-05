@@ -1,0 +1,6 @@
+pair_a,pair_b,t1_hamming,t2_hamming,exact_pixels,disposition
+LEVIR-MCI/test/test_000141,LEVIR-MCI/train/train_000017,0,0,True,exact_group_policy
+LEVIR-MCI/test/test_000142,LEVIR-MCI/train/train_000018,0,0,True,exact_group_policy
+LEVIR-MCI/test/test_000143,LEVIR-MCI/train/train_000019,0,0,True,exact_group_policy
+LEVIR-MCI/test/test_000144,LEVIR-MCI/train/train_000020,0,0,True,exact_group_policy
+LEVIR-MCI/test/test_000292,LEVIR-MCI/train/train_001389,0,0,True,exact_group_policy

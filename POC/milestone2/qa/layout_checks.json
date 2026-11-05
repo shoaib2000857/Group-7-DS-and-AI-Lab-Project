@@ -1,0 +1,15 @@
+{
+  "pages": 8,
+  "words_markdown": 2547,
+  "text_bounds_issues": [],
+  "sections_1_to_13_present": true,
+  "no_todo_or_future_scope_prose": true,
+  "pdf_sha256": "eaab49d136da8cc8f4c2cfe85209d0cc4d9702fafa7a86b04ece263c93996542",
+  "md_sha256": "dabb048bc743a780f632936ebc9ea2d332746e3105c507259ba66719af8b2a42",
+  "added_eda_figures": 2,
+  "source_examples": 2,
+  "new_eda_page": 4,
+  "administrative_sections_in_report": false,
+  "administrative_records_preserved_separately": true,
+  "review_protocol_present": true
+}
