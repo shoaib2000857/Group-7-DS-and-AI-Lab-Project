@@ -1,0 +1,642 @@
+{
+  "total_samples": 50,
+  "overall_accuracy": 100.0,
+  "avg_latency_ms": 9.162158966064453,
+  "scenario_breakdown": {
+    "genuine_construction": {
+      "count": 20,
+      "correct": 20,
+      "accuracy": 100.0
+    },
+    "caption_hallucination": {
+      "count": 12,
+      "correct": 12,
+      "accuracy": 100.0
+    },
+    "shadow_hazard": {
+      "count": 8,
+      "correct": 8,
+      "accuracy": 100.0
+    },
+    "subpixel_jitter": {
+      "count": 6,
+      "correct": 6,
+      "accuracy": 100.0
+    },
+    "genuine_demolition": {
+      "count": 4,
+      "correct": 4,
+      "accuracy": 100.0
+    }
+  },
+  "detailed_records": [
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0000",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12307315879618302,
+      "quality_flags": [
+        "illumination_corrected_+64.8"
+      ],
+      "latency_ms": 300.59
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0001",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.14420485175202155,
+      "quality_flags": [
+        "illumination_corrected_+64.3"
+      ],
+      "latency_ms": 4.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0002",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12426614481409001,
+      "quality_flags": [
+        "illumination_corrected_+65.3"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0003",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.13333333333333333,
+      "quality_flags": [
+        "illumination_corrected_+64.8"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0004",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12587587587587587,
+      "quality_flags": [
+        "illumination_corrected_+64.8"
+      ],
+      "latency_ms": 4.14
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0005",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.11674789543642003,
+      "quality_flags": [
+        "illumination_corrected_+64.4"
+      ],
+      "latency_ms": 2.01
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0006",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.13566936208445643,
+      "quality_flags": [
+        "illumination_corrected_+63.8"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0007",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12493599590373784,
+      "quality_flags": [
+        "illumination_corrected_+64.0"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0008",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.10699740836727138,
+      "quality_flags": [
+        "illumination_corrected_+65.4"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0009",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.13611778846153846,
+      "quality_flags": [
+        "illumination_corrected_+63.7"
+      ],
+      "latency_ms": 2.93
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0010",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.13168044077134985,
+      "quality_flags": [
+        "illumination_corrected_+65.4"
+      ],
+      "latency_ms": 2.6
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0011",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12357320099255584,
+      "quality_flags": [
+        "illumination_corrected_+64.6"
+      ],
+      "latency_ms": 4.02
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0012",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.11481007255655143,
+      "quality_flags": [
+        "illumination_corrected_+65.1"
+      ],
+      "latency_ms": 4.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0013",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.1326530612244898,
+      "quality_flags": [
+        "illumination_corrected_+64.8"
+      ],
+      "latency_ms": 3.98
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0014",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12137931034482759,
+      "quality_flags": [
+        "illumination_corrected_+66.4"
+      ],
+      "latency_ms": 5.18
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0015",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.12389162561576354,
+      "quality_flags": [
+        "illumination_corrected_+65.1"
+      ],
+      "latency_ms": 4.94
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0016",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.13362193362193361,
+      "quality_flags": [
+        "illumination_corrected_+64.5"
+      ],
+      "latency_ms": 5.48
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0017",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.1254320987654321,
+      "quality_flags": [
+        "illumination_corrected_+65.0"
+      ],
+      "latency_ms": 3.93
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0018",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.11896955503512881,
+      "quality_flags": [
+        "illumination_corrected_+63.3"
+      ],
+      "latency_ms": 2.78
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0019",
+      "scenario": "genuine_construction",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": 0.11392931392931394,
+      "quality_flags": [
+        "illumination_corrected_+65.6"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0020",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 5.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0021",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 5.44
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0022",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 5.24
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0023",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0024",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0025",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0026",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0027",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0028",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 3.66
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0029",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 4.74
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0030",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 4.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0031",
+      "scenario": "caption_hallucination",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "registered_good_contrast"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0032",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.00023946360153256704,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 4.8
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0033",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 5.43
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0034",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0009578544061302681,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 3.8
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0035",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0002886002886002886,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 2.56
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0036",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 2.92
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0037",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0038",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0039",
+      "scenario": "shadow_hazard",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0003246753246753247,
+      "quality_flags": [
+        "illumination_corrected_-53.9",
+        "shadow_hazard"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0040",
+      "scenario": "subpixel_jitter",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "subpixel_jitter_1.3px"
+      ],
+      "latency_ms": 3.01
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0041",
+      "scenario": "subpixel_jitter",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "subpixel_jitter_1.2px"
+      ],
+      "latency_ms": 2.64
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0042",
+      "scenario": "subpixel_jitter",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "subpixel_jitter_1.2px"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0043",
+      "scenario": "subpixel_jitter",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "subpixel_jitter_1.1px"
+      ],
+      "latency_ms": 2.39
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0044",
+      "scenario": "subpixel_jitter",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "subpixel_jitter_1.3px"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0045",
+      "scenario": "subpixel_jitter",
+      "visible_change": false,
+      "expected": false,
+      "is_correct": true,
+      "structural_edge_change": 0.0,
+      "quality_flags": [
+        "subpixel_jitter_1.1px"
+      ],
+      "latency_ms": 3.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0046",
+      "scenario": "genuine_demolition",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": -0.12403340550572224,
+      "quality_flags": [
+        "illumination_corrected_-64.3"
+      ],
+      "latency_ms": 2.01
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0047",
+      "scenario": "genuine_demolition",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": -0.12065095398428732,
+      "quality_flags": [
+        "illumination_corrected_-66.1"
+      ],
+      "latency_ms": 2.0
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0048",
+      "scenario": "genuine_demolition",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": -0.1275974025974026,
+      "quality_flags": [
+        "illumination_corrected_-66.4"
+      ],
+      "latency_ms": 2.4
+    },
+    {
+      "pair_id": "LEVIR-MCI/eval/eval_0049",
+      "scenario": "genuine_demolition",
+      "visible_change": true,
+      "expected": true,
+      "is_correct": true,
+      "structural_edge_change": -0.10997067448680352,
+      "quality_flags": [
+        "illumination_corrected_-66.1"
+      ],
+      "latency_ms": 2.49
+    }
+  ]
+}
