@@ -90,3 +90,4 @@ Other members: add your section below using the same table.
 
 
 | 3 | 5-6 Nov 2026 | M3 consolidation and architecture (Shoaib, SSSM) | Fetched all remote branches, preserved and integrated POC variants, verified local-file/ZIP checksums, assembled the experiment register, added isolated model-worker orchestration and BIT training scripts, ran 81 CPU checks and prepared the M3 PDF/Markdown with architecture diagrams and explicit training/model contracts. | [Consolidation](POC/consolidation/README.md) - [Pipeline](POC/pipeline/README.md) - [M3 report](POC/milestone3/Milestone3_Report.md) | |
+
