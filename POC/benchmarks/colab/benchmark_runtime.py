@@ -608,6 +608,11 @@ class HFJudge:
         self.repo = REGISTRY[model_id]['repo']
         self.dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
         options = {'revision': revision, 'torch_dtype': self.dtype, 'low_cpu_mem_usage': True}
+        device_map = config.get('MODEL_DEVICE_MAP', 'cuda')
+        placement = {'device_map': device_map}
+        if device_map == 'auto':
+            placement['max_memory'] = {0: config.get('MAX_GPU_MEMORY', '6GiB'),
+                                       'cpu': config.get('MAX_CPU_MEMORY', '24GiB')}
         if self.kind == 'd3':
             if not config['ALLOW_CUSTOM_CODE']:
                 raise RuntimeError('d3 requires its pinned publisher readout code.')
@@ -616,16 +621,16 @@ class HFJudge:
             self.dtype = torch.bfloat16
             options['torch_dtype'] = self.dtype
             self.model = AutoModel.from_pretrained(self.repo, trust_remote_code=True,
-                                                   device_map='cuda', **options).eval()
+                                                   **placement, **options).eval()
         elif self.kind == 'qwen_text':
             self.tokenizer = AutoTokenizer.from_pretrained(self.repo, revision=revision)
-            self.model = AutoModelForCausalLM.from_pretrained(self.repo, device_map='cuda', **options).eval()
+            self.model = AutoModelForCausalLM.from_pretrained(self.repo, **placement, **options).eval()
         elif self.kind == 'qwen_vl':
             from transformers import Qwen3VLForConditionalGeneration
             self.processor = AutoProcessor.from_pretrained(self.repo, revision=revision,
                 min_pixels=65536, max_pixels=config['MAX_IMAGE_SIDE']**2)
             self.tokenizer = self.processor.tokenizer
-            self.model = Qwen3VLForConditionalGeneration.from_pretrained(self.repo, device_map='cuda', **options).eval()
+            self.model = Qwen3VLForConditionalGeneration.from_pretrained(self.repo, **placement, **options).eval()
         elif self.kind == 'internvl':
             if not config['ALLOW_CUSTOM_CODE']:
                 raise RuntimeError('InternVL requires its pinned publisher code.')
@@ -651,11 +656,11 @@ class HFJudge:
     def _inputs(self, prompt, images):
         if self.kind == 'qwen_text':
             return self.tokenizer.apply_chat_template([{'role': 'user', 'content': prompt}],
-                add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors='pt').to('cuda')
+                add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors='pt').to(self.model.device)
         content = [{'type': 'image', 'image': image} for image in images]
         content.append({'type': 'text', 'text': prompt})
         return self.processor.apply_chat_template([{'role': 'user', 'content': content}],
-            add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors='pt').to('cuda')
+            add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors='pt').to(self.model.device)
 
     def _intern_pixels(self, images):
         import torchvision.transforms as T

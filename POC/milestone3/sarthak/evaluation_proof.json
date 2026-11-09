@@ -1,0 +1,694 @@
+{
+  "title": "Local reproduction proof for completed Milestone 3 caption metrics",
+  "run_date": "2026-11-09",
+  "claim": "Released RSCaMa and two controls exactly match their historical screening aggregates. Retrain and VLM comparisons show observed deltas; both transfer screens also exactly match their historical aggregates.",
+  "scope": "Released RSCaMa, its 20%-budget retrain, Qwen3-VL, SmolVLM2, two caption controls, and SECOND-CC/WHU-CDC RSCaMa transfer screens. Referee comparisons are still pending and excluded.",
+  "comparisons": [
+    {
+      "configuration": "RSCaMa (specialist)",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.7869,
+          "milestone3_displayed": 78.7,
+          "local_rerun": 0.7869,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": -0.01,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.8889,
+          "milestone3_displayed": 88.9,
+          "local_rerun": 0.8889,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": -0.01,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.6223,
+          "milestone3_displayed": 0.6223,
+          "local_rerun": 0.6223,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "BLEU points"
+        }
+      },
+      "supplementary_local_metrics": {
+        "reference_fact_recall": 0.768,
+        "reference_fact_recall_ci95": [
+          0.7016,
+          0.8346
+        ],
+        "no_change_false_alarm_rate": 0.0,
+        "no_change_false_alarm_pairs": 40,
+        "text_metrics": {
+          "BLEU-1": 0.8412,
+          "BLEU-2": 0.7548,
+          "BLEU-3": 0.6813,
+          "BLEU-4": 0.6223,
+          "ROUGE-L": 0.7464,
+          "CIDEr-D": 1.3184
+        },
+        "strict_precision_ci95": [
+          0.7241,
+          0.8537
+        ],
+        "in_scope_precision_ci95": [
+          0.8286,
+          0.9459
+        ],
+        "cold_load_s_local": 39.47,
+        "warm_latency_median_s_local": 0.315,
+        "warm_latency_median_s_historical": 0.139,
+        "latency_median_delta_s": 0.176,
+        "latency_note": "Different hosts/runtimes; timing delta is descriptive, not an apples-to-apples speed claim."
+      },
+      "local_artifacts": {
+        "run_record": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C02_rscama_screening\\run_record.json",
+          "sha256": "8b1221123bfc1b83a6457e57b0d12d5eb9e24ed8958f4e985bdd37d37fb5b55e",
+          "bytes": 2616
+        },
+        "raw_caption_outputs": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C02_rscama_screening\\captions.jsonl",
+          "sha256": "2e18717e13eb2f8cccdb92338f75807cbcadc7df49e6f3b0eef13b404381000e",
+          "bytes": 26208
+        },
+        "evaluator_summary": {
+          "path": "POC\\milestone3\\sarthak\\runs\\rscama_local_summary.json",
+          "sha256": "868d69585f7a616971716fb0d554bddf00c757931686da4036f9f15a0c240f6b",
+          "bytes": 1720
+        }
+      }
+    },
+    {
+      "configuration": "RSCaMa retrained on 20% (ours)",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.7917,
+          "milestone3_displayed": 79.2,
+          "local_rerun": 0.7604,
+          "local_minus_historical_exact": -3.13,
+          "local_minus_displayed_report": -3.16,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.8796,
+          "milestone3_displayed": 88.0,
+          "local_rerun": 0.8202,
+          "local_minus_historical_exact": -5.94,
+          "local_minus_displayed_report": -5.98,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.5786,
+          "milestone3_displayed": 0.5786,
+          "local_rerun": 0.5793,
+          "local_minus_historical_exact": 0.0007,
+          "local_minus_displayed_report": 0.0007,
+          "scale": "BLEU points"
+        }
+      },
+      "supplementary_local_metrics": {
+        "reference_fact_recall": 0.584,
+        "reference_fact_recall_ci95": [
+          0.5109,
+          0.6587
+        ],
+        "no_change_false_alarm_rate": 0.125,
+        "no_change_false_alarm_pairs": 40,
+        "text_metrics": {
+          "BLEU-1": 0.7872,
+          "BLEU-2": 0.7087,
+          "BLEU-3": 0.6349,
+          "BLEU-4": 0.5793,
+          "ROUGE-L": 0.681,
+          "CIDEr-D": 1.0837
+        },
+        "strict_precision_ci95": [
+          0.6733,
+          0.8478
+        ],
+        "in_scope_precision_ci95": [
+          0.7356,
+          0.8977
+        ],
+        "cold_load_s_local": null,
+        "warm_latency_median_s_local": 0.35,
+        "warm_latency_median_s_historical": 0.16,
+        "latency_median_delta_s": 0.19,
+        "latency_note": "Different hosts/runtimes; timing delta is descriptive, not an apples-to-apples speed claim."
+      },
+      "local_artifacts": {
+        "run_record": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C02r20_rscama_retrained20_development_smoke+development+screening\\run_record.json",
+          "sha256": "be7ea9288f6d2b4f561776479627612c241fb3497904f59057c314ea75a18471",
+          "bytes": 5075
+        },
+        "raw_caption_outputs": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C02r20_rscama_retrained20_development_smoke+development+screening\\captions.jsonl",
+          "sha256": "a622359fd3a0ad4504eea82e18af7e129267565c57871b29f48c7d22fbd72ecc",
+          "bytes": 45963
+        },
+        "evaluator_summary": {
+          "path": "POC\\milestone3\\sarthak\\runs\\rscama_retrain_local_summary.json",
+          "sha256": "c1efe44e817e8f18f73bcc7bc00ccd5c444736282bd818e0cb0814d226894e85",
+          "bytes": 1768
+        }
+      },
+      "local_training": {
+        "best_checkpoint": {
+          "path": "POC\\execution\\runs\\sarthak_rscama_retrain\\best.pth",
+          "sha256": "a736607d2e1639ebef247cb08cb85635c43cca8f4ed26eef3db068a7a09394c2",
+          "bytes": 3594725442
+        },
+        "train_log": {
+          "path": "POC\\execution\\runs\\sarthak_rscama_retrain\\train_log.json",
+          "sha256": "e2d95e8f8adce8843385d4d8ca9e58d8cab4621c44c0fb810988f26d0d11679d",
+          "bytes": 1723
+        },
+        "selected_epoch": 4,
+        "best_development_BLEU4": 0.6468,
+        "effective_batch": 12,
+        "train_pairs": 1313,
+        "development_pairs": 50,
+        "screening_pairs": 100
+      }
+    },
+    {
+      "configuration": "SmolVLM2-2.2B",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.3858,
+          "milestone3_displayed": 38.6,
+          "local_rerun": 0.3776,
+          "local_minus_historical_exact": -0.82,
+          "local_minus_displayed_report": -0.84,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.4841,
+          "milestone3_displayed": 48.4,
+          "local_rerun": 0.4713,
+          "local_minus_historical_exact": -1.28,
+          "local_minus_displayed_report": -1.27,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.0102,
+          "milestone3_displayed": 0.0102,
+          "local_rerun": 0.0,
+          "local_minus_historical_exact": -0.0102,
+          "local_minus_displayed_report": -0.0102,
+          "scale": "BLEU points"
+        }
+      },
+      "supplementary_local_metrics": {
+        "reference_fact_recall": 0.56,
+        "reference_fact_recall_ci95": [
+          0.4615,
+          0.6557
+        ],
+        "no_change_false_alarm_rate": 0.825,
+        "no_change_false_alarm_pairs": 40,
+        "text_metrics": {
+          "BLEU-1": 0.1513,
+          "BLEU-2": 0.0744,
+          "BLEU-3": 0.022,
+          "BLEU-4": 0.0,
+          "ROUGE-L": 0.1612,
+          "CIDEr-D": 0.0022
+        },
+        "strict_precision_ci95": [
+          0.3016,
+          0.4635
+        ],
+        "in_scope_precision_ci95": [
+          0.3766,
+          0.5697
+        ],
+        "cold_load_s_local": 12.34,
+        "warm_latency_median_s_local": 1.948,
+        "warm_latency_median_s_historical": 3.302,
+        "latency_median_delta_s": -1.354,
+        "latency_note": "Different hosts/runtimes; timing delta is descriptive, not an apples-to-apples speed claim."
+      },
+      "local_artifacts": {
+        "run_record": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C07_smolvlm2_screening_sarthak_local\\run_record.json",
+          "sha256": "a39dc954357a3c43d6a843a85ff99759034033bd2142a4c6133bf23c8759d1e1",
+          "bytes": 2430
+        },
+        "raw_caption_outputs": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C07_smolvlm2_screening_sarthak_local\\captions.jsonl",
+          "sha256": "001fb6698ba3db5b917f2ea304129dfefea6ba8ed01ec9d4159e4433220a59be",
+          "bytes": 48987
+        },
+        "evaluator_summary": {
+          "path": "POC\\milestone3\\sarthak\\runs\\smol_local_summary.json",
+          "sha256": "a95faf337dd9da97a1fc2c7f09c416cd287b88d18af252ec4df9ab9f25fb2b26",
+          "bytes": 1733
+        }
+      }
+    },
+    {
+      "configuration": "Qwen3-VL-4B",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.5833,
+          "milestone3_displayed": 58.3,
+          "local_rerun": 0.557,
+          "local_minus_historical_exact": -2.63,
+          "local_minus_displayed_report": -2.6,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.7292,
+          "milestone3_displayed": 72.9,
+          "local_rerun": 0.7174,
+          "local_minus_historical_exact": -1.18,
+          "local_minus_displayed_report": -1.16,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.0267,
+          "milestone3_displayed": 0.0267,
+          "local_rerun": 0.0183,
+          "local_minus_historical_exact": -0.0084,
+          "local_minus_displayed_report": -0.0084,
+          "scale": "BLEU points"
+        }
+      },
+      "supplementary_local_metrics": {
+        "reference_fact_recall": 0.728,
+        "reference_fact_recall_ci95": [
+          0.6423,
+          0.8182
+        ],
+        "no_change_false_alarm_rate": 0.275,
+        "no_change_false_alarm_pairs": 40,
+        "text_metrics": {
+          "BLEU-1": 0.1739,
+          "BLEU-2": 0.085,
+          "BLEU-3": 0.038,
+          "BLEU-4": 0.0183,
+          "ROUGE-L": 0.174,
+          "CIDEr-D": 0.0003
+        },
+        "strict_precision_ci95": [
+          0.479,
+          0.6352
+        ],
+        "in_scope_precision_ci95": [
+          0.6308,
+          0.797
+        ],
+        "cold_load_s_local": 10.88,
+        "warm_latency_median_s_local": 38.684,
+        "warm_latency_median_s_historical": 7.605,
+        "latency_median_delta_s": 31.079,
+        "latency_note": "Different hosts/runtimes; timing delta is descriptive, not an apples-to-apples speed claim."
+      },
+      "local_artifacts": {
+        "run_record": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C04_qwen3vl_screening_sarthak_local\\run_record.json",
+          "sha256": "d5e95bbe7730137ddcef5db1e334fa362a8e7eb5531305c4a78c7719287578fa",
+          "bytes": 3955
+        },
+        "raw_caption_outputs": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_C04_qwen3vl_screening_sarthak_local\\captions.jsonl",
+          "sha256": "955107b1dbad0878fdce1feaa232dd9aa037802fa2da76ea6a761f7bd430839a",
+          "bytes": 49878
+        },
+        "evaluator_summary": {
+          "path": "POC\\milestone3\\sarthak\\runs\\qwen_local_summary.json",
+          "sha256": "0d6dda38f3c43f4afbc32772a562e05463c338f71498c70321298f8b0aab1b4f",
+          "bytes": 1766
+        }
+      }
+    },
+    {
+      "configuration": "Evidence template (pixel difference)",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.69,
+          "milestone3_displayed": 69.0,
+          "local_rerun": 0.69,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.69,
+          "milestone3_displayed": 69.0,
+          "local_rerun": 0.69,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.0,
+          "milestone3_displayed": 0.0,
+          "local_rerun": 0.0,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "BLEU points"
+        }
+      },
+      "supplementary_local_metrics": {
+        "reference_fact_recall": 0.76,
+        "reference_fact_recall_ci95": [
+          0.6696,
+          0.8455
+        ],
+        "no_change_false_alarm_rate": 0.225,
+        "no_change_false_alarm_pairs": 40,
+        "text_metrics": {
+          "BLEU-1": 0.2458,
+          "BLEU-2": 0.113,
+          "BLEU-3": 0.0246,
+          "BLEU-4": 0.0,
+          "ROUGE-L": 0.1785,
+          "CIDEr-D": 0.0426
+        },
+        "strict_precision_ci95": [
+          0.6,
+          0.78
+        ],
+        "in_scope_precision_ci95": [
+          0.6,
+          0.78
+        ],
+        "cold_load_s_local": 0.0,
+        "warm_latency_median_s_local": 0.014,
+        "warm_latency_median_s_historical": 0.008,
+        "latency_median_delta_s": 0.006,
+        "latency_note": "Different hosts/runtimes; timing delta is descriptive, not an apples-to-apples speed claim."
+      },
+      "local_artifacts": {
+        "run_record": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_CTRL_evidence_template_screening\\run_record.json",
+          "sha256": "e1e7e0c15aff4cd434ead4d72961c44ad352e5bcdfaa362022d36eeaf28db032",
+          "bytes": 2013
+        },
+        "raw_caption_outputs": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_CTRL_evidence_template_screening\\captions.jsonl",
+          "sha256": "30cdf2f29ec760c6e9282e8a05ddf32a4ccd9b58dccb9c74287074166effd435",
+          "bytes": 46972
+        },
+        "evaluator_summary": {
+          "path": "POC\\milestone3\\sarthak\\runs\\pixel_caption_local_summary.json",
+          "sha256": "bd4f6615dbfcc6fea5e43c6b69ccb3de4f0b8219062c0450cfe936b46d39045b",
+          "bytes": 1702
+        }
+      }
+    },
+    {
+      "configuration": "Constant \"there is no difference\"",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.4,
+          "milestone3_displayed": 40.0,
+          "local_rerun": 0.4,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.4,
+          "milestone3_displayed": 40.0,
+          "local_rerun": 0.4,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.2798,
+          "milestone3_displayed": 0.2798,
+          "local_rerun": 0.2798,
+          "local_minus_historical_exact": 0.0,
+          "local_minus_displayed_report": 0.0,
+          "scale": "BLEU points"
+        }
+      },
+      "supplementary_local_metrics": {
+        "reference_fact_recall": 0.32,
+        "reference_fact_recall_ci95": [
+          0.237,
+          0.4146
+        ],
+        "no_change_false_alarm_rate": 0.0,
+        "no_change_false_alarm_pairs": 40,
+        "text_metrics": {
+          "BLEU-1": 0.3133,
+          "BLEU-2": 0.2905,
+          "BLEU-3": 0.2833,
+          "BLEU-4": 0.2798,
+          "ROUGE-L": 0.465,
+          "CIDEr-D": 0.937
+        },
+        "strict_precision_ci95": [
+          0.31,
+          0.49
+        ],
+        "in_scope_precision_ci95": [
+          0.31,
+          0.49
+        ],
+        "cold_load_s_local": 0.0,
+        "warm_latency_median_s_local": 0.0,
+        "warm_latency_median_s_historical": 0.0,
+        "latency_median_delta_s": 0.0,
+        "latency_note": "Different hosts/runtimes; timing delta is descriptive, not an apples-to-apples speed claim."
+      },
+      "local_artifacts": {
+        "run_record": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_CTRL_constant_nochange_screening\\run_record.json",
+          "sha256": "128ab50787145375ba30bf6357406443d5b979d253e24c1754192907ff16bd62",
+          "bytes": 1827
+        },
+        "raw_caption_outputs": {
+          "path": "POC\\execution\\runs\\ood\\sarthak_rscama_screen\\B0_CTRL_constant_nochange_screening\\captions.jsonl",
+          "sha256": "b527a3fae684c5b235eae92eb4abbbfe90cf47e929ebecaca8e36f9470bbb8da",
+          "bytes": 24600
+        },
+        "evaluator_summary": {
+          "path": "POC\\milestone3\\sarthak\\runs\\constant_caption_local_summary.json",
+          "sha256": "d1b080cc692eb4f4a521df68f9b827fe3e040c540be3c287325b0a3fb250541d",
+          "bytes": 1690
+        }
+      }
+    }
+  ],
+  "transfer_comparisons": [
+    {
+      "dataset": "SECOND-CC",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.4804,
+          "local_rerun": 0.4804,
+          "local_minus_historical": 0.0,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.5,
+          "local_rerun": 0.5,
+          "local_minus_historical": 0.0,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.2426,
+          "local_rerun": 0.2426,
+          "local_minus_historical": 0.0,
+          "scale": "BLEU points"
+        }
+      },
+      "manifest": {
+        "path": "POC\\execution\\data_ood\\second_cc\\manifest.csv",
+        "sha256": "f89472d25d6d3c7f1f137a6d69ce9a0ec1e834266fb4e8cf6122fb66f68da9e8",
+        "bytes": 53302
+      },
+      "historical_aggregate": {
+        "path": "POC\\b-captioning\\outputs\\b0_results_ood_second_cc.json",
+        "sha256": "ddab9633c3c69185390bae8b48f1e3dcbe1db2d14237b6b3731b058a93d21d0d",
+        "bytes": 10868
+      },
+      "local_run_record": {
+        "path": "POC\\execution\\runs\\ood\\second_cc\\B0_C02_rscama_screening\\run_record.json",
+        "sha256": "636576859df11bf571ba25edcbfb8e5965a99ff79972978f80ff07133330cf90",
+        "bytes": 2614
+      },
+      "local_raw_captions": {
+        "path": "POC\\execution\\runs\\ood\\second_cc\\B0_C02_rscama_screening\\captions.jsonl",
+        "sha256": "5a1153f4342527352956bc5dacc8424e5417a21a4ed9800faa50be4b3cddf51e",
+        "bytes": 25879
+      },
+      "local_evaluator_summary": {
+        "path": "POC\\milestone3\\sarthak\\runs\\second_cc_local_summary.json",
+        "sha256": "0d0ab0aa348029ab5acbf62098de743a6adaf0040f4a8791e7370904eb57da65",
+        "bytes": 1750
+      }
+    },
+    {
+      "dataset": "WHU-CDC",
+      "sample_count_historical": 100,
+      "sample_count_local": 100,
+      "metrics": {
+        "strict_precision": {
+          "historical_b0_json": 0.5556,
+          "local_rerun": 0.5556,
+          "local_minus_historical": 0.0,
+          "scale": "percentage_points"
+        },
+        "in_scope_precision": {
+          "historical_b0_json": 0.6667,
+          "local_rerun": 0.6667,
+          "local_minus_historical": 0.0,
+          "scale": "percentage_points"
+        },
+        "BLEU-4": {
+          "historical_b0_json": 0.4717,
+          "local_rerun": 0.4717,
+          "local_minus_historical": 0.0,
+          "scale": "BLEU points"
+        }
+      },
+      "manifest": {
+        "path": "POC\\execution\\data_ood\\whu_cdc\\manifest.csv",
+        "sha256": "01c52f7f3f46ab8e01fc29344297b265bcabc75b1afbf4398053198b28395dc9",
+        "bytes": 56034
+      },
+      "historical_aggregate": {
+        "path": "POC\\b-captioning\\outputs\\b0_results_ood_whu_cdc.json",
+        "sha256": "dd9190c34f1278aaca6d6ea3b649215c06666f09d01460d010b3be3ac59acbeb",
+        "bytes": 10750
+      },
+      "local_run_record": {
+        "path": "POC\\execution\\runs\\ood\\whu_cdc\\B0_C02_rscama_screening\\run_record.json",
+        "sha256": "66ced84472fc5c25e9b1d4cb4d2b502ab3fcb637652c0d2932b1a12e817a468f",
+        "bytes": 2644
+      },
+      "local_raw_captions": {
+        "path": "POC\\execution\\runs\\ood\\whu_cdc\\B0_C02_rscama_screening\\captions.jsonl",
+        "sha256": "d9576a6aa75dc52898749f2772ef59c67822f0c4c20b85c66997310eea7d95b3",
+        "bytes": 25974
+      },
+      "local_evaluator_summary": {
+        "path": "POC\\milestone3\\sarthak\\runs\\whu_cdc_local_summary.json",
+        "sha256": "4093f32eee16eeac4c9497d4ab0919a2382bfcc6de9cc07d97186b3847ff3ef5",
+        "bytes": 1726
+      }
+    }
+  ],
+  "provenance": {
+    "historical_aggregate": {
+      "path": "POC\\b-captioning\\outputs\\b0_results.json",
+      "sha256": "e0ac627f25bb5d4713922554adf4a0c7cf16bf38f84ef629ed5226aaa82d075b",
+      "bytes": 21819
+    },
+    "local_source_archive": {
+      "path": "data\\raw\\LEVIR-MCI-dataset.zip",
+      "sha256": "8f7d52298fa3ca32aec983e84addef80f61ad7d981c0ff97a92c5880c4b83e9d",
+      "bytes": 2771943190
+    },
+    "local_screen_manifest_json": {
+      "path": "POC\\execution\\data\\sarthak_rscama_screen\\manifest.json",
+      "sha256": "1c7d71f950cd3f38c59e59b3dc58ff5ebb42187be055fb0a0956b5eb140b9edd",
+      "bytes": 627
+    },
+    "local_screen_manifest_csv": {
+      "path": "POC\\execution\\data\\sarthak_rscama_screen\\manifest.csv",
+      "sha256": "941a23da058b2af0f4457f5a3d061770e370a181998eb39430d2ff3bcec73651",
+      "bytes": 48456
+    },
+    "source_files": [
+      {
+        "path": "POC\\execution\\scripts\\caption_rscama.py",
+        "sha256": "0aa4b57b7f95d9525503d025c3b726e9e6d069ae27f45944a279e58765025a02",
+        "bytes": 12724
+      },
+      {
+        "path": "POC\\execution\\scripts\\controls.py",
+        "sha256": "b3a1c0d9bb16249decdf67fede1c26a8e21fc71b4225dfa0b491918a71029f8c",
+        "bytes": 5651
+      },
+      {
+        "path": "POC\\execution\\scripts\\evaluate.py",
+        "sha256": "f6600d4752636f69405add83ccf762cba91c872f593e8c2c6b43f8f7928ff91b",
+        "bytes": 16250
+      },
+      {
+        "path": "POC\\milestone3\\sarthak\\scripts\\evaluate_caption_screen.py",
+        "sha256": "cae2fc7b459ef185755812eb33dec4bd3eb2d3755db6c145fdb66819fc396f08",
+        "bytes": 2779
+      },
+      {
+        "path": "POC\\milestone3\\sarthak\\scripts\\prepare_local_rscama_screen.py",
+        "sha256": "65171bf1004ce5e552b8d3a2dc9c92c640abb2677a7310d61acd05422de9be63",
+        "bytes": 5464
+      },
+      {
+        "path": "POC\\milestone3\\sarthak\\scripts\\build_evaluation_proof.py",
+        "sha256": "0a3605caea3b163b8431e0b3e9d591c5ff1bfae4cabae85ee57810eb522ecd0f",
+        "bytes": 12388
+      },
+      {
+        "path": "POC\\milestone3\\sarthak\\scripts\\plot_evaluation_proof.py",
+        "sha256": "a60c333e70b72fc5b0259f43177ac2ca3fa0365e4e4c4d055ea6b3edd49b87a5",
+        "bytes": 5374
+      },
+      {
+        "path": "POC\\b-captioning\\colab\\rscama_colab.py",
+        "sha256": "c242001fe98a1adaecd7d4c38b0769e64a0407f2372cd63c3e85c837ee560480",
+        "bytes": 17461
+      },
+      {
+        "path": "POC\\execution\\scripts\\caption_vlm.py",
+        "sha256": "92f76a3cbd35da6a1ba6a69f6495f3f32eb56c9f25f75b322c2b87b9439833dd",
+        "bytes": 8035
+      }
+    ],
+    "rscama_checkpoint": {
+      "repo": "lcybuaa/RSCaMa",
+      "revision": "3e527e6656b62cc615eab1d2f3fb73777cbbf62c",
+      "sha256": "5eeba271fb7c2ff4722b725cbf5ce1a1fdc0a33ddf1b077dcf5381aebd643449",
+      "local_blob": {
+        "path": "POC\\.cache-benchmark\\hf\\models--lcybuaa--RSCaMa\\blobs\\5eeba271fb7c2ff4722b725cbf5ce1a1fdc0a33ddf1b077dcf5381aebd643449",
+        "sha256": "5eeba271fb7c2ff4722b725cbf5ce1a1fdc0a33ddf1b077dcf5381aebd643449",
+        "bytes": 3596246524
+      }
+    },
+    "local_environment": {
+      "python": "3.11.4",
+      "torch": "2.9.0+cu128",
+      "torchvision": "0.24.0+cu128",
+      "device": "NVIDIA GeForce RTX 4060 Ti 8GB"
+    },
+    "evaluator_contract": {
+      "caption_reference_check": "automatic rule parser + oracle masks + five captions per pair",
+      "strict_precision_denominator": "all factual claims including out-of-scope objects",
+      "in_scope_precision_denominator": "claims within road/building mask ontology",
+      "bootstrap": "pair-level, 2,000 resamples, seed 0",
+      "text_metrics": "PTBTokenizer BLEU-1..4, ROUGE-L, CIDEr-D; METEOR unavailable in local Java wrapper and not in M3 table"
+    }
+  },
+  "limitations": [
+    "Historical committed results contain aggregate metrics, not the original per-pair caption outputs; the local raw outputs can be independently re-scored, but historical prediction parity cannot be audited pair by pair.",
+    "Released RSCaMa was selected using LEVIR-family validation data; the local run reproduces its existing validation screen and is not new held-out evidence.",
+    "The local archive is the raw user-provided LEVIR-MCI package; it is not the cleaned M2 handover cohort.",
+    "Human factuality labels were not used; precision and recall are automatic annotation/mask proxy metrics."
+  ]
+}

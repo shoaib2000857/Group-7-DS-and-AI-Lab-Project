@@ -60,6 +60,9 @@ def main():
     ap.add_argument("--roles", default="development_smoke")
     ap.add_argument("--max-new-tokens", type=int, default=96)
     ap.add_argument("--dtype", default="bfloat16")
+    ap.add_argument("--device", choices=("auto", "cuda", "mps", "cpu"), default="auto")
+    ap.add_argument("--max-gpu-memory", default="7GiB", help="auto device-map GPU budget; leaves room for generation")
+    ap.add_argument("--max-cpu-memory", default="24GiB", help="auto device-map host RAM budget")
     ap.add_argument("--tag", default="")
     args = ap.parse_args()
 
@@ -69,7 +72,10 @@ def main():
     run_id = f"B0_{role_id}_{args.model}_{'+'.join(roles)}{args.tag}"
     out = RUNS / run_id
     out.mkdir(parents=True, exist_ok=True)
-    device = "mps" if torch.backends.mps.is_available() else "cpu"
+    device = ("auto" if torch.cuda.is_available() else
+              "mps" if torch.backends.mps.is_available() else "cpu") if args.device == "auto" else args.device
+    if device in ("cuda", "auto") and not torch.cuda.is_available():
+        raise SystemExit("CUDA was requested but is not available")
     dtype = getattr(torch, args.dtype)
 
     rec = new_run_record(
@@ -81,7 +87,7 @@ def main():
         sample_count=len(rows), condition="B0",
         processor_config={"base": "publisher AutoProcessor", "overrides": PROCESSOR_OVERRIDES.get(args.model, {}),
                           "inputs": "original 256x256 PNGs, T1 then T2, labelled 'Image T1:' / 'Image T2:'"},
-        precision_and_quantisation=f"{args.dtype}, no quantisation, device={device}",
+        precision_and_quantisation=f"{args.dtype}, no quantisation, device_map={device}",
         prompt_revision=PROMPT_REVISION, seed=None,
         limitations="Greedy decoding (do_sample=False); batch size 1; timings on Apple M4 MPS, not Colab GPU.",
     )
@@ -89,9 +95,12 @@ def main():
 
     with Timer() as load_t:
         processor = AutoProcessor.from_pretrained(repo, revision=rev, **PROCESSOR_OVERRIDES.get(args.model, {}))
-        model = AutoModelForImageTextToText.from_pretrained(
-            repo, revision=rev, dtype=dtype, device_map=device
-        ).eval()
+        map_args = ({"device_map": "auto", "max_memory": {0: args.max_gpu_memory, "cpu": args.max_cpu_memory}}
+                    if device == "auto" else {"device_map": device})
+        model = AutoModelForImageTextToText.from_pretrained(repo, revision=rev, dtype=dtype, **map_args).eval()
+    input_device = model.device if device == "auto" else device
+    rec["device_map"] = getattr(model, "hf_device_map", {"model": device})
+    rec["input_device"] = str(input_device)
     rec["cold_load_s"] = round(load_t.s, 2)
 
     times, done = [], 0
@@ -105,15 +114,19 @@ def main():
                 inputs = processor.apply_chat_template(
                     messages(t1, t2), add_generation_prompt=True, tokenize=True,
                     return_dict=True, return_tensors="pt",
-                ).to(device)
+                ).to(input_device)
                 if "pixel_values" in inputs:
                     inputs["pixel_values"] = inputs["pixel_values"].to(dtype)
                 n_in = int(inputs["input_ids"].shape[1])
+                if str(input_device).startswith("cuda"):
+                    torch.cuda.synchronize()
                 with torch.inference_mode(), Timer() as gen_t:
                     gen = model.generate(**inputs, do_sample=False,
                                          max_new_tokens=args.max_new_tokens)
-                    if device == "mps":
+                    if input_device == "mps":
                         torch.mps.synchronize()
+                    elif str(input_device).startswith("cuda"):
+                        torch.cuda.synchronize()
                 new = gen[0, n_in:]
                 text = processor.decode(new, skip_special_tokens=True).strip()
                 item.update(raw_text=text, status="ok", input_tokens=n_in,
@@ -135,7 +148,8 @@ def main():
         end_utc=now(), completion_rate=round(done / len(rows), 4),
         warm_latency_median_s=percentile(times, 0.5),
         warm_latency_p95_s=percentile(times, 0.95),
-        peak_gpu_memory_mb=round(torch.mps.driver_allocated_memory() / 2**20) if device == "mps" else None,
+        peak_gpu_memory_mb=(round(torch.mps.driver_allocated_memory() / 2**20) if device == "mps" else
+                            round(torch.cuda.max_memory_allocated() / 2**20) if torch.cuda.is_available() and device in ("cuda", "auto") else None),
         raw_output_path=str((out / "captions.jsonl").relative_to(RUNS.parent)),
     )
     json.dump(rec, open(out / "run_record.json", "w"), indent=1)

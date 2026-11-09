@@ -123,8 +123,12 @@ def main():
     ap.add_argument("--roles", default="development_smoke")
     ap.add_argument("--device", default="mps" if torch.backends.mps.is_available() else "cpu")
     ap.add_argument("--ckpt", default=str(CKPT), help="released RSCaMa.pth, or best.pth from colab/rscama_colab.py")
+    ap.add_argument("--clip-cache", default=os.environ.get("TW_CLIP_CACHE"),
+                    help="Optional local cache directory for OpenAI CLIP weights")
     args = ap.parse_args()
     args.ckpt = str(Path(args.ckpt).resolve())  # main() chdirs into the upstream source tree
+    if args.clip_cache:
+        args.clip_cache = str(Path(args.clip_cache).resolve())
     retrained = Path(args.ckpt).name == "best.pth"
     mid = "C02-r20" if retrained else "C02"
     device = torch.device(args.device)
@@ -133,6 +137,10 @@ def main():
     sys.path.insert(0, str(SRC))
     os.chdir(SRC)  # upstream modules use relative paths
     import clip
+    if args.clip_cache:
+        import clip.clip as clip_impl
+        original_download = clip_impl._download
+        clip_impl._download = lambda url, root: original_download(url, args.clip_cache)
     from PIL import Image
     from model.mamba_block import MambaMixer
     from model.model_decoder import DecoderTransformer
@@ -195,12 +203,16 @@ def main():
             try:
                 a = preprocess(Image.open(p1).convert("RGB")).unsqueeze(0).to(device)
                 b = preprocess(Image.open(p2).convert("RGB")).unsqueeze(0).to(device)
+                if device.type == "cuda":
+                    torch.cuda.synchronize(device)
                 with torch.no_grad(), Timer() as t:
                     feat1, feat2 = encoder(a, b)
                     feat = encoder_trans(feat1, feat2)
                     seq = decoder.sample(feat, k=1)
                     if device.type == "mps":
                         torch.mps.synchronize()
+                    elif device.type == "cuda":
+                        torch.cuda.synchronize(device)
                 words = [idx2word[w] for w in seq if w not in skip]
                 item.update(raw_text=" ".join(words), status="ok", output_tokens=len(words),
                             hit_token_limit=len(seq) >= 43, gen_s=round(t.s, 3))

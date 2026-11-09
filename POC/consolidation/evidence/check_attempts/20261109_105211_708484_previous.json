@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-09",
+  "python": "3.11.4",
+  "pytest_exit_code": 2,
+  "passed": 0,
+  "failures": 0,
+  "errors": 1,
+  "skipped": [],
+  "packages": {
+    "numpy": "2.4.6",
+    "Pillow": "12.3.0",
+    "pydantic": "2.14.3",
+    "opencv-python-headless": "5.0.0.93",
+    "pytest": "9.2.0"
+  },
+  "scope": "CPU logic, data contracts and software tests; no model inference or training.",
+  "junit_path": "POC/consolidation/runs/20261109_105147_721960/junit.xml"
+}

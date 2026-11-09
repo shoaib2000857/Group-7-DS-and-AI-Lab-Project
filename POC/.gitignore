@@ -1,0 +1,4 @@
+# Local model runtime, downloaded weights, and generated benchmarks.
+.venv-*/
+.cache-benchmark/
+

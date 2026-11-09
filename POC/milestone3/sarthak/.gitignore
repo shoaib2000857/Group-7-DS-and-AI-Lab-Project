@@ -1,0 +1,2 @@
+# Run JSON, CSV, images, checkpoints, and any local prepared data stay untracked.
+runs/

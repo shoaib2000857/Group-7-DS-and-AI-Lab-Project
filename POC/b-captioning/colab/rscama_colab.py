@@ -31,6 +31,9 @@ sys.path.insert(0, str(HERE.parent / "scripts"))  # local checkout; on Colab all
 from caption_rscama import SRC, build_author_vocab, install_patches  # noqa: E402
 from remote_zip import LEVIR_MCI_URL, fetch_members, open_remote_zip  # noqa: E402
 
+# Allows the local POC's single pinned source cache to serve both B packages.
+SRC = Path(os.environ.get("TW_RSCAMA_SRC", SRC))
+
 ROOT = "LEVIR-MCI-dataset"
 SEED = 42
 N_DEV, N_SCREEN = 50, 100
@@ -95,6 +98,11 @@ def load_upstream(device, shim=True):
     cwd = os.getcwd()
     os.chdir(SRC)
     import clip
+    clip_cache = os.environ.get("TW_CLIP_CACHE")
+    if clip_cache:
+        import clip.clip as clip_impl
+        original_download = clip_impl._download
+        clip_impl._download = lambda url, root: original_download(url, clip_cache)
     from model.mamba_block import MambaMixer
     from model.model_decoder import DecoderTransformer
     from model.model_encoder_attMamba import AttentiveEncoder, Encoder

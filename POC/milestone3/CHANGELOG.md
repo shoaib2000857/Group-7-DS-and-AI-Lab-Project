@@ -6,6 +6,9 @@
 | 5-6 November 2026 | Built the canonical experiment register; verified original exports and local-file preservation; executed the CPU checks | Six ZIP CRC/hash checks, preservation inventory and 81 passing tests |
 | 6 November 2026 | Prepared the model-selection/system-architecture report, native diagrams, training configuration, model workers and inference coordinator | Report sections 1-8, pipeline scripts and four contract tests |
 | 6 November 2026 | Rendered and inspected the eight-page PDF; checked body bounds, figure labels and corresponding Markdown | `qa/layout_checks.json` |
+| 9 November 2026 | Added Sarthak's bounded local BIT-R18 pilot and Otsu comparison, reran the visual witness and 83-test suite, and clarified local versus historical evidence in the report | `sarthak/Benchmark_Report.md`, local-only run records and updated report PDF |
+| 9 November 2026 | Rebuilt and visually inspected the eight-page PDF; refreshed local QA hashes and test count | `qa/layout_checks.json`, rendered pages under ignored `qa/pages/` |
+| 9 November 2026 | Ran the 20%-budget RSCaMa training schedule locally, evaluated its best checkpoint on the frozen 100-pair screen, and documented its precision divergence from the historical aggregate; added hash-backed local evaluation proof and figures | `sarthak/Benchmark_Report.md`, `sarthak/evaluation_proof.json`, `sarthak/figures/` |
 
 This file records report revisions separately from the technical narrative. Model selections, measured component results and implementation tests retain their source identities.
 
