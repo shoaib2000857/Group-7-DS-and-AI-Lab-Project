@@ -10,3 +10,11 @@
 This file records report revisions separately from the technical narrative. Model selections, measured component results and implementation tests retain their source identities.
 
 - 6 November 2026: Promoted the checked eight-page report and matching Markdown/figures into `reports/` through a dedicated review branch. Review requests cover all three teammates; approval records remain their actual PR reviews.
+
+
+### 10 November 2026 - Local benchmark report integration
+
+- Preserved Sarthak's supplied local report and previous report editions under POC, with source hash receipt and numeric transcription.
+- Integrated six caption reruns, supplementary caption results, transfer screens and the 100/25/100 two-epoch BIT experiment. Checked baseline numbers and arithmetic; separated class-mean and binary IoU definitions.
+- Replaced absent-source figure links with a reproducible point-estimate figure; retained the original cover, formal nine-page layout and component-specific metric scopes.
+- Added PA, SS, SRP and SSSM sign-offs dated 10 November 2026 under Shoaib's explicit confirmation of team approval. Matched the submitted PDF/Markdown and kept experimental materials under POC.

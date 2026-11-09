@@ -1,6 +1,6 @@
-"""Build the M2 PDF with the approved M1 cover and typography.
+"""Build the M3 PDF with the approved M1 cover and typography.
 
-Run: python POC/milestone2/build_m2_report.py
+Run: python POC/milestone3/build_m3_report.py
 The report is built entirely from the local Markdown and declared figure data.
 """
 from pathlib import Path
@@ -104,7 +104,7 @@ def table(node,width):
     rows=node.find_all('tr');n=len(rows[0].find_all(['th','td'],recursive=False))
     headings=[x.get_text(' ',strip=True) for x in rows[0].find_all(['th','td'],recursive=False)]
     ratios=([.22,.34,.44] if n==3 else [.28,.20,.23,.29] if n==4 else [.30,.70] if n==2 else [1/n]*n)
-    if n==4 and headings[0]=='Captioning configuration':ratios=[.43,.19,.21,.17]
+    if n==4 and headings[0]=='Captioning configuration':ratios=[.36,.22,.23,.19]
     if n==3 and headings[0] in ('Partition','Split'):ratios=[.36,.32,.32]
     if n==4 and headings[0]=='Team member':ratios=[.32,.14,.27,.27]
     if n==3 and headings[0]=='Revision':ratios=[.20,.40,.40]

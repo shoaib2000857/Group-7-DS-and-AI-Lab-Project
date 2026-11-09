@@ -78,30 +78,56 @@ The selected captioning comparison includes the released RSCaMa checkpoint and a
 
 ## 5. Justification and Experimental Evidence
 
-The captioning screen compares a remote-sensing specialist with general vision-language models and deterministic controls. The table uses the **100-pair LEVIR screening population** and automatic mask/reference checks. Strict precision includes all factual claims in its denominator; in-scope precision restricts the evaluated claim population to the supported annotation scope.
+The captioning comparison uses a fixed **100-pair LEVIR screen**, including **40 unchanged pairs**. The original B0 results and Sarthak Saini's local rerun use automatic claim/reference checks. Strict precision counts all extracted claims; in-scope precision evaluates claims covered by the annotation scope. Cells show **B0 / local** values [6,9].
 
-| Captioning configuration | Strict precision | In-scope precision | BLEU-4 |
+| Captioning configuration | Strict precision (%) | In-scope precision (%) | BLEU-4 |
 |---|---:|---:|---:|
-| Released RSCaMa | 78.7% | 88.9% | 0.6223 |
-| RSCaMa, 20%-budget retrain | 79.2% | 88.0% | 0.5786 |
-| Qwen3-VL-4B | 58.3% | 72.9% | 0.0267 |
-| SmolVLM2-2.2B | 38.6% | 48.4% | 0.0102 |
-| Pixel-difference template | 69.0% | 69.0% | 0.0000 |
-| Always no change | 40.0% | 40.0% | 0.2798 |
+| Released RSCaMa | 78.69 / 78.69 | 88.89 / 88.89 | 0.6223 / 0.6223 |
+| RSCaMa, 20%-budget retrain | 79.17 / 76.04 | 87.96 / 82.02 | 0.5786 / 0.5793 |
+| Qwen3-VL-4B | 58.33 / 55.70 | 72.92 / 71.74 | 0.0267 / 0.0183 |
+| SmolVLM2-2.2B | 38.58 / 37.76 | 48.41 / 47.13 | 0.0102 / 0.0000 |
+| Pixel-difference template | 69.00 / 69.00 | 69.00 / 69.00 | 0.0000 / 0.0000 |
+| Always no change | 40.00 / 40.00 | 40.00 / 40.00 | 0.2798 / 0.2798 |
 
-The specialist provides the strongest overall captioning baseline in this screen. On Apple M4/MPS at batch one, median caption latency is 0.139 s for RSCaMa and 7.605 s for Qwen3-VL. The two RSCaMa precision intervals overlap; their difference does not establish an improvement from retraining. The released checkpoint uses the original train split and validation-based checkpoint selection. The controlled retrain uses **1,313 train pairs plus 50 development pairs**, separating that comparison from the released caption checkpoint.
+**RSCaMa is the selected captioner.** Its released checkpoint reproduces the stored B0 aggregates at the reported precision and leads the local screen on both precision measures and BLEU-4. Local ROUGE-L is **0.7464**, CIDEr-D **1.3184** and reference-fact recall **76.8%**, with **0/40 unchanged-pair false alarms**. The retrained model records 5/40 false alarms, Qwen3-VL 11/40 and SmolVLM2 33/40. The no-change control also records zero alarms, but its 40% strict precision demonstrates the need to measure change coverage alongside false positives.
 
-The transfer screens use 100 records each from SECOND-CC and WHU-CDC. Released RSCaMa strict precision is **48.0%** and **55.6%**, respectively. This source dependence supports explicit evidence checking and source-specific evaluation. WHU remains a historical transfer screen with its separate usage-rights disposition.
+![Local captioning precision and false alarms](figures/m3_local_caption_benchmarks.png)
 
-| Referee configuration | Completed proxy claims | Raw decision agreement |
+Figure 4. Automatic claim precision and false alarms on 40 unchanged pairs. Higher precision and lower false-alarm rates are preferred.
+
+The reproducibility screen retains the raw-release selection and upstream vocabulary construction from official-split captions. The strict 9,544-pair Milestone 2 package supplies the separate training-data contract. The controlled retrain uses **1,313 training pairs and 50 development pairs**, with a training-subset vocabulary. The original Apple M4/MPS batch-one screen records median caption times of **0.139 s** for RSCaMa and **7.605 s** for Qwen3-VL; these timings retain their original hardware context.
+
+<!-- PAGEBREAK -->
+
+### 5.1 Detector, Transfer and Referee Evidence
+
+The local **BIT-ResNet18 two-epoch experiment** uses **100 training pairs, 25 validation pairs and a separate 100-pair evaluation population**, including 45 unchanged pairs. Both detector outputs are reduced to binary any-change predictions for the F1 comparison [9].
+
+| Detector | Binary any-change F1 | Unchanged-pair false alarms |
 |---|---:|---:|
-| Qwen3 text, common evidence | 150/150 | 41.3% |
-| Qwen3-VL, common evidence | 150/150 | 45.3% |
-| Qwen3-VL, image-backed | 150/150 | 56.7% |
+| BIT-ResNet18 | 45.8% | 31/45 (68.9%) |
+| Otsu pixel-difference control | 16.7% | 45/45 (100.0%) |
 
-The referee figures use **30 validation pairs**, constructed annotation-proxy claims and raw choices before the 0.8 accept gate. Image-backed Qwen3-VL is the selected visual-referee configuration; the text model supplies a controlled shared-evidence comparison. These measurements are distinct from independently human-rated caption factuality.
+BIT improves binary F1 by **29.1 percentage points** and reduces false alarms by 14 unchanged pairs. Its road/building class-mean IoU is **26.8%**; the Otsu control's binary change IoU is **9.1%**. These IoUs describe different target spaces and are reported separately. BIT's compact backbone, temporal context and three-class output support region localisation. The measured false-alarm rate motivates downstream visual checking.
 
-BIT complements these choices through dense localisation and a smaller shared backbone; detector selection is architectural rather than a claimed segmentation leaderboard result. Alternative transformer detectors and Siamese CNNs remain represented in the benchmark registry. The selected stack balances domain-specific generation, explicit visual checks and serial GPU execution.
+Released RSCaMa transfer reruns use 100 pairs per source:
+
+| Transfer source | Strict / in-scope precision | BLEU-4 |
+|---|---:|---:|
+| SECOND-CC | 48.04% / 50.00% | 0.2426 |
+| WHU-CDC | 55.56% / 66.67% | 0.4717 |
+
+These aggregates match the stored transfer results at the displayed precision. Source dependence supports separate reporting and evidence-grounded verification. WHU usage follows its recorded source-rights disposition.
+
+The L4 referee screen uses **30 validation pairs and 150 constructed annotation-proxy claims**, evaluated before the 0.8 acceptance gate.
+
+| Referee configuration | Proxy claims | Raw decision agreement |
+|---|---:|---:|
+| Qwen3 text, common evidence | 150 | 41.3% |
+| Qwen3-VL, common evidence | 150 | 45.3% |
+| Qwen3-VL, image-backed | 150 | 56.7% |
+
+Image-backed Qwen3-VL achieves the strongest agreement in this controlled comparison and is the selected visual referee. The text judge supplies a shared-evidence comparator. Caption checks, detector overlap and referee agreement measure distinct component behaviours; each retains its own evaluation population.
 
 <!-- PAGEBREAK -->
 
@@ -126,7 +152,7 @@ The RSCaMa retrain builds its vocabulary from training-subset captions and prese
 | RSCaMa retraining | Public CLIP visual initialisation; temporal fusion and caption decoder trained through the upstream trainability policy. Token cross-entropy, Adam 1e-4, batch 12 pairs, 40-epoch cap, patience eight and seed zero. Development BLEU-4 selects best weights. |
 | Witness and referee | Structural witness uses fixed image-processing rules. Qwen weights remain frozen; prompt, image budget, model revision and the 0.8 operating gate are recorded. |
 
-The detector row specifies the executable task-training configuration. The captioner row records the implemented subset-retraining script. Training and validation retain their fixed source partitions; test records are reserved for evaluation. Checkpoint files and histories preserve model configuration, epoch and selection score.
+The detector row specifies the task-training configuration. The two-epoch experiment in Section 5.1 uses its own 100/25/100-pair protocol; the 50-epoch configuration defines the full task-training profile. The captioner row records the implemented subset-retraining script. Training and validation retain their fixed source partitions; test records are reserved for evaluation. Checkpoint files and histories preserve model configuration, epoch and selection score.
 
 Colab supplies GPU training/inference, with L4-class evidence from the returned decision sessions. Model workers use separate environments because captioner and referee library versions differ. Sequential residency and stored intermediates control memory without loading the complete model stack simultaneously.
 
@@ -140,13 +166,13 @@ Acceptance requires a valid decision record and the configured operating gate. M
 
 | Verification evidence | Executed scope |
 |---|---|
-| Consolidated CPU suite | **81 passing tests**; one Torch-dependent shim module skipped in the CPU environment |
-| Visual witness | Nine unit tests; supplied 50-case synthetic regression record and three real-image cases over two source pairs |
-| Captioning | Six configurations; 50 development/100 screening LEVIR records; two 100-record transfer screens |
+| Local component suite | **83 passing tests**, including the Torch-dependent shim checks, in the supplied local run summary |
+| Visual witness | 50/50 synthetic outcomes; 2/3 coarse mask-region-presence checks across three authored real-image cases over two source pairs |
+| Captioning | Six configurations rerun on 100 LEVIR screening pairs; two 100-pair transfer reruns |
 | Decision exports | Six checksum-verified ZIPs, five session IDs and 40 distinct image pairs; successful Qwen text/VL outputs and preserved failure records |
 | Orchestration | CPU test doubles exercise localisation, reference isolation, decision gating, failure review and preservation of existing run directories |
 
-The 50-case witness record reports 50/50 synthetic conditions. The real-image cases use authored claims and regions; their evidence records retain separate referee fields. Decision-session exports use a frozen Qwen visual witness. Those component protocols remain identifiable through their run IDs and are not pooled into a single accuracy score.
+The real-image witness checks measure coarse mask-region presence. Claim wording, structural observations and referee decisions retain separate fields. Decision-session exports use a frozen Qwen visual witness. Component protocols retain their run identities and separate metrics.
 
 Human assessment uses SUPPORTED, CONTRADICTED, UNSUPPORTED and UNVERIFIABLE judgements from two independent raters. Agreement and Cohen's kappa precede third-rater adjudication using the original images and contextual crops. SUPPORTED maps to accept, CONTRADICTED/UNSUPPORTED to reject and UNVERIFIABLE to defer. This measures claim factuality separately from mask overlap, reference-caption similarity and automated proxy decisions.
 
@@ -164,3 +190,16 @@ The architecture fixes the complete data flow, model choices and training contro
 6. TerraWatch Group 7. *Captioning implementation and aggregate screens*. Commit 8328ba7. https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/8328ba7/POC/execution
 7. TerraWatch Group 7. *Visual evidence inspector and component tests*. Commit 54b713a. https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/commit/54b713a
 8. TerraWatch Group 7. *Consolidated experiment register and preservation evidence*. https://github.com/shoaib2000857/Group-7-DS-and-AI-Lab-Project/tree/poc-consolidation/POC/consolidation
+
+9. Saini, S. (2026). *TerraWatch local benchmark summary*. Team experiment report, 9 November 2026. Preserved source and transcribed metrics: `POC/milestone3/sources/received_2026-11-10/` and `POC/milestone3/evidence/`.
+
+## Team Sign-off
+
+The team has reviewed and approved this Milestone 3 report.
+
+| Team member | Initials | Approval date |
+|---|---|---|
+| Priyanshu Agarwal | PA | 10 November 2026 |
+| Sarthak Saini | SS | 10 November 2026 |
+| Sujal Raj Pradhan | SRP | 10 November 2026 |
+| Shoaib SSM | SSSM | 10 November 2026 |

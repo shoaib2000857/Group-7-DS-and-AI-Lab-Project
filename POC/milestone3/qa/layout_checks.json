@@ -1,12 +1,53 @@
 {
-  "pages": 8,
-  "words_markdown": 2109,
-  "bounds_issues": [],
-  "sections_1_to_8": true,
-  "pending_or_future_scope_prose": false,
-  "pdf_sha256": "527d4410a5762ab59b5cfd02fd3881cbafe55da32759674fb56f653695939631",
-  "md_sha256": "d04b5f9417cabd630ff19f60fde5d2717dd1378947023b829ab5a85398821751",
-  "visual_review": "cover, all body pages and diagrams inspected",
-  "cpu_tests": 81,
-  "torch_module_skips": 1
+  "page_count": 9,
+  "page_checks": [
+    {
+      "page": 1,
+      "outside_page": [],
+      "words": 61
+    },
+    {
+      "page": 2,
+      "outside_page": [],
+      "words": 323
+    },
+    {
+      "page": 3,
+      "outside_page": [],
+      "words": 278
+    },
+    {
+      "page": 4,
+      "outside_page": [],
+      "words": 307
+    },
+    {
+      "page": 5,
+      "outside_page": [],
+      "words": 305
+    },
+    {
+      "page": 6,
+      "outside_page": [],
+      "words": 264
+    },
+    {
+      "page": 7,
+      "outside_page": [],
+      "words": 377
+    },
+    {
+      "page": 8,
+      "outside_page": [],
+      "words": 327
+    },
+    {
+      "page": 9,
+      "outside_page": [],
+      "words": 191
+    }
+  ],
+  "pdf_sha256": "c69056855667004926ff5709abc66b144cffa519e8ab65b52517b84267c5571e",
+  "md_sha256": "aeeac9e0ffe41637fd2131cf330f63b9fc4309688d73ed0934274a3c6af99b53",
+  "matching_submission_pdf": true
 }

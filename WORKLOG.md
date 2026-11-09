@@ -56,6 +56,8 @@ Other members: add your section below using the same table.
 | 2 | 23–29 Oct 2026 | M2 | Verified the final prepared dataset statistics, partition counts, class distribution, and exclusion records documented in the Milestone 2 report | [Milestone 2 report §9–10](reports/Milestone2_Report.md) | |
 | 2 | 29 Oct 2026 | M2 | Reviewed the report’s reproducibility and data-quality documentation, including loader validation, source provenance, leakage checks, and augmentation policy | [Milestone 2 report §8–12](reports/Milestone2_Report.md) | |
 
+| 4 | 9-10 Nov 2026 | M3 local benchmarking (Sarthak, SS) | Supplied the six-model local caption comparison, supplementary metrics, SECOND/WHU transfer aggregates, two-epoch BIT/Otsu comparison and local component-test summary used in the revised report. | [Preserved supplied report](POC/milestone3/sources/received_2026-11-10/Milestone3_Report_LocalBenchmarked.md) - [Transcribed results](POC/milestone3/evidence/provided_local_benchmarks.json) | |
+
 ---
 
 ## Shoaib SSM ([@shoaib2000857](https://github.com/shoaib2000857))
@@ -93,3 +95,5 @@ Other members: add your section below using the same table.
 
 
 | 3 | 6 Nov 2026 | POC merge preparation (Shoaib, SSSM) | Verified experiment/code folder boundaries; retained unpromoted model/evidence code and tests under POC, preserved original variants/results, refreshed validation and prepared the consolidated history for the authorised main merge. | [Consolidation](POC/consolidation/README.md) | |
+
+| 4 | 10 Nov 2026 | M3 report integration (Shoaib, SSSM) | Preserved the supplied local benchmark report; fetched remote branches, reconciled numeric baselines, corrected detector metric comparisons, regenerated results figure and nine-page PDF/Markdown, inspected page layouts and recorded the confirmed four-member sign-off. | [M3 report](POC/milestone3/Milestone3_Report.md) - [Revision log](reports/Milestone3_CHANGELOG.md) | |

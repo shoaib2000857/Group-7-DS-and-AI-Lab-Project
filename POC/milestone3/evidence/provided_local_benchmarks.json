@@ -1,0 +1,234 @@
+{
+  "source": {
+    "received_date": "2026-11-10",
+    "source_file": "Milestone3_Report_LocalBenchmarked.md",
+    "retained_path": "POC/milestone3/sources/received_2026-11-10/Milestone3_Report_LocalBenchmarked.md",
+    "sha256": "e58f615d86c7618c91458bf04dd8443737fb8c1332575a5a7d19ea8928c6f7e9",
+    "bytes": 23934,
+    "supplied_by": "Shoaib",
+    "local_benchmark_author": "Sarthak Saini",
+    "source_kind": "team-supplied Markdown benchmark record"
+  },
+  "caption_pairs": 100,
+  "unchanged_pairs": 40,
+  "comparison_value_order": [
+    "B0",
+    "local",
+    "delta"
+  ],
+  "caption_comparison": [
+    {
+      "model": "Released RSCaMa",
+      "strict_precision": [
+        78.69,
+        78.69,
+        0.0
+      ],
+      "in_scope_precision": [
+        88.89,
+        88.89,
+        0.0
+      ],
+      "bleu4": [
+        0.6223,
+        0.6223,
+        0.0
+      ]
+    },
+    {
+      "model": "RSCaMa, 20%-budget retrain",
+      "strict_precision": [
+        79.17,
+        76.04,
+        -3.13
+      ],
+      "in_scope_precision": [
+        87.96,
+        82.02,
+        -5.94
+      ],
+      "bleu4": [
+        0.5786,
+        0.5793,
+        0.0007
+      ]
+    },
+    {
+      "model": "Qwen3-VL-4B",
+      "strict_precision": [
+        58.33,
+        55.7,
+        -2.63
+      ],
+      "in_scope_precision": [
+        72.92,
+        71.74,
+        -1.18
+      ],
+      "bleu4": [
+        0.0267,
+        0.0183,
+        -0.0084
+      ]
+    },
+    {
+      "model": "SmolVLM2-2.2B",
+      "strict_precision": [
+        38.58,
+        37.76,
+        -0.82
+      ],
+      "in_scope_precision": [
+        48.41,
+        47.13,
+        -1.28
+      ],
+      "bleu4": [
+        0.0102,
+        0.0,
+        -0.0102
+      ]
+    },
+    {
+      "model": "Pixel-difference template",
+      "strict_precision": [
+        69.0,
+        69.0,
+        0.0
+      ],
+      "in_scope_precision": [
+        69.0,
+        69.0,
+        0.0
+      ],
+      "bleu4": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "Always no change",
+      "strict_precision": [
+        40.0,
+        40.0,
+        0.0
+      ],
+      "in_scope_precision": [
+        40.0,
+        40.0,
+        0.0
+      ],
+      "bleu4": [
+        0.2798,
+        0.2798,
+        0.0
+      ]
+    }
+  ],
+  "supplementary_metric_order": [
+    "BLEU1",
+    "BLEU2",
+    "BLEU3",
+    "ROUGE_L",
+    "CIDEr_D",
+    "fact_recall_percent",
+    "false_alarm_percent"
+  ],
+  "supplementary": [
+    {
+      "model": "Released RSCaMa",
+      "metrics": [
+        0.8412,
+        0.7548,
+        0.6813,
+        0.7464,
+        1.3184,
+        76.8,
+        0.0
+      ]
+    },
+    {
+      "model": "RSCaMa, 20%-budget retrain",
+      "metrics": [
+        0.7872,
+        0.7087,
+        0.6349,
+        0.681,
+        1.0837,
+        58.4,
+        12.5
+      ]
+    },
+    {
+      "model": "Qwen3-VL-4B",
+      "metrics": [
+        0.1739,
+        0.085,
+        0.038,
+        0.174,
+        0.0003,
+        72.8,
+        27.5
+      ]
+    },
+    {
+      "model": "SmolVLM2-2.2B",
+      "metrics": [
+        0.1513,
+        0.0744,
+        0.022,
+        0.1612,
+        0.0022,
+        56.0,
+        82.5
+      ]
+    },
+    {
+      "model": "Pixel-difference template",
+      "metrics": [
+        0.2458,
+        0.113,
+        0.0246,
+        0.1785,
+        0.0426,
+        76.0,
+        22.5
+      ]
+    },
+    {
+      "model": "Always no change",
+      "metrics": [
+        0.3133,
+        0.2905,
+        0.2833,
+        0.465,
+        0.937,
+        32.0,
+        0.0
+      ]
+    }
+  ],
+  "detector": {
+    "epochs": 2,
+    "train_pairs": 100,
+    "val_pairs": 25,
+    "eval_pairs": 100,
+    "unchanged_pairs": 45,
+    "BIT_binary_f1_percent": 45.8,
+    "BIT_class_mean_iou_percent": 26.8,
+    "BIT_false_alarms": 31,
+    "Otsu_binary_f1_percent": 16.7,
+    "Otsu_binary_iou_percent": 9.1,
+    "Otsu_false_alarms": 45
+  },
+  "reported_local_tests": {
+    "passed": 83,
+    "skipped": 0
+  },
+  "checks": {
+    "baseline_values_matched": true,
+    "deltas_recalculated": true,
+    "raw_run_artifacts_received": false
+  }
+}

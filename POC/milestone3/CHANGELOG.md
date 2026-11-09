@@ -8,3 +8,11 @@
 | 6 November 2026 | Rendered and inspected the eight-page PDF; checked body bounds, figure labels and corresponding Markdown | `qa/layout_checks.json` |
 
 This file records report revisions separately from the technical narrative. Model selections, measured component results and implementation tests retain their source identities.
+
+
+### 10 November 2026 - Local benchmark report integration
+
+- Preserved Sarthak's supplied local report and previous report editions under POC, with source hash receipt and numeric transcription.
+- Integrated six caption reruns, supplementary caption results, transfer screens and the 100/25/100 two-epoch BIT experiment. Checked baseline numbers and arithmetic; separated class-mean and binary IoU definitions.
+- Replaced absent-source figure links with a reproducible point-estimate figure; retained the original cover, formal nine-page layout and component-specific metric scopes.
+- Added PA, SS, SRP and SSSM sign-offs dated 10 November 2026 under Shoaib's explicit confirmation of team approval. Matched the submitted PDF/Markdown and kept experimental materials under POC.
