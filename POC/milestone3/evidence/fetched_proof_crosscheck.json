@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-10",
+  "evidence_commit": "f6bc2ec",
+  "proof_sha256": "86cc75005dc3fa10699b6d637b3f838ff5e0817dbdf690e77ca30c8eb5d7d3d4",
+  "caption_checks": [
+    {
+      "configuration": "Released RSCaMa",
+      "all_reported_metrics_match": true
+    },
+    {
+      "configuration": "RSCaMa, 20%-budget retrain",
+      "all_reported_metrics_match": true
+    },
+    {
+      "configuration": "Qwen3-VL-4B",
+      "all_reported_metrics_match": true
+    },
+    {
+      "configuration": "SmolVLM2-2.2B",
+      "all_reported_metrics_match": true
+    },
+    {
+      "configuration": "Pixel-difference template",
+      "all_reported_metrics_match": true
+    },
+    {
+      "configuration": "Always no change",
+      "all_reported_metrics_match": true
+    }
+  ],
+  "supplementary_metrics_match": true,
+  "submitted_md_unchanged": true,
+  "submitted_pdf_unchanged": true,
+  "repair": "POC report/PDF matched to checked submission; README conflict markers resolved"
+}

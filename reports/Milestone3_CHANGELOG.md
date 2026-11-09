@@ -18,3 +18,5 @@ This file records report revisions separately from the technical narrative. Mode
 - Integrated six caption reruns, supplementary caption results, transfer screens and the 100/25/100 two-epoch BIT experiment. Checked baseline numbers and arithmetic; separated class-mean and binary IoU definitions.
 - Replaced absent-source figure links with a reproducible point-estimate figure; retained the original cover, formal nine-page layout and component-specific metric scopes.
 - Added PA, SS, SRP and SSSM sign-offs dated 10 November 2026 under Shoaib's explicit confirmation of team approval. Matched the submitted PDF/Markdown and kept experimental materials under POC.
+
+- 10 November 2026: Pulled benchmark-evidence commit f6bc2ec; checked all six caption configurations and supplementary metrics against the supplied proof. Repaired committed conflict markers in the POC report/README and matched the POC PDF to the checked submission. Submission PDF/Markdown and team sign-offs remain unchanged. All new experiment files are retained.

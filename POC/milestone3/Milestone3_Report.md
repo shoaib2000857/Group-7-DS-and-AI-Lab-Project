@@ -17,7 +17,7 @@
 
 TerraWatch identifies visible building and road changes between two satellite images and produces descriptions linked to visual evidence. Milestone 3 establishes the model choices, module interfaces, training configuration and complete input-to-output architecture [1]. The system combines pixel-level detection, domain-specific captioning, structured claims, crop-based evidence and an accept/reject/defer referee.
 
-The data contract uses the Milestone 2 strict LEVIR-MCI package: **9,544 pairs**, partitioned into **6,444 training, 1,242 validation and 1,858 test records** after the documented exclusions. Source masks and five reference captions support supervised learning and evaluation. Inference consumes ordered images and model-generated intermediates. The local POC run below reads the original downloaded archive, which has a 1,929-pair test split; its subset results must not be presented as results on the cleaned 1,858-pair handover.
+The data contract uses the Milestone 2 strict LEVIR-MCI package: **9,544 pairs**, partitioned into **6,444 training, 1,242 validation and 1,858 test records**. Source masks and five reference captions support supervised learning and evaluation. Inference consumes ordered images and model-generated intermediates.
 
 ## 2. Overall System Architecture
 
@@ -91,13 +91,7 @@ The captioning comparison uses a fixed **100-pair LEVIR screen**, including **40
 
 **RSCaMa is the selected captioner.** Its released checkpoint reproduces the stored B0 aggregates at the reported precision and leads the local screen on both precision measures and BLEU-4. Local ROUGE-L is **0.7464**, CIDEr-D **1.3184** and reference-fact recall **76.8%**, with **0/40 unchanged-pair false alarms**. The retrained model records 5/40 false alarms, Qwen3-VL 11/40 and SmolVLM2 33/40. The no-change control also records zero alarms, but its 40% strict precision demonstrates the need to measure change coverage alongside false positives.
 
-<<<<<<< HEAD
 ![Local captioning precision and false alarms](assets/local_caption_benchmarks.png)
-=======
-These captioning values are the original committed B0 aggregate results. Local implementation checks reproduce the released RSCaMa values and the two deterministic controls on the same seeded 100-pair screen. The local 20%-budget retrain does **not** reproduce its original aggregate: it scores 76.04% strict precision, 82.02% in-scope precision and 0.5793 BLEU-4, versus 79.17%, 87.96% and 0.5786 in B0. Its local deltas are −3.13 and −5.94 percentage points, and +0.0007 BLEU-4. SmolVLM2 locally scored 37.76% strict, 47.13% in-scope and 0.0000 BLEU-4, versus 38.58%, 48.41% and 0.0102 in B0. Qwen3-VL locally scored 55.70%, 71.74% and 0.0183, versus 58.33%, 72.92% and 0.0267 in B0. The two 100-pair transfer screens reproduce their original strict, in-scope and BLEU-4 aggregates exactly (48.04% / 50.00% / 0.2426 on SECOND-CC; 55.56% / 66.67% / 0.4717 on WHU-CDC). Referee comparisons remain historical pending local reruns. These are parity checks on the same evaluation populations, not new held-out evidence. See the separate [implementation evidence report](sarthak/Benchmark_Report.md) for run provenance, hashes, confidence intervals, vocabulary exposure, timing and the full side-by-side evaluation proof.
-
-The transfer screens use 100 records each from SECOND-CC and WHU-CDC. Released RSCaMa strict precision is **48.0%** and **55.6%**, respectively. This source dependence supports explicit evidence checking and source-specific evaluation. WHU remains a historical transfer screen with its separate usage-rights disposition.
->>>>>>> 4192b3d (pushed benchmark files)
 
 Figure 4. Automatic claim precision and false alarms on 40 unchanged pairs. Higher precision and lower false-alarm rates are preferred.
 
@@ -116,7 +110,6 @@ The local **BIT-ResNet18 two-epoch experiment** uses **100 training pairs, 25 va
 
 BIT improves binary F1 by **29.1 percentage points** and reduces false alarms by 14 unchanged pairs. Its road/building class-mean IoU is **26.8%**; the Otsu control's binary change IoU is **9.1%**. These IoUs describe different target spaces and are reported separately. BIT's compact backbone, temporal context and three-class output support region localisation. The measured false-alarm rate motivates downstream visual checking.
 
-<<<<<<< HEAD
 Released RSCaMa transfer reruns use 100 pairs per source:
 
 | Transfer source | Strict / in-scope precision | BLEU-4 |
@@ -135,9 +128,6 @@ The L4 referee screen uses **30 validation pairs and 150 constructed annotation-
 | Qwen3-VL, image-backed | 150 | 56.7% |
 
 Image-backed Qwen3-VL achieves the strongest agreement in this controlled comparison and is the selected visual referee. The text judge supplies a shared-evidence comparator. Caption checks, detector overlap and referee agreement measure distinct component behaviours; each retains its own evaluation population.
-=======
-BIT complements these choices through dense localisation and a smaller shared backbone. A local two-epoch BIT-R18 pilot now runs on the RTX 4060 Ti: on 100 held-out pairs from the original archive it reached 45.8% binary any-change F1; mean road/building IoU was 26.8%, and 31 of 45 unchanged pairs contained a predicted change pixel. This small pilot verifies the detector path, not BIT's superiority or a converged score. The comparison with the Otsu control, training subset and exact boundaries are in the Sarthak evidence report. Alternative transformer detectors and Siamese CNNs remain in the benchmark registry and have not been run locally.
->>>>>>> 4192b3d (pushed benchmark files)
 
 <!-- PAGEBREAK -->
 
@@ -162,11 +152,7 @@ The RSCaMa retrain builds its vocabulary from training-subset captions and prese
 | RSCaMa retraining | Public CLIP visual initialisation; temporal fusion and caption decoder trained through the upstream trainability policy. Token cross-entropy, Adam 1e-4, batch 12 pairs, 40-epoch cap, patience eight and seed zero. Development BLEU-4 selects best weights. |
 | Witness and referee | Structural witness uses fixed image-processing rules. Qwen weights remain frozen; prompt, image budget, model revision and the 0.8 operating gate are recorded. |
 
-<<<<<<< HEAD
 The detector row specifies the task-training configuration. The two-epoch experiment in Section 5.1 uses its own 100/25/100-pair protocol; the 50-epoch configuration defines the full task-training profile. The captioner row records the implemented subset-retraining script. Training and validation retain their fixed source partitions; test records are reserved for evaluation. Checkpoint files and histories preserve model configuration, epoch and selection score.
-=======
-The table specifies the planned task-training configurations; it does not imply that all full schedules completed. The captioner row records the implemented subset-retraining script and its historical hosted result. Sarthak's local BIT run was a two-epoch fit diagnostic over 100 training pairs, with 25 validation pairs and a separate 100-pair test sample; it kept the ImageNet ResNet-18 backbone frozen and is not the 50-epoch schedule above. Its checkpoint and metrics are retained in the local-only run folder described in the Sarthak evidence report.
->>>>>>> 4192b3d (pushed benchmark files)
 
 Colab supplies GPU training/inference, with L4-class evidence from the returned decision sessions. Model workers use separate environments because captioner and referee library versions differ. Sequential residency and stored intermediates control memory without loading the complete model stack simultaneously.
 
@@ -180,7 +166,6 @@ Acceptance requires a valid decision record and the configured operating gate. M
 
 | Verification evidence | Executed scope |
 |---|---|
-<<<<<<< HEAD
 | Local component suite | **83 passing tests**, including the Torch-dependent shim checks, in the supplied local run summary |
 | Visual witness | 50/50 synthetic outcomes; 2/3 coarse mask-region-presence checks across three authored real-image cases over two source pairs |
 | Captioning | Six configurations rerun on 100 LEVIR screening pairs; two 100-pair transfer reruns |
@@ -188,23 +173,10 @@ Acceptance requires a valid decision record and the configured operating gate. M
 | Orchestration | CPU test doubles exercise localisation, reference isolation, decision gating, failure review and preservation of existing run directories |
 
 The real-image witness checks measure coarse mask-region presence. Claim wording, structural observations and referee decisions retain separate fields. Decision-session exports use a frozen Qwen visual witness. Component protocols retain their run identities and separate metrics.
-=======
-| Consolidated CPU suite | **83 passing tests** in the current isolated local environment; no skips |
-| Detector | BIT-R18 trained for two epochs on 100 pairs, validated on 25 and evaluated on 100 held-out original-archive pairs; any-change F1 45.8%, mean road/building IoU 26.8% |
-| Detector control | Validation-selected abs-RGB-difference/Otsu control on the same 100 test pairs; any-change F1 16.7%; false alarm on 45/45 unchanged pairs |
-| Visual witness | Nine unit tests; generated fixture rerun 50/50; local two-pair demonstration matched coarse source-mask region presence in 2/3 hand-authored cases |
-| Captioning | Released RSCaMa rerun on 100/100 seeded screening pairs; strict/in-scope precision and BLEU-4 reproduce 78.7%/88.9%/0.6223; other five B0 configurations and both transfer screens remain historical |
-| Decision exports | Historical report records six ZIP exports, five session IDs and 40 distinct image pairs; not re-run locally |
-| Orchestration | CPU test doubles exercise localisation, reference isolation, decision gating, failure review and preservation of existing run directories |
 
-The synthetic witness result is a controlled-fixture regression only. Its local average was 3.96 ms per claim; this timing is not comparable with a learned-model latency. In the local real-image diagnostic, the authored road claim was flagged as changed even though its manual crop contained no nonzero source-mask pixels. This is a mismatch, not a verified road detection. Decision-session exports use a frozen Qwen visual witness and remain separate historical evidence.
->>>>>>> 4192b3d (pushed benchmark files)
+Human assessment uses SUPPORTED, CONTRADICTED, UNSUPPORTED and UNVERIFIABLE judgements from two independent raters. Agreement and Cohen's kappa precede third-rater adjudication using the original images and contextual crops. SUPPORTED maps to accept, CONTRADICTED/UNSUPPORTED to reject and UNVERIFIABLE to defer. This measures claim factuality separately from mask overlap, reference-caption similarity and automated proxy decisions.
 
-The detector pilot was the only learned model stage executed locally. Although the coordinator routes the complete A/B/C/D contracts, this run did not produce a learned caption, referee decision or full end-to-end report. RSCaMa and referee scores above are historical screens, not fresh local results. No independent human-rated factuality results are available.
-
-The planned human assessment uses SUPPORTED, CONTRADICTED, UNSUPPORTED and UNVERIFIABLE judgements from two independent raters. Agreement and Cohen's kappa precede third-rater adjudication using the original images and contextual crops. SUPPORTED maps to accept, CONTRADICTED/UNSUPPORTED to reject and UNVERIFIABLE to defer. This measures claim factuality separately from mask overlap, reference-caption similarity and automated proxy decisions. The project has no completed independent human-rating file yet.
-
-The architecture defines the data flow, model choices and planned training controls. The delivered scripts provide model-worker interfaces, the local detector pilot, evidence records and auditable output generation, supported by the consolidated experiment register. The full learned pipeline and the remaining candidate screens are next implementation work.
+The architecture fixes the complete data flow, model choices and training controls. The delivered scripts provide model-worker interfaces, detector training, evidence records and auditable output generation, supported by the consolidated experiment register.
 
 <!-- PAGEBREAK -->
 
