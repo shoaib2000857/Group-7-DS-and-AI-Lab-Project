@@ -8,7 +8,7 @@ Exploratory resize/brightness/augmentation checks are kept separately under [`PO
 
 These notebooks call the same modules under `src/data/` as the command-line pipeline. They are not separate copies of processing logic. Their saved tables and plots reflect an executed run; check the coverage table before interpreting a convenience probe as a complete release.
 
-The existing model-experiment and evaluation placeholders are left available for subsequent modelling work; the data-quality notebook does not claim to train a model.
+The model-experiment and evaluation notebooks now call the reusable main model pipeline. They include recorded benchmark replay, fresh labelled CPU controls, intermediate visual outputs and downloadable results ZIPs. See [model execution instructions](../docs/models/README.md) for the learned-worker environments and checkpoint setup.
 
 ## Google Colab
 

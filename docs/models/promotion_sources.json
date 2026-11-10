@@ -1,0 +1,41 @@
+{
+  "source_commit": "9b595e5",
+  "files": {
+    "src/evidence/__init__.py": {
+      "source": "POC/evidence/__init__.py",
+      "source_sha256": "ee16b7125d38242e7d588fd08d018c882a63a19224c139c01b55c9ea51fe402d"
+    },
+    "src/evidence/schemas.py": {
+      "source": "POC/evidence/schemas.py",
+      "source_sha256": "85f7f23d72dc030263cedfd9dfed0f11efa7ddf6418d2b643360261bbd2f9f89"
+    },
+    "src/evidence/crop_extractor.py": {
+      "source": "POC/evidence/crop_extractor.py",
+      "source_sha256": "d65bd3459e102056890c2f407bbf96885f7b150953d93d2424501a60d921d26e"
+    },
+    "src/evidence/visual_inspector.py": {
+      "source": "POC/evidence/visual_inspector.py",
+      "source_sha256": "4f2070742c420efce258515fab10fc6546396aafee97aa69a2482a4390866b15"
+    },
+    "src/evidence/pipeline.py": {
+      "source": "POC/evidence/pipeline.py",
+      "source_sha256": "9988aca714c4c5cf75d2a5dbc76de9493d47f624760e5dd05bd2abcd16055e40"
+    },
+    "src/models/claims.py": {
+      "source": "POC/execution/scripts/claims.py",
+      "source_sha256": "dbbafdc77c8522635346b76dbb365ea841110d0add6ea97522ab5cfcc444bb57"
+    },
+    "src/inference/pipeline.py": {
+      "source": "POC/pipeline/run_pipeline.py",
+      "source_sha256": "71d993582a83eda1e6e8e6a671068f5372ce52c04d38d2e5dba334b38a83cef3"
+    },
+    "src/models/workers.py": {
+      "source": "POC/pipeline/workers.py",
+      "source_sha256": "d8403b3ccc95a92090bb071b2b171fa87d7314e912133e68cd5ea13dd075014b"
+    },
+    "src/training/detector.py": {
+      "source": "POC/pipeline/train_detector.py",
+      "source_sha256": "4fda802cf1c785b0c643aa3d62da36d8d00c8c51a081c2bcb52b51115baaf279"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "source_dir": "models/external/BIT_CD",
+  "processed": "data/processed",
+  "epochs": 50,
+  "batch": 8,
+  "accum": 4,
+  "patience": 8,
+  "seed": 42,
+  "device": "cuda",
+  "freeze_epochs": 5
+}
