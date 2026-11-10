@@ -91,3 +91,10 @@ outputs/main_verify_console.txt
 # Versioned pipeline run artifacts stay local; sources and summaries are tracked.
 outputs/pipeline_runs/
 outputs/detector_training/
+
+# Main model source caches, environments and generated run artifacts
+models/external/
+outputs/model_notebooks/
+outputs/captioner_training/
+outputs/model_evaluation/
+.venv-*/

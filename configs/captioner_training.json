@@ -1,0 +1,12 @@
+{
+  "source_dir": "models/external/RSCaMa",
+  "processed": "data/processed",
+  "epochs": 40,
+  "batch": 12,
+  "accum": 1,
+  "lr": 0.0001,
+  "patience": 8,
+  "seed": 0,
+  "device": "cuda",
+  "vocab_threshold": 5
+}

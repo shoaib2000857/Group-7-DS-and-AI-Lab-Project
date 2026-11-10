@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "python": "python",
+    "source_dir": "models/external/BIT_CD",
+    "checkpoint": "models/checkpoints/bit_mci.pt",
+    "image_size": 256,
+    "classes": 3
+  },
+  "captioner": {
+    "python": "python",
+    "source_dir": "models/external/RSCaMa",
+    "checkpoint": "models/checkpoints/rscama.pth",
+    "vocab": "models/checkpoints/rscama_vocab.json"
+  },
+  "referee": {
+    "python": "python",
+    "model_id": "J06",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "accept_threshold": 0.8,
+    "max_image_side": 512,
+    "device_map": "cuda"
+  },
+  "worker_timeout_seconds": 600,
+  "device": "cuda",
+  "seed": 42
+}
