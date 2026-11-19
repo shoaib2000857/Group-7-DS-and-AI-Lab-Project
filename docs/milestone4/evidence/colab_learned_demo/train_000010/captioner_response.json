@@ -1,0 +1,6 @@
+{
+  "caption": "a house appears at the bottom of the scene",
+  "model": "RSCaMa",
+  "checkpoint": "/content/terrawatch-m4-demo/models/checkpoints/rscama.pth",
+  "source_kind": "model_prediction"
+}

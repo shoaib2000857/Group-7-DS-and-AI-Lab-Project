@@ -1,0 +1,6 @@
+{
+  "mask_path": "/content/TerraWatch_M4_Learned_20261119_170329/val_000005/detector_response.mask.png",
+  "model": "BIT-MCI-3class",
+  "checkpoint": "/content/bit_m4.pt",
+  "source_kind": "model_prediction"
+}

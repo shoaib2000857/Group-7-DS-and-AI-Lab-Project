@@ -1,0 +1,5 @@
+numpy>=1.26,<3
+Pillow>=10,<13
+torch==2.8.0
+torchvision==0.23.0
+einops==0.6.1

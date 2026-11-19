@@ -73,3 +73,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Integrated six caption reruns, supplementary caption results, transfer screens and the 100/25/100 two-epoch BIT experiment. Checked baseline numbers and arithmetic; separated class-mean and binary IoU definitions.
 - Replaced absent-source figure links with a reproducible point-estimate figure; retained the original cover, formal nine-page layout and component-specific metric scopes.
 - Added PA, SS, SRP and SSSM sign-offs dated 10 November 2026 under Shoaib's explicit confirmation of team approval. Matched the submitted PDF/Markdown and kept experimental materials under POC.
+
+## 10 November 2026 - Main M3 implementation
+
+Promoted selected POC components into reusable main model, inference, training, evidence and evaluation modules while preserving originals. Added functional model/evaluation notebooks, task configs, separate dependencies, setup/preflight commands, export utilities, implementation map and six-slide meeting PDF. CPU suite: 43 passing tests. GPU model execution requires configured worker environments and checkpoints.

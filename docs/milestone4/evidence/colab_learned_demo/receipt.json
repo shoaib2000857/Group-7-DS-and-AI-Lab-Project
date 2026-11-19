@@ -1,0 +1,52 @@
+{
+  "archive": "TerraWatch_M4_Learned_20261119_170329.zip",
+  "archive_sha256": "06dbee34ae67b4de513ddee5f5a1ad53d2328065249cb4ba851efe6b0b6b6f8e",
+  "training_archive": "TerraWatch_M4_BIT_20261119_165506.zip",
+  "training_archive_sha256": "43d7445c2b15e5446cdd078fa53f1bf8d5e54a2c3c8a29a24e950ccbb571fbc8",
+  "detector_provenance": "Executed notebook records upload of lr_1e-4.pt before the L4 sweep completed. The learned bundle records the runtime path /content/bit_m4.pt and does not include a detector checkpoint digest.",
+  "pairs": [
+    {
+      "pair_id": "train_000010",
+      "report_sha256": "d719740c95c7b3d20f50c9f4410c7791f8245009338174df4270658b9370925a",
+      "mask_sha256": "1a28e1952fbe85dae83ec8fae5fb1ef87198528c2f34ff00fd385304ae13b366",
+      "claims": [
+        {
+          "claim_id": "pipeline:train_000010:c0",
+          "caption_span": "a house appears at the bottom of the scene",
+          "raw_outcome": "defer",
+          "final_outcome": "defer",
+          "reason_codes": [
+            "insufficient_visual_evidence",
+            "exact_count_without_independent_instance_evidence"
+          ],
+          "probabilities": {
+            "accept": 0.02297460101544857,
+            "reject": 0.00012055963452439755,
+            "defer": 0.9769048690795898
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "val_000005",
+      "report_sha256": "d8b2a390737418cbbbbe48f9615d30923e86124e54ae2bfe0c81328d4a61228b",
+      "mask_sha256": "1a6b9a92b8d86255ad73cbf262b138ec04f8065f9261290b84715334adc6dc07",
+      "claims": [
+        {
+          "claim_id": "pipeline:val_000005:c0",
+          "caption_span": "the scene is the same as before",
+          "raw_outcome": "accept",
+          "final_outcome": "defer",
+          "reason_codes": [
+            "accept_below_operating_threshold"
+          ],
+          "probabilities": {
+            "accept": 0.6357240676879883,
+            "reject": 0.18213799595832825,
+            "defer": 0.18213799595832825
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "decisions": [
+    {
+      "claim_id": "pipeline:val_000005:c0",
+      "outcome": "accept",
+      "probabilities": {
+        "accept": 0.6357240676879883,
+        "reject": 0.18213799595832825,
+        "defer": 0.18213799595832825
+      },
+      "probability_semantics": "softmax_conditional_on_three_label_tokens_not_calibrated_truth",
+      "raw": {
+        "restricted_codes": {
+          "A": 0.6357240676879883,
+          "B": 0.18213799595832825,
+          "C": 0.18213799595832825
+        },
+        "code_order": [
+          "accept",
+          "reject",
+          "defer"
+        ],
+        "input_tokens": 838
+      },
+      "usage": {
+        "input_tokens": 838
+      }
+    }
+  ],
+  "model": {
+    "repo": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.17.0",
+    "dtype": "torch.bfloat16",
+    "device_map": "cuda"
+  },
+  "source_kind": "model_prediction"
+}
