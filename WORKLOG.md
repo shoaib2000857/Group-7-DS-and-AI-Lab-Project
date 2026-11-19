@@ -98,3 +98,7 @@ Other members: add your section below using the same table.
 | 3 | 6 Nov 2026 | POC merge preparation (Shoaib, SSSM) | Verified experiment/code folder boundaries; retained unpromoted model/evidence code and tests under POC, preserved original variants/results, refreshed validation and prepared the consolidated history for the authorised main merge. | [Consolidation](POC/consolidation/README.md) | |
 
 | 4 | 10 Nov 2026 | M3 report integration (Shoaib, SSSM) | Preserved the supplied local benchmark report; fetched remote branches, reconciled numeric baselines, corrected detector metric comparisons, regenerated results figure and nine-page PDF/Markdown, inspected page layouts and recorded the confirmed four-member sign-off. | [M3 report](POC/milestone3/Milestone3_Report.md) - [Revision log](reports/Milestone3_CHANGELOG.md) | |
+
+## Milestone 4 implementation update
+
+- **Shoaib SSM** ? reconciled training evidence, ran the local matched BIT comparison, integrated coordinator evidence with persistent review events, and prepared the Colab notebooks, report, slides, walkthrough and repository quick start.

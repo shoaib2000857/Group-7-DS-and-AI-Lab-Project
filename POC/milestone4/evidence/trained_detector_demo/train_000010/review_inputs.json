@@ -1,0 +1,7 @@
+{
+  "images": [
+    "../../../../../src/app/assets/train_000010_T1.png",
+    "../../../../../src/app/assets/train_000010_T2.png"
+  ],
+  "mask": "detector_response.mask.png"
+}

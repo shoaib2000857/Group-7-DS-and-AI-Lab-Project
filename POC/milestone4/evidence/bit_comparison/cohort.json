@@ -1,0 +1,1166 @@
+{
+  "train": [
+    {
+      "pair_id": "LEVIR-MCI/train/train_006113",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_006113.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_006113.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_006113.png",
+      "t1_sha256": "57d1bd785efbda73821ebbc8677cb524aa68c8ae6fb88f1a6abd0761302791a2",
+      "t2_sha256": "c40377d4657ef540a3ed520ceaf150c9652c351ff5ee263852b8da647fefa127",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_001008",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_001008.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_001008.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_001008.png",
+      "t1_sha256": "394817cc3d8c9ff40c746049e70945e3cff979c1196526599a4fc02450b0d7ec",
+      "t2_sha256": "56ae2bd397aeaa3982d62292dc2295bfa5b8eed99e4a15c95f3637c015c2de14",
+      "target_sha256": "17a5c760e66adf39fc240b503f7564dc28458c1b9bb4713835196c0a2482e227",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000227",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000227.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000227.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000227.png",
+      "t1_sha256": "38a0a7221df7b7986da2ff8b552193c90d53adf5e597e3a3fe3f3d0970ee334b",
+      "t2_sha256": "f3043b49d5131f94fffd996c7eaaf13501188e86b5c71aed735aaaae8887fe1c",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_007198",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_007198.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_007198.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_007198.png",
+      "t1_sha256": "8cc929b2a1769c39df2b58d9d7b0dbaf2e3581575194e3d6c8b1dcd3d580d6c0",
+      "t2_sha256": "f4c8e0b055a97da9da767f43960538865256781ef87935b22356b71b88314a30",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_002467",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_002467.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_002467.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_002467.png",
+      "t1_sha256": "9d2070c7ea4f6f1f920acf62c83b86bc3a8f30dfb3fb859d8b858c9334835ae1",
+      "t2_sha256": "535ca065b15c33377044bea163e3e525dd0b13a965f85dcd84b6fc8d143bf1a7",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_002197",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_002197.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_002197.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_002197.png",
+      "t1_sha256": "440abe0fd1ae341655c05dbaa23fcbd3edf361c797714529e1ef11cf0e7e84cc",
+      "t2_sha256": "1356120253896c7b7820c4e30e0f65d003e5203ab5a7e40200a2f405d1ab2247",
+      "target_sha256": "49584bffd4eba7de748db3c5a7b80f70e334cf0129136d2f850c0d9e02d2676c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "building_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_002002",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_002002.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_002002.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_002002.png",
+      "t1_sha256": "cf3a9808ae29c1f74378142c783c3c396bd0370ad3dfd8663f064bd8b2c6cd2f",
+      "t2_sha256": "7b0cebb567b749c65849979ec617dfd8b60330859ef99268ca7f27228033c241",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_001262",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_001262.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_001262.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_001262.png",
+      "t1_sha256": "e00dd464b371352364c1d7245eeff37d03e9f31ad5044dfce9067c8340fe504a",
+      "t2_sha256": "a492891947f3fc0feb913e290ca226eb18028f9469134e1127594bbf63703ad9",
+      "target_sha256": "f34d6c8766347cc53a46d6927ac199852572a23d6ec6db950aa616547b6ff720",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_007152",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_007152.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_007152.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_007152.png",
+      "t1_sha256": "868c1648b6c8ca068fb540530f993662c406272d61ddf9327674e12afd29e20c",
+      "t2_sha256": "8b23afd9f0136a60c5191156ce9408d83c009e90d564212cbee1e618a48cccdf",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000928",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000928.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000928.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000928.png",
+      "t1_sha256": "aa957c63169319c80f4faf6259197fda3ebe3296719aa503f4d196e6d439f780",
+      "t2_sha256": "e6715692c5c6c3b4b1e6fc7cc48dffa0bac9c037fb59190d8a8642a87930fd3d",
+      "target_sha256": "d4d37c17dfa0674a9398cdcf7b934cc6dc89c59fd2bc9eb107b4e71abf994d29",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_006515",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_006515.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_006515.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_006515.png",
+      "t1_sha256": "a5a98a3b56bf1cc18380b56c091fc3c3dd0ff017ae6fab9e9aa016306e08cf01",
+      "t2_sha256": "b9363eefcb6c32e0f3f3b122cc6e5095b595bf9f6ef3a3c175ebf2dc72753758",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_007189",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_007189.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_007189.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_007189.png",
+      "t1_sha256": "900cdab8504ca97e4caf5bb65ee59e180156599430c98ce5af84b925b0027535",
+      "t2_sha256": "a0be9bc4ed6ecf62b13823a229dd9f9a83555ec0795605b35500e9f155341813",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_005150",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_005150.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_005150.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_005150.png",
+      "t1_sha256": "20781f43f32c50b1984e79cd642a472f8d7795285acb8c7b6a0e0c00a750986a",
+      "t2_sha256": "9fb1744bc24a09131023e75d6992f28c7b2ea38417209863f5c181725dfd1fb5",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000782",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000782.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000782.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000782.png",
+      "t1_sha256": "c88f6d80919ff7954cd50b6bcc3ac13b52649163906283b77ce189965b473015",
+      "t2_sha256": "99fc7fc5c8c0d5202838f53d77b658b95e94b8689697c8a2e804f360ee8b9116",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_005628",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_005628.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_005628.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_005628.png",
+      "t1_sha256": "3f8a197aae1d9712451e1a8e5bb5444b84db2b13e049ed31dbb94ecbfa119a0a",
+      "t2_sha256": "19abd5d562100b0994256ceeb0cdcdea9b7ed22345eb3b00d743e83cd265069e",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_003842",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_003842.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_003842.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_003842.png",
+      "t1_sha256": "3adc7b355d7abcb7f1f2eee40da11780e87e270db2c037ae5c3e3027ab71af1c",
+      "t2_sha256": "42ed3609a9a9b8f92cb10e8fed7acf5bd7ca64fc6d441708b60d330a93afd87e",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000285",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000285.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000285.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000285.png",
+      "t1_sha256": "4ca9266215643769099896c1210dc9f4449e13be8ff58d2798d740bd2d151be5",
+      "t2_sha256": "7330d94b137d051691961100ed4ff7ae5b2039e7871bcbc8e649c95653ffea2d",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000267",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000267.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000267.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000267.png",
+      "t1_sha256": "8f9a4d8dbd90c83423d0443dcd752eb96d6e66b901a533c8cc198a475692e401",
+      "t2_sha256": "56dd7aaa28d663d24b62f337a955eb74f28150e641d9876cbff18264069f3a41",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000842",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000842.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000842.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000842.png",
+      "t1_sha256": "dc7a6ce9ebb2433abe8b2f68f94049ae2928c20581d2dcc70a3a64d7008dec67",
+      "t2_sha256": "4e5be55e0f6f00e17d1d878d2226cccffd210f2f3767392a8125639b58b7d981",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_001965",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_001965.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_001965.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_001965.png",
+      "t1_sha256": "1de2c3f24bd2c75347a505d00ea43501fea7f2ad9ec38962b71ed8160d928f3c",
+      "t2_sha256": "272273c8097967932bd24d781adcf23e82a4654f6c696e499a79d4ecf6155f7a",
+      "target_sha256": "8d8f23e90ab5783c9f5b88068f2b338965def459dcad57f358adf51c33411d37",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_002089",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_002089.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_002089.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_002089.png",
+      "t1_sha256": "46c805bc372e4f7b389761c756a519c6579164c98d7b48c4252438f09b106309",
+      "t2_sha256": "6382ff237c225a1e50ac071404475b49554105bbfc2f84e973682636e60492b6",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_004623",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_004623.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_004623.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_004623.png",
+      "t1_sha256": "f08849cbe30ffb82e5bd45097db0ae4146422cf2e16aa280072161b8401a1a33",
+      "t2_sha256": "e35172d90bf0e92d71823e2045e331dbdb464af67507111361a7160d34807f9b",
+      "target_sha256": "5e865c0e144134a879b6f76deaec040a3959bc794e42a785aa3880adaa93d41f",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "road_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_005744",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_005744.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_005744.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_005744.png",
+      "t1_sha256": "06e3744adac21defeaf34ca4a8a5bdd0ad219d7cf3ead94740d872b115c09f31",
+      "t2_sha256": "5731c1aceb02a8bab90644497ecbc7902f35c12992cd0766ca5ceaf9f18feeb3",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/train/train_000240",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "train",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/train/A/train_000240.png",
+      "t2_member": "LEVIR-MCI-dataset/images/train/B/train_000240.png",
+      "target_member": "LEVIR-MCI-dataset/images/train/label/train_000240.png",
+      "t1_sha256": "239857e049a5d690570a78d1e81c0e018aed6aba9f55ed75e44782f01d2ba335",
+      "t2_sha256": "474ce3dfb1efbc30962c2bfeda9ac6a9977aa5561dede0501940aa0d8cc1b176",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    }
+  ],
+  "val": [
+    {
+      "pair_id": "LEVIR-MCI/val/val_000080",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000080.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000080.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000080.png",
+      "t1_sha256": "0161bacd1bd106bf79c70878d84d56dc665ba161d1375aa5ef2bb020172afbb0",
+      "t2_sha256": "45ca6039d7975e7aacde02cadf535100329d6ecce1151a8a125669163664527d",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_000661",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000661.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000661.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000661.png",
+      "t1_sha256": "243fa8159a9d82e80bc50aef5769e1e3ae211175486172f91c7947a93d8d821f",
+      "t2_sha256": "96f3eec1bdc17ce7d85ade721a84397264cedf5d8768f751905ee1b663a64258",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_000314",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000314.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000314.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000314.png",
+      "t1_sha256": "a26a76574b858ac4f3ffec105b5cd64b85600eefb99e017c4612ad3664f89829",
+      "t2_sha256": "a246ab06b7a9937bc512a7558c8d8b89ccacaf8265b9bf6a30cf1c85e2ae5900",
+      "target_sha256": "5635f38d67af80a41e021c3713eb9526190fe09694667be50fbca7c5457ebbd3",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001088",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001088.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001088.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001088.png",
+      "t1_sha256": "8a7c1aee17c90c8388f3c106a50218699a34de2af598d0903a9a0bb4ff780256",
+      "t2_sha256": "87e193ac3c6d8283813c000938298e8cf9dd0c71fbf5c64f54ce5b47cf966b70",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_000886",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000886.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000886.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000886.png",
+      "t1_sha256": "9bea28126fbe4f780c8881a5b2ad20cfecd9177dc72deeba4be1a2376975074f",
+      "t2_sha256": "58b87e8151a281f614a167b9068750fcc6706c765e8e3fe22279f65e854b0863",
+      "target_sha256": "c710890fde3cf0acafe2c13ed6b5f50c1562cd37b988ba8f675e7f9a8d7ff7e7",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "building_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_000211",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000211.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000211.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000211.png",
+      "t1_sha256": "55ac7722c3f9b375dbe8129d246113c333b42c16b15c2b90ed485ca4d9b1fa12",
+      "t2_sha256": "6090a3e4d54cafcf0ca2ef9302a34dc15f50411200a5dddfaa20fe56490fd551",
+      "target_sha256": "88d8aa9706147e877cbc84f0be81eae73cf95192389fab405fed07def9048ea1",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "building_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001068",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001068.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001068.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001068.png",
+      "t1_sha256": "0efa6baaa283f6206ecc9cd913831675c64e53520397ddc60ae2dad8be57cfff",
+      "t2_sha256": "1b4a3baa99f95d9eacd4ca23c476726244933b77d5dc7468f16c6afee135ab3f",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001419",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001419.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001419.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001419.png",
+      "t1_sha256": "6ef136e8ee8ec534a3ef9af496d7dbcd1f823679f804188b4eb5f2490e9f5ea9",
+      "t2_sha256": "169caf093b6bc6042d87193aa6634ec2a9efed6e17be52960384609b4f9d98f0",
+      "target_sha256": "a79790b4dfeaa906a5bb72e2ba41d0658ef73b3341926e1ccbfaf7b04b3dcc1f",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001173",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001173.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001173.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001173.png",
+      "t1_sha256": "b6313d83cb4b8c96de5bf76df12899f66b93ce419ef7b7f7f97c439db94875e2",
+      "t2_sha256": "8a743950a982a864e25450024b98fe4204fa7eae1a0baf3bdb8d40f7ceb0baec",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_000040",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000040.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000040.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000040.png",
+      "t1_sha256": "f9baeff0b0453ce9746928ad431c89c9cf6fea45fec21355b4f3cd3fd52c3e46",
+      "t2_sha256": "7565fb68bdcf9ff3a41c0845a3383900c6907ab2e5fa453c3c20dd49d8813b78",
+      "target_sha256": "1fcfe84635ac5971780a199366a5cc43307eef5d400d762d290cb1500910e995",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "building_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001210",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001210.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001210.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001210.png",
+      "t1_sha256": "d8dad1d2d7a047ef1369b9a1558292f13a24b48dcf384c46beea68d2aef0393e",
+      "t2_sha256": "6a2d32254c7d3e631fd37254f02ec79d0b8047cc649b9763fe5b92785da44f74",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001023",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001023.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001023.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001023.png",
+      "t1_sha256": "64528c4e04a0d78bc0ae378638c009ecdc71307c5931b9b26c2c32deb68bacee",
+      "t2_sha256": "25208d04208c45c3cf6224a23355be6fc813576e1b19f9dea23ffb20c65f9943",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001366",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001366.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001366.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001366.png",
+      "t1_sha256": "349eba9637b0a468cfc699d763a019acca6b215e3dbc2f5c52f6af727d60a256",
+      "t2_sha256": "2d7d51e9706241d8f982b63c18fb5a02d1f7a4176173c291a138c87f7886be4d",
+      "target_sha256": "5f79764f656942d9bcbb7ff2f38d19226a2e41430c651805e0ce1e4fc5a530e8",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "building_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_000891",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_000891.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_000891.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_000891.png",
+      "t1_sha256": "d02d179c00b341f9f783ac6444e1d3234acb1df06f478cafc465a5e942f86f05",
+      "t2_sha256": "0079f3f7d3904354f731a56230a48328425124d3abdad3aea16a3450ba961b7b",
+      "target_sha256": "d325c9150f698bd20d687281e7262fb18c772f8dde2aad87d99e123185233458",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "building_only",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001291",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001291.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001291.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001291.png",
+      "t1_sha256": "f19c891ff5f4db64b95efe82dc7afb1587a922d04b7cde80c732871cbb894403",
+      "t2_sha256": "0e87b6064a00a042c38b13712eca68f3f60c2633df38a48d8e50a5c16845e48a",
+      "target_sha256": "38e2c3b31f4da90f0684c6b6185bb9fab72c197cac4eab654ef39ef192a8b2e4",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "both",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    },
+    {
+      "pair_id": "LEVIR-MCI/val/val_001026",
+      "dataset": "LEVIR-MCI",
+      "source_revision": "dff09c709999b5b1f1f1806024811c65a6b14dfe",
+      "official_split": "val",
+      "archive": "../raw/LEVIR-MCI-dataset.zip",
+      "t1_member": "LEVIR-MCI-dataset/images/val/A/val_001026.png",
+      "t2_member": "LEVIR-MCI-dataset/images/val/B/val_001026.png",
+      "target_member": "LEVIR-MCI-dataset/images/val/label/val_001026.png",
+      "t1_sha256": "399eb335d951c04a246537697b4c2f700ba38daff4b71d2d8a9c54faf6318e3d",
+      "t2_sha256": "8dc3be94a9b853df548a4d7c0b3a78b8d1d05e5575ab79d54cdc9f16148a586c",
+      "target_sha256": "3f4d71b63cd17da7aeda885c59160ea2e69ed17cfc27915ffaffe7f874e1b95c",
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "mask_encoding": {
+        "0": "background",
+        "128": "road_change",
+        "255": "building_change"
+      },
+      "mask_class": "unchanged",
+      "acquisition_t1": null,
+      "acquisition_t2": null,
+      "crs": null,
+      "per_tile_gsd_m": null,
+      "nominal_source_gsd_m": 0.5
+    }
+  ]
+}

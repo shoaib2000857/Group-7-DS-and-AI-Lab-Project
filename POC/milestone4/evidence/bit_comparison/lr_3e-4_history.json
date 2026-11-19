@@ -1,0 +1,107 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.393303503592809,
+    "validation_loss": 0.3933413103222847,
+    "pixels": 1048576,
+    "class_iou": [
+      0.9518492177750344,
+      0.060955283584932615,
+      0.06078642087569921
+    ],
+    "macro_iou_present_classes": 0.35786364074522203,
+    "change_class_mean_iou": 0.06087085223031591,
+    "binary_precision": 0.6628930817610063,
+    "binary_recall": 0.09976148108885775,
+    "binary_f1": 0.17342371988943003,
+    "binary_iou": 0.09494469066407235,
+    "confusion_matrix": [
+      [
+        993070,
+        1430,
+        1250
+      ],
+      [
+        16505,
+        1280,
+        271
+      ],
+      [
+        31051,
+        1513,
+        2206
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.3667030831178029,
+    "validation_loss": 0.36750755459070206,
+    "pixels": 1048576,
+    "class_iou": [
+      0.9521909677864531,
+      0.14575772437469348,
+      0.040147017246253885
+    ],
+    "macro_iou_present_classes": 0.3793652364691335,
+    "change_class_mean_iou": 0.09295237081047368,
+    "binary_precision": 0.7006552006552007,
+    "binary_recall": 0.09716806118199371,
+    "binary_f1": 0.1706676419736667,
+    "binary_iou": 0.09329504353041676,
+    "confusion_matrix": [
+      [
+        993557,
+        1721,
+        472
+      ],
+      [
+        14956,
+        2972,
+        128
+      ],
+      [
+        32737,
+        613,
+        1420
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.3473210483789444,
+    "validation_loss": 0.34585321694612503,
+    "pixels": 1048576,
+    "class_iou": [
+      0.9537532043767848,
+      0.1078167115902965,
+      0.15001330849081715
+    ],
+    "macro_iou_present_classes": 0.40386107481929945,
+    "change_class_mean_iou": 0.12891501004055683,
+    "binary_precision": 0.7147301006404392,
+    "binary_recall": 0.14788172490818915,
+    "binary_f1": 0.2450592885375494,
+    "binary_iou": 0.13963963963963963,
+    "confusion_matrix": [
+      [
+        992632,
+        494,
+        2624
+      ],
+      [
+        15880,
+        2000,
+        176
+      ],
+      [
+        29134,
+        0,
+        5636
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  }
+]

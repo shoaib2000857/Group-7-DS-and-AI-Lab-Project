@@ -13,6 +13,10 @@ def build_detector(spec,device):
     import torch
     source=Path(spec['source_dir']).resolve()
     if not (source/'models/networks.py').is_file():raise FileNotFoundError('BIT source_dir must contain the official models/networks.py')
+    from types import ModuleType
+    legacy_utils=ModuleType('torchvision.models.utils')
+    legacy_utils.load_state_dict_from_url=torch.hub.load_state_dict_from_url
+    sys.modules.setdefault(legacy_utils.__name__,legacy_utils)
     sys.path.insert(0,str(source))
     from models.networks import BASE_Transformer
     model=BASE_Transformer(input_nc=3,output_nc=3,with_pos='learned',resnet_stages_num=4,

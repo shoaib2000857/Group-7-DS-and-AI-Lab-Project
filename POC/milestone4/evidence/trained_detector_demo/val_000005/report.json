@@ -1,0 +1,159 @@
+{
+  "pair_id": "LEVIR-MCI/val/val_000005",
+  "execution_mode": "trained_bit_with_authored_claims_and_decision_control",
+  "input_sha256": [
+    "c41d7246def183a673074053a3b31f7163219bf00dc1835a6d83d524cf018f82",
+    "a506c4fde62f809cd562ab6453398fe2694bacc981f9d4c63e0974aa6c7f6c3e"
+  ],
+  "claims": [
+    {
+      "record_type": "stage_c_evidence_record",
+      "pair_id": "LEVIR-MCI/val/val_000005",
+      "claim_id": "pipeline:LEVIR-MCI/val/val_000005:c0",
+      "source_span": "two houses were built in the center.",
+      "claim": {
+        "object": "building",
+        "action": "added",
+        "location": "in the center",
+        "quantity": 2,
+        "quantity_unit": "houses"
+      },
+      "candidate_region_ids": [
+        [
+          0,
+          0,
+          256,
+          256
+        ]
+      ],
+      "coordinate_frame": "original_T1_pixels",
+      "bbox_convention": "x0_y0_x1_y1_half_open",
+      "evidence": {
+        "mask_run_id": "BIT-MCI-3class",
+        "mask_ontology": "building_road_binary",
+        "witness_run_id": "structural_crop_witness_v3",
+        "visible_change": true,
+        "confidence": 0.9462495553934709,
+        "state_transition": "appearance_of_structure",
+        "observations": "Visible change confirmed. Rectilinear structural boundaries present in T2 (localized max_block=84.5, peak/mean ratio=2.34, edge density=0.70) that were absent in T1 (edge density=0.86). Visual evidence supports building appearance.",
+        "visibility_flags": [
+          "t1_clear",
+          "t2_clear"
+        ],
+        "quality_flags": [
+          "illumination_corrected_-49.2"
+        ],
+        "crop_paths": [
+          "crops/LEVIR-MCI_val_val_000005_a2ad9f15e11396a79fbe_crop_T1.png",
+          "crops/LEVIR-MCI_val_val_000005_a2ad9f15e11396a79fbe_crop_T2.png"
+        ],
+        "structural_edge_change": -0.157958984375,
+        "mean_luminance_diff": -49.203277587890625,
+        "crop_mean_diff": 36.268798828125,
+        "transform_record": {
+          "original_bbox": [
+            0,
+            0,
+            256,
+            256
+          ],
+          "padded_bbox": [
+            0,
+            0,
+            256,
+            256
+          ],
+          "padding_applied": {
+            "pad_x0": 0,
+            "pad_y0": 0,
+            "pad_x1": 0,
+            "pad_y1": 0
+          },
+          "coordinate_frame": "original_T1_pixels"
+        }
+      },
+      "decision": {
+        "outcome": "defer",
+        "raw_outcome": "defer",
+        "probabilities": null,
+        "reason_codes": [
+          "no_matching_predicted_region",
+          "exact_count_without_independent_instance_evidence"
+        ],
+        "raw_response": "integration control; no learned referee",
+        "probability_semantics": "not_applicable_control"
+      },
+      "human_reference": "stored_separately_and_never_passed_to_inference",
+      "parser_provenance": {
+        "run_id": "pipeline",
+        "char_start": 0,
+        "char_end": 36,
+        "location_grid": {
+          "text": "in the center",
+          "rows": [
+            1
+          ],
+          "cols": [
+            1
+          ],
+          "cells": [
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "parser": {
+          "quantity_kind": "exact",
+          "quantity_text": "two",
+          "hedged": false,
+          "negated": false,
+          "version": "rules-v3"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "generated_caption": "two houses were built in the center.",
+  "config": {
+    "detector": {
+      "python": "detector environment",
+      "source_dir": "models/external/BIT_CD",
+      "checkpoint": "lr_1e-4.pt",
+      "image_size": 256,
+      "classes": 3
+    },
+    "captioner": {
+      "python": "python",
+      "source_dir": "models/external/RSCaMa",
+      "checkpoint": "models/checkpoints/rscama.pth",
+      "vocab": "models/checkpoints/rscama_vocab.json"
+    },
+    "referee": {
+      "python": "python",
+      "model_id": "J06",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "accept_threshold": 0.8,
+      "max_image_side": 512,
+      "device_map": "cuda"
+    },
+    "worker_timeout_seconds": 600,
+    "device": "cpu",
+    "seed": 42
+  },
+  "model_metadata": {
+    "detector": {
+      "model": "BIT-MCI-3class",
+      "checkpoint": "lr_1e-4.pt",
+      "source_kind": "model_prediction",
+      "checkpoint_sha256": "6a3a854b7d1262a21a526647b0255c5474af0e02def232bc3ce0663084fad420"
+    },
+    "captioner": {
+      "model": "authored-review-prompt",
+      "source_kind": "authored_demo"
+    },
+    "referee": {}
+  },
+  "verified_description": "The image pair requires review before a change description can be confirmed.",
+  "review_required": true
+}

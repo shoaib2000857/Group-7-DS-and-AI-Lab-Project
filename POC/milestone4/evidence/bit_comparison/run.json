@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "batch_size": 4,
+  "epochs_cap": 3,
+  "learning_rates": [
+    0.0001,
+    0.0003
+  ],
+  "optimizer": "AdamW",
+  "weight_decay": 0.01,
+  "scheduler": "none",
+  "criterion": "validation change-class mean IoU",
+  "loss": "equal weighted focal and soft Dice",
+  "augmentation": "paired horizontal flips",
+  "backbone": "ImageNet ResNet18, frozen",
+  "torch": "2.15.0+cpu",
+  "torchvision": "0.29.2+cpu",
+  "cuda": null,
+  "gpu": null,
+  "device": "cpu",
+  "train_pairs": 24,
+  "validation_pairs": 16,
+  "vram_bytes": null
+}

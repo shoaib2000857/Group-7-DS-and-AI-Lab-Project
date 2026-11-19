@@ -1,0 +1,20 @@
+{
+  "pairs": [
+    "LEVIR-MCI/train/train_000010",
+    "LEVIR-MCI/val/val_000005"
+  ],
+  "execution_mode": "real_imagery_cpu_control_with_authored_claims",
+  "pipeline_outcomes": [
+    "defer",
+    "defer"
+  ],
+  "review_event_check": "two scripted events persisted and original decision preserved",
+  "first_final_review_outcome": "accept",
+  "image_assets_retrieved": 10,
+  "browser_checks": [
+    "mask and crops rendered",
+    "flag and correction saved",
+    "decision and both events persisted after reload",
+    "audit JSON downloaded"
+  ]
+}

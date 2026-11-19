@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TerraWatch Evidence Review</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#102630;background:#f7f6ef}*{box-sizing:border-box}body{margin:0}header{background:#102630;color:#fff;padding:1.4rem max(1.2rem,calc((100vw - 1120px)/2))}header h1{margin:.1rem 0}header p{margin:.25rem 0;color:#cee0d8}main{max-width:1120px;margin:auto;padding:1.1rem}.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:end}h2{margin-bottom:.2rem}label{display:grid;gap:.3rem;font-weight:600}input,select,textarea,button{font:inherit;padding:.55rem;border:1px solid #8a9b98;border-radius:.3rem}button{background:#d6ea8c;color:#102630;cursor:pointer;font-weight:650}button:disabled{opacity:.55}figure{margin:0}figcaption{font-size:.9rem;padding:.4rem 0}.imagery{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin:1rem 0}.imagery canvas,.imagery img{width:100%;display:block;background:#102630;image-rendering:auto}.status{font-weight:650}.meta{font-size:.9rem;color:#455f60}form{padding:1rem;border:1px solid #ced7cd;background:white;margin-top:1rem}textarea{width:100%;min-height:4rem}form label{margin-bottom:.6rem}ol{padding-left:1.7rem}li{margin:.5rem 0}.error{color:#9e2020}details{margin-top:.8rem}pre{overflow-wrap:anywhere;white-space:pre-wrap;font-size:.8rem}
+</style></head><body>
+<header><h1>TerraWatch Evidence Review</h1><p>Inspect a change claim and record your decision.</p></header>
+<main><div class="row"><label>Claim <select id="claims"></select></label><button id="export" type="button">Export audit JSON</button></div>
+<h2 id="claim"></h2><div id="meta" class="meta"></div><p id="decision" class="status"></p><p id="reason"></p><div id="imagery" class="imagery"></div>
+<details><summary>Witness observations and provenance</summary><pre id="evidence"></pre></details>
+<form id="review"><div class="row"><label>Reviewer <input id="reviewer" required maxlength="120"></label><label>Review decision <select id="outcome"><option value="">Keep current decision</option><option value="accept">Accept</option><option value="reject">Reject</option><option value="defer">Defer</option></select></label></div>
+<label><span><input type="checkbox" id="flag"> Flag for review</span></label><label>Corrected claim or count <textarea id="correction" maxlength="2000"></textarea></label><label>Review notes <textarea id="notes" maxlength="2000"></textarea></label><button id="save">Save review</button> <span id="status" role="status"></span></form>
+<h2>Review history</h2><ol id="history"></ol></main>
+<script>
+const $=id=>document.getElementById(id);
+let records=[];
+const current=()=>records.find(record=>record.id===$('claims').value);
+async function request(url, options){const response=await fetch(url,options);const data=await response.json();if(!response.ok)throw Error(data.error||`Request failed (${response.status})`);return data;}
+function picture(asset,label,boxes=[],mask=false){
+  const figure=document.createElement('figure'), canvas=document.createElement('canvas'), caption=document.createElement('figcaption');
+  caption.textContent=label;figure.append(canvas,caption);$('imagery').append(figure);
+  const image=new Image();image.onload=()=>{canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);
+    if(mask){const pixels=ctx.getImageData(0,0,canvas.width,canvas.height);for(let i=0;i<pixels.data.length;i+=4){const v=pixels.data[i]; const rgb=v===0?[19,37,45]:v===1?[245,198,68]:[219,235,125];pixels.data.set(rgb,i);}ctx.putImageData(pixels,0,0);}
+    ctx.strokeStyle='#ffcc36';ctx.lineWidth=2;for(const [x,y,x2,y2] of boxes)ctx.strokeRect(x,y,x2-x,y2-y);
+  };image.onerror=()=>{caption.textContent=label+' (image unavailable)';};image.src=asset.url;
+}
+function show(){
+  const r=current();if(!r)return;const c=r.claim;const last=r.reviews.at(-1);
+  const latestDecision=[...r.reviews].reverse().find(event=>event.decision)?.decision;
+  $('claim').textContent=c.source_span;$('meta').textContent=`${r.pair_id} | ${r.execution_mode.replaceAll('_',' ')}`;
+  $('decision').textContent=`Final decision: ${latestDecision||c.decision.outcome} · Pipeline decision: ${c.decision.outcome}${last?.flagged?' · Flagged':''}`;
+  $('reason').textContent=(c.decision.reason_codes||[]).join(' · ')||JSON.stringify(c.decision.raw_response??'No additional decision reason recorded');
+  $('imagery').replaceChildren();const boxes=c.candidate_region_ids||[];
+  picture(r.images[0],'Earlier image (T1)',boxes);picture(r.images[1],'Later image (T2)',boxes);
+  picture(r.mask,r.detector.source_kind==='deterministic_control'?'Otsu control mask':'Detector mask',boxes,true);
+  r.crops.forEach((asset,i)=>picture(asset,`Evidence crop ${i+1}`));
+  $('evidence').textContent=JSON.stringify({claim:c.claim,detector:r.detector,witness:c.evidence,decision:c.decision,run_id:r.run_id,input_hashes:r.images.map(a=>a.sha256),mask_hash:r.mask.sha256},null,2);
+  $('history').replaceChildren();if(!r.reviews.length){const item=document.createElement('li');item.textContent='No review events recorded.';$('history').append(item);}
+  for(const event of r.reviews){const item=document.createElement('li');item.textContent=[event.reviewer,event.timestamp,event.decision||'decision unchanged',event.flagged?'flagged':'unflagged',event.correction,event.notes].filter(Boolean).join(' · ');$('history').append(item);}
+  $('reviewer').value=last?.reviewer||'';$('correction').value=last?.correction||'';$('flag').checked=!!last?.flagged;$('notes').value='';$('outcome').value='';
+}
+$('claims').onchange=show;
+$('review').onsubmit=async event=>{event.preventDefault();const record=current();$('save').disabled=true;
+  try{const saved=await request('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:record.id,reviewer:$('reviewer').value,decision:$('outcome').value||null,flagged:$('flag').checked,correction:$('correction').value,notes:$('notes').value})});record.reviews.push(saved);show();$('status').textContent='Review saved.';$('status').className='';}
+  catch(error){$('status').textContent=error.message;$('status').className='error';}finally{$('save').disabled=false;}};
+$('export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(records,null,2)],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='terrawatch-review-audit.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+request('/api/reports').then(data=>{records=data;for(const r of records){const option=document.createElement('option');option.value=r.id;option.textContent=`${r.pair_id} · ${r.claim.source_span}`;$('claims').append(option);}show();}).catch(error=>{$('status').textContent=error.message;});
+</script></body></html>
