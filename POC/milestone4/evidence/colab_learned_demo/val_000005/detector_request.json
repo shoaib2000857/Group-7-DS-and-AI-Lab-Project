@@ -1,0 +1,16 @@
+{
+  "pair_id": "val_000005",
+  "images": [
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/val_000005/T1.png",
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/val_000005/T2.png"
+  ],
+  "spec": {
+    "python": "/usr/bin/python3",
+    "source_dir": "/content/models/external/BIT_CD",
+    "checkpoint": "/content/bit_m4.pt",
+    "image_size": 256,
+    "classes": 3
+  },
+  "device": "cuda",
+  "seed": 42
+}

@@ -1,0 +1,6 @@
+{
+  "caption": "the scene is the same as before",
+  "model": "RSCaMa",
+  "checkpoint": "/content/terrawatch-m4-demo/models/checkpoints/rscama.pth",
+  "source_kind": "model_prediction"
+}

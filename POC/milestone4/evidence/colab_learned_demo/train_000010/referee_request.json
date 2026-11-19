@@ -1,0 +1,81 @@
+{
+  "pair_id": "train_000010",
+  "images": [
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/train_000010/T1.png",
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/train_000010/T2.png"
+  ],
+  "cases": [
+    {
+      "claim_id": "pipeline:train_000010:c0",
+      "state": {
+        "claim": "a house appears at the bottom of the scene",
+        "structured_claim": {
+          "object": "building",
+          "action": "added",
+          "location": "at the bottom of the scene",
+          "quantity": 1,
+          "quantity_unit": "house"
+        },
+        "predicted_mask_summary": {
+          "source": "BIT-MCI-3class",
+          "visible_change": true,
+          "region_localized": true
+        },
+        "fallible_witness_observation": {
+          "mask_run_id": "BIT-MCI-3class",
+          "mask_ontology": "building_road_binary",
+          "witness_run_id": "structural_crop_witness_v3",
+          "visible_change": null,
+          "confidence": 0.0,
+          "state_transition": "indeterminate_small_crop",
+          "observations": "Crop dimensions (19x17 px) are below reliable threshold (24 px). Evidence indeterminate.",
+          "visibility_flags": [
+            "small_crop"
+          ],
+          "quality_flags": [
+            "crop_too_small"
+          ],
+          "crop_paths": [
+            "/content/TerraWatch_M4_Learned_20261119_170329/train_000010/crops/train_000010_465cfaa2c60eb823cc29_crop_T1.png",
+            "/content/TerraWatch_M4_Learned_20261119_170329/train_000010/crops/train_000010_465cfaa2c60eb823cc29_crop_T2.png"
+          ],
+          "structural_edge_change": 0.0,
+          "mean_luminance_diff": 0.0,
+          "crop_mean_diff": 0.0,
+          "transform_record": {
+            "original_bbox": [
+              110,
+              240,
+              125,
+              253
+            ],
+            "padded_bbox": [
+              108,
+              238,
+              127,
+              255
+            ],
+            "padding_applied": {
+              "pad_x0": 2,
+              "pad_y0": 2,
+              "pad_x1": 2,
+              "pad_y1": 2
+            },
+            "coordinate_frame": "original_T1_pixels"
+          }
+        },
+        "temporal_order": "T1_earlier_T2_later"
+      }
+    }
+  ],
+  "spec": {
+    "python": "/content/tw-referee-env-seeded/bin/python",
+    "model_id": "J06",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "accept_threshold": 0.8,
+    "max_image_side": 512,
+    "device_map": "cuda"
+  },
+  "device": "cuda",
+  "seed": 42
+}

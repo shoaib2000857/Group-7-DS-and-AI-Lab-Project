@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 import subprocess
 
-ROOT=Path(__file__).resolve().parents[2]
+ROOT=Path(__file__).resolve().parents[1]
 SOURCES=[('https://github.com/justchenhao/BIT_CD.git','models/external/BIT_CD','adcd7aea6f234586ffffdd4e9959404f96271711'),
          ('https://github.com/Chen-Yang-Liu/RSCaMa.git','models/external/RSCaMa','aa68e4c6933c7dd0f2e2f9cbd7642d61929c86a5')]
 

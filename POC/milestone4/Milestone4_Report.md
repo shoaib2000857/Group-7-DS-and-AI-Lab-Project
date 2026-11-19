@@ -22,13 +22,13 @@ The strict Milestone 2 LEVIR-MCI package contains **9,544 pairs**: 6,444 for tra
 
 ## 4. Training environment
 
-The recorded local BIT pilot used an RTX 4060 Ti with 8 GB VRAM and PyTorch 2.9.0 with CUDA 12.8. The RSCaMa and Qwen workers use separate Transformers environments. Sequential subprocesses release model memory between stages. The local M4 comparison ran on CPU with PyTorch 2.15.0 and torchvision 0.29.2. Each run writes its device, package versions and resolved settings to `run.json`.
+The M4 comparison ran on a Colab NVIDIA L4 (22.0 GiB reported), with PyTorch 2.14.1, torchvision 0.29.1 and CUDA 13.0. The learned replay used the same GPU class with separate RSCaMa and Qwen environments. The Qwen worker ran in BF16 with Transformers 5.17.0. Workers run in separate subprocesses to release GPU memory between stages. Run metadata and configuration are retained with the evidence.
 
 <!-- PAGEBREAK -->
 
 ## 5. Methodology, optimisation and regularisation
 
-The documented BIT pilot keeps ResNet18 frozen for two epochs, uses batches of two and optimises the temporal layers and prediction head with AdamW at 0.0001. Weight decay is 0.01. Its equal focalÃ¢â‚¬â€œDice objective gives the road and building classes larger focal weights. The M4 comparison holds data, initial weights, batch size and augmentation constant while varying the head learning rate. It uses paired horizontal flips and selects by road/building mean IoU on validation.
+Both M4 arms started from the same ImageNet-initialised BIT weights and kept ResNet18 frozen. Each arm ran four epochs with batches of four, using AdamW, weight decay of 0.01 and a constant learning rate. Paired horizontal flips preserve spatial correspondence across T1, T2 and the mask. The objective gives equal weight to soft Dice and focal loss with gamma 2 and class weights 0.10, 0.45 and 0.45 for background, road and building. Validation road/building mean IoU determines checkpoint selection.
 
 RSCaMa uses Adam at 0.0001 and development BLEU-4 for checkpoint selection in the recorded subset protocol. A training-only vocabulary constrains the retrain to its fitting data. Its fusion and decoder use dropout, and the image geometry stays consistent with spatial caption terms.
 
@@ -47,16 +47,16 @@ The BIT pilot's validation score peaks at epoch 1 within the observed two epochs
 
 ### Matched learning-rate comparison
 
-Both arms used 24 strict training pairs and 16 strict validation pairs on CPU. The comparison completed 3 common epochs with identical initial weights, batch size and paired flips.
+Both arms used 192 strict training pairs and 64 strict validation pairs on NVIDIA L4. The comparison completed 4 common epochs with identical initial weights, batch size and paired flips.
 
 | Head learning rate | Best epoch | Validation change-class mean IoU |
 |---|---:|---:|
-| 1e-4 | 3 | 16.17% |
-| 3e-4 | 3 | 12.89% |
+| 1e-4 | 3 | 38.85% |
+| 3e-4 | 3 | 43.59% |
 
-The comparison selects learning rate 1e-4 at epoch 3, with 16.17% validation change-class mean IoU. The higher rate reached a lower validation loss but lower change-class IoU at epoch 3. Selection therefore follows foreground overlap. Both curves cover three epochs and describe the early fit.
+Learning rate 0.0003 led by **4.74 percentage points** at the best epoch. Its epoch-3 checkpoint reached **42.19% road IoU, 44.99% building IoU and 65.00% binary F1**. Training loss fell from 0.3342 to 0.2109. Validation loss rose from 0.1943 to 0.2123 in epoch 4 as change-class IoU fell to 38.74%, supporting selection of epoch 3. The comparison used the validation split throughout.
 
-![Matched BIT train loss, validation loss and validation change-class mean IoU](evidence/bit_comparison/learning_curves.png)
+![Matched BIT train loss, validation loss and validation change-class mean IoU](evidence/colab_comparison/learning_curves.png)
 
 <!-- M4_COMPARISON_END -->
 
@@ -70,12 +70,12 @@ Most pixels represent background, so the detector reports road/building overlap 
 
 The review interface imports the coordinator's claim records and displays both source images, the detector mask, marked regions, corresponding crops, witness observations and the recorded decision. Source image hashes are checked before display. Records link to the report by its SHA-256 and the claim ID. Reviewers can flag a claim, revise its wording or count, add a reason and record a decision. SQLite retains successive review events and the original pipeline outcome. The viewer exports claim records and their review history as JSON.
 
-| LEVIR-MCI pair | Claim used in walkthrough | Recorded path |
+| LEVIR-MCI pair | Generated RSCaMa caption | Referee and gate |
 |---|---|---|
-| train_000010 | Buildings appeared at the bottom. | An Otsu mask and authored claim go through the coordinator. The decision control defers. A scripted review accepts the claim and retains the original deferral in the audit. |
-| val_000005 | Two houses were built in the centre. | The same control pipeline preserves the exact-count review reason and defers the claim. |
+| train_000010 | A house appears at the bottom of the scene. | Qwen deferred. The 19 ? 17 px crop fell below the witness's 24 px minimum, and the count check required independent instance evidence. |
+| val_000005 | The scene is the same as before. | Qwen proposed acceptance with a conditional score of 0.6357. The 0.80 operating gate deferred the claim. |
 
-The replay exercises the evidence and review workflow on real satellite imagery. A second replay runs the selected BIT checkpoint on both pairs and records its predicted masks and crops. Its authored claims and decision control preserve the walkthrough conditions. The learned captioner and referee use the same worker contract. The review replay retrieved ten image assets and confirmed two successive review events after reopening the event store.
+Both image pairs completed BIT prediction, captioning, crop inspection, referee inference and report generation. The executed notebook records upload of the earlier CPU checkpoint `lr_1e-4.pt`. Model selection for M5 uses the separate L4 sweep winner. The viewer opens the two learned runs and supports an explicit reviewer decision on either claim. The browser walkthrough separately exercised acceptance, flagging, correction, reload and export through scripted reviewer actions.
 
 ## 9. Milestone 5 handover
 
@@ -88,3 +88,5 @@ The evaluation entry points support checkpoint-specific detector and caption ass
 3. [Historical detector and caption training evidence](../milestone3/sarthak/Benchmark_Report.md).
 4. [Model setup and reproducibility](../../docs/models/README.md).
 5. [Milestone 4 run instructions and code walkthrough](Walkthrough.md).
+6. [Colab training configuration and checkpoint receipt](evidence/colab_comparison/selection.json).
+7. [Learned demo outputs and claim-level receipt](evidence/colab_learned_demo/receipt.json).

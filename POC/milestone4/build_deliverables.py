@@ -99,9 +99,9 @@ def build_slides():
         if winner and curves.exists():
             base('BIT learning-rate comparison',True,5)
             c.drawImage(str(curves),48,103,width=840,height=270,mask='auto',preserveAspectRatio=True,anchor='sw')
-            text(48,67,f"Selected {winner['arm']} at epoch {winner['epoch']} with {100*winner['change_class_mean_iou']:.1f}% validation change-class mean IoU.",16,cream)
+            text(48,67,f"Selected {winner['arm']} at epoch {winner['epoch']} with {100*winner['change_class_mean_iou']:.2f}% validation change-class mean IoU.",16,cream)
             c.showPage()
-    block('Live code walkthrough',[('Replay the two LEVIR-MCI pairs','Open the mask and matching image crops. Follow the claim from parsing through evidence and the recorded decision.'),('Record a review','Flag a claim, save a correction or decision, reload and inspect the review events. Export the audit record.'),('Trace the outputs','Show the run ID, original image hashes, decision reasons and model/control provenance. Retrieve the exact run from the Walkthrough guide.')],True,6 if selection_path.exists() and winner and curves.exists() else 5)
+    block('Live code walkthrough',[('Two real pairs completed the learned pipeline','Review the predicted masks and generated claims. Both outcomes deferred. The no-change claim had a raw accept score of 0.6357 against a 0.80 gate.'),('Record a review','Flag a claim, save a correction or decision, reload and inspect the review events. Export the audit record.'),('Trace the outputs','Show the run ID, original image hashes, decision reasons and model/control provenance. Retrieve the exact run from the Walkthrough guide.')],True,6 if selection_path.exists() and winner and curves.exists() else 5)
     c.save()
 
 

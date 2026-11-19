@@ -1,0 +1,170 @@
+{
+  "pair_id": "val_000005",
+  "execution_mode": "model_workers",
+  "input_sha256": [
+    "c41d7246def183a673074053a3b31f7163219bf00dc1835a6d83d524cf018f82",
+    "a506c4fde62f809cd562ab6453398fe2694bacc981f9d4c63e0974aa6c7f6c3e"
+  ],
+  "claims": [
+    {
+      "record_type": "stage_c_evidence_record",
+      "pair_id": "val_000005",
+      "claim_id": "pipeline:val_000005:c0",
+      "source_span": "the scene is the same as before",
+      "claim": {
+        "object": "scene",
+        "action": "no_change",
+        "location": null,
+        "quantity": null,
+        "quantity_unit": null
+      },
+      "candidate_region_ids": [
+        [
+          90,
+          50,
+          114,
+          76
+        ]
+      ],
+      "coordinate_frame": "original_T1_pixels",
+      "bbox_convention": "x0_y0_x1_y1_half_open",
+      "evidence": {
+        "mask_run_id": "BIT-MCI-3class",
+        "mask_ontology": "building_road_binary",
+        "witness_run_id": "structural_crop_witness_v3",
+        "visible_change": false,
+        "confidence": 0.5,
+        "state_transition": "no_physical_change",
+        "observations": "No verifiable physical structural change visible in this crop. Structural similarity SSIM=0.144. Ground cover consistent.",
+        "visibility_flags": [
+          "t1_clear",
+          "t2_clear"
+        ],
+        "quality_flags": [
+          "subpixel_jitter_1.4px"
+        ],
+        "crop_paths": [
+          "/content/TerraWatch_M4_Learned_20261119_170329/val_000005/crops/val_000005_9039e153e053ab6de1bd_crop_T1.png",
+          "/content/TerraWatch_M4_Learned_20261119_170329/val_000005/crops/val_000005_9039e153e053ab6de1bd_crop_T2.png"
+        ],
+        "structural_edge_change": -0.4614583333333333,
+        "mean_luminance_diff": -4.835418701171875,
+        "crop_mean_diff": 46.08576388888889,
+        "transform_record": {
+          "original_bbox": [
+            90,
+            50,
+            114,
+            76
+          ],
+          "padded_bbox": [
+            87,
+            47,
+            117,
+            79
+          ],
+          "padding_applied": {
+            "pad_x0": 3,
+            "pad_y0": 3,
+            "pad_x1": 3,
+            "pad_y1": 3
+          },
+          "coordinate_frame": "original_T1_pixels"
+        }
+      },
+      "decision": {
+        "outcome": "defer",
+        "raw_outcome": "accept",
+        "probabilities": {
+          "accept": 0.6357240676879883,
+          "reject": 0.18213799595832825,
+          "defer": 0.18213799595832825
+        },
+        "reason_codes": [
+          "accept_below_operating_threshold"
+        ],
+        "raw_response": {
+          "restricted_codes": {
+            "A": 0.6357240676879883,
+            "B": 0.18213799595832825,
+            "C": 0.18213799595832825
+          },
+          "code_order": [
+            "accept",
+            "reject",
+            "defer"
+          ],
+          "input_tokens": 838
+        },
+        "probability_semantics": "softmax_conditional_on_three_label_tokens_not_calibrated_truth"
+      },
+      "human_reference": "stored_separately_and_never_passed_to_inference",
+      "parser_provenance": {
+        "run_id": "pipeline",
+        "char_start": 0,
+        "char_end": 31,
+        "location_grid": null,
+        "parser": {
+          "quantity_kind": null,
+          "quantity_text": null,
+          "hedged": false,
+          "negated": true,
+          "version": "rules-v3"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "generated_caption": "the scene is the same as before",
+  "config": {
+    "detector": {
+      "python": "/usr/bin/python3",
+      "source_dir": "models/external/BIT_CD",
+      "checkpoint": "/content/bit_m4.pt",
+      "image_size": 256,
+      "classes": 3
+    },
+    "captioner": {
+      "python": "/content/tw-caption-env-seeded/bin/python",
+      "source_dir": "models/external/RSCaMa",
+      "checkpoint": "models/checkpoints/rscama.pth",
+      "vocab": "models/checkpoints/rscama_vocab.json"
+    },
+    "referee": {
+      "python": "/content/tw-referee-env-seeded/bin/python",
+      "model_id": "J06",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "accept_threshold": 0.8,
+      "max_image_side": 512,
+      "device_map": "cuda"
+    },
+    "worker_timeout_seconds": 420,
+    "device": "cuda",
+    "seed": 42
+  },
+  "model_metadata": {
+    "detector": {
+      "model": "BIT-MCI-3class",
+      "checkpoint": "/content/bit_m4.pt",
+      "source_kind": "model_prediction"
+    },
+    "captioner": {
+      "model": "RSCaMa",
+      "checkpoint": "/content/terrawatch-m4-demo/models/checkpoints/rscama.pth",
+      "source_kind": "model_prediction"
+    },
+    "referee": {
+      "model": {
+        "repo": "Qwen/Qwen3-VL-4B-Instruct",
+        "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "torch": "2.14.1+cu130",
+        "transformers": "5.17.0",
+        "dtype": "torch.bfloat16",
+        "device_map": "cuda"
+      },
+      "source_kind": "model_prediction"
+    }
+  },
+  "verified_description": "The image pair requires review before a change description can be confirmed.",
+  "review_required": true
+}
