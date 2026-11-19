@@ -1,0 +1,26 @@
+{
+  "review_date": "2026-11-19",
+  "remote_main": "9b595e5",
+  "model_pipeline": "17a8d55",
+  "new_teammate_branch": "milestone-4-training-and-review",
+  "new_teammate_commit": "1f0fa29",
+  "remote_references_inspected": 16,
+  "main_cpu_tests": {
+    "passed": 43,
+    "failed": 0,
+    "scope": "main CPU tests; not browser app or GPU inference"
+  },
+  "submission_report_modified": false,
+  "main_merged": false,
+  "new_training_histories_found": false,
+  "demonstration_has_model_invocations": false,
+  "demo_decisions_source": "hard-coded authored examples",
+  "source_image_pairs_confirmed": 3,
+  "construction_mask_source": "exact original source annotation",
+  "code_locations": {
+    "models": "src/models",
+    "training": "src/training",
+    "pipeline": "src/inference",
+    "review_app": "src/app"
+  }
+}

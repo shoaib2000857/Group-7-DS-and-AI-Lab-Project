@@ -1,0 +1,66 @@
+[
+  {
+    "head": "origin",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/data-pipeline",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/data-preparation",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/docs/m1-redesigned-slides",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/docs/milestone-1-team-review",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/docs/milestone-2-submission",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/execution",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/feat/poc-b-captioning",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/feat/poc-c-visual-evidence",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/feat/shoaib-colab-benchmarks",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/main",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/milestone-2-report",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/milestone-3-report",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/milestone-4-training-and-review",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/model-pipeline",
+    "candidate_paths": []
+  },
+  {
+    "head": "origin/poc-consolidation",
+    "candidate_paths": []
+  }
+]

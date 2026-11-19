@@ -1,0 +1,369 @@
+{
+  "checked_at": "2026-11-19",
+  "branch_commit": "1f0fa29",
+  "pairs": [
+    {
+      "pair": "train_000010",
+      "source_refs": [
+        {
+          "tokens": [
+            "a",
+            "lane",
+            "appears",
+            "on",
+            "the",
+            "left",
+            "and",
+            "several",
+            "houses",
+            "are",
+            "built",
+            "at",
+            "the",
+            "bottom"
+          ],
+          "raw": " a lane appears on the left and several houses are built at the bottom .",
+          "imgid": 8,
+          "sentid": 40
+        },
+        {
+          "tokens": [
+            "some",
+            "part",
+            "of",
+            "a",
+            "building",
+            "appears",
+            "on",
+            "the",
+            "bareland",
+            "in",
+            "the",
+            "bottom"
+          ],
+          "raw": " some part of a building appears on the bareland in the bottom .",
+          "imgid": 8,
+          "sentid": 41
+        },
+        {
+          "tokens": [
+            "some",
+            "buildings",
+            "appear",
+            "at",
+            "the",
+            "bottom",
+            "of",
+            "the",
+            "scene"
+          ],
+          "raw": " some buildings appear at the bottom of the scene .",
+          "imgid": 8,
+          "sentid": 42
+        },
+        {
+          "tokens": [
+            "a",
+            "house",
+            "appears",
+            "at",
+            "the",
+            "bottom",
+            "of",
+            "the",
+            "scene"
+          ],
+          "raw": " a house appears at the bottom of the scene .",
+          "imgid": 8,
+          "sentid": 43
+        },
+        {
+          "tokens": [
+            "a",
+            "building",
+            "and",
+            "a",
+            "path",
+            "to",
+            "forest",
+            "appear"
+          ],
+          "raw": " a building and a path to forest appear .",
+          "imgid": 8,
+          "sentid": 44
+        }
+      ],
+      "images": {
+        "T1": {
+          "exact_source_pixels": true,
+          "shape": [
+            256,
+            256,
+            3
+          ]
+        },
+        "T2": {
+          "exact_source_pixels": true,
+          "shape": [
+            256,
+            256,
+            3
+          ]
+        }
+      },
+      "mask": {
+        "path": "src\\app\\assets\\train_000010_mask.png",
+        "exact_source_label": true,
+        "source_values": [
+          0,
+          128,
+          255
+        ],
+        "asset_values": [
+          0,
+          128,
+          255
+        ]
+      },
+      "source_mask_nonzero_pixels": 977
+    },
+    {
+      "pair": "val_000005",
+      "source_refs": [
+        {
+          "tokens": [
+            "there",
+            "is",
+            "no",
+            "difference"
+          ],
+          "raw": " there is no difference .",
+          "imgid": 6819,
+          "sentid": 34095
+        },
+        {
+          "tokens": [
+            "the",
+            "two",
+            "scenes",
+            "seem",
+            "identical"
+          ],
+          "raw": " the two scenes seem identical .",
+          "imgid": 6819,
+          "sentid": 34096
+        },
+        {
+          "tokens": [
+            "the",
+            "scene",
+            "is",
+            "the",
+            "same",
+            "as",
+            "before"
+          ],
+          "raw": " the scene is the same as before .",
+          "imgid": 6819,
+          "sentid": 34097
+        },
+        {
+          "tokens": [
+            "no",
+            "change",
+            "has",
+            "occurred"
+          ],
+          "raw": " no change has occurred .",
+          "imgid": 6819,
+          "sentid": 34098
+        },
+        {
+          "tokens": [
+            "almost",
+            "nothing",
+            "has",
+            "changed"
+          ],
+          "raw": " almost nothing has changed .",
+          "imgid": 6819,
+          "sentid": 34099
+        }
+      ],
+      "images": {
+        "T1": {
+          "exact_source_pixels": true,
+          "shape": [
+            256,
+            256,
+            3
+          ]
+        },
+        "T2": {
+          "exact_source_pixels": true,
+          "shape": [
+            256,
+            256,
+            3
+          ]
+        }
+      },
+      "source_mask_nonzero_pixels": 0
+    },
+    {
+      "pair": "val_000042",
+      "source_refs": [
+        {
+          "tokens": [
+            "many",
+            "plants",
+            "along",
+            "the",
+            "road",
+            "are",
+            "replaced",
+            "by",
+            "villas"
+          ],
+          "raw": " many plants along the road are replaced by villas .",
+          "imgid": 6856,
+          "sentid": 34280
+        },
+        {
+          "tokens": [
+            "plants",
+            "are",
+            "removed",
+            "and",
+            "villas",
+            "are",
+            "built",
+            "in",
+            "the",
+            "woods",
+            "beside",
+            "the",
+            "road",
+            "with",
+            "path",
+            "to",
+            "the",
+            "road"
+          ],
+          "raw": " plants are removed and villas are built in the woods beside the road with path to the road .",
+          "imgid": 6856,
+          "sentid": 34281
+        },
+        {
+          "tokens": [
+            "a",
+            "winding",
+            "road",
+            "has",
+            "been",
+            "built",
+            "and",
+            "several",
+            "houses",
+            "are",
+            "constructed",
+            "on",
+            "both",
+            "sides",
+            "of",
+            "it",
+            "to",
+            "replace",
+            "some",
+            "plants"
+          ],
+          "raw": " a winding road has been built and several houses are constructed on both sides of it to replace some plants .",
+          "imgid": 6856,
+          "sentid": 34282
+        },
+        {
+          "tokens": [
+            "some",
+            "trees",
+            "disappear",
+            "and",
+            "houses",
+            "are",
+            "built",
+            "on",
+            "both",
+            "sides",
+            "of",
+            "the",
+            "road"
+          ],
+          "raw": " some trees disappear and houses are built on both sides of the road .",
+          "imgid": 6856,
+          "sentid": 34283
+        },
+        {
+          "tokens": [
+            "the",
+            "road",
+            "is",
+            "reconstructed",
+            "with",
+            "many",
+            "buildings",
+            "built",
+            "alongside",
+            "and",
+            "the",
+            "vegetation",
+            "quantity",
+            "decreases"
+          ],
+          "raw": " the road is reconstructed with many buildings built alongside and the vegetation quantity decreases .",
+          "imgid": 6856,
+          "sentid": 34284
+        }
+      ],
+      "images": {
+        "T1": {
+          "exact_source_pixels": false,
+          "shape": [
+            256,
+            256,
+            3
+          ]
+        },
+        "T2": {
+          "exact_source_pixels": false,
+          "shape": [
+            256,
+            256,
+            3
+          ]
+        }
+      },
+      "mask": {
+        "path": "src\\app\\assets\\val_000042_mask.png",
+        "exact_source_label": false,
+        "source_values": [
+          0,
+          128,
+          255
+        ],
+        "asset_values": [
+          0,
+          255
+        ]
+      },
+      "source_mask_nonzero_pixels": 8602
+    }
+  ],
+  "ui_summary": {
+    "total_claims": 4,
+    "automated_accepted": 2,
+    "automated_rejected": 1,
+    "automated_deferred": 1,
+    "human_reviewed_count": 0,
+    "human_flagged_count": 0
+  },
+  "actual_human_reviewed": 2
+}
