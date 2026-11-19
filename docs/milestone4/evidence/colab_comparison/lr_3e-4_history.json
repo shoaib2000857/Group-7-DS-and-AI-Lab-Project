@@ -1,0 +1,142 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.3341773658369978,
+    "validation_loss": 0.2681261049583554,
+    "pixels": 4194304,
+    "class_iou": [
+      0.8960920275097526,
+      0.2717775990629615,
+      0.3922425995532123
+    ],
+    "macro_iou_present_classes": 0.5200374087086422,
+    "change_class_mean_iou": 0.3320100993080869,
+    "binary_precision": 0.4765362795073795,
+    "binary_recall": 0.7127644212466426,
+    "binary_f1": 0.5711896163026909,
+    "binary_iou": 0.39976586314037904,
+    "confusion_matrix": [
+      [
+        3515214,
+        185567,
+        112644
+      ],
+      [
+        39765,
+        96989,
+        3389
+      ],
+      [
+        69637,
+        31159,
+        139940
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.26464158575981855,
+    "validation_loss": 0.2366592800244689,
+    "pixels": 4194304,
+    "class_iou": [
+      0.920335344363445,
+      0.3532980197337702,
+      0.39316965096937423
+    ],
+    "macro_iou_present_classes": 0.5556010050221966,
+    "change_class_mean_iou": 0.3732338353515722,
+    "binary_precision": 0.5862815476206504,
+    "binary_recall": 0.571664491872747,
+    "binary_f1": 0.5788807622876072,
+    "binary_iou": 0.40734144393080235,
+    "confusion_matrix": [
+      [
+        3659777,
+        109417,
+        44231
+      ],
+      [
+        46637,
+        92309,
+        1197
+      ],
+      [
+        116507,
+        11718,
+        112511
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.22538040298968554,
+    "validation_loss": 0.19429435953497887,
+    "pixels": 4194304,
+    "class_iou": [
+      0.9284080255874144,
+      0.42194246922597695,
+      0.44990972789408074
+    ],
+    "macro_iou_present_classes": 0.6000867409024907,
+    "change_class_mean_iou": 0.43592609856002884,
+    "binary_precision": 0.6172438135847328,
+    "binary_recall": 0.6863938416137408,
+    "binary_f1": 0.6499848339441193,
+    "binary_iou": 0.4814648385344248,
+    "confusion_matrix": [
+      [
+        3651309,
+        40927,
+        121189
+      ],
+      [
+        51296,
+        78564,
+        10283
+      ],
+      [
+        68150,
+        5126,
+        167460
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.21094193899383148,
+    "validation_loss": 0.2122922157868743,
+    "pixels": 4194304,
+    "class_iou": [
+      0.8931257266213414,
+      0.3788594219609474,
+      0.3960275918036113
+    ],
+    "macro_iou_present_classes": 0.5560042467953,
+    "change_class_mean_iou": 0.38744350688227935,
+    "binary_precision": 0.47525567302426364,
+    "binary_recall": 0.838452631938227,
+    "binary_f1": 0.606648170504098,
+    "binary_iou": 0.4353876441412332,
+    "confusion_matrix": [
+      [
+        3460822,
+        113020,
+        239583
+      ],
+      [
+        27348,
+        100214,
+        12581
+      ],
+      [
+        34182,
+        11352,
+        195202
+      ]
+    ],
+    "aggregation": "pooled pixels; class 0 background"
+  }
+]

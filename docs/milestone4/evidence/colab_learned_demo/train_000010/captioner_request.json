@@ -1,0 +1,15 @@
+{
+  "pair_id": "train_000010",
+  "images": [
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/train_000010/T1.png",
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/train_000010/T2.png"
+  ],
+  "spec": {
+    "python": "/content/tw-caption-env-seeded/bin/python",
+    "source_dir": "/content/models/external/RSCaMa",
+    "checkpoint": "/content/terrawatch-m4-demo/models/checkpoints/rscama.pth",
+    "vocab": "/content/terrawatch-m4-demo/models/checkpoints/rscama_vocab.json"
+  },
+  "device": "cuda",
+  "seed": 42
+}

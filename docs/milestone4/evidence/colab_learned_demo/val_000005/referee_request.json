@@ -1,0 +1,82 @@
+{
+  "pair_id": "val_000005",
+  "images": [
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/val_000005/T1.png",
+    "/content/TerraWatch_M4_Learned_20261119_170329/inputs/val_000005/T2.png"
+  ],
+  "cases": [
+    {
+      "claim_id": "pipeline:val_000005:c0",
+      "state": {
+        "claim": "the scene is the same as before",
+        "structured_claim": {
+          "object": "scene",
+          "action": "no_change",
+          "location": null,
+          "quantity": null,
+          "quantity_unit": null
+        },
+        "predicted_mask_summary": {
+          "source": "BIT-MCI-3class",
+          "visible_change": true,
+          "region_localized": true
+        },
+        "fallible_witness_observation": {
+          "mask_run_id": "BIT-MCI-3class",
+          "mask_ontology": "building_road_binary",
+          "witness_run_id": "structural_crop_witness_v3",
+          "visible_change": false,
+          "confidence": 0.5,
+          "state_transition": "no_physical_change",
+          "observations": "No verifiable physical structural change visible in this crop. Structural similarity SSIM=0.144. Ground cover consistent.",
+          "visibility_flags": [
+            "t1_clear",
+            "t2_clear"
+          ],
+          "quality_flags": [
+            "subpixel_jitter_1.4px"
+          ],
+          "crop_paths": [
+            "/content/TerraWatch_M4_Learned_20261119_170329/val_000005/crops/val_000005_9039e153e053ab6de1bd_crop_T1.png",
+            "/content/TerraWatch_M4_Learned_20261119_170329/val_000005/crops/val_000005_9039e153e053ab6de1bd_crop_T2.png"
+          ],
+          "structural_edge_change": -0.4614583333333333,
+          "mean_luminance_diff": -4.835418701171875,
+          "crop_mean_diff": 46.08576388888889,
+          "transform_record": {
+            "original_bbox": [
+              90,
+              50,
+              114,
+              76
+            ],
+            "padded_bbox": [
+              87,
+              47,
+              117,
+              79
+            ],
+            "padding_applied": {
+              "pad_x0": 3,
+              "pad_y0": 3,
+              "pad_x1": 3,
+              "pad_y1": 3
+            },
+            "coordinate_frame": "original_T1_pixels"
+          }
+        },
+        "temporal_order": "T1_earlier_T2_later"
+      }
+    }
+  ],
+  "spec": {
+    "python": "/content/tw-referee-env-seeded/bin/python",
+    "model_id": "J06",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "accept_threshold": 0.8,
+    "max_image_side": 512,
+    "device_map": "cuda"
+  },
+  "device": "cuda",
+  "seed": 42
+}
