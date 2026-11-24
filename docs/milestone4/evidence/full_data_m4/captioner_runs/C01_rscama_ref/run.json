@@ -1,0 +1,115 @@
+{
+  "run_id": "C01_rscama_ref",
+  "started_at_utc": "2026-11-22T12:15:22.320110+00:00",
+  "command": "/content/terrawatch/scripts/train_captioner.py --run-id C01_rscama_ref --source-dir /content/terrawatch/models/external/RSCaMa --manifests-dir /content/terrawatch/data/portable_data --extracted-root /content/terrawatch/data/extracted --output-dir /content/terrawatch/runs/captioner --num-workers 2 --epochs 8 --min-epochs 6 --patience 3 --batch-size 12 --accum-steps 1 --amp fp16 --lr 1e-4 --optimizer adam --weight-decay 0.0 --scheduler constant --label-smoothing 0.0 --seed 42",
+  "config": {
+    "run_id": "C01_rscama_ref",
+    "source_dir": "/content/terrawatch/models/external/RSCaMa",
+    "manifests_dir": "/content/terrawatch/data/portable_data",
+    "extracted_root": "/content/terrawatch/data/extracted",
+    "output_dir": "/content/terrawatch/runs/captioner",
+    "epochs": 8,
+    "min_epochs": 6,
+    "patience": 3,
+    "batch_size": 12,
+    "accum_steps": 1,
+    "lr": 0.0001,
+    "optimizer": "adam",
+    "weight_decay": 0.0,
+    "scheduler": "constant",
+    "label_smoothing": 0.0,
+    "freeze_encoder": false,
+    "grad_clip": 5.0,
+    "amp": "fp16",
+    "save_last": false,
+    "vocab_threshold": 5,
+    "seed": 42,
+    "num_workers": 2,
+    "device": "cuda",
+    "resume": false,
+    "eval_only": false,
+    "checkpoint": null,
+    "vocab": null,
+    "eval_split": "val"
+  },
+  "effective_batch_size": 12,
+  "kernel_mode": "triton_fused_exact",
+  "primary_selection_metric": "val_bleu4",
+  "vocab_size": 388,
+  "vocab_scope": "strict_levir_mci_train_only",
+  "data_scope": {
+    "train_pairs": 6444,
+    "train_captions": 32220,
+    "val_pairs": 1242,
+    "train_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e",
+    "val_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511"
+  },
+  "trainability": {
+    "encoder": {
+      "total": 151277313,
+      "trainable": 42528768,
+      "frozen": 108748545,
+      "trainable_tensors": 74,
+      "sample_trainable": [
+        "clip_model.visual.transformer.resblocks.6.attn.in_proj_weight",
+        "clip_model.visual.transformer.resblocks.6.attn.in_proj_bias",
+        "clip_model.visual.transformer.resblocks.6.attn.out_proj.weight",
+        "clip_model.visual.transformer.resblocks.6.attn.out_proj.bias",
+        "clip_model.visual.transformer.resblocks.6.ln_1.weight",
+        "clip_model.visual.transformer.resblocks.6.ln_1.bias",
+        "clip_model.visual.transformer.resblocks.6.mlp.c_fc.weight",
+        "clip_model.visual.transformer.resblocks.6.mlp.c_fc.bias"
+      ]
+    },
+    "fusion": {
+      "total": 733899265,
+      "trainable": 231903745,
+      "frozen": 501995520,
+      "trainable_tensors": 444,
+      "sample_trainable": [
+        "alpha",
+        "h_embedding.weight",
+        "w_embedding.weight",
+        "CaMalayer_list.0.0.layers.0.norm.weight",
+        "CaMalayer_list.0.0.layers.0.mixer.A_log",
+        "CaMalayer_list.0.0.layers.0.mixer.A_log_back",
+        "CaMalayer_list.0.0.layers.0.mixer.D",
+        "CaMalayer_list.0.0.layers.0.mixer.D_back"
+      ]
+    },
+    "decoder": {
+      "total": 13629316,
+      "trainable": 13629316,
+      "frozen": 0,
+      "trainable_tensors": 28,
+      "sample_trainable": [
+        "vocab_embedding.weight",
+        "transformer.layers.0.self_attn.in_proj_weight",
+        "transformer.layers.0.self_attn.in_proj_bias",
+        "transformer.layers.0.self_attn.out_proj.weight",
+        "transformer.layers.0.self_attn.out_proj.bias",
+        "transformer.layers.0.multihead_attn.in_proj_weight",
+        "transformer.layers.0.multihead_attn.in_proj_bias",
+        "transformer.layers.0.multihead_attn.out_proj.weight"
+      ]
+    }
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "gpu_name": "Tesla T4",
+    "hostname": "245d05b2998c"
+  },
+  "status": "completed",
+  "completed_at_utc": "2026-11-22T12:46:41.566553+00:00",
+  "total_wall_sec": 1879.24,
+  "epochs_completed": 8,
+  "stopped_early": false,
+  "best_epoch": 5,
+  "best_val_bleu4": 0.6296335222162353,
+  "best_checkpoint": "/content/terrawatch/runs/captioner/C01_rscama_ref/best.pth",
+  "best_checkpoint_sha256": "979cff69acb852f22e24ca1edf2daaa9bf295bf69fc5c6f447c6508fdd24d7e3",
+  "last_checkpoint": null,
+  "last_checkpoint_sha256": null,
+  "history_sha256": "34aa5baa85721caea2a23c977b37b08622ff8a3d1181f92f098f95ea9c75380f"
+}

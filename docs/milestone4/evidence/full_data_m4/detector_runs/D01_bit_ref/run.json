@@ -1,0 +1,121 @@
+{
+  "run_id": "D01_bit_ref",
+  "started_at_utc": "2026-11-22T09:46:47.814347+00:00",
+  "command": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/scripts/train_detector.py --run-id D01_bit_ref --manifests-dir /media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/data/portable_data --extracted-root /media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/data/extracted --output-dir /media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/runs/detector --num-workers 6 --amp bf16 --resume --arch bit_resnet18 --epochs 35 --min-epochs 15 --patience 7 --batch-size 16 --accum-steps 2 --head-lr 1e-4 --backbone-lr 1e-5 --weight-decay 0.01 --scheduler cosine --loss focal_dice --freeze-epochs 5 --aug flip --seed 42",
+  "config": {
+    "run_id": "D01_bit_ref",
+    "arch": "bit_resnet18",
+    "bit_source_dir": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/models/external/BIT_CD",
+    "changeformer_source_dir": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/models/external/ChangeFormer",
+    "manifests_dir": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/data/portable_data",
+    "extracted_root": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/data/extracted",
+    "output_dir": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/runs/detector",
+    "epochs": 35,
+    "min_epochs": 15,
+    "patience": 7,
+    "batch_size": 16,
+    "accum_steps": 2,
+    "head_lr": 0.0001,
+    "backbone_lr": 1e-05,
+    "optimizer": "adamw",
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "warmup_epochs": 0,
+    "loss": "focal_dice",
+    "class_weights": "0.10,0.45,0.45",
+    "focal_gamma": 2.0,
+    "label_smoothing": 0.0,
+    "freeze_epochs": 5,
+    "aug": "flip",
+    "grad_clip": 1.0,
+    "amp": "bf16",
+    "seed": 42,
+    "num_workers": 6,
+    "device": "cuda",
+    "resume": true,
+    "allow_subset_diagnostic": 0,
+    "eval_only": false,
+    "checkpoint": null,
+    "eval_split": "val"
+  },
+  "effective_batch_size": 32,
+  "amp_actual": "torch.bfloat16",
+  "primary_selection_metric": "val_change_miou",
+  "data_scope": {
+    "dataset": "levir_mci_strict",
+    "train_pairs": 6444,
+    "val_pairs": 1242,
+    "train_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e",
+    "val_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511",
+    "is_full_data": true
+  },
+  "model_params": {
+    "total": 11944043,
+    "backbone": 11689512,
+    "head": 254531
+  },
+  "environment": {
+    "python": "3.13.9",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "hostname": "shoaib"
+  },
+  "status": "completed",
+  "completed_at_utc": "2026-11-22T10:20:57.164850+00:00",
+  "total_wall_sec": 2049.35,
+  "epochs_completed": 35,
+  "stopped_early": true,
+  "best_epoch": 27,
+  "best_val_change_miou": 0.7181954845737439,
+  "reloaded_best_val_loss": 0.14536865041233027,
+  "reloaded_best_val_metrics": {
+    "change_miou": 0.7181954845737439,
+    "macro_iou": 0.8026468270738886,
+    "bg_iou": 0.9715495120741777,
+    "road_iou": 0.6971834372695256,
+    "building_iou": 0.7392075318779622,
+    "binary_precision": 0.8294753440892187,
+    "binary_recall": 0.8625230881948897,
+    "binary_f1": 0.8456764754794048,
+    "binary_iou": 0.73261651306173,
+    "small_change_f1": 0.4335954376566145,
+    "unchanged_pairs": 632,
+    "unchanged_fa_counts": {
+      "1": 165,
+      "16": 135,
+      "50": 114,
+      "100": 93,
+      "200": 60
+    },
+    "unchanged_fa_rates": {
+      "1": 0.2610759493670886,
+      "16": 0.21360759493670886,
+      "50": 0.18037974683544303,
+      "100": 0.14715189873417722,
+      "200": 0.0949367088607595
+    },
+    "confusion_matrix": [
+      [
+        73361248,
+        518666,
+        691423
+      ],
+      [
+        409875,
+        2247002,
+        23637
+      ],
+      [
+        528319,
+        23791,
+        3591751
+      ]
+    ]
+  },
+  "best_checkpoint": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/runs/detector/D01_bit_ref/best.pt",
+  "best_checkpoint_sha256": "f65795de0d7d85475548f36ef09621a42292a08f9127c9dfc5a1d2854de3871a",
+  "last_checkpoint": "/media/shoaib/STUDYLINUX/IIT/DegreeTerm3/DSAI-Project/runs/detector/D01_bit_ref/last.pt",
+  "last_checkpoint_sha256": "f1f14e849f20b84f78716dc3bf34f5a21880a1d8d6ea54d2be6c19b8fbbae4bc",
+  "history_sha256": "b3f8d381c923f3ea8496f1961f9259d1734a32edd7c991f079ab4dba1ce42898"
+}

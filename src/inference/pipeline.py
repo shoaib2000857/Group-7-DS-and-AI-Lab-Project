@@ -87,7 +87,7 @@ def run_pipeline(t1,t2,config,output,pair_id='input_pair',worker=None):
             rec['claim_id']=contract['claim_id'];rec['parser_provenance']=contract.get('b_source');forced=[]
             if rec['evidence']['visible_change'] is None:forced.append('insufficient_visual_evidence')
             if not localized and content.get('action') not in {'unchanged','no_change'}:forced.append('no_matching_predicted_region')
-            if content.get('quantity') is not None:forced.append('exact_count_without_independent_instance_evidence')
+            if claim.get('parser',{}).get('quantity_kind')=='exact':forced.append('exact_count_without_independent_instance_evidence')
             if re.search(r'\billegal\b|\bunauthori[sz]ed\b|\bownership\b',contract['source_span'],re.I):forced.append('nonvisual_legal_or_ownership_claim')
             rec['forced_review_reasons']=forced;records.append(rec)
             tasks.append({'claim_id':rec['claim_id'],'state':{'claim':rec['source_span'],'structured_claim':rec['claim'],

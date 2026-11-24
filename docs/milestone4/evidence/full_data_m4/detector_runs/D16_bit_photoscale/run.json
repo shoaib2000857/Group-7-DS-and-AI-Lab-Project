@@ -1,0 +1,121 @@
+{
+  "run_id": "D16_bit_photoscale",
+  "started_at_utc": "2026-11-22T17:11:19.001402+00:00",
+  "command": "/content/terrawatch/scripts/train_detector.py --run-id D16_bit_photoscale --bit-source-dir /content/terrawatch/models/external/BIT_CD --changeformer-source-dir /content/terrawatch/models/external/ChangeFormer --manifests-dir /content/terrawatch/data/portable_data --extracted-root /content/terrawatch/data/extracted --output-dir /content/terrawatch/runs/detector --num-workers 4 --amp fp16 --resume --arch bit_resnet18 --epochs 25 --min-epochs 12 --patience 6 --batch-size 16 --accum-steps 2 --head-lr 1e-4 --backbone-lr 1e-5 --weight-decay 0.01 --scheduler cosine --loss focal_dice --freeze-epochs 5 --aug flip_photo_scale --seed 42",
+  "config": {
+    "run_id": "D16_bit_photoscale",
+    "arch": "bit_resnet18",
+    "bit_source_dir": "/content/terrawatch/models/external/BIT_CD",
+    "changeformer_source_dir": "/content/terrawatch/models/external/ChangeFormer",
+    "manifests_dir": "/content/terrawatch/data/portable_data",
+    "extracted_root": "/content/terrawatch/data/extracted",
+    "output_dir": "/content/terrawatch/runs/detector",
+    "epochs": 25,
+    "min_epochs": 12,
+    "patience": 6,
+    "batch_size": 16,
+    "accum_steps": 2,
+    "head_lr": 0.0001,
+    "backbone_lr": 1e-05,
+    "optimizer": "adamw",
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "warmup_epochs": 0,
+    "loss": "focal_dice",
+    "class_weights": "0.10,0.45,0.45",
+    "focal_gamma": 2.0,
+    "label_smoothing": 0.0,
+    "freeze_epochs": 5,
+    "aug": "flip_photo_scale",
+    "grad_clip": 1.0,
+    "amp": "fp16",
+    "seed": 42,
+    "num_workers": 4,
+    "device": "cuda",
+    "resume": true,
+    "allow_subset_diagnostic": 0,
+    "eval_only": false,
+    "checkpoint": null,
+    "eval_split": "val"
+  },
+  "effective_batch_size": 32,
+  "amp_actual": "torch.float16",
+  "primary_selection_metric": "val_change_miou",
+  "data_scope": {
+    "dataset": "levir_mci_strict",
+    "train_pairs": 6444,
+    "val_pairs": 1242,
+    "train_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e",
+    "val_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511",
+    "is_full_data": true
+  },
+  "model_params": {
+    "total": 11944043,
+    "backbone": 11689512,
+    "head": 254531
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "gpu_name": "Tesla T4",
+    "hostname": "5c78c01371eb"
+  },
+  "status": "completed",
+  "completed_at_utc": "2026-11-22T18:03:27.150097+00:00",
+  "total_wall_sec": 3128.14,
+  "epochs_completed": 25,
+  "stopped_early": false,
+  "best_epoch": 22,
+  "best_val_change_miou": 0.6855379701744275,
+  "reloaded_best_val_loss": 0.15730595712860426,
+  "reloaded_best_val_metrics": {
+    "change_miou": 0.6855379701744275,
+    "macro_iou": 0.7795949637384374,
+    "bg_iou": 0.9677089508664569,
+    "road_iou": 0.6719951415019226,
+    "building_iou": 0.6990807988469325,
+    "binary_precision": 0.8073326056818815,
+    "binary_recall": 0.8433548859785694,
+    "binary_f1": 0.8249506960602573,
+    "binary_iou": 0.7020562399333681,
+    "small_change_f1": 0.34498397532805225,
+    "unchanged_pairs": 632,
+    "unchanged_fa_counts": {
+      "1": 188,
+      "16": 173,
+      "50": 141,
+      "100": 118,
+      "200": 79
+    },
+    "unchanged_fa_rates": {
+      "1": 0.2974683544303797,
+      "16": 0.2737341772151899,
+      "50": 0.2231012658227848,
+      "100": 0.18670886075949367,
+      "200": 0.125
+    },
+    "confusion_matrix": [
+      [
+        73197836,
+        564924,
+        808577
+      ],
+      [
+        441727,
+        2198629,
+        40158
+      ],
+      [
+        627278,
+        26355,
+        3490228
+      ]
+    ]
+  },
+  "best_checkpoint": "/content/terrawatch/runs/detector/D16_bit_photoscale/best.pt",
+  "best_checkpoint_sha256": "8cef4bdbb0116578b26ecae64b36eeee43c5f3c4fab1dfc7fb69a1175089b54b",
+  "last_checkpoint": "/content/terrawatch/runs/detector/D16_bit_photoscale/last.pt",
+  "last_checkpoint_sha256": "f775dd3ab53a20491395b3ffc1e7ab467e3d190f61fc03b41af4c0c3f6f1ae53",
+  "history_sha256": "d2ffc31e5276696fba1d2c77f6fdfe931c81f270590520447ee276b305eb87e5"
+}

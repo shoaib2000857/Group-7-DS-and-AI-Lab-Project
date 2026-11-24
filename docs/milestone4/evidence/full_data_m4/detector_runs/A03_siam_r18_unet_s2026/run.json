@@ -1,0 +1,121 @@
+{
+  "run_id": "A03_siam_r18_unet_s2026",
+  "started_at_utc": "2026-11-22T18:45:21.784206+00:00",
+  "command": "/content/terrawatch/scripts/train_detector.py --run-id A03_siam_r18_unet_s2026 --arch siam_resnet18_unet --bit-source-dir /content/terrawatch/models/external/BIT_CD --changeformer-source-dir /content/terrawatch/models/external/ChangeFormer --manifests-dir /content/terrawatch/data/portable_data --extracted-root /content/terrawatch/data/extracted --output-dir /content/terrawatch/runs/detector --epochs 25 --min-epochs 12 --patience 6 --batch-size 16 --accum-steps 2 --head-lr 3e-4 --backbone-lr 3e-5 --weight-decay 0.01 --scheduler cosine --loss focal_dice --freeze-epochs 5 --aug flip --amp fp16 --num-workers 2 --seed 2026",
+  "config": {
+    "run_id": "A03_siam_r18_unet_s2026",
+    "arch": "siam_resnet18_unet",
+    "bit_source_dir": "/content/terrawatch/models/external/BIT_CD",
+    "changeformer_source_dir": "/content/terrawatch/models/external/ChangeFormer",
+    "manifests_dir": "/content/terrawatch/data/portable_data",
+    "extracted_root": "/content/terrawatch/data/extracted",
+    "output_dir": "/content/terrawatch/runs/detector",
+    "epochs": 25,
+    "min_epochs": 12,
+    "patience": 6,
+    "batch_size": 16,
+    "accum_steps": 2,
+    "head_lr": 0.0003,
+    "backbone_lr": 3e-05,
+    "optimizer": "adamw",
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "warmup_epochs": 0,
+    "loss": "focal_dice",
+    "class_weights": "0.10,0.45,0.45",
+    "focal_gamma": 2.0,
+    "label_smoothing": 0.0,
+    "freeze_epochs": 5,
+    "aug": "flip",
+    "grad_clip": 1.0,
+    "amp": "fp16",
+    "seed": 2026,
+    "num_workers": 2,
+    "device": "cuda",
+    "resume": false,
+    "allow_subset_diagnostic": 0,
+    "eval_only": false,
+    "checkpoint": null,
+    "eval_split": "val"
+  },
+  "effective_batch_size": 32,
+  "amp_actual": "torch.float16",
+  "primary_selection_metric": "val_change_miou",
+  "data_scope": {
+    "dataset": "levir_mci_strict",
+    "train_pairs": 6444,
+    "val_pairs": 1242,
+    "train_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e",
+    "val_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511",
+    "is_full_data": true
+  },
+  "model_params": {
+    "total": 15630115,
+    "backbone": 11176512,
+    "head": 4453603
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA L4",
+    "hostname": "7f2198d1700b"
+  },
+  "status": "completed",
+  "completed_at_utc": "2026-11-22T18:59:34.404500+00:00",
+  "total_wall_sec": 852.62,
+  "epochs_completed": 22,
+  "stopped_early": true,
+  "best_epoch": 15,
+  "best_val_change_miou": 0.746811653714923,
+  "reloaded_best_val_loss": 0.14047501128740036,
+  "reloaded_best_val_metrics": {
+    "change_miou": 0.746811653714923,
+    "macro_iou": 0.8229199651242721,
+    "bg_iou": 0.9751365879429702,
+    "road_iou": 0.7206137446351194,
+    "building_iou": 0.7730095627947267,
+    "binary_precision": 0.8629084936632936,
+    "binary_recall": 0.8617898342339042,
+    "binary_f1": 0.8623488011608293,
+    "binary_iou": 0.7580080801925471,
+    "small_change_f1": 0.6097960074179121,
+    "unchanged_pairs": 632,
+    "unchanged_fa_counts": {
+      "1": 66,
+      "16": 57,
+      "50": 47,
+      "100": 38,
+      "200": 34
+    },
+    "unchanged_fa_rates": {
+      "1": 0.10443037974683544,
+      "16": 0.09018987341772151,
+      "50": 0.07436708860759493,
+      "100": 0.060126582278481014,
+      "200": 0.05379746835443038
+    },
+    "confusion_matrix": [
+      [
+        73636986,
+        359808,
+        574543
+      ],
+      [
+        469038,
+        2201346,
+        10130
+      ],
+      [
+        474160,
+        14499,
+        3655202
+      ]
+    ]
+  },
+  "best_checkpoint": "/content/terrawatch/runs/detector/A03_siam_r18_unet_s2026/best.pt",
+  "best_checkpoint_sha256": "ad063b288b245554256412d95d4e5e5787f588a6e4de012bcf85acb97dc2d9a8",
+  "last_checkpoint": "/content/terrawatch/runs/detector/A03_siam_r18_unet_s2026/last.pt",
+  "last_checkpoint_sha256": "2baed11881a0e28c9f548666e07aaeba0cc077ae2ed7466c1fd06438d74f5e58",
+  "history_sha256": "7b34cea0a9cbc5a26eb75e0178d01eacb374ff9dd3d06e2e2ba2e4a951973de7"
+}

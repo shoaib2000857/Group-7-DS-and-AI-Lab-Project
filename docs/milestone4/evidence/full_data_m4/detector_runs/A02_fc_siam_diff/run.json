@@ -1,0 +1,121 @@
+{
+  "run_id": "A02_fc_siam_diff",
+  "started_at_utc": "2026-11-22T10:47:56.751308+00:00",
+  "command": "/content/terrawatch/scripts/train_detector.py --run-id A02_fc_siam_diff --bit-source-dir /content/terrawatch/models/external/BIT_CD --changeformer-source-dir /content/terrawatch/models/external/ChangeFormer --manifests-dir /content/terrawatch/data/portable_data --extracted-root /content/terrawatch/data/extracted --output-dir /content/terrawatch/runs/detector --num-workers 4 --amp fp16 --resume --arch fc_siam_diff --epochs 25 --min-epochs 12 --patience 6 --batch-size 16 --accum-steps 2 --head-lr 3e-4 --weight-decay 0.01 --scheduler cosine --loss focal_dice --freeze-epochs 0 --aug flip --seed 42",
+  "config": {
+    "run_id": "A02_fc_siam_diff",
+    "arch": "fc_siam_diff",
+    "bit_source_dir": "/content/terrawatch/models/external/BIT_CD",
+    "changeformer_source_dir": "/content/terrawatch/models/external/ChangeFormer",
+    "manifests_dir": "/content/terrawatch/data/portable_data",
+    "extracted_root": "/content/terrawatch/data/extracted",
+    "output_dir": "/content/terrawatch/runs/detector",
+    "epochs": 25,
+    "min_epochs": 12,
+    "patience": 6,
+    "batch_size": 16,
+    "accum_steps": 2,
+    "head_lr": 0.0003,
+    "backbone_lr": 1e-05,
+    "optimizer": "adamw",
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "warmup_epochs": 0,
+    "loss": "focal_dice",
+    "class_weights": "0.10,0.45,0.45",
+    "focal_gamma": 2.0,
+    "label_smoothing": 0.0,
+    "freeze_epochs": 0,
+    "aug": "flip",
+    "grad_clip": 1.0,
+    "amp": "fp16",
+    "seed": 42,
+    "num_workers": 4,
+    "device": "cuda",
+    "resume": true,
+    "allow_subset_diagnostic": 0,
+    "eval_only": false,
+    "checkpoint": null,
+    "eval_split": "val"
+  },
+  "effective_batch_size": 32,
+  "amp_actual": "torch.float16",
+  "primary_selection_metric": "val_change_miou",
+  "data_scope": {
+    "dataset": "levir_mci_strict",
+    "train_pairs": 6444,
+    "val_pairs": 1242,
+    "train_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e",
+    "val_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511",
+    "is_full_data": true
+  },
+  "model_params": {
+    "total": 7763107,
+    "backbone": 0,
+    "head": 7763107
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "gpu_name": "Tesla T4",
+    "hostname": "9a2beb51efaa"
+  },
+  "status": "completed",
+  "completed_at_utc": "2026-11-22T11:37:00.504598+00:00",
+  "total_wall_sec": 2943.75,
+  "epochs_completed": 24,
+  "stopped_early": true,
+  "best_epoch": 17,
+  "best_val_change_miou": 0.715975639061972,
+  "reloaded_best_val_loss": 0.15182036347687244,
+  "reloaded_best_val_metrics": {
+    "change_miou": 0.715975639061972,
+    "macro_iou": 0.8017706540917326,
+    "bg_iou": 0.9733606841512535,
+    "road_iou": 0.6874594360217732,
+    "building_iou": 0.744491842102171,
+    "binary_precision": 0.9024042268405312,
+    "binary_recall": 0.7885571938822237,
+    "binary_f1": 0.8416482317623477,
+    "binary_iou": 0.7265912262929024,
+    "small_change_f1": 0.4827362092777642,
+    "unchanged_pairs": 632,
+    "unchanged_fa_counts": {
+      "1": 35,
+      "16": 29,
+      "50": 26,
+      "100": 21,
+      "200": 17
+    },
+    "unchanged_fa_rates": {
+      "1": 0.055379746835443035,
+      "16": 0.04588607594936709,
+      "50": 0.04113924050632911,
+      "100": 0.03322784810126582,
+      "200": 0.02689873417721519
+    },
+    "confusion_matrix": [
+      [
+        73989333,
+        217280,
+        364724
+      ],
+      [
+        674516,
+        2004046,
+        1952
+      ],
+      [
+        768449,
+        17354,
+        3358058
+      ]
+    ]
+  },
+  "best_checkpoint": "/content/terrawatch/runs/detector/A02_fc_siam_diff/best.pt",
+  "best_checkpoint_sha256": "32329cf708a7fed397c96689922eca2a2f29556108c35c214a1c332326b23105",
+  "last_checkpoint": "/content/terrawatch/runs/detector/A02_fc_siam_diff/last.pt",
+  "last_checkpoint_sha256": "0016b71ab2e7e2b889dbfd41576cab431448755ee39eb3757711df8edf08c9a2",
+  "history_sha256": "e66c815104a2d371efdfbbaa3ba8464c2f82e9937a9cda65ecccd01852bf7841"
+}
