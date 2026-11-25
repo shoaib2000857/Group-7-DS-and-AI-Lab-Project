@@ -1,0 +1,121 @@
+{
+  "run_id": "D09_bit_step",
+  "started_at_utc": "2026-11-22T16:25:29.490279+00:00",
+  "command": "/content/terrawatch/scripts/train_detector.py --run-id D09_bit_step --bit-source-dir /content/terrawatch/models/external/BIT_CD --changeformer-source-dir /content/terrawatch/models/external/ChangeFormer --manifests-dir /content/terrawatch/data/portable_data --extracted-root /content/terrawatch/data/extracted --output-dir /content/terrawatch/runs/detector --num-workers 4 --amp fp16 --resume --arch bit_resnet18 --epochs 25 --min-epochs 12 --patience 6 --batch-size 16 --accum-steps 2 --head-lr 1e-4 --backbone-lr 1e-5 --weight-decay 0.01 --scheduler step --loss focal_dice --freeze-epochs 5 --aug flip --seed 42",
+  "config": {
+    "run_id": "D09_bit_step",
+    "arch": "bit_resnet18",
+    "bit_source_dir": "/content/terrawatch/models/external/BIT_CD",
+    "changeformer_source_dir": "/content/terrawatch/models/external/ChangeFormer",
+    "manifests_dir": "/content/terrawatch/data/portable_data",
+    "extracted_root": "/content/terrawatch/data/extracted",
+    "output_dir": "/content/terrawatch/runs/detector",
+    "epochs": 25,
+    "min_epochs": 12,
+    "patience": 6,
+    "batch_size": 16,
+    "accum_steps": 2,
+    "head_lr": 0.0001,
+    "backbone_lr": 1e-05,
+    "optimizer": "adamw",
+    "weight_decay": 0.01,
+    "scheduler": "step",
+    "warmup_epochs": 0,
+    "loss": "focal_dice",
+    "class_weights": "0.10,0.45,0.45",
+    "focal_gamma": 2.0,
+    "label_smoothing": 0.0,
+    "freeze_epochs": 5,
+    "aug": "flip",
+    "grad_clip": 1.0,
+    "amp": "fp16",
+    "seed": 42,
+    "num_workers": 4,
+    "device": "cuda",
+    "resume": true,
+    "allow_subset_diagnostic": 0,
+    "eval_only": false,
+    "checkpoint": null,
+    "eval_split": "val"
+  },
+  "effective_batch_size": 32,
+  "amp_actual": "torch.float16",
+  "primary_selection_metric": "val_change_miou",
+  "data_scope": {
+    "dataset": "levir_mci_strict",
+    "train_pairs": 6444,
+    "val_pairs": 1242,
+    "train_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e",
+    "val_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511",
+    "is_full_data": true
+  },
+  "model_params": {
+    "total": 11944043,
+    "backbone": 11689512,
+    "head": 254531
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "gpu_name": "Tesla T4",
+    "hostname": "5c78c01371eb"
+  },
+  "status": "completed",
+  "completed_at_utc": "2026-11-22T17:10:47.486634+00:00",
+  "total_wall_sec": 2717.99,
+  "epochs_completed": 25,
+  "stopped_early": false,
+  "best_epoch": 24,
+  "best_val_change_miou": 0.729425281933286,
+  "reloaded_best_val_loss": 0.14260668551119474,
+  "reloaded_best_val_metrics": {
+    "change_miou": 0.729425281933286,
+    "macro_iou": 0.8105574418263161,
+    "bg_iou": 0.972821761612376,
+    "road_iou": 0.7112468953038121,
+    "building_iou": 0.74760366856276,
+    "binary_precision": 0.8392970484657664,
+    "binary_recall": 0.8649656561956223,
+    "binary_f1": 0.8519380495549582,
+    "binary_iou": 0.7420662702258426,
+    "small_change_f1": 0.4273142857142857,
+    "unchanged_pairs": 632,
+    "unchanged_fa_counts": {
+      "1": 151,
+      "16": 131,
+      "50": 104,
+      "100": 81,
+      "200": 53
+    },
+    "unchanged_fa_rates": {
+      "1": 0.2389240506329114,
+      "16": 0.20727848101265822,
+      "50": 0.16455696202531644,
+      "100": 0.1281645569620253,
+      "200": 0.08386075949367089
+    },
+    "confusion_matrix": [
+      [
+        73441099,
+        460937,
+        669301
+      ],
+      [
+        411886,
+        2249925,
+        18703
+      ],
+      [
+        509639,
+        21902,
+        3612320
+      ]
+    ]
+  },
+  "best_checkpoint": "/content/terrawatch/runs/detector/D09_bit_step/best.pt",
+  "best_checkpoint_sha256": "ce66b1acb66f1faed7e18980572b1da968ea4505ef37b783ff4816aaa3853a86",
+  "last_checkpoint": "/content/terrawatch/runs/detector/D09_bit_step/last.pt",
+  "last_checkpoint_sha256": "5e9df754390eaf2470fd7c492e400ac0425f422de5247dee4be6131eb58e637e",
+  "history_sha256": "b62a5bdc5b5b577b4df797394ab009c0d236cc633de253df6eec18e4a892ecde"
+}

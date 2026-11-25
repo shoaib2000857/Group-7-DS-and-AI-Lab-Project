@@ -1,0 +1,47 @@
+{
+  "created_at_utc": "2026-11-22T09:01:54.269259+00:00",
+  "source_processed_dir": "data\\processed",
+  "levir_mci": {
+    "train": {
+      "count": 6444,
+      "manifest_file": "mci_train.jsonl",
+      "manifest_sha256": "445df72e3bc5cc36374b61d4ea6312037a28b25fac289a851bad3470d8f51533",
+      "pair_ids_sha256": "2e38e5e22aa27c5b8101dd2f4fc7ea5127a8378d069c5eae5c3f90832e3f137e"
+    },
+    "val": {
+      "count": 1242,
+      "manifest_file": "mci_val.jsonl",
+      "manifest_sha256": "5340c2c4d0dfa4e90a4229ee3e744ddd72db1edac17fa3c02fc45eaba9c7a315",
+      "pair_ids_sha256": "bf165d95ac0a6a4fa52770fc8e2f9270f6926b98f53143001d883e8e7a581511"
+    },
+    "test": {
+      "count": 1858,
+      "manifest_file": "mci_test.jsonl",
+      "manifest_sha256": "ca68aa1314e157c1d8e5b4f83d678408cfd3d258dd8d26524e3b3ddae30ca6a6",
+      "pair_ids_sha256": "7ab21ea2103792a06d0780ce7b7fbc73366f35db7c1c42b36887cb2e2ae1a5ae"
+    }
+  },
+  "levir_mci_train_captions": 32220,
+  "levir_mci_references_sha256": "8993cbcad0f17748a4a3e619992513fcf1d012f00b7657ada5822e56deb5f0ae",
+  "second_cc": {
+    "train": {
+      "count": 3241,
+      "manifest_file": "second_cc_train.jsonl",
+      "manifest_sha256": "f4ce252ad4121ca4557b21eeaac533c48bce77f72bfb3afc469b8e19775e56e9",
+      "pair_ids_sha256": "9b92daa2f25de31fb6d24c25a00665b0b533917919f771d1cb2f05884f2b1a2f"
+    },
+    "val": {
+      "count": 530,
+      "manifest_file": "second_cc_val.jsonl",
+      "manifest_sha256": "22fabb2f74f6b5f1c44e2707be10407a0271217d703a79ad45f2836f0bd0d822",
+      "pair_ids_sha256": "0f7580919391df68dd067b38ec3b243508a466563f4332941d40f390dad97c2b"
+    },
+    "test": {
+      "count": 1142,
+      "manifest_file": "second_cc_test.jsonl",
+      "manifest_sha256": "3fe13f1406160ca7808e6803cdfda11b51b6e49a499645a8d630f154779b5092",
+      "pair_ids_sha256": "b4901f0c4f66497c655726e0190c09876075a5fde6cf3eeae1603b3c8714c0de"
+    }
+  },
+  "second_cc_references_sha256": "e9faaa9beb6fa2e492c92c91cec54f05f5d6956823868377b8c9a092704f3f89"
+}

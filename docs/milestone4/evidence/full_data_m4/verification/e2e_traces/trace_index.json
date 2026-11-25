@@ -1,0 +1,84 @@
+[
+  {
+    "category": "accepted_building_change",
+    "pair_id": "levir_mci/val/val_000149",
+    "folder": "accepted_building_change__levir_mci_val_val_000149",
+    "caption": "some houses are built in the woods",
+    "outcomes": [
+      "accept",
+      "defer"
+    ],
+    "report_sha256": "685eca6ef62c791e795aae1b782ea555f4d2893b3186202dbbae4e25eb12a3ea"
+  },
+  {
+    "category": "accepted_road_or_mixed",
+    "pair_id": "levir_mci/val/val_000353",
+    "folder": "accepted_road_or_mixed__levir_mci_val_val_000353",
+    "caption": "a road appears in the bareland",
+    "outcomes": [
+      "accept"
+    ],
+    "report_sha256": "665ecf1f6b3c01daecaafbfa5c355d8560320f5c5a6e48b63040993dd774ff08"
+  },
+  {
+    "category": "accepted_unchanged_scene",
+    "pair_id": "levir_mci/val/val_000118",
+    "folder": "accepted_unchanged_scene__levir_mci_val_val_000118",
+    "caption": "the scene is the same as before",
+    "outcomes": [
+      "accept"
+    ],
+    "report_sha256": "b5e8da341cdda63e88a42214ee57f850cb5537d20fab0ee4a504170c4c06645d"
+  },
+  {
+    "category": "rejected_claim",
+    "pair_id": "levir_mci/val/val_000022",
+    "folder": "rejected_claim__levir_mci_val_val_000022",
+    "caption": "a house appears in the woods in the desert",
+    "outcomes": [
+      "reject",
+      "defer"
+    ],
+    "report_sha256": "e12cb3972e212b1ce20a4c60298ee6f78a99405e857c91653e7e56946ff3d873"
+  },
+  {
+    "category": "deferred_exact_count",
+    "pair_id": "levir_mci/val/val_000237",
+    "folder": "deferred_exact_count__levir_mci_val_val_000237",
+    "caption": "two houses are built along the road",
+    "outcomes": [
+      "defer"
+    ],
+    "report_sha256": "4f59a0ed27b7edbd483fd0d322112832f1444c53026970fd426860e4f06af7c6"
+  },
+  {
+    "category": "deferred_ambiguous_or_threshold",
+    "pair_id": "levir_mci/val/val_000040",
+    "folder": "deferred_ambiguous_or_threshold__levir_mci_val_val_000040",
+    "caption": "some houses are built along the road",
+    "outcomes": [
+      "defer"
+    ],
+    "report_sha256": "3216c4bf434417da48d7391e90e566e48c18b9462fed851634e775cd865007bd"
+  },
+  {
+    "category": "small_change_case",
+    "pair_id": "levir_mci/val/val_000081",
+    "folder": "small_change_case__levir_mci_val_val_000081",
+    "caption": "a small house appears in the bareland",
+    "outcomes": [
+      "reject"
+    ],
+    "report_sha256": "6158450a5fb988b5ce537e915c8b623f5a1577a0c9965357eaca3b57a1bba462"
+  },
+  {
+    "category": "second_accepted_change",
+    "pair_id": "levir_mci/val/val_000263",
+    "folder": "second_accepted_change__levir_mci_val_val_000263",
+    "caption": "two rows of houses are built along the road",
+    "outcomes": [
+      "accept"
+    ],
+    "report_sha256": "1a194009e19ad99161c18ea685d12fa9b28619bf300926687de556a655b8d68b"
+  }
+]

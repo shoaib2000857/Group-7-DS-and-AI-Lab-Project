@@ -1,0 +1,530 @@
+{
+  "evaluated_at_utc": "2026-11-22T18:55:51.923568+00:00",
+  "audit_scope": {
+    "split": "levir_mci_val_stratified",
+    "num_pairs": 120,
+    "strata_counts": {
+      "unchanged": 40,
+      "building_only": 30,
+      "road_only": 15,
+      "mixed_both": 20,
+      "small_change": 15
+    },
+    "total_claims": 147,
+    "note": "Proxy labels derive from GT masks & reference captions for automated development comparison; they are NOT a substitute for independent dual-rater human annotation."
+  },
+  "models": {
+    "detector": {
+      "arch": "bit_resnet18",
+      "checkpoint": "/content/terrawatch/ver_inputs/detector_best.pt",
+      "sha256": "05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb"
+    },
+    "captioner": {
+      "checkpoint": "/content/terrawatch/runs/captioner/C06_rscama_frozen_clip/best.pth",
+      "sha256": "c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796",
+      "kernel_mode": "triton_fused_exact"
+    },
+    "referee": {
+      "repo": "Qwen/Qwen3-VL-4B-Instruct",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "torch": "2.14.1+cu130",
+      "transformers": "5.22.1",
+      "dtype": "torch.bfloat16"
+    }
+  },
+  "operating_threshold": 0.7,
+  "trigger_statistics": {
+    "triggered_claims": 95,
+    "untriggered_claims": 52,
+    "trigger_rate": 0.6463,
+    "untriggered_accepted_contradicted_errors": 3,
+    "trigger_reason_counts": {
+      "T_quality_or_alignment_hazard": 8,
+      "T_hedged_claim": 18,
+      "T_no_matching_mask_region": 4,
+      "T_weak_mask_support": 4,
+      "T_mask_caption_conflict_no_change": 13,
+      "T_witness_disagrees_no_visual_change": 51,
+      "T_out_of_mask_ontology": 13,
+      "T_exact_numeric_count": 2
+    },
+    "avg_vlm_calls_per_claim_direct": 1.0,
+    "avg_vlm_calls_per_claim_triggered": 0.6463
+  },
+  "settings_comparison": {
+    "1_unverified_captioner": {
+      "total_claims": 147,
+      "accepted": 147,
+      "rejected": 0,
+      "deferred": 0,
+      "accept_rate": 1.0,
+      "reject_rate": 0.0,
+      "defer_rate": 0.0,
+      "proxy_supported_precision_strict": 0.7279,
+      "proxy_selective_risk": 0.2721,
+      "proxy_supported_recall": 1.0,
+      "proxy_contradicted_catch_rate": 0.0,
+      "proxy_false_accept_rate": 1.0,
+      "proxy_false_reject_rate": 0.0,
+      "breakdown": {
+        "accepted_supported": 107,
+        "accepted_contradicted": 27,
+        "accepted_unverifiable": 13,
+        "rejected_contradicted": 0,
+        "rejected_supported": 0
+      }
+    },
+    "2_mask_only_checker": {
+      "total_claims": 147,
+      "accepted": 116,
+      "rejected": 18,
+      "deferred": 13,
+      "accept_rate": 0.7891,
+      "reject_rate": 0.1224,
+      "defer_rate": 0.0884,
+      "proxy_supported_precision_strict": 0.9138,
+      "proxy_selective_risk": 0.0862,
+      "proxy_supported_recall": 0.9907,
+      "proxy_contradicted_catch_rate": 0.6296,
+      "proxy_false_accept_rate": 0.3704,
+      "proxy_false_reject_rate": 0.0093,
+      "breakdown": {
+        "accepted_supported": 106,
+        "accepted_contradicted": 10,
+        "accepted_unverifiable": 0,
+        "rejected_contradicted": 17,
+        "rejected_supported": 1
+      }
+    },
+    "3_direct_qwen3vl_raw": {
+      "total_claims": 147,
+      "accepted": 85,
+      "rejected": 13,
+      "deferred": 49,
+      "accept_rate": 0.5782,
+      "reject_rate": 0.0884,
+      "defer_rate": 0.3333,
+      "proxy_supported_precision_strict": 0.8235,
+      "proxy_selective_risk": 0.1765,
+      "proxy_supported_recall": 0.6542,
+      "proxy_contradicted_catch_rate": 0.2222,
+      "proxy_false_accept_rate": 0.2593,
+      "proxy_false_reject_rate": 0.0654,
+      "breakdown": {
+        "accepted_supported": 70,
+        "accepted_contradicted": 7,
+        "accepted_unverifiable": 8,
+        "rejected_contradicted": 6,
+        "rejected_supported": 7
+      }
+    },
+    "4_direct_qwen3vl_gated": {
+      "total_claims": 147,
+      "accepted": 74,
+      "rejected": 13,
+      "deferred": 60,
+      "accept_rate": 0.5034,
+      "reject_rate": 0.0884,
+      "defer_rate": 0.4082,
+      "proxy_supported_precision_strict": 0.8243,
+      "proxy_selective_risk": 0.1757,
+      "proxy_supported_recall": 0.5701,
+      "proxy_contradicted_catch_rate": 0.2222,
+      "proxy_false_accept_rate": 0.2222,
+      "proxy_false_reject_rate": 0.0654,
+      "breakdown": {
+        "accepted_supported": 61,
+        "accepted_contradicted": 6,
+        "accepted_unverifiable": 7,
+        "rejected_contradicted": 6,
+        "rejected_supported": 7
+      }
+    },
+    "5_reinspection_all_gated": {
+      "total_claims": 147,
+      "accepted": 87,
+      "rejected": 16,
+      "deferred": 44,
+      "accept_rate": 0.5918,
+      "reject_rate": 0.1088,
+      "defer_rate": 0.2993,
+      "proxy_supported_precision_strict": 0.7241,
+      "proxy_selective_risk": 0.2759,
+      "proxy_supported_recall": 0.5888,
+      "proxy_contradicted_catch_rate": 0.0741,
+      "proxy_false_accept_rate": 0.6667,
+      "proxy_false_reject_rate": 0.1308,
+      "breakdown": {
+        "accepted_supported": 63,
+        "accepted_contradicted": 18,
+        "accepted_unverifiable": 6,
+        "rejected_contradicted": 2,
+        "rejected_supported": 14
+      }
+    },
+    "6_disagreement_triggered_reinspection": {
+      "total_claims": 147,
+      "accepted": 90,
+      "rejected": 15,
+      "deferred": 42,
+      "accept_rate": 0.6122,
+      "reject_rate": 0.102,
+      "defer_rate": 0.2857,
+      "proxy_supported_precision_strict": 0.7222,
+      "proxy_selective_risk": 0.2778,
+      "proxy_supported_recall": 0.6075,
+      "proxy_contradicted_catch_rate": 0.037,
+      "proxy_false_accept_rate": 0.7037,
+      "proxy_false_reject_rate": 0.1308,
+      "breakdown": {
+        "accepted_supported": 65,
+        "accepted_contradicted": 19,
+        "accepted_unverifiable": 6,
+        "rejected_contradicted": 1,
+        "rejected_supported": 14
+      }
+    }
+  },
+  "threshold_sweep": {
+    "0.50": {
+      "direct_qwen_gated": {
+        "total_claims": 147,
+        "accepted": 84,
+        "rejected": 13,
+        "deferred": 50,
+        "accept_rate": 0.5714,
+        "reject_rate": 0.0884,
+        "defer_rate": 0.3401,
+        "proxy_supported_precision_strict": 0.8214,
+        "proxy_selective_risk": 0.1786,
+        "proxy_supported_recall": 0.6449,
+        "proxy_contradicted_catch_rate": 0.2222,
+        "proxy_false_accept_rate": 0.2593,
+        "proxy_false_reject_rate": 0.0654,
+        "breakdown": {
+          "accepted_supported": 69,
+          "accepted_contradicted": 7,
+          "accepted_unverifiable": 8,
+          "rejected_contradicted": 6,
+          "rejected_supported": 7
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 147,
+        "accepted": 93,
+        "rejected": 16,
+        "deferred": 38,
+        "accept_rate": 0.6327,
+        "reject_rate": 0.1088,
+        "defer_rate": 0.2585,
+        "proxy_supported_precision_strict": 0.7204,
+        "proxy_selective_risk": 0.2796,
+        "proxy_supported_recall": 0.6262,
+        "proxy_contradicted_catch_rate": 0.0741,
+        "proxy_false_accept_rate": 0.7037,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 67,
+          "accepted_contradicted": 19,
+          "accepted_unverifiable": 7,
+          "rejected_contradicted": 2,
+          "rejected_supported": 14
+        }
+      },
+      "triggered_reinsp": {
+        "total_claims": 147,
+        "accepted": 95,
+        "rejected": 15,
+        "deferred": 37,
+        "accept_rate": 0.6463,
+        "reject_rate": 0.102,
+        "defer_rate": 0.2517,
+        "proxy_supported_precision_strict": 0.7158,
+        "proxy_selective_risk": 0.2842,
+        "proxy_supported_recall": 0.6355,
+        "proxy_contradicted_catch_rate": 0.037,
+        "proxy_false_accept_rate": 0.7407,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 68,
+          "accepted_contradicted": 20,
+          "accepted_unverifiable": 7,
+          "rejected_contradicted": 1,
+          "rejected_supported": 14
+        }
+      }
+    },
+    "0.60": {
+      "direct_qwen_gated": {
+        "total_claims": 147,
+        "accepted": 80,
+        "rejected": 13,
+        "deferred": 54,
+        "accept_rate": 0.5442,
+        "reject_rate": 0.0884,
+        "defer_rate": 0.3673,
+        "proxy_supported_precision_strict": 0.825,
+        "proxy_selective_risk": 0.175,
+        "proxy_supported_recall": 0.6168,
+        "proxy_contradicted_catch_rate": 0.2222,
+        "proxy_false_accept_rate": 0.2222,
+        "proxy_false_reject_rate": 0.0654,
+        "breakdown": {
+          "accepted_supported": 66,
+          "accepted_contradicted": 6,
+          "accepted_unverifiable": 8,
+          "rejected_contradicted": 6,
+          "rejected_supported": 7
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 147,
+        "accepted": 92,
+        "rejected": 16,
+        "deferred": 39,
+        "accept_rate": 0.6259,
+        "reject_rate": 0.1088,
+        "defer_rate": 0.2653,
+        "proxy_supported_precision_strict": 0.7174,
+        "proxy_selective_risk": 0.2826,
+        "proxy_supported_recall": 0.6168,
+        "proxy_contradicted_catch_rate": 0.0741,
+        "proxy_false_accept_rate": 0.7037,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 66,
+          "accepted_contradicted": 19,
+          "accepted_unverifiable": 7,
+          "rejected_contradicted": 2,
+          "rejected_supported": 14
+        }
+      },
+      "triggered_reinsp": {
+        "total_claims": 147,
+        "accepted": 94,
+        "rejected": 15,
+        "deferred": 38,
+        "accept_rate": 0.6395,
+        "reject_rate": 0.102,
+        "defer_rate": 0.2585,
+        "proxy_supported_precision_strict": 0.7128,
+        "proxy_selective_risk": 0.2872,
+        "proxy_supported_recall": 0.6262,
+        "proxy_contradicted_catch_rate": 0.037,
+        "proxy_false_accept_rate": 0.7407,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 67,
+          "accepted_contradicted": 20,
+          "accepted_unverifiable": 7,
+          "rejected_contradicted": 1,
+          "rejected_supported": 14
+        }
+      }
+    },
+    "0.70": {
+      "direct_qwen_gated": {
+        "total_claims": 147,
+        "accepted": 74,
+        "rejected": 13,
+        "deferred": 60,
+        "accept_rate": 0.5034,
+        "reject_rate": 0.0884,
+        "defer_rate": 0.4082,
+        "proxy_supported_precision_strict": 0.8243,
+        "proxy_selective_risk": 0.1757,
+        "proxy_supported_recall": 0.5701,
+        "proxy_contradicted_catch_rate": 0.2222,
+        "proxy_false_accept_rate": 0.2222,
+        "proxy_false_reject_rate": 0.0654,
+        "breakdown": {
+          "accepted_supported": 61,
+          "accepted_contradicted": 6,
+          "accepted_unverifiable": 7,
+          "rejected_contradicted": 6,
+          "rejected_supported": 7
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 147,
+        "accepted": 87,
+        "rejected": 16,
+        "deferred": 44,
+        "accept_rate": 0.5918,
+        "reject_rate": 0.1088,
+        "defer_rate": 0.2993,
+        "proxy_supported_precision_strict": 0.7241,
+        "proxy_selective_risk": 0.2759,
+        "proxy_supported_recall": 0.5888,
+        "proxy_contradicted_catch_rate": 0.0741,
+        "proxy_false_accept_rate": 0.6667,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 63,
+          "accepted_contradicted": 18,
+          "accepted_unverifiable": 6,
+          "rejected_contradicted": 2,
+          "rejected_supported": 14
+        }
+      },
+      "triggered_reinsp": {
+        "total_claims": 147,
+        "accepted": 90,
+        "rejected": 15,
+        "deferred": 42,
+        "accept_rate": 0.6122,
+        "reject_rate": 0.102,
+        "defer_rate": 0.2857,
+        "proxy_supported_precision_strict": 0.7222,
+        "proxy_selective_risk": 0.2778,
+        "proxy_supported_recall": 0.6075,
+        "proxy_contradicted_catch_rate": 0.037,
+        "proxy_false_accept_rate": 0.7037,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 65,
+          "accepted_contradicted": 19,
+          "accepted_unverifiable": 6,
+          "rejected_contradicted": 1,
+          "rejected_supported": 14
+        }
+      }
+    },
+    "0.80": {
+      "direct_qwen_gated": {
+        "total_claims": 147,
+        "accepted": 62,
+        "rejected": 13,
+        "deferred": 72,
+        "accept_rate": 0.4218,
+        "reject_rate": 0.0884,
+        "defer_rate": 0.4898,
+        "proxy_supported_precision_strict": 0.8387,
+        "proxy_selective_risk": 0.1613,
+        "proxy_supported_recall": 0.486,
+        "proxy_contradicted_catch_rate": 0.2222,
+        "proxy_false_accept_rate": 0.1481,
+        "proxy_false_reject_rate": 0.0654,
+        "breakdown": {
+          "accepted_supported": 52,
+          "accepted_contradicted": 4,
+          "accepted_unverifiable": 6,
+          "rejected_contradicted": 6,
+          "rejected_supported": 7
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 147,
+        "accepted": 83,
+        "rejected": 16,
+        "deferred": 48,
+        "accept_rate": 0.5646,
+        "reject_rate": 0.1088,
+        "defer_rate": 0.3265,
+        "proxy_supported_precision_strict": 0.7229,
+        "proxy_selective_risk": 0.2771,
+        "proxy_supported_recall": 0.5607,
+        "proxy_contradicted_catch_rate": 0.0741,
+        "proxy_false_accept_rate": 0.6667,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 60,
+          "accepted_contradicted": 18,
+          "accepted_unverifiable": 5,
+          "rejected_contradicted": 2,
+          "rejected_supported": 14
+        }
+      },
+      "triggered_reinsp": {
+        "total_claims": 147,
+        "accepted": 89,
+        "rejected": 15,
+        "deferred": 43,
+        "accept_rate": 0.6054,
+        "reject_rate": 0.102,
+        "defer_rate": 0.2925,
+        "proxy_supported_precision_strict": 0.7303,
+        "proxy_selective_risk": 0.2697,
+        "proxy_supported_recall": 0.6075,
+        "proxy_contradicted_catch_rate": 0.037,
+        "proxy_false_accept_rate": 0.7037,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 65,
+          "accepted_contradicted": 19,
+          "accepted_unverifiable": 5,
+          "rejected_contradicted": 1,
+          "rejected_supported": 14
+        }
+      }
+    },
+    "0.90": {
+      "direct_qwen_gated": {
+        "total_claims": 147,
+        "accepted": 47,
+        "rejected": 13,
+        "deferred": 87,
+        "accept_rate": 0.3197,
+        "reject_rate": 0.0884,
+        "defer_rate": 0.5918,
+        "proxy_supported_precision_strict": 0.9362,
+        "proxy_selective_risk": 0.0638,
+        "proxy_supported_recall": 0.4112,
+        "proxy_contradicted_catch_rate": 0.2222,
+        "proxy_false_accept_rate": 0.0741,
+        "proxy_false_reject_rate": 0.0654,
+        "breakdown": {
+          "accepted_supported": 44,
+          "accepted_contradicted": 2,
+          "accepted_unverifiable": 1,
+          "rejected_contradicted": 6,
+          "rejected_supported": 7
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 147,
+        "accepted": 78,
+        "rejected": 16,
+        "deferred": 53,
+        "accept_rate": 0.5306,
+        "reject_rate": 0.1088,
+        "defer_rate": 0.3605,
+        "proxy_supported_precision_strict": 0.7308,
+        "proxy_selective_risk": 0.2692,
+        "proxy_supported_recall": 0.5327,
+        "proxy_contradicted_catch_rate": 0.0741,
+        "proxy_false_accept_rate": 0.6296,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 57,
+          "accepted_contradicted": 17,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 2,
+          "rejected_supported": 14
+        }
+      },
+      "triggered_reinsp": {
+        "total_claims": 147,
+        "accepted": 86,
+        "rejected": 15,
+        "deferred": 46,
+        "accept_rate": 0.585,
+        "reject_rate": 0.102,
+        "defer_rate": 0.3129,
+        "proxy_supported_precision_strict": 0.7442,
+        "proxy_selective_risk": 0.2558,
+        "proxy_supported_recall": 0.5981,
+        "proxy_contradicted_catch_rate": 0.037,
+        "proxy_false_accept_rate": 0.6667,
+        "proxy_false_reject_rate": 0.1308,
+        "breakdown": {
+          "accepted_supported": 64,
+          "accepted_contradicted": 18,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 1,
+          "rejected_supported": 14
+        }
+      }
+    }
+  }
+}

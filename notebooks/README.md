@@ -1,43 +1,33 @@
-# Main-project data notebooks
+# TerraWatch Notebooks
 
-Run these in order:
+Run the data-preparation notebooks first, followed by the Milestone 4 full-data training, captioning, and verification notebooks:
 
-1. `01_EDA.ipynb` - coverage, native dimensions, label/pixel distributions, small changes, missing joins, image variation, spatial density, duplicate/leakage evidence, outliers, correlations, semantic transitions and caption/instruction variants.
-2. `02_Preprocessing.ipynb` - deterministic exclusions, target conversion, fixed source partitions, task-specific manifests, complete loader checks and a real input batch.
-Exploratory resize/brightness/augmentation checks are kept separately under [`POC/data_quality/`](../POC/data_quality/README.md).
+## Data Preparation & Baseline Analysis
+1. `01_EDA.ipynb` — coverage, native dimensions, label/pixel distributions, small changes, missing joins, image variation, spatial density, duplicate/leakage evidence, outliers, correlations, semantic transitions, and caption/instruction variants.
+2. `02_Preprocessing.ipynb` — deterministic exclusions, target conversion, fixed source partitions, task-specific manifests, complete loader checks, and real input batches.
+3. `03_Model_Experiments.ipynb` — baseline model experiment replay and fresh CPU controls.
+4. `04_Evaluation.ipynb` — baseline evaluation summaries and visual inspections.
 
-These notebooks call the same modules under `src/data/` as the command-line pipeline. They are not separate copies of processing logic. Their saved tables and plots reflect an executed run; check the coverage table before interpreting a convenience probe as a complete release.
+## Milestone 4 Full-Data Training, Optimization & Evidence Review
+5. `TerraWatch_M4_FullData_Detector_Training.ipynb` — reproduces the 24-run full-data LEVIR-MCI detector study (`6,444` train / `1,242` val / `1,858` held-out test), 5-architecture comparison (`BIT-ResNet18`, `Siam-ResNet18-UNet`, `EF-UNet`, `FC-Siam-Diff`, `ChangeFormer-B2`), 3-seed stability, 10-condition corruption robustness, and zero-shot SECOND-CC transfer (`scripts/train_detector_full.py`, `scripts/eval_robustness_transfer.py`).
+6. `TerraWatch_M4_FullData_RSCaMa_Captioner.ipynb` — reproduces the full-data RSCaMa paired captioner experiments (`32,220` train captions, strict `388`-word train-only vocabulary, exact Triton fused selective-scan kernel), `C01`–`C07` ablations, 3-seed stability on selected **`C06_rscama_frozen_clip`**, and 1,858-pair held-out Test evaluation (`scripts/train_captioner_full.py`).
+7. `TerraWatch_M4_Verification_and_Evidence_Review.ipynb` — replays the 120-pair (147-claim) `Qwen3-VL-4B-Instruct` verification comparison, visualizes all 8 authentic end-to-end traces from `docs/milestone4/evidence/full_data_m4/verification/e2e_traces/`, and launches the interactive Evidence Review UI (`python -m src.app.server docs/milestone4/evidence/full_data_m4/verification/e2e_traces --port 8765`).
 
-The model-experiment and evaluation notebooks now call the reusable main model pipeline. They include recorded benchmark replay, fresh labelled CPU controls, intermediate visual outputs and downloadable results ZIPs. See [model execution instructions](../docs/models/README.md) for the learned-worker environments and checkpoint setup.
+> Earlier bounded Colab prototypes (`TerraWatch_M4_BIT_Training.ipynb`, `TerraWatch_M4_Learned_Demo.ipynb`, `drive_members.py`) are preserved for continuity alongside the full-data Milestone 4 notebooks above.
 
-## Google Colab
+## Google Colab & Local Execution
 
-Open a notebook from the `main` branch. The setup cell can clone `main` into `/content/TerraWatch` and install `requirements-data.txt` when the repository is absent. Drive mounting is enabled automatically in Colab and requires your normal Google authorisation.
+- **Replay mode (CPU, zero extra setup):** All three Milestone 4 notebooks read the committed run receipts under `docs/milestone4/evidence/full_data_m4/` directly.
+- **Full GPU training & audit:** Set `RUN_TRAINING = True` (or `RUN_EVAL = True` / `RUN_AUDIT = True`) in the notebook cells on a CUDA GPU (RTX 4060, Colab T4, or Colab L4) with `TERRAWATCH_MCI_DIR` pointing to the extracted LEVIR-MCI dataset.
+- **Interactive Evidence Review UI (local):**
+  ```powershell
+  python -m src.app.server docs/milestone4/evidence/full_data_m4/verification/e2e_traces --port 8765
+  ```
+- **Re-aggregate receipts, rebuild figures, or rebuild PDF deliverables:**
+  ```powershell
+  python scripts/aggregate_m4_results.py
+  python scripts/build_m4_figures.py
+  python scripts/build_m4_deliverables.py
+  ```
 
-The default data folder is `/content/drive/MyDrive/TerraWatch_Extracted`, based on the supplied collection. Set `DATA_ROOT` if your shortcut/mount has a different name. Dataset roots can be nested as in the inspected Drive collection; the catalogue lists the supported layouts. `TERRAWATCH_<DATASET_ID>` is an explicit path override, for example `TERRAWATCH_SECOND_CC`.
-
-Run all of `01_EDA` before `02_Preprocessing`. Set `RERUN_AUDIT=True` or `RERUN_PREPARATION=True` after changing sources/configuration; otherwise an existing local audit/preparation is reused transparently. `MAX_PAIRS=None` scans all discovered pairs. An integer requests a bounded and labelled scan.
-
-SECOND-CC's native ZIP exceeds the connector's per-file upload limit. The Drive copy is a checksummed set of parts plus `SECOND-CC-AUG.zip.parts.json`. The storage layer reads it as one seekable original ZIP, verifies its publisher checksum and preserves native member paths. No manual reconstruction or extraction is needed.
-
-## Local execution
-
-Use Python 3.11 or newer.
-
-```powershell
-python -m pip install -r requirements-data.txt
-python -m src.data.cli audit --output outputs/data
-python -m src.data.cli prepare --audit-dir outputs/data --output data/processed
-python -m src.data.cli verify --processed data/processed --audit-dir outputs/data
-python scripts/run_data_notebooks.py
-```
-
-To scan a mounted collection, add `--data-root PATH` to `audit`. To retain native dimensions, pass `--image-size 0` to `prepare`; use task-specific size-compatible batches in that mode. Checkpoint-specific image normalisation and tokenisation remain part of the selected model processor.
-
-For a bounded smoke check, `audit --max-pairs 20` and `verify --limit 20` record their limited scopes. Do not relabel them as full-release execution.
-
-## Data and output locations
-
-Raw archives and images stay in `data/raw/` or the mounted collection. Prepared targets, references and manifests stay under `data/processed/`. Detailed run records, profiles and validation are under `outputs/data/`; HTML inspection copies go to `outputs/notebook_previews/`. Large data/run files are ignored by Git. Executed notebooks retain bounded tables and useful figure outputs, including one illustrative attributed image pair for input inspection.
-
-See [the training-data plan](../docs/data/Training_Data_Plan.md) for component-specific dataset choices and [the pipeline guide](../docs/data/Pipeline.md) for schemas, policies and script entry points.
+See [the training-data plan](../docs/data/Training_Data_Plan.md) and [the pipeline guide](../docs/data/Pipeline.md) for dataset contracts, schemas, and script entry points.

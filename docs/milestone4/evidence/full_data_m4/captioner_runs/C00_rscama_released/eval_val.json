@@ -1,0 +1,25 @@
+{
+  "run_id": "C00_rscama_released",
+  "checkpoint": "/content/terrawatch/models/checkpoints/rscama_released.pth",
+  "checkpoint_sha256": "5eeba271fb7c2ff4722b725cbf5ce1a1fdc0a33ddf1b077dcf5381aebd643449",
+  "split": "val",
+  "num_pairs": 1242,
+  "vocab_size": 468,
+  "kernel_mode": "reference_python_shim",
+  "metrics": {
+    "val_ce_loss": 4.59340656876219,
+    "val_bleu1": 0.865183319109341,
+    "val_bleu2": 0.7900059233457151,
+    "val_bleu3": 0.7226904910719834,
+    "val_bleu4": 0.6667782070674233,
+    "val_rouge_l": 0.762423852130693,
+    "val_changed_bleu4": 0.41613749253951465,
+    "val_unchanged_pairs": 632,
+    "val_unchanged_fa_count": 9,
+    "val_unchanged_fa_rate": 0.014240506329113924,
+    "val_changed_pairs": 610,
+    "val_changed_missed_count": 82,
+    "val_changed_missed_rate": 0.13442622950819672
+  },
+  "evaluated_at_utc": "2026-11-22T10:04:23.479610+00:00"
+}

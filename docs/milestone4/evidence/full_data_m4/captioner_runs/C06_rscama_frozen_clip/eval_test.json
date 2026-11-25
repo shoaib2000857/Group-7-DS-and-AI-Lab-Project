@@ -1,0 +1,25 @@
+{
+  "run_id": "C06_rscama_frozen_clip",
+  "checkpoint": "/content/terrawatch/runs/captioner/C06_rscama_frozen_clip/best.pth",
+  "checkpoint_sha256": "c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796",
+  "split": "test",
+  "num_pairs": 1858,
+  "vocab_size": 388,
+  "kernel_mode": "triton_fused_exact",
+  "metrics": {
+    "val_ce_loss": 1.3599899558783284,
+    "val_bleu1": 0.842862967317718,
+    "val_bleu2": 0.7548932459546972,
+    "val_bleu3": 0.6781443935900934,
+    "val_bleu4": 0.6128347990232018,
+    "val_rouge_l": 0.7325760125409883,
+    "val_changed_bleu4": 0.3681099926922166,
+    "val_unchanged_pairs": 924,
+    "val_unchanged_fa_count": 33,
+    "val_unchanged_fa_rate": 0.03571428571428571,
+    "val_changed_pairs": 934,
+    "val_changed_missed_count": 110,
+    "val_changed_missed_rate": 0.11777301927194861
+  },
+  "evaluated_at_utc": "2026-11-22T16:50:48.549271+00:00"
+}
