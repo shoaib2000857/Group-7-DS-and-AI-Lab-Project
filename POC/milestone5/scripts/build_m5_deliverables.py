@@ -736,7 +736,13 @@ def assemble_master_markdown(sections_dir: Path, out_md: Path) -> Path:
     if missing:
         print("WARNING: missing sections:", missing)
     out_md.parent.mkdir(parents=True, exist_ok=True)
-    out_md.write_text("\n\n<!-- PAGEBREAK -->\n\n".join(parts) + "\n", encoding="utf-8")
+    # Continuous natural flow across Sections 1-16; single clean break before Appendix A
+    joined = []
+    for idx, chunk in enumerate(parts):
+        if idx > 0 and chunk.startswith("## Appendix A"):
+            joined.append("<!-- PAGEBREAK -->")
+        joined.append(chunk)
+    out_md.write_text("\n\n".join(joined) + "\n", encoding="utf-8")
     print(f"ASSEMBLED_MASTER_MD: {out_md} ({len(ordered)-len(missing)}/{len(ordered)} sections)")
     return out_md
 

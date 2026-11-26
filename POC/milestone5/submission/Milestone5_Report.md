@@ -1,8 +1,6 @@
 # TerraWatch — Milestone 5: System Evaluation, Robustness & Deployment Readiness
 
 
-<!-- PAGEBREAK -->
-
 ## 1. Introduction
 
 ### 1.1 Project Objective
@@ -49,8 +47,6 @@ Milestone 5 executes a **strictly locked, held-out evaluation** of all frozen Mi
 2. **Validate the Milestone 5 Calibrated Mask-First Hybrid Verifier** locked solely on Milestone 4 Validation data, confirming simultaneous gains in accepted-claim groundedness, hallucination rejection, and VLM compute savings on blind Test claims.
 3. **Quantify failure modes and robustness boundaries** through systematic error mining, a 6-category failure taxonomy, 17-condition Test stress testing, and 6-class SECOND-CC transfer dissection.
 4. **Deliver deployment-grade reproducibility and operational evidence** — verified SHA-256 checkpoint registry, automated end-to-end CLI tests, cross-platform latency/VRAM/cost profiles, and authentic held-out Test Evidence Review UI traces.
-
-<!-- PAGEBREAK -->
 
 ## 2. Experimental Setup
 
@@ -133,8 +129,6 @@ Masks use the encoding background 0, road change 128 and building change 255, ma
                                                       human audit (2 raters + adjudicator), kappa
 ```
 
-<!-- PAGEBREAK -->
-
 ## 3. Model Training Summary
 
 All models evaluated in Milestone 5 are the **exact frozen checkpoints produced during Milestone 4** (zero retraining or test-set tuning). Across the full Milestone 4 experimental campaign, **33 full-data training runs** (24 detector runs and 9 captioner runs; 681 total epochs; 16.63 GPU-hours) were executed on the complete 6,444-pair LEVIR-MCI training split and validated on the 1,242-pair validation split.
@@ -177,8 +171,6 @@ To confirm that selected model rankings were not artifacts of a single random se
 - **`C06_rscama_frozen_clip` (3 seeds):** Val Corpus BLEU-4 = **`0.6297 ± 0.0183`** (`0.6358` s42, `0.6092` s0, `0.6442` s2026). Seed 42 achieved the best combined balance of Val BLEU-4 (`0.6358`), ROUGE-L (`0.7405`), changed-pair BLEU-4 (`0.4047`), and the lowest unchanged-scene hallucination rate (`3.32%` vs `5.70%–7.75%` for unfrozen CLIP runs) while reducing training peak VRAM by `649 MB`.
 
 Full learning curves across all 33 runs and exact SHA-256 digests of all 12 frozen checkpoints are documented in **Section 2.3**, **Appendix D**, and **Appendix H**.
-
-<!-- PAGEBREAK -->
 
 ## 4. Evaluation Methodology
 
@@ -225,8 +217,6 @@ To contextualize every architectural and algorithmic decision, TerraWatch is ben
 | **Verifier Groundedness & Efficiency** | Accepted-claim precision $\ge 90\%$ with selective risk $< 10\%$, beating both unverified captions and standalone Qwen3-VL while cutting VLM calls by $> 70\%$ | Section 6.3 (`test_verification_summary.json`) |
 | **Operational Readiness** | Interactive inference latency $< 200\text{ ms}$/pair (mask-first path) on consumer GPU, verifiable SHA-256 provenance, passing end-to-end tests | Section 12 & `test_m5_hybrid_and_cli.py` |
 
-<!-- PAGEBREAK -->
-
 ## 5. Performance Metrics
 
 Because TerraWatch spans dense semantic segmentation, natural-language generation, and selective decision-making under uncertainty, no single scalar metric captures system quality. Each module is evaluated with domain-standard metrics selected explicitly to counter class imbalance, lexical-overlap blindness, and uncalibrated confidence scores.
@@ -266,8 +256,6 @@ LEVIR-MCI Test contains **91.06% background pixels** (`110.88M` background vs `4
   - **Area Under the Risk-Coverage Curve (AURC):** Threshold-free measure of selective classification ranking quality (lower is better).
 - **VLM Call Rate & Compute Savings:** Fraction of claims escalating to `Qwen3-VL-4B-Instruct`, directly governing inference latency and cloud GPU cost per 1,000 image pairs.
 - **Cohen's $\kappa$ (Inter-Rater & Proxy Alignment):** Chance-corrected agreement $\kappa = (p_o - p_e)/(1 - p_e)$ across the 3 blind annotation labels (`supported`, `contradicted`, `unverifiable`), with Wilson 95% confidence intervals on human-verified groundedness.
-
-<!-- PAGEBREAK -->
 
 ## 6. Experimental Results
 
@@ -354,8 +342,6 @@ Evaluating the exact Validation-locked verification rules (`tau_accept = 0.60, t
 | Captioner Unchanged Hallucination | $\le 6.0\%$ | **`3.57%`** (`33/924` pairs) | **Achieved (-2.43 pts)** |
 | Hybrid Verifier Precision & VLM Savings | $\ge 90\%$ prec / $>70\%$ VLM savings | **`93.94%`** prec (`6.06%` risk) / **`90.27%`** VLM savings | **Achieved (+20.3 pts savings)** |
 
-<!-- PAGEBREAK -->
-
 ## 7. Baseline Comparison
 
 Every architectural decision in TerraWatch was benchmarked against stronger, simpler, and published baselines on the identical 1,858-pair held-out LEVIR-MCI Test split and 150-pair blind verification audit.
@@ -399,8 +385,6 @@ Every architectural decision in TerraWatch was benchmarked against stronger, sim
 | `2. BIT Mask-Only Checker` | 93.66% | **93.94%** | **+0.28 pts** | **-0.28 pts** + resolves BIT blind spots | Only 9.7% VLM calls |
 
 The comparison reveals a critical architectural insight for multimodal verification: **a specialized 11.9M-parameter spatial change detector (`D03`) vastly outperforms a general-purpose 4B VLM (`Qwen3-VL-4B`) on fine-grained aerial structural verification (`93.66%` vs `78.82%` precision; `70.0%` vs `3.3%` hallucination catch)**. Using the VLM selectively *only* on the detector's known structural blind spots yields the highest precision (`93.94%`), lowest selective risk (`6.06%`), best probability calibration (`ECE = 0.0710`), and **10× lower VLM compute cost** than unconditional VLM verification.
-
-<!-- PAGEBREAK -->
 
 ## 8. Hyperparameter Analysis
 
@@ -463,8 +447,6 @@ On the 120-pair (147-claim) Milestone 4 Validation verification audit, we swept 
 - Unconditional Direct `Qwen3-VL-4B-Instruct` at $\tau=0.70$ achieved `82.43%` proxy precision (`17.57%` selective risk) with `40.8%` deferral and `100%` VLM cost.
 - Locking the **Calibrated Mask-First Hybrid Verifier** on Validation — resolving unambiguous mask/ontology claims deterministically and escalating only BIT blind spots (`action == 'removed'`, `no_change` with `any_px >= 10` or hedged phrasing, and marginal `added` claims with `< 200 px`) to Direct Qwen3-VL at $\tau_A = 0.60, \tau_R = 0.75$ — raised Validation accepted precision to **`94.50%`** (`5.50%` selective risk) and contradicted-claim catch rate to **`70.37%`** while cutting VLM calls to **`10.9%`** (**`89.1%` compute savings**). Section 6.3 reports how this exact Validation-locked policy generalizes zero-shot to the 150-pair blind held-out Test split.
 
-<!-- PAGEBREAK -->
-
 ## 9. Ablation Study
 
 To isolate the causal contribution of every design choice in TerraWatch — across spatial detection, change captioning, and multimodal claim verification — we synthesize controlled module-removal and component-swap ablations anchored to Milestone 4 Validation sweeps and Milestone 5 held-out Test evaluations.
@@ -505,8 +487,6 @@ Every component of the Milestone 5 **Calibrated Mask-First Hybrid Verifier** ser
 5. **Without Deterministic Abstention Rules (Out-of-Ontology & Exact Counts):** Removing the parser's `T_out_of_mask_ontology` and `exact_count_without_independent_instance_evidence` deferral rules forces unsupported vegetation/water or exact-count claims into false accepts or false rejects.
 6. **Full Calibrated Mask-First Hybrid (`7_m5_calibrated_mask_first_hybrid`):** Combining BIT mask-first resolution, deterministic ontology/count abstention, OpenCV structural witness diagnostics, and selective Direct-Qwen3-VL escalation ONLY on BIT's true blind spots achieves **`94.50%` Val precision** (`5.50%` risk), **`70.37%` contradicted catch**, and **`89.1%` VLM compute savings** (`10.9%` VLM call rate) — strictly Pareto-dominating every single-module ablation.
 
-<!-- PAGEBREAK -->
-
 ## 10. Error Analysis
 
 To move beyond aggregate metrics and pinpoint actionable root causes, we systematically mined errors across all 1,858 held-out Test detector predictions, all 1,858 Test captions, and all 185 blind Test verification claims (`POC/milestone5/evidence/error_analysis/failure_taxonomy.csv`, `detector_error_mining.json`, `captioner_test_full.json`, `test_verification_claims.jsonl`).
@@ -541,8 +521,6 @@ As quantified in **Appendix B** (`m5_confusion_matrices.png`), cross-class confu
 - **Verifier Residual Errors (Category E6 — Why the Remaining `6.06%` Risk Occurs):** Inspecting all **8 accepted-but-contradicted** claims and **4 rejected-but-supported** claims across the 185 blind Test claims shows two cleanly separated failure causes:
   1. **Upstream `D03` Mask Propagation (6 of 8 false accepts, 3 of 4 false rejects):** Because the Mask-First Hybrid trusts confident `D03` masks to avoid unnecessary VLM calls, a `D03` false positive on an unchanged scene (`test_001422`, `test_001787`) or a `D03` false negative on a changed scene (`test_000092`, `test_001250`, `test_001760`) directly propagates into a confident `mask_first_accept` or `mask_first_reject` (`test_000299`, `test_000840`, `test_001417`).
   2. **Escalated VLM Boundary Ambiguity (2 of 8 false accepts, 1 of 4 false rejects):** On `test_001729` (*"the two scenes seem identical"* with residual mask pixels) and `test_001319` (*"a house appears on the bareland"* with `<200 px` mask), the escalated `Qwen3-VL-4B` referee erroneously accepted a contradicted claim; on `test_001038`, it rejected a supported `no_change` claim due to seasonal color drift. Importantly, **zero unverifiable claims were erroneously accepted (`0/19`)**, confirming that deterministic out-of-ontology and exact-count deferral gates (`23` claims deferred cleanly) work with `100%` reliability.
-
-<!-- PAGEBREAK -->
 
 ## 11. Model Robustness
 
@@ -621,8 +599,6 @@ At first glance, aggregate binary any-change F1 drops sharply from `86.83%` on L
 - **70.46% of SECOND-CC Test change pixels belong to non-building classes outside LEVIR-MCI's 2-class supervision** (`non_vegetated_ground` 32.95%, `low_vegetation` 25.56%, `tree` 9.81%, `water` 1.51%, `playground` 0.62%).
 - On the sole overlapping supervised class (`building`), `D03` achieves its highest semantic recall (**`22.80%`** on Test, `21.66%` on Val — **`+6.16` pts above `A03`**) and routes `88%` of those detections to the correct `building` class (`20.16%` vs `2.64%` road), while correctly suppressing out-of-ontology `tree` (`5.37%`), `water` (`2.39%`), and `playground` (`3.89%`) transitions.
 - Across both SECOND-CC Val (`22.44%` vs `13.94%` F1) and Test (`23.17%` vs `17.71%` F1), **`D03` outperforms `A03` by `+5.46` to `+8.50` F1 points** under zero-shot cross-sensor/cross-city domain shift, reinforcing its selection as TerraWatch's primary detector while demonstrating that multi-class remote-sensing transfer requires multi-ontology fine-tuning (Section 14.1) and deterministic out-of-ontology deferral in the verifier.
-
-<!-- PAGEBREAK -->
 
 ## 12. Computational Performance
 
@@ -778,8 +754,6 @@ where `S_det`, `S_cap` and `S_wit` are mean seconds per pair of the detector, ca
 
 Measured stage means entering the formula: `S_det` = 0.0175 s, `S_cap` = 0.0448 s, `S_wit` = 0.0108 s and `S_ref` = 0.2458 s. The mask-only policy is both the cheapest and, on the proxy-labelled Validation audit, the most precise, but it cannot adjudicate out-of-ontology claims (for example vegetation or parking), which is the case the hybrid policy routes to the referee. Precision values are scored against proxy labels derived from ground-truth masks and reference captions, not against human labels (Section 13.1).
 
-<!-- PAGEBREAK -->
-
 ## 13. Limitations
 
 The boundaries below are stated from measured evidence in the Milestone 4 receipts and the Milestone 5 evaluation, not from conjecture. Each limitation names the observation that supports it and the claim it constrains.
@@ -828,8 +802,6 @@ The measured failure modes, in order of operational severity, are: (i) changes o
 
 **Human review is mandatory for consequential decisions.** The proxy audit shows that accepted claims still contain errors (10 contradicted claims among 116 mask-only accepts on the proxy audit). Decisions with legal, financial or enforcement consequences, such as permit compliance, taxation, eviction or demolition, must not rest on an automated accept. The Evidence Review interface preserves immutable model outputs, checkpoint digests and an append-only record of human overrides so that every verdict can be reconstructed and contested. Reported results describe performance on LEVIR-MCI and SECOND-CC and must not be quoted as expected accuracy on other regions or sensors without local validation.
 
-<!-- PAGEBREAK -->
-
 ## 14. Possible Improvements
 
 Each proposal below addresses a weakness measured in Milestone 4 or Milestone 5 and states the metric against which it would be judged. Proposals are ordered by the severity of the weakness they target, not by implementation cost.
@@ -875,8 +847,6 @@ The referee dominates cost (Section 12.6). Distilling its accept, reject and def
 
 Human-in-the-loop learning is the most promising direction: the Evidence Review application already records overrides in an append-only audit store, and these corrections are labelled hard cases targeted at exactly the claims the system gets wrong. Active selection of uncertain claims for review, followed by periodic fine-tuning with held-out tests, closes the loop between deployment and training. Further directions include temporal sequences beyond two dates, uncertainty-aware captioning that abstains on small or occluded changes, quantity estimation from masks for numeric claims that are currently deferred, and a fairness audit across regions and sensors once per-tile metadata exists.
 
-<!-- PAGEBREAK -->
-
 ## 15. Discussion
 
 ### 15.1 Achievement of Project Objectives
@@ -899,8 +869,6 @@ Several empirical outcomes contradicted naive intuition and yielded durable desi
 ### 15.3 Practical Applicability
 
 TerraWatch is directly applicable as a **human-in-the-loop (HITL) geospatial triage workbench** for municipal planning, urban infrastructure auditing, and road-network monitoring on $0.5\text{ m}$ RGB aerial imagery. On a single laptop RTX 4060 GPU, the mask-first path processes a bitemporal pair end-to-end (`D03` `7.6 ms` + `C06` Triton `23.3 ms` + OpenCV witness `10.4 ms` $\approx$ **`41.3 ms`/pair**, or ~`24` pairs/s) before selective VLM escalation on the `9.7%` of ambiguous claims, while surfacing every mask overlay, zoomed contextual crop, and immutable override audit trail inside the Evidence Review Web UI.
-
-<!-- PAGEBREAK -->
 
 ## 16. Conclusion
 
@@ -977,8 +945,6 @@ TerraWatch is **ready for controlled human-in-the-loop pilot deployment** on $0.
 | `vlm_escalate_weak_mask_support -> defer` | 1 | 0.54% | Yes |
 | **Total** | **185** | **100.00%** | **18 / 185 (9.73%)** |
 
-<!-- PAGEBREAK -->
-
 ## Appendix B. Confusion Matrices
 
 ### B.1 Pixel-Level 3-Class Confusion Matrix (`D03_bit_lr3e4`, 1,858 Held-Out Test Pairs)
@@ -1004,8 +970,6 @@ Total evaluated pixels: **121,765,888** ($1,858 \times 256 \times 256$). Visuali
 
 Zero unverifiable claims (`0/19`) leaked into accepted outputs, while accepted precision reached **`93.94%`** (`124/132`) and contradicted rejection reached **`70.00%`** (`21/30`).
 
-<!-- PAGEBREAK -->
-
 ## Appendix C. ROC, Precision-Recall, and Calibration Curves
 
 ### C.1 Pixel-Level ROC and Precision-Recall Analysis (121.77M Held-Out Test Pixels)
@@ -1025,8 +989,6 @@ All five neural change detectors and the non-learning Otsu pixel-difference cont
 
 Full calibration curves and threshold risk-coverage sweeps across $\tau \in [0.50, 0.90]$ are plotted in `figures/m5_hybrid_verifier_calibration.png` (Section 6.3).
 
-<!-- PAGEBREAK -->
-
 ## Appendix D. Learning and Loss Curves
 
 Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs are archived in `docs/milestone4/evidence/full_data_m4/{detector_runs,captioner_runs}/*/history.jsonl` and visualized in the Milestone 4 training diagnostic figures (`reports/figures/m4_detector_learning_curves.png` and `reports/figures/m4_captioner_learning_curves.png`). Key convergence trajectories verified directly from the run receipts:
@@ -1035,8 +997,6 @@ Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs a
 - **`A03_siam_r18_unet` & `A01_ef_unet`:** Converged steadily to Validation peaks at epochs 22 (`75.02%`) and 23 (`73.60%`), respectively, across 25 epochs.
 - **`A04_changeformer`:** Required 69.0 minutes (`165.6 s/epoch`, `6,570 MB` peak VRAM) across 25 epochs and peaked at `70.46%` (epoch 22), indicating slower convergence of the 41.04M-parameter hierarchical transformer under the 6,444-pair data budget.
 - **`C06_rscama_frozen_clip` (Selected Captioner):** Smooth cross-entropy descent from epoch 0 to best Validation Corpus BLEU-4 of **`0.6358` at epoch 6** (`Val CE = 1.3147`, `Val NC FA = 3.32%`), completing all 8 epochs in `30.3 min` (`227.3 s/epoch`) via the exact fused Triton selective-scan kernel (`triton_fused_exact`). In contrast, `C02_rscama_lr3e4` diverged after epoch 0 (`0.4956` BLEU-4) and early-stopped at epoch 2.
-
-<!-- PAGEBREAK -->
 
 ## Appendix E. Complete Hyperparameter Search Results (All 33 Milestone 4 Runs)
 
@@ -1083,8 +1043,6 @@ Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs a
 | `C05_rscama_ls01` | 1e-4 | adamw | cosine | 0.1 | False | 12 | 3 | 0.5963 | 0.7421 | 0.4151 | 2.1336 | 6.80 |
 | `C02_rscama_lr3e4` | 3e-4 | adam | constant | 0.0 | False | 12 | 0 | 0.4956 | 0.6765 | 0.2272 | 1.5260 | 0.79 |
 
-<!-- PAGEBREAK -->
-
 ## Appendix F. Sample Predictions (10 Authentic Held-Out Test End-to-End Traces)
 
 Ten authentic held-out LEVIR-MCI Test image pairs spanning all operational outcomes (accepted building, accepted road, accepted unchanged, rejected missed-change hallucination, out-of-ontology deferral, exact-count deferral, selective VLM escalation, small change, and mixed multi-claim scene) were exported as full Evidence Review UI bundles under `POC/milestone5/evidence/test_captioner_and_verifier/test_e2e_traces/`. Visual panels for five representative cases appear in Section 6.3 (`figures/m5_test_e2e_traces.png`).
@@ -1101,8 +1059,6 @@ Ten authentic held-out LEVIR-MCI Test image pairs spanning all operational outco
 | `test_vlm_escalated_case` | `levir_mci/test/test_000695` | *"the two scenes seem identical"* | `['accept']` | Hedged `no_change` escalated to Direct Qwen3-VL-4B and confirmed (`accept`). |
 | `test_small_change_case` | `levir_mci/test/test_000050` | *"a house appears in the top left corner of the scene"* | `['accept']` | Small localized building change (<1% area) localized to top-left 3×3 grid cell and accepted. |
 | `test_mixed_scene_case` | `levir_mci/test/test_000123` | *"a road is built across the woods and some houses are built along the road"* | `['accept', 'accept']` | Multi-claim compound caption decomposed into road + building atomic claims, both grounded and accepted. |
-
-<!-- PAGEBREAK -->
 
 ## Appendix G. Failure Case Examples
 
@@ -1129,8 +1085,6 @@ Representative held-out Test failure cases mined automatically across the detect
 | Verifier False Accept (E6) | `levir_mci/test/test_001422` | *"a road appears on the bareland"* | `accept` (`mask_first_accept`) vs `contradicted` | Upstream `D03` road false positive propagated into mask-first accept. |
 | Verifier VLM Ambiguity (E6) | `levir_mci/test/test_001729` | *"the two scenes seem identical"* | `accept` (`vlm_escalate`) vs `contradicted` | Escalated Qwen3-VL-4B missed small subtle building edit on full-tile view. |
 | Verifier False Reject (E6) | `levir_mci/test/test_001038` | *"the two scenes seem identical"* | `reject` (`vlm_escalate`) vs `supported` | Seasonal color shift caused escalated VLM to over-flag change on unchanged tile. |
-
-<!-- PAGEBREAK -->
 
 ## Appendix H. Model Configuration and Provenance Registry
 
@@ -1173,8 +1127,6 @@ All frozen Milestone 4 weights are stored in the team's verified artifact reposi
   "crop_padding_fraction": 0.25
 }
 ```
-
-<!-- PAGEBREAK -->
 
 ## Appendix I. Evaluation and Profiling Scripts
 
@@ -1226,8 +1178,6 @@ python POC/milestone5/scripts/m5_benchmark_compute.py --device cpu  --hardware-l
 | Milestone 4 receipts | `docs/milestone4/evidence/full_data_m4/` |
 
 Test modules: `tests/test_data.py`, `test_data_preparation.py`, `test_milestone4_pipeline.py`, `test_model.py`, `test_model_metrics.py`, `test_model_pipeline.py`, `test_pipeline.py` and `test_visual_evidence.py`. The data-preparation tests additionally require `pandas` (`requirements-data.txt`).
-
-<!-- PAGEBREAK -->
 
 ## Appendix J. Human Annotation Protocol and Ethics Checklist
 
