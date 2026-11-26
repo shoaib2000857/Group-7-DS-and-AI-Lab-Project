@@ -1,0 +1,140 @@
+{
+  "schema_version": "terrawatch-model-registry-v1",
+  "drive_folder_url": "https://drive.google.com/drive/folders/1cWti09TxGopsOrpT5X-jQEv6kpC7dQHZ",
+  "selected_deployment_stack": {
+    "detector": "D03_bit_lr3e4",
+    "captioner": "C06_rscama_frozen_clip",
+    "referee": "Qwen/Qwen3-VL-4B-Instruct",
+    "verifier_policy": "calibrated_mask_first_hybrid_v1",
+    "verifier_params": {
+      "tau_accept": 0.60,
+      "tau_reject": 0.75,
+      "mask_alarm_px": 50,
+      "weak_mask_escalate_px": 200,
+      "residual_no_change_escalate_px": 10,
+      "min_crop_size": 32,
+      "crop_padding_fraction": 0.25,
+      "calibration_split": "levir_mci_val_120_pairs_147_claims"
+    }
+  },
+  "checkpoints": {
+    "D03_bit_lr3e4": {
+      "role": "selected_detector",
+      "arch": "bit_resnet18",
+      "rel_path": "detector/D03_bit_lr3e4/best.pt",
+      "bytes": 47898192,
+      "sha256": "05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb",
+      "drive_file_id": "126knNP8kf5MiOV9UFl3nUTdgkHmh1wcF",
+      "epochs_completed": 32,
+      "epochs_max": 35,
+      "best_epoch": 24,
+      "val_change_miou": 0.745437
+    },
+    "D03_bit_lr3e4_s0": {
+      "role": "detector_seed_replication",
+      "arch": "bit_resnet18",
+      "rel_path": "detector/D03_bit_lr3e4_s0/best.pt",
+      "bytes": 47898192,
+      "sha256": "782e352207804d761be6942ed5b730c4939fab59ff0285872be3718e4da10d45",
+      "drive_file_id": "1oMbeu44r-NktTFrN-0_vBYnOTQPAv_Jo"
+    },
+    "D03_bit_lr3e4_s2026": {
+      "role": "detector_seed_replication",
+      "arch": "bit_resnet18",
+      "rel_path": "detector/D03_bit_lr3e4_s2026/best.pt",
+      "bytes": 47898000,
+      "sha256": "0d7fbda18cc943ac0f5ff70b36319dd084993146c6ae8be3cf9e191a53b91534",
+      "drive_file_id": "1qz14A6on1EKlBI0fjk7Xd4wLhcZAvgnW"
+    },
+    "A01_ef_unet": {
+      "role": "detector_architecture_baseline",
+      "arch": "ef_unet",
+      "rel_path": "detector/A01_ef_unet/best.pt",
+      "bytes": 31114207,
+      "sha256": "5831a24249abf330f65a0b2c278040b2908b9137a2e95472544ccf34f91a437a",
+      "drive_file_id": "1t7raXnv7I_5JJswQiEUpbNy7chz6ppRX"
+    },
+    "A02_fc_siam_diff": {
+      "role": "detector_architecture_baseline",
+      "arch": "fc_siam_diff",
+      "rel_path": "detector/A02_fc_siam_diff/best.pt",
+      "bytes": 31110751,
+      "sha256": "32329cf708a7fed397c96689922eca2a2f29556108c35c214a1c332326b23105",
+      "drive_file_id": "12fubbRnELngO7s3rCqRb2H0aZMVnHy4C"
+    },
+    "A03_siam_r18_unet": {
+      "role": "detector_architecture_baseline",
+      "arch": "siam_resnet18_unet",
+      "rel_path": "detector/A03_siam_r18_unet/best.pt",
+      "bytes": 62621663,
+      "sha256": "c9d2c9c994c63411096703397ee1842cde5ef917bee43d7b974a3f47c511e586",
+      "drive_file_id": "1ePVu6BezwjS6neC3n2_0kfr__B-OtRYF"
+    },
+    "A03_siam_r18_unet_s0": {
+      "role": "detector_seed_replication",
+      "arch": "siam_resnet18_unet",
+      "rel_path": "detector/A03_siam_r18_unet_s0/best.pt",
+      "bytes": 62621663,
+      "sha256": "1b3474c7b33f13749580210308c471ae189ce194c678a933729dfb769d678890",
+      "drive_file_id": "1sXSNC1Fu3A7KgWBWyxsh7wzwM5Yustgq"
+    },
+    "A03_siam_r18_unet_s2026": {
+      "role": "detector_seed_replication",
+      "arch": "siam_resnet18_unet",
+      "rel_path": "detector/A03_siam_r18_unet_s2026/best.pt",
+      "bytes": 62621663,
+      "sha256": "ad063b288b245554256412d95d4e5e5787f588a6e4de012bcf85acb97dc2d9a8",
+      "drive_file_id": "1BOGA2LWwcfpunXMNoQru2B4QXvWHf03J"
+    },
+    "A04_changeformer": {
+      "role": "detector_architecture_baseline",
+      "arch": "changeformer",
+      "rel_path": "detector/A04_changeformer/best.pt",
+      "bytes": 164282148,
+      "sha256": "fe137902d7dc4ca4816ab1e777f93d1f383cd132ca4542bc23a3b96c26ea6bc7",
+      "drive_file_id": "13GLuQGtb09ljZBJ4aQ7uL4N7HtDoirEm"
+    },
+    "C06_rscama_frozen_clip": {
+      "role": "selected_captioner",
+      "arch": "rscama_vit_b32_frozen_clip",
+      "rel_path": "captioner/C06_rscama_frozen_clip/best.pth",
+      "bytes": 1797923010,
+      "sha256": "c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796",
+      "drive_file_id": "1g1hgrENJYE_XH-OvpBD7MCOnwiySZL_8",
+      "epochs_completed": 8,
+      "epochs_max": 8,
+      "best_epoch": 6,
+      "vocab_size": 388,
+      "val_bleu4": 0.6358
+    },
+    "C01_rscama_ref": {
+      "role": "captioner_ablation_baseline",
+      "arch": "rscama_vit_b32_unfrozen_adam",
+      "rel_path": "captioner/C01_rscama_ref/best.pth",
+      "bytes": 1797923010,
+      "sha256": "979cff69acb852f22e24ca1edf2daaa9bf295bf69fc5c6f447c6508fdd24d7e3",
+      "drive_file_id": "1gYbq-BOPXXxOyjpX9tJQyxQvLjnmFBSu"
+    },
+    "C04_rscama_adamw_cos": {
+      "role": "captioner_ablation_baseline",
+      "arch": "rscama_vit_b32_unfrozen_adamw_cos",
+      "rel_path": "captioner/C04_rscama_adamw_cos/best.pth",
+      "bytes": 1797923010,
+      "sha256": "415cadc4abac43108aba91dca3ae547c0b8d95c8f69d6f66776e669857297e46",
+      "drive_file_id": "1G1Xmt9-MDMiRcEOyQpHpRMOmUZCsEGeT"
+    }
+  },
+  "huggingface_models": {
+    "Qwen/Qwen3-VL-4B-Instruct": {
+      "role": "selective_visual_referee",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "dtype": "bfloat16"
+    },
+    "lcybuaa/RSCaMa": {
+      "role": "released_captioner_benchmark",
+      "filename": "RSCaMa.pth",
+      "revision": "3e527e6656b62cc615eab1d2f3fb73777cbbf62c",
+      "sha256": "5eeba271fb7c2ff4722b725cbf5ce1a1fdc0a33ddf1b077dcf5381aebd643449"
+    }
+  }
+}

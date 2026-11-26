@@ -1,0 +1,1203 @@
+{
+  "evaluated_at_utc": "2026-11-26T13:50:18.673430+00:00",
+  "audit_scope": {
+    "split": "levir_mci_test_stratified_blind",
+    "num_pairs": 150,
+    "strata_counts": {
+      "unchanged": 50,
+      "building_only": 35,
+      "road_only": 20,
+      "mixed_both": 25,
+      "small_change": 20
+    },
+    "total_claims": 185,
+    "proxy_gt_counts": {
+      "supported": 136,
+      "contradicted": 30,
+      "unverifiable": 19
+    }
+  },
+  "models": {
+    "detector": {
+      "arch": "bit_resnet18",
+      "checkpoint": "best.pt",
+      "sha256": "05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb"
+    },
+    "captioner": {
+      "run_id": "C06_rscama_frozen_clip",
+      "checkpoint": "best.pth",
+      "sha256": "c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796"
+    },
+    "referee": {
+      "repo": "Qwen/Qwen3-VL-4B-Instruct",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "torch": "2.14.1+cu130",
+      "transformers": "5.22.1",
+      "dtype": "torch.float16"
+    }
+  },
+  "validation_calibration_locked": {
+    "num_claims": 147,
+    "locked_params": {
+      "tau_accept": 0.6,
+      "tau_reject": 0.75,
+      "mask_alarm_px": 50
+    },
+    "m5_hybrid_val_metrics": {
+      "total_claims": 147,
+      "accepted": 109,
+      "rejected": 20,
+      "deferred": 18,
+      "accept_rate": 0.7415,
+      "reject_rate": 0.1361,
+      "defer_rate": 0.1224,
+      "proxy_supported_precision_strict": 0.945,
+      "proxy_selective_risk": 0.055,
+      "proxy_supported_recall": 0.9626,
+      "proxy_contradicted_catch_rate": 0.7037,
+      "proxy_false_accept_rate": 0.2222,
+      "proxy_false_reject_rate": 0.0093,
+      "breakdown": {
+        "accepted_supported": 103,
+        "accepted_contradicted": 6,
+        "accepted_unverifiable": 0,
+        "rejected_contradicted": 19,
+        "rejected_supported": 1
+      }
+    },
+    "vlm_call_rate": 0.1088,
+    "hybrid_calibration": {
+      "ece": 0.058769,
+      "brier_score": 0.078561,
+      "reliability_bins": [
+        {
+          "bin_lo": 0.0,
+          "bin_hi": 0.1,
+          "count": 21,
+          "mean_conf": 0.0438,
+          "empirical_acc": 0.0952
+        },
+        {
+          "bin_lo": 0.1,
+          "bin_hi": 0.2,
+          "count": 1,
+          "mean_conf": 0.1387,
+          "empirical_acc": 0.0
+        },
+        {
+          "bin_lo": 0.4,
+          "bin_hi": 0.5,
+          "count": 1,
+          "mean_conf": 0.4376,
+          "empirical_acc": 0.0
+        },
+        {
+          "bin_lo": 0.5,
+          "bin_hi": 0.6,
+          "count": 15,
+          "mean_conf": 0.5,
+          "empirical_acc": 0.1333
+        },
+        {
+          "bin_lo": 0.6,
+          "bin_hi": 0.7,
+          "count": 1,
+          "mean_conf": 0.6792,
+          "empirical_acc": 1.0
+        },
+        {
+          "bin_lo": 0.7,
+          "bin_hi": 0.8,
+          "count": 1,
+          "mean_conf": 0.731,
+          "empirical_acc": 1.0
+        },
+        {
+          "bin_lo": 0.8,
+          "bin_hi": 0.9,
+          "count": 11,
+          "mean_conf": 0.8538,
+          "empirical_acc": 0.8182
+        },
+        {
+          "bin_lo": 0.9,
+          "bin_hi": 1.0,
+          "count": 96,
+          "mean_conf": 0.9531,
+          "empirical_acc": 0.9583
+        }
+      ]
+    },
+    "hybrid_aurc": 0.079178,
+    "direct_qwen_calibration": {
+      "ece": 0.24811,
+      "brier_score": 0.272495,
+      "reliability_bins": [
+        {
+          "bin_lo": 0.0,
+          "bin_hi": 0.1,
+          "count": 31,
+          "mean_conf": 0.0295,
+          "empirical_acc": 0.5161
+        },
+        {
+          "bin_lo": 0.1,
+          "bin_hi": 0.2,
+          "count": 10,
+          "mean_conf": 0.1542,
+          "empirical_acc": 0.6
+        },
+        {
+          "bin_lo": 0.2,
+          "bin_hi": 0.3,
+          "count": 9,
+          "mean_conf": 0.2347,
+          "empirical_acc": 0.8889
+        },
+        {
+          "bin_lo": 0.3,
+          "bin_hi": 0.4,
+          "count": 9,
+          "mean_conf": 0.3507,
+          "empirical_acc": 0.5556
+        },
+        {
+          "bin_lo": 0.4,
+          "bin_hi": 0.5,
+          "count": 4,
+          "mean_conf": 0.4527,
+          "empirical_acc": 0.75
+        },
+        {
+          "bin_lo": 0.5,
+          "bin_hi": 0.6,
+          "count": 4,
+          "mean_conf": 0.5497,
+          "empirical_acc": 0.75
+        },
+        {
+          "bin_lo": 0.6,
+          "bin_hi": 0.7,
+          "count": 6,
+          "mean_conf": 0.6718,
+          "empirical_acc": 0.8333
+        },
+        {
+          "bin_lo": 0.7,
+          "bin_hi": 0.8,
+          "count": 12,
+          "mean_conf": 0.7469,
+          "empirical_acc": 0.75
+        },
+        {
+          "bin_lo": 0.8,
+          "bin_hi": 0.9,
+          "count": 15,
+          "mean_conf": 0.8383,
+          "empirical_acc": 0.5333
+        },
+        {
+          "bin_lo": 0.9,
+          "bin_hi": 1.0,
+          "count": 47,
+          "mean_conf": 0.9707,
+          "empirical_acc": 0.9362
+        }
+      ]
+    },
+    "direct_qwen_aurc": 0.142063
+  },
+  "test_vlm_efficiency": {
+    "direct_qwen_vlm_call_rate": 1.0,
+    "reinsp_all_vlm_call_rate": 1.0,
+    "m4_triggered_vlm_call_rate": 0.6865,
+    "m5_hybrid_vlm_calls": 18,
+    "m5_hybrid_vlm_call_rate": 0.0973,
+    "vlm_savings_vs_unconditional_pct": 90.27,
+    "hybrid_route_counts": {
+      "vlm_escalate_no_change_residual_or_hedged->vlm_accept": 10,
+      "mask_first_accept": 120,
+      "deterministic_defer_ontology_or_exact_count": 23,
+      "vlm_escalate_no_change_residual_or_hedged->vlm_defer": 4,
+      "vlm_escalate_no_change_residual_or_hedged->vlm_reject": 1,
+      "mask_first_reject": 24,
+      "vlm_escalate_weak_mask_support->vlm_accept": 2,
+      "vlm_escalate_weak_mask_support->vlm_defer": 1
+    }
+  },
+  "test_settings_comparison": {
+    "1_unverified_captioner": {
+      "total_claims": 185,
+      "accepted": 185,
+      "rejected": 0,
+      "deferred": 0,
+      "accept_rate": 1.0,
+      "reject_rate": 0.0,
+      "defer_rate": 0.0,
+      "proxy_supported_precision_strict": 0.7351,
+      "proxy_selective_risk": 0.2649,
+      "proxy_supported_recall": 1.0,
+      "proxy_contradicted_catch_rate": 0.0,
+      "proxy_false_accept_rate": 1.0,
+      "proxy_false_reject_rate": 0.0,
+      "breakdown": {
+        "accepted_supported": 136,
+        "accepted_contradicted": 30,
+        "accepted_unverifiable": 19,
+        "rejected_contradicted": 0,
+        "rejected_supported": 0
+      }
+    },
+    "2_mask_only_checker": {
+      "total_claims": 185,
+      "accepted": 142,
+      "rejected": 24,
+      "deferred": 19,
+      "accept_rate": 0.7676,
+      "reject_rate": 0.1297,
+      "defer_rate": 0.1027,
+      "proxy_supported_precision_strict": 0.9366,
+      "proxy_selective_risk": 0.0634,
+      "proxy_supported_recall": 0.9779,
+      "proxy_contradicted_catch_rate": 0.7,
+      "proxy_false_accept_rate": 0.3,
+      "proxy_false_reject_rate": 0.0221,
+      "breakdown": {
+        "accepted_supported": 133,
+        "accepted_contradicted": 9,
+        "accepted_unverifiable": 0,
+        "rejected_contradicted": 21,
+        "rejected_supported": 3
+      }
+    },
+    "3_witness_only_checker": {
+      "total_claims": 185,
+      "accepted": 96,
+      "rejected": 70,
+      "deferred": 19,
+      "accept_rate": 0.5189,
+      "reject_rate": 0.3784,
+      "defer_rate": 0.1027,
+      "proxy_supported_precision_strict": 0.7396,
+      "proxy_selective_risk": 0.2604,
+      "proxy_supported_recall": 0.5221,
+      "proxy_contradicted_catch_rate": 0.1667,
+      "proxy_false_accept_rate": 0.8333,
+      "proxy_false_reject_rate": 0.4779,
+      "breakdown": {
+        "accepted_supported": 71,
+        "accepted_contradicted": 25,
+        "accepted_unverifiable": 0,
+        "rejected_contradicted": 5,
+        "rejected_supported": 65
+      }
+    },
+    "4_direct_qwen3vl_gated": {
+      "total_claims": 185,
+      "accepted": 85,
+      "rejected": 20,
+      "deferred": 80,
+      "accept_rate": 0.4595,
+      "reject_rate": 0.1081,
+      "defer_rate": 0.4324,
+      "proxy_supported_precision_strict": 0.7882,
+      "proxy_selective_risk": 0.2118,
+      "proxy_supported_recall": 0.4926,
+      "proxy_contradicted_catch_rate": 0.0333,
+      "proxy_false_accept_rate": 0.4667,
+      "proxy_false_reject_rate": 0.1103,
+      "breakdown": {
+        "accepted_supported": 67,
+        "accepted_contradicted": 14,
+        "accepted_unverifiable": 4,
+        "rejected_contradicted": 1,
+        "rejected_supported": 15
+      }
+    },
+    "5_reinspection_all_gated": {
+      "total_claims": 185,
+      "accepted": 102,
+      "rejected": 28,
+      "deferred": 55,
+      "accept_rate": 0.5514,
+      "reject_rate": 0.1514,
+      "defer_rate": 0.2973,
+      "proxy_supported_precision_strict": 0.6961,
+      "proxy_selective_risk": 0.3039,
+      "proxy_supported_recall": 0.5221,
+      "proxy_contradicted_catch_rate": 0.0333,
+      "proxy_false_accept_rate": 0.8333,
+      "proxy_false_reject_rate": 0.1765,
+      "breakdown": {
+        "accepted_supported": 71,
+        "accepted_contradicted": 25,
+        "accepted_unverifiable": 6,
+        "rejected_contradicted": 1,
+        "rejected_supported": 24
+      }
+    },
+    "6_m4_triggered_reinspection": {
+      "total_claims": 185,
+      "accepted": 102,
+      "rejected": 28,
+      "deferred": 55,
+      "accept_rate": 0.5514,
+      "reject_rate": 0.1514,
+      "defer_rate": 0.2973,
+      "proxy_supported_precision_strict": 0.6961,
+      "proxy_selective_risk": 0.3039,
+      "proxy_supported_recall": 0.5221,
+      "proxy_contradicted_catch_rate": 0.0333,
+      "proxy_false_accept_rate": 0.8333,
+      "proxy_false_reject_rate": 0.1765,
+      "breakdown": {
+        "accepted_supported": 71,
+        "accepted_contradicted": 25,
+        "accepted_unverifiable": 6,
+        "rejected_contradicted": 1,
+        "rejected_supported": 24
+      }
+    },
+    "7_m5_calibrated_mask_first_hybrid": {
+      "total_claims": 185,
+      "accepted": 132,
+      "rejected": 25,
+      "deferred": 28,
+      "accept_rate": 0.7135,
+      "reject_rate": 0.1351,
+      "defer_rate": 0.1514,
+      "proxy_supported_precision_strict": 0.9394,
+      "proxy_selective_risk": 0.0606,
+      "proxy_supported_recall": 0.9118,
+      "proxy_contradicted_catch_rate": 0.7,
+      "proxy_false_accept_rate": 0.2667,
+      "proxy_false_reject_rate": 0.0294,
+      "breakdown": {
+        "accepted_supported": 124,
+        "accepted_contradicted": 8,
+        "accepted_unverifiable": 0,
+        "rejected_contradicted": 21,
+        "rejected_supported": 4
+      }
+    }
+  },
+  "test_calibration": {
+    "m5_hybrid": {
+      "ece": 0.070961,
+      "brier_score": 0.104135,
+      "reliability_bins": [
+        {
+          "bin_lo": 0.0,
+          "bin_hi": 0.1,
+          "count": 27,
+          "mean_conf": 0.0464,
+          "empirical_acc": 0.2222
+        },
+        {
+          "bin_lo": 0.1,
+          "bin_hi": 0.2,
+          "count": 1,
+          "mean_conf": 0.1601,
+          "empirical_acc": 0.0
+        },
+        {
+          "bin_lo": 0.5,
+          "bin_hi": 0.6,
+          "count": 25,
+          "mean_conf": 0.505,
+          "empirical_acc": 0.24
+        },
+        {
+          "bin_lo": 0.7,
+          "bin_hi": 0.8,
+          "count": 2,
+          "mean_conf": 0.7538,
+          "empirical_acc": 1.0
+        },
+        {
+          "bin_lo": 0.8,
+          "bin_hi": 0.9,
+          "count": 7,
+          "mean_conf": 0.8632,
+          "empirical_acc": 0.7143
+        },
+        {
+          "bin_lo": 0.9,
+          "bin_hi": 1.0,
+          "count": 123,
+          "mean_conf": 0.9517,
+          "empirical_acc": 0.9512
+        }
+      ]
+    },
+    "m5_hybrid_aurc": 0.094785,
+    "direct_qwen": {
+      "ece": 0.299955,
+      "brier_score": 0.314167,
+      "reliability_bins": [
+        {
+          "bin_lo": 0.0,
+          "bin_hi": 0.1,
+          "count": 38,
+          "mean_conf": 0.026,
+          "empirical_acc": 0.5789
+        },
+        {
+          "bin_lo": 0.1,
+          "bin_hi": 0.2,
+          "count": 14,
+          "mean_conf": 0.1417,
+          "empirical_acc": 0.7143
+        },
+        {
+          "bin_lo": 0.2,
+          "bin_hi": 0.3,
+          "count": 11,
+          "mean_conf": 0.271,
+          "empirical_acc": 0.9091
+        },
+        {
+          "bin_lo": 0.3,
+          "bin_hi": 0.4,
+          "count": 5,
+          "mean_conf": 0.3545,
+          "empirical_acc": 0.6
+        },
+        {
+          "bin_lo": 0.4,
+          "bin_hi": 0.5,
+          "count": 11,
+          "mean_conf": 0.4564,
+          "empirical_acc": 0.7273
+        },
+        {
+          "bin_lo": 0.5,
+          "bin_hi": 0.6,
+          "count": 15,
+          "mean_conf": 0.5461,
+          "empirical_acc": 0.6667
+        },
+        {
+          "bin_lo": 0.6,
+          "bin_hi": 0.7,
+          "count": 6,
+          "mean_conf": 0.6598,
+          "empirical_acc": 1.0
+        },
+        {
+          "bin_lo": 0.7,
+          "bin_hi": 0.8,
+          "count": 7,
+          "mean_conf": 0.7447,
+          "empirical_acc": 0.7143
+        },
+        {
+          "bin_lo": 0.8,
+          "bin_hi": 0.9,
+          "count": 20,
+          "mean_conf": 0.8589,
+          "empirical_acc": 0.7
+        },
+        {
+          "bin_lo": 0.9,
+          "bin_hi": 1.0,
+          "count": 58,
+          "mean_conf": 0.9655,
+          "empirical_acc": 0.8276
+        }
+      ]
+    },
+    "direct_qwen_aurc": 0.202417,
+    "reinsp_all": {
+      "ece": 0.446448,
+      "brier_score": 0.441696,
+      "reliability_bins": [
+        {
+          "bin_lo": 0.0,
+          "bin_hi": 0.1,
+          "count": 53,
+          "mean_conf": 0.0343,
+          "empirical_acc": 0.7925
+        },
+        {
+          "bin_lo": 0.1,
+          "bin_hi": 0.2,
+          "count": 10,
+          "mean_conf": 0.16,
+          "empirical_acc": 0.9
+        },
+        {
+          "bin_lo": 0.2,
+          "bin_hi": 0.3,
+          "count": 7,
+          "mean_conf": 0.2659,
+          "empirical_acc": 0.8571
+        },
+        {
+          "bin_lo": 0.3,
+          "bin_hi": 0.4,
+          "count": 5,
+          "mean_conf": 0.3475,
+          "empirical_acc": 0.8
+        },
+        {
+          "bin_lo": 0.4,
+          "bin_hi": 0.5,
+          "count": 1,
+          "mean_conf": 0.4193,
+          "empirical_acc": 0.0
+        },
+        {
+          "bin_lo": 0.5,
+          "bin_hi": 0.6,
+          "count": 1,
+          "mean_conf": 0.5018,
+          "empirical_acc": 0.0
+        },
+        {
+          "bin_lo": 0.6,
+          "bin_hi": 0.7,
+          "count": 5,
+          "mean_conf": 0.6537,
+          "empirical_acc": 0.6
+        },
+        {
+          "bin_lo": 0.7,
+          "bin_hi": 0.8,
+          "count": 8,
+          "mean_conf": 0.7492,
+          "empirical_acc": 0.625
+        },
+        {
+          "bin_lo": 0.8,
+          "bin_hi": 0.9,
+          "count": 5,
+          "mean_conf": 0.8503,
+          "empirical_acc": 0.8
+        },
+        {
+          "bin_lo": 0.9,
+          "bin_hi": 1.0,
+          "count": 90,
+          "mean_conf": 0.9908,
+          "empirical_acc": 0.7
+        }
+      ]
+    },
+    "reinsp_all_aurc": 0.229813
+  },
+  "test_threshold_sweep": {
+    "0.50": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 106,
+        "rejected": 20,
+        "deferred": 59,
+        "accept_rate": 0.573,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.3189,
+        "proxy_supported_precision_strict": 0.783,
+        "proxy_selective_risk": 0.217,
+        "proxy_supported_recall": 0.6103,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.5667,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 83,
+          "accepted_contradicted": 17,
+          "accepted_unverifiable": 6,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 108,
+        "rejected": 28,
+        "deferred": 49,
+        "accept_rate": 0.5838,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.2649,
+        "proxy_supported_precision_strict": 0.6852,
+        "proxy_selective_risk": 0.3148,
+        "proxy_supported_recall": 0.5441,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8333,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 74,
+          "accepted_contradicted": 25,
+          "accepted_unverifiable": 9,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 134,
+        "rejected": 25,
+        "deferred": 26,
+        "accept_rate": 0.7243,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1405,
+        "proxy_supported_precision_strict": 0.9403,
+        "proxy_selective_risk": 0.0597,
+        "proxy_supported_recall": 0.9265,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 126,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.55": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 99,
+        "rejected": 20,
+        "deferred": 66,
+        "accept_rate": 0.5351,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.3568,
+        "proxy_supported_precision_strict": 0.798,
+        "proxy_selective_risk": 0.202,
+        "proxy_supported_recall": 0.5809,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.5,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 79,
+          "accepted_contradicted": 15,
+          "accepted_unverifiable": 5,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 107,
+        "rejected": 28,
+        "deferred": 50,
+        "accept_rate": 0.5784,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.2703,
+        "proxy_supported_precision_strict": 0.6916,
+        "proxy_selective_risk": 0.3084,
+        "proxy_supported_recall": 0.5441,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8333,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 74,
+          "accepted_contradicted": 25,
+          "accepted_unverifiable": 8,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 134,
+        "rejected": 25,
+        "deferred": 26,
+        "accept_rate": 0.7243,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1405,
+        "proxy_supported_precision_strict": 0.9403,
+        "proxy_selective_risk": 0.0597,
+        "proxy_supported_recall": 0.9265,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 126,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.60": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 91,
+        "rejected": 20,
+        "deferred": 74,
+        "accept_rate": 0.4919,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.4,
+        "proxy_supported_precision_strict": 0.8022,
+        "proxy_selective_risk": 0.1978,
+        "proxy_supported_recall": 0.5368,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.4667,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 73,
+          "accepted_contradicted": 14,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 107,
+        "rejected": 28,
+        "deferred": 50,
+        "accept_rate": 0.5784,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.2703,
+        "proxy_supported_precision_strict": 0.6916,
+        "proxy_selective_risk": 0.3084,
+        "proxy_supported_recall": 0.5441,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8333,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 74,
+          "accepted_contradicted": 25,
+          "accepted_unverifiable": 8,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 132,
+        "rejected": 25,
+        "deferred": 28,
+        "accept_rate": 0.7135,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1514,
+        "proxy_supported_precision_strict": 0.9394,
+        "proxy_selective_risk": 0.0606,
+        "proxy_supported_recall": 0.9118,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 124,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.65": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 89,
+        "rejected": 20,
+        "deferred": 76,
+        "accept_rate": 0.4811,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.4108,
+        "proxy_supported_precision_strict": 0.7978,
+        "proxy_selective_risk": 0.2022,
+        "proxy_supported_recall": 0.5221,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.4667,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 71,
+          "accepted_contradicted": 14,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 105,
+        "rejected": 28,
+        "deferred": 52,
+        "accept_rate": 0.5676,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.2811,
+        "proxy_supported_precision_strict": 0.6952,
+        "proxy_selective_risk": 0.3048,
+        "proxy_supported_recall": 0.5368,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8333,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 73,
+          "accepted_contradicted": 25,
+          "accepted_unverifiable": 7,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 132,
+        "rejected": 25,
+        "deferred": 28,
+        "accept_rate": 0.7135,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1514,
+        "proxy_supported_precision_strict": 0.9394,
+        "proxy_selective_risk": 0.0606,
+        "proxy_supported_recall": 0.9118,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 124,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.70": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 85,
+        "rejected": 20,
+        "deferred": 80,
+        "accept_rate": 0.4595,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.4324,
+        "proxy_supported_precision_strict": 0.7882,
+        "proxy_selective_risk": 0.2118,
+        "proxy_supported_recall": 0.4926,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.4667,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 67,
+          "accepted_contradicted": 14,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 102,
+        "rejected": 28,
+        "deferred": 55,
+        "accept_rate": 0.5514,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.2973,
+        "proxy_supported_precision_strict": 0.6961,
+        "proxy_selective_risk": 0.3039,
+        "proxy_supported_recall": 0.5221,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8333,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 71,
+          "accepted_contradicted": 25,
+          "accepted_unverifiable": 6,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 132,
+        "rejected": 25,
+        "deferred": 28,
+        "accept_rate": 0.7135,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1514,
+        "proxy_supported_precision_strict": 0.9394,
+        "proxy_selective_risk": 0.0606,
+        "proxy_supported_recall": 0.9118,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 124,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.75": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 81,
+        "rejected": 20,
+        "deferred": 84,
+        "accept_rate": 0.4378,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.4541,
+        "proxy_supported_precision_strict": 0.8025,
+        "proxy_selective_risk": 0.1975,
+        "proxy_supported_recall": 0.4779,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.4333,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 65,
+          "accepted_contradicted": 13,
+          "accepted_unverifiable": 3,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 98,
+        "rejected": 28,
+        "deferred": 59,
+        "accept_rate": 0.5297,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.3189,
+        "proxy_supported_precision_strict": 0.6939,
+        "proxy_selective_risk": 0.3061,
+        "proxy_supported_recall": 0.5,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8333,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 68,
+          "accepted_contradicted": 25,
+          "accepted_unverifiable": 5,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 131,
+        "rejected": 25,
+        "deferred": 29,
+        "accept_rate": 0.7081,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1568,
+        "proxy_supported_precision_strict": 0.9389,
+        "proxy_selective_risk": 0.0611,
+        "proxy_supported_recall": 0.9044,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 123,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.80": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 78,
+        "rejected": 20,
+        "deferred": 87,
+        "accept_rate": 0.4216,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.4703,
+        "proxy_supported_precision_strict": 0.7949,
+        "proxy_selective_risk": 0.2051,
+        "proxy_supported_recall": 0.4559,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.4333,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 62,
+          "accepted_contradicted": 13,
+          "accepted_unverifiable": 3,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 94,
+        "rejected": 28,
+        "deferred": 63,
+        "accept_rate": 0.5081,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.3405,
+        "proxy_supported_precision_strict": 0.7021,
+        "proxy_selective_risk": 0.2979,
+        "proxy_supported_recall": 0.4853,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 66,
+          "accepted_contradicted": 24,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 130,
+        "rejected": 25,
+        "deferred": 30,
+        "accept_rate": 0.7027,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1622,
+        "proxy_supported_precision_strict": 0.9385,
+        "proxy_selective_risk": 0.0615,
+        "proxy_supported_recall": 0.8971,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 122,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.85": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 72,
+        "rejected": 20,
+        "deferred": 93,
+        "accept_rate": 0.3892,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.5027,
+        "proxy_supported_precision_strict": 0.8056,
+        "proxy_selective_risk": 0.1944,
+        "proxy_supported_recall": 0.4265,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.4333,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 58,
+          "accepted_contradicted": 13,
+          "accepted_unverifiable": 1,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 91,
+        "rejected": 28,
+        "deferred": 66,
+        "accept_rate": 0.4919,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.3568,
+        "proxy_supported_precision_strict": 0.6923,
+        "proxy_selective_risk": 0.3077,
+        "proxy_supported_recall": 0.4632,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 63,
+          "accepted_contradicted": 24,
+          "accepted_unverifiable": 4,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 130,
+        "rejected": 25,
+        "deferred": 30,
+        "accept_rate": 0.7027,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1622,
+        "proxy_supported_precision_strict": 0.9385,
+        "proxy_selective_risk": 0.0615,
+        "proxy_supported_recall": 0.8971,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 122,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    },
+    "0.90": {
+      "direct_qwen_gated": {
+        "total_claims": 185,
+        "accepted": 58,
+        "rejected": 20,
+        "deferred": 107,
+        "accept_rate": 0.3135,
+        "reject_rate": 0.1081,
+        "defer_rate": 0.5784,
+        "proxy_supported_precision_strict": 0.8276,
+        "proxy_selective_risk": 0.1724,
+        "proxy_supported_recall": 0.3529,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.3,
+        "proxy_false_reject_rate": 0.1103,
+        "breakdown": {
+          "accepted_supported": 48,
+          "accepted_contradicted": 9,
+          "accepted_unverifiable": 1,
+          "rejected_contradicted": 1,
+          "rejected_supported": 15
+        }
+      },
+      "reinsp_all_gated": {
+        "total_claims": 185,
+        "accepted": 89,
+        "rejected": 28,
+        "deferred": 68,
+        "accept_rate": 0.4811,
+        "reject_rate": 0.1514,
+        "defer_rate": 0.3676,
+        "proxy_supported_precision_strict": 0.6966,
+        "proxy_selective_risk": 0.3034,
+        "proxy_supported_recall": 0.4559,
+        "proxy_contradicted_catch_rate": 0.0333,
+        "proxy_false_accept_rate": 0.8,
+        "proxy_false_reject_rate": 0.1765,
+        "breakdown": {
+          "accepted_supported": 62,
+          "accepted_contradicted": 24,
+          "accepted_unverifiable": 3,
+          "rejected_contradicted": 1,
+          "rejected_supported": 24
+        }
+      },
+      "m5_mask_first_hybrid": {
+        "total_claims": 185,
+        "accepted": 130,
+        "rejected": 25,
+        "deferred": 30,
+        "accept_rate": 0.7027,
+        "reject_rate": 0.1351,
+        "defer_rate": 0.1622,
+        "proxy_supported_precision_strict": 0.9385,
+        "proxy_selective_risk": 0.0615,
+        "proxy_supported_recall": 0.8971,
+        "proxy_contradicted_catch_rate": 0.7,
+        "proxy_false_accept_rate": 0.2667,
+        "proxy_false_reject_rate": 0.0294,
+        "breakdown": {
+          "accepted_supported": 122,
+          "accepted_contradicted": 8,
+          "accepted_unverifiable": 0,
+          "rejected_contradicted": 21,
+          "rejected_supported": 4
+        }
+      }
+    }
+  }
+}

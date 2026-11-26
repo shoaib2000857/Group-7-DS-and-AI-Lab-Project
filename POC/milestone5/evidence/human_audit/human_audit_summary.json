@@ -1,0 +1,385 @@
+{
+  "input_sha256": {
+    "rater_PA.csv": "7d4d15c12c197f02c1c26c4ed366b532901417a324f405401a1c97628543b5c8",
+    "rater_SRP.csv": "9eac125562cfb7086c478a497d7969c5a51e62e23e637be79df30638fb1dd0e7",
+    "rater_SS.csv": "d8d16b862bc05ad0beddae94d5f612ffccfafb76a8a6af205f61b04682b4f2df",
+    "rater_SSSM.csv": "ddf2577232955c5ba72540da55d1c95212df49d47d156a4135db407194209a8a",
+    "test_audit_master_key.csv": "a684eb56a3f7da2132f6e955838fd8924613588265f5a21c55dc98c69406d6c1"
+  },
+  "warnings": [],
+  "coverage": {
+    "001-030": {
+      "total": 30,
+      "labelled_SSSM": 30,
+      "labelled_PA": 30,
+      "labelled_both": 30,
+      "missing_either": 0
+    },
+    "031-060": {
+      "total": 30,
+      "labelled_PA": 30,
+      "labelled_SS": 30,
+      "labelled_both": 30,
+      "missing_either": 0
+    },
+    "061-090": {
+      "total": 30,
+      "labelled_SS": 30,
+      "labelled_SRP": 30,
+      "labelled_both": 30,
+      "missing_either": 0
+    },
+    "091-120": {
+      "total": 30,
+      "labelled_SRP": 30,
+      "labelled_SSSM": 30,
+      "labelled_both": 30,
+      "missing_either": 0
+    }
+  },
+  "unrated_blank_rows": {
+    "PA": 0,
+    "SRP": 0,
+    "SS": 0,
+    "SSSM": 0
+  },
+  "per_slice": {
+    "001-030": {
+      "n": 30,
+      "percent_agreement": 1.0,
+      "kappa": 1.0,
+      "kappa_degenerate": false,
+      "confusion_matrix": [
+        [
+          26,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "confusion_labels": [
+        "supported",
+        "contradicted",
+        "unverifiable"
+      ],
+      "error_category_agreement": {
+        "n": 4,
+        "percent_agreement": 1.0
+      },
+      "rater_a": "SSSM",
+      "rater_b": "PA",
+      "adjudicator": "SRP"
+    },
+    "031-060": {
+      "n": 30,
+      "percent_agreement": 0.8333333333333334,
+      "kappa": 0.46808510638297907,
+      "kappa_degenerate": false,
+      "confusion_matrix": [
+        [
+          22,
+          5,
+          0
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "confusion_labels": [
+        "supported",
+        "contradicted",
+        "unverifiable"
+      ],
+      "error_category_agreement": {
+        "n": 3,
+        "percent_agreement": 1.0
+      },
+      "rater_a": "PA",
+      "rater_b": "SS",
+      "adjudicator": "SSSM"
+    },
+    "061-090": {
+      "n": 30,
+      "percent_agreement": 0.7,
+      "kappa": 0.08163265306122433,
+      "kappa_degenerate": false,
+      "confusion_matrix": [
+        [
+          20,
+          1,
+          0
+        ],
+        [
+          8,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "confusion_labels": [
+        "supported",
+        "contradicted",
+        "unverifiable"
+      ],
+      "error_category_agreement": {
+        "n": 1,
+        "percent_agreement": 1.0
+      },
+      "rater_a": "SS",
+      "rater_b": "SRP",
+      "adjudicator": "PA"
+    },
+    "091-120": {
+      "n": 30,
+      "percent_agreement": 0.8666666666666667,
+      "kappa": 0.0,
+      "kappa_degenerate": false,
+      "confusion_matrix": [
+        [
+          26,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "confusion_labels": [
+        "supported",
+        "contradicted",
+        "unverifiable"
+      ],
+      "error_category_agreement": {
+        "n": 0,
+        "percent_agreement": null
+      },
+      "rater_a": "SRP",
+      "rater_b": "SSSM",
+      "adjudicator": "SS"
+    }
+  },
+  "pooled": {
+    "n": 120,
+    "percent_agreement": 0.85,
+    "kappa": 0.38356164383561625,
+    "kappa_degenerate": false,
+    "confusion_matrix": [
+      [
+        94,
+        10,
+        0
+      ],
+      [
+        8,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "confusion_labels": [
+      "supported",
+      "contradicted",
+      "unverifiable"
+    ],
+    "error_category_agreement": {
+      "n": 8,
+      "percent_agreement": 1.0
+    }
+  },
+  "counts": {
+    "claims_total": 120,
+    "disagreements": 18,
+    "gold_labels": 102,
+    "gold_from_agreement": 102,
+    "gold_from_adjudication": 0,
+    "unresolved_excluded": 18,
+    "unresolved_claim_ids": [
+      33,
+      46,
+      48,
+      50,
+      60,
+      62,
+      64,
+      68,
+      69,
+      72,
+      73,
+      75,
+      81,
+      85,
+      96,
+      103,
+      104,
+      118
+    ]
+  },
+  "kappa_note": "kappa is 1.0 when raters agree perfectly with a single category (chance agreement 1), 0.0 if chance agreement is 1 but they disagree; flagged by kappa_degenerate",
+  "packet": {
+    "rows": 120,
+    "mapped": 120,
+    "unmapped": 0
+  },
+  "policies": {
+    "unverified": {
+      "column": "unverified_decision",
+      "n_packet": 120,
+      "n_accepted": 120,
+      "coverage": 1.0,
+      "n_accepted_with_gold": 102,
+      "n_accepted_without_gold": 18,
+      "n_supported": 94,
+      "n_contradicted": 8,
+      "n_unverifiable": 0,
+      "groundedness": 0.9215686274509803,
+      "groundedness_ci95": [
+        0.8528127269148545,
+        0.9597233143395586
+      ],
+      "hallucination_rate": 0.0784313725490196,
+      "hallucination_ci95": [
+        0.04027668566044139,
+        0.14718727308514545
+      ]
+    },
+    "mask_only": {
+      "column": "mask_only_decision",
+      "n_packet": 120,
+      "n_accepted": 77,
+      "coverage": 0.6416666666666667,
+      "n_accepted_with_gold": 71,
+      "n_accepted_without_gold": 6,
+      "n_supported": 71,
+      "n_contradicted": 0,
+      "n_unverifiable": 0,
+      "groundedness": 1.0,
+      "groundedness_ci95": [
+        0.9486720470349351,
+        1.0
+      ],
+      "hallucination_rate": 0.0,
+      "hallucination_ci95": [
+        0.0,
+        0.051327952965064906
+      ]
+    },
+    "direct_vlm": {
+      "column": "direct_vlm_decision",
+      "n_packet": 120,
+      "n_accepted": 49,
+      "coverage": 0.4083333333333333,
+      "n_accepted_with_gold": 40,
+      "n_accepted_without_gold": 9,
+      "n_supported": 37,
+      "n_contradicted": 3,
+      "n_unverifiable": 0,
+      "groundedness": 0.925,
+      "groundedness_ci95": [
+        0.8013576634835684,
+        0.9741639744267374
+      ],
+      "hallucination_rate": 0.075,
+      "hallucination_ci95": [
+        0.025836025573262464,
+        0.19864233651643165
+      ]
+    },
+    "reinsp_all": {
+      "column": "reinsp_all_decision",
+      "n_packet": 120,
+      "n_accepted": 66,
+      "coverage": 0.55,
+      "n_accepted_with_gold": 54,
+      "n_accepted_without_gold": 12,
+      "n_supported": 48,
+      "n_contradicted": 6,
+      "n_unverifiable": 0,
+      "groundedness": 0.8888888888888888,
+      "groundedness_ci95": [
+        0.7780529887240111,
+        0.9480697753334044
+      ],
+      "hallucination_rate": 0.1111111111111111,
+      "hallucination_ci95": [
+        0.051930224666595554,
+        0.2219470112759889
+      ]
+    },
+    "hybrid": {
+      "column": "hybrid_verifier_decision",
+      "n_packet": 120,
+      "n_accepted": 67,
+      "coverage": 0.5583333333333333,
+      "n_accepted_with_gold": 62,
+      "n_accepted_without_gold": 5,
+      "n_supported": 62,
+      "n_contradicted": 0,
+      "n_unverifiable": 0,
+      "groundedness": 1.0,
+      "groundedness_ci95": [
+        0.9416559270319074,
+        1.0
+      ],
+      "hallucination_rate": 0.0,
+      "hallucination_ci95": [
+        0.0,
+        0.05834407296809256
+      ],
+      "vlm_call_rate": 0.09166666666666666
+    }
+  },
+  "proxy_gt_vs_gold": {
+    "n": 102,
+    "percent_agreement": 0.7058823529411765,
+    "kappa": 0.24407114624505943,
+    "kappa_degenerate": false,
+    "confusion_matrix": [
+      [
+        65,
+        1,
+        0
+      ],
+      [
+        12,
+        7,
+        0
+      ],
+      [
+        17,
+        0,
+        0
+      ]
+    ]
+  }
+}

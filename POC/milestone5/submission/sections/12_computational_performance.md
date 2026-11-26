@@ -140,7 +140,7 @@ The Apple M4 CPU and witness figures are the cumulative peak resident set size o
 | Captioner C06 (reference scan, full-length decode) | Apple M4 (MPS) | 5.12 | n/a (greedy batch 1) |
 | Captioner C06 (reference scan, full-length decode) | Apple M4 (CPU) | 2.28 | n/a (greedy batch 1) |
 
-End-to-end throughput is not measured. From the stage means of Section 12.6 (mixed-platform estimate: detector, witness and referee on the T4, captioner on the RTX 4060) it is 18.42 pairs per second for the mask-only policy, 3.11 for the disagreement-triggered policy, 2.81 for the unconditional-referee policy and 11.92 for the calibrated mask-first hybrid. Training throughput reference points from the receipts are 103.7 to 141.8 samples per second for D03 on the RTX 4060 and 74.0 to 85.5 samples per second for A03 on the T4.
+End-to-end throughput is not measured. From the stage means of Section 12.6 (mixed-platform estimate: detector, witness and referee on the T4, captioner on the RTX 4060) it is 18.42 pairs per second for the mask-only policy, 3.11 for the disagreement-triggered policy, 2.81 for the unconditional-referee policy and 11.92 for the calibrated mask-first hybrid. Training throughput reference points from the receipts are 103.7 to 141.8 samples per second for D03 on the RTX 4060 and 74.0 to 85.5 samples per second for A03 on the T4. Direct hardware GPU-utilization telemetry (NVML) was not sampled during profiling; compute saturation is instead evidenced by the measured batch-1 vs batch-16 scaling in Table 12.6, where D03 scales 2.08x on the Colab T4 (57.2 to 119.0 pairs/s, indicating launch-bound execution at batch 1) and 1.11x on the RTX 4060 (129.8 to 144.6 pairs/s, approaching compute saturation at small batches).
 
 ### 12.6 Cost per 1,000 Pairs
 

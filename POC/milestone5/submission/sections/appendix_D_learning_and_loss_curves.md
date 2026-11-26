@@ -1,0 +1,12 @@
+## Appendix D. Learning and Loss Curves
+
+Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs are archived in `docs/milestone4/evidence/full_data_m4/{detector_runs,captioner_runs}/*/history.jsonl` and reproduced directly below for the primary detector and captioner sweeps. Key convergence trajectories verified from the run receipts:
+
+![Detector training loss and Validation Change-Class mIoU learning curves across the BIT-ResNet18 and architecture-baseline sweeps.](figures/m4_detector_learning_curves.png)
+
+![Captioner training cross-entropy loss and Validation Corpus BLEU-4 learning curves across the RSCaMa sweep (C01–C07).](figures/m4_captioner_learning_curves.png)
+
+- **`D03_bit_lr3e4` (Selected Detector):** Rapid initial drop in Focal + Soft Dice loss during the 5 frozen-backbone warmup epochs (`epochs 0–4`), followed by a smooth +8-point jump in Validation Change-Class mIoU immediately upon ResNet18 unfreezing (`epoch 5`), peaking at **`74.54%` at epoch 24** (`32/35` epochs completed before early-stopping patience 8 triggered). Train/Val loss gap stayed tight with zero late-epoch overfitting.
+- **`A03_siam_r18_unet` & `A01_ef_unet`:** Converged steadily to Validation peaks at epochs 22 (`75.02%`) and 23 (`73.60%`), respectively, across 25 epochs.
+- **`A04_changeformer`:** Required 69.0 minutes (`165.6 s/epoch`, `6,570 MB` peak VRAM) across 25 epochs and peaked at `70.46%` (epoch 22), indicating slower convergence of the 41.04M-parameter hierarchical transformer under the 6,444-pair data budget.
+- **`C06_rscama_frozen_clip` (Selected Captioner):** Smooth cross-entropy descent from epoch 0 to best Validation Corpus BLEU-4 of **`0.6358` at epoch 6** (`Val CE = 1.3147`, `Val NC FA = 3.32%`), completing all 8 epochs in `30.3 min` (`227.3 s/epoch`) via the exact fused Triton selective-scan kernel (`triton_fused_exact`). In contrast, `C02_rscama_lr3e4` diverged after epoch 0 (`0.4956` BLEU-4) and early-stopped at epoch 2.
