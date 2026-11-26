@@ -22,10 +22,10 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 RATERS = {
-    "SSSM": {"name": "Shoaib Sayyed (SSSM)", "file": "rater_SSSM_60.csv", "slices": "001–030 & 091–120"},
+    "SSSM": {"name": "Shoaib (SSSM)", "file": "rater_SSSM_60.csv", "slices": "001–030 & 091–120"},
     "PA": {"name": "Priyanshu Agarwal (PA)", "file": "rater_PA_60.csv", "slices": "001–060"},
-    "SS": {"name": "Sarthak Sharma (SS)", "file": "rater_SS_60.csv", "slices": "031–090"},
-    "SRP": {"name": "Sujal Pradhan (SRP)", "file": "rater_SRP_60.csv", "slices": "061–120"},
+    "SS": {"name": "Sarthak Saini (SS)", "file": "rater_SS_60.csv", "slices": "031–090"},
+    "SRP": {"name": "Sujal Raj Pradhan (SRP)", "file": "rater_SRP_60.csv", "slices": "061–120"},
 }
 
 ALLOWED_LABELS = ("supported", "contradicted", "unverifiable")

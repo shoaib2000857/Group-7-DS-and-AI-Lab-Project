@@ -352,10 +352,10 @@ def build_cover(cover_template: Path | None) -> BytesIO:
     c.setFont(FONT_REG, 10.0)
     c.setFillColor(INK)
     members = [
-        "Shoaib Sayyed (SSSM)",
-        "Sujal Rajendra Pradhan (SRP)",
+        "Shoaib (SSSM)",
+        "Sujal Raj Pradhan (SRP)",
         "Priyanshu Agarwal (PA)",
-        "Sarthak Sharma (SS)",
+        "Sarthak Saini (SS)",
     ]
     yy = h - 460
     for m in members:
@@ -541,7 +541,7 @@ def build_slides_pdf(m5_dir: Path, out_pdf: Path) -> Path:
     txt(56, 306, "Milestone 5: Final Evaluation, Robustness & Deployment Readiness", 20.0, lime, FONT_BOLD)
     txt(56, 260, "Frozen-Checkpoint Evaluation Across 1,858 LEVIR-MCI Test Pairs, SECOND-CC Transfer,", 13.5, cream)
     txt(56, 238, "17-Condition Stress Testing & Calibrated Mask-First Hybrid Claim Verification", 13.5, cream)
-    txt(56, 120, "Team: Shoaib Sayyed (SSSM)  |  Sujal Pradhan (SRP)  |  Priyanshu Agarwal (PA)  |  Sarthak Sharma (SS)", 11.5, "#C7D8DF")
+    txt(56, 120, "Team: Shoaib (SSSM)  |  Sujal Raj Pradhan (SRP)  |  Priyanshu Agarwal (PA)  |  Sarthak Saini (SS)", 11.5, "#C7D8DF")
     txt(56, 88, "November 2026   •   12 SHA-256 Verified Checkpoints   •   Zero Test-Set Leakage", 10.5, lime)
     c.showPage()
 
