@@ -4,7 +4,7 @@ This section fixes the hardware, software, data and reproducibility contract und
 
 ### 2.1 Hardware and Software Environment
 
-Training in Milestone 4 used three GPU classes, and inference profiling in Milestone 5 adds two further platforms (an Apple M4 laptop and a Kaggle Tesla T4 session). Versions for the Milestone 4 platforms are copied from the `environment` block of each run receipt; versions for the Milestone 5 profiling platforms are recorded by the benchmark script at run time.
+Training in Milestone 4 used three GPU classes, and inference profiling in Milestone 5 uses three platforms: the local RTX 4060 workstation, a Colab Tesla T4 session and an Apple M4 laptop. Versions for the Milestone 4 platforms are copied from the `environment` block of each run receipt; versions for the Milestone 5 profiling platforms are copied from the `env` block of the corresponding file in `evidence/compute_profile/`, which the benchmark script writes at run time.
 
 **Table 2.1. Compute platforms and software stack.**
 
@@ -12,10 +12,13 @@ Training in Milestone 4 used three GPU classes, and inference profiling in Miles
 |---|---|---|---|---|---|
 | Local workstation (Omen, Linux) | NVIDIA GeForce RTX 4060 Laptop GPU, 8 GB VRAM | 3.13.9 | 2.11.0+cu130 (bf16 AMP) | einops, timm, OpenCV, NLTK | 14 detector runs (12 BIT arms, D03 seed 0, A04 ChangeFormer), robustness ladder, LEVIR-MCI Test and SECOND-CC transfer evaluation |
 | Colab Pro, Tesla T4 | Tesla T4, 15 GB VRAM | 3.13.16 | 2.14.1+cu130 (fp16 AMP) | Triton 3.8.0; Transformers 4.39.3 (RSCaMa) | 7 detector runs (A01, A02, A03, D04, D07, D09, D16), all 9 captioner runs, Qwen3-VL 120-pair verification |
-| Colab Pro, L4 | NVIDIA L4, 24 GB VRAM | 3.13.16 | 2.14.1+cu130 (fp16 AMP) | Triton 3.8.0 | 3 seed runs (D03 s2026, A03 s0, A03 s2026) |
-| Referee environment (Colab Pro) | Colab GPU (L4 or T4; the verification receipt does not record the device) | separate environment | 2.14.1+cu130 | Transformers 5.22.1; Qwen3-VL-4B-Instruct in bfloat16 | Frozen visual referee |
-| Milestone 5 profiling: Apple M4 | Apple M4 (unified memory), backend `cpu` and `mps` | 3.11.9 | 2.15.0 | macOS 26.5.1; OpenCV OpenCV 4.x; Transformers 4.39.3 | CPU and MPS latency, throughput and memory profile |
-| Milestone 5 profiling: Colab Tesla T4 | Tesla T4 (Colab Pro) & NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), 15 GB VRAM | 3.13.16 | 2.14.1+cu130 (CUDA 13.0) | Triton 3.8.0; Transformers 5.22.1 (referee) / 4.39.3 (RSCaMa); driver CUDA 13.0 runtime | CUDA latency, VRAM, utilisation and cost profile |
+| Colab Pro, L4 | NVIDIA L4, 24 GB VRAM | 3.13.16 | 2.14.1+cu130 (fp16 AMP) | n/a (run receipts record Python and PyTorch only) | 3 seed runs (D03 s2026, A03 s0, A03 s2026) |
+| Referee environment (Colab Pro) | Colab GPU (L4 or T4; the verification receipt does not record the device) | separate environment | 2.14.1+cu130 | Transformers 5.22.1; Qwen3-VL-4B-Instruct in bfloat16 | Frozen visual referee in the 120-pair verification |
+| Milestone 5 profiling: RTX 4060 workstation | NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), Intel Core i7-14650HX (24 logical CPUs), Linux 6.14 | 3.13.9 | 2.11.0+cu130 (torchvision 0.26.0+cu130) | CUDA 13.0; Triton 3.6.0; Transformers 4.57.6 (detector and witness run) and 4.39.3 (captioner run); OpenCV version not recorded; driver version not recorded | Detector, captioner (trained C06 checkpoint, Triton and reference scan) and witness latency and memory |
+| Milestone 5 profiling: Colab Tesla T4 | Tesla T4 (15 GB), Intel Xeon @ 2.00 GHz (2 logical CPUs), Linux 6.6 | 3.13.16 | 2.14.1+cu130 (torchvision 0.29.1+cu130) | CUDA 13.0; Triton 3.8.0; Transformers 5.22.1 (detector, witness and referee runs); OpenCV version not recorded; driver version not recorded | Detector, witness and Qwen3-VL referee latency and memory; captioner not measured on this platform |
+| Milestone 5 profiling: Apple M4 | Apple M4 (10 logical CPUs, unified memory), backends `cpu` and `mps`, macOS 26.5.1 | 3.11.9 | 2.15.0 (torchvision 0.29.2) | Transformers 4.39.3; no CUDA or Triton; OpenCV version not recorded | Detector, captioner and witness latency and memory with randomly initialised weights (timing and memory only); referee not measured |
+
+The RTX 4060 detector and witness profile used Transformers 4.57.6 (`env.transformers` in `compute_profile_rtx4060.json`), whereas its captioner profile used Transformers 4.39.3 (`env.transformers_captioner` and `compute_profile_rtx4060_cap.json`), matching the RSCaMa pin. The OpenCV version is not recorded by the benchmark; the install specification is `opencv-python-headless>=4.10,<6` (`requirements-pipeline.txt`). The Qwen3-VL referee was profiled on the T4 in float16 (`compute_profile_colab_t4_referee.json`), whereas the Milestone 4 verification receipt records bfloat16. On the Apple M4 the detector and captioner run with random-initialised weights because latency and memory do not depend on weight values, and the random-initialised captioner never emits the end-of-sequence token, so every Mac captioner figure is the full-length decode (42 steps) and an upper bound on the latency of the trained model.
 
 **Software stack.** Detector and captioner code derive from pinned upstream sources: BIT_CD at commit `adcd7aea6f23`, ChangeFormer at `afd1b7ed640a`, RSCaMa at `aa68e4c6933c` and OpenAI CLIP ViT-B/32 at `dcba3cb2e282`. The visual referee is `Qwen/Qwen3-VL-4B-Instruct` at the pinned revision `ebb281ec70b05090aa6165b016eac8ec08e71b17` (`configs/pipeline.json`). The deterministic structural witness is implemented with OpenCV (LAB luminance shift, Sobel edge density, block anomaly, SSIM and sub-pixel alignment jitter). Prebuilt `mamba_ssm` binaries do not exist for Python 3.13 with CUDA 13.0, so RSCaMa training and inference use the exact fused Triton selective-scan kernel (`kernel_mode: triton_fused_exact` in every captioner receipt). The captioner (Transformers 4.39.3) and the referee (Transformers 5.22.1) run in separate Python environments and exchange verified JSONL payloads with SHA-256 provenance.
 
@@ -65,7 +68,7 @@ Masks use the encoding background 0, road change 128 and building change 255, ma
 5. **Stress and transfer.** Apply the deterministic corruption ladder and cross-dataset transfer protocol to D03 and A03.
 6. **Verify claims.** Extract atomic claims from generated captions, score each against the OpenCV witness and the detector mask, route selectively to the Qwen3-VL referee, and emit accept, reject or defer with the full evidence record.
 7. **Blind human audit.** Two raters label each audited claim without seeing the model verdict; a third adjudicates disagreements (Appendix J); Cohen's kappa and human-verified groundedness are computed.
-8. **Profile compute.** Time every stage on each platform of Table 2.1 and compute memory, throughput and cost per 1,000 pairs (Section 12).
+8. **Profile compute.** Time every stage on each profiled platform of Table 2.1 and compute memory, throughput and cost per 1,000 pairs (Section 12); stages that were not run on a platform are reported as not measured.
 
 ```
  T1,T2 --> BIT detector (D03) --> 3-class mask ------------------+

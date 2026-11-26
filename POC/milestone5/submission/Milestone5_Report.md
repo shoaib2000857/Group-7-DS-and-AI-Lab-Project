@@ -54,7 +54,7 @@ This section fixes the hardware, software, data and reproducibility contract und
 
 ### 2.1 Hardware and Software Environment
 
-Training in Milestone 4 used three GPU classes, and inference profiling in Milestone 5 adds two further platforms (an Apple M4 laptop and a Kaggle Tesla T4 session). Versions for the Milestone 4 platforms are copied from the `environment` block of each run receipt; versions for the Milestone 5 profiling platforms are recorded by the benchmark script at run time.
+Training in Milestone 4 used three GPU classes, and inference profiling in Milestone 5 uses three platforms: the local RTX 4060 workstation, a Colab Tesla T4 session and an Apple M4 laptop. Versions for the Milestone 4 platforms are copied from the `environment` block of each run receipt; versions for the Milestone 5 profiling platforms are copied from the `env` block of the corresponding file in `evidence/compute_profile/`, which the benchmark script writes at run time.
 
 **Table 2.1. Compute platforms and software stack.**
 
@@ -62,10 +62,13 @@ Training in Milestone 4 used three GPU classes, and inference profiling in Miles
 |---|---|---|---|---|---|
 | Local workstation (Omen, Linux) | NVIDIA GeForce RTX 4060 Laptop GPU, 8 GB VRAM | 3.13.9 | 2.11.0+cu130 (bf16 AMP) | einops, timm, OpenCV, NLTK | 14 detector runs (12 BIT arms, D03 seed 0, A04 ChangeFormer), robustness ladder, LEVIR-MCI Test and SECOND-CC transfer evaluation |
 | Colab Pro, Tesla T4 | Tesla T4, 15 GB VRAM | 3.13.16 | 2.14.1+cu130 (fp16 AMP) | Triton 3.8.0; Transformers 4.39.3 (RSCaMa) | 7 detector runs (A01, A02, A03, D04, D07, D09, D16), all 9 captioner runs, Qwen3-VL 120-pair verification |
-| Colab Pro, L4 | NVIDIA L4, 24 GB VRAM | 3.13.16 | 2.14.1+cu130 (fp16 AMP) | Triton 3.8.0 | 3 seed runs (D03 s2026, A03 s0, A03 s2026) |
-| Referee environment (Colab Pro) | Colab GPU (L4 or T4; the verification receipt does not record the device) | separate environment | 2.14.1+cu130 | Transformers 5.22.1; Qwen3-VL-4B-Instruct in bfloat16 | Frozen visual referee |
-| Milestone 5 profiling: Apple M4 | Apple M4 (unified memory), backend `cpu` and `mps` | 3.11.9 | 2.15.0 | macOS 26.5.1; OpenCV OpenCV 4.x; Transformers 4.39.3 | CPU and MPS latency, throughput and memory profile |
-| Milestone 5 profiling: Colab Tesla T4 | Tesla T4 (Colab Pro) & NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), 15 GB VRAM | 3.13.16 | 2.14.1+cu130 (CUDA 13.0) | Triton 3.8.0; Transformers 5.22.1 (referee) / 4.39.3 (RSCaMa); driver CUDA 13.0 runtime | CUDA latency, VRAM, utilisation and cost profile |
+| Colab Pro, L4 | NVIDIA L4, 24 GB VRAM | 3.13.16 | 2.14.1+cu130 (fp16 AMP) | n/a (run receipts record Python and PyTorch only) | 3 seed runs (D03 s2026, A03 s0, A03 s2026) |
+| Referee environment (Colab Pro) | Colab GPU (L4 or T4; the verification receipt does not record the device) | separate environment | 2.14.1+cu130 | Transformers 5.22.1; Qwen3-VL-4B-Instruct in bfloat16 | Frozen visual referee in the 120-pair verification |
+| Milestone 5 profiling: RTX 4060 workstation | NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), Intel Core i7-14650HX (24 logical CPUs), Linux 6.14 | 3.13.9 | 2.11.0+cu130 (torchvision 0.26.0+cu130) | CUDA 13.0; Triton 3.6.0; Transformers 4.57.6 (detector and witness run) and 4.39.3 (captioner run); OpenCV version not recorded; driver version not recorded | Detector, captioner (trained C06 checkpoint, Triton and reference scan) and witness latency and memory |
+| Milestone 5 profiling: Colab Tesla T4 | Tesla T4 (15 GB), Intel Xeon @ 2.00 GHz (2 logical CPUs), Linux 6.6 | 3.13.16 | 2.14.1+cu130 (torchvision 0.29.1+cu130) | CUDA 13.0; Triton 3.8.0; Transformers 5.22.1 (detector, witness and referee runs); OpenCV version not recorded; driver version not recorded | Detector, witness and Qwen3-VL referee latency and memory; captioner not measured on this platform |
+| Milestone 5 profiling: Apple M4 | Apple M4 (10 logical CPUs, unified memory), backends `cpu` and `mps`, macOS 26.5.1 | 3.11.9 | 2.15.0 (torchvision 0.29.2) | Transformers 4.39.3; no CUDA or Triton; OpenCV version not recorded | Detector, captioner and witness latency and memory with randomly initialised weights (timing and memory only); referee not measured |
+
+The RTX 4060 detector and witness profile used Transformers 4.57.6 (`env.transformers` in `compute_profile_rtx4060.json`), whereas its captioner profile used Transformers 4.39.3 (`env.transformers_captioner` and `compute_profile_rtx4060_cap.json`), matching the RSCaMa pin. The OpenCV version is not recorded by the benchmark; the install specification is `opencv-python-headless>=4.10,<6` (`requirements-pipeline.txt`). The Qwen3-VL referee was profiled on the T4 in float16 (`compute_profile_colab_t4_referee.json`), whereas the Milestone 4 verification receipt records bfloat16. On the Apple M4 the detector and captioner run with random-initialised weights because latency and memory do not depend on weight values, and the random-initialised captioner never emits the end-of-sequence token, so every Mac captioner figure is the full-length decode (42 steps) and an upper bound on the latency of the trained model.
 
 **Software stack.** Detector and captioner code derive from pinned upstream sources: BIT_CD at commit `adcd7aea6f23`, ChangeFormer at `afd1b7ed640a`, RSCaMa at `aa68e4c6933c` and OpenAI CLIP ViT-B/32 at `dcba3cb2e282`. The visual referee is `Qwen/Qwen3-VL-4B-Instruct` at the pinned revision `ebb281ec70b05090aa6165b016eac8ec08e71b17` (`configs/pipeline.json`). The deterministic structural witness is implemented with OpenCV (LAB luminance shift, Sobel edge density, block anomaly, SSIM and sub-pixel alignment jitter). Prebuilt `mamba_ssm` binaries do not exist for Python 3.13 with CUDA 13.0, so RSCaMa training and inference use the exact fused Triton selective-scan kernel (`kernel_mode: triton_fused_exact` in every captioner receipt). The captioner (Transformers 4.39.3) and the referee (Transformers 5.22.1) run in separate Python environments and exchange verified JSONL payloads with SHA-256 provenance.
 
@@ -115,7 +118,7 @@ Masks use the encoding background 0, road change 128 and building change 255, ma
 5. **Stress and transfer.** Apply the deterministic corruption ladder and cross-dataset transfer protocol to D03 and A03.
 6. **Verify claims.** Extract atomic claims from generated captions, score each against the OpenCV witness and the detector mask, route selectively to the Qwen3-VL referee, and emit accept, reject or defer with the full evidence record.
 7. **Blind human audit.** Two raters label each audited claim without seeing the model verdict; a third adjudicates disagreements (Appendix J); Cohen's kappa and human-verified groundedness are computed.
-8. **Profile compute.** Time every stage on each platform of Table 2.1 and compute memory, throughput and cost per 1,000 pairs (Section 12).
+8. **Profile compute.** Time every stage on each profiled platform of Table 2.1 and compute memory, throughput and cost per 1,000 pairs (Section 12); stages that were not run on a platform are reported as not measured.
 
 ```
  T1,T2 --> BIT detector (D03) --> 3-class mask ------------------+
@@ -602,7 +605,7 @@ At first glance, aggregate binary any-change F1 drops sharply from `86.83%` on L
 
 ## 12. Computational Performance
 
-This section reports the training cost recorded in Milestone 4 receipts and the inference cost measured in Milestone 5 on the platforms of Table 2.1. Training figures are read directly from the 33 run receipts by `POC/milestone5/scripts/m5_training_cost_table.py`; inference figures are produced by `POC/milestone5/scripts/m5_benchmark_compute.py` and written under `POC/milestone5/evidence/compute_profile/`. Profiling protocol: 50 (detectors/witness), 5 (captioner), 3 (referee) warm-up passes and 200 (detectors/witness), 30 (captioner), 20 (referee) timed passes per stage on 250 held-out Test pairs, with CUDA synchronisation before every timestamp (benchmark revision f568a1d1bc). The summary figure is `reports/figures/m5_compute_profile.png`.
+This section reports the training cost recorded in Milestone 4 receipts and the inference cost measured in Milestone 5 on the three profiled platforms of Table 2.1 (RTX 4060 workstation, Colab Tesla T4 and Apple M4). The NVIDIA L4 appears only in the training-cost results; no inference profile was run on it. Training figures are read directly from the 33 run receipts by `POC/milestone5/scripts/m5_training_cost_table.py`; inference figures are produced by `POC/milestone5/scripts/m5_benchmark_compute.py` and written under `POC/milestone5/evidence/compute_profile/`. Profiling protocol on the CUDA platforms: 50 (detectors, witness), 5 (captioner) and 3 (referee) warm-up passes and 200 (detectors, witness), 30 (captioner) and 20 (referee) timed passes per stage at batch 1, with device synchronisation before every timestamp (benchmark revision f568a1d on the CUDA platforms, 4be3e22 on the Mac). Inputs are LEVIR-MCI Validation pairs from `POC/execution/data/pairs` (250 loaded on the CUDA platforms, 150 on the Mac); the captioner and referee timed passes cycle through 35 and 23 distinct pairs respectively, and the witness runs on ground-truth masks. On the Apple M4 the MPS detector and witness use the same 50 and 200 passes, the MPS captioner 10 and 50, while the CPU backend uses 5 and 30 for detectors (5 timed passes at batch 16) and 2 and 10 for the captioner. The Qwen3-VL referee was profiled on the Colab T4 only. The captioner was profiled on the RTX 4060 and the Apple M4 only; it was not measured on the Colab T4. The summary figure is `reports/figures/m5_compute_profile.png`.
 
 ### 12.1 Training Cost
 
@@ -667,7 +670,7 @@ Valued at a uniform T4 rate, the programme corresponds to 16.63 x 0.526 = 8.75 U
 
 ### 12.2 Model Size and Complexity
 
-**Table 12.3. Parameters, checkpoint size and compute per forward pass.** Parameter counts are copied from run receipts; disk size is the `best` checkpoint file size in MiB (bytes / 1,048,576), SHA-256 matched to the run receipt; GFLOPs are measured per 256 x 256 pair (detectors) or per 224 x 224 pair with greedy decoding (captioner) with the torch FLOP counter (method PyTorch FlopCounterMode (batch 1)).
+**Table 12.3. Parameters, checkpoint size and compute per forward pass.** Parameter counts are copied from run receipts; disk size is the `best` checkpoint file size in MiB (bytes / 1,048,576), SHA-256 matched to the run receipt; GFLOPs are measured per 256 x 256 pair (detectors) or per 224 x 224 pair with greedy decoding (captioner) with the torch FLOP counter (method PyTorch FlopCounterMode (batch 1)). The counter includes only matrix multiplication, convolution and attention operations; the elementwise operations of the selective scan are not counted, so the captioner figure understates its arithmetic.
 
 | Model | Parameters (M, total) | Trainable (M) | Checkpoint on disk (MiB) | GFLOPs per pair |
 |---|---|---:|---:|---:|
@@ -677,7 +680,7 @@ Valued at a uniform T4 rate, the programme corresponds to 16.63 x 0.526 = 8.75 U
 | `A04_changeformer` | 41.04 (41,038,391) | 41.04 | 156.67 | 277.79 |
 | **`D03_bit_lr3e4` (selected)** | **11.94 (11,944,043)** | 11.94 (head 0.25) | 45.68 | 17.45 |
 | **`C06_rscama_frozen_clip` (selected)** | **898.81 (receipt total)** | 245.53 | 1,714.63 | 39.81 |
-| Qwen3-VL-4B-Instruct (frozen, bf16) | 4,437.82 | 0 | ~8,464 (HF fp16) | n/a (variable visual tokens) |
+| Qwen3-VL-4B-Instruct (frozen) | 4,437.82 | 0 | not recorded (load peak VRAM 8,464.5 MB in float16) | n/a (variable visual tokens) |
 
 The selected detector is the third-smallest of the five architectures and 3.4x smaller than ChangeFormer (41.04 / 11.94). The captioner dominates the parameter budget of the trained components, but 502.0 million of its recorded parameters are unused token-embedding tables carried over from the language-model Mamba block, and only 245.53 million are trainable. Removing these tables before serialisation would shrink the checkpoint without changing any output. The referee is the largest component of the deployed pipeline and determines the minimum GPU memory tier (Section 12.4).
 
@@ -687,72 +690,81 @@ The selected detector is the third-smallest of the five architectures and 3.4x s
 
 | Stage | Platform | P50 | P95 | P99 |
 |---|---|---:|---:|---:|
-| Detector D03 (BIT-ResNet18) | Colab Tesla T4 (CUDA) | 16.93 (RTX 4060: 7.64) | 21.92 | 26.76 |
+| Detector D03 (BIT-ResNet18) | Colab Tesla T4 (CUDA) | 16.93 | 21.92 | 26.76 |
+| Detector D03 (BIT-ResNet18) | RTX 4060 (CUDA) | 7.64 | 8.28 | 8.58 |
 | Detector D03 (BIT-ResNet18) | Apple M4 (MPS) | 20.52 | 25.11 | 25.40 |
 | Detector D03 (BIT-ResNet18) | Apple M4 (CPU) | 43.87 | 44.67 | 46.84 |
-| Captioner C06, Triton fused scan | Colab Tesla T4 (CUDA) | 23.30 (RTX 4060) | 26.13 | 28.27 |
-| Captioner C06, reference scan | Colab Tesla T4 (CUDA) | 89.35 (RTX 4060) | 100.78 | 101.49 |
-| Captioner C06, reference scan | Apple M4 (MPS) | 193.86 | 210.16 | 224.27 |
-| Captioner C06, reference scan | Apple M4 (CPU) | 438.37 | 448.32 | 450.30 |
-| OpenCV witness (per pair) | Colab T4 host CPU | 14.30 | 17.13 | 20.32 |
-| OpenCV witness (per pair) | Apple M4 (CPU) | 5.72 | 7.00 | 11.44 |
-| Qwen3-VL-4B referee (per call) | Colab Tesla T4 (CUDA) | 243.7 (2-img) / 336.0 (4-img) | 262.9 | 269.4 |
-| Qwen3-VL-4B referee (per call) | Apple M4 (MPS) | n/a (CUDA-only) | n/a | n/a |
+| Captioner C06, Triton fused scan | RTX 4060 (CUDA) | 23.30 | 26.13 | 28.27 |
+| Captioner C06, Triton fused scan | Colab Tesla T4 (CUDA) | not measured | not measured | not measured |
+| Captioner C06, reference scan | RTX 4060 (CUDA) | 89.35 | 100.78 | 101.49 |
+| Captioner C06, reference scan | Colab Tesla T4 (CUDA) | not measured | not measured | not measured |
+| Captioner C06, reference scan, full-length decode | Apple M4 (MPS) | 193.86 | 210.16 | 224.27 |
+| Captioner C06, reference scan, full-length decode | Apple M4 (CPU) | 438.37 | 448.32 | 450.30 |
+| OpenCV witness (per claim) | Colab T4 host CPU | 14.30 | 17.13 | 20.32 |
+| OpenCV witness (per claim) | Apple M4 (CPU) | 5.72 | 7.00 | 11.44 |
+| Qwen3-VL-4B referee (per call, 2 images) | Colab Tesla T4 (CUDA) | 243.7 | 262.9 | 269.4 |
+| Qwen3-VL-4B referee (per call, pair plus 2 crops, 4 images) | Colab Tesla T4 (CUDA) | 336.0 | 352.6 | 354.5 |
+| Qwen3-VL-4B referee | Apple M4 | not measured | not measured | not measured |
 
-Baseline detector P50 latency on the Colab Tesla T4: A01 6.23 ms, A02 8.91 ms, A03 6.65 ms, A04 73.13 ms. The inference-time speedup of the Triton fused scan over the reference scan is 3.83x on the RTX 4060 CUDA platform (89.35 ms to 23.30 ms P50). The end-to-end P50 latency of a pair through the mask-only policy is 73.1 ms and through the unconditional-referee policy is 374.2 ms.
+The RTX 4060 captioner rows decode a mean of 8.69 steps with the trained checkpoint. The Apple M4 captioner rows use randomly initialised weights, which never emit the end-of-sequence token, so each pass decodes the full 42 steps and the figures are an upper bound on the latency of the trained model. The Mac detector figures also use random-initialised weights. The witness unit is one claim (candidate box, contextual crop, overlay and structural inspection).
 
-![Cross-platform detector latency across 4 hardware platforms (left) and CUDA pipeline stage latency with Triton scan acceleration (right).](figures/m5_compute_profile.png)
+The referee latency is a single forward pass that scores three verdict-label logits, not free-text generation: `Qwen3VLReferee.decide` in `src/inference/verification_pipeline.py` calls the model with `logits_to_keep=1` and applies a softmax over the three label tokens. This is why it is far below the 7.6 s per generated response recorded for Qwen3-VL in Milestone 3 (`reports/Milestone3_Report_LocalBenchmarked.md`).
 
-### 12.4 Memory and GPU Utilisation
+Baseline detector P50 latency on the Colab Tesla T4: A01 6.23 ms, A02 8.91 ms, A03 6.65 ms, A04 73.13 ms. The inference-time speedup of the Triton fused scan over the reference scan is 3.83x on the RTX 4060 (89.35 ms to 23.30 ms P50); it was not measured on the T4. Section 12.6 gives mean-based end-to-end estimates per pair: 54.3 ms for the mask-only policy and 355.4 ms for the unconditional-referee policy. These are sums of separately measured stage means on mixed platforms (detector, witness and referee on the T4, captioner on the RTX 4060), not a measured end-to-end run.
 
-During training the detector family peaks at 1.4 to 6.6 GB of VRAM (A03 1,410 MB, D03 2,287 MB, A04 6,570 MB) and the captioner 4.8 to 5.9 GB (C06 4,820 MB, C07 5,888 MB), so every selected model trains within the 8 GB RTX 4060. Inference-time memory on the profiled platforms:
+![Cross-platform detector latency across 4 hardware backends (left) and per-stage latency on the RTX 4060 and Colab T4 (right); the Colab T4 has no captioner bar because the captioner was not measured there.](figures/m5_compute_profile.png)
 
-**Table 12.5. Peak memory and utilisation at inference (batch 1).**
+### 12.4 Memory
 
-| Stage | Peak VRAM, Colab Tesla T4 (MB) | Mean GPU utilisation, Colab Tesla T4 (%) | Peak process memory, M4 MPS (MB) | Peak RSS, M4 CPU (MB) |
+During training the detector family peaks at 1.4 to 6.6 GB of VRAM (A03 1,410 MB, D03 2,287 MB, A04 6,570 MB) and the captioner 4.8 to 5.9 GB (C06 4,820 MB, C07 5,888 MB), so every selected model trains within the 8 GB RTX 4060. Inference-time memory on the profiled platforms is the peak of `torch.cuda.max_memory_allocated()` on CUDA, the polled MPS driver allocation on the Apple M4 GPU, and the cumulative peak process resident set size on CPU:
+
+**Table 12.5. Peak memory at inference (batch 1).**
+
+| Stage | Colab Tesla T4, peak VRAM (MB) | RTX 4060, peak VRAM (MB) | Apple M4 MPS, peak process memory (MB) | Apple M4 CPU, peak RSS (MB) |
 |---|---:|---:|---:|---:|
-| Detector D03 | 551.3 | 85–95% (peak burst) | 1,371.7 | 8,906.2 |
-| Captioner C06 (Triton on T4, reference scan on M4) | 3,518.4 (RTX 4060) | 78–90% (Triton scan) | 4,409.8 | 8,906.2 |
-| Qwen3-VL-4B referee | 8,589.9 (4-img: 8,652.2) | 90–98% | n/a | n/a |
-| OpenCV witness | n/a (CPU) | n/a (CPU) | n/a (CPU) | 8,906.2 |
-| Full pipeline, peak resident stages | 12,660 (staged peak 8,652) | 85–95% | 4,409.8 | 8,906.2 |
+| Detector D03 | 551.3 | 551.5 | 1,371.7 | 8,906.2 |
+| Captioner C06 (Triton scan on RTX 4060; reference scan on Apple M4) | not measured | 3,518.4 | 4,403.8 | 8,906.2 |
+| Qwen3-VL-4B referee (2 images; 4 images: 8,652.2) | 8,589.9 | not measured | not measured | not measured |
+| OpenCV witness | 1,925.7 (host RSS) | 3,461.4 (host RSS) | 3,071.5 (host RSS) | 8,906.2 |
 
-Utilisation is sampled at per-pass peak CUDA allocation Hz through torch.cuda.max_memory_allocated(). The final row reports the peak with all resident stages loaded simultaneously.
+The Apple M4 CPU and witness figures are the cumulative peak resident set size of the whole benchmark process, which is why they are identical across stages, and the witness host RSS values on the other platforms are likewise process-level peaks. The Mac captioner figures use random-initialised weights. A conservative upper bound for holding the detector, captioner and referee resident together is 12,660 MB, the sum of the peaks above (551.3 MB T4 detector, 3,518.4 MB RTX 4060 captioner Triton scan and 8,589.9 MB T4 referee); this mixes platforms, and no co-resident run was measured. The largest single-stage peak, with stages loaded one at a time, is 8,652.2 MB (referee, 4 images).
 
 ### 12.5 Throughput
 
-**Table 12.6. Stage throughput in pairs per second.**
+**Table 12.6. Stage throughput in pairs per second.** Batch-1 throughput is the reciprocal of the mean batch-1 latency.
 
 | Stage | Platform | Batch 1 | Batch 16 |
 |---|---|---:|---:|
-| Detector D03 | Colab Tesla T4 (CUDA) | 57.2 (RTX 4060: 129.8) | 119.0 (RTX 4060: 144.6) |
+| Detector D03 | Colab Tesla T4 (CUDA) | 57.2 | 119.0 |
+| Detector D03 | RTX 4060 (CUDA) | 129.8 | 144.6 |
 | Detector D03 | Apple M4 (MPS) | 48.2 | 37.5 |
 | Detector D03 | Apple M4 (CPU) | 22.7 | 12.1 |
-| Captioner C06 (Triton fused scan) | Colab Tesla T4 (CUDA) | 42.4 (RTX 4060) | n/a (greedy batch 1) |
-| Captioner C06 (reference scan) | Colab Tesla T4 (CUDA) | 11.5 (RTX 4060) | n/a (greedy batch 1) |
-| Captioner C06 (reference scan) | Apple M4 (MPS) | 5.12 | n/a (greedy batch 1) |
-| Captioner C06 (reference scan) | Apple M4 (CPU) | 2.28 | n/a (greedy batch 1) |
+| Captioner C06 (Triton fused scan) | RTX 4060 (CUDA) | 42.4 | n/a (greedy batch 1) |
+| Captioner C06 (Triton fused scan) | Colab Tesla T4 (CUDA) | not measured | not measured |
+| Captioner C06 (reference scan) | RTX 4060 (CUDA) | 11.5 | n/a (greedy batch 1) |
+| Captioner C06 (reference scan, full-length decode) | Apple M4 (MPS) | 5.12 | n/a (greedy batch 1) |
+| Captioner C06 (reference scan, full-length decode) | Apple M4 (CPU) | 2.28 | n/a (greedy batch 1) |
 
-End-to-end throughput on the Colab Tesla T4 at batch 1 is 13.68 pairs per second for the mask-only policy, 2.94 for the triggered policy and 2.67 for the unconditional-referee policy. Training throughput reference points from the receipts are 103.7 to 141.8 samples per second for D03 on the RTX 4060 and 74.0 to 85.5 samples per second for A03 on the T4.
+End-to-end throughput is not measured. From the stage means of Section 12.6 (mixed-platform estimate: detector, witness and referee on the T4, captioner on the RTX 4060) it is 18.42 pairs per second for the mask-only policy, 3.11 for the disagreement-triggered policy, 2.81 for the unconditional-referee policy and 11.92 for the calibrated mask-first hybrid. Training throughput reference points from the receipts are 103.7 to 141.8 samples per second for D03 on the RTX 4060 and 74.0 to 85.5 samples per second for A03 on the T4.
 
 ### 12.6 Cost per 1,000 Pairs
 
 Cost is dominated by the referee, whose invocation count is governed by the verification policy. The per-1,000-pair cost on a platform with hourly price `P` is
 
-`Cost_1000 = 1000 x (S_det + S_cap + S_wit + c x v x S_ref) x P / 3600`,
+`Cost_1000 = 1000 x (S_det + S_cap + c x S_wit + c x v x S_ref) x P / 3600`,
 
-where `S_det`, `S_cap` and `S_wit` are mean seconds per pair of the detector, captioner and witness (non-referee stages), `S_ref` is the mean seconds per referee call, `c = 147 / 120 = 1.225` is the audited claims-per-pair ratio (147 claims over 120 validation pairs) and `v` is the referee calls per claim. The three policies take `v` from the Milestone 4 comparison: direct 1.0, disagreement-triggered 0.6463 (95 of 147 claims triggered) and mask-only 0. The resulting referee calls per pair are 1.225, 0.792 (1.225 x 0.6463) and 0, and triggering removes 35.4% of referee calls relative to the direct policy.
+where `S_det` and `S_cap` are mean seconds per pair of the detector and captioner, `S_wit` is the mean seconds per claim of the witness, `S_ref` is the mean seconds per referee call, `c` is the claims-per-pair ratio and `v` is the referee calls per claim. The audited ratio is `c = 147 / 120 = 1.225` (147 claims over 120 validation pairs) for the three Milestone 4 policies, and `c = 185 / 150 = 1.2333` (185 claims over 150 Test pairs) for the hybrid, whose call count of 18 referee calls over 150 Test pairs (0.0973 per claim, 0.120 per pair) was measured on the Test audit. The three Milestone 4 policies take `v` from the Milestone 4 comparison: direct 1.0, disagreement-triggered 0.6463 (95 of 147 claims triggered) and mask-only 0. The resulting referee calls per pair are 1.225, 0.792 (1.225 x 0.6463) and 0, and triggering removes 35.4% of referee calls relative to the direct policy.
 
-**Table 12.7. Cost per 1,000 pairs on a cloud T4 (AWS g4dn.xlarge on-demand, us-east-1 Linux, 0.526 USD per hour).**
+**Table 12.7. Cost per 1,000 pairs, mixed-platform estimate priced at a cloud T4 (AWS g4dn.xlarge on-demand, us-east-1 Linux, 0.526 USD per hour).**
 
-| Policy | Referee calls per claim | Referee calls per pair | Proxy supported precision (Val audit) | Seconds per pair | Cost per 1,000 pairs (USD) |
+| Policy | Referee calls per claim | Referee calls per pair | Proxy supported precision | Seconds per pair | Cost per 1,000 pairs (USD) |
 |---|---:|---:|---:|---:|---:|
-| Direct Qwen3-VL (gated) | 1.0000 | 1.225 | 82.43% | 0.374 | $0.0547 |
-| Disagreement-triggered reinspection | 0.6463 | 0.792 | 72.22% | 0.341 | $0.0498 |
-| Mask-only checker | 0 | 0 | 91.38% | 0.073 | $0.0107 |
-| Calibrated mask-first hybrid | 0.0973 | 0.119 | **93.94% (Test)** / 94.50% (Val) | 0.102 | **$0.0150** |
+| Direct Qwen3-VL (gated), 2-image calls | 1.0000 | 1.225 | 82.43% (Val audit) | 0.355 | $0.0519 |
+| Disagreement-triggered reinspection, 4-image calls | 0.6463 | 0.792 | 72.22% (Val audit) | 0.322 | $0.0470 |
+| Mask-only checker | 0 | 0 | 91.38% (Val audit) | 0.054 | $0.0079 |
+| Calibrated mask-first hybrid, 2-image calls | 0.0973 | 0.120 | **93.94% (Test)** / 94.50% (Val) | 0.084 | **$0.0122** |
 
-Measured stage means entering the formula: `S_det` = 0.0175 s, `S_cap` = 0.0448 s, `S_wit` = 0.0108 s and `S_ref` = 0.2458 s. The mask-only policy is both the cheapest and, on the proxy-labelled Validation audit, the most precise, but it cannot adjudicate out-of-ontology claims (for example vegetation or parking), which is the case the hybrid policy routes to the referee. Precision values are scored against proxy labels derived from ground-truth masks and reference captions, not against human labels (Section 13.1).
+Measured stage means entering the formula: `S_det` = 0.0175 s (Colab T4), `S_cap` = 0.0236 s (RTX 4060, Triton scan), `S_wit` = 0.0108 s per claim (Colab T4 host CPU), `S_ref` = 0.2458 s for a 2-image call and 0.3380 s for a 4-image call (Colab T4). The captioner was not measured on the T4, so the figures in Table 12.7 are a mixed-platform estimate: the captioner term uses the RTX 4060 measurement and, because the T4 was slower than the RTX 4060 on the detector (16.93 ms against 7.64 ms P50), it probably understates the cost of a pure-T4 deployment. The direct and hybrid policies are priced with the 2-image referee call, the triggered policy with the 4-image call (pair plus crops). Mean-based seconds per pair are sums of separately measured means and were not measured end to end. The mask-only policy is both the cheapest and, on the proxy-labelled Validation audit, the most precise, but it cannot adjudicate out-of-ontology claims (for example vegetation or parking), which is the case the hybrid policy routes to the referee. Precision values are scored against proxy labels derived from ground-truth masks and reference captions, not against human labels (Section 13.1).
 
 ## 13. Limitations
 
