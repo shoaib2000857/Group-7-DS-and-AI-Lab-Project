@@ -192,24 +192,18 @@ Slots are replaced by the exact value printed by the benchmark (a value such as 
 | `e2e_t4_maskonly_p50_ms` | 12 | Latency percentile (ms), batch 1, timed passes; stage_hardware encoded in key (t4=Kaggle T4, m4mps/m4cpu=Apple M4, host=Kaggle host CPU) |
 | `e2e_t4_direct_p50_ms` | 12 | Latency percentile (ms), batch 1, timed passes; stage_hardware encoded in key (t4=Kaggle T4, m4mps/m4cpu=Apple M4, host=Kaggle host CPU) |
 | `d03_t4_vram_mb` | 12 | torch.cuda.max_memory_allocated (MB) |
-| `d03_t4_gpu_util_pct` | 12 | Mean GPU utilisation (%) from the sampler |
 | `d03_m4mps_mem_mb` | 12 | Peak MPS driver/process memory (MB) on Apple M4 |
 | `d03_m4cpu_rss_mb` | 12 | Peak resident set size (MB) on Apple M4 CPU |
 | `cap_t4_vram_mb` | 12 | torch.cuda.max_memory_allocated (MB) |
-| `cap_t4_gpu_util_pct` | 12 | Mean GPU utilisation (%) from the sampler |
 | `cap_m4mps_mem_mb` | 12 | Peak MPS driver/process memory (MB) on Apple M4 |
 | `cap_m4cpu_rss_mb` | 12 | Peak resident set size (MB) on Apple M4 CPU |
 | `ref_t4_vram_mb` | 12, 13 | torch.cuda.max_memory_allocated (MB) |
-| `ref_t4_gpu_util_pct` | 12 | Mean GPU utilisation (%) from the sampler |
 | `ref_m4mps_mem_mb` | 12 | Peak MPS driver/process memory (MB) on Apple M4 |
 | `ref_m4cpu_rss_mb` | 12 | Peak resident set size (MB) on Apple M4 CPU |
 | `wit_m4cpu_rss_mb` | 12 | Peak resident set size (MB) on Apple M4 CPU |
 | `e2e_t4_vram_mb` | 12 | torch.cuda.max_memory_allocated (MB) |
-| `e2e_t4_gpu_util_pct` | 12 | Mean GPU utilisation (%) from the sampler |
 | `e2e_m4mps_mem_mb` | 12 | Peak MPS driver/process memory (MB) on Apple M4 |
 | `e2e_m4cpu_rss_mb` | 12 | Peak resident set size (MB) on Apple M4 CPU |
-| `util_sample_hz` | 12 | GPU utilisation sampling rate (Hz) / sampler tool |
-| `util_sampler` | 12 | GPU utilisation sampling rate (Hz) / sampler tool |
 | `d03_t4_b1_pps` | 12 | Throughput in pairs per second at the stated batch size |
 | `d03_t4_b16_pps` | 12 | Throughput in pairs per second at the stated batch size |
 | `d03_m4mps_b1_pps` | 12 | Throughput in pairs per second at the stated batch size |
