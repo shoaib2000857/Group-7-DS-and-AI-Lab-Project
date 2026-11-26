@@ -8,10 +8,10 @@ The audit measures claim-level groundedness independently of the automated proxy
 
 | Claim slice | Rater A | Rater B | Adjudicator (when A and B disagree) |
 |---|---|---|---|
-| Claims 001 to 030 | Shoaib (SSSM) | Priyanshu Agarwal (PA) | Sujal Raj Pradhan (SRP) |
-| Claims 031 to 060 | Priyanshu Agarwal (PA) | Sarthak Saini (SS) | Shoaib (SSSM) |
+| Claims 001 to 030 | Shoaib Sadiq Salehmohamed (SSSM) | Priyanshu Agarwal (PA) | Sujal Raj Pradhan (SRP) |
+| Claims 031 to 060 | Priyanshu Agarwal (PA) | Sarthak Saini (SS) | Shoaib Sadiq Salehmohamed (SSSM) |
 | Claims 061 to 090 | Sarthak Saini (SS) | Sujal Raj Pradhan (SRP) | Priyanshu Agarwal (PA) |
-| Claims 091 to 120 | Sujal Raj Pradhan (SRP) | Shoaib (SSSM) | Sarthak Saini (SS) |
+| Claims 091 to 120 | Sujal Raj Pradhan (SRP) | Shoaib Sadiq Salehmohamed (SSSM) | Sarthak Saini (SS) |
 
 No claim is adjudicated by one of its own raters, and each member rates two slices (60 claims). The claim set is stratified over the model's accept, reject and defer outcomes and over the scene strata (unchanged, building-only, road-only, mixed, small-change), so that the sheet is not dominated by easy accepts.
 

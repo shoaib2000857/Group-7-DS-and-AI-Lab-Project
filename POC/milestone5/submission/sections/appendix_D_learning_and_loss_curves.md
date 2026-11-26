@@ -1,6 +1,10 @@
 ## Appendix D. Learning and Loss Curves
 
-Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs are archived in `docs/milestone4/evidence/full_data_m4/{detector_runs,captioner_runs}/*/history.jsonl` and visualized in the Milestone 4 training diagnostic figures (`reports/figures/m4_detector_learning_curves.png` and `reports/figures/m4_captioner_learning_curves.png`). Key convergence trajectories verified directly from the run receipts:
+Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs are archived in `docs/milestone4/evidence/full_data_m4/{detector_runs,captioner_runs}/*/history.jsonl` and reproduced directly below for the primary detector and captioner sweeps. Key convergence trajectories verified from the run receipts:
+
+![Detector training loss and Validation Change-Class mIoU learning curves across the BIT-ResNet18 and architecture-baseline sweeps.](figures/m4_detector_learning_curves.png)
+
+![Captioner training cross-entropy loss and Validation Corpus BLEU-4 learning curves across the RSCaMa sweep (C01–C07).](figures/m4_captioner_learning_curves.png)
 
 - **`D03_bit_lr3e4` (Selected Detector):** Rapid initial drop in Focal + Soft Dice loss during the 5 frozen-backbone warmup epochs (`epochs 0–4`), followed by a smooth +8-point jump in Validation Change-Class mIoU immediately upon ResNet18 unfreezing (`epoch 5`), peaking at **`74.54%` at epoch 24** (`32/35` epochs completed before early-stopping patience 8 triggered). Train/Val loss gap stayed tight with zero late-epoch overfitting.
 - **`A03_siam_r18_unet` & `A01_ef_unet`:** Converged steadily to Validation peaks at epochs 22 (`75.02%`) and 23 (`73.60%`), respectively, across 25 epochs.

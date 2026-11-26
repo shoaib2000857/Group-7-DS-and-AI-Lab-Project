@@ -2,7 +2,7 @@
 
 ### A.1 Held-Out LEVIR-MCI Test Detector Metrics (1,858 Pairs, 121.77M Pixels)
 
-| Model | Arch | Chg mIoU (%) | 95% Bootstrap CI | Road IoU (%) | Bldg IoU (%) | Bin F1 (%) | 95% Bootstrap CI | Small (<1%) F1 (%) | Pixel Acc (%) | ROC-AUC | PR-AUC (AP) | FA@16px (%) | FA@50px (%) | FA@200px (%) |
+| Model | Arch | Chg mIoU (%) | 95% Bootstrap CI | Road IoU (%) | Bldg IoU (%) | Bin F1 / Dice (%) | 95% Bootstrap CI | Small (<1%) F1 (%) | Pixel Acc (%) | ROC-AUC | PR-AUC (AP) | FA@16px (%) | FA@50px (%) | FA@200px (%) |
 |---|---|---:|---|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|
 | **`D03_bit_lr3e4` (Selected)** | `bit_resnet18` | **75.93** | `[74.79, 77.04]` | 74.53 | 77.33 | **86.83** | `[86.18, 87.42]` | 48.88 | 97.64 | 0.9901 | 0.9361 | 11.80 | 10.28 | 5.74 |
 | `A03_siam_r18_unet` | `siam_resnet18_unet` | 76.73 | `[75.55, 77.84]` | 74.94 | 78.52 | 87.49 | `[86.84, 88.09]` | 49.10 | 97.75 | 0.9909 | 0.9411 | 9.09 | 8.23 | 5.09 |

@@ -183,7 +183,7 @@ Milestone 5 enforces a strict **single-pass, frozen-artifact evaluation protocol
 
 1. **SHA-256 Provenance Gate:** Every evaluation script recomputes the SHA-256 digest of each loaded checkpoint and verifies it against `POC/milestone5/configs/model_registry.json` and the Milestone 4 receipts before running inference.
 2. **Strict Train / Validation / Test Separation:** All model hyperparameters, architecture selections, captioner vocabularies (388 train-only tokens), and hybrid verifier routing rules (`tau_accept = 0.60`, `tau_reject = 0.75`, `mask_alarm_px = 50`, escalation predicates) were **locked exclusively on Validation** (`1,242` pairs / `147` Val claims) prior to evaluating on the held-out Test split (`1,858` pairs / `150` stratified blind Test pairs).
-3. **Statistical Rigor:** Every primary held-out Test metric is accompanied by **1,000-resample paired bootstrap 95% confidence intervals** (fixed seed `42`), paired **Wilcoxon signed-rank tests** over per-pair scores, and exact **McNemar's test** on unchanged-scene false-alarm discordance.
+3. **Statistical Rigor & Split Justification (Cross-Validation Strategy):** Rather than $k$-fold cross-validation—which risks geographic tile leakage across adjacent urban patches and breaks comparability with published LEVIR-MCI baselines—evaluation uses the official non-overlapping spatial Train/Validation/Test partition combined with **3-seed training replication** (`seeds 42, 0, 2026` on both `D03` and `C06`), **1,000-resample paired bootstrap 95% confidence intervals** (fixed seed `42`), paired **Wilcoxon signed-rank tests** over per-pair scores, and exact **McNemar's test** on unchanged-scene false-alarm discordance.
 4. **No Ground-Truth Leakage into Inference Workers:** Ground-truth segmentation masks and reference captions are read exclusively by the offline evaluator after predictions are serialized; inference workers receive only $(T_1, T_2)$ imagery.
 
 ### 4.2 Test Datasets and Ground-Truth Preparation
@@ -636,6 +636,11 @@ At first glance, aggregate binary any-change F1 drops sharply from `86.83%` on L
 - On the sole overlapping supervised class (`building`), `D03` achieves its highest semantic recall (**`22.80%`** on Test, `21.66%` on Val — **`+6.16` pts above `A03`**) and routes `88%` of those detections to the correct `building` class (`20.16%` vs `2.64%` road), while correctly suppressing out-of-ontology `tree` (`5.37%`), `water` (`2.39%`), and `playground` (`3.89%`) transitions.
 - Across both SECOND-CC Val (`22.44%` vs `13.94%` F1) and Test (`23.17%` vs `17.71%` F1), **`D03` outperforms `A03` by `+5.46` to `+8.50` F1 points** under zero-shot cross-sensor/cross-city domain shift, reinforcing its selection as TerraWatch's primary detector while demonstrating that multi-class remote-sensing transfer requires multi-ontology fine-tuning (Section 14.1) and deterministic out-of-ontology deferral in the verifier.
 
+### 11.4 Edge Cases and Adversarial Scope
+
+- **Operational Edge Cases:** Three boundary regimes govern failure risk on held-out Test imagery: (1) **tiny sub-0.38% tile edits** (`tiny_1_250`, 20 pairs, `12.99%` F1) where single sheds or narrow alleys fall below the ResNet18 stride-4 receptive field; (2) **zero-change high-contrast seasonal/shadow boundaries** (`924` unchanged pairs, `FA@50px = 10.28%`), mitigated downstream by `C06`'s `3.57%` unchanged false-alarm rate and hybrid mask-caption agreement; and (3) **localized translucent cloud haze** (`cloud_haze_t2_15pct`, `-6.48` mIoU pts vs `A03`), mitigated by the OpenCV witness quality check (`overexposed_or_cloudy`).
+- **Adversarial Scope:** For Earth-observation monitoring feeds, the primary real-world robustness threat model consists of **physical radiometric, atmospheric, compression, and geometric perturbations** (evaluated systematically across all 17 conditions in Section 11.1) plus natural cross-city ontology shift (Section 11.3). White-box gradient-based adversarial perturbations (e.g., $L_\infty$ PGD attacks) were not executed in Milestone 5 because operational satellite tiles are ingested from signed provider archives rather than untrusted user uploads; formal adversarial-patch resilience is noted as future security hardening (Section 14.7).
+
 ## 12. Computational Performance
 
 This section reports the training cost recorded in Milestone 4 receipts and the inference cost measured in Milestone 5 on the three profiled platforms of Table 2.1 (RTX 4060 workstation, Colab Tesla T4 and Apple M4). The NVIDIA L4 appears only in the training-cost results; no inference profile was run on it. Training figures are read directly from the 33 run receipts by `POC/milestone5/scripts/m5_training_cost_table.py`; inference figures are produced by `POC/milestone5/scripts/m5_benchmark_compute.py` and written under `POC/milestone5/evidence/compute_profile/`. Profiling protocol on the CUDA platforms: 50 (detectors, witness), 5 (captioner) and 3 (referee) warm-up passes and 200 (detectors, witness), 30 (captioner) and 20 (referee) timed passes per stage at batch 1, with device synchronisation before every timestamp (benchmark revision f568a1d on the CUDA platforms, 4be3e22 on the Mac). Inputs are LEVIR-MCI Validation pairs from `POC/execution/data/pairs` (250 loaded on the CUDA platforms, 150 on the Mac); the captioner and referee timed passes cycle through 35 and 23 distinct pairs respectively, and the witness runs on ground-truth masks. On the Apple M4 the MPS detector and witness use the same 50 and 200 passes, the MPS captioner 10 and 50, while the CPU backend uses 5 and 30 for detectors (5 timed passes at batch 16) and 2 and 10 for the captioner. The Qwen3-VL referee was profiled on the Colab T4 only. The captioner was profiled on the RTX 4060 and the Apple M4 only; it was not measured on the Colab T4. The summary figure is `reports/figures/m5_compute_profile.png`.
@@ -778,7 +783,7 @@ The Apple M4 CPU and witness figures are the cumulative peak resident set size o
 | Captioner C06 (reference scan, full-length decode) | Apple M4 (MPS) | 5.12 | n/a (greedy batch 1) |
 | Captioner C06 (reference scan, full-length decode) | Apple M4 (CPU) | 2.28 | n/a (greedy batch 1) |
 
-End-to-end throughput is not measured. From the stage means of Section 12.6 (mixed-platform estimate: detector, witness and referee on the T4, captioner on the RTX 4060) it is 18.42 pairs per second for the mask-only policy, 3.11 for the disagreement-triggered policy, 2.81 for the unconditional-referee policy and 11.92 for the calibrated mask-first hybrid. Training throughput reference points from the receipts are 103.7 to 141.8 samples per second for D03 on the RTX 4060 and 74.0 to 85.5 samples per second for A03 on the T4.
+End-to-end throughput is not measured. From the stage means of Section 12.6 (mixed-platform estimate: detector, witness and referee on the T4, captioner on the RTX 4060) it is 18.42 pairs per second for the mask-only policy, 3.11 for the disagreement-triggered policy, 2.81 for the unconditional-referee policy and 11.92 for the calibrated mask-first hybrid. Training throughput reference points from the receipts are 103.7 to 141.8 samples per second for D03 on the RTX 4060 and 74.0 to 85.5 samples per second for A03 on the T4. Direct hardware GPU-utilization telemetry (NVML) was not sampled during profiling; compute saturation is instead evidenced by the measured batch-1 vs batch-16 scaling in Table 12.6, where D03 scales 2.08x on the Colab T4 (57.2 to 119.0 pairs/s, indicating launch-bound execution at batch 1) and 1.11x on the RTX 4060 (129.8 to 144.6 pairs/s, approaching compute saturation at small batches).
 
 ### 12.6 Cost per 1,000 Pairs
 
@@ -936,7 +941,7 @@ TerraWatch is **ready for controlled human-in-the-loop pilot deployment** on $0.
 
 ### A.1 Held-Out LEVIR-MCI Test Detector Metrics (1,858 Pairs, 121.77M Pixels)
 
-| Model | Arch | Chg mIoU (%) | 95% Bootstrap CI | Road IoU (%) | Bldg IoU (%) | Bin F1 (%) | 95% Bootstrap CI | Small (<1%) F1 (%) | Pixel Acc (%) | ROC-AUC | PR-AUC (AP) | FA@16px (%) | FA@50px (%) | FA@200px (%) |
+| Model | Arch | Chg mIoU (%) | 95% Bootstrap CI | Road IoU (%) | Bldg IoU (%) | Bin F1 / Dice (%) | 95% Bootstrap CI | Small (<1%) F1 (%) | Pixel Acc (%) | ROC-AUC | PR-AUC (AP) | FA@16px (%) | FA@50px (%) | FA@200px (%) |
 |---|---|---:|---|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|
 | **`D03_bit_lr3e4` (Selected)** | `bit_resnet18` | **75.93** | `[74.79, 77.04]` | 74.53 | 77.33 | **86.83** | `[86.18, 87.42]` | 48.88 | 97.64 | 0.9901 | 0.9361 | 11.80 | 10.28 | 5.74 |
 | `A03_siam_r18_unet` | `siam_resnet18_unet` | 76.73 | `[75.55, 77.84]` | 74.94 | 78.52 | 87.49 | `[86.84, 88.09]` | 49.10 | 97.75 | 0.9909 | 0.9411 | 9.09 | 8.23 | 5.09 |
@@ -1036,7 +1041,11 @@ Full calibration curves and threshold risk-coverage sweeps across $\tau \in [0.5
 
 ## Appendix D. Learning and Loss Curves
 
-Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs are archived in `docs/milestone4/evidence/full_data_m4/{detector_runs,captioner_runs}/*/history.jsonl` and visualized in the Milestone 4 training diagnostic figures (`reports/figures/m4_detector_learning_curves.png` and `reports/figures/m4_captioner_learning_curves.png`). Key convergence trajectories verified directly from the run receipts:
+Full epoch-by-epoch training and validation curves for all 33 Milestone 4 runs are archived in `docs/milestone4/evidence/full_data_m4/{detector_runs,captioner_runs}/*/history.jsonl` and reproduced directly below for the primary detector and captioner sweeps. Key convergence trajectories verified from the run receipts:
+
+![Detector training loss and Validation Change-Class mIoU learning curves across the BIT-ResNet18 and architecture-baseline sweeps.](figures/m4_detector_learning_curves.png)
+
+![Captioner training cross-entropy loss and Validation Corpus BLEU-4 learning curves across the RSCaMa sweep (C01–C07).](figures/m4_captioner_learning_curves.png)
 
 - **`D03_bit_lr3e4` (Selected Detector):** Rapid initial drop in Focal + Soft Dice loss during the 5 frozen-backbone warmup epochs (`epochs 0–4`), followed by a smooth +8-point jump in Validation Change-Class mIoU immediately upon ResNet18 unfreezing (`epoch 5`), peaking at **`74.54%` at epoch 24** (`32/35` epochs completed before early-stopping patience 8 triggered). Train/Val loss gap stayed tight with zero late-epoch overfitting.
 - **`A03_siam_r18_unet` & `A01_ef_unet`:** Converged steadily to Validation peaks at epochs 22 (`75.02%`) and 23 (`73.60%`), respectively, across 25 epochs.
@@ -1234,10 +1243,10 @@ The audit measures claim-level groundedness independently of the automated proxy
 
 | Claim slice | Rater A | Rater B | Adjudicator (when A and B disagree) |
 |---|---|---|---|
-| Claims 001 to 030 | Shoaib (SSSM) | Priyanshu Agarwal (PA) | Sujal Raj Pradhan (SRP) |
-| Claims 031 to 060 | Priyanshu Agarwal (PA) | Sarthak Saini (SS) | Shoaib (SSSM) |
+| Claims 001 to 030 | Shoaib Sadiq Salehmohamed (SSSM) | Priyanshu Agarwal (PA) | Sujal Raj Pradhan (SRP) |
+| Claims 031 to 060 | Priyanshu Agarwal (PA) | Sarthak Saini (SS) | Shoaib Sadiq Salehmohamed (SSSM) |
 | Claims 061 to 090 | Sarthak Saini (SS) | Sujal Raj Pradhan (SRP) | Priyanshu Agarwal (PA) |
-| Claims 091 to 120 | Sujal Raj Pradhan (SRP) | Shoaib (SSSM) | Sarthak Saini (SS) |
+| Claims 091 to 120 | Sujal Raj Pradhan (SRP) | Shoaib Sadiq Salehmohamed (SSSM) | Sarthak Saini (SS) |
 
 No claim is adjudicated by one of its own raters, and each member rates two slices (60 claims). The claim set is stratified over the model's accept, reject and defer outcomes and over the scene strata (unchanged, building-only, road-only, mixed, small-change), so that the sheet is not dominated by easy accepts.
 

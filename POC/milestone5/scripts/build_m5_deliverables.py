@@ -158,7 +158,7 @@ def _clean_math(text: str) -> str:
             (r"\sum_k", "Σ_k"),
             (r"\left(", "("), (r"\right)", ")"),
             (r"\ge", "≥"), (r"\le", "≤"), (r"\neq", "≠"), (r"\pm", "±"),
-            (r"\times", "×"), (r"\in", "∈"), (r"\kappa", "κ"), (r"\Delta", "Δ"),
+            (r"\times", "×"), (r"\in", " in "), (r"\kappa", "κ"), (r"\Delta", "Δ"),
             (r"\gamma", "γ"), (r"\tau_A", "τ_A"), (r"\tau_R", "τ_R"), (r"\tau", "τ"),
             (r"^\circ", "°"), (r"\{", "{"), (r"\}", "}"),
             (r"\%", "%"), (r"\downarrow", "↓"), (r"\to", "→"),
@@ -307,66 +307,104 @@ class ReportCanvas(canvas.Canvas):
 
 
 def build_cover(cover_template: Path | None) -> BytesIO:
+    """Render Group 7's standard IIT Madras white-background cover matching Milestones 1-4."""
     buf = BytesIO()
     w, h = A4
     c = canvas.Canvas(buf, pagesize=A4)
-    # Crisp academic cover matching IIT Madras Group 7 visual identity
-    c.setFillColor(NAVY)
-    c.rect(0, h - 18, w, 18, fill=1, stroke=0)
-    c.setFillColor(TEAL)
-    c.rect(0, h - 23, w, 5, fill=1, stroke=0)
 
-    c.setFillColor(MUTED)
-    c.setFont(FONT_BOLD, 10.5)
-    c.drawCentredString(w / 2, h - 108, "INDIAN INSTITUTE OF TECHNOLOGY MADRAS")
-    c.setFont(FONT_REG, 9.5)
-    c.drawCentredString(w / 2, h - 126, "BS in Data Science and Applications  •  Data Science & AI Lab (BSDA4001)")
+    # Top course label
+    c.setFillColor(colors.HexColor("#52606D"))
+    c.setFont(FONT_REG, 12.2)
+    c.drawCentredString(w / 2, h - 108, "DS & AI Lab Project (BSDA4001)")
 
-    c.setStrokeColor(TEAL)
-    c.setLineWidth(1.2)
-    c.line(130, h - 150, w - 130, h - 150)
+    # Main 3-line project title (exact M1-M4 wording & styling)
+    c.setFillColor(colors.HexColor("#14232E"))
+    c.setFont(FONT_BOLD, 24.5)
+    c.drawCentredString(w / 2, h - 178, "TerraWatch: Intelligent Satellite")
+    c.drawCentredString(w / 2, h - 208, "Image Change Detection and")
+    c.drawCentredString(w / 2, h - 238, "Analysis")
 
+    # Blue uppercase milestone subtitle
     c.setFillColor(BLUE)
-    c.setFont(FONT_BOLD, 10.0)
-    c.drawCentredString(w / 2, h - 210, "MILESTONE 5: SYSTEM EVALUATION, ROBUSTNESS & DEPLOYMENT READINESS")
+    c.setFont(FONT_BOLD, 9.2)
+    c.drawCentredString(w / 2, h - 282, "MILESTONE 5: SYSTEM EVALUATION, ROBUSTNESS & DEPLOYMENT READINESS")
 
-    c.setFillColor(NAVY)
-    c.setFont(FONT_BOLD, 28.0)
-    c.drawCentredString(w / 2, h - 262, "TerraWatch")
-    c.setFillColor(TEAL)
-    c.setFont(FONT_BOLD, 13.0)
-    c.drawCentredString(w / 2, h - 288, "Evidence-Backed Satellite Change Detection, Captioning & Hybrid Claim Verification")
-
-    c.setFillColor(INK)
-    c.setFont(FONT_REG, 10.0)
-    c.drawCentredString(w / 2, h - 328, "Held-Out LEVIR-MCI Test (1,858 Pairs)  •  SECOND-CC 6-Class Zero-Shot Transfer")
-    c.drawCentredString(w / 2, h - 346, "17-Condition Stress Suite  •  Calibrated Mask-First Hybrid Verifier  •  Cross-Platform Compute Profile")
-
-    # Team card
-    c.setFillColor(ZEBRA_BG)
-    c.setStrokeColor(RULE_COLOR)
-    c.roundRect(110, h - 555, w - 220, 150, 8, fill=1, stroke=1)
-    c.setFillColor(NAVY)
-    c.setFont(FONT_BOLD, 11.0)
-    c.drawCentredString(w / 2, h - 432, "Project Group 7")
-    c.setFont(FONT_REG, 10.0)
-    c.setFillColor(INK)
-    members = [
-        "Shoaib (SSSM)",
-        "Sujal Raj Pradhan (SRP)",
-        "Priyanshu Agarwal (PA)",
-        "Sarthak Saini (SS)",
+    # Centered IIT Madras emblem
+    logo_candidates = [
+        M5_DIR / "submission/figures/iitm_logo.png",
+        REPO / "reports/figures/iitm_logo.png",
     ]
-    yy = h - 460
-    for m in members:
-        c.drawCentredString(w / 2, yy, m)
-        yy -= 20
+    logo_path = next((p for p in logo_candidates if p.is_file()), None)
+    if logo_path is not None:
+        from PIL import Image as PILImage, ImageDraw
+        from reportlab.lib.utils import ImageReader
+        with PILImage.open(logo_path) as im:
+            im_rgba = im.convert("RGBA")
+            # Mask circular emblem cleanly onto pure white (handles opaque black corners in iitm_logo.png)
+            iw, ih = im_rgba.size
+            mask = PILImage.new("L", (iw, ih), 0)
+            draw = ImageDraw.Draw(mask)
+            pad_px = max(1, int(min(iw, ih) * 0.015))
+            draw.ellipse((pad_px, pad_px, iw - pad_px - 1, ih - pad_px - 1), fill=255)
+            bg = PILImage.new("RGB", (iw, ih), (255, 255, 255))
+            bg.paste(im_rgba.convert("RGB"), (0, 0), mask)
+        logo_buf = BytesIO()
+        bg.save(logo_buf, format="PNG")
+        logo_buf.seek(0)
+        logo_sz = 114.0
+        c.drawImage(
+            ImageReader(logo_buf),
+            (w - logo_sz) / 2,
+            h - 446,
+            width=logo_sz,
+            height=logo_sz,
+            preserveAspectRatio=True,
+        )
 
+    # Institution lines
+    c.setFillColor(colors.HexColor("#14232E"))
+    c.setFont(FONT_REG, 12.5)
+    c.drawCentredString(w / 2, h - 478, "Indian Institute of Technology Madras")
+    c.drawCentredString(w / 2, h - 498, "BS in Data Science and Applications")
+
+    # Spaced Group 7 header
+    c.setFont(FONT_BOLD, 11.2)
+    c.drawCentredString(w / 2, h - 550, "G R O U P   7")
+
+    # Standard 3-column Group 7 roster table matching Milestones 1-4
+    tbl_data = [
+        ["Name", "Email", "GitHub Username"],
+        ["Priyanshu Agarwal", "23f2003488@ds.study.iitm.ac.in", "23f2003488"],
+        ["Sarthak Saini", "23f2005347@ds.study.iitm.ac.in", "Sarthak-Saini265"],
+        ["Sujal Raj Pradhan", "23f2004759@ds.study.iitm.ac.in", "SujalPradhan"],
+        ["Shoaib Sadiq Salehmohamed", "24f2000857@ds.study.iitm.ac.in", "shoaib2000857"],
+    ]
+    col_widths = [156.0, 166.0, 103.0]
+    tbl = Table(tbl_data, colWidths=col_widths)
+    tbl.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#E6ECEF")),
+        ("BACKGROUND", (0, 1), (-1, -1), colors.white),
+        ("TEXTCOLOR", (0, 0), (-1, -1), colors.HexColor("#14232E")),
+        ("FONTNAME", (0, 0), (-1, 0), FONT_BOLD),
+        ("FONTNAME", (0, 1), (-1, -1), FONT_REG),
+        ("FONTSIZE", (0, 0), (-1, 0), 9.0),
+        ("FONTSIZE", (0, 1), (-1, -1), 8.9),
+        ("ALIGN", (0, 0), (-1, -1), "LEFT"),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 7),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+        ("TOPPADDING", (0, 0), (-1, -1), 5.5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5.5),
+        ("GRID", (0, 0), (-1, -1), 0.55, colors.HexColor("#B8C4CC")),
+    ]))
+    tw, th = tbl.wrapOn(c, w, h)
+    tbl.drawOn(c, (w - tw) / 2, h - 570 - th)
+
+    # Bottom date
     c.setFillColor(MUTED)
-    c.setFont(FONT_REG, 9.5)
-    c.drawCentredString(w / 2, 92, "November 2026")
-    c.setFillColor(NAVY)
-    c.rect(0, 0, w, 12, fill=1, stroke=0)
+    c.setFont(FONT_REG, 8.8)
+    c.drawCentredString(w / 2, h - 746, "November 2026")
+
     c.save()
     buf.seek(0)
     return buf
@@ -541,7 +579,7 @@ def build_slides_pdf(m5_dir: Path, out_pdf: Path) -> Path:
     txt(56, 306, "Milestone 5: Final Evaluation, Robustness & Deployment Readiness", 20.0, lime, FONT_BOLD)
     txt(56, 260, "Frozen-Checkpoint Evaluation Across 1,858 LEVIR-MCI Test Pairs, SECOND-CC Transfer,", 13.5, cream)
     txt(56, 238, "17-Condition Stress Testing & Calibrated Mask-First Hybrid Claim Verification", 13.5, cream)
-    txt(56, 120, "Team: Shoaib (SSSM)  |  Sujal Raj Pradhan (SRP)  |  Priyanshu Agarwal (PA)  |  Sarthak Saini (SS)", 11.5, "#C7D8DF")
+    txt(56, 120, "Priyanshu Agarwal  /  Sarthak Saini  /  Sujal Raj Pradhan  /  Shoaib Sadiq Salehmohamed", 11.8, "#C7D8DF")
     txt(56, 88, "November 2026   •   12 SHA-256 Verified Checkpoints   •   Zero Test-Set Leakage", 10.5, lime)
     c.showPage()
 
