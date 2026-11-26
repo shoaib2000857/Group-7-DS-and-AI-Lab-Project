@@ -297,7 +297,7 @@ def captioner_stage(args, pairs, ov) -> dict:
     ck = find_checkpoint(args.ckpt_dir, CAPTIONER_ID, (".pth", ".pt"))
     state = torch.load(ck, map_location="cpu", weights_only=False) if ck else None
     vocab = state["vocab"] if state and "vocab" in state else {w: i for i, w in enumerate(["<NULL>", "<UNK>", "<START>", "<END>"] + [f"w{i}" for i in range(cfg["vocab_size"] - 4)])}
-    (encoder, fusion, decoder), processor = build_components(str(ROOT / "models/external/RSCaMa"), vocab, "cpu")
+    (encoder, fusion, decoder), processor = build_components(str(ROOT / "models/external/RSCaMa"), vocab, device)
     if state:
         for m, key in zip((encoder, fusion, decoder), ("encoder_dict", "encoder_trans_dict", "decoder_dict")):
             m.load_state_dict(state[key], strict=True)
