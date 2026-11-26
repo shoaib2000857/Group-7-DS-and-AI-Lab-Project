@@ -79,13 +79,13 @@ To validate groundedness and hallucination rates independently of automated mask
 
 **Table 6.4a. Blind dual-rater inter-annotator agreement across all four overlapping 30-claim slices.**
 
-| Claim Slice | Paired Raters | Adjudicator | Claims Rated (Both) | Exact Agreement (%) | Cohen's $\kappa$ | Agreed Error-Category Match |
+| Claim Slice | Paired Raters | 3rd Rater | Claims Rated (Both) | Exact Agreement (%) | Cohen's $\kappa$ | Agreed Error-Category Match |
 |---|---|---|---:|---:|---:|---:|
 | `001–030` | `SSSM` × `PA` | `SRP` | 30 / 30 | **100.0%** (30/30) | **1.000** | **100.0%** (4/4) |
 | `031–060` | `PA` × `SS` | `SSSM` | 30 / 30 | **83.3%** (25/30) | 0.468 | **100.0%** (3/3) |
 | `061–090` | `SS` × `SRP` | `PA` | 30 / 30 | 70.0% (21/30) | 0.082 | **100.0%** (1/1) |
 | `091–120` | `SRP` × `SSSM` | `SS` | 30 / 30 | **86.7%** (26/30) | 0.000* | n/a (0/0) |
-| **Pooled (All 120 Claims)** | **All 4 Raters** | **3rd-Party** | **120 / 120** | **85.0% (102/120)** | **0.384*** | **100.0% (8/8)** |
+| **Pooled (All 120 Claims)** | **All 4 Raters** | **Panel** | **120 / 120** | **85.0% (102/120)** | **0.384*** | **100.0% (8/8)** |
 
 *\*Note on $\kappa$ Prevalence Paradox:* Across all 120 dual-rated claims, raters reached **85.0% exact agreement (`102/120`)** and **100.0% (`8/8`) exact error-category agreement** on mutually flagged contradictions. Because `supported` dominates the marginal distribution (`94/102` agreed claims), chance agreement $p_e$ approaches `0.76` (and reaches `0.87` on slice `091–120`, where `SRP` rated `30/30` supported), illustrating the classic Feinstein–Cicchetti prevalence effect in which high raw agreement (`86.7%`) produces a compressed $\kappa$. All 18 disagreements (`disagreements.csv`) are logged cleanly for third-party adjudication; the human-verified policy metrics below are scored over the **102 consensus-agreed gold claims** (`gold_labels.csv`).
 
