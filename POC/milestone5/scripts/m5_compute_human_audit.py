@@ -365,7 +365,7 @@ def run(raters_dir, out, adjudication=None, packet=None, id_map=None, policies=N
         raise AuditError(f"no rater_*.csv files in {raters_dir}")
     raters, warnings, hashes, unrated = {}, [], {}, {}
     for p in files:
-        name = p.stem[len("rater_"):]
+        name = re.sub(r"_\d+$", "", p.stem[len("rater_"):])
         if name not in {r for s in SLICES.values() for r in s["raters"]}:
             raise AuditError(f"{p.name}: unknown rater {name!r}")
         raters[name], w, nb = load_rater(p, name)

@@ -38,6 +38,14 @@ def test_identical_labels(tmp_path):
     assert s["coverage"]["031-060"]["labelled_both"] == 0
 
 
+def test_packet_filename_suffix(tmp_path):
+    a, b = slice1(lambda i: L[i % 3])
+    write_rater(tmp_path, "SSSM_60", a)
+    write_rater(tmp_path, "PA_60", b)
+    s = m.run(tmp_path, tmp_path / "o")
+    assert s["per_slice"]["001-030"]["kappa"] == 1.0
+
+
 def test_textbook_kappa_and_sklearn():
     pairs = ([("supported", "supported")] * 20 + [("supported", "contradicted")] * 5
              + [("contradicted", "supported")] * 10 + [("contradicted", "contradicted")] * 15)

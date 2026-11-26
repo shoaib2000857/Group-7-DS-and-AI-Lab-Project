@@ -6,7 +6,7 @@ TerraWatch set out to solve a concrete operational problem in satellite monitori
 
 - **Detector accuracy (`75.93%` Change mIoU, `86.83%` Binary F1, `0.9901` ROC-AUC, `0.9361` PR-AUC)** surpassed the `74%` mIoU / `85%` F1 targets and exceeded Validation performance (`74.54%`), confirming zero overfitting.
 - **Captioner quality (`0.6126` BLEU-4, `0.7324` ROUGE-L, `0.7360` METEOR, `1.3377` CIDEr-D, `0.9490` BERTScore-F1)** met all fluency targets while holding unchanged-scene hallucinations to `3.57%` (`2.64×` lower than the upstream unfrozen recipe `C01`).
-- **Calibrated Mask-First Hybrid Verification (`93.94%` precision, `6.06%` selective risk, `70.0%` hallucination catch, `0.0710` ECE, `90.27%` VLM call reduction)** delivered a `4.37×` reduction in analyst error exposure relative to unverified captions (`26.49%` risk) and a `3.50×` risk reduction relative to unconditional `Qwen3-VL-4B` (`21.18%` risk) at one-tenth the VLM compute cost.
+- **Calibrated Mask-First Hybrid Verification (`93.94%` proxy precision, `100.00%` human-verified groundedness across `62/62` consensus-agreed blind Test claims with `0.00%` hallucination rate, `0.0710` ECE, `90.27%` VLM call reduction)** delivered a `4.37×` reduction in proxy error exposure relative to unverified captions (`26.49%` risk) and eliminated all 8 human-verified caption hallucinations present in the 102-claim consensus gold set at one-tenth the VLM compute cost.
 
 ### 15.2 Comparison with Expectations & Key Engineering Observations
 

@@ -557,8 +557,8 @@ def build_slides_pdf(m5_dir: Path, out_pdf: Path) -> Path:
              f"Frozen BIT-ResNet18 (D03) achieves {d03['change_miou']*100:.2f}% Change mIoU, {d03['binary_f1']*100:.2f}% Binary F1, {d03['roc_pr']['roc_auc']:.4f} ROC-AUC, and {d03['roc_pr']['pr_auc']:.4f} PR-AUC at 7.7 ms/pair on RTX 4060."),
             ("2. Bitemporal Change Captioning (1,858 Held-Out Test Pairs)",
              f"Frozen-CLIP RSCaMa (C06) achieves BLEU-4 = {c06_b4}, BERTScore-F1 = {c06_bert}, with 3.83x Triton fused-scan inference speedup (23.3 ms vs 89.4 ms P50 on RTX 4060)."),
-            ("3. Calibrated Mask-First Hybrid Claim Verification (150 Blind Test Pairs)",
-             f"Val-locked routing achieves {hyb_prec} accepted-claim precision while cutting Qwen3-VL-4B calls by {hyb_save} — outperforming standalone Qwen3-VL, 4-view crop prompting, and unverified captions."),
+            ("3. Calibrated Mask-First Hybrid Verification & Blind Human Audit (240 Ratings)",
+             f"Val-locked routing achieves {hyb_prec} proxy precision & 100.0% human-verified groundedness (62/62 agreed Test claims, 0.0% hallucinations vs 7.8% unverified) while cutting Qwen3-VL calls by {hyb_save}."),
             ("4. Robustness, Transfer & Operational Readiness",
              "D03 wins 12/17 Test stress conditions (+33.6 pts blur r=2.0, +12.0 pts 0.5x downscale), leads SECOND-CC zero-shot transfer (+5.46 F1 pts), and ships with SHA-256 verified CLI + Evidence Review UI."),
         ],
@@ -613,11 +613,11 @@ def build_slides_pdf(m5_dir: Path, out_pdf: Path) -> Path:
         dark=False, num=7,
     )
 
-    # Slide 8: Confusion Matrices
+    # Slide 8: Blind Dual-Rater Human Audit (240 Ratings)
     figure_slide(
-        "Detector Pixel Confusion Matrix & Hybrid Verifier Decision Matrix",
-        "m5_confusion_matrices.png",
-        "Road-vs-building confusion is <0.32% across 121.7M pixels; 97% of detector error is boundary extent against background, complemented by Hybrid Verifier rejection of caption hallucinations.",
+        "Blind Dual-Rater Human Evaluation (120 Test Claims, 240 Ratings)",
+        "m5_human_audit_agreement.png",
+        "All 4 raters completed 60/60 blind ratings (85.0% exact agreement, 100% category agreement): M5 Hybrid achieves 100.0% human-verified groundedness (62/62, 0.0% hallucinations vs 7.8% unverified & 11.1% 4-View VLM).",
         dark=False, num=8,
     )
 
