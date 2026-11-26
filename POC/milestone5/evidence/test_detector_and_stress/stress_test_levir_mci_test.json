@@ -1,0 +1,2926 @@
+{
+  "evaluated_at_utc": "2026-11-26T12:48:57.203558+00:00",
+  "split": "levir_mci_test_strict",
+  "num_pairs": 1858,
+  "conditions": [
+    "clean",
+    "brightness_t2_0.75",
+    "brightness_t2_1.25",
+    "contrast_both_0.70",
+    "blur_both_r1.0",
+    "blur_both_r2.0",
+    "jpeg_both_q40",
+    "jpeg_both_q20",
+    "noise_t2_sigma15",
+    "shift_t2_2px",
+    "shift_t2_4px",
+    "shift_t2_8px",
+    "rotate_t2_2deg",
+    "rotate_t2_5deg",
+    "cloud_haze_t2_15pct",
+    "cross_sensor_radiometric",
+    "downscale_both_0.5x"
+  ],
+  "results": {
+    "D03_bit_lr3e4": {
+      "clean": {
+        "change_miou": 0.759296,
+        "macro_iou": 0.831083,
+        "change_mean_dice": 0.863109,
+        "pixel_accuracy": 0.976357,
+        "bg_iou": 0.974659,
+        "road_iou": 0.745291,
+        "building_iou": 0.7733,
+        "per_class": {
+          "background": {
+            "iou": 0.974659,
+            "dice_f1": 0.987167,
+            "precision": 0.986507,
+            "recall": 0.987827
+          },
+          "road": {
+            "iou": 0.745291,
+            "dice_f1": 0.854059,
+            "precision": 0.868959,
+            "recall": 0.839662
+          },
+          "building": {
+            "iou": 0.7733,
+            "dice_f1": 0.87216,
+            "precision": 0.872776,
+            "recall": 0.871544
+          }
+        },
+        "binary_precision": 0.874253,
+        "binary_recall": 0.862331,
+        "binary_f1": 0.868251,
+        "binary_iou": 0.767176,
+        "small_change_f1": 0.488796,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 120,
+          "16": 109,
+          "50": 95,
+          "100": 76,
+          "200": 53,
+          "500": 32
+        },
+        "unchanged_fa_rates": {
+          "1": 0.12987,
+          "16": 0.117965,
+          "50": 0.102814,
+          "100": 0.082251,
+          "200": 0.057359,
+          "500": 0.034632
+        },
+        "confusion_matrix": [
+          [
+            109533948,
+            499938,
+            849805
+          ],
+          [
+            650809,
+            3457972,
+            9511
+          ],
+          [
+            847334,
+            21531,
+            5895040
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.987827,
+            0.004509,
+            0.007664
+          ],
+          [
+            0.158029,
+            0.839662,
+            0.002309
+          ],
+          [
+            0.125273,
+            0.003183,
+            0.871544
+          ]
+        ],
+        "arch": "bit_resnet18",
+        "checkpoint_sha256": "05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb",
+        "checkpoint_bytes": 47898192
+      },
+      "brightness_t2_0.75": {
+        "change_miou": 0.739685,
+        "macro_iou": 0.817521,
+        "change_mean_dice": 0.850235,
+        "pixel_accuracy": 0.9748,
+        "bg_iou": 0.973192,
+        "road_iou": 0.721041,
+        "building_iou": 0.758329,
+        "per_class": {
+          "background": {
+            "iou": 0.973192,
+            "dice_f1": 0.986414,
+            "precision": 0.984218,
+            "recall": 0.988619
+          },
+          "road": {
+            "iou": 0.721041,
+            "dice_f1": 0.837913,
+            "precision": 0.878488,
+            "recall": 0.80092
+          },
+          "building": {
+            "iou": 0.758329,
+            "dice_f1": 0.862556,
+            "precision": 0.871157,
+            "recall": 0.854124
+          }
+        },
+        "binary_precision": 0.878502,
+        "binary_recall": 0.838471,
+        "binary_f1": 0.85802,
+        "binary_iou": 0.751344,
+        "small_change_f1": 0.532436,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 137,
+          "16": 118,
+          "50": 94,
+          "100": 78,
+          "200": 54,
+          "500": 30
+        },
+        "unchanged_fa_rates": {
+          "1": 0.148268,
+          "16": 0.127706,
+          "50": 0.101732,
+          "100": 0.084416,
+          "200": 0.058442,
+          "500": 0.032468
+        },
+        "confusion_matrix": [
+          [
+            109621778,
+            428367,
+            833546
+          ],
+          [
+            798969,
+            3298424,
+            20899
+          ],
+          [
+            958822,
+            27869,
+            5777214
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.988619,
+            0.003863,
+            0.007517
+          ],
+          [
+            0.194005,
+            0.80092,
+            0.005075
+          ],
+          [
+            0.141756,
+            0.00412,
+            0.854124
+          ]
+        ]
+      },
+      "brightness_t2_1.25": {
+        "change_miou": 0.760186,
+        "macro_iou": 0.831617,
+        "change_mean_dice": 0.863706,
+        "pixel_accuracy": 0.976216,
+        "bg_iou": 0.974479,
+        "road_iou": 0.748449,
+        "building_iou": 0.771923,
+        "per_class": {
+          "background": {
+            "iou": 0.974479,
+            "dice_f1": 0.987075,
+            "precision": 0.987146,
+            "recall": 0.987004
+          },
+          "road": {
+            "iou": 0.748449,
+            "dice_f1": 0.856129,
+            "precision": 0.872502,
+            "recall": 0.840359
+          },
+          "building": {
+            "iou": 0.771923,
+            "dice_f1": 0.871283,
+            "precision": 0.860747,
+            "recall": 0.88208
+          }
+        },
+        "binary_precision": 0.86777,
+        "binary_recall": 0.86904,
+        "binary_f1": 0.868404,
+        "binary_iou": 0.767416,
+        "small_change_f1": 0.488769,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 135,
+          "16": 119,
+          "50": 101,
+          "100": 85,
+          "200": 56,
+          "500": 36
+        },
+        "unchanged_fa_rates": {
+          "1": 0.146104,
+          "16": 0.128788,
+          "50": 0.109307,
+          "100": 0.091991,
+          "200": 0.060606,
+          "500": 0.038961
+        },
+        "confusion_matrix": [
+          [
+            109442635,
+            491658,
+            949398
+          ],
+          [
+            641609,
+            3460842,
+            15841
+          ],
+          [
+            783528,
+            14071,
+            5966306
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.987004,
+            0.004434,
+            0.008562
+          ],
+          [
+            0.155795,
+            0.840359,
+            0.003846
+          ],
+          [
+            0.11584,
+            0.00208,
+            0.88208
+          ]
+        ]
+      },
+      "contrast_both_0.70": {
+        "change_miou": 0.745748,
+        "macro_iou": 0.821399,
+        "change_mean_dice": 0.85428,
+        "pixel_accuracy": 0.974468,
+        "bg_iou": 0.9727,
+        "road_iou": 0.731247,
+        "building_iou": 0.76025,
+        "per_class": {
+          "background": {
+            "iou": 0.9727,
+            "dice_f1": 0.986161,
+            "precision": 0.987231,
+            "recall": 0.985093
+          },
+          "road": {
+            "iou": 0.731247,
+            "dice_f1": 0.844763,
+            "precision": 0.854496,
+            "recall": 0.83525
+          },
+          "building": {
+            "iou": 0.76025,
+            "dice_f1": 0.863798,
+            "precision": 0.843536,
+            "recall": 0.885056
+          }
+        },
+        "binary_precision": 0.851386,
+        "binary_recall": 0.870177,
+        "binary_f1": 0.860679,
+        "binary_iou": 0.755432,
+        "small_change_f1": 0.451325,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 140,
+          "16": 125,
+          "50": 112,
+          "100": 92,
+          "200": 64,
+          "500": 38
+        },
+        "unchanged_fa_rates": {
+          "1": 0.151515,
+          "16": 0.135281,
+          "50": 0.121212,
+          "100": 0.099567,
+          "200": 0.069264,
+          "500": 0.041126
+        },
+        "confusion_matrix": [
+          [
+            109230756,
+            561079,
+            1091856
+          ],
+          [
+            659949,
+            3439803,
+            18540
+          ],
+          [
+            752813,
+            24654,
+            5986438
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.985093,
+            0.00506,
+            0.009847
+          ],
+          [
+            0.160248,
+            0.83525,
+            0.004502
+          ],
+          [
+            0.111299,
+            0.003645,
+            0.885056
+          ]
+        ]
+      },
+      "blur_both_r1.0": {
+        "change_miou": 0.720969,
+        "macro_iou": 0.804362,
+        "change_mean_dice": 0.837788,
+        "pixel_accuracy": 0.972941,
+        "bg_iou": 0.971148,
+        "road_iou": 0.707046,
+        "building_iou": 0.734892,
+        "per_class": {
+          "background": {
+            "iou": 0.971148,
+            "dice_f1": 0.985363,
+            "precision": 0.981143,
+            "recall": 0.989619
+          },
+          "road": {
+            "iou": 0.707046,
+            "dice_f1": 0.828385,
+            "precision": 0.854782,
+            "recall": 0.803571
+          },
+          "building": {
+            "iou": 0.734892,
+            "dice_f1": 0.847191,
+            "precision": 0.896956,
+            "recall": 0.802658
+          }
+        },
+        "binary_precision": 0.88401,
+        "binary_recall": 0.806201,
+        "binary_f1": 0.843315,
+        "binary_iou": 0.729079,
+        "small_change_f1": 0.504693,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 124,
+          "16": 117,
+          "50": 96,
+          "100": 77,
+          "200": 50,
+          "500": 27
+        },
+        "unchanged_fa_rates": {
+          "1": 0.134199,
+          "16": 0.126623,
+          "50": 0.103896,
+          "100": 0.083333,
+          "200": 0.054113,
+          "500": 0.029221
+        },
+        "confusion_matrix": [
+          [
+            109732564,
+            532296,
+            618831
+          ],
+          [
+            804076,
+            3309339,
+            4877
+          ],
+          [
+            1304878,
+            29926,
+            5429101
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.989619,
+            0.0048,
+            0.005581
+          ],
+          [
+            0.195245,
+            0.803571,
+            0.001184
+          ],
+          [
+            0.192918,
+            0.004424,
+            0.802658
+          ]
+        ]
+      },
+      "blur_both_r2.0": {
+        "change_miou": 0.40541,
+        "macro_iou": 0.584051,
+        "change_mean_dice": 0.573872,
+        "pixel_accuracy": 0.943239,
+        "bg_iou": 0.941335,
+        "road_iou": 0.470456,
+        "building_iou": 0.340364,
+        "per_class": {
+          "background": {
+            "iou": 0.941335,
+            "dice_f1": 0.969781,
+            "precision": 0.945369,
+            "recall": 0.995487
+          },
+          "road": {
+            "iou": 0.470456,
+            "dice_f1": 0.639877,
+            "precision": 0.846433,
+            "recall": 0.514358
+          },
+          "building": {
+            "iou": 0.340364,
+            "dice_f1": 0.507868,
+            "precision": 0.940644,
+            "recall": 0.347834
+          }
+        },
+        "binary_precision": 0.899993,
+        "binary_recall": 0.413828,
+        "binary_f1": 0.56696,
+        "binary_iou": 0.395635,
+        "small_change_f1": 0.149135,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 75,
+          "16": 70,
+          "50": 57,
+          "100": 51,
+          "200": 37,
+          "500": 13
+        },
+        "unchanged_fa_rates": {
+          "1": 0.081169,
+          "16": 0.075758,
+          "50": 0.061688,
+          "100": 0.055195,
+          "200": 0.040043,
+          "500": 0.014069
+        },
+        "confusion_matrix": [
+          [
+            110383281,
+            353296,
+            147114
+          ],
+          [
+            1998671,
+            2118276,
+            1345
+          ],
+          [
+            4380169,
+            31018,
+            2352718
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.995487,
+            0.003186,
+            0.001327
+          ],
+          [
+            0.485316,
+            0.514358,
+            0.000327
+          ],
+          [
+            0.64758,
+            0.004586,
+            0.347834
+          ]
+        ]
+      },
+      "jpeg_both_q40": {
+        "change_miou": 0.734609,
+        "macro_iou": 0.81378,
+        "change_mean_dice": 0.846954,
+        "pixel_accuracy": 0.973932,
+        "bg_iou": 0.972123,
+        "road_iou": 0.723348,
+        "building_iou": 0.74587,
+        "per_class": {
+          "background": {
+            "iou": 0.972123,
+            "dice_f1": 0.985864,
+            "precision": 0.983408,
+            "recall": 0.988333
+          },
+          "road": {
+            "iou": 0.723348,
+            "dice_f1": 0.839468,
+            "precision": 0.875365,
+            "recall": 0.8064
+          },
+          "building": {
+            "iou": 0.74587,
+            "dice_f1": 0.854439,
+            "precision": 0.86954,
+            "recall": 0.839855
+          }
+        },
+        "binary_precision": 0.874728,
+        "binary_recall": 0.830086,
+        "binary_f1": 0.851822,
+        "binary_iou": 0.741891,
+        "small_change_f1": 0.465435,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 155,
+          "16": 132,
+          "50": 101,
+          "100": 78,
+          "200": 52,
+          "500": 27
+        },
+        "unchanged_fa_rates": {
+          "1": 0.167749,
+          "16": 0.142857,
+          "50": 0.109307,
+          "100": 0.084416,
+          "200": 0.056277,
+          "500": 0.029221
+        },
+        "confusion_matrix": [
+          [
+            109590025,
+            448972,
+            844694
+          ],
+          [
+            789701,
+            3320989,
+            7602
+          ],
+          [
+            1059335,
+            23873,
+            5680697
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.988333,
+            0.004049,
+            0.007618
+          ],
+          [
+            0.191754,
+            0.8064,
+            0.001846
+          ],
+          [
+            0.156616,
+            0.003529,
+            0.839855
+          ]
+        ]
+      },
+      "jpeg_both_q20": {
+        "change_miou": 0.686587,
+        "macro_iou": 0.779902,
+        "change_mean_dice": 0.814173,
+        "pixel_accuracy": 0.968589,
+        "bg_iou": 0.966533,
+        "road_iou": 0.687088,
+        "building_iou": 0.686085,
+        "per_class": {
+          "background": {
+            "iou": 0.966533,
+            "dice_f1": 0.982982,
+            "precision": 0.978537,
+            "recall": 0.987467
+          },
+          "road": {
+            "iou": 0.687088,
+            "dice_f1": 0.814525,
+            "precision": 0.87602,
+            "recall": 0.761098
+          },
+          "building": {
+            "iou": 0.686085,
+            "dice_f1": 0.81382,
+            "precision": 0.844316,
+            "recall": 0.785451
+          }
+        },
+        "binary_precision": 0.8592,
+        "binary_recall": 0.779311,
+        "binary_f1": 0.817308,
+        "binary_iou": 0.691057,
+        "small_change_f1": 0.391605,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 276,
+          "16": 237,
+          "50": 186,
+          "100": 141,
+          "200": 90,
+          "500": 33
+        },
+        "unchanged_fa_rates": {
+          "1": 0.298701,
+          "16": 0.256494,
+          "50": 0.201299,
+          "100": 0.152597,
+          "200": 0.097403,
+          "500": 0.035714
+        },
+        "confusion_matrix": [
+          [
+            109493945,
+            419281,
+            970465
+          ],
+          [
+            974717,
+            3134423,
+            9152
+          ],
+          [
+            1426868,
+            24322,
+            5312715
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.987467,
+            0.003781,
+            0.008752
+          ],
+          [
+            0.23668,
+            0.761098,
+            0.002222
+          ],
+          [
+            0.210953,
+            0.003596,
+            0.785451
+          ]
+        ]
+      },
+      "noise_t2_sigma15": {
+        "change_miou": 0.65656,
+        "macro_iou": 0.759602,
+        "change_mean_dice": 0.792051,
+        "pixel_accuracy": 0.967694,
+        "bg_iou": 0.965687,
+        "road_iou": 0.618812,
+        "building_iou": 0.694308,
+        "per_class": {
+          "background": {
+            "iou": 0.965687,
+            "dice_f1": 0.982544,
+            "precision": 0.973821,
+            "recall": 0.991426
+          },
+          "road": {
+            "iou": 0.618812,
+            "dice_f1": 0.764526,
+            "precision": 0.893193,
+            "recall": 0.668261
+          },
+          "building": {
+            "iou": 0.694308,
+            "dice_f1": 0.819577,
+            "precision": 0.887976,
+            "recall": 0.760961
+          }
+        },
+        "binary_precision": 0.892904,
+        "binary_recall": 0.728423,
+        "binary_f1": 0.80232,
+        "binary_iou": 0.669895,
+        "small_change_f1": 0.463195,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 131,
+          "16": 118,
+          "50": 94,
+          "100": 82,
+          "200": 60,
+          "500": 26
+        },
+        "unchanged_fa_rates": {
+          "1": 0.141775,
+          "16": 0.127706,
+          "50": 0.101732,
+          "100": 0.088745,
+          "200": 0.064935,
+          "500": 0.028139
+        },
+        "confusion_matrix": [
+          [
+            109932937,
+            314571,
+            636183
+          ],
+          [
+            1353045,
+            2752093,
+            13154
+          ],
+          [
+            1602313,
+            14521,
+            5147071
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.991426,
+            0.002837,
+            0.005737
+          ],
+          [
+            0.328545,
+            0.668261,
+            0.003194
+          ],
+          [
+            0.236892,
+            0.002147,
+            0.760961
+          ]
+        ]
+      },
+      "shift_t2_2px": {
+        "change_miou": 0.721098,
+        "macro_iou": 0.804056,
+        "change_mean_dice": 0.837885,
+        "pixel_accuracy": 0.971941,
+        "bg_iou": 0.969973,
+        "road_iou": 0.708143,
+        "building_iou": 0.734054,
+        "per_class": {
+          "background": {
+            "iou": 0.969973,
+            "dice_f1": 0.984757,
+            "precision": 0.983914,
+            "recall": 0.985602
+          },
+          "road": {
+            "iou": 0.708143,
+            "dice_f1": 0.829138,
+            "precision": 0.846138,
+            "recall": 0.812807
+          },
+          "building": {
+            "iou": 0.734054,
+            "dice_f1": 0.846633,
+            "precision": 0.848391,
+            "recall": 0.844883
+          }
+        },
+        "binary_precision": 0.850682,
+        "binary_recall": 0.835814,
+        "binary_f1": 0.843183,
+        "binary_iou": 0.728882,
+        "small_change_f1": 0.485257,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 118,
+          "16": 104,
+          "50": 80,
+          "100": 66,
+          "200": 50,
+          "500": 28
+        },
+        "unchanged_fa_rates": {
+          "1": 0.127706,
+          "16": 0.112554,
+          "50": 0.08658,
+          "100": 0.071429,
+          "200": 0.054113,
+          "500": 0.030303
+        },
+        "confusion_matrix": [
+          [
+            109287186,
+            584690,
+            1011815
+          ],
+          [
+            761500,
+            3347377,
+            9415
+          ],
+          [
+            1025199,
+            24000,
+            5714706
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.985602,
+            0.005273,
+            0.009125
+          ],
+          [
+            0.184907,
+            0.812807,
+            0.002286
+          ],
+          [
+            0.151569,
+            0.003548,
+            0.844883
+          ]
+        ]
+      },
+      "shift_t2_4px": {
+        "change_miou": 0.645624,
+        "macro_iou": 0.750455,
+        "change_mean_dice": 0.784605,
+        "pixel_accuracy": 0.96256,
+        "bg_iou": 0.960116,
+        "road_iou": 0.634992,
+        "building_iou": 0.656257,
+        "per_class": {
+          "background": {
+            "iou": 0.960116,
+            "dice_f1": 0.979652,
+            "precision": 0.978744,
+            "recall": 0.980561
+          },
+          "road": {
+            "iou": 0.634992,
+            "dice_f1": 0.776752,
+            "precision": 0.792891,
+            "recall": 0.761257
+          },
+          "building": {
+            "iou": 0.656257,
+            "dice_f1": 0.792458,
+            "precision": 0.794905,
+            "recall": 0.790026
+          }
+        },
+        "binary_precision": 0.798111,
+        "binary_recall": 0.783015,
+        "binary_f1": 0.790491,
+        "binary_iou": 0.653564,
+        "small_change_f1": 0.451883,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 132,
+          "16": 117,
+          "50": 96,
+          "100": 74,
+          "200": 52,
+          "500": 26
+        },
+        "unchanged_fa_rates": {
+          "1": 0.142857,
+          "16": 0.126623,
+          "50": 0.103896,
+          "100": 0.080087,
+          "200": 0.056277,
+          "500": 0.028139
+        },
+        "confusion_matrix": [
+          [
+            108728249,
+            789072,
+            1366370
+          ],
+          [
+            970856,
+            3135080,
+            12356
+          ],
+          [
+            1390413,
+            29833,
+            5343659
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.980561,
+            0.007116,
+            0.012323
+          ],
+          [
+            0.235742,
+            0.761257,
+            0.003
+          ],
+          [
+            0.205564,
+            0.004411,
+            0.790026
+          ]
+        ]
+      },
+      "shift_t2_8px": {
+        "change_miou": 0.5051,
+        "macro_iou": 0.649951,
+        "change_mean_dice": 0.67109,
+        "pixel_accuracy": 0.942748,
+        "bg_iou": 0.939652,
+        "road_iou": 0.492398,
+        "building_iou": 0.517803,
+        "per_class": {
+          "background": {
+            "iou": 0.939652,
+            "dice_f1": 0.968887,
+            "precision": 0.96809,
+            "recall": 0.969686
+          },
+          "road": {
+            "iou": 0.492398,
+            "dice_f1": 0.659875,
+            "precision": 0.675061,
+            "recall": 0.645356
+          },
+          "building": {
+            "iou": 0.517803,
+            "dice_f1": 0.682306,
+            "precision": 0.682385,
+            "recall": 0.682226
+          }
+        },
+        "binary_precision": 0.685835,
+        "binary_recall": 0.674315,
+        "binary_f1": 0.680026,
+        "binary_iou": 0.515181,
+        "small_change_f1": 0.32737,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 165,
+          "16": 151,
+          "50": 123,
+          "100": 90,
+          "200": 62,
+          "500": 33
+        },
+        "unchanged_fa_rates": {
+          "1": 0.178571,
+          "16": 0.16342,
+          "50": 0.133117,
+          "100": 0.097403,
+          "200": 0.0671,
+          "500": 0.035714
+        },
+        "confusion_matrix": [
+          [
+            107522314,
+            1236091,
+            2125286
+          ],
+          [
+            1437995,
+            2657764,
+            22533
+          ],
+          [
+            2106177,
+            43215,
+            4614513
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.969686,
+            0.011148,
+            0.019167
+          ],
+          [
+            0.349173,
+            0.645356,
+            0.005471
+          ],
+          [
+            0.311385,
+            0.006389,
+            0.682226
+          ]
+        ]
+      },
+      "rotate_t2_2deg": {
+        "change_miou": 0.674391,
+        "macro_iou": 0.770932,
+        "change_mean_dice": 0.805483,
+        "pixel_accuracy": 0.966274,
+        "bg_iou": 0.964014,
+        "road_iou": 0.663233,
+        "building_iou": 0.68555,
+        "per_class": {
+          "background": {
+            "iou": 0.964014,
+            "dice_f1": 0.981677,
+            "precision": 0.980658,
+            "recall": 0.982698
+          },
+          "road": {
+            "iou": 0.663233,
+            "dice_f1": 0.797522,
+            "precision": 0.813523,
+            "recall": 0.782139
+          },
+          "building": {
+            "iou": 0.68555,
+            "dice_f1": 0.813444,
+            "precision": 0.817809,
+            "recall": 0.809125
+          }
+        },
+        "binary_precision": 0.819888,
+        "binary_recall": 0.802508,
+        "binary_f1": 0.811105,
+        "binary_iou": 0.682234,
+        "small_change_f1": 0.474493,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 127,
+          "16": 113,
+          "50": 91,
+          "100": 78,
+          "200": 57,
+          "500": 29
+        },
+        "unchanged_fa_rates": {
+          "1": 0.137446,
+          "16": 0.122294,
+          "50": 0.098485,
+          "100": 0.084416,
+          "200": 0.061688,
+          "500": 0.031385
+        },
+        "confusion_matrix": [
+          [
+            108965232,
+            712453,
+            1206006
+          ],
+          [
+            883981,
+            3221078,
+            13233
+          ],
+          [
+            1265171,
+            25889,
+            5472845
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.982698,
+            0.006425,
+            0.010876
+          ],
+          [
+            0.214647,
+            0.782139,
+            0.003213
+          ],
+          [
+            0.187047,
+            0.003828,
+            0.809125
+          ]
+        ]
+      },
+      "rotate_t2_5deg": {
+        "change_miou": 0.508349,
+        "macro_iou": 0.65216,
+        "change_mean_dice": 0.673963,
+        "pixel_accuracy": 0.94289,
+        "bg_iou": 0.939782,
+        "road_iou": 0.496356,
+        "building_iou": 0.520342,
+        "per_class": {
+          "background": {
+            "iou": 0.939782,
+            "dice_f1": 0.968956,
+            "precision": 0.968729,
+            "recall": 0.969184
+          },
+          "road": {
+            "iou": 0.496356,
+            "dice_f1": 0.66342,
+            "precision": 0.670788,
+            "recall": 0.656212
+          },
+          "building": {
+            "iou": 0.520342,
+            "dice_f1": 0.684506,
+            "precision": 0.682625,
+            "recall": 0.686398
+          }
+        },
+        "binary_precision": 0.68449,
+        "binary_recall": 0.681213,
+        "binary_f1": 0.682847,
+        "binary_iou": 0.518427,
+        "small_change_f1": 0.282133,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 222,
+          "16": 202,
+          "50": 174,
+          "100": 137,
+          "200": 85,
+          "500": 38
+        },
+        "unchanged_fa_rates": {
+          "1": 0.24026,
+          "16": 0.218615,
+          "50": 0.188312,
+          "100": 0.148268,
+          "200": 0.091991,
+          "500": 0.041126
+        },
+        "confusion_matrix": [
+          [
+            107466683,
+            1287765,
+            2129243
+          ],
+          [
+            1386501,
+            2702473,
+            29318
+          ],
+          [
+            2082605,
+            38568,
+            4642732
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.969184,
+            0.011614,
+            0.019202
+          ],
+          [
+            0.336669,
+            0.656212,
+            0.007119
+          ],
+          [
+            0.3079,
+            0.005702,
+            0.686398
+          ]
+        ]
+      },
+      "cloud_haze_t2_15pct": {
+        "change_miou": 0.626567,
+        "macro_iou": 0.736028,
+        "change_mean_dice": 0.770414,
+        "pixel_accuracy": 0.95703,
+        "bg_iou": 0.954951,
+        "road_iou": 0.624554,
+        "building_iou": 0.628579,
+        "per_class": {
+          "background": {
+            "iou": 0.954951,
+            "dice_f1": 0.976957,
+            "precision": 0.984911,
+            "recall": 0.96913
+          },
+          "road": {
+            "iou": 0.624554,
+            "dice_f1": 0.768893,
+            "precision": 0.731912,
+            "recall": 0.80981
+          },
+          "building": {
+            "iou": 0.628579,
+            "dice_f1": 0.771936,
+            "precision": 0.708184,
+            "recall": 0.848302
+          }
+        },
+        "binary_precision": 0.729599,
+        "binary_recall": 0.848711,
+        "binary_f1": 0.78466,
+        "binary_iou": 0.64563,
+        "small_change_f1": 0.243709,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 294,
+          "16": 272,
+          "50": 249,
+          "100": 222,
+          "200": 189,
+          "500": 116
+        },
+        "unchanged_fa_rates": {
+          "1": 0.318182,
+          "16": 0.294372,
+          "50": 0.269481,
+          "100": 0.24026,
+          "200": 0.204545,
+          "500": 0.125541
+        },
+        "confusion_matrix": [
+          [
+            107460737,
+            1180064,
+            2242890
+          ],
+          [
+            661796,
+            3335036,
+            121460
+          ],
+          [
+            984563,
+            41509,
+            5737833
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.96913,
+            0.010642,
+            0.020227
+          ],
+          [
+            0.160697,
+            0.80981,
+            0.029493
+          ],
+          [
+            0.145561,
+            0.006137,
+            0.848302
+          ]
+        ]
+      },
+      "cross_sensor_radiometric": {
+        "change_miou": 0.747562,
+        "macro_iou": 0.822734,
+        "change_mean_dice": 0.855518,
+        "pixel_accuracy": 0.974802,
+        "bg_iou": 0.973078,
+        "road_iou": 0.738544,
+        "building_iou": 0.75658,
+        "per_class": {
+          "background": {
+            "iou": 0.973078,
+            "dice_f1": 0.986355,
+            "precision": 0.986269,
+            "recall": 0.986442
+          },
+          "road": {
+            "iou": 0.738544,
+            "dice_f1": 0.849612,
+            "precision": 0.852157,
+            "recall": 0.847082
+          },
+          "building": {
+            "iou": 0.75658,
+            "dice_f1": 0.861424,
+            "precision": 0.861098,
+            "recall": 0.86175
+          }
+        },
+        "binary_precision": 0.861601,
+        "binary_recall": 0.860065,
+        "binary_f1": 0.860832,
+        "binary_iou": 0.755668,
+        "small_change_f1": 0.442201,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 176,
+          "16": 156,
+          "50": 125,
+          "100": 100,
+          "200": 75,
+          "500": 36
+        },
+        "unchanged_fa_rates": {
+          "1": 0.190476,
+          "16": 0.168831,
+          "50": 0.135281,
+          "100": 0.108225,
+          "200": 0.081169,
+          "500": 0.038961
+        },
+        "confusion_matrix": [
+          [
+            109380287,
+            592355,
+            911049
+          ],
+          [
+            600573,
+            3488533,
+            29186
+          ],
+          [
+            922227,
+            12881,
+            5828797
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.986442,
+            0.005342,
+            0.008216
+          ],
+          [
+            0.145831,
+            0.847082,
+            0.007087
+          ],
+          [
+            0.136345,
+            0.001904,
+            0.86175
+          ]
+        ]
+      },
+      "downscale_both_0.5x": {
+        "change_miou": 0.719758,
+        "macro_iou": 0.803493,
+        "change_mean_dice": 0.83701,
+        "pixel_accuracy": 0.972779,
+        "bg_iou": 0.970964,
+        "road_iou": 0.71022,
+        "building_iou": 0.729296,
+        "per_class": {
+          "background": {
+            "iou": 0.970964,
+            "dice_f1": 0.985268,
+            "precision": 0.98069,
+            "recall": 0.98989
+          },
+          "road": {
+            "iou": 0.71022,
+            "dice_f1": 0.83056,
+            "precision": 0.861628,
+            "recall": 0.801654
+          },
+          "building": {
+            "iou": 0.729296,
+            "dice_f1": 0.84346,
+            "precision": 0.896336,
+            "recall": 0.796476
+          }
+        },
+        "binary_precision": 0.886092,
+        "binary_recall": 0.801391,
+        "binary_f1": 0.841616,
+        "binary_iou": 0.726543,
+        "small_change_f1": 0.492991,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 129,
+          "16": 113,
+          "50": 95,
+          "100": 80,
+          "200": 58,
+          "500": 23
+        },
+        "unchanged_fa_rates": {
+          "1": 0.13961,
+          "16": 0.122294,
+          "50": 0.102814,
+          "100": 0.08658,
+          "200": 0.062771,
+          "500": 0.024892
+        },
+        "confusion_matrix": [
+          [
+            109762608,
+            502698,
+            618385
+          ],
+          [
+            812174,
+            3301445,
+            4673
+          ],
+          [
+            1349125,
+            27494,
+            5387286
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.98989,
+            0.004534,
+            0.005577
+          ],
+          [
+            0.197211,
+            0.801654,
+            0.001135
+          ],
+          [
+            0.199459,
+            0.004065,
+            0.796476
+          ]
+        ]
+      }
+    },
+    "A03_siam_r18_unet": {
+      "clean": {
+        "change_miou": 0.767288,
+        "macro_iou": 0.836842,
+        "change_mean_dice": 0.868206,
+        "pixel_accuracy": 0.977485,
+        "bg_iou": 0.97595,
+        "road_iou": 0.749364,
+        "building_iou": 0.785212,
+        "per_class": {
+          "background": {
+            "iou": 0.97595,
+            "dice_f1": 0.987829,
+            "precision": 0.987068,
+            "recall": 0.988591
+          },
+          "road": {
+            "iou": 0.749364,
+            "dice_f1": 0.856727,
+            "precision": 0.881746,
+            "recall": 0.833089
+          },
+          "building": {
+            "iou": 0.785212,
+            "dice_f1": 0.879685,
+            "precision": 0.876061,
+            "recall": 0.883338
+          }
+        },
+        "binary_precision": 0.881888,
+        "binary_recall": 0.868024,
+        "binary_f1": 0.874901,
+        "binary_iou": 0.777622,
+        "small_change_f1": 0.491032,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 99,
+          "16": 84,
+          "50": 76,
+          "100": 67,
+          "200": 47,
+          "500": 29
+        },
+        "unchanged_fa_rates": {
+          "1": 0.107143,
+          "16": 0.090909,
+          "50": 0.082251,
+          "100": 0.072511,
+          "200": 0.050866,
+          "500": 0.031385
+        },
+        "confusion_matrix": [
+          [
+            109618579,
+            438365,
+            826747
+          ],
+          [
+            668863,
+            3430904,
+            18525
+          ],
+          [
+            767324,
+            21764,
+            5974817
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.988591,
+            0.003953,
+            0.007456
+          ],
+          [
+            0.162413,
+            0.833089,
+            0.004498
+          ],
+          [
+            0.113444,
+            0.003218,
+            0.883338
+          ]
+        ],
+        "arch": "siam_resnet18_unet",
+        "checkpoint_sha256": "c9d2c9c994c63411096703397ee1842cde5ef917bee43d7b974a3f47c511e586",
+        "checkpoint_bytes": 62621663
+      },
+      "brightness_t2_0.75": {
+        "change_miou": 0.737533,
+        "macro_iou": 0.816118,
+        "change_mean_dice": 0.84851,
+        "pixel_accuracy": 0.974938,
+        "bg_iou": 0.97329,
+        "road_iou": 0.703861,
+        "building_iou": 0.771204,
+        "per_class": {
+          "background": {
+            "iou": 0.97329,
+            "dice_f1": 0.986464,
+            "precision": 0.984291,
+            "recall": 0.988647
+          },
+          "road": {
+            "iou": 0.703861,
+            "dice_f1": 0.826195,
+            "precision": 0.878338,
+            "recall": 0.779897
+          },
+          "building": {
+            "iou": 0.771204,
+            "dice_f1": 0.870825,
+            "precision": 0.872713,
+            "recall": 0.868945
+          }
+        },
+        "binary_precision": 0.878858,
+        "binary_recall": 0.839223,
+        "binary_f1": 0.858583,
+        "binary_iou": 0.752208,
+        "small_change_f1": 0.560719,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 103,
+          "16": 93,
+          "50": 77,
+          "100": 68,
+          "200": 56,
+          "500": 33
+        },
+        "unchanged_fa_rates": {
+          "1": 0.111472,
+          "16": 0.100649,
+          "50": 0.083333,
+          "100": 0.073593,
+          "200": 0.060606,
+          "500": 0.035714
+        },
+        "confusion_matrix": [
+          [
+            109624850,
+            426766,
+            832075
+          ],
+          [
+            881285,
+            3211842,
+            25165
+          ],
+          [
+            868325,
+            18120,
+            5877460
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.988647,
+            0.003849,
+            0.007504
+          ],
+          [
+            0.213993,
+            0.779897,
+            0.006111
+          ],
+          [
+            0.128376,
+            0.002679,
+            0.868945
+          ]
+        ]
+      },
+      "brightness_t2_1.25": {
+        "change_miou": 0.771172,
+        "macro_iou": 0.839542,
+        "change_mean_dice": 0.870701,
+        "pixel_accuracy": 0.977868,
+        "bg_iou": 0.976282,
+        "road_iou": 0.754234,
+        "building_iou": 0.78811,
+        "per_class": {
+          "background": {
+            "iou": 0.976282,
+            "dice_f1": 0.987999,
+            "precision": 0.987086,
+            "recall": 0.988914
+          },
+          "road": {
+            "iou": 0.754234,
+            "dice_f1": 0.859901,
+            "precision": 0.895555,
+            "recall": 0.826978
+          },
+          "building": {
+            "iou": 0.78811,
+            "dice_f1": 0.8815,
+            "precision": 0.874444,
+            "recall": 0.888672
+          }
+        },
+        "binary_precision": 0.884863,
+        "binary_recall": 0.868169,
+        "binary_f1": 0.876436,
+        "binary_iou": 0.780051,
+        "small_change_f1": 0.504776,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 103,
+          "16": 86,
+          "50": 71,
+          "100": 59,
+          "200": 43,
+          "500": 27
+        },
+        "unchanged_fa_rates": {
+          "1": 0.111472,
+          "16": 0.093074,
+          "50": 0.07684,
+          "100": 0.063853,
+          "200": 0.046537,
+          "500": 0.029221
+        },
+        "confusion_matrix": [
+          [
+            109654381,
+            381194,
+            848116
+          ],
+          [
+            697601,
+            3405737,
+            14954
+          ],
+          [
+            737008,
+            16005,
+            6010892
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.988914,
+            0.003438,
+            0.007649
+          ],
+          [
+            0.169391,
+            0.826978,
+            0.003631
+          ],
+          [
+            0.108962,
+            0.002366,
+            0.888672
+          ]
+        ]
+      },
+      "contrast_both_0.70": {
+        "change_miou": 0.745432,
+        "macro_iou": 0.821389,
+        "change_mean_dice": 0.854006,
+        "pixel_accuracy": 0.97495,
+        "bg_iou": 0.973304,
+        "road_iou": 0.72571,
+        "building_iou": 0.765154,
+        "per_class": {
+          "background": {
+            "iou": 0.973304,
+            "dice_f1": 0.986471,
+            "precision": 0.986391,
+            "recall": 0.986552
+          },
+          "road": {
+            "iou": 0.72571,
+            "dice_f1": 0.841057,
+            "precision": 0.868623,
+            "recall": 0.815186
+          },
+          "building": {
+            "iou": 0.765154,
+            "dice_f1": 0.866955,
+            "precision": 0.852379,
+            "recall": 0.882037
+          }
+        },
+        "binary_precision": 0.862741,
+        "binary_recall": 0.861313,
+        "binary_f1": 0.862026,
+        "binary_iou": 0.757509,
+        "small_change_f1": 0.487803,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 85,
+          "16": 79,
+          "50": 69,
+          "100": 59,
+          "200": 49,
+          "500": 26
+        },
+        "unchanged_fa_rates": {
+          "1": 0.091991,
+          "16": 0.085498,
+          "50": 0.074675,
+          "100": 0.063853,
+          "200": 0.05303,
+          "500": 0.028139
+        },
+        "confusion_matrix": [
+          [
+            109392480,
+            476320,
+            1014891
+          ],
+          [
+            742775,
+            3357173,
+            18344
+          ],
+          [
+            766448,
+            31442,
+            5966015
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.986552,
+            0.004296,
+            0.009153
+          ],
+          [
+            0.18036,
+            0.815186,
+            0.004454
+          ],
+          [
+            0.113314,
+            0.004648,
+            0.882037
+          ]
+        ]
+      },
+      "blur_both_r1.0": {
+        "change_miou": 0.601185,
+        "macro_iou": 0.721236,
+        "change_mean_dice": 0.749959,
+        "pixel_accuracy": 0.963418,
+        "bg_iou": 0.961338,
+        "road_iou": 0.556666,
+        "building_iou": 0.645703,
+        "per_class": {
+          "background": {
+            "iou": 0.961338,
+            "dice_f1": 0.980288,
+            "precision": 0.966626,
+            "recall": 0.994342
+          },
+          "road": {
+            "iou": 0.556666,
+            "dice_f1": 0.715203,
+            "precision": 0.903782,
+            "recall": 0.591735
+          },
+          "building": {
+            "iou": 0.645703,
+            "dice_f1": 0.784714,
+            "precision": 0.922447,
+            "recall": 0.682768
+          }
+        },
+        "binary_precision": 0.918548,
+        "binary_recall": 0.650182,
+        "binary_f1": 0.76141,
+        "binary_iou": 0.61474,
+        "small_change_f1": 0.411733,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 27,
+          "16": 19,
+          "50": 16,
+          "100": 12,
+          "200": 11,
+          "500": 3
+        },
+        "unchanged_fa_rates": {
+          "1": 0.029221,
+          "16": 0.020563,
+          "50": 0.017316,
+          "100": 0.012987,
+          "200": 0.011905,
+          "500": 0.003247
+        },
+        "confusion_matrix": [
+          [
+            110256280,
+            250295,
+            377116
+          ],
+          [
+            1670205,
+            2436936,
+            11151
+          ],
+          [
+            2136580,
+            9145,
+            4618180
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.994342,
+            0.002257,
+            0.003401
+          ],
+          [
+            0.405558,
+            0.591735,
+            0.002708
+          ],
+          [
+            0.31588,
+            0.001352,
+            0.682768
+          ]
+        ]
+      },
+      "blur_both_r2.0": {
+        "change_miou": 0.069144,
+        "macro_iou": 0.351312,
+        "change_mean_dice": 0.129267,
+        "pixel_accuracy": 0.916133,
+        "bg_iou": 0.915647,
+        "road_iou": 0.076048,
+        "building_iou": 0.062241,
+        "per_class": {
+          "background": {
+            "iou": 0.915647,
+            "dice_f1": 0.955966,
+            "precision": 0.91617,
+            "recall": 0.999377
+          },
+          "road": {
+            "iou": 0.076048,
+            "dice_f1": 0.141346,
+            "precision": 0.894178,
+            "recall": 0.076738
+          },
+          "building": {
+            "iou": 0.062241,
+            "dice_f1": 0.117188,
+            "precision": 0.923378,
+            "recall": 0.062564
+          }
+        },
+        "binary_precision": 0.914851,
+        "binary_recall": 0.06824,
+        "binary_f1": 0.127007,
+        "binary_iou": 0.06781,
+        "small_change_f1": 0.032329,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 0,
+          "16": 0,
+          "50": 0,
+          "100": 0,
+          "200": 0,
+          "500": 0
+        },
+        "unchanged_fa_rates": {
+          "1": 0.0,
+          "16": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0,
+          "500": 0.0
+        },
+        "confusion_matrix": [
+          [
+            110814574,
+            36440,
+            32677
+          ],
+          [
+            3799823,
+            316031,
+            2438
+          ],
+          [
+            6339768,
+            961,
+            423176
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.999377,
+            0.000329,
+            0.000295
+          ],
+          [
+            0.92267,
+            0.076738,
+            0.000592
+          ],
+          [
+            0.937294,
+            0.000142,
+            0.062564
+          ]
+        ]
+      },
+      "jpeg_both_q40": {
+        "change_miou": 0.73837,
+        "macro_iou": 0.816682,
+        "change_mean_dice": 0.849326,
+        "pixel_accuracy": 0.974979,
+        "bg_iou": 0.973307,
+        "road_iou": 0.717149,
+        "building_iou": 0.759591,
+        "per_class": {
+          "background": {
+            "iou": 0.973307,
+            "dice_f1": 0.986473,
+            "precision": 0.982986,
+            "recall": 0.989985
+          },
+          "road": {
+            "iou": 0.717149,
+            "dice_f1": 0.835279,
+            "precision": 0.893742,
+            "recall": 0.783994
+          },
+          "building": {
+            "iou": 0.759591,
+            "dice_f1": 0.863372,
+            "precision": 0.882282,
+            "recall": 0.845256
+          }
+        },
+        "binary_precision": 0.889969,
+        "binary_recall": 0.825397,
+        "binary_f1": 0.856468,
+        "binary_iou": 0.748967,
+        "small_change_f1": 0.503187,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 89,
+          "16": 76,
+          "50": 64,
+          "100": 56,
+          "200": 45,
+          "500": 21
+        },
+        "unchanged_fa_rates": {
+          "1": 0.09632,
+          "16": 0.082251,
+          "50": 0.069264,
+          "100": 0.060606,
+          "200": 0.048701,
+          "500": 0.022727
+        },
+        "confusion_matrix": [
+          [
+            109773187,
+            361453,
+            749051
+          ],
+          [
+            875803,
+            3228718,
+            13771
+          ],
+          [
+            1024260,
+            22411,
+            5717234
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.989985,
+            0.00326,
+            0.006755
+          ],
+          [
+            0.212662,
+            0.783994,
+            0.003344
+          ],
+          [
+            0.15143,
+            0.003313,
+            0.845256
+          ]
+        ]
+      },
+      "jpeg_both_q20": {
+        "change_miou": 0.678105,
+        "macro_iou": 0.774527,
+        "change_mean_dice": 0.807894,
+        "pixel_accuracy": 0.969269,
+        "bg_iou": 0.967372,
+        "road_iou": 0.652129,
+        "building_iou": 0.704081,
+        "per_class": {
+          "background": {
+            "iou": 0.967372,
+            "dice_f1": 0.983416,
+            "precision": 0.976589,
+            "recall": 0.990338
+          },
+          "road": {
+            "iou": 0.652129,
+            "dice_f1": 0.789441,
+            "precision": 0.8953,
+            "recall": 0.705968
+          },
+          "building": {
+            "iou": 0.704081,
+            "dice_f1": 0.826347,
+            "precision": 0.873291,
+            "recall": 0.784192
+          }
+        },
+        "binary_precision": 0.88506,
+        "binary_recall": 0.758102,
+        "binary_f1": 0.816676,
+        "binary_iou": 0.690154,
+        "small_change_f1": 0.442392,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 107,
+          "16": 92,
+          "50": 79,
+          "100": 59,
+          "200": 46,
+          "500": 24
+        },
+        "unchanged_fa_rates": {
+          "1": 0.115801,
+          "16": 0.099567,
+          "50": 0.085498,
+          "100": 0.063853,
+          "200": 0.049784,
+          "500": 0.025974
+        },
+        "confusion_matrix": [
+          [
+            109812316,
+            314484,
+            756891
+          ],
+          [
+            1198198,
+            2907381,
+            12713
+          ],
+          [
+            1434189,
+            25516,
+            5304200
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.990338,
+            0.002836,
+            0.006826
+          ],
+          [
+            0.290945,
+            0.705968,
+            0.003087
+          ],
+          [
+            0.212036,
+            0.003772,
+            0.784192
+          ]
+        ]
+      },
+      "noise_t2_sigma15": {
+        "change_miou": 0.610894,
+        "macro_iou": 0.727648,
+        "change_mean_dice": 0.75805,
+        "pixel_accuracy": 0.96334,
+        "bg_iou": 0.961158,
+        "road_iou": 0.581856,
+        "building_iou": 0.639931,
+        "per_class": {
+          "background": {
+            "iou": 0.961158,
+            "dice_f1": 0.980194,
+            "precision": 0.968187,
+            "recall": 0.992503
+          },
+          "road": {
+            "iou": 0.581856,
+            "dice_f1": 0.735663,
+            "precision": 0.894022,
+            "recall": 0.624962
+          },
+          "building": {
+            "iou": 0.639931,
+            "dice_f1": 0.780437,
+            "precision": 0.895987,
+            "recall": 0.691286
+          }
+        },
+        "binary_precision": 0.897332,
+        "binary_recall": 0.667707,
+        "binary_f1": 0.765674,
+        "binary_iou": 0.620318,
+        "small_change_f1": 0.418326,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 102,
+          "16": 90,
+          "50": 77,
+          "100": 65,
+          "200": 52,
+          "500": 29
+        },
+        "unchanged_fa_rates": {
+          "1": 0.11039,
+          "16": 0.097403,
+          "50": 0.083333,
+          "100": 0.070346,
+          "200": 0.056277,
+          "500": 0.031385
+        },
+        "confusion_matrix": [
+          [
+            110052344,
+            296953,
+            534394
+          ],
+          [
+            1536106,
+            2573777,
+            8409
+          ],
+          [
+            2079972,
+            8143,
+            4675790
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.992503,
+            0.002678,
+            0.004819
+          ],
+          [
+            0.372996,
+            0.624962,
+            0.002042
+          ],
+          [
+            0.307511,
+            0.001204,
+            0.691286
+          ]
+        ]
+      },
+      "shift_t2_2px": {
+        "change_miou": 0.719259,
+        "macro_iou": 0.80283,
+        "change_mean_dice": 0.83663,
+        "pixel_accuracy": 0.971883,
+        "bg_iou": 0.969972,
+        "road_iou": 0.705161,
+        "building_iou": 0.733357,
+        "per_class": {
+          "background": {
+            "iou": 0.969972,
+            "dice_f1": 0.984757,
+            "precision": 0.983701,
+            "recall": 0.985815
+          },
+          "road": {
+            "iou": 0.705161,
+            "dice_f1": 0.82709,
+            "precision": 0.855758,
+            "recall": 0.80028
+          },
+          "building": {
+            "iou": 0.733357,
+            "dice_f1": 0.846169,
+            "precision": 0.844387,
+            "recall": 0.847959
+          }
+        },
+        "binary_precision": 0.852231,
+        "binary_recall": 0.833563,
+        "binary_f1": 0.842794,
+        "binary_iou": 0.7283,
+        "small_change_f1": 0.487574,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 97,
+          "16": 78,
+          "50": 66,
+          "100": 58,
+          "200": 45,
+          "500": 32
+        },
+        "unchanged_fa_rates": {
+          "1": 0.104978,
+          "16": 0.084416,
+          "50": 0.071429,
+          "100": 0.062771,
+          "200": 0.048701,
+          "500": 0.034632
+        },
+        "confusion_matrix": [
+          [
+            109310860,
+            532561,
+            1040270
+          ],
+          [
+            805768,
+            3295788,
+            16736
+          ],
+          [
+            1005430,
+            22958,
+            5735517
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.985815,
+            0.004803,
+            0.009382
+          ],
+          [
+            0.195656,
+            0.80028,
+            0.004064
+          ],
+          [
+            0.148646,
+            0.003394,
+            0.847959
+          ]
+        ]
+      },
+      "shift_t2_4px": {
+        "change_miou": 0.638457,
+        "macro_iou": 0.745384,
+        "change_mean_dice": 0.779283,
+        "pixel_accuracy": 0.961695,
+        "bg_iou": 0.959236,
+        "road_iou": 0.627287,
+        "building_iou": 0.649628,
+        "per_class": {
+          "background": {
+            "iou": 0.959236,
+            "dice_f1": 0.979194,
+            "precision": 0.978245,
+            "recall": 0.980145
+          },
+          "road": {
+            "iou": 0.627287,
+            "dice_f1": 0.77096,
+            "precision": 0.796078,
+            "recall": 0.747379
+          },
+          "building": {
+            "iou": 0.649628,
+            "dice_f1": 0.787606,
+            "precision": 0.785487,
+            "recall": 0.789735
+          }
+        },
+        "binary_precision": 0.793602,
+        "binary_recall": 0.777897,
+        "binary_f1": 0.785671,
+        "binary_iou": 0.647,
+        "small_change_f1": 0.448865,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 114,
+          "16": 100,
+          "50": 77,
+          "100": 65,
+          "200": 54,
+          "500": 34
+        },
+        "unchanged_fa_rates": {
+          "1": 0.123377,
+          "16": 0.108225,
+          "50": 0.083333,
+          "100": 0.070346,
+          "200": 0.058442,
+          "500": 0.036797
+        },
+        "confusion_matrix": [
+          [
+            108682074,
+            761655,
+            1439962
+          ],
+          [
+            1021540,
+            3077923,
+            18829
+          ],
+          [
+            1395431,
+            26779,
+            5341695
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.980145,
+            0.006869,
+            0.012986
+          ],
+          [
+            0.248049,
+            0.747379,
+            0.004572
+          ],
+          [
+            0.206306,
+            0.003959,
+            0.789735
+          ]
+        ]
+      },
+      "shift_t2_8px": {
+        "change_miou": 0.491588,
+        "macro_iou": 0.640016,
+        "change_mean_dice": 0.658969,
+        "pixel_accuracy": 0.940115,
+        "bg_iou": 0.936871,
+        "road_iou": 0.474371,
+        "building_iou": 0.508806,
+        "per_class": {
+          "background": {
+            "iou": 0.936871,
+            "dice_f1": 0.967407,
+            "precision": 0.96768,
+            "recall": 0.967133
+          },
+          "road": {
+            "iou": 0.474371,
+            "dice_f1": 0.643489,
+            "precision": 0.651217,
+            "recall": 0.635943
+          },
+          "building": {
+            "iou": 0.508806,
+            "dice_f1": 0.674448,
+            "precision": 0.666691,
+            "recall": 0.682388
+          }
+        },
+        "binary_precision": 0.667024,
+        "binary_recall": 0.670865,
+        "binary_f1": 0.668939,
+        "binary_iou": 0.502561,
+        "small_change_f1": 0.337534,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 192,
+          "16": 173,
+          "50": 154,
+          "100": 134,
+          "200": 113,
+          "500": 75
+        },
+        "unchanged_fa_rates": {
+          "1": 0.207792,
+          "16": 0.187229,
+          "50": 0.166667,
+          "100": 0.145022,
+          "200": 0.122294,
+          "500": 0.081169
+        },
+        "confusion_matrix": [
+          [
+            107239321,
+            1362338,
+            2282032
+          ],
+          [
+            1473778,
+            2618997,
+            25517
+          ],
+          [
+            2107939,
+            40359,
+            4615607
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.967133,
+            0.012286,
+            0.02058
+          ],
+          [
+            0.357861,
+            0.635943,
+            0.006196
+          ],
+          [
+            0.311645,
+            0.005967,
+            0.682388
+          ]
+        ]
+      },
+      "rotate_t2_2deg": {
+        "change_miou": 0.665656,
+        "macro_iou": 0.764888,
+        "change_mean_dice": 0.799152,
+        "pixel_accuracy": 0.965586,
+        "bg_iou": 0.96335,
+        "road_iou": 0.649017,
+        "building_iou": 0.682295,
+        "per_class": {
+          "background": {
+            "iou": 0.96335,
+            "dice_f1": 0.981333,
+            "precision": 0.979785,
+            "recall": 0.982885
+          },
+          "road": {
+            "iou": 0.649017,
+            "dice_f1": 0.787157,
+            "precision": 0.81678,
+            "recall": 0.759607
+          },
+          "building": {
+            "iou": 0.682295,
+            "dice_f1": 0.811148,
+            "precision": 0.814934,
+            "recall": 0.807398
+          }
+        },
+        "binary_precision": 0.8198,
+        "binary_recall": 0.793371,
+        "binary_f1": 0.806369,
+        "binary_iou": 0.67556,
+        "small_change_f1": 0.446706,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 120,
+          "16": 101,
+          "50": 91,
+          "100": 77,
+          "200": 59,
+          "500": 29
+        },
+        "unchanged_fa_rates": {
+          "1": 0.12987,
+          "16": 0.109307,
+          "50": 0.098485,
+          "100": 0.083333,
+          "200": 0.063853,
+          "500": 0.031385
+        },
+        "confusion_matrix": [
+          [
+            108985941,
+            678903,
+            1218847
+          ],
+          [
+            968664,
+            3128282,
+            21346
+          ],
+          [
+            1279912,
+            22833,
+            5461160
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.982885,
+            0.006123,
+            0.010992
+          ],
+          [
+            0.23521,
+            0.759607,
+            0.005183
+          ],
+          [
+            0.189227,
+            0.003376,
+            0.807398
+          ]
+        ]
+      },
+      "rotate_t2_5deg": {
+        "change_miou": 0.485495,
+        "macro_iou": 0.635364,
+        "change_mean_dice": 0.653375,
+        "pixel_accuracy": 0.938462,
+        "bg_iou": 0.935103,
+        "road_iou": 0.464363,
+        "building_iou": 0.506626,
+        "per_class": {
+          "background": {
+            "iou": 0.935103,
+            "dice_f1": 0.966463,
+            "precision": 0.968,
+            "recall": 0.964932
+          },
+          "road": {
+            "iou": 0.464363,
+            "dice_f1": 0.634218,
+            "precision": 0.628032,
+            "recall": 0.640528
+          },
+          "building": {
+            "iou": 0.506626,
+            "dice_f1": 0.672531,
+            "precision": 0.659649,
+            "recall": 0.685926
+          }
+        },
+        "binary_precision": 0.653854,
+        "binary_recall": 0.674967,
+        "binary_f1": 0.664243,
+        "binary_iou": 0.497278,
+        "small_change_f1": 0.224129,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 304,
+          "16": 281,
+          "50": 250,
+          "100": 220,
+          "200": 197,
+          "500": 147
+        },
+        "unchanged_fa_rates": {
+          "1": 0.329004,
+          "16": 0.304113,
+          "50": 0.270563,
+          "100": 0.238095,
+          "200": 0.213203,
+          "500": 0.159091
+        },
+        "confusion_matrix": [
+          [
+            106995229,
+            1528356,
+            2360106
+          ],
+          [
+            1446704,
+            2637883,
+            33705
+          ],
+          [
+            2090365,
+            34000,
+            4639540
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.964932,
+            0.013783,
+            0.021285
+          ],
+          [
+            0.351287,
+            0.640528,
+            0.008184
+          ],
+          [
+            0.309047,
+            0.005027,
+            0.685926
+          ]
+        ]
+      },
+      "cloud_haze_t2_15pct": {
+        "change_miou": 0.691343,
+        "macro_iou": 0.782569,
+        "change_mean_dice": 0.817495,
+        "pixel_accuracy": 0.967183,
+        "bg_iou": 0.965021,
+        "road_iou": 0.696819,
+        "building_iou": 0.685867,
+        "per_class": {
+          "background": {
+            "iou": 0.965021,
+            "dice_f1": 0.982199,
+            "precision": 0.983527,
+            "recall": 0.980875
+          },
+          "road": {
+            "iou": 0.696819,
+            "dice_f1": 0.821324,
+            "precision": 0.843856,
+            "recall": 0.799964
+          },
+          "building": {
+            "iou": 0.685867,
+            "dice_f1": 0.813666,
+            "precision": 0.784978,
+            "recall": 0.844531
+          }
+        },
+        "binary_precision": 0.810336,
+        "binary_recall": 0.832597,
+        "binary_f1": 0.821316,
+        "binary_iou": 0.696808,
+        "small_change_f1": 0.386686,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 192,
+          "16": 175,
+          "50": 153,
+          "100": 131,
+          "200": 111,
+          "500": 75
+        },
+        "unchanged_fa_rates": {
+          "1": 0.207792,
+          "16": 0.189394,
+          "50": 0.165584,
+          "100": 0.141775,
+          "200": 0.12013,
+          "500": 0.081169
+        },
+        "confusion_matrix": [
+          [
+            108763036,
+            589065,
+            1531590
+          ],
+          [
+            790669,
+            3294487,
+            33136
+          ],
+          [
+            1031041,
+            20535,
+            5712329
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.980875,
+            0.005312,
+            0.013813
+          ],
+          [
+            0.19199,
+            0.799964,
+            0.008046
+          ],
+          [
+            0.152433,
+            0.003036,
+            0.844531
+          ]
+        ]
+      },
+      "cross_sensor_radiometric": {
+        "change_miou": 0.761314,
+        "macro_iou": 0.832768,
+        "change_mean_dice": 0.86438,
+        "pixel_accuracy": 0.977141,
+        "bg_iou": 0.975678,
+        "road_iou": 0.744428,
+        "building_iou": 0.778199,
+        "per_class": {
+          "background": {
+            "iou": 0.975678,
+            "dice_f1": 0.987689,
+            "precision": 0.985763,
+            "recall": 0.989623
+          },
+          "road": {
+            "iou": 0.744428,
+            "dice_f1": 0.853493,
+            "precision": 0.898219,
+            "recall": 0.813009
+          },
+          "building": {
+            "iou": 0.778199,
+            "dice_f1": 0.875266,
+            "precision": 0.878096,
+            "recall": 0.872455
+          }
+        },
+        "binary_precision": 0.889868,
+        "binary_recall": 0.854367,
+        "binary_f1": 0.871756,
+        "binary_iou": 0.772667,
+        "small_change_f1": 0.532939,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 90,
+          "16": 75,
+          "50": 63,
+          "100": 52,
+          "200": 42,
+          "500": 23
+        },
+        "unchanged_fa_rates": {
+          "1": 0.097403,
+          "16": 0.081169,
+          "50": 0.068182,
+          "100": 0.056277,
+          "200": 0.045455,
+          "500": 0.024892
+        },
+        "confusion_matrix": [
+          [
+            109733025,
+            368694,
+            781972
+          ],
+          [
+            732806,
+            3348209,
+            37277
+          ],
+          [
+            851998,
+            10705,
+            5901202
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.989623,
+            0.003325,
+            0.007052
+          ],
+          [
+            0.177939,
+            0.813009,
+            0.009052
+          ],
+          [
+            0.125962,
+            0.001583,
+            0.872455
+          ]
+        ]
+      },
+      "downscale_both_0.5x": {
+        "change_miou": 0.599408,
+        "macro_iou": 0.719983,
+        "change_mean_dice": 0.748867,
+        "pixel_accuracy": 0.963186,
+        "bg_iou": 0.961131,
+        "road_iou": 0.562368,
+        "building_iou": 0.636449,
+        "per_class": {
+          "background": {
+            "iou": 0.961131,
+            "dice_f1": 0.98018,
+            "precision": 0.966179,
+            "recall": 0.994594
+          },
+          "road": {
+            "iou": 0.562368,
+            "dice_f1": 0.719892,
+            "precision": 0.910238,
+            "recall": 0.595386
+          },
+          "building": {
+            "iou": 0.636449,
+            "dice_f1": 0.777841,
+            "precision": 0.922803,
+            "recall": 0.67224
+          }
+        },
+        "binary_precision": 0.921341,
+        "binary_recall": 0.645242,
+        "binary_f1": 0.758962,
+        "binary_iou": 0.611554,
+        "small_change_f1": 0.383862,
+        "unchanged_pairs": 924,
+        "unchanged_fa_counts": {
+          "1": 31,
+          "16": 24,
+          "50": 15,
+          "100": 13,
+          "200": 10,
+          "500": 3
+        },
+        "unchanged_fa_rates": {
+          "1": 0.03355,
+          "16": 0.025974,
+          "50": 0.016234,
+          "100": 0.014069,
+          "200": 0.010823,
+          "500": 0.003247
+        },
+        "confusion_matrix": [
+          [
+            110284225,
+            229796,
+            369670
+          ],
+          [
+            1655610,
+            2451975,
+            10707
+          ],
+          [
+            2204933,
+            12002,
+            4546970
+          ]
+        ],
+        "confusion_matrix_row_norm": [
+          [
+            0.994594,
+            0.002072,
+            0.003334
+          ],
+          [
+            0.402014,
+            0.595386,
+            0.0026
+          ],
+          [
+            0.325985,
+            0.001774,
+            0.67224
+          ]
+        ]
+      }
+    }
+  }
+}

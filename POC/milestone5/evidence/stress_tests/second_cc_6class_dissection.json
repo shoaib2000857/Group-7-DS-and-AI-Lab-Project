@@ -1,0 +1,225 @@
+{
+  "evaluated_at_utc": "2026-11-26T12:46:50.224629+00:00",
+  "models": {
+    "D03_bit_lr3e4": {
+      "arch": "bit_resnet18",
+      "sha256": "05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb",
+      "splits": {
+        "val": {
+          "num_pairs": 530,
+          "binary_any_change": {
+            "precision": 0.600941,
+            "recall": 0.137949,
+            "f1": 0.224388
+          },
+          "per_semantic_class": {
+            "building": {
+              "gt_pixels": 3372671,
+              "gt_share_of_changes_pct": 28.97,
+              "recall_by_any_pred_pct": 21.66,
+              "recall_by_pred_bldg_pct": 19.39,
+              "recall_by_pred_road_pct": 2.27
+            },
+            "non_vegetated_ground": {
+              "gt_pixels": 3863168,
+              "gt_share_of_changes_pct": 33.18,
+              "recall_by_any_pred_pct": 12.78,
+              "recall_by_pred_bldg_pct": 10.23,
+              "recall_by_pred_road_pct": 2.55
+            },
+            "low_vegetation": {
+              "gt_pixels": 2835995,
+              "gt_share_of_changes_pct": 24.36,
+              "recall_by_any_pred_pct": 11.35,
+              "recall_by_pred_bldg_pct": 8.82,
+              "recall_by_pred_road_pct": 2.53
+            },
+            "tree": {
+              "gt_pixels": 1275803,
+              "gt_share_of_changes_pct": 10.96,
+              "recall_by_any_pred_pct": 5.63,
+              "recall_by_pred_bldg_pct": 4.25,
+              "recall_by_pred_road_pct": 1.38
+            },
+            "water": {
+              "gt_pixels": 205335,
+              "gt_share_of_changes_pct": 1.76,
+              "recall_by_any_pred_pct": 1.74,
+              "recall_by_pred_bldg_pct": 1.46,
+              "recall_by_pred_road_pct": 0.28
+            },
+            "playground": {
+              "gt_pixels": 90569,
+              "gt_share_of_changes_pct": 0.78,
+              "recall_by_any_pred_pct": 0.65,
+              "recall_by_pred_bldg_pct": 0.65,
+              "recall_by_pred_road_pct": 0.0
+            }
+          }
+        },
+        "test": {
+          "num_pairs": 1142,
+          "binary_any_change": {
+            "precision": 0.582882,
+            "recall": 0.144576,
+            "f1": 0.231685
+          },
+          "per_semantic_class": {
+            "building": {
+              "gt_pixels": 7574919,
+              "gt_share_of_changes_pct": 29.54,
+              "recall_by_any_pred_pct": 22.8,
+              "recall_by_pred_bldg_pct": 20.16,
+              "recall_by_pred_road_pct": 2.64
+            },
+            "non_vegetated_ground": {
+              "gt_pixels": 8449200,
+              "gt_share_of_changes_pct": 32.95,
+              "recall_by_any_pred_pct": 13.48,
+              "recall_by_pred_bldg_pct": 10.72,
+              "recall_by_pred_road_pct": 2.76
+            },
+            "low_vegetation": {
+              "gt_pixels": 6555197,
+              "gt_share_of_changes_pct": 25.56,
+              "recall_by_any_pred_pct": 11.26,
+              "recall_by_pred_bldg_pct": 8.74,
+              "recall_by_pred_road_pct": 2.53
+            },
+            "tree": {
+              "gt_pixels": 2516435,
+              "gt_share_of_changes_pct": 9.81,
+              "recall_by_any_pred_pct": 5.37,
+              "recall_by_pred_bldg_pct": 4.36,
+              "recall_by_pred_road_pct": 1.01
+            },
+            "water": {
+              "gt_pixels": 388374,
+              "gt_share_of_changes_pct": 1.51,
+              "recall_by_any_pred_pct": 2.39,
+              "recall_by_pred_bldg_pct": 1.56,
+              "recall_by_pred_road_pct": 0.83
+            },
+            "playground": {
+              "gt_pixels": 159209,
+              "gt_share_of_changes_pct": 0.62,
+              "recall_by_any_pred_pct": 3.89,
+              "recall_by_pred_bldg_pct": 3.77,
+              "recall_by_pred_road_pct": 0.12
+            }
+          }
+        }
+      }
+    },
+    "A03_siam_r18_unet": {
+      "arch": "siam_resnet18_unet",
+      "sha256": "c9d2c9c994c63411096703397ee1842cde5ef917bee43d7b974a3f47c511e586",
+      "splits": {
+        "val": {
+          "num_pairs": 530,
+          "binary_any_change": {
+            "precision": 0.852725,
+            "recall": 0.075925,
+            "f1": 0.139436
+          },
+          "per_semantic_class": {
+            "building": {
+              "gt_pixels": 3372671,
+              "gt_share_of_changes_pct": 28.97,
+              "recall_by_any_pred_pct": 12.48,
+              "recall_by_pred_bldg_pct": 12.27,
+              "recall_by_pred_road_pct": 0.21
+            },
+            "non_vegetated_ground": {
+              "gt_pixels": 3863168,
+              "gt_share_of_changes_pct": 33.18,
+              "recall_by_any_pred_pct": 5.91,
+              "recall_by_pred_bldg_pct": 5.36,
+              "recall_by_pred_road_pct": 0.54
+            },
+            "low_vegetation": {
+              "gt_pixels": 2835995,
+              "gt_share_of_changes_pct": 24.36,
+              "recall_by_any_pred_pct": 6.46,
+              "recall_by_pred_bldg_pct": 5.82,
+              "recall_by_pred_road_pct": 0.64
+            },
+            "tree": {
+              "gt_pixels": 1275803,
+              "gt_share_of_changes_pct": 10.96,
+              "recall_by_any_pred_pct": 3.79,
+              "recall_by_pred_bldg_pct": 3.55,
+              "recall_by_pred_road_pct": 0.24
+            },
+            "water": {
+              "gt_pixels": 205335,
+              "gt_share_of_changes_pct": 1.76,
+              "recall_by_any_pred_pct": 2.66,
+              "recall_by_pred_bldg_pct": 2.65,
+              "recall_by_pred_road_pct": 0.01
+            },
+            "playground": {
+              "gt_pixels": 90569,
+              "gt_share_of_changes_pct": 0.78,
+              "recall_by_any_pred_pct": 3.01,
+              "recall_by_pred_bldg_pct": 3.01,
+              "recall_by_pred_road_pct": 0.0
+            }
+          }
+        },
+        "test": {
+          "num_pairs": 1142,
+          "binary_any_change": {
+            "precision": 0.837986,
+            "recall": 0.098993,
+            "f1": 0.177069
+          },
+          "per_semantic_class": {
+            "building": {
+              "gt_pixels": 7574919,
+              "gt_share_of_changes_pct": 29.54,
+              "recall_by_any_pred_pct": 16.64,
+              "recall_by_pred_bldg_pct": 16.04,
+              "recall_by_pred_road_pct": 0.6
+            },
+            "non_vegetated_ground": {
+              "gt_pixels": 8449200,
+              "gt_share_of_changes_pct": 32.95,
+              "recall_by_any_pred_pct": 8.29,
+              "recall_by_pred_bldg_pct": 7.76,
+              "recall_by_pred_road_pct": 0.52
+            },
+            "low_vegetation": {
+              "gt_pixels": 6555197,
+              "gt_share_of_changes_pct": 25.56,
+              "recall_by_any_pred_pct": 8.12,
+              "recall_by_pred_bldg_pct": 7.56,
+              "recall_by_pred_road_pct": 0.56
+            },
+            "tree": {
+              "gt_pixels": 2516435,
+              "gt_share_of_changes_pct": 9.81,
+              "recall_by_any_pred_pct": 2.49,
+              "recall_by_pred_bldg_pct": 2.42,
+              "recall_by_pred_road_pct": 0.08
+            },
+            "water": {
+              "gt_pixels": 388374,
+              "gt_share_of_changes_pct": 1.51,
+              "recall_by_any_pred_pct": 1.89,
+              "recall_by_pred_bldg_pct": 1.82,
+              "recall_by_pred_road_pct": 0.07
+            },
+            "playground": {
+              "gt_pixels": 159209,
+              "gt_share_of_changes_pct": 0.62,
+              "recall_by_any_pred_pct": 1.88,
+              "recall_by_pred_bldg_pct": 1.88,
+              "recall_by_pred_road_pct": 0.01
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+[
+  {
+    "category": "test_accepted_building",
+    "pair_id": "levir_mci/test/test_000032",
+    "folder": "test_accepted_building__levir_mci_test_test_000032",
+    "caption": "some buildings appear in the woods",
+    "outcomes": [
+      "accept",
+      "defer"
+    ]
+  },
+  {
+    "category": "test_accepted_road",
+    "pair_id": "levir_mci/test/test_000789",
+    "folder": "test_accepted_road__levir_mci_test_test_000789",
+    "caption": "a road appears in the bareland",
+    "outcomes": [
+      "accept"
+    ]
+  },
+  {
+    "category": "test_accepted_unchanged",
+    "pair_id": "levir_mci/test/test_000013",
+    "folder": "test_accepted_unchanged__levir_mci_test_test_000013",
+    "caption": "the two scenes seem identical",
+    "outcomes": [
+      "accept"
+    ]
+  },
+  {
+    "category": "test_rejected_hallucination",
+    "pair_id": "levir_mci/test/test_000175",
+    "folder": "test_rejected_hallucination__levir_mci_test_test_000175",
+    "caption": "the scene is the same as before",
+    "outcomes": [
+      "reject"
+    ]
+  },
+  {
+    "category": "test_rejected_second",
+    "pair_id": "levir_mci/test/test_001038",
+    "folder": "test_rejected_second__levir_mci_test_test_001038",
+    "caption": "the two scenes seem identical",
+    "outcomes": [
+      "reject"
+    ]
+  },
+  {
+    "category": "test_deferred_out_of_ontology",
+    "pair_id": "levir_mci/test/test_000381",
+    "folder": "test_deferred_out_of_ontology__levir_mci_test_test_000381",
+    "caption": "a villa is built in the woods",
+    "outcomes": [
+      "accept",
+      "defer"
+    ]
+  },
+  {
+    "category": "test_deferred_exact_count",
+    "pair_id": "levir_mci/test/test_000389",
+    "folder": "test_deferred_exact_count__levir_mci_test_test_000389",
+    "caption": "two houses are built in the woods",
+    "outcomes": [
+      "defer",
+      "defer"
+    ]
+  },
+  {
+    "category": "test_vlm_escalated_case",
+    "pair_id": "levir_mci/test/test_000695",
+    "folder": "test_vlm_escalated_case__levir_mci_test_test_000695",
+    "caption": "the two scenes seem identical",
+    "outcomes": [
+      "accept"
+    ]
+  },
+  {
+    "category": "test_small_change_case",
+    "pair_id": "levir_mci/test/test_000050",
+    "folder": "test_small_change_case__levir_mci_test_test_000050",
+    "caption": "a house appears in the top left corner of the scene",
+    "outcomes": [
+      "accept"
+    ]
+  },
+  {
+    "category": "test_mixed_scene_case",
+    "pair_id": "levir_mci/test/test_000123",
+    "folder": "test_mixed_scene_case__levir_mci_test_test_000123",
+    "caption": "a road is built across the woods and some houses are built along the road",
+    "outcomes": [
+      "accept",
+      "accept"
+    ]
+  }
+]

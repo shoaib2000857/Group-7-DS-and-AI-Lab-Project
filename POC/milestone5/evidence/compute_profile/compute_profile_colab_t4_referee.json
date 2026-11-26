@@ -1,0 +1,105 @@
+{
+  "env": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "transformers": "5.22.1",
+    "triton": "3.8.0",
+    "cuda_version": "13.0",
+    "device": "cuda",
+    "device_name": "Tesla T4",
+    "os": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "cpu": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "cpu_count": 2,
+    "date_utc": "2026-11-26T14:40:07.499252+00:00",
+    "git_commit": "f568a1d1bc83c360612cb91622845efd0cbe8eca"
+  },
+  "settings": {
+    "hardware_label": "colab_t4_referee",
+    "stages": [
+      "referee"
+    ],
+    "ckpt_dir": null,
+    "batch_size": 16,
+    "per_stage": {
+      "referee": {
+        "warmup": 3,
+        "iters": 20,
+        "batch_warmup": 10,
+        "batch_iters": 50
+      }
+    },
+    "pairs_loaded": 250,
+    "pairs_source": "POC/execution/data/pairs",
+    "pair_ids": [
+      "val/val_000001",
+      "val/val_000002",
+      "val/val_000003",
+      "..."
+    ],
+    "argv": [
+      "--device",
+      "cuda",
+      "--hardware-label",
+      "colab_t4_referee",
+      "--stages",
+      "referee",
+      "--stage-overrides",
+      "referee:warmup=3,iters=20",
+      "--out",
+      "/content/bench_out/"
+    ]
+  },
+  "stages": {
+    "Qwen3-VL-4B-Instruct": {
+      "stage": "referee",
+      "repo": "Qwen/Qwen3-VL-4B-Instruct",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "weights": "hf_pretrained",
+      "checkpoint_size_mb": null,
+      "load_s": 179.11148227900003,
+      "load_peak_vram_mb": 8464.4814453125,
+      "params_total": 4437815808,
+      "params_trainable": 4437815808,
+      "dtype": "torch.float16",
+      "gflops_per_pair": null,
+      "full_pair_2img": {
+        "n": 20,
+        "mean_ms": 245.83955294997395,
+        "p50_ms": 243.7099714999249,
+        "p95_ms": 262.8733153498729,
+        "p99_ms": 269.40498866992357,
+        "min_ms": 232.75293900019278,
+        "max_ms": 271.03790699993624,
+        "warmup": 3,
+        "iters": 20,
+        "peak_mem_mb": 8589.9462890625,
+        "peak_mem_kind": "cuda_max_memory_allocated",
+        "input_tokens_mean": 473.0,
+        "input_tokens_min": 468,
+        "input_tokens_max": 492,
+        "distinct_pairs_used": 23
+      },
+      "pair_plus_crops_4img": {
+        "n": 20,
+        "mean_ms": 337.96563234997166,
+        "p50_ms": 335.9938034999459,
+        "p95_ms": 352.6125089000175,
+        "p99_ms": 354.46585858004937,
+        "min_ms": 328.403304999938,
+        "max_ms": 354.92919600005735,
+        "warmup": 3,
+        "iters": 20,
+        "peak_mem_mb": 8652.228515625,
+        "peak_mem_kind": "cuda_max_memory_allocated",
+        "input_tokens_mean": 608.0,
+        "input_tokens_min": 600,
+        "input_tokens_max": 640,
+        "distinct_pairs_used": 23
+      },
+      "latency_ms": 337.96563234997166,
+      "peak_mem_mb": 8652.228515625,
+      "peak_mem_kind": "cuda_max_memory_allocated"
+    }
+  }
+}

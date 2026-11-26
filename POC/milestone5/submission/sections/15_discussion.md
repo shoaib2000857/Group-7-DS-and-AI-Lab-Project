@@ -1,0 +1,22 @@
+## 15. Discussion
+
+### 15.1 Achievement of Project Objectives
+
+TerraWatch set out to solve a concrete operational problem in satellite monitoring: producing both **spatially grounded pixel masks** and **trustworthy natural-language change reports** without exposing analysts to neural captioning hallucinations or prohibitive large-VLM inference bills. Every Milestone 5 objective was met or exceeded on strictly locked held-out Test data:
+
+- **Detector accuracy (`75.93%` Change mIoU, `86.83%` Binary F1, `0.9901` ROC-AUC, `0.9361` PR-AUC)** surpassed the `74%` mIoU / `85%` F1 targets and exceeded Validation performance (`74.54%`), confirming zero overfitting.
+- **Captioner quality (`0.6126` BLEU-4, `0.7324` ROUGE-L, `0.7360` METEOR, `1.3377` CIDEr-D, `0.9490` BERTScore-F1)** met all fluency targets while holding unchanged-scene hallucinations to `3.57%` (`2.64×` lower than the upstream unfrozen recipe `C01`).
+- **Calibrated Mask-First Hybrid Verification (`93.94%` precision, `6.06%` selective risk, `70.0%` hallucination catch, `0.0710` ECE, `90.27%` VLM call reduction)** delivered a `4.37×` reduction in analyst error exposure relative to unverified captions (`26.49%` risk) and a `3.50×` risk reduction relative to unconditional `Qwen3-VL-4B` (`21.18%` risk) at one-tenth the VLM compute cost.
+
+### 15.2 Comparison with Expectations & Key Engineering Observations
+
+Several empirical outcomes contradicted naive intuition and yielded durable design lessons:
+
+1. **Specialized Small Vision Models Beat General 4B VLMs on Fine-Grained Aerial Grounding:** Prior to systematic testing, it was reasonable to expect a 4-billion-parameter Vision-Language Model (`Qwen3-VL-4B-Instruct`) to outperform an 11.9M-parameter BIT segmentation head at judging change claims. In practice, standalone `Qwen3-VL-4B` achieved only `78.82%` precision (`3.3%` hallucination catch) on blind Test claims, and naive 4-view crop prompting *worsened* precision to `69.61%` (`ECE = 0.446`) due to loss of global scene context. Inverting the architecture — letting BIT resolve unambiguous spatial claims first and escalating *only* BIT's structural blind spots (`9.7%` of claims) — simultaneously maximized precision (`93.94%`), calibration (`ECE = 0.071`), and throughput.
+2. **Clean-Domain Ranking Does Not Predict Operational Robustness:** Had detector selection relied solely on clean Validation or Test mIoU, `A01_ef_unet` (`77.36%`) or `A03_siam_r18_unet` (`76.73%`) would have been deployed over `D03_bit_lr3e4` (`75.93%`). Yet under 17-condition held-out Test stress testing, `A03` collapsed on blur (`6.91%` vs `40.54%` at $r=2.0$) and $0.5\times$ downscaling (`59.94%` vs `71.98%`) and trailed on SECOND-CC zero-shot transfer (`17.71%` vs `23.17%`). Multi-condition stress evaluation proved essential to prevent deploying a brittle clean-data winner.
+3. **Ontology Mismatch Explains Most Cross-Dataset Transfer Drop:** Dissecting SECOND-CC's 6 semantic classes proved that `70.46%` of ground-truth SECOND-CC change pixels are vegetation, bare ground, water, or playgrounds absent from LEVIR-MCI's 2-class supervision. On the sole overlapping class (`building`), `D03` retained meaningful precision (`58.3%`) and directed `88%` of its hits to the correct building label — showing that explicit ontology scoping (`T_out_of_mask_ontology` deferral) is safer than pretending a 2-class model generalizes silently to arbitrary land-cover classes.
+4. **Systems Optimization Multiplied Research Velocity:** Engineering the exact fused Triton selective-scan kernel (`triton_fused_exact`) accelerated RSCaMa training by **`10.2×`** (`227 s/ep` vs `2,310 s/ep`) and RTX 4060 inference by **`3.83×`** (`23.3 ms` vs `89.4 ms` P50) with gradient parity within $4.4 \times 10^{-7}$, enabling a full 33-run controlled experiment matrix in just `16.63` GPU-hours (`$8.75` T4-equivalent).
+
+### 15.3 Practical Applicability
+
+TerraWatch is directly applicable as a **human-in-the-loop (HITL) geospatial triage workbench** for municipal planning, urban infrastructure auditing, and road-network monitoring on $0.5\text{ m}$ RGB aerial imagery. On a single laptop RTX 4060 GPU, the mask-first path processes a bitemporal pair end-to-end (`D03` `7.6 ms` + `C06` Triton `23.3 ms` + OpenCV witness `10.4 ms` $\approx$ **`41.3 ms`/pair**, or ~`24` pairs/s) before selective VLM escalation on the `9.7%` of ambiguous claims, while surfacing every mask overlay, zoomed contextual crop, and immutable override audit trail inside the Evidence Review Web UI.

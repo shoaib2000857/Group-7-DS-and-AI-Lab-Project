@@ -1,0 +1,184 @@
+{
+  "pair_id": "levir_mci/test/test_000695",
+  "trace_category": "test_vlm_escalated_case",
+  "stratum": "unchanged",
+  "execution_mode": "m5_calibrated_mask_first_hybrid_test",
+  "input_sha256": [
+    "c0124df01c6253a634e8dfa1adbbf39c8c86a5470d0c5c0be0046f9c37d414a1",
+    "ae46bcd318664def403a9f9a0116997c652443cfdb6ee631c7c9afbd479a5e21"
+  ],
+  "generated_caption": "the two scenes seem identical",
+  "verified_description": "the two scenes seem identical",
+  "review_required": false,
+  "claims": [
+    {
+      "pair_id": "levir_mci/test/test_000695",
+      "claim_id": "m5_test:levir_mci/test/test_000695:c0",
+      "source_span": "the two scenes seem identical",
+      "claim": {
+        "object": "scene",
+        "action": "no_change",
+        "location": null,
+        "quantity": null,
+        "quantity_unit": null
+      },
+      "candidate_bbox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "parser_provenance": {
+        "parser": {
+          "quantity_kind": null,
+          "quantity_text": null,
+          "hedged": true,
+          "negated": true,
+          "version": "rules-v3"
+        }
+      },
+      "evidence": {
+        "visible_change": false,
+        "confidence": 0.5,
+        "state_transition": "no_physical_change",
+        "observations": "No verifiable physical structural change visible in this crop. Structural similarity SSIM=0.135. Ground cover consistent.",
+        "visibility_flags": [
+          "t1_clear",
+          "t2_clear"
+        ],
+        "quality_flags": [
+          "illumination_corrected_-41.3"
+        ],
+        "structural_edge_change": -0.212127685546875,
+        "mean_luminance_diff": -41.273284912109375,
+        "crop_mean_diff": 30.16131083170573,
+        "ssim_score": 0.1346842255320329,
+        "crop_paths": [
+          "crops/claim_0_crop_T1.png",
+          "crops/claim_0_crop_T2.png"
+        ],
+        "transform_record": {
+          "original_bbox": [
+            0,
+            0,
+            256,
+            256
+          ],
+          "padded_bbox": [
+            0,
+            0,
+            256,
+            256
+          ],
+          "padding_applied": {
+            "pad_x0": 0,
+            "pad_y0": 0,
+            "pad_x1": 0,
+            "pad_y1": 0
+          },
+          "min_size_enforced": 32,
+          "coordinate_frame": "original_T1_pixels",
+          "bbox_convention": "x0_y0_x1_y1_half_open"
+        },
+        "mask_summary": {
+          "target_class": "scene",
+          "class_change_pixels": 0,
+          "any_change_pixels": 0,
+          "road_pixels": 0,
+          "building_pixels": 0,
+          "matching_components": 0,
+          "total_class_components": 0
+        },
+        "disagreement_triggers": [
+          "T_hedged_claim"
+        ]
+      },
+      "decision": {
+        "outcome": "accept",
+        "probabilities": {
+          "accept": 0.9943,
+          "reject": 0.0,
+          "defer": 0.0
+        },
+        "route_reason": "vlm_escalate_no_change_residual_or_hedged->vlm_accept",
+        "vlm_triggered": true,
+        "reason_codes": []
+      },
+      "direct_qwen_decision": {
+        "outcome": "accept",
+        "raw_outcome": "accept",
+        "probabilities": {
+          "accept": 0.9942694902420044,
+          "reject": 2.260246105834085e-07,
+          "defer": 0.005730245262384415
+        },
+        "reason_codes": [],
+        "raw_response": {
+          "restricted_codes": {
+            "A": 0.9942694902420044,
+            "B": 2.260246105834085e-07,
+            "C": 0.005730245262384415
+          },
+          "code_order": [
+            "accept",
+            "reject",
+            "defer"
+          ],
+          "input_tokens": 448,
+          "num_images": 2,
+          "mode": "direct_full_image"
+        },
+        "probability_semantics": "softmax_conditional_on_three_label_tokens_not_calibrated_truth",
+        "accept_threshold": 0.7
+      },
+      "reinspection_decision": {
+        "outcome": "accept",
+        "raw_outcome": "accept",
+        "probabilities": {
+          "accept": 0.9998840093612671,
+          "reject": 7.42163841493948e-09,
+          "defer": 0.00011591934162424877
+        },
+        "reason_codes": [],
+        "raw_response": {
+          "restricted_codes": {
+            "A": 0.9998840093612671,
+            "B": 7.42163841493948e-09,
+            "C": 0.00011591934162424877
+          },
+          "code_order": [
+            "accept",
+            "reject",
+            "defer"
+          ],
+          "input_tokens": 775,
+          "num_images": 4,
+          "mode": "targeted_crop_context_reinspection"
+        },
+        "probability_semantics": "softmax_conditional_on_three_label_tokens_not_calibrated_truth",
+        "accept_threshold": 0.7
+      },
+      "mask_only_decision": "accept"
+    }
+  ],
+  "errors": [],
+  "model_metadata": {
+    "detector": {
+      "arch": "bit_resnet18",
+      "checkpoint": "best.pt",
+      "sha256": "05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb"
+    },
+    "captioner": {
+      "run_id": "C06_rscama_frozen_clip",
+      "checkpoint": "best.pth",
+      "sha256": "c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796"
+    },
+    "referee": {
+      "repo": "Qwen/Qwen3-VL-4B-Instruct",
+      "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "torch": "2.14.1+cu130",
+      "transformers": "5.22.1",
+      "dtype": "torch.float16"
+    }
+  }
+}
