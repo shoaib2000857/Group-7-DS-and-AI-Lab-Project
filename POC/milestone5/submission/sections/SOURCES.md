@@ -21,6 +21,11 @@ Paths are relative to the repository root. M4 evidence directory: `docs/mileston
 | Checkpoint SHA-256 values | `EV/detector_runs/*/run.json` (`best_checkpoint_sha256`), `EV/captioner_runs/C06_rscama_frozen_clip/run.json`, `EV/captioner_runs/C00_rscama_released/eval_test.json`, `configs/pipeline.json` |
 | Hyperparameters of D03 and C06 | `configs/detector_training.json`, `configs/captioner_training.json`, `EV/detector_runs/D03_bit_lr3e4/run.json` |
 | 120 pairs, strata, 147 claims, tau 0.70 | `EV/verification/verification_comparison_summary.json` |
+| Table 2.1 RTX 4060 profiling row (Python 3.13.9, torch 2.11.0+cu130, torchvision 0.26.0+cu130, CUDA 13.0, Triton 3.6.0, Transformers 4.57.6 detector and 4.39.3 captioner, i7-14650HX, 24 CPUs, Linux 6.14) | `POC/milestone5/evidence/compute_profile/compute_profile_rtx4060.json` (`env`, including `env.transformers_captioner`); `POC/milestone5/evidence/compute_profile/compute_profile_rtx4060_cap.json` (`env.transformers`) |
+| Table 2.1 Colab T4 profiling row (Python 3.13.16, torch 2.14.1+cu130, torchvision 0.29.1+cu130, CUDA 13.0, Triton 3.8.0, Transformers 5.22.1, Xeon 2.00 GHz, 2 CPUs, Linux 6.6) | `POC/milestone5/evidence/compute_profile/compute_profile_colab_t4.json` (`env`); `POC/milestone5/evidence/compute_profile/compute_profile_colab_t4_referee.json` (`env`; referee `dtype` float16 in `stages.Qwen3-VL-4B-Instruct.dtype`) |
+| Table 2.1 Apple M4 profiling row (Python 3.11.9, torch 2.15.0, torchvision 0.29.2, Transformers 4.39.3, macOS 26.5.1, 10 CPUs, no CUDA or Triton; random-init weights, full-length 42-step decode) | `POC/milestone5/evidence/compute_profile/compute_profile_mac_m4_mps.json`, `POC/milestone5/evidence/compute_profile/compute_profile_mac_m4_cpu.json` (`env`; `stages.*.weights` = `random_init`; `stages.C06_rscama_frozen_clip.ref_scan.decode_steps_mean` = 42) |
+| OpenCV version | not recorded in any profile JSON; stated as not recorded; install spec from `requirements-pipeline.txt` |
+| Driver version | not recorded in any profile JSON; stated as not recorded |
 
 ### Section 12 (`12_computational_performance.md`)
 | Fact | Source |
@@ -32,7 +37,22 @@ Paths are relative to the repository root. M4 evidence directory: `docs/mileston
 | Referee calls per claim 1.0 / 0.6463 / 0; 95 of 147 triggered; claims 147, pairs 120 | `EV/verification/verification_comparison_summary.json` (`trigger_statistics`, `audit_scope`) |
 | Policy precisions 82.43%, 72.22%, 91.38% | `EV/verification/verification_comparison_summary.json` (`settings_comparison`) |
 | Cost formula and derived 1.225 / 0.792 calls per pair, 35.4% saving | derived from the two rows above |
-| Plot reference `reports/figures/m5_compute_profile.png` | `POC/milestone5/REPORT_OUTLINE_AND_EVIDENCE_MAP.md` on `origin/milestone5-plan` |
+| Table 12.3 params, trainable (detectors), checkpoint MiB, GFLOPs (C06 GFLOPs from the RTX 4060 run; FlopCounterMode excludes selective-scan elementwise ops via `flops_note`) | `POC/milestone5/evidence/compute_profile/compute_profile_colab_t4.json` (`stages.<run>.params_total`, `checkpoint_size_mb`, `gflops_per_pair`); `POC/milestone5/evidence/compute_profile/compute_profile_rtx4060.json` (`stages.C06_rscama_frozen_clip`); trainable 245.53 M for C06 from `POC/milestone5/evidence/compute_profile/training_cost.json` (`runs[].params_trainable_max`) |
+| Table 12.3 Qwen3-VL params 4,437.82 M, load peak VRAM 8,464.5 MB; disk size not recorded | `POC/milestone5/evidence/compute_profile/compute_profile_colab_t4_referee.json` (`stages.Qwen3-VL-4B-Instruct.params_total`, `load_peak_vram_mb`) |
+| Table 12.4 detector latency T4 / RTX 4060 / M4 MPS / M4 CPU | `compute_profile_colab_t4.json`, `compute_profile_rtx4060.json`, `compute_profile_mac_m4_mps.json`, `compute_profile_mac_m4_cpu.json` (`stages.D03_bit_lr3e4.batch1.p50_ms/p95_ms/p99_ms`) |
+| Table 12.4 captioner Triton and reference scan on RTX 4060 | `compute_profile_rtx4060_cap.json` (identical to `compute_profile_rtx4060.json`) `stages.C06_rscama_frozen_clip.triton_scan` and `.ref_scan` |
+| Table 12.4 captioner on Apple M4 (reference scan, 42 decode steps) | `compute_profile_mac_m4_mps.json`, `compute_profile_mac_m4_cpu.json` `stages.C06_rscama_frozen_clip.ref_scan` |
+| Table 12.4 witness | `compute_profile_colab_t4.json`, `compute_profile_mac_m4_cpu.json` `stages.witness_opencv.p50_ms/p95_ms/p99_ms` |
+| Table 12.4 referee 2-image and 4-image | `compute_profile_colab_t4_referee.json` `stages.Qwen3-VL-4B-Instruct.full_pair_2img` and `.pair_plus_crops_4img` |
+| Baseline detector P50 (A01 to A04 on T4) | `compute_profile_colab_t4.json` `stages.<arch>.batch1.p50_ms` |
+| Table 12.5 memory | `peak_mem_mb` of the same stage entries (`batch1.peak_mem_mb` for detectors; `triton_scan.peak_mem_mb` 3,518.4 and `ref_scan.peak_mem_mb` 4,403.75 for C06; `full_pair_2img` 8,589.9 and `pair_plus_crops_4img` 8,652.2; `witness_opencv.peak_mem_mb` as process RSS) |
+| Table 12.6 throughput | `batch1.throughput_pairs_per_s`, `batch16.throughput_pairs_per_s` (detectors); 1000 / `triton_scan.mean_ms` and 1000 / `ref_scan.mean_ms` (captioner) |
+| Table 12.7 stage means S_det 0.0175, S_cap 0.0236, S_wit 0.0108, S_ref 0.2458 / 0.3380 | `compute_profile_colab_t4.json` (D03 `batch1.mean_ms`, `witness_opencv.mean_ms`); `compute_profile_rtx4060.json` (C06 `triton_scan.mean_ms`); `compute_profile_colab_t4_referee.json` (`full_pair_2img.mean_ms`, `pair_plus_crops_4img.mean_ms`) |
+| Table 12.7 seconds per pair, cost, 12.5 end-to-end throughput | derived: s = S_det + S_cap + c x S_wit + c x v x S_ref; cost = 1000 x s x 0.526 / 3600; c = 147/120 (policies 1 to 3) and 185/150 (hybrid); v = 1.0, 0.6463, 0, 0.0973 (hybrid, 18 calls) |
+| Hybrid call rate 0.0973 (18 calls, 185 claims, 150 pairs), Test precision 93.94%, Val precision 94.50% | `POC/milestone5/evidence/test_captioner_and_verifier/test_verification_summary.json` (`test_vlm_efficiency`, `test_settings_comparison.7_m5_calibrated_mask_first_hybrid`, `validation_calibration_locked`); present on `origin/milestone5-evaluation` only, not on this branch |
+| Referee decision is a three-logit forward pass | `src/inference/verification_pipeline.py` `Qwen3VLReferee.decide` (`logits_to_keep=1`, softmax over three label tokens); Milestone 3 7.605 s: `reports/Milestone3_Report_LocalBenchmarked.md` |
+| Not measured (stated as such in the section) | captioner on the Colab T4 (latency, throughput, VRAM, Triton speedup); any inference profile on the NVIDIA L4; Qwen3-VL on the Apple M4 or RTX 4060; GPU utilisation (not recorded by any profile); end-to-end pipeline latency (estimated only); OpenCV and driver versions |
+| Plot reference `figures/m5_compute_profile.png` (exists on `origin/milestone5-evaluation` only; its bars agree with the JSON values above) | `POC/milestone5/REPORT_OUTLINE_AND_EVIDENCE_MAP.md` on `origin/milestone5-plan` |
 
 ### Section 13 (`13_limitations.md`)
 | Fact | Source |
@@ -91,7 +111,7 @@ Paths are relative to the repository root. M4 evidence directory: `docs/mileston
 
 ## 3. Measurement slots
 
-Slots are replaced by the exact value printed by the benchmark (a value such as `n/a (out of memory)` is acceptable where a stage cannot run on a platform). Count: 129.
+Slots are replaced by the exact value printed by the benchmark (a value such as `n/a (out of memory)` is acceptable where a stage cannot run on a platform). Slots for sections 2 and 12 are all filled and removed; remaining slots belong to other sections (a `12, 13` slot is shared with section 13).
 
 | Slot key | Appears in | Filled by |
 |---|---|---|
