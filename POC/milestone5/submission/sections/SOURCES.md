@@ -87,7 +87,7 @@ Paths are relative to the repository root. M4 evidence directory: `docs/mileston
 | Direct referee precision | Raw 82.35%, gated 82.43% | Gated (operating policy) used |
 | Python/torch pins | `requirements-*.txt`: torch 2.8.0, transformers 5.17.0. Receipts: torch 2.11.0 and 2.14.1, Transformers 5.22.1 | Section 2 reports versions used and states the pins are the install specification |
 | Referee GPU | Not recorded in the verification summary | Stated as L4 or T4 |
-| Captioner parameter total | Receipt total 898.81 M includes 502.0 M frozen fusion-block parameters | Total and trainable shown; benchmark count matches 898,805,894 |
+| Captioner parameter total | Receipt total 898.81 M includes 502.0 M frozen fusion-block parameters = 13 x nn.Embedding(50280, 768), never called in CaMambaModel.forward (models/external/RSCaMa/model/mamba_block.py:217 vs forward uses inputs_embeds) | Stated as unused, source-verified 2026-11-26 |
 
 ## 3. Measurement slots
 

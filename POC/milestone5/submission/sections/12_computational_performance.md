@@ -61,7 +61,7 @@ Valued at a uniform T4 rate, the programme corresponds to 16.63 x 0.526 = 8.75 U
 | `C06_rscama_frozen_clip_s2026` | rscama | 898.81 | 245.53 | Tesla T4 | 6 / 8 | 1 | 22.6 | 225.7 | 4,820 |
 | `C07_rscama_eb24` | rscama | 898.81 | 288.06 | Tesla T4 | 7 / 8 | 3 | 27.4 | 234.8 | 5,888 |
 
-`C02_rscama_lr3e4` terminated with a non-finite loss after 2 epochs and is included in the totals because its compute was spent. Parameter counts for RSCaMa are the receipt totals, which include 502.0 million frozen parameters in the Mamba fusion block (fusion block: 733.9 million total, 231.9 million trainable); the trainable count is 245.53 million for C06 (frozen CLIP) and 288.06 million for the unfrozen arms (an additional 42.53 million from CLIP blocks 6 to 11).
+`C02_rscama_lr3e4` terminated with a non-finite loss after 2 epochs and is included in the totals because its compute was spent. Parameter counts for RSCaMa are the receipt totals, which include 502.0 million frozen parameters in the Mamba fusion block: 13 token-embedding tables of 50,280 x 768 that the visual forward pass never reads, because `CaMambaModel.forward` consumes `inputs_embeds` directly (upstream RSCaMa `model/mamba_block.py`) (fusion block: 733.9 million total, 231.9 million trainable); the trainable count is 245.53 million for C06 (frozen CLIP) and 288.06 million for the unfrozen arms (an additional 42.53 million from CLIP blocks 6 to 11).
 
 ### 12.2 Model Size and Complexity
 
@@ -77,7 +77,7 @@ Valued at a uniform T4 rate, the programme corresponds to 16.63 x 0.526 = 8.75 U
 | **`C06_rscama_frozen_clip` (selected)** | **898.81 (receipt total)** | 245.53 | 1,714.63 | ⟦M:c06_gflops⟧ |
 | Qwen3-VL-4B-Instruct (frozen, bf16) | ⟦M:ref_params_m⟧ | 0 | ⟦M:ref_disk_mb⟧ | ⟦M:ref_gflops⟧ |
 
-The selected detector is the third-smallest of the five architectures and 3.4x smaller than ChangeFormer (41.04 / 11.94). The captioner dominates the parameter budget of the trained components, but 502.0 million of its recorded parameters are frozen weights in the fusion block and only 245.53 million are trainable. The referee is the largest component of the deployed pipeline and determines the minimum GPU memory tier (Section 12.4).
+The selected detector is the third-smallest of the five architectures and 3.4x smaller than ChangeFormer (41.04 / 11.94). The captioner dominates the parameter budget of the trained components, but 502.0 million of its recorded parameters are unused token-embedding tables carried over from the language-model Mamba block, and only 245.53 million are trainable. Removing these tables before serialisation would shrink the checkpoint without changing any output. The referee is the largest component of the deployed pipeline and determines the minimum GPU memory tier (Section 12.4).
 
 ### 12.3 Inference Latency per Stage
 
