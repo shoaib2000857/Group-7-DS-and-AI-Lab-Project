@@ -19,11 +19,11 @@ Two clean, conflict-free Milestone 4 PRs are open against `main` for team review
 
 ### Frozen Selected Models from Milestone 4 (100% Full-Data LEVIR-MCI)
 
-| Component | Selected Run / Model | Primary Validation Score | Held-Out Test Score (1,858 pairs) | Checkpoint SHA-256 (first 16 chars) |
+| Component | Selected Run / Model | Primary Validation Score | Held-Out Test Score (1,858 pairs) | Disk Size & SHA-256 (first 16 chars) |
 | :--- | :--- | :--- | :--- | :--- |
-| **Change Detector** | `D03_bit_lr3e4` (`bit_resnet18`) | **74.54%** Change mIoU (3-seed: `74.23% ± 0.28%`) | **75.93%** Change mIoU / **86.83%** Bin F1 / `10.28%` FA@50px | `05345df154b4d748` |
-| **Strong Detector Baseline** | `A03_siam_r18_unet` | **75.02%** Change mIoU (3-seed: `74.73% ± 0.27%`) | **76.73%** Change mIoU (but `-12.4%` to `-30.4%` worse on blur & `-5.5%` worse on SECOND-CC) | `d8beea3945f267aa` |
-| **Change Captioner** | `C06_rscama_frozen_clip` (RSCaMa, 388-word train vocab) | **0.6358** Val BLEU-4 (3-seed: `0.6297 ± 0.0183`) | **0.6128** BLEU-4 / **0.7326** ROUGE-L / **3.57%** NC FA | `c5b80d6bf6b6b0b2` |
+| **Change Detector** | `D03_bit_lr3e4` (`bit_resnet18`, 32/35 ep, best ep 24) | **74.54%** Change mIoU (3-seed: `74.23% ± 0.28%`) | **75.93%** Change mIoU / **86.83%** Bin F1 / `10.28%` FA@50px | `45.68 MB` (`05345df154b4d748`) |
+| **Strong Detector Baseline** | `A03_siam_r18_unet` (25/25 ep, best ep 22) | **75.02%** Change mIoU (3-seed: `74.73% ± 0.27%`) | **76.73%** Change mIoU (but `-12.4%` to `-30.4%` worse on blur & `-5.5%` worse on SECOND-CC) | `59.72 MB` (`c9d2c9c994c63411`) |
+| **Change Captioner** | `C06_rscama_frozen_clip` (8/8 ep, best ep 6, 388-word train vocab) | **0.6358** Val BLEU-4 (3-seed: `0.6297 ± 0.0183`) | **0.6128** BLEU-4 / **0.7326** ROUGE-L / **3.57%** NC FA | `1,714.63 MB` (`c5b80d6bf6b6b0b2`) |
 | **Visual Referee** | `Qwen/Qwen3-VL-4B-Instruct` (frozen BF16) | 120 val pairs / 147 claims audited | To be audited blindly on 150 Test pairs in M5 | HF rev `ebb281ec70b05090` |
 
 ---
@@ -60,10 +60,13 @@ python -m src.app.server docs/milestone4/evidence/full_data_m4/verification/e2e_
   - All 3 reproducible Milestone 4 notebooks live in `notebooks/TerraWatch_M4_*.ipynb` (they run in **CPU replay mode** out of the box!).
 - **Large Binaries (Shared Group 7 Google Drive — outside Git):**
   - **Datasets:** Extracted LEVIR-MCI (`9,544` pairs) and SECOND-CC (`530` val / `1,142` test) in `/MyDrive/TerraWatch_Extracted/`.
-  - **Frozen M4 Checkpoints (to upload to `/MyDrive/TerraWatch_Checkpoints_M4/`):**
-    - `D03_bit_lr3e4/best.pt` (`05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb`)
-    - `A03_siam_r18_unet/best.pt`, `A01_ef_unet/best.pt`, `A02_fc_siam_diff/best.pt`, `A04_changeformer/best.pt`
-    - `C06_rscama_frozen_clip/best.pth` (`c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796`), plus `s0`/`s2026`, `C01_rscama_ref/best.pth`, `C04_rscama_adamw_cos/best.pth`
+  - **Frozen M4 Checkpoints (verified disk sizes & SHA-256 digests, outside Git):**
+    - `D03_bit_lr3e4/best.pt` — `47,898,192 B` (`45.68 MB`), SHA-256 `05345df154b4d748432bccd72a439d3eddbda0fa2e10795ecdac29cd2cd38feb`
+    - `A01_ef_unet/best.pt` — `31,114,207 B` (`29.67 MB`), SHA-256 `5831a24249abf330f65a0b2c278040b2908b9137a2e95472544ccf34f91a437a`
+    - `A02_fc_siam_diff/best.pt` — `31,110,751 B` (`29.67 MB`), SHA-256 `32329cf708a7fed397c96689922eca2a2f29556108c35c214a1c332326b23105`
+    - `A03_siam_r18_unet/best.pt` — `62,621,663 B` (`59.72 MB`), SHA-256 `c9d2c9c994c63411096703397ee1842cde5ef917bee43d7b974a3f47c511e586`
+    - `A04_changeformer/best.pt` — `164,282,148 B` (`156.67 MB`), SHA-256 `fe137902d7dc4ca4816ab1e777f93d1f383cd132ca4542bc23a3b96c26ea6bc7`
+    - `C06_rscama_frozen_clip/best.pth` — `1,797,923,010 B` (`1,714.63 MB`), SHA-256 `c5b80d6bf6b6b0b2628c48d47df07ad77bc086ff0004bdd7160d0b0ff5545796` (plus `s0`/`s2026`, `C01_rscama_ref/best.pth`, `C04_rscama_adamw_cos/best.pth`)
   - **Rule:** Always verify SHA-256 digests before running evaluation scripts, and **never** `git add` any `.pt`, `.pth`, `.bin`, `.safetensors`, `.zip`, or raw dataset files.
 
 ---
@@ -104,7 +107,7 @@ Every teammate has a **high-ownership, independent technical track** plus an equ
   - `POC/milestone5/scripts/m5_eval_captioners_test.py` & `POC/milestone5/scripts/m5_error_analysis.py`
   - `POC/milestone5/evidence/test_full_metrics/captioner_test_full.json` & `POC/milestone5/evidence/error_analysis/failure_taxonomy.csv`
   - Figures: `m5_captioner_semantic_comparison.png`, `m5_success_gallery.png`, `m5_error_taxonomy_gallery.png`
-- **Report Sections Owned:** Sections 5 (Generative AI/LLM metrics), 6 (Captioner tables), 8 (Hyperparameter Analysis), 10 (Error Analysis) + Appendices G, H.
+- **Report Sections Owned:** Sections 5 (Generative AI/LLM metrics), 6 (Captioner tables), 8 (Hyperparameter Analysis), 10 (Error Analysis) + Appendices F, G (canonical lettering in `REPORT_OUTLINE_AND_EVIDENCE_MAP.md`).
 
 ### Track 4 — Sujal Raj Pradhan (`@SujalPradhan`): Systems & Computational Performance Profiling, Dual-Rater Audit Aggregation, Limitations & Deployment Packaging
 - **Owns:** WS6 (Cross-hardware profiling on Colab T4, L4, Laptop GPU & CPU: exact parameter counts, model disk sizes, GFLOPs, P50/P95/P99 per-stage latency, peak VRAM, batch throughput, Triton vs Python speedup chart, and cost per 1,000 pairs comparing unconditional vs selective VLM) + WS3 Aggregation (collecting all 4 blind human-audit CSVs, computing Cohen's $\kappa$, adjudicating disagreements, and producing the human-verified groundedness/hallucination tables) + Evidence Review UI end-to-end QA.
@@ -112,7 +115,9 @@ Every teammate has a **high-ownership, independent technical track** plus an equ
   - `POC/milestone5/scripts/m5_benchmark_compute.py` & `POC/milestone5/scripts/m5_compute_human_audit.py`
   - `POC/milestone5/evidence/compute_profile/compute_profile.json` & `POC/milestone5/evidence/human_audit/human_audit_summary.json`
   - Figures: `m5_compute_profile.png`, `m5_human_audit_agreement.png`
-- **Report Sections Owned:** Sections 2 (Experimental Setup), 12 (Computational Performance), 13 (Limitations & Ethics), 14 (Possible Improvements) + Appendices I, J.
+- **Report Sections Owned:** Sections 2 (Experimental Setup), 12 (Computational Performance), 13 (Limitations & Ethics), 14 (Possible Improvements) + Appendices I, J (canonical lettering in `REPORT_OUTLINE_AND_EVIDENCE_MAP.md`: `Appendix I` = Evaluation & Profiling Scripts, `Appendix J` = Human Annotation Protocol & Ethics).
+- **GPU Hourly Pricing Reference for Section 12:** Report both (a) **actual team Colab Pro/PAYG rate** (`$9.99 / 100 CU ≈ $0.10/CU`, observed M4 burn rates: T4 `1.15 CU/hr ≈ $0.115/hr`, L4 `4.82 CU/hr ≈ $0.482/hr`, local RTX 4060 `$0` marginal cloud cost) and (b) **public on-demand cloud reference** (GCP T4 `$0.35/hr` GPU-only or `~$0.54/hr` with `n1-standard-4`, or AWS `g4dn.xlarge` `$0.526/hr`), explicitly labeled.
+- **Submission Format:** Deliver clean Markdown (`.md`) files under `POC/milestone5/submission/sections/` plus JSON/CSV receipts under `POC/milestone5/evidence/` and 180-DPI PNG figures; the final ReportLab build compiles Markdown sections directly into the unified PDF.
 
 ---
 
@@ -135,7 +140,11 @@ To give Milestone 5 an ironclad **Human Evaluation & Groundedness** section, we 
    - `contradicted`: The claim is factually wrong (e.g., claims new building on unchanged ground, wrong object class, or clear hallucination).
    - `unverifiable`: Resolution, cloud/shadow occlusion, crop ambiguity, or exact numeric count uncertainty makes a confident human verdict impossible.
 4. **Assign one `error_category` (only when `contradicted` or `unverifiable`):** `none`, `hallucinated_object`, `missed_change`, `wrong_class_road_vs_bldg`, `wrong_count`, `wrong_location`, `shadow_or_seasonal`, `tiny_or_occluded`.
-5. **Save your completed sheet** as `POC/milestone5/evidence/human_audit/rater_<initials>.csv` (`SSSM`, `PA`, `SS`, `SRP`) and push on your branch. Sujal runs `m5_compute_human_audit.py` to compute exact Cohen's $\kappa$, agreement matrix, and human-verified groundedness!
+5. **Locked Packet Schema (`audit_id` & Hybrid Verifier Column):**
+   - Every claim row carries a unique `audit_id` (`M5T_001` … `M5T_120`).
+   - **Blind rater CSV (`rater_<INITIALS>.csv`):** `audit_id, pair_id, stratum, claim_id, caption, claim_span, object, action, location, quantity, human_label, error_category, notes`
+   - **Unblinded master key (`test_audit_master_key.csv`, kept separate from blind packets):** `audit_id, pair_id, stratum, claim_id, caption, claim_span, object, action, location, quantity, proxy_label, unverified_decision, mask_only_decision, direct_vlm_decision, reinsp_all_decision, hybrid_verifier_decision, hybrid_verifier_prob, vlm_triggered`
+6. **Save your completed sheet** as `POC/milestone5/evidence/human_audit/rater_<initials>.csv` (`SSSM`, `PA`, `SS`, `SRP`) and push on your branch. Sujal runs `m5_compute_human_audit.py` to compute exact Cohen's $\kappa$, agreement matrix, and human-verified groundedness!
 
 ---
 
